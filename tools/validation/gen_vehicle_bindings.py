@@ -18,11 +18,13 @@ than one catalogue entry is ambiguous and is not bound. The generator guesses
 nothing.
 
 Enumeration reads the installed game config. The displayName key is read from
-the class, or from the nearest parent that states one. The class tree comes from
-the loose game config and from the packed config of each vehicle addon. A mod
-that carries ground vehicles is read the same way: pass it with ``--mod-root``.
-The display name of a mod vehicle is often the real vehicle designation, so it
-resolves to a catalogue entry without a class map.
+the class, or from the nearest parent that states one. A class that an addon
+reopens to attach sounds keeps the displayName its first declaration states,
+because the engine keeps it and the reopen states none. The class tree comes
+from the loose game config and from the packed config of each vehicle addon. A
+mod that carries ground vehicles is read the same way: pass it with
+``--mod-root``. The display name of a mod vehicle is often the real vehicle
+designation, so it resolves to a catalogue entry without a class map.
 
 Run:
     python3 tools/validation/gen_vehicle_bindings.py --resolve --game-root PATH
@@ -118,6 +120,10 @@ class ClassRecord:
     display_name: str | None
     locator: str
     mass: float | None = None
+    # The declaration that states the displayName. It differs from the class
+    # locator when an addon reopens the class without a displayName, which the
+    # sounds addons do.
+    display_locator: str | None = None
 
 
 def _mapping(value: object) -> dict[str, object] | None:
@@ -386,16 +392,16 @@ def parse_class_tree(
 ) -> dict[str, ClassRecord]:
     """Return the class tree with the parent and displayName of each class.
 
-    A class is recorded once. The first declaration wins, so the result is
-    deterministic. A parent and a displayName are recorded only when the class
-    states them.
+    A class is recorded once. Its parent, mass and locator come from the first
+    declaration, so the result is deterministic. Its displayName comes from the
+    first declaration that states a stringtable key. An addon reopens a class
+    to attach sounds and states no displayName, and the engine keeps the
+    display name the class already had, so the reopening must not erase it.
     """
     tree: dict[str, ClassRecord] = {}
     for locator, text in config_texts:
         for match in CLASS_DECL.finditer(text):
             name = match.group(1)
-            if name in tree:
-                continue
             depth = 0
             index = match.end() - 1
             while index < len(text):
@@ -409,11 +415,27 @@ def parse_class_tree(
             block = text[match.end() : index]
             display = DISPLAY_NAME.search(block)
             mass = MASS_VALUE.search(block)
+            existing = tree.get(name)
+            if existing is not None:
+                if (
+                    existing.display_name is None
+                    and display is not None
+                    and display.group(1).startswith("$")
+                ):
+                    tree[name] = ClassRecord(
+                        parent=existing.parent,
+                        display_name=display.group(1),
+                        locator=existing.locator,
+                        mass=existing.mass,
+                        display_locator=locator,
+                    )
+                continue
             tree[name] = ClassRecord(
                 parent=match.group(2),
                 display_name=display.group(1) if display else None,
                 locator=locator,
                 mass=float(mass.group(1)) if mass else None,
+                display_locator=locator if display else None,
             )
     return tree
 
@@ -461,7 +483,7 @@ def resolve_display_name(
         if record is None:
             return None
         if record.display_name:
-            return record.display_name, record.locator
+            return record.display_name, record.display_locator or record.locator
         current = record.parent
     return None
 

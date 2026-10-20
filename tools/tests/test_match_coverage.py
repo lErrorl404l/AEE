@@ -338,7 +338,9 @@ class TestBaselineArtefact(unittest.TestCase):
                 "family_label_over_a_generic_class",
             )
         )
-        self.assertEqual(vehicle, self.payload["tables"]["vehicles"]["unresolved_modded"])
+        self.assertEqual(
+            vehicle, self.payload["tables"]["vehicles"]["unresolved_modded"]
+        )
         self.assertEqual(
             known["armafpv_drone_no_published_designation"],
             self.payload["tables"]["aircraft"]["unresolved_modded"],
@@ -584,6 +586,80 @@ class TestInheritanceRung(unittest.TestCase):
             selected, table, plain, plain, self.chain, {"base.pbo"}
         )
         self.assertEqual(closed, [])
+
+
+class ZamakBindingLock(unittest.TestCase):
+    """The Zamak family is bound from the game's own declaration, not by hand.
+
+    The catalogue entry for the KamAZ-4310 answers the Arma 3 Zamak, and the
+    Project OPFOR KAMAZ retextures close on the Zamak in the config chain. That
+    closure rests on the variants being bound in the committed artefact, so
+    this lock fails if a binding is hand-edited, invented, or left stale: every
+    bound `Truck_02` class must name `kamaz_4310`, carry the game's own
+    `$STR_A3_` key, and cite a declaration under the game's `Addons/` tree.
+    """
+
+    BINDINGS = REPO / "data" / "vehicle" / "stringtable_bindings.json"
+
+    # The base-game classes the ten closures walk through. The matcher may only
+    # answer from them if the artefact cites the game's own declaration, so
+    # gen_vehicle_data keeps the binding when it filters for the base game.
+    ANCESTORS = (
+        "Truck_02_base_F",
+        "O_Truck_02_covered_F",
+        "O_Truck_02_transport_F",
+        "O_Truck_02_box_F",
+        "O_Truck_02_fuel_F",
+        "O_Truck_02_medical_F",
+        "O_Truck_02_Ammo_F",
+    )
+
+    def test_every_truck_02_binding_names_the_kamaz_4310(self) -> None:
+        payload = json.loads(self.BINDINGS.read_text(encoding="utf-8"))
+        records = [
+            record
+            for record in payload["bindings"]
+            if "Truck_02" in record["game_class"]
+            or "truck02" in record["display_name_key"].lower()
+        ]
+        self.assertGreater(len(records), 0)
+        for record in records:
+            with self.subTest(game_class=record["game_class"]):
+                self.assertEqual("kamaz_4310", record["catalogue_id"])
+
+    def test_every_truck_02_binding_carries_game_provenance(self) -> None:
+        payload = json.loads(self.BINDINGS.read_text(encoding="utf-8"))
+        by_class = {record["game_class"]: record for record in payload["bindings"]}
+        for name in self.ANCESTORS:
+            with self.subTest(game_class=name):
+                record = by_class[name]
+                self.assertEqual("kamaz_4310", record["catalogue_id"])
+                self.assertTrue(
+                    record["display_name_key"].upper().startswith("$STR_A3_")
+                )
+                self.assertTrue(record["config_locator"].startswith("Addons/"))
+
+    def test_no_game_locator_carries_an_invented_key(self) -> None:
+        payload = json.loads(self.BINDINGS.read_text(encoding="utf-8"))
+        records = [
+            record
+            for record in payload["bindings"]
+            if record["catalogue_id"] == "kamaz_4310"
+            and record["config_locator"].startswith("Addons/")
+        ]
+        self.assertGreater(len(records), 0)
+        for record in records:
+            with self.subTest(game_class=record["game_class"]):
+                self.assertTrue(
+                    record["display_name_key"].upper().startswith("$STR_A3_")
+                )
+
+    def test_the_family_is_reachable_from_the_gap_estimate(self) -> None:
+        # The point of the binding: the retextures are gone from the worklist
+        # and the two maker labels are what remains.
+        body = (COVERAGE / "modded_gaps_vehicles.txt").read_text(encoding="utf-8")
+        listed = {line.split("\t")[0] for line in body.splitlines() if line[0] != "#"}
+        self.assertEqual({"LOP_Nissan_PKM_base", "rhsusf_fmtv_base"}, listed)
 
 
 if __name__ == "__main__":

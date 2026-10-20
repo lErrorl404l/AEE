@@ -864,19 +864,19 @@ def write_baseline(
             # not read them as regression.
             "known_unresolvable": {
                 "vehicle_modded": {
-                    "retexture_of_an_unmapped_ancestor": 10,
+                    "retexture_of_an_unmapped_ancestor": 0,
                     "different_maker_than_ancestor": 1,
                     "family_label_over_a_generic_class": 1,
                     "armafpv_drone_no_published_designation": 8,
                     "note": (
-                        "Seven modded Offroad classes closed by engine ancestry "
-                        "(423/435). Twelve remain. Ten are the Project OPFOR "
-                        "KAMAZ retextures: they descend from the Zamak in "
-                        "config, and no entry maps the Zamak variants, so the "
-                        "nearest mapped ancestor is the engine's Car class. "
+                        "Seventeen modded vehicle classes closed by engine "
+                        "ancestry (433/435): the seven Offroad re-uses and the "
+                        "ten Project OPFOR KAMAZ retextures, which descend from "
+                        "the Zamak and close on it now that the Zamak variants "
+                        "are bound to kamaz_4310. Two remain. "
                         "LOP_Nissan_PKM_base names a Nissan over the ancestor's "
                         "Toyota entry, and rhsusf_fmtv_base names a family over "
-                        "the same Car class. The rung refuses all twelve rather "
+                        "the engine's Car class. The rung refuses both rather "
                         "than answer a different vehicle. The eight aircraft "
                         "gaps are ArmaFPV FPV drones. None is a failure."
                     ),

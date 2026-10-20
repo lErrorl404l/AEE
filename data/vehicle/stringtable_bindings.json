@@ -2,6 +2,39 @@
   "schema": "aee.vehicle.stringtable_bindings/1",
   "bindings": [
     {
+      "game_class": "APC_Wheeled_02_base_F",
+      "display_name_key": "$STR_A3_CfgVehicles_O_APC_Wheeled_02_RCWS",
+      "display_name": "MSE-3 Marid",
+      "display_name_source": "Addons/language_f_beta/a3/language_f_beta/stringtable.xml",
+      "config_locator": "Addons/armor_f_beta/a3/armor_f_beta/APC_Wheeled_02/config.cpp",
+      "catalogue_id": "otokar_arma_6x6",
+      "matched_tokens": [
+        "marid"
+      ]
+    },
+    {
+      "game_class": "APC_Wheeled_02_unarmed_base_F",
+      "display_name_key": "$STR_A3_CfgVehicles_O_APC_Wheeled_02_RCWS",
+      "display_name": "MSE-3 Marid",
+      "display_name_source": "Addons/language_f_beta/a3/language_f_beta/stringtable.xml",
+      "config_locator": "Addons/armor_f_beta/a3/armor_f_beta/APC_Wheeled_02/config.cpp",
+      "catalogue_id": "otokar_arma_6x6",
+      "matched_tokens": [
+        "marid"
+      ]
+    },
+    {
+      "game_class": "APC_Wheeled_03_base_F",
+      "display_name_key": "$STR_A3_CFGVEHICLES_APC_WHEELED_03_WAPC0",
+      "display_name": "AFV-4 Gorgon",
+      "display_name_source": "Addons/language_f_gamma/a3/language_f_gamma/stringtable.xml",
+      "config_locator": "Addons/armor_f_gamma/a3/armor_f_gamma/APC_Wheeled_03/config.cpp",
+      "catalogue_id": "pandur_ii",
+      "matched_tokens": [
+        "gorgon"
+      ]
+    },
+    {
       "game_class": "B_APC_Tracked_01_AA_F",
       "display_name_key": "$STR_A3_CfgVehicles_B_APC_TRACKED_01_AA0",
       "display_name": "IFV-6a Cheetah",
@@ -35,6 +68,39 @@
       ]
     },
     {
+      "game_class": "B_APC_Wheeled_01_cannon_F",
+      "display_name_key": "$STR_A3_CFGVEHICLES_B_APC_WHEELED_01_CANNON",
+      "display_name": "AMV-7 Marshall",
+      "display_name_source": "Addons/language_f_beta/a3/language_f_beta/stringtable.xml",
+      "config_locator": "Addons/armor_f_beta/a3/armor_f_beta/APC_Wheeled_01/config.cpp",
+      "catalogue_id": "patria_amv",
+      "matched_tokens": [
+        "marshall"
+      ]
+    },
+    {
+      "game_class": "B_APC_Wheeled_03_base_F",
+      "display_name_key": "$STR_A3_CFGVEHICLES_APC_WHEELED_03_WAPC0",
+      "display_name": "AFV-4 Gorgon",
+      "display_name_source": "Addons/language_f_gamma/a3/language_f_gamma/stringtable.xml",
+      "config_locator": "Addons/armor_f_gamma/a3/armor_f_gamma/APC_Wheeled_03/config.cpp",
+      "catalogue_id": "pandur_ii",
+      "matched_tokens": [
+        "gorgon"
+      ]
+    },
+    {
+      "game_class": "B_APC_Wheeled_03_cannon_F",
+      "display_name_key": "$STR_A3_CFGVEHICLES_APC_WHEELED_03_WAPC0",
+      "display_name": "AFV-4 Gorgon",
+      "display_name_source": "Addons/language_f_gamma/a3/language_f_gamma/stringtable.xml",
+      "config_locator": "Addons/armor_f_gamma/a3/armor_f_gamma/APC_Wheeled_03/config.cpp",
+      "catalogue_id": "pandur_ii",
+      "matched_tokens": [
+        "gorgon"
+      ]
+    },
+    {
       "game_class": "B_GEN_Offroad_01_gen_F",
       "display_name_key": "$STR_A3_CfgVehicles_Offroad_Base0",
       "display_name": "Offroad",
@@ -57,6 +123,17 @@
       ]
     },
     {
+      "game_class": "B_G_Quadbike_01_F",
+      "display_name_key": "$STR_A3_CfgVehicles_Quadbike_Base_F0",
+      "display_name": "Quad Bike",
+      "display_name_source": "Addons/language_f/a3/language_f/stringtable.xml",
+      "config_locator": "Addons/soft_f.pbo > Quadbike_01\\config.bin",
+      "catalogue_id": "yamaha_grizzly_450",
+      "matched_tokens": [
+        "quadbike"
+      ]
+    },
+    {
       "game_class": "B_MBT_01_TUSK_F",
       "display_name_key": "$STR_A3_CfgVehicles_B_MBT_01_TUSK_F0",
       "display_name": "M2A4 Slammer UP",
@@ -65,6 +142,18 @@
       "catalogue_id": "merkava_mk4",
       "matched_tokens": [
         "m2a4",
+        "slammer"
+      ]
+    },
+    {
+      "game_class": "B_MBT_01_cannon_F",
+      "display_name_key": "$STR_A3_CfgVehicles_MBT_01_cannon_base_F0",
+      "display_name": "M2A1 Slammer",
+      "display_name_source": "Addons/language_f_gamma/a3/language_f_gamma/stringtable.xml",
+      "config_locator": "Addons/armor_f_gamma/a3/armor_f_gamma/MBT_01/config.cpp",
+      "catalogue_id": "merkava_mk4",
+      "matched_tokens": [
+        "m2a1",
         "slammer"
       ]
     },
@@ -92,6 +181,50 @@
       ]
     },
     {
+      "game_class": "B_T_UGV_01_olive_F",
+      "display_name_key": "$STR_A3_CfgVehicles_UGV_01_Base0",
+      "display_name": "UGV Stomper",
+      "display_name_source": "Addons/language_f_gamma/a3/language_f_gamma/stringtable.xml",
+      "config_locator": "Addons/drones_f/a3/drones_f/Soft_F_Gamma/UGV_01/config.cpp",
+      "catalogue_id": "darpa_crusher_ugcv",
+      "matched_tokens": [
+        "stomper"
+      ]
+    },
+    {
+      "game_class": "B_T_UGV_01_rcws_olive_F",
+      "display_name_key": "$STR_A3_CfgVehicles_UGV_01_RCWS_Base0",
+      "display_name": "UGV Stomper RCWS",
+      "display_name_source": "Addons/language_f_gamma/a3/language_f_gamma/stringtable.xml",
+      "config_locator": "Addons/drones_f/a3/drones_f/Soft_F_Gamma/UGV_01/config.cpp",
+      "catalogue_id": "darpa_crusher_ugcv",
+      "matched_tokens": [
+        "stomper"
+      ]
+    },
+    {
+      "game_class": "B_UGV_01_F",
+      "display_name_key": "$STR_A3_CfgVehicles_UGV_01_Base0",
+      "display_name": "UGV Stomper",
+      "display_name_source": "Addons/language_f_gamma/a3/language_f_gamma/stringtable.xml",
+      "config_locator": "Addons/drones_f/a3/drones_f/Soft_F_Gamma/UGV_01/config.cpp",
+      "catalogue_id": "darpa_crusher_ugcv",
+      "matched_tokens": [
+        "stomper"
+      ]
+    },
+    {
+      "game_class": "B_UGV_01_rcws_F",
+      "display_name_key": "$STR_A3_CfgVehicles_UGV_01_RCWS_Base0",
+      "display_name": "UGV Stomper RCWS",
+      "display_name_source": "Addons/language_f_gamma/a3/language_f_gamma/stringtable.xml",
+      "config_locator": "Addons/drones_f/a3/drones_f/Soft_F_Gamma/UGV_01/config.cpp",
+      "catalogue_id": "darpa_crusher_ugcv",
+      "matched_tokens": [
+        "stomper"
+      ]
+    },
+    {
       "game_class": "C_IDAP_Offroad_01_F",
       "display_name_key": "$STR_A3_CfgVehicles_Offroad_Base0",
       "display_name": "Offroad",
@@ -100,6 +233,28 @@
       "catalogue_id": "offroad_q7_l200_composite",
       "matched_tokens": [
         "offroad"
+      ]
+    },
+    {
+      "game_class": "C_IDAP_Truck_02_F",
+      "display_name_key": "$STR_A3_CfgVehicles_Truck_02_Base0",
+      "display_name": "Zamak Transport (Covered)",
+      "display_name_source": "Addons/language_f_beta/a3/language_f_beta/stringtable.xml",
+      "config_locator": "Addons/soft_f_beta.pbo > Truck_02\\config.bin",
+      "catalogue_id": "kamaz_4310",
+      "matched_tokens": [
+        "zamak"
+      ]
+    },
+    {
+      "game_class": "C_IDAP_Truck_02_transport_F",
+      "display_name_key": "$STR_A3_CfgVehicles_C_Truck_02_Dump0",
+      "display_name": "Zamak Transport",
+      "display_name_source": "Addons/language_f_beta/a3/language_f_beta/stringtable.xml",
+      "config_locator": "Orange/Addons/soft_f_orange.pbo > Truck_02\\config.bin",
+      "catalogue_id": "kamaz_4310",
+      "matched_tokens": [
+        "zamak"
       ]
     },
     {
@@ -114,6 +269,61 @@
       ]
     },
     {
+      "game_class": "C_Quadbike_01_F",
+      "display_name_key": "$STR_A3_CfgVehicles_Quadbike_Base_F0",
+      "display_name": "Quad Bike",
+      "display_name_source": "Addons/language_f/a3/language_f/stringtable.xml",
+      "config_locator": "Addons/soft_f.pbo > Quadbike_01\\config.bin",
+      "catalogue_id": "yamaha_grizzly_450",
+      "matched_tokens": [
+        "quadbike"
+      ]
+    },
+    {
+      "game_class": "C_Truck_02_box_F",
+      "display_name_key": "$STR_A3_CfgVehicles_Truck_02_Repair0",
+      "display_name": "Zamak Repair",
+      "display_name_source": "Addons/language_f_gamma/a3/language_f_gamma/stringtable.xml",
+      "config_locator": "Addons/soft_f_gamma.pbo > Truck_02\\config.bin",
+      "catalogue_id": "kamaz_4310",
+      "matched_tokens": [
+        "zamak"
+      ]
+    },
+    {
+      "game_class": "C_Truck_02_covered_F",
+      "display_name_key": "$STR_A3_CfgVehicles_Truck_02_Base0",
+      "display_name": "Zamak Transport (Covered)",
+      "display_name_source": "Addons/language_f_beta/a3/language_f_beta/stringtable.xml",
+      "config_locator": "Addons/soft_f_beta.pbo > Truck_02\\config.bin",
+      "catalogue_id": "kamaz_4310",
+      "matched_tokens": [
+        "zamak"
+      ]
+    },
+    {
+      "game_class": "C_Truck_02_fuel_F",
+      "display_name_key": "$STR_A3_CfgVehicles_Truck_02_Fuel0",
+      "display_name": "Zamak Fuel",
+      "display_name_source": "Addons/language_f_gamma/a3/language_f_gamma/stringtable.xml",
+      "config_locator": "Addons/soft_f_gamma.pbo > Truck_02\\config.bin",
+      "catalogue_id": "kamaz_4310",
+      "matched_tokens": [
+        "zamak"
+      ]
+    },
+    {
+      "game_class": "C_Truck_02_transport_F",
+      "display_name_key": "$STR_A3_CfgVehicles_C_Truck_02_Dump0",
+      "display_name": "Zamak Transport",
+      "display_name_source": "Addons/language_f_beta/a3/language_f_beta/stringtable.xml",
+      "config_locator": "Addons/soft_f_beta.pbo > Truck_02\\config.bin",
+      "catalogue_id": "kamaz_4310",
+      "matched_tokens": [
+        "zamak"
+      ]
+    },
+    {
       "game_class": "HMMWV_civil",
       "display_name_key": "$STR_DN_HMMWV_CIVIL",
       "display_name": "HMMWV (Civil)",
@@ -122,6 +332,28 @@
       "catalogue_id": "hmmwv_m998",
       "matched_tokens": [
         "hmmwv"
+      ]
+    },
+    {
+      "game_class": "I_APC_Wheeled_03_base_F",
+      "display_name_key": "$STR_A3_CFGVEHICLES_APC_WHEELED_03_WAPC0",
+      "display_name": "AFV-4 Gorgon",
+      "display_name_source": "Addons/language_f_gamma/a3/language_f_gamma/stringtable.xml",
+      "config_locator": "Addons/armor_f_gamma/a3/armor_f_gamma/APC_Wheeled_03/config.cpp",
+      "catalogue_id": "pandur_ii",
+      "matched_tokens": [
+        "gorgon"
+      ]
+    },
+    {
+      "game_class": "I_APC_Wheeled_03_cannon_F",
+      "display_name_key": "$STR_A3_CFGVEHICLES_APC_WHEELED_03_WAPC0",
+      "display_name": "AFV-4 Gorgon",
+      "display_name_source": "Addons/language_f_gamma/a3/language_f_gamma/stringtable.xml",
+      "config_locator": "Addons/armor_f_gamma/a3/armor_f_gamma/APC_Wheeled_03/config.cpp",
+      "catalogue_id": "pandur_ii",
+      "matched_tokens": [
+        "gorgon"
       ]
     },
     {
@@ -136,6 +368,138 @@
       ]
     },
     {
+      "game_class": "I_E_Quadbike_01_F",
+      "display_name_key": "$STR_A3_CfgVehicles_Quadbike_Base_F0",
+      "display_name": "Quad Bike",
+      "display_name_source": "Addons/language_f/a3/language_f/stringtable.xml",
+      "config_locator": "Addons/soft_f.pbo > Quadbike_01\\config.bin",
+      "catalogue_id": "yamaha_grizzly_450",
+      "matched_tokens": [
+        "quadbike"
+      ]
+    },
+    {
+      "game_class": "I_E_Truck_02_Ammo_F",
+      "display_name_key": "$STR_A3_CFGVEHICLES_TRUCK_02_AMMO",
+      "display_name": "Zamak Ammo",
+      "display_name_source": "Addons/language_f_gamma/a3/language_f_gamma/stringtable.xml",
+      "config_locator": "Enoch/Addons/soft_f_enoch.pbo > Truck_02\\config.bin",
+      "catalogue_id": "kamaz_4310",
+      "matched_tokens": [
+        "zamak"
+      ]
+    },
+    {
+      "game_class": "I_E_Truck_02_Box_F",
+      "display_name_key": "$STR_A3_CfgVehicles_Truck_02_Repair0",
+      "display_name": "Zamak Repair",
+      "display_name_source": "Addons/language_f_gamma/a3/language_f_gamma/stringtable.xml",
+      "config_locator": "Enoch/Addons/soft_f_enoch.pbo > Truck_02\\config.bin",
+      "catalogue_id": "kamaz_4310",
+      "matched_tokens": [
+        "zamak"
+      ]
+    },
+    {
+      "game_class": "I_E_Truck_02_EMP_F",
+      "display_name_key": "$STR_A3_CfgVehicles_Truck_02_Base0",
+      "display_name": "Zamak Transport (Covered)",
+      "display_name_source": "Addons/language_f_beta/a3/language_f_beta/stringtable.xml",
+      "config_locator": "Addons/soft_f_beta.pbo > Truck_02\\config.bin",
+      "catalogue_id": "kamaz_4310",
+      "matched_tokens": [
+        "zamak"
+      ]
+    },
+    {
+      "game_class": "I_E_Truck_02_F",
+      "display_name_key": "$STR_A3_CfgVehicles_Truck_02_Base0",
+      "display_name": "Zamak Transport (Covered)",
+      "display_name_source": "Addons/language_f_beta/a3/language_f_beta/stringtable.xml",
+      "config_locator": "Addons/soft_f_beta.pbo > Truck_02\\config.bin",
+      "catalogue_id": "kamaz_4310",
+      "matched_tokens": [
+        "zamak"
+      ]
+    },
+    {
+      "game_class": "I_E_Truck_02_MRL_F",
+      "display_name_key": "$STR_A3_CfgVehicles_I_Truck_02_MRL_F0",
+      "display_name": "Zamak MRL",
+      "display_name_source": "Addons/language_f_gamma/a3/language_f_gamma/stringtable.xml",
+      "config_locator": "Enoch/Addons/soft_f_enoch.pbo > Truck_02\\config.bin",
+      "catalogue_id": "kamaz_4310",
+      "matched_tokens": [
+        "zamak"
+      ]
+    },
+    {
+      "game_class": "I_E_Truck_02_Medical_F",
+      "display_name_key": "$STR_A3_CFGVEHICLES_TRUCK_02_MEDICAL",
+      "display_name": "Zamak Medical",
+      "display_name_source": "Addons/language_f_gamma/a3/language_f_gamma/stringtable.xml",
+      "config_locator": "Enoch/Addons/soft_f_enoch.pbo > Truck_02\\config.bin",
+      "catalogue_id": "kamaz_4310",
+      "matched_tokens": [
+        "zamak"
+      ]
+    },
+    {
+      "game_class": "I_E_Truck_02_fuel_F",
+      "display_name_key": "$STR_A3_CfgVehicles_Truck_02_Fuel0",
+      "display_name": "Zamak Fuel",
+      "display_name_source": "Addons/language_f_gamma/a3/language_f_gamma/stringtable.xml",
+      "config_locator": "Enoch/Addons/soft_f_enoch.pbo > Truck_02\\config.bin",
+      "catalogue_id": "kamaz_4310",
+      "matched_tokens": [
+        "zamak"
+      ]
+    },
+    {
+      "game_class": "I_E_Truck_02_transport_EMP_F",
+      "display_name_key": "$STR_A3_CfgVehicles_C_Truck_02_Dump0",
+      "display_name": "Zamak Transport",
+      "display_name_source": "Addons/language_f_beta/a3/language_f_beta/stringtable.xml",
+      "config_locator": "Enoch/Addons/soft_f_enoch.pbo > Truck_02\\config.bin",
+      "catalogue_id": "kamaz_4310",
+      "matched_tokens": [
+        "zamak"
+      ]
+    },
+    {
+      "game_class": "I_E_Truck_02_transport_F",
+      "display_name_key": "$STR_A3_CfgVehicles_C_Truck_02_Dump0",
+      "display_name": "Zamak Transport",
+      "display_name_source": "Addons/language_f_beta/a3/language_f_beta/stringtable.xml",
+      "config_locator": "Enoch/Addons/soft_f_enoch.pbo > Truck_02\\config.bin",
+      "catalogue_id": "kamaz_4310",
+      "matched_tokens": [
+        "zamak"
+      ]
+    },
+    {
+      "game_class": "I_E_UGV_01_F",
+      "display_name_key": "$STR_A3_CfgVehicles_UGV_01_Base0",
+      "display_name": "UGV Stomper",
+      "display_name_source": "Addons/language_f_gamma/a3/language_f_gamma/stringtable.xml",
+      "config_locator": "Addons/drones_f/a3/drones_f/Soft_F_Gamma/UGV_01/config.cpp",
+      "catalogue_id": "darpa_crusher_ugcv",
+      "matched_tokens": [
+        "stomper"
+      ]
+    },
+    {
+      "game_class": "I_E_UGV_01_rcws_F",
+      "display_name_key": "$STR_A3_CfgVehicles_UGV_01_RCWS_Base0",
+      "display_name": "UGV Stomper RCWS",
+      "display_name_source": "Addons/language_f_gamma/a3/language_f_gamma/stringtable.xml",
+      "config_locator": "Addons/drones_f/a3/drones_f/Soft_F_Gamma/UGV_01/config.cpp",
+      "catalogue_id": "darpa_crusher_ugcv",
+      "matched_tokens": [
+        "stomper"
+      ]
+    },
+    {
       "game_class": "I_G_Offroad_01_AT_F",
       "display_name_key": "$STR_A3_CfgVehicles_Offroad_01_AT_base_F0",
       "display_name": "Offroad (AT)",
@@ -144,6 +508,171 @@
       "catalogue_id": "offroad_q7_l200_composite",
       "matched_tokens": [
         "offroad"
+      ]
+    },
+    {
+      "game_class": "I_G_Quadbike_01_F",
+      "display_name_key": "$STR_A3_CfgVehicles_Quadbike_Base_F0",
+      "display_name": "Quad Bike",
+      "display_name_source": "Addons/language_f/a3/language_f/stringtable.xml",
+      "config_locator": "Addons/soft_f.pbo > Quadbike_01\\config.bin",
+      "catalogue_id": "yamaha_grizzly_450",
+      "matched_tokens": [
+        "quadbike"
+      ]
+    },
+    {
+      "game_class": "I_MBT_03_cannon_F",
+      "display_name_key": "$STR_A3_CfgVehicles_I_MBT_03_cannon_F0",
+      "display_name": "MBT-52 Kuma",
+      "display_name_source": "Addons/language_f_epb/a3/language_f_epb/stringtable.xml",
+      "config_locator": "Addons/armor_f_epb/a3/armor_f_epb/MBT_03/config.cpp",
+      "catalogue_id": "leopard_2a6",
+      "matched_tokens": [
+        "kuma"
+      ]
+    },
+    {
+      "game_class": "I_MRAP_03_F",
+      "display_name_key": "$STR_A3_CfgVehicles_MRAP_03_Base0",
+      "display_name": "Strider",
+      "display_name_source": "Addons/language_f_beta/a3/language_f_beta/stringtable.xml",
+      "config_locator": "Addons/soft_f_beta.pbo > MRAP_03\\config.bin",
+      "catalogue_id": "lgs_fennek_larv",
+      "matched_tokens": [
+        "strider"
+      ]
+    },
+    {
+      "game_class": "I_MRAP_03_gmg_F",
+      "display_name_key": "$STR_A3_CfgVehicles_MRAP_03_RCWS_base0",
+      "display_name": "Strider GMG",
+      "display_name_source": "Addons/language_f_beta/a3/language_f_beta/stringtable.xml",
+      "config_locator": "Addons/soft_f_beta.pbo > MRAP_03\\config.bin",
+      "catalogue_id": "lgs_fennek_larv",
+      "matched_tokens": [
+        "strider"
+      ]
+    },
+    {
+      "game_class": "I_MRAP_03_hmg_F",
+      "display_name_key": "$STR_A3_CfgVehicles_MRAP_03_HMG_base0",
+      "display_name": "Strider HMG",
+      "display_name_source": "Addons/language_f_beta/a3/language_f_beta/stringtable.xml",
+      "config_locator": "Addons/soft_f_beta.pbo > MRAP_03\\config.bin",
+      "catalogue_id": "lgs_fennek_larv",
+      "matched_tokens": [
+        "strider"
+      ]
+    },
+    {
+      "game_class": "I_Quadbike_01_F",
+      "display_name_key": "$STR_A3_CfgVehicles_Quadbike_Base_F0",
+      "display_name": "Quad Bike",
+      "display_name_source": "Addons/language_f/a3/language_f/stringtable.xml",
+      "config_locator": "Addons/soft_f.pbo > Quadbike_01\\config.bin",
+      "catalogue_id": "yamaha_grizzly_450",
+      "matched_tokens": [
+        "quadbike"
+      ]
+    },
+    {
+      "game_class": "I_Truck_02_MRL_F",
+      "display_name_key": "$STR_A3_CfgVehicles_I_Truck_02_MRL_F0",
+      "display_name": "Zamak MRL",
+      "display_name_source": "Addons/language_f_gamma/a3/language_f_gamma/stringtable.xml",
+      "config_locator": "Addons/soft_f_gamma.pbo > Truck_02\\config.bin",
+      "catalogue_id": "kamaz_4310",
+      "matched_tokens": [
+        "zamak"
+      ]
+    },
+    {
+      "game_class": "I_Truck_02_ammo_F",
+      "display_name_key": "$STR_A3_CFGVEHICLES_TRUCK_02_AMMO",
+      "display_name": "Zamak Ammo",
+      "display_name_source": "Addons/language_f_gamma/a3/language_f_gamma/stringtable.xml",
+      "config_locator": "Addons/soft_f_gamma.pbo > Truck_02\\config.bin",
+      "catalogue_id": "kamaz_4310",
+      "matched_tokens": [
+        "zamak"
+      ]
+    },
+    {
+      "game_class": "I_Truck_02_box_F",
+      "display_name_key": "$STR_A3_CfgVehicles_Truck_02_Repair0",
+      "display_name": "Zamak Repair",
+      "display_name_source": "Addons/language_f_gamma/a3/language_f_gamma/stringtable.xml",
+      "config_locator": "Addons/soft_f_gamma.pbo > Truck_02\\config.bin",
+      "catalogue_id": "kamaz_4310",
+      "matched_tokens": [
+        "zamak"
+      ]
+    },
+    {
+      "game_class": "I_Truck_02_covered_F",
+      "display_name_key": "$STR_A3_CfgVehicles_Truck_02_Base0",
+      "display_name": "Zamak Transport (Covered)",
+      "display_name_source": "Addons/language_f_beta/a3/language_f_beta/stringtable.xml",
+      "config_locator": "Addons/soft_f_beta.pbo > Truck_02\\config.bin",
+      "catalogue_id": "kamaz_4310",
+      "matched_tokens": [
+        "zamak"
+      ]
+    },
+    {
+      "game_class": "I_Truck_02_fuel_F",
+      "display_name_key": "$STR_A3_CfgVehicles_Truck_02_Fuel0",
+      "display_name": "Zamak Fuel",
+      "display_name_source": "Addons/language_f_gamma/a3/language_f_gamma/stringtable.xml",
+      "config_locator": "Addons/soft_f_gamma.pbo > Truck_02\\config.bin",
+      "catalogue_id": "kamaz_4310",
+      "matched_tokens": [
+        "zamak"
+      ]
+    },
+    {
+      "game_class": "I_Truck_02_medical_F",
+      "display_name_key": "$STR_A3_CFGVEHICLES_TRUCK_02_MEDICAL",
+      "display_name": "Zamak Medical",
+      "display_name_source": "Addons/language_f_gamma/a3/language_f_gamma/stringtable.xml",
+      "config_locator": "Addons/soft_f_gamma.pbo > Truck_02\\config.bin",
+      "catalogue_id": "kamaz_4310",
+      "matched_tokens": [
+        "zamak"
+      ]
+    },
+    {
+      "game_class": "I_Truck_02_transport_F",
+      "display_name_key": "$STR_A3_CfgVehicles_C_Truck_02_Dump0",
+      "display_name": "Zamak Transport",
+      "display_name_source": "Addons/language_f_beta/a3/language_f_beta/stringtable.xml",
+      "config_locator": "Addons/soft_f_beta.pbo > Truck_02\\config.bin",
+      "catalogue_id": "kamaz_4310",
+      "matched_tokens": [
+        "zamak"
+      ]
+    },
+    {
+      "game_class": "I_UGV_01_F",
+      "display_name_key": "$STR_A3_CfgVehicles_UGV_01_Base0",
+      "display_name": "UGV Stomper",
+      "display_name_source": "Addons/language_f_gamma/a3/language_f_gamma/stringtable.xml",
+      "config_locator": "Addons/drones_f/a3/drones_f/Soft_F_Gamma/UGV_01/config.cpp",
+      "catalogue_id": "darpa_crusher_ugcv",
+      "matched_tokens": [
+        "stomper"
+      ]
+    },
+    {
+      "game_class": "I_UGV_01_rcws_F",
+      "display_name_key": "$STR_A3_CfgVehicles_UGV_01_RCWS_Base0",
+      "display_name": "UGV Stomper RCWS",
+      "display_name_source": "Addons/language_f_gamma/a3/language_f_gamma/stringtable.xml",
+      "config_locator": "Addons/drones_f/a3/drones_f/Soft_F_Gamma/UGV_01/config.cpp",
+      "catalogue_id": "darpa_crusher_ugcv",
+      "matched_tokens": [
+        "stomper"
       ]
     },
     {
@@ -173,7 +702,7 @@
       "display_name_key": "$STR_T72BA_Name",
       "display_name": "T-72B (obr. 1984g.)",
       "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
-      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
       "catalogue_id": "t_72b_obr_1984g",
       "matched_tokens": [
         "t72b"
@@ -217,7 +746,7 @@
       "display_name_key": "$STR_T72BA_Name",
       "display_name": "T-72B (obr. 1984g.)",
       "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
-      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
       "catalogue_id": "t_72b_obr_1984g",
       "matched_tokens": [
         "t72b"
@@ -239,7 +768,7 @@
       "display_name_key": "$STR_T72BA_Name",
       "display_name": "T-72B (obr. 1984g.)",
       "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
-      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
       "catalogue_id": "t_72b_obr_1984g",
       "matched_tokens": [
         "t72b"
@@ -261,7 +790,7 @@
       "display_name_key": "$STR_T72BA_Name",
       "display_name": "T-72B (obr. 1984g.)",
       "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
-      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
       "catalogue_id": "t_72b_obr_1984g",
       "matched_tokens": [
         "t72b"
@@ -272,7 +801,7 @@
       "display_name_key": "$STR_T72BA_Name",
       "display_name": "T-72B (obr. 1984g.)",
       "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
-      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
       "catalogue_id": "t_72b_obr_1984g",
       "matched_tokens": [
         "t72b"
@@ -393,7 +922,7 @@
       "display_name_key": "$STR_T72BA_Name",
       "display_name": "T-72B (obr. 1984g.)",
       "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
-      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
       "catalogue_id": "t_72b_obr_1984g",
       "matched_tokens": [
         "t72b"
@@ -503,7 +1032,7 @@
       "display_name_key": "$STR_T72BA_Name",
       "display_name": "T-72B (obr. 1984g.)",
       "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
-      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
       "catalogue_id": "t_72b_obr_1984g",
       "matched_tokens": [
         "t72b"
@@ -580,7 +1109,7 @@
       "display_name_key": "$STR_T72BA_Name",
       "display_name": "T-72B (obr. 1984g.)",
       "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
-      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
       "catalogue_id": "t_72b_obr_1984g",
       "matched_tokens": [
         "t72b"
@@ -657,7 +1186,7 @@
       "display_name_key": "$STR_T72BA_Name",
       "display_name": "T-72B (obr. 1984g.)",
       "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
-      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
       "catalogue_id": "t_72b_obr_1984g",
       "matched_tokens": [
         "t72b"
@@ -723,7 +1252,7 @@
       "display_name_key": "$STR_T72BA_Name",
       "display_name": "T-72B (obr. 1984g.)",
       "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
-      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
       "catalogue_id": "t_72b_obr_1984g",
       "matched_tokens": [
         "t72b"
@@ -734,7 +1263,7 @@
       "display_name_key": "$STR_T72BA_Name",
       "display_name": "T-72B (obr. 1984g.)",
       "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
-      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
       "catalogue_id": "t_72b_obr_1984g",
       "matched_tokens": [
         "t72b"
@@ -767,7 +1296,7 @@
       "display_name_key": "$STR_T72BA_Name",
       "display_name": "T-72B (obr. 1984g.)",
       "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
-      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
       "catalogue_id": "t_72b_obr_1984g",
       "matched_tokens": [
         "t72b"
@@ -800,7 +1329,7 @@
       "display_name_key": "$STR_T72BA_Name",
       "display_name": "T-72B (obr. 1984g.)",
       "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
-      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
       "catalogue_id": "t_72b_obr_1984g",
       "matched_tokens": [
         "t72b"
@@ -877,7 +1406,7 @@
       "display_name_key": "$STR_T72BA_Name",
       "display_name": "T-72B (obr. 1984g.)",
       "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
-      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
       "catalogue_id": "t_72b_obr_1984g",
       "matched_tokens": [
         "t72b"
@@ -954,7 +1483,7 @@
       "display_name_key": "$STR_T72BA_Name",
       "display_name": "T-72B (obr. 1984g.)",
       "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
-      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
       "catalogue_id": "t_72b_obr_1984g",
       "matched_tokens": [
         "t72b"
@@ -987,7 +1516,7 @@
       "display_name_key": "$STR_T72BA_Name",
       "display_name": "T-72B (obr. 1984g.)",
       "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
-      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
       "catalogue_id": "t_72b_obr_1984g",
       "matched_tokens": [
         "t72b"
@@ -1086,7 +1615,7 @@
       "display_name_key": "$STR_T72BA_Name",
       "display_name": "T-72B (obr. 1984g.)",
       "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
-      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
       "catalogue_id": "t_72b_obr_1984g",
       "matched_tokens": [
         "t72b"
@@ -1152,7 +1681,7 @@
       "display_name_key": "$STR_T72BA_Name",
       "display_name": "T-72B (obr. 1984g.)",
       "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
-      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
       "catalogue_id": "t_72b_obr_1984g",
       "matched_tokens": [
         "t72b"
@@ -1251,7 +1780,7 @@
       "display_name_key": "$STR_T72BA_Name",
       "display_name": "T-72B (obr. 1984g.)",
       "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
-      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
       "catalogue_id": "t_72b_obr_1984g",
       "matched_tokens": [
         "t72b"
@@ -1438,7 +1967,7 @@
       "display_name_key": "$STR_T72BA_Name",
       "display_name": "T-72B (obr. 1984g.)",
       "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
-      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
       "catalogue_id": "t_72b_obr_1984g",
       "matched_tokens": [
         "t72b"
@@ -1478,6 +2007,116 @@
       ]
     },
     {
+      "game_class": "MBT_02_arty_base_F",
+      "display_name_key": "$STR_A3_CFGVEHICLES_MBT_02_ARTY_BASE0",
+      "display_name": "2S9 Sochor",
+      "display_name_source": "Addons/language_f_gamma/a3/language_f_gamma/stringtable.xml",
+      "config_locator": "Addons/armor_f_gamma/a3/armor_f_gamma/MBT_02/config.cpp",
+      "catalogue_id": "2s9_nona_s",
+      "matched_tokens": [
+        "sochor"
+      ]
+    },
+    {
+      "game_class": "MRAP_01_base_F",
+      "display_name_key": "$STR_A3_CfgVehicles_MRAP_01_Base0",
+      "display_name": "Hunter",
+      "display_name_source": "Addons/language_f/a3/language_f/stringtable.xml",
+      "config_locator": "Addons/soft_f.pbo > MRAP_01\\config.bin",
+      "catalogue_id": "m_atv_m1240",
+      "matched_tokens": [
+        "hunter"
+      ]
+    },
+    {
+      "game_class": "MRAP_01_gmg_base_F",
+      "display_name_key": "$STR_A3_CfgVehicles_MRAP_01_RCWS_Base0",
+      "display_name": "Hunter GMG",
+      "display_name_source": "Addons/language_f/a3/language_f/stringtable.xml",
+      "config_locator": "Addons/soft_f.pbo > MRAP_01\\config.bin",
+      "catalogue_id": "m_atv_m1240",
+      "matched_tokens": [
+        "hunter"
+      ]
+    },
+    {
+      "game_class": "MRAP_01_hmg_base_F",
+      "display_name_key": "$STR_A3_CfgVehicles_MRAP_01_HMG_Base0",
+      "display_name": "Hunter HMG",
+      "display_name_source": "Addons/language_f/a3/language_f/stringtable.xml",
+      "config_locator": "Addons/soft_f.pbo > MRAP_01\\config.bin",
+      "catalogue_id": "m_atv_m1240",
+      "matched_tokens": [
+        "hunter"
+      ]
+    },
+    {
+      "game_class": "MRAP_02_base_F",
+      "display_name_key": "$str_A3_cfgvehicles_o_mrap_02_f0",
+      "display_name": "Ifrit",
+      "display_name_source": "Addons/language_f/a3/language_f/stringtable.xml",
+      "config_locator": "Addons/soft_f.pbo > MRAP_02\\config.bin",
+      "catalogue_id": "zil_karatel",
+      "matched_tokens": [
+        "ifrit"
+      ]
+    },
+    {
+      "game_class": "MRAP_02_gmg_base_F",
+      "display_name_key": "$str_A3_cfgvehicles_o_mrap_02_gmg_f0",
+      "display_name": "Ifrit GMG",
+      "display_name_source": "Addons/language_f/a3/language_f/stringtable.xml",
+      "config_locator": "Addons/soft_f.pbo > MRAP_02\\config.bin",
+      "catalogue_id": "zil_karatel",
+      "matched_tokens": [
+        "ifrit"
+      ]
+    },
+    {
+      "game_class": "MRAP_02_hmg_base_F",
+      "display_name_key": "$str_A3_cfgvehicles_o_mrap_02_f0",
+      "display_name": "Ifrit",
+      "display_name_source": "Addons/language_f/a3/language_f/stringtable.xml",
+      "config_locator": "Addons/soft_f.pbo > MRAP_02\\config.bin",
+      "catalogue_id": "zil_karatel",
+      "matched_tokens": [
+        "ifrit"
+      ]
+    },
+    {
+      "game_class": "MRAP_03_base_F",
+      "display_name_key": "$STR_A3_CfgVehicles_MRAP_03_Base0",
+      "display_name": "Strider",
+      "display_name_source": "Addons/language_f_beta/a3/language_f_beta/stringtable.xml",
+      "config_locator": "Addons/soft_f_beta.pbo > MRAP_03\\config.bin",
+      "catalogue_id": "lgs_fennek_larv",
+      "matched_tokens": [
+        "strider"
+      ]
+    },
+    {
+      "game_class": "MRAP_03_gmg_base_F",
+      "display_name_key": "$STR_A3_CfgVehicles_MRAP_03_RCWS_base0",
+      "display_name": "Strider GMG",
+      "display_name_source": "Addons/language_f_beta/a3/language_f_beta/stringtable.xml",
+      "config_locator": "Addons/soft_f_beta.pbo > MRAP_03\\config.bin",
+      "catalogue_id": "lgs_fennek_larv",
+      "matched_tokens": [
+        "strider"
+      ]
+    },
+    {
+      "game_class": "MRAP_03_hmg_base_F",
+      "display_name_key": "$STR_A3_CfgVehicles_MRAP_03_HMG_base0",
+      "display_name": "Strider HMG",
+      "display_name_source": "Addons/language_f_beta/a3/language_f_beta/stringtable.xml",
+      "config_locator": "Addons/soft_f_beta.pbo > MRAP_03\\config.bin",
+      "catalogue_id": "lgs_fennek_larv",
+      "matched_tokens": [
+        "strider"
+      ]
+    },
+    {
       "game_class": "OTR21_Base",
       "display_name_key": "",
       "display_name": "",
@@ -1485,6 +2124,50 @@
       "config_locator": "",
       "catalogue_id": "9k79_tochka_9p129_1m_tel",
       "matched_tokens": []
+    },
+    {
+      "game_class": "O_APC_Tracked_02_AA_F",
+      "display_name_key": "$STR_A3_CfgVehicles_APC_Tracked_02_1",
+      "display_name": "ZSU-39 Tigris",
+      "display_name_source": "Addons/language_f_gamma/a3/language_f_gamma/stringtable.xml",
+      "config_locator": "Addons/armor_f_beta/a3/armor_f_beta/APC_Tracked_02/config.cpp",
+      "catalogue_id": "bm2t_stalker",
+      "matched_tokens": [
+        "tigris"
+      ]
+    },
+    {
+      "game_class": "O_APC_Tracked_02_cannon_F",
+      "display_name_key": "$STR_A3_CfgVehicles_APC_Tracked_02_0",
+      "display_name": "BTR-K Kamysh",
+      "display_name_source": "Addons/language_f_beta/a3/language_f_beta/stringtable.xml",
+      "config_locator": "Addons/armor_f_beta/a3/armor_f_beta/APC_Tracked_02/config.cpp",
+      "catalogue_id": "bm2t_stalker",
+      "matched_tokens": [
+        "kamysh"
+      ]
+    },
+    {
+      "game_class": "O_APC_Wheeled_02_base_F",
+      "display_name_key": "$STR_A3_CfgVehicles_O_APC_Wheeled_02_RCWS",
+      "display_name": "MSE-3 Marid",
+      "display_name_source": "Addons/language_f_beta/a3/language_f_beta/stringtable.xml",
+      "config_locator": "Addons/armor_f_beta/a3/armor_f_beta/APC_Wheeled_02/config.cpp",
+      "catalogue_id": "otokar_arma_6x6",
+      "matched_tokens": [
+        "marid"
+      ]
+    },
+    {
+      "game_class": "O_APC_Wheeled_02_rcws_F",
+      "display_name_key": "$STR_A3_CfgVehicles_O_APC_Wheeled_02_RCWS",
+      "display_name": "MSE-3 Marid",
+      "display_name_source": "Addons/language_f_beta/a3/language_f_beta/stringtable.xml",
+      "config_locator": "Addons/armor_f_beta/a3/armor_f_beta/APC_Wheeled_02/config.cpp",
+      "catalogue_id": "otokar_arma_6x6",
+      "matched_tokens": [
+        "marid"
+      ]
     },
     {
       "game_class": "O_G_Offroad_01_AT_F",
@@ -1495,6 +2178,292 @@
       "catalogue_id": "offroad_q7_l200_composite",
       "matched_tokens": [
         "offroad"
+      ]
+    },
+    {
+      "game_class": "O_G_Quadbike_01_F",
+      "display_name_key": "$STR_A3_CfgVehicles_Quadbike_Base_F0",
+      "display_name": "Quad Bike",
+      "display_name_source": "Addons/language_f/a3/language_f/stringtable.xml",
+      "config_locator": "Addons/soft_f.pbo > Quadbike_01\\config.bin",
+      "catalogue_id": "yamaha_grizzly_450",
+      "matched_tokens": [
+        "quadbike"
+      ]
+    },
+    {
+      "game_class": "O_T_APC_Wheeled_02_rcws_ghex_F",
+      "display_name_key": "$STR_A3_CfgVehicles_O_APC_Wheeled_02_RCWS",
+      "display_name": "MSE-3 Marid",
+      "display_name_source": "Addons/language_f_beta/a3/language_f_beta/stringtable.xml",
+      "config_locator": "Addons/armor_f_beta/a3/armor_f_beta/APC_Wheeled_02/config.cpp",
+      "catalogue_id": "otokar_arma_6x6",
+      "matched_tokens": [
+        "marid"
+      ]
+    },
+    {
+      "game_class": "O_T_Truck_02_Ammo_F",
+      "display_name_key": "$STR_A3_CFGVEHICLES_TRUCK_02_AMMO",
+      "display_name": "Zamak Ammo",
+      "display_name_source": "Addons/language_f_gamma/a3/language_f_gamma/stringtable.xml",
+      "config_locator": "Expansion/Addons/soft_f_exp.pbo > Truck_02\\config.bin",
+      "catalogue_id": "kamaz_4310",
+      "matched_tokens": [
+        "zamak"
+      ]
+    },
+    {
+      "game_class": "O_T_Truck_02_Box_F",
+      "display_name_key": "$STR_A3_CfgVehicles_Truck_02_Repair0",
+      "display_name": "Zamak Repair",
+      "display_name_source": "Addons/language_f_gamma/a3/language_f_gamma/stringtable.xml",
+      "config_locator": "Expansion/Addons/soft_f_exp.pbo > Truck_02\\config.bin",
+      "catalogue_id": "kamaz_4310",
+      "matched_tokens": [
+        "zamak"
+      ]
+    },
+    {
+      "game_class": "O_T_Truck_02_F",
+      "display_name_key": "$STR_A3_CfgVehicles_Truck_02_Base0",
+      "display_name": "Zamak Transport (Covered)",
+      "display_name_source": "Addons/language_f_beta/a3/language_f_beta/stringtable.xml",
+      "config_locator": "Addons/soft_f_beta.pbo > Truck_02\\config.bin",
+      "catalogue_id": "kamaz_4310",
+      "matched_tokens": [
+        "zamak"
+      ]
+    },
+    {
+      "game_class": "O_T_Truck_02_Medical_F",
+      "display_name_key": "$STR_A3_CFGVEHICLES_TRUCK_02_MEDICAL",
+      "display_name": "Zamak Medical",
+      "display_name_source": "Addons/language_f_gamma/a3/language_f_gamma/stringtable.xml",
+      "config_locator": "Expansion/Addons/soft_f_exp.pbo > Truck_02\\config.bin",
+      "catalogue_id": "kamaz_4310",
+      "matched_tokens": [
+        "zamak"
+      ]
+    },
+    {
+      "game_class": "O_T_Truck_02_fuel_F",
+      "display_name_key": "$STR_A3_CfgVehicles_Truck_02_Fuel0",
+      "display_name": "Zamak Fuel",
+      "display_name_source": "Addons/language_f_gamma/a3/language_f_gamma/stringtable.xml",
+      "config_locator": "Expansion/Addons/soft_f_exp.pbo > Truck_02\\config.bin",
+      "catalogue_id": "kamaz_4310",
+      "matched_tokens": [
+        "zamak"
+      ]
+    },
+    {
+      "game_class": "O_T_Truck_02_transport_F",
+      "display_name_key": "$STR_A3_CfgVehicles_C_Truck_02_Dump0",
+      "display_name": "Zamak Transport",
+      "display_name_source": "Addons/language_f_beta/a3/language_f_beta/stringtable.xml",
+      "config_locator": "Expansion/Addons/soft_f_exp.pbo > Truck_02\\config.bin",
+      "catalogue_id": "kamaz_4310",
+      "matched_tokens": [
+        "zamak"
+      ]
+    },
+    {
+      "game_class": "O_T_Truck_03_covered_ghex_F",
+      "display_name_key": "$STR_A3_CfgVehicles_O_Truck_03_covered_F0",
+      "display_name": "Tempest Transport (Covered)",
+      "display_name_source": "Addons/language_f_epc/a3/language_f_epc/stringtable.xml",
+      "config_locator": "Addons/soft_f_epc.pbo > Truck_03\\config.bin",
+      "catalogue_id": "kamaz_63968_typhoon_k",
+      "matched_tokens": [
+        "tempest"
+      ]
+    },
+    {
+      "game_class": "O_T_Truck_03_device_ghex_F",
+      "display_name_key": "$STR_A3_CfgVehicles_O_Truck_03_device_F0",
+      "display_name": "Tempest (Device)",
+      "display_name_source": "Addons/language_f_epc/a3/language_f_epc/stringtable.xml",
+      "config_locator": "Addons/soft_f_epc.pbo > Truck_03\\config.bin",
+      "catalogue_id": "kamaz_63968_typhoon_k",
+      "matched_tokens": [
+        "tempest"
+      ]
+    },
+    {
+      "game_class": "O_T_Truck_03_fuel_ghex_F",
+      "display_name_key": "$STR_A3_CfgVehicles_O_Truck_03_fuel_F0",
+      "display_name": "Tempest Fuel",
+      "display_name_source": "Addons/language_f_epc/a3/language_f_epc/stringtable.xml",
+      "config_locator": "Addons/soft_f_epc.pbo > Truck_03\\config.bin",
+      "catalogue_id": "kamaz_63968_typhoon_k",
+      "matched_tokens": [
+        "tempest"
+      ]
+    },
+    {
+      "game_class": "O_T_Truck_03_repair_ghex_F",
+      "display_name_key": "$STR_A3_CfgVehicles_O_Truck_03_repair_F0",
+      "display_name": "Tempest Repair",
+      "display_name_source": "Addons/language_f_epc/a3/language_f_epc/stringtable.xml",
+      "config_locator": "Addons/soft_f_epc.pbo > Truck_03\\config.bin",
+      "catalogue_id": "kamaz_63968_typhoon_k",
+      "matched_tokens": [
+        "tempest"
+      ]
+    },
+    {
+      "game_class": "O_T_UGV_01_ghex_F",
+      "display_name_key": "$STR_A3_CFGVEHICLES_O_UGV_01_F",
+      "display_name": "UGV Saif",
+      "display_name_source": "Addons/language_f_gamma/a3/language_f_gamma/stringtable.xml",
+      "config_locator": "Expansion/Addons/soft_f_exp.pbo > UGV_01\\config.bin",
+      "catalogue_id": "darpa_crusher_ugcv",
+      "matched_tokens": [
+        "saif"
+      ]
+    },
+    {
+      "game_class": "O_T_UGV_01_rcws_ghex_F",
+      "display_name_key": "$STR_A3_CFGVEHICLES_O_UGV_01_RCWS_F",
+      "display_name": "UGV Saif RCWS",
+      "display_name_source": "Addons/language_f_gamma/a3/language_f_gamma/stringtable.xml",
+      "config_locator": "Expansion/Addons/soft_f_exp.pbo > UGV_01\\config.bin",
+      "catalogue_id": "darpa_crusher_ugcv",
+      "matched_tokens": [
+        "saif"
+      ]
+    },
+    {
+      "game_class": "O_Truck_02_Ammo_F",
+      "display_name_key": "$STR_A3_CFGVEHICLES_TRUCK_02_AMMO",
+      "display_name": "Zamak Ammo",
+      "display_name_source": "Addons/language_f_gamma/a3/language_f_gamma/stringtable.xml",
+      "config_locator": "Addons/soft_f_gamma.pbo > Truck_02\\config.bin",
+      "catalogue_id": "kamaz_4310",
+      "matched_tokens": [
+        "zamak"
+      ]
+    },
+    {
+      "game_class": "O_Truck_02_box_F",
+      "display_name_key": "$STR_A3_CfgVehicles_Truck_02_Repair0",
+      "display_name": "Zamak Repair",
+      "display_name_source": "Addons/language_f_gamma/a3/language_f_gamma/stringtable.xml",
+      "config_locator": "Addons/soft_f_gamma.pbo > Truck_02\\config.bin",
+      "catalogue_id": "kamaz_4310",
+      "matched_tokens": [
+        "zamak"
+      ]
+    },
+    {
+      "game_class": "O_Truck_02_covered_F",
+      "display_name_key": "$STR_A3_CfgVehicles_Truck_02_Base0",
+      "display_name": "Zamak Transport (Covered)",
+      "display_name_source": "Addons/language_f_beta/a3/language_f_beta/stringtable.xml",
+      "config_locator": "Addons/soft_f_beta.pbo > Truck_02\\config.bin",
+      "catalogue_id": "kamaz_4310",
+      "matched_tokens": [
+        "zamak"
+      ]
+    },
+    {
+      "game_class": "O_Truck_02_fuel_F",
+      "display_name_key": "$STR_A3_CfgVehicles_Truck_02_Fuel0",
+      "display_name": "Zamak Fuel",
+      "display_name_source": "Addons/language_f_gamma/a3/language_f_gamma/stringtable.xml",
+      "config_locator": "Addons/soft_f_gamma.pbo > Truck_02\\config.bin",
+      "catalogue_id": "kamaz_4310",
+      "matched_tokens": [
+        "zamak"
+      ]
+    },
+    {
+      "game_class": "O_Truck_02_medical_F",
+      "display_name_key": "$STR_A3_CFGVEHICLES_TRUCK_02_MEDICAL",
+      "display_name": "Zamak Medical",
+      "display_name_source": "Addons/language_f_gamma/a3/language_f_gamma/stringtable.xml",
+      "config_locator": "Addons/soft_f_gamma.pbo > Truck_02\\config.bin",
+      "catalogue_id": "kamaz_4310",
+      "matched_tokens": [
+        "zamak"
+      ]
+    },
+    {
+      "game_class": "O_Truck_02_transport_F",
+      "display_name_key": "$STR_A3_CfgVehicles_C_Truck_02_Dump0",
+      "display_name": "Zamak Transport",
+      "display_name_source": "Addons/language_f_beta/a3/language_f_beta/stringtable.xml",
+      "config_locator": "Addons/soft_f_beta.pbo > Truck_02\\config.bin",
+      "catalogue_id": "kamaz_4310",
+      "matched_tokens": [
+        "zamak"
+      ]
+    },
+    {
+      "game_class": "O_Truck_03_covered_F",
+      "display_name_key": "$STR_A3_CfgVehicles_O_Truck_03_covered_F0",
+      "display_name": "Tempest Transport (Covered)",
+      "display_name_source": "Addons/language_f_epc/a3/language_f_epc/stringtable.xml",
+      "config_locator": "Addons/soft_f_epc.pbo > Truck_03\\config.bin",
+      "catalogue_id": "kamaz_63968_typhoon_k",
+      "matched_tokens": [
+        "tempest"
+      ]
+    },
+    {
+      "game_class": "O_Truck_03_device_F",
+      "display_name_key": "$STR_A3_CfgVehicles_O_Truck_03_device_F0",
+      "display_name": "Tempest (Device)",
+      "display_name_source": "Addons/language_f_epc/a3/language_f_epc/stringtable.xml",
+      "config_locator": "Addons/soft_f_epc.pbo > Truck_03\\config.bin",
+      "catalogue_id": "kamaz_63968_typhoon_k",
+      "matched_tokens": [
+        "tempest"
+      ]
+    },
+    {
+      "game_class": "O_Truck_03_fuel_F",
+      "display_name_key": "$STR_A3_CfgVehicles_O_Truck_03_fuel_F0",
+      "display_name": "Tempest Fuel",
+      "display_name_source": "Addons/language_f_epc/a3/language_f_epc/stringtable.xml",
+      "config_locator": "Addons/soft_f_epc.pbo > Truck_03\\config.bin",
+      "catalogue_id": "kamaz_63968_typhoon_k",
+      "matched_tokens": [
+        "tempest"
+      ]
+    },
+    {
+      "game_class": "O_Truck_03_repair_F",
+      "display_name_key": "$STR_A3_CfgVehicles_O_Truck_03_repair_F0",
+      "display_name": "Tempest Repair",
+      "display_name_source": "Addons/language_f_epc/a3/language_f_epc/stringtable.xml",
+      "config_locator": "Addons/soft_f_epc.pbo > Truck_03\\config.bin",
+      "catalogue_id": "kamaz_63968_typhoon_k",
+      "matched_tokens": [
+        "tempest"
+      ]
+    },
+    {
+      "game_class": "O_UGV_01_F",
+      "display_name_key": "$STR_A3_CFGVEHICLES_O_UGV_01_F",
+      "display_name": "UGV Saif",
+      "display_name_source": "Addons/language_f_gamma/a3/language_f_gamma/stringtable.xml",
+      "config_locator": "Addons/drones_f/a3/drones_f/Soft_F_Gamma/UGV_01/config.cpp",
+      "catalogue_id": "darpa_crusher_ugcv",
+      "matched_tokens": [
+        "saif"
+      ]
+    },
+    {
+      "game_class": "O_UGV_01_rcws_F",
+      "display_name_key": "$STR_A3_CFGVEHICLES_O_UGV_01_RCWS_F",
+      "display_name": "UGV Saif RCWS",
+      "display_name_source": "Addons/language_f_gamma/a3/language_f_gamma/stringtable.xml",
+      "config_locator": "Addons/drones_f/a3/drones_f/Soft_F_Gamma/UGV_01/config.cpp",
+      "catalogue_id": "darpa_crusher_ugcv",
+      "matched_tokens": [
+        "saif"
       ]
     },
     {
@@ -1542,6 +2511,17 @@
       ]
     },
     {
+      "game_class": "Quadbike_01_base_F",
+      "display_name_key": "$STR_A3_CfgVehicles_Quadbike_Base_F0",
+      "display_name": "Quad Bike",
+      "display_name_source": "Addons/language_f/a3/language_f/stringtable.xml",
+      "config_locator": "Addons/soft_f.pbo > Quadbike_01\\config.bin",
+      "catalogue_id": "yamaha_grizzly_450",
+      "matched_tokens": [
+        "quadbike"
+      ]
+    },
+    {
       "game_class": "RHS_BM21_MSV_01",
       "display_name_key": "",
       "display_name": "",
@@ -1576,6 +2556,28 @@
       "config_locator": "",
       "catalogue_id": "bm_21_grad",
       "matched_tokens": []
+    },
+    {
+      "game_class": "RHS_Civ_Truck_02_covered_F",
+      "display_name_key": "$STR_A3_CfgVehicles_Truck_02_Base0",
+      "display_name": "Zamak Transport (Covered)",
+      "display_name_source": "Addons/language_f_beta/a3/language_f_beta/stringtable.xml",
+      "config_locator": "Addons/soft_f_beta.pbo > Truck_02\\config.bin",
+      "catalogue_id": "kamaz_4310",
+      "matched_tokens": [
+        "zamak"
+      ]
+    },
+    {
+      "game_class": "RHS_Civ_Truck_02_transport_F",
+      "display_name_key": "$STR_A3_CfgVehicles_C_Truck_02_Dump0",
+      "display_name": "Zamak Transport",
+      "display_name_source": "Addons/language_f_beta/a3/language_f_beta/stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_a2port_car.pbo > config.bin",
+      "catalogue_id": "kamaz_4310",
+      "matched_tokens": [
+        "zamak"
+      ]
     },
     {
       "game_class": "RHS_M2A2",
@@ -2086,6 +3088,50 @@
       "catalogue_id": "ural_4320",
       "matched_tokens": [
         "ural4320"
+      ]
+    },
+    {
+      "game_class": "Truck_02_base_F",
+      "display_name_key": "$STR_A3_CfgVehicles_Truck_02_Base0",
+      "display_name": "Zamak Transport (Covered)",
+      "display_name_source": "Addons/language_f_beta/a3/language_f_beta/stringtable.xml",
+      "config_locator": "Addons/soft_f_beta.pbo > Truck_02\\config.bin",
+      "catalogue_id": "kamaz_4310",
+      "matched_tokens": [
+        "zamak"
+      ]
+    },
+    {
+      "game_class": "Truck_03_base_F",
+      "display_name_key": "$STR_A3_CfgVehicles_Truck_03_base_F0",
+      "display_name": "Tempest",
+      "display_name_source": "Addons/language_f_epc/a3/language_f_epc/stringtable.xml",
+      "config_locator": "Addons/soft_f_epc.pbo > Truck_03\\config.bin",
+      "catalogue_id": "kamaz_63968_typhoon_k",
+      "matched_tokens": [
+        "tempest"
+      ]
+    },
+    {
+      "game_class": "UGV_01_base_F",
+      "display_name_key": "$STR_A3_CfgVehicles_UGV_01_Base0",
+      "display_name": "UGV Stomper",
+      "display_name_source": "Addons/language_f_gamma/a3/language_f_gamma/stringtable.xml",
+      "config_locator": "Addons/drones_f/a3/drones_f/Soft_F_Gamma/UGV_01/config.cpp",
+      "catalogue_id": "darpa_crusher_ugcv",
+      "matched_tokens": [
+        "stomper"
+      ]
+    },
+    {
+      "game_class": "UGV_01_rcws_base_F",
+      "display_name_key": "$STR_A3_CfgVehicles_UGV_01_RCWS_Base0",
+      "display_name": "UGV Stomper RCWS",
+      "display_name_source": "Addons/language_f_gamma/a3/language_f_gamma/stringtable.xml",
+      "config_locator": "Addons/drones_f/a3/drones_f/Soft_F_Gamma/UGV_01/config.cpp",
+      "catalogue_id": "darpa_crusher_ugcv",
+      "matched_tokens": [
+        "stomper"
       ]
     },
     {
@@ -3035,6 +4081,17 @@
       "catalogue_id": "btr_80a",
       "matched_tokens": [
         "btr80a"
+      ]
+    },
+    {
+      "game_class": "rhs_btr_base",
+      "display_name_key": "$STR_RHS_BTR70_Name",
+      "display_name": "BTR-70",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_btr.pbo > config.bin",
+      "catalogue_id": "btr_70",
+      "matched_tokens": [
+        "btr70"
       ]
     },
     {
@@ -6409,7 +7466,7 @@
     {
       "game_class": "rhssaf_army_o_ural",
       "display_name_key": "$STR_RHSSAF_ARMY_URAL_DISPLAYNAME",
-      "display_name": "Ural 375D",
+      "display_name": "Ural\u00a0375D",
       "display_name_source": "843632231/addons/rhssaf_main.pbo > Stringtable.xml",
       "config_locator": "843632231/addons/rhssaf_c_vehicles.pbo > config.bin",
       "catalogue_id": "ural_375d",
@@ -6420,7 +7477,7 @@
     {
       "game_class": "rhssaf_army_o_ural_fuel",
       "display_name_key": "$STR_RHSSAF_ARMY_URAL_FUEL_DISPLAYNAME",
-      "display_name": "Ural 375D (Fuel)",
+      "display_name": "Ural\u00a0375D\u00a0(Fuel)",
       "display_name_source": "843632231/addons/rhssaf_main.pbo > Stringtable.xml",
       "config_locator": "843632231/addons/rhssaf_c_vehicles.pbo > config.bin",
       "catalogue_id": "ural_375d",
@@ -6431,7 +7488,7 @@
     {
       "game_class": "rhssaf_army_o_ural_open",
       "display_name_key": "$STR_RHSSAF_ARMY_URAL_OPEN_DISPLAYNAME",
-      "display_name": "Ural 375D (Open)",
+      "display_name": "Ural\u00a0375D\u00a0(Open)",
       "display_name_source": "843632231/addons/rhssaf_main.pbo > Stringtable.xml",
       "config_locator": "843632231/addons/rhssaf_c_vehicles.pbo > config.bin",
       "catalogue_id": "ural_375d",
@@ -6464,7 +7521,7 @@
     {
       "game_class": "rhssaf_army_ural",
       "display_name_key": "$STR_RHSSAF_ARMY_URAL_DISPLAYNAME",
-      "display_name": "Ural 375D",
+      "display_name": "Ural\u00a0375D",
       "display_name_source": "843632231/addons/rhssaf_main.pbo > Stringtable.xml",
       "config_locator": "843632231/addons/rhssaf_c_vehicles.pbo > config.bin",
       "catalogue_id": "ural_375d",
@@ -6475,7 +7532,7 @@
     {
       "game_class": "rhssaf_army_ural_fuel",
       "display_name_key": "$STR_RHSSAF_ARMY_URAL_FUEL_DISPLAYNAME",
-      "display_name": "Ural 375D (Fuel)",
+      "display_name": "Ural\u00a0375D\u00a0(Fuel)",
       "display_name_source": "843632231/addons/rhssaf_main.pbo > Stringtable.xml",
       "config_locator": "843632231/addons/rhssaf_c_vehicles.pbo > config.bin",
       "catalogue_id": "ural_375d",
@@ -6486,7 +7543,7 @@
     {
       "game_class": "rhssaf_army_ural_open",
       "display_name_key": "$STR_RHSSAF_ARMY_URAL_OPEN_DISPLAYNAME",
-      "display_name": "Ural 375D (Open)",
+      "display_name": "Ural\u00a0375D\u00a0(Open)",
       "display_name_source": "843632231/addons/rhssaf_main.pbo > Stringtable.xml",
       "config_locator": "843632231/addons/rhssaf_c_vehicles.pbo > config.bin",
       "catalogue_id": "ural_375d",
@@ -6579,7 +7636,7 @@
     {
       "game_class": "rhssaf_un_ural",
       "display_name_key": "$STR_RHSSAF_ARMY_URAL_DISPLAYNAME",
-      "display_name": "Ural 375D",
+      "display_name": "Ural\u00a0375D",
       "display_name_source": "843632231/addons/rhssaf_main.pbo > Stringtable.xml",
       "config_locator": "843632231/addons/rhssaf_c_vehicles.pbo > config.bin",
       "catalogue_id": "ural_375d",
@@ -6589,57 +7646,75 @@
     },
     {
       "game_class": "rhsusf_CGRCAT1A2_M2_usmc_d",
-      "display_name_key": "",
-      "display_name": "",
-      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
-      "config_locator": "",
+      "display_name_key": "$STR_RHS_CGR_M2_NAME",
+      "display_name": "CGR CAT1A2 (MCTAGS/M2)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_cougar.pbo > config.bin",
       "catalogue_id": "cougar_4x4",
-      "matched_tokens": []
+      "matched_tokens": [
+        "cat1a2",
+        "cgrcat1a2"
+      ]
     },
     {
       "game_class": "rhsusf_CGRCAT1A2_M2_usmc_wd",
-      "display_name_key": "",
-      "display_name": "",
-      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
-      "config_locator": "",
+      "display_name_key": "$STR_RHS_CGR_M2_NAME",
+      "display_name": "CGR CAT1A2 (MCTAGS/M2)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_cougar.pbo > config.bin",
       "catalogue_id": "cougar_4x4",
-      "matched_tokens": []
+      "matched_tokens": [
+        "cat1a2",
+        "cgrcat1a2"
+      ]
     },
     {
       "game_class": "rhsusf_CGRCAT1A2_Mk19_usmc_d",
-      "display_name_key": "",
-      "display_name": "",
-      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
-      "config_locator": "",
+      "display_name_key": "$STR_RHS_CGR_MK19_NAME",
+      "display_name": "CGR CAT1A2 (MCTAGS/Mk19)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_cougar.pbo > config.bin",
       "catalogue_id": "cougar_4x4",
-      "matched_tokens": []
+      "matched_tokens": [
+        "cat1a2",
+        "cgrcat1a2"
+      ]
     },
     {
       "game_class": "rhsusf_CGRCAT1A2_Mk19_usmc_wd",
-      "display_name_key": "",
-      "display_name": "",
-      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
-      "config_locator": "",
+      "display_name_key": "$STR_RHS_CGR_MK19_NAME",
+      "display_name": "CGR CAT1A2 (MCTAGS/Mk19)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_cougar.pbo > config.bin",
       "catalogue_id": "cougar_4x4",
-      "matched_tokens": []
+      "matched_tokens": [
+        "cat1a2",
+        "cgrcat1a2"
+      ]
     },
     {
       "game_class": "rhsusf_CGRCAT1A2_usmc_d",
-      "display_name_key": "",
-      "display_name": "",
-      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
-      "config_locator": "",
+      "display_name_key": "$STR_RHS_CGR_NAME",
+      "display_name": "CGR CAT1A2",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_cougar.pbo > config.bin",
       "catalogue_id": "cougar_4x4",
-      "matched_tokens": []
+      "matched_tokens": [
+        "cat1a2",
+        "cgrcat1a2"
+      ]
     },
     {
       "game_class": "rhsusf_CGRCAT1A2_usmc_wd",
-      "display_name_key": "",
-      "display_name": "",
-      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
-      "config_locator": "",
+      "display_name_key": "$STR_RHS_CGR_NAME",
+      "display_name": "CGR CAT1A2",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_cougar.pbo > config.bin",
       "catalogue_id": "cougar_4x4",
-      "matched_tokens": []
+      "matched_tokens": [
+        "cat1a2",
+        "cgrcat1a2"
+      ]
     },
     {
       "game_class": "rhsusf_M1078A1P2_B_CP_fmtv_usarmy",
@@ -7659,345 +8734,421 @@
     },
     {
       "game_class": "rhsusf_M1220_M153_M2_usarmy_d",
-      "display_name_key": "",
-      "display_name": "",
-      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
-      "config_locator": "",
+      "display_name_key": "$STR_RHS_M1220_M153_M2_NAME",
+      "display_name": "M1220 (CROWS/M2)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_caiman.pbo > config.bin",
       "catalogue_id": "bae_systems_caiman_xm1220_xm1230_caiman_plus",
-      "matched_tokens": []
+      "matched_tokens": [
+        "m1220"
+      ]
     },
     {
       "game_class": "rhsusf_M1220_M153_M2_usarmy_wd",
-      "display_name_key": "",
-      "display_name": "",
-      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
-      "config_locator": "",
+      "display_name_key": "$STR_RHS_M1220_M153_M2_NAME",
+      "display_name": "M1220 (CROWS/M2)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_caiman.pbo > config.bin",
       "catalogue_id": "bae_systems_caiman_xm1220_xm1230_caiman_plus",
-      "matched_tokens": []
+      "matched_tokens": [
+        "m1220"
+      ]
     },
     {
       "game_class": "rhsusf_M1220_M153_MK19_usarmy_d",
-      "display_name_key": "",
-      "display_name": "",
-      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
-      "config_locator": "",
+      "display_name_key": "$STR_RHS_M1220_M153_MK19_NAME",
+      "display_name": "M1220 (CROWS/Mk19)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_caiman.pbo > config.bin",
       "catalogue_id": "bae_systems_caiman_xm1220_xm1230_caiman_plus",
-      "matched_tokens": []
+      "matched_tokens": [
+        "m1220"
+      ]
     },
     {
       "game_class": "rhsusf_M1220_M153_MK19_usarmy_wd",
-      "display_name_key": "",
-      "display_name": "",
-      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
-      "config_locator": "",
+      "display_name_key": "$STR_RHS_M1220_M153_MK19_NAME",
+      "display_name": "M1220 (CROWS/Mk19)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_caiman.pbo > config.bin",
       "catalogue_id": "bae_systems_caiman_xm1220_xm1230_caiman_plus",
-      "matched_tokens": []
+      "matched_tokens": [
+        "m1220"
+      ]
     },
     {
       "game_class": "rhsusf_M1220_M2_usarmy_d",
-      "display_name_key": "",
-      "display_name": "",
-      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
-      "config_locator": "",
+      "display_name_key": "$STR_RHS_M1220_M2_NAME",
+      "display_name": "M1220 (O-GPK/M2)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_caiman.pbo > config.bin",
       "catalogue_id": "bae_systems_caiman_xm1220_xm1230_caiman_plus",
-      "matched_tokens": []
+      "matched_tokens": [
+        "m1220"
+      ]
     },
     {
       "game_class": "rhsusf_M1220_M2_usarmy_wd",
-      "display_name_key": "",
-      "display_name": "",
-      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
-      "config_locator": "",
+      "display_name_key": "$STR_RHS_M1220_M2_NAME",
+      "display_name": "M1220 (O-GPK/M2)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_caiman.pbo > config.bin",
       "catalogue_id": "bae_systems_caiman_xm1220_xm1230_caiman_plus",
-      "matched_tokens": []
+      "matched_tokens": [
+        "m1220"
+      ]
     },
     {
       "game_class": "rhsusf_M1220_MK19_usarmy_d",
-      "display_name_key": "",
-      "display_name": "",
-      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
-      "config_locator": "",
+      "display_name_key": "$STR_RHS_M1220_MK19_NAME",
+      "display_name": "M1220 (O-GPK/Mk19)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_caiman.pbo > config.bin",
       "catalogue_id": "bae_systems_caiman_xm1220_xm1230_caiman_plus",
-      "matched_tokens": []
+      "matched_tokens": [
+        "m1220"
+      ]
     },
     {
       "game_class": "rhsusf_M1220_MK19_usarmy_wd",
-      "display_name_key": "",
-      "display_name": "",
-      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
-      "config_locator": "",
+      "display_name_key": "$STR_RHS_M1220_MK19_NAME",
+      "display_name": "M1220 (O-GPK/Mk19)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_caiman.pbo > config.bin",
       "catalogue_id": "bae_systems_caiman_xm1220_xm1230_caiman_plus",
-      "matched_tokens": []
+      "matched_tokens": [
+        "m1220"
+      ]
     },
     {
       "game_class": "rhsusf_M1220_usarmy_d",
-      "display_name_key": "",
-      "display_name": "",
-      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
-      "config_locator": "",
+      "display_name_key": "$STR_RHS_M1220_NAME",
+      "display_name": "M1220",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_caiman.pbo > config.bin",
       "catalogue_id": "bae_systems_caiman_xm1220_xm1230_caiman_plus",
-      "matched_tokens": []
+      "matched_tokens": [
+        "m1220"
+      ]
     },
     {
       "game_class": "rhsusf_M1220_usarmy_wd",
-      "display_name_key": "",
-      "display_name": "",
-      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
-      "config_locator": "",
+      "display_name_key": "$STR_RHS_M1220_NAME",
+      "display_name": "M1220",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_caiman.pbo > config.bin",
       "catalogue_id": "bae_systems_caiman_xm1220_xm1230_caiman_plus",
-      "matched_tokens": []
+      "matched_tokens": [
+        "m1220"
+      ]
     },
     {
       "game_class": "rhsusf_M1230_M2_usarmy_d",
-      "display_name_key": "",
-      "display_name": "",
-      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
-      "config_locator": "",
+      "display_name_key": "$STR_RHS_M1230_M2_NAME",
+      "display_name": "M1230 (O-GPK/M2)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_caiman.pbo > config.bin",
       "catalogue_id": "bae_systems_caiman_xm1220_xm1230_caiman_plus",
-      "matched_tokens": []
+      "matched_tokens": [
+        "m1230"
+      ]
     },
     {
       "game_class": "rhsusf_M1230_M2_usarmy_wd",
-      "display_name_key": "",
-      "display_name": "",
-      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
-      "config_locator": "",
+      "display_name_key": "$STR_RHS_M1230_M2_NAME",
+      "display_name": "M1230 (O-GPK/M2)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_caiman.pbo > config.bin",
       "catalogue_id": "bae_systems_caiman_xm1220_xm1230_caiman_plus",
-      "matched_tokens": []
+      "matched_tokens": [
+        "m1230"
+      ]
     },
     {
       "game_class": "rhsusf_M1230_MK19_usarmy_d",
-      "display_name_key": "",
-      "display_name": "",
-      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
-      "config_locator": "",
+      "display_name_key": "$STR_RHS_M1230_MK19_NAME",
+      "display_name": "M1230 (O-GPK/Mk19)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_caiman.pbo > config.bin",
       "catalogue_id": "bae_systems_caiman_xm1220_xm1230_caiman_plus",
-      "matched_tokens": []
+      "matched_tokens": [
+        "m1230"
+      ]
     },
     {
       "game_class": "rhsusf_M1230_MK19_usarmy_wd",
-      "display_name_key": "",
-      "display_name": "",
-      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
-      "config_locator": "",
+      "display_name_key": "$STR_RHS_M1230_MK19_NAME",
+      "display_name": "M1230 (O-GPK/Mk19)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_caiman.pbo > config.bin",
       "catalogue_id": "bae_systems_caiman_xm1220_xm1230_caiman_plus",
-      "matched_tokens": []
+      "matched_tokens": [
+        "m1230"
+      ]
     },
     {
       "game_class": "rhsusf_M1232_M2_usarmy_d",
-      "display_name_key": "",
-      "display_name": "",
-      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
-      "config_locator": "",
+      "display_name_key": "$STR_RHS_M1232_M2_NAME",
+      "display_name": "M1232 (O-GPK/M2)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_rg33l.pbo > config.bin",
       "catalogue_id": "bae_systems_rg_33l_6x6",
-      "matched_tokens": []
+      "matched_tokens": [
+        "m1232"
+      ]
     },
     {
       "game_class": "rhsusf_M1232_M2_usarmy_wd",
-      "display_name_key": "",
-      "display_name": "",
-      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
-      "config_locator": "",
+      "display_name_key": "$STR_RHS_M1232_M2_NAME",
+      "display_name": "M1232 (O-GPK/M2)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_rg33l.pbo > config.bin",
       "catalogue_id": "bae_systems_rg_33l_6x6",
-      "matched_tokens": []
+      "matched_tokens": [
+        "m1232"
+      ]
     },
     {
       "game_class": "rhsusf_M1232_MC_M2_usmc_d",
-      "display_name_key": "",
-      "display_name": "",
-      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
-      "config_locator": "",
+      "display_name_key": "$STR_RHS_M1232_M2_MC_NAME",
+      "display_name": "M1232 (MCTAGS/M2)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_rg33l.pbo > config.bin",
       "catalogue_id": "bae_systems_rg_33l_6x6",
-      "matched_tokens": []
+      "matched_tokens": [
+        "m1232"
+      ]
     },
     {
       "game_class": "rhsusf_M1232_MC_M2_usmc_wd",
-      "display_name_key": "",
-      "display_name": "",
-      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
-      "config_locator": "",
+      "display_name_key": "$STR_RHS_M1232_M2_MC_NAME",
+      "display_name": "M1232 (MCTAGS/M2)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_rg33l.pbo > config.bin",
       "catalogue_id": "bae_systems_rg_33l_6x6",
-      "matched_tokens": []
+      "matched_tokens": [
+        "m1232"
+      ]
     },
     {
       "game_class": "rhsusf_M1232_MC_MK19_usmc_d",
-      "display_name_key": "",
-      "display_name": "",
-      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
-      "config_locator": "",
+      "display_name_key": "$STR_RHS_M1232_MK19_MC_NAME",
+      "display_name": "M1232 (MCTAGS/Mk19)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_rg33l.pbo > config.bin",
       "catalogue_id": "bae_systems_rg_33l_6x6",
-      "matched_tokens": []
+      "matched_tokens": [
+        "m1232"
+      ]
     },
     {
       "game_class": "rhsusf_M1232_MC_MK19_usmc_wd",
-      "display_name_key": "",
-      "display_name": "",
-      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
-      "config_locator": "",
+      "display_name_key": "$STR_RHS_M1232_MK19_MC_NAME",
+      "display_name": "M1232 (MCTAGS/Mk19)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_rg33l.pbo > config.bin",
       "catalogue_id": "bae_systems_rg_33l_6x6",
-      "matched_tokens": []
+      "matched_tokens": [
+        "m1232"
+      ]
     },
     {
       "game_class": "rhsusf_M1232_MK19_usarmy_d",
-      "display_name_key": "",
-      "display_name": "",
-      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
-      "config_locator": "",
+      "display_name_key": "$STR_RHS_M1232_MK19_NAME",
+      "display_name": "M1232 (O-GPK/Mk19)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_rg33l.pbo > config.bin",
       "catalogue_id": "bae_systems_rg_33l_6x6",
-      "matched_tokens": []
+      "matched_tokens": [
+        "m1232"
+      ]
     },
     {
       "game_class": "rhsusf_M1232_MK19_usarmy_wd",
-      "display_name_key": "",
-      "display_name": "",
-      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
-      "config_locator": "",
+      "display_name_key": "$STR_RHS_M1232_MK19_NAME",
+      "display_name": "M1232 (O-GPK/Mk19)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_rg33l.pbo > config.bin",
       "catalogue_id": "bae_systems_rg_33l_6x6",
-      "matched_tokens": []
+      "matched_tokens": [
+        "m1232"
+      ]
     },
     {
       "game_class": "rhsusf_M1232_usarmy_d",
-      "display_name_key": "",
-      "display_name": "",
-      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
-      "config_locator": "",
+      "display_name_key": "$STR_RHS_M1232_NAME",
+      "display_name": "M1232",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_rg33l.pbo > config.bin",
       "catalogue_id": "bae_systems_rg_33l_6x6",
-      "matched_tokens": []
+      "matched_tokens": [
+        "m1232"
+      ]
     },
     {
       "game_class": "rhsusf_M1232_usarmy_wd",
-      "display_name_key": "",
-      "display_name": "",
-      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
-      "config_locator": "",
+      "display_name_key": "$STR_RHS_M1232_NAME",
+      "display_name": "M1232",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_rg33l.pbo > config.bin",
       "catalogue_id": "bae_systems_rg_33l_6x6",
-      "matched_tokens": []
+      "matched_tokens": [
+        "m1232"
+      ]
     },
     {
       "game_class": "rhsusf_M1237_M2_usarmy_d",
-      "display_name_key": "",
-      "display_name": "",
-      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
-      "config_locator": "",
+      "display_name_key": "$STR_RHS_M1237_M2_NAME",
+      "display_name": "M1237 (O-GPK/M2)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_rg33l.pbo > config.bin",
       "catalogue_id": "bae_systems_rg_33l_6x6",
-      "matched_tokens": []
+      "matched_tokens": [
+        "m1237"
+      ]
     },
     {
       "game_class": "rhsusf_M1237_M2_usarmy_wd",
-      "display_name_key": "",
-      "display_name": "",
-      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
-      "config_locator": "",
+      "display_name_key": "$STR_RHS_M1237_M2_NAME",
+      "display_name": "M1237 (O-GPK/M2)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_rg33l.pbo > config.bin",
       "catalogue_id": "bae_systems_rg_33l_6x6",
-      "matched_tokens": []
+      "matched_tokens": [
+        "m1237"
+      ]
     },
     {
       "game_class": "rhsusf_M1237_MK19_usarmy_d",
-      "display_name_key": "",
-      "display_name": "",
-      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
-      "config_locator": "",
+      "display_name_key": "$STR_RHS_M1237_MK19_NAME",
+      "display_name": "M1237 (O-GPK/Mk19)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_rg33l.pbo > config.bin",
       "catalogue_id": "bae_systems_rg_33l_6x6",
-      "matched_tokens": []
+      "matched_tokens": [
+        "m1237"
+      ]
     },
     {
       "game_class": "rhsusf_M1237_MK19_usarmy_wd",
-      "display_name_key": "",
-      "display_name": "",
-      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
-      "config_locator": "",
+      "display_name_key": "$STR_RHS_M1237_MK19_NAME",
+      "display_name": "M1237 (O-GPK/Mk19)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_rg33l.pbo > config.bin",
       "catalogue_id": "bae_systems_rg_33l_6x6",
-      "matched_tokens": []
+      "matched_tokens": [
+        "m1237"
+      ]
     },
     {
       "game_class": "rhsusf_M1239_M2_Deploy_socom_d",
-      "display_name_key": "",
-      "display_name": "",
-      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
-      "config_locator": "",
+      "display_name_key": "$STR_RHS_M1239_M153_M2_DEPLOY_NAME",
+      "display_name": "M1239 AUV Deploy (CROWS/M2)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_socomauv.pbo > config.bin",
       "catalogue_id": "bae_systems_rg_33l_socom_armored_utility_vehicle_auv",
-      "matched_tokens": []
+      "matched_tokens": [
+        "m1239"
+      ]
     },
     {
       "game_class": "rhsusf_M1239_M2_Deploy_socom_wd",
-      "display_name_key": "",
-      "display_name": "",
-      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
-      "config_locator": "",
+      "display_name_key": "$STR_RHS_M1239_M153_M2_DEPLOY_NAME",
+      "display_name": "M1239 AUV Deploy (CROWS/M2)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_socomauv.pbo > config.bin",
       "catalogue_id": "bae_systems_rg_33l_socom_armored_utility_vehicle_auv",
-      "matched_tokens": []
+      "matched_tokens": [
+        "m1239"
+      ]
     },
     {
       "game_class": "rhsusf_M1239_M2_socom_d",
-      "display_name_key": "",
-      "display_name": "",
-      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
-      "config_locator": "",
+      "display_name_key": "$STR_RHS_M1239_M153_M2_NAME",
+      "display_name": "M1239 AUV (CROWS/M2)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_socomauv.pbo > config.bin",
       "catalogue_id": "bae_systems_rg_33l_socom_armored_utility_vehicle_auv",
-      "matched_tokens": []
+      "matched_tokens": [
+        "m1239"
+      ]
     },
     {
       "game_class": "rhsusf_M1239_M2_socom_wd",
-      "display_name_key": "",
-      "display_name": "",
-      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
-      "config_locator": "",
+      "display_name_key": "$STR_RHS_M1239_M153_M2_NAME",
+      "display_name": "M1239 AUV (CROWS/M2)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_socomauv.pbo > config.bin",
       "catalogue_id": "bae_systems_rg_33l_socom_armored_utility_vehicle_auv",
-      "matched_tokens": []
+      "matched_tokens": [
+        "m1239"
+      ]
     },
     {
       "game_class": "rhsusf_M1239_MK19_Deploy_socom_d",
-      "display_name_key": "",
-      "display_name": "",
-      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
-      "config_locator": "",
+      "display_name_key": "$STR_RHS_M1239_M153_MK19_DEPLOY_NAME",
+      "display_name": "M1239 AUV Deploy (CROWS/Mk19)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_socomauv.pbo > config.bin",
       "catalogue_id": "bae_systems_rg_33l_socom_armored_utility_vehicle_auv",
-      "matched_tokens": []
+      "matched_tokens": [
+        "m1239"
+      ]
     },
     {
       "game_class": "rhsusf_M1239_MK19_Deploy_socom_wd",
-      "display_name_key": "",
-      "display_name": "",
-      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
-      "config_locator": "",
+      "display_name_key": "$STR_RHS_M1239_M153_MK19_DEPLOY_NAME",
+      "display_name": "M1239 AUV Deploy (CROWS/Mk19)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_socomauv.pbo > config.bin",
       "catalogue_id": "bae_systems_rg_33l_socom_armored_utility_vehicle_auv",
-      "matched_tokens": []
+      "matched_tokens": [
+        "m1239"
+      ]
     },
     {
       "game_class": "rhsusf_M1239_MK19_socom_d",
-      "display_name_key": "",
-      "display_name": "",
-      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
-      "config_locator": "",
+      "display_name_key": "$STR_RHS_M1239_M153_MK19_NAME",
+      "display_name": "M1239 AUV (CROWS/Mk19)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_socomauv.pbo > config.bin",
       "catalogue_id": "bae_systems_rg_33l_socom_armored_utility_vehicle_auv",
-      "matched_tokens": []
+      "matched_tokens": [
+        "m1239"
+      ]
     },
     {
       "game_class": "rhsusf_M1239_MK19_socom_wd",
-      "display_name_key": "",
-      "display_name": "",
-      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
-      "config_locator": "",
+      "display_name_key": "$STR_RHS_M1239_M153_MK19_NAME",
+      "display_name": "M1239 AUV (CROWS/Mk19)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_socomauv.pbo > config.bin",
       "catalogue_id": "bae_systems_rg_33l_socom_armored_utility_vehicle_auv",
-      "matched_tokens": []
+      "matched_tokens": [
+        "m1239"
+      ]
     },
     {
       "game_class": "rhsusf_M1239_socom_d",
-      "display_name_key": "",
-      "display_name": "",
-      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
-      "config_locator": "",
+      "display_name_key": "$STR_RHS_M1239_NAME",
+      "display_name": "M1239 AUV",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_socomauv.pbo > config.bin",
       "catalogue_id": "bae_systems_rg_33l_socom_armored_utility_vehicle_auv",
-      "matched_tokens": []
+      "matched_tokens": [
+        "m1239"
+      ]
     },
     {
       "game_class": "rhsusf_M1239_socom_wd",
-      "display_name_key": "",
-      "display_name": "",
-      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
-      "config_locator": "",
+      "display_name_key": "$STR_RHS_M1239_NAME",
+      "display_name": "M1239 AUV",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_socomauv.pbo > config.bin",
       "catalogue_id": "bae_systems_rg_33l_socom_armored_utility_vehicle_auv",
-      "matched_tokens": []
+      "matched_tokens": [
+        "m1239"
+      ]
     },
     {
       "game_class": "rhsusf_M977A4_AMMO_BKIT_M2_usarmy_d",

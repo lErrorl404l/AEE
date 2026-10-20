@@ -1,15 +1,5 @@
 # modded match coverage gaps: vehicles
-# 12 unresolved of 435 modded classes (97.2% resolved)
+# 2 unresolved of 435 modded classes (99.5% resolved)
 # class	display	parent	source
-LOP_UKR_KAMAZ_Fuel	KAMAZ (fuel)	LOP_KAMAZ_fuel_base	po_factions_eu.pbo
-LOP_CDF_KAMAZ_Fuel	KAMAZ (fuel)	LOP_KAMAZ_fuel_base	po_factions_fic.pbo
-LOP_IRAN_KAMAZ_Fuel	KAMAZ (fuel)	LOP_KAMAZ_fuel_base	po_factions_me.pbo
-LOP_SYR_KAMAZ_Fuel	KAMAZ (fuel)	LOP_KAMAZ_fuel_base	po_factions_me.pbo
-LOP_KAMAZ_ammo_base	KAMAZ (ammo)	O_Truck_02_Ammo_F	po_main.pbo
-LOP_KAMAZ_cov_base	KAMAZ (covered)	O_Truck_02_covered_F	po_main.pbo
-LOP_KAMAZ_fuel_base	KamAZ (fuel)	O_Truck_02_fuel_F	po_main.pbo
-LOP_KAMAZ_med_base	Kamaz Medical	O_Truck_02_medical_F	po_main.pbo
-LOP_KAMAZ_rep_base	KAMAZ (repair)	O_Truck_02_box_F	po_main.pbo
-LOP_KAMAZ_trans_base	KAMAZ (open)	O_Truck_02_transport_F	po_main.pbo
 LOP_Nissan_PKM_base	Nissan (PKM)	PO_Pickup_PK_base	po_main.pbo
 rhsusf_fmtv_base	FMTV	Truck_01_base_F	rhsusf_c_fmtv.pbo

@@ -13,12 +13,11 @@ inheritance chain is read from the full scan, so a modded class keeps a base
 game parent, and only a class declared by a modded PBO is scored.
 
 The 2026-10-20 scan of the installed content scores 435 modded vehicle
-classes. The catalogue names 423. Twelve stay open. The base game scores 78
-of 79.
+classes. The catalogue names 433. Two stay open. The base game scores 78 of
+79.
 
 | Group | Classes | Why the group stays open |
 |---|---|---|
-| Retexture of an ancestor no entry maps | 10 | The Project OPFOR KAMAZ trucks descend from the Zamak in config, and no entry maps the Zamak variants. |
 | Maker over another maker's entry | 1 | `LOP_Nissan_PKM_base` names a Nissan over the ancestor's Toyota entry. |
 | Family label over a generic class | 1 | `rhsusf_fmtv_base` names a family, and its nearest mapped ancestor is the engine's `Car`. |
 
@@ -41,7 +40,7 @@ the real vehicle the ancestor's entry names. Three rules keep it honest:
   by: its catalogue id, an alias or a keyword. A class that names a different
   article is refused, however short the chain.
 
-Seven modded classes close on it, and the chain ships with each in
+Seventeen modded classes close on it, and the chain ships with each in
 `data/coverage/modded_baseline.json`.
 
 ## The evidence for each class closed by ancestry
@@ -70,37 +69,78 @@ Three base game Offroad classes also resolve: `Offroad_01_repair_base_F`,
 layer, because the Offroad entry maps them, so the rung is not what names
 them and they stay in the base half.
 
-## Why the ten KamAZ retextures stay open
+## The Zamak family carries the ten KAMAZ retextures
 
-The Project OPFOR trucks descend from the Zamak in config. That is a fact,
-and it is not enough, because the rung answers with the identity of the
-ancestor the table maps, and no entry maps a Zamak variant.
+The Project OPFOR KAMAZ trucks descend from the Zamak in config. The wiki
+states what the Zamak is, and the statement covers the family, not one body:
 
-The earlier work left them open because the ladder read only the classname
-and the display name, and the installed trucks state `KAMAZ` and a body word.
-No classname and no display in the whole scan carries `4310`. An alias on the
-maker word would close ten classes and be wrong, because the same alias would
-capture the RHS KamAZ-5350, a different truck, before its own `kamaz5350`
-keyword could act.
+> Zamak is simply Kamaz spelt backwards, which is the name of the company
+> that designs the real-life "KamAZ-4310" family of trucks that the Zamak is
+> based on.
 
-The chain does not close them either. The Zamak classes (`O_Truck_02_fuel_F`
-and its siblings) are named only by their `displayName`, and the installed
-content rewrites those with `$STR_ace_realisticnames_*` keys that no string
-table in the scanned set defines. The scan holds 1766 rows whose `$STR_ace_*` display name no scanned string
-table defines, 605 of them `$STR_ace_realisticnames_*`.
-An entry that cannot name the ancestor cannot lend it to a descendant, so the
-walk passes the Zamak by, reaches the engine's `Car` class, and the rung
-refuses: the class text `KAMAZ` does not name the passenger car that entry
-holds.
+*Zamak*, Trivia, `https://armedassault.fandom.com/wiki/Zamak`.
 
-The alternative is to bind the Zamak variants themselves. That would need a
-published identity for each body (fuel, ammo, repair, medical, covered,
-transport), and the wiki statement carries only the family: "Zamak is simply
-Kamaz spelt backwards, which is the name of the company that designs the
-real-life "KamAZ-4310" family of trucks that the Zamak is based on"
-(*Zamak*, Trivia, `https://armedassault.fandom.com/wiki/Zamak`). Binding six
-bodies to a cargo-truck entry would invent the claim the citation is supposed
-to carry, so the work stops short of it.
+That citation is the family warrant for binding the Zamak variants to
+`kamaz_4310`. It is also the only warrant needed: a retexture of a bound class
+is that class in another paint, so the closure repeats a binding the research
+already made and adds no claim about a body.
+
+The variants are bound from the game's own declaration. Each carries a
+`$STR_A3_` key that the game's stringtable defines, and each is declared under
+the game's `Addons` tree, so `tools/validation/gen_vehicle_data.py` keeps the
+binding for the runtime table. All 37 records name `kamaz_4310`.
+
+| Game class | Display | Key |
+|---|---|---|
+| `Truck_02_base_F` | Zamak Transport (Covered) | `$STR_A3_CfgVehicles_Truck_02_Base0` |
+| `O_Truck_02_covered_F` | Zamak Transport (Covered) | `$STR_A3_CfgVehicles_Truck_02_Base0` |
+| `O_Truck_02_transport_F` | Zamak Transport | `$STR_A3_CfgVehicles_C_Truck_02_Dump0` |
+| `O_Truck_02_box_F` | Zamak Repair | `$STR_A3_CfgVehicles_Truck_02_Repair0` |
+| `O_Truck_02_fuel_F` | Zamak Fuel | `$STR_A3_CfgVehicles_Truck_02_Fuel0` |
+| `O_Truck_02_medical_F` | Zamak Medical | `$STR_A3_CFGVEHICLES_TRUCK_02_MEDICAL` |
+| `O_Truck_02_Ammo_F` | Zamak Ammo | `$STR_A3_CFGVEHICLES_TRUCK_02_AMMO` |
+| `I_Truck_02_covered_F` | Zamak Transport (Covered) | `$STR_A3_CfgVehicles_Truck_02_Base0` |
+| `I_Truck_02_transport_F` | Zamak Transport | `$STR_A3_CfgVehicles_C_Truck_02_Dump0` |
+| `I_Truck_02_box_F` | Zamak Repair | `$STR_A3_CfgVehicles_Truck_02_Repair0` |
+| `I_Truck_02_fuel_F` | Zamak Fuel | `$STR_A3_CfgVehicles_Truck_02_Fuel0` |
+| `I_Truck_02_medical_F` | Zamak Medical | `$STR_A3_CFGVEHICLES_TRUCK_02_MEDICAL` |
+| `I_Truck_02_ammo_F` | Zamak Ammo | `$STR_A3_CFGVEHICLES_TRUCK_02_AMMO` |
+| `I_Truck_02_MRL_F` | Zamak MRL | `$STR_A3_CfgVehicles_I_Truck_02_MRL_F0` |
+| `C_Truck_02_covered_F` | Zamak Transport (Covered) | `$STR_A3_CfgVehicles_Truck_02_Base0` |
+| `C_Truck_02_transport_F` | Zamak Transport | `$STR_A3_CfgVehicles_C_Truck_02_Dump0` |
+| `C_Truck_02_box_F` | Zamak Repair | `$STR_A3_CfgVehicles_Truck_02_Repair0` |
+| `C_Truck_02_fuel_F` | Zamak Fuel | `$STR_A3_CfgVehicles_Truck_02_Fuel0` |
+| `C_IDAP_Truck_02_F` | Zamak Transport (Covered) | `$STR_A3_CfgVehicles_Truck_02_Base0` |
+| `C_IDAP_Truck_02_transport_F` | Zamak Transport | `$STR_A3_CfgVehicles_C_Truck_02_Dump0` |
+| `O_T_Truck_02_F` | Zamak Transport (Covered) | `$STR_A3_CfgVehicles_Truck_02_Base0` |
+| `O_T_Truck_02_transport_F` | Zamak Transport | `$STR_A3_CfgVehicles_C_Truck_02_Dump0` |
+| `O_T_Truck_02_Box_F` | Zamak Repair | `$STR_A3_CfgVehicles_Truck_02_Repair0` |
+| `O_T_Truck_02_fuel_F` | Zamak Fuel | `$STR_A3_CfgVehicles_Truck_02_Fuel0` |
+| `O_T_Truck_02_Medical_F` | Zamak Medical | `$STR_A3_CFGVEHICLES_TRUCK_02_MEDICAL` |
+| `O_T_Truck_02_Ammo_F` | Zamak Ammo | `$STR_A3_CFGVEHICLES_TRUCK_02_AMMO` |
+| `I_E_Truck_02_F` | Zamak Transport (Covered) | `$STR_A3_CfgVehicles_Truck_02_Base0` |
+| `I_E_Truck_02_transport_F` | Zamak Transport | `$STR_A3_CfgVehicles_C_Truck_02_Dump0` |
+| `I_E_Truck_02_transport_EMP_F` | Zamak Transport | `$STR_A3_CfgVehicles_C_Truck_02_Dump0` |
+| `I_E_Truck_02_EMP_F` | Zamak Transport (Covered) | `$STR_A3_CfgVehicles_Truck_02_Base0` |
+| `I_E_Truck_02_Box_F` | Zamak Repair | `$STR_A3_CfgVehicles_Truck_02_Repair0` |
+| `I_E_Truck_02_fuel_F` | Zamak Fuel | `$STR_A3_CfgVehicles_Truck_02_Fuel0` |
+| `I_E_Truck_02_Medical_F` | Zamak Medical | `$STR_A3_CFGVEHICLES_TRUCK_02_MEDICAL` |
+| `I_E_Truck_02_Ammo_F` | Zamak Ammo | `$STR_A3_CFGVEHICLES_TRUCK_02_AMMO` |
+| `I_E_Truck_02_MRL_F` | Zamak MRL | `$STR_A3_CfgVehicles_I_Truck_02_MRL_F0` |
+| `RHS_Civ_Truck_02_covered_F` | Zamak Transport (Covered) | `$STR_A3_CfgVehicles_Truck_02_Base0` |
+| `RHS_Civ_Truck_02_transport_F` | Zamak Transport | `$STR_A3_CfgVehicles_C_Truck_02_Dump0` |
+
+The earlier work left the ten open for a reason that the regenerated
+artefact removes. It read the display names as unresolved, because the
+installed content reopens the Zamak classes with `$STR_ace_realisticnames_*`
+keys that no scanned stringtable defines. A class is declared once for the
+purposes of the binder: the game's own declaration comes first and it states
+the `$STR_A3_` key that `Addons/language_f_gamma` defines. The ACE reopen is a
+later declaration, so it never supplied the text.
+
+With the Zamak variants bound, the walk from each retexture stops at the body
+it descends from. The class text holds `kamaz`, which the entry is identified
+by through its keyword `kamaz`, so the rung answers `kamaz_4310`.
 
 The RHS KamAZ-5350 is unaffected: it does not descend from the Zamak, so no
 chain reaches it, and its own keyword still names it. The lock

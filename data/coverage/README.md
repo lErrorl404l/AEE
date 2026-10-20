@@ -60,11 +60,11 @@ worker can diff two runs.
 `aee.match_coverage.baseline/1`. `provenance` holds the date, the scan
 file, its SHA-256, its row count, the install, the base PBO count and the
 base PBO list. It also holds `known_unresolvable`, the modded vehicle gaps
-that are expected to stay: twelve fictional display re-uses whose real
-link is contested in the corpus, twelve maker-or-family-only classes, and
-nine FPV drones with no published designation. `tables` holds, per table,
-the `base` and `modded` counts (`hit`, `total`, `pct`),
-`unresolved_modded`, and `excluded` by kind.
+that are expected to stay: no modded vehicle is a retexture of an unmapped
+ancestor, one class names a maker other than its ancestor's, one names a
+family over a generic class, and eight FPV drones have no published
+designation. `tables` holds, per table, the `base` and `modded` counts
+(`hit`, `total`, `pct`), `unresolved_modded`, and `excluded` by kind.
 
 `tools/tests/test_match_coverage.py` holds the lock. It re-derives every
 table from the scan and compares the result with this file, and it checks
