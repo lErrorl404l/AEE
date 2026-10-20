@@ -221,7 +221,7 @@
       },
       "vehicles": {
         "note": "Every class here is named by its own text at a layer the runtime would refuse as a tie, or names no entry at all. A tie is answered as an empty result by the engine, so the measurement reports the class as open even where a weaker layer would have guessed. Closing one needs a term the class's own text carries and no other class does.",
-        "unresolved": 43
+        "unresolved": 13
       }
     },
     "measured_rows": 135427,
@@ -590,11 +590,11 @@
       ],
       "label": "vehicles",
       "modded": {
-        "hit": 392,
-        "pct": 90.11,
+        "hit": 422,
+        "pct": 97.01,
         "total": 435
       },
-      "unresolved_modded": 43
+      "unresolved_modded": 13
     }
   }
 }

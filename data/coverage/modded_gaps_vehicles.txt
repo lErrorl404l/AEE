@@ -1,44 +1,14 @@
 # modded match coverage gaps: vehicles
-# 43 unresolved of 435 modded classes (90.1% resolved)
+# 13 unresolved of 435 modded classes (97.0% resolved)
 # class	display	parent	source
-LOP_AA_M113_C	M113A3 M2 (Camo)	LOP_M113_base	po_factions_me.pbo
-LOP_AA_M113_D	M113A3 M2 (Desert)	LOP_M113_base	po_factions_me.pbo
-LOP_AA_M113_W	M113A3 M2 (Woodland)	LOP_M113_base	po_factions_me.pbo
 LOP_LandRover_base_02	Land Rover	PO_LandRover_base_W	po_main.pbo
 LOP_LandRover_mg_base	Land Rover (M2)	PO_LandRover_Base_MG	po_main.pbo
-LOP_M113_base	M113A3 M2	rhsusf_m113_usarmy	po_main.pbo
-rhs_btr_base	BTR-70	Wheeled_APC_F	rhs_c_btr.pbo
 rhs_t72bd_tv	T-72B3 (obr. 2012g.)	rhs_a3t72tank_base	rhs_c_t72.pbo
 rhs_t72be_tv	T-72B3 (obr. 2016g.)	rhs_t72bd_tv	rhs_c_t72.pbo
 rhs_t90saa_tv	T-90SA (obr. 2004g.)	rhs_t90a_tv	rhs_c_t72.pbo
 rhs_t90sab_tv	T-90SA (obr. 2016g.)	rhs_t90a_tv	rhs_c_t72.pbo
 rhssaf_army_t72s	T-72MS	rhs_t72bd_tv	rhssaf_c_vehicles.pbo
 rhsusf_fmtv_base	FMTV	Truck_01_base_F	rhsusf_c_fmtv.pbo
-rhsusf_HEMTT_A4_base	M977A4	Truck_01_base_F	rhsusf_c_hemtt_a4.pbo
-rhsusf_m113_usarmy	M113A3 (M2)	rhsusf_m113tank_base	rhsusf_c_m113.pbo
-rhsusf_m113_usarmy_M240	M113A3 (M240)	rhsusf_m113tank_base	rhsusf_c_m113.pbo
-rhsusf_m113_usarmy_M2_90	M113A3 (M2/Early)	rhsusf_m113_usarmy_supply	rhsusf_c_m113.pbo
-rhsusf_m113_usarmy_medical	M113A3 (MEV)	rhsusf_m113_usarmy_unarmed	rhsusf_c_m113.pbo
-rhsusf_m113_usarmy_MK19	M113A3 (Mk19)	rhsusf_m113tank_base	rhsusf_c_m113.pbo
-rhsusf_m113_usarmy_MK19_90	M113A3 (Mk19/Early)	rhsusf_m113_usarmy_MK19	rhsusf_c_m113.pbo
-rhsusf_m113_usarmy_supply	M113A3 (Ammo)	rhsusf_m113_usarmy	rhsusf_c_m113.pbo
-rhsusf_m113_usarmy_unarmed	M113A3 (Unarmed)	rhsusf_m113tank_base	rhsusf_c_m113.pbo
-rhsusf_m1240a1_m240_usarmy_d	M1240 (O-GPK/M240)	rhsusf_MATV_OGPK_M240_base	rhsusf_c_matv.pbo
-rhsusf_m1240a1_m240_usarmy_wd	M1240 (O-GPK/M240)	rhsusf_MATV_OGPK_M240_base	rhsusf_c_matv.pbo
-rhsusf_m1240a1_m240_usmc_d	M1240 (O-GPK/M240)	rhsusf_MATV_OGPK_M240_base	rhsusf_c_matv.pbo
-rhsusf_m1240a1_m240_usmc_wd	M1240 (O-GPK/M240)	rhsusf_MATV_OGPK_M240_base	rhsusf_c_matv.pbo
-rhsusf_m1240a1_m2_usarmy_d	M1240 (O-GPK/M2)	rhsusf_MATV_OGPK_M2_base	rhsusf_c_matv.pbo
-rhsusf_m1240a1_m2_usarmy_wd	M1240 (O-GPK/M2)	rhsusf_MATV_OGPK_M2_base	rhsusf_c_matv.pbo
-rhsusf_m1240a1_m2_usmc_d	M1240 (O-GPK/M2)	rhsusf_MATV_OGPK_M2_base	rhsusf_c_matv.pbo
-rhsusf_m1240a1_m2_usmc_wd	M1240 (O-GPK/M2)	rhsusf_MATV_OGPK_M2_base	rhsusf_c_matv.pbo
-rhsusf_m1240a1_mk19_usarmy_d	M1240 (O-GPK/Mk19)	rhsusf_MATV_OGPK_MK19_base	rhsusf_c_matv.pbo
-rhsusf_m1240a1_mk19_usarmy_wd	M1240 (O-GPK/Mk19)	rhsusf_MATV_OGPK_MK19_base	rhsusf_c_matv.pbo
-rhsusf_m1240a1_mk19_usmc_d	M1240 (O-GPK/Mk19)	rhsusf_MATV_OGPK_MK19_base	rhsusf_c_matv.pbo
-rhsusf_m1240a1_mk19_usmc_wd	M1240 (O-GPK/Mk19)	rhsusf_MATV_OGPK_MK19_base	rhsusf_c_matv.pbo
-rhsusf_m1240a1_usarmy_d	M1240	rhsusf_MATV_base	rhsusf_c_matv.pbo
-rhsusf_m1240a1_usarmy_wd	M1240	rhsusf_MATV_base	rhsusf_c_matv.pbo
-rhsusf_m1240a1_usmc_d	M1240	rhsusf_MATV_base	rhsusf_c_matv.pbo
-rhsusf_m1240a1_usmc_wd	M1240	rhsusf_MATV_base	rhsusf_c_matv.pbo
 rhsusf_RG33_base	RG33 4X4 SOCOM	MRAP_01_base_F	rhsusf_c_rg33.pbo
 rhsusf_RG33_CROWS_base	M1238A1 ASV (CROWS/M2)	rhsusf_RG33_base	rhsusf_c_rg33.pbo
 rhsusf_RG33_CROWSMK19_base	M1238A1 ASV (CROWS/Mk19)	rhsusf_RG33_CROWS_base	rhsusf_c_rg33.pbo

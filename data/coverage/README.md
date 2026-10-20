@@ -60,10 +60,12 @@ worker can diff two runs.
 `aee.match_coverage.baseline/1`. `provenance` holds the date, the scan
 file, its SHA-256, its row count, the install, the base PBO count and the
 base PBO list. It also holds `known_unresolvable`, the modded vehicle gaps
-that are expected to stay: no modded vehicle is a retexture of an unmapped
-ancestor, one class names a maker other than its ancestor's, one names a
-family over a generic class, and eight FPV drones have no published
-designation. `tables` holds, per table, the `base` and `modded` counts
+that are expected to stay. Thirteen vehicles stay open in the 2026-10-20
+measurement: five tie on a family designation the generator derives from a
+mark's canonical name, five tie on the derived RG-33 family keyword, two name
+the maker Land Rover and no mark, and one names the FMTV family over a
+generic class. `data/vehicle/MODDED_CLASS_GAPS.md` gives each class and its
+reason. `tables` holds, per table, the `base` and `modded` counts
 (`hit`, `total`, `pct`), `unresolved_modded`, and `excluded` by kind.
 
 `tools/tests/test_match_coverage.py` holds the lock. It re-derives every

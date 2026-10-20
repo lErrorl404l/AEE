@@ -346,8 +346,17 @@ class RealCorpusTest(unittest.TestCase):
 
     def test_real_alias_index_holds_the_lead_aliases(self) -> None:
         loaded = vc.load(DATA)
-        self.assertEqual("m_atv_m1240", loaded.alias_index["m1240"])
-        self.assertEqual("m113a2", loaded.alias_index["m113"])
+        self.assertEqual("m_atv_m1240a1", loaded.alias_index["m1240a1"])
+        self.assertEqual("m113a2", loaded.alias_index["m113a2"])
+
+    def test_the_family_designations_are_not_aliases(self) -> None:
+        # A family word reaches every member, so as an alias of one mark it
+        # ties the ladder. "m1240" and "m113" name the family the A1 and A2
+        # marks belong to, and the matcher holds them as keywords only.
+        loaded = vc.load(DATA)
+        for family in ("m1240", "m113", "hemtt", "btr"):
+            with self.subTest(alias=family):
+                self.assertNotIn(family, loaded.alias_index)
 
     def test_real_class_map_holds_one_claimed_binding_per_entry(self) -> None:
         records: object = json.loads(CLASS_MAP.read_text(encoding="utf-8"))
