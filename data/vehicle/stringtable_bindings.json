@@ -69,17 +69,6 @@
       ]
     },
     {
-      "game_class": "B_MBT_01_mlrs_base_F",
-      "display_name_key": "$STR_A3_CfgVehicles_B_MBT_01_MLRS0",
-      "display_name": "M5 Sandstorm MLRS",
-      "display_name_source": "Addons/language_f_gamma/a3/language_f_gamma/stringtable.xml",
-      "config_locator": "Addons/armor_f_gamma/a3/armor_f_gamma/MBT_01/config.cpp",
-      "catalogue_id": "astros_ii",
-      "matched_tokens": [
-        "mlrs"
-      ]
-    },
-    {
       "game_class": "B_T_APC_Tracked_01_CRV_F",
       "display_name_key": "$STR_A3_CfgVehicles_B_APC_TRACKED_01_CRV0",
       "display_name": "CRV-6e Bobcat",
@@ -100,28 +89,6 @@
       "matched_tokens": [
         "m2a4",
         "slammer"
-      ]
-    },
-    {
-      "game_class": "C_Hatchback_01_F",
-      "display_name_key": "$STR_A3_CfgVehicles_Car_Base0",
-      "display_name": "Hatchback",
-      "display_name_source": "Addons/language_f_gamma/a3/language_f_gamma/stringtable.xml",
-      "config_locator": "Addons/soft_f_gamma.pbo > Hatchback_01\\config.bin",
-      "catalogue_id": "honda_civic_6gen_hatchback",
-      "matched_tokens": [
-        "hatchback"
-      ]
-    },
-    {
-      "game_class": "C_Hatchback_01_sport_F",
-      "display_name_key": "$STR_A3_CfgVehicles_C_car_sport0",
-      "display_name": "Hatchback (Sport)",
-      "display_name_source": "Addons/language_f_gamma/a3/language_f_gamma/stringtable.xml",
-      "config_locator": "Addons/soft_f_gamma.pbo > Hatchback_01\\config.bin",
-      "catalogue_id": "honda_civic_6gen_hatchback",
-      "matched_tokens": [
-        "hatchback"
       ]
     },
     {
@@ -155,17 +122,6 @@
       "catalogue_id": "hmmwv_m998",
       "matched_tokens": [
         "hmmwv"
-      ]
-    },
-    {
-      "game_class": "Hatchback_01_base_F",
-      "display_name_key": "$STR_A3_CfgVehicles_Car_Base0",
-      "display_name": "Hatchback",
-      "display_name_source": "Addons/language_f_gamma/a3/language_f_gamma/stringtable.xml",
-      "config_locator": "Addons/soft_f_gamma.pbo > Hatchback_01\\config.bin",
-      "catalogue_id": "honda_civic_6gen_hatchback",
-      "matched_tokens": [
-        "hatchback"
       ]
     },
     {
@@ -1519,17 +1475,6 @@
       "catalogue_id": "ural_4320",
       "matched_tokens": [
         "ural4320"
-      ]
-    },
-    {
-      "game_class": "MBT_01_mlrs_base_F",
-      "display_name_key": "$STR_A3_CfgVehicles_B_MBT_01_MLRS0",
-      "display_name": "M5 Sandstorm MLRS",
-      "display_name_source": "Addons/language_f_gamma/a3/language_f_gamma/stringtable.xml",
-      "config_locator": "Addons/armor_f_gamma/a3/armor_f_gamma/MBT_01/config.cpp",
-      "catalogue_id": "astros_ii",
-      "matched_tokens": [
-        "mlrs"
       ]
     },
     {
