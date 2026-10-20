@@ -146,9 +146,9 @@
   {
     "game_class": "C_Offroad_01_F",
     "class_token": "Car",
-    "catalogue_id": "land_rover_wolf_xd_110",
-    "identity_source": "aee_class_table",
-    "identity_evidence": "AEE class token Car; the class is a light off-road 4x4 utility vehicle, paired with the held Land Rover Wolf (XD 110) light off-road utility 4x4. The class name does not name the catalogue vehicle, so the link stays class_only.",
+    "catalogue_id": "offroad_q7_l200_composite",
+    "identity_source": "armedassault_offroad_trivia",
+    "identity_evidence": "Armed Assault Wiki, Offroad, ARMA 3 Trivia: \"ARMA 3's Offroad appears to be an amalgamation of two vehicle designs with custom body parts mixed in: it takes the front end of the Audi \\\"Q7\\\" (pickup configuration concept) while the rear resembles the Mitsubishi \\\"L200\\\".\" The link is graded claimed because the page hedges ('appears to be') and names two donors, not one vehicle. The previous bindings, the Land Rover Wolf and the Toyota Land Cruiser J70, are withdrawn: no page read names a Land Rover for an Offroad, and the Toyota Hilux statement belongs to Armed Assault.",
     "grade": "claimed"
   },
   {

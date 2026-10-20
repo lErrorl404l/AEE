@@ -1,0 +1,29 @@
+{
+  "retrieved": "2026-10-20",
+  "note": "Capture for the composite body the Armed Assault Wiki attributes to the ARMA 3 Offroad. The wiki states the front is the Audi Q7 pickup concept and the rear resembles the Mitsubishi L200, at resemblance grade: the page says 'appears to be an amalgamation', so no single donor model is asserted. The capture is identity only. The source publishes no mass, dimension, engine or tyre figure for the composite, so every runtime field resolves to a labelled absent zero and the entry is not runtime-ready. This entry replaces two unsupported bindings: the Land Rover Wolf (no page read names a Land Rover for any Offroad) and the Toyota Land Cruiser J70 (the Hilux lineage on the same page belongs to Armed Assault, and a J70 is a wagon line). The retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "offroad_q7_l200_composite",
+      "canonical_name": "Audi Q7 pickup concept (front) and Mitsubishi L200 (rear) composite",
+      "maker": "Audi and Mitsubishi (donor designs)",
+      "model": "Q7 pickup concept and L200",
+      "variant": "community-attributed composite body",
+      "variant_id": "offroad_q7_l200_composite",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "Germany and Japan (donor designs)",
+      "era": "modern",
+      "aliases": [
+        "audi q7 pickup concept",
+        "q7 pickup concept",
+        "mitsubishi l200"
+      ],
+      "keywords": [
+        "offroad"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    }
+  ]
+}

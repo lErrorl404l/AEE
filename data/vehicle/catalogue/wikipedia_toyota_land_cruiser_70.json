@@ -1,6 +1,6 @@
 {
   "retrieved": "2026-09-26",
-  "note": "Catalogue capture uplifted in part to the held tier-2 Toyota Land Cruiser Chassis and Body Repair Manual (10/84 to 1/90). The manual publishes the 70 series wheelbase, the tyre size code and the normal-road tyre pressure at grade documented. It publishes no overall length, width, height or transmission datum, so those fields are retained from the tier-5 English Wikipedia article at grade claimed.",
+  "note": "Catalogue capture uplifted in part to the held tier-2 Toyota Land Cruiser Chassis and Body Repair Manual (10/84 to 1/90). The manual publishes the 70 series wheelbase, the tyre size code and the normal-road tyre pressure at grade documented. It publishes no overall length, width, height or transmission datum, so those fields are retained from the tier-5 English Wikipedia article at grade claimed. The keyword 'off-road' was removed on 2026-10-20: it is a body description, and it made the generator bind the base game's fictional 'Offroad' display name to this entry. The wiki attributes the ARMA 3 Offroad to an Audi Q7 pickup concept front and a Mitsubishi L200 rear, and the Toyota lineage on that page belongs to Armed Assault, not ARMA 3.",
   "sources": [],
   "entries": [
     {
@@ -22,7 +22,6 @@
       "keywords": [
         "car",
         "truck",
-        "off-road",
         "utility",
         "japan"
       ],
@@ -56,7 +55,7 @@
           "value": 2310,
           "unit": "mm",
           "source": "toyota_land_cruiser_repair_manual_1984_1990",
-          "locator": "BODY \u2014 Frame Dimensions, FJ, BJ 70 Series drawing, wheelbase dimension 2,310 (90.94), printed page BO-119",
+          "locator": "BODY — Frame Dimensions, FJ, BJ 70 Series drawing, wheelbase dimension 2,310 (90.94), printed page BO-119",
           "state": "wheelbase published as 2,310 mm for the FJ and BJ 70 series",
           "grade": "documented"
         },
@@ -72,7 +71,7 @@
           "value": "7.50-16-6PRLT",
           "unit": "text",
           "source": "toyota_land_cruiser_repair_manual_1984_1990",
-          "locator": "SERVICE SPECIFICATIONS \u2014 Front Axle and Suspension, tyre pressure table, FJ70 and BJ70 series rows, printed page A-10",
+          "locator": "SERVICE SPECIFICATIONS — Front Axle and Suspension, tyre pressure table, FJ70 and BJ70 series rows, printed page A-10",
           "state": "tyre size published as 7.50-16-6PRLT for the FJ70 and BJ70 series; the table also lists 7.50-16-8PRLT and 7.50R-16-8PRLT",
           "grade": "documented"
         },
@@ -80,7 +79,7 @@
           "value": 177,
           "unit": "kPa",
           "source": "toyota_land_cruiser_repair_manual_1984_1990",
-          "locator": "SERVICE SPECIFICATIONS \u2014 Front Axle and Suspension, tyre pressure table, FJ70 series, 7.50-16-6PRLT row, below 80 km/h column, printed page A-10",
+          "locator": "SERVICE SPECIFICATIONS — Front Axle and Suspension, tyre pressure table, FJ70 series, 7.50-16-6PRLT row, below 80 km/h column, printed page A-10",
           "state": "tyre pressure published as 1.8 kgf/cm2 (26 psi, 177 kPa) below 80 km/h; recorded as 177 kPa",
           "grade": "documented"
         }

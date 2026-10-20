@@ -223,6 +223,7 @@ private _table = [
     ["mt_lb", "tracked", 1, 11900, 6450, 2860, 1860],
     ["namer", "tracked", 1, 60000, 0, 0, 0],
     ["object_681", "tracked", 1, 13600, 6735, 3140, 2400],
+    ["offroad_q7_l200_composite", "wheeled", 0, 0, 0, 0, 0],
     ["olifant", "tracked", 1, 58000, 9830, 3378, 2940],
     ["oshkosh_m_atv_m1277", "wheeled", 0, 12500, 6270, 2490, 2700],
     ["oshkosh_mtvr_mk23", "wheeled", 0, 13200, 8000, 2490, 3185],
