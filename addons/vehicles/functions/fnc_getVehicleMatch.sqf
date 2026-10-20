@@ -278,7 +278,7 @@ private _table = [
     ["m977_hemtt", "m977_hemtt", "wheeled", "", "", "m977|hemtt|m977hemtt|heavyexpandedmobilitytacticaltruck", "8x8|m977hemt", "tm_9_2320_279_10_1", [17600, 406.4, 1320.8, 609.6, 331.836443, "automatic", ""]],
     ["m977a4", "m977a4", "wheeled", "", "", "m977a4", "", "wikipedia_heavy_expanded_mobility_tactical_truck", [19278, 0, 0, 0, 0, "", ""]],
     ["m978a4_hemtt", "m978a4_hemtt", "wheeled", "", "", "m978a4hemtt", "m978a4", "oshkosh_hemtt_a4_fuel_servicing_datasheet", [19119, 0, 0, 0, 0, "", ""]],
-    ["m_atv_m1240", "m_atv_m1240", "wheeled", "", "mrap|mrap01basef|mrap01gmgbasef|mrap01hmgbasef", "matv|m1240|hunter", "oshkosh|matvm1240", "tm_9_2355_335_10", [11123, 395.0, 1179.5, 0, 275.908953, "automatic", ""]],
+    ["m_atv_m1240", "m_atv_m1240", "wheeled", "", "mrap|mrap01basef|mrap01gmgbasef|mrap01hmgbasef", "matv|hunter", "oshkosh|matvm1240|m1240", "tm_9_2355_335_10", [11123, 395.0, 1179.5, 0, 275.908953, "automatic", ""]],
     ["m_atv_m1240a1", "m_atv_m1240a1", "wheeled", "", "", "matvm1240a1|m1240a1", "oshkosh|matv", "tm_9_2355_335_10", [12940, 0, 0, 0, 275.908953, "automatic", ""]],
     ["m_atv_m1245", "m_atv_m1245", "wheeled", "", "", "matvm1245|m1245", "oshkosh|matv", "tm_9_2355_335_10", [12325, 395.0, 1179.5, 0, 275.908953, "automatic", ""]],
     ["marder_1a3", "marder_1a3", "tracked", "", "", "marder|marder1a3|spzmarder|schutzenpanzermarder", "germany|1a3", "thyssen_henschel_marder_1a3", [28600, 0, 0, 0, 439.962924, "automatic", ""]],
