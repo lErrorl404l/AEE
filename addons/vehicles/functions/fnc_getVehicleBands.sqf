@@ -149,6 +149,7 @@ private _table = [
     ["leopard_2a6_finland", "tracked", 1, 62300, 10970, 3750, 3000],
     ["leopard_2a6_hel", "tracked", 1, 62300, 10970, 3750, 3000],
     ["leopard_2a7_hungary", "tracked", 1, 66500, 0, 0, 0],
+    ["lgs_fennek_larv", "wheeled", 0, 0, 0, 0, 0],
     ["m1059", "tracked", 1, 11077, 4851.4, 2686.1, 2559.1],
     ["m1064", "tracked", 1, 12546, 5318.3, 2127.2, 2222.5],
     ["m1068", "tracked", 1, 12182, 4851.4, 2686.1, 2705.1],
@@ -294,6 +295,7 @@ private _table = [
     ["yamaha_grizzly_450", "wheeled", 0, 0, 0, 0, 0],
     ["zbd_04", "tracked", 1, 20000, 7200, 3200, 2500],
     ["zil_131", "wheeled", 0, 6700, 7040, 2500, 2480],
+    ["zil_karatel", "wheeled", 0, 0, 0, 0, 0],
     ["zsu_23_4_shilka", "tracked", 1, 19000, 6535, 3125, 2576]
 ];
 

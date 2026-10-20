@@ -201,6 +201,7 @@ private _table = [
     ["leopard_2a6_finland", "leopard_2a6_finland", "tracked", "", "", "leopard2a6finland|leopard2finland", "2a6|2a6finland|leopard2|leopard2finlan", "wikipedia_leopard_2", [62300, 0, 0, 540, 1118.549808, "", ""]],
     ["leopard_2a6_hel", "leopard_2a6_hel", "tracked", "", "", "leopard2a6hel|leopard2hel|leopard2greece", "2a6|2a6hel|leopard2|leopard2he|leopard2greec", "wikipedia_leopard_2", [62300, 0, 0, 540, 1118.549808, "", ""]],
     ["leopard_2a7_hungary", "leopard_2a7_hungary", "tracked", "", "", "leopard2a7hungary|leopard2a7|leopard2hungary", "2a7|2a7hungary|leopard2|leopard2hungar", "wikipedia_leopard_2", [66500, 0, 0, 540, 1118.549808, "", ""]],
+    ["lgs_fennek_larv", "lgs_fennek_larv", "wheeled", "", "", "fennek|fenneklarv|lgsfennek|strider", "lgsfenneklarv", "", [0, 0, 0, 0, 0, "", ""]],
     ["m1059", "m1059", "tracked", "", "", "m1059", "smokegeneratorcarrier", "tm_9_2350_261_10", [11077, 0, 0, 434.8, 156.596973, "automatic", "grousers"]],
     ["m1064", "m1064", "tracked", "", "", "m1064", "selfpropelled120mmmortarcarrier", "tm_9_2350_261_10", [12546, 0, 0, 434.8, 156.596973, "automatic", "grousers"]],
     ["m1068", "m1068", "tracked", "", "", "m1068", "standardizedintegratedcommandpostsystem", "tm_9_2350_261_10", [12182, 0, 0, 434.8, 156.596973, "automatic", "grousers"]],
@@ -267,7 +268,7 @@ private _table = [
     ["m977_hemtt", "m977_hemtt", "wheeled", "", "", "m977|hemtt|m977hemtt|heavyexpandedmobilitytacticaltruck", "8x8|m977hemt", "tm_9_2320_279_10_1", [17600, 406.4, 1320.8, 609.6, 331.836443, "automatic", ""]],
     ["m977a4", "m977a4", "wheeled", "", "", "m977a4", "", "wikipedia_heavy_expanded_mobility_tactical_truck", [19278, 0, 0, 0, 0, "", ""]],
     ["m978a4_hemtt", "m978a4_hemtt", "wheeled", "", "", "m978a4hemtt", "m978a4", "oshkosh_hemtt_a4_fuel_servicing_datasheet", [19119, 0, 0, 0, 0, "", ""]],
-    ["m_atv_m1240", "m_atv_m1240", "wheeled", "", "mrap", "matv|m1240", "oshkosh|matvm1240", "tm_9_2355_335_10", [11123, 395.0, 1179.5, 0, 275.908953, "automatic", ""]],
+    ["m_atv_m1240", "m_atv_m1240", "wheeled", "", "mrap", "matv|m1240|hunter", "oshkosh|matvm1240", "tm_9_2355_335_10", [11123, 395.0, 1179.5, 0, 275.908953, "automatic", ""]],
     ["m_atv_m1240a1", "m_atv_m1240a1", "wheeled", "", "", "matvm1240a1|m1240a1", "oshkosh|matv", "tm_9_2355_335_10", [12940, 0, 0, 0, 275.908953, "automatic", ""]],
     ["m_atv_m1245", "m_atv_m1245", "wheeled", "", "", "matvm1245|m1245", "oshkosh|matv", "tm_9_2355_335_10", [12325, 395.0, 1179.5, 0, 275.908953, "automatic", ""]],
     ["marder_1a3", "marder_1a3", "tracked", "", "", "marder|marder1a3|spzmarder|schutzenpanzermarder", "germany|1a3", "thyssen_henschel_marder_1a3", [28600, 0, 0, 0, 439.962924, "automatic", ""]],
@@ -346,6 +347,7 @@ private _table = [
     ["yamaha_grizzly_450", "yamaha_grizzly_450", "wheeled", "", "", "grizzly450|quadbike|yamahagrizzly450", "yamahagrizzly", "", [0, 0, 0, 0, 0, "", ""]],
     ["zbd_04", "zbd_04", "tracked", "", "", "zbd04", "chineseifv|type04ifv", "zbd_04", [20000, 0, 0, 0, 440, "", ""]],
     ["zil_131", "zil_131", "wheeled", "", "", "zil131", "", "wikipedia_zil_131", [6700, 0, 0, 0, 0, "", ""]],
+    ["zil_karatel", "zil_karatel", "wheeled", "", "", "falcatus|ifrit|karatel|punisher|zilkaratel", "", "", [0, 0, 0, 0, 0, "", ""]],
     ["zsu_23_4_shilka", "zsu_23_4_shilka", "tracked", "", "", "zsu234shilka", "zsu234|zsu234shilk", "wikipedia_zsu_23_4_shilka", [19000, 0, 0, 0, 0, "", ""]]
 ];
 

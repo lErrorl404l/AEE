@@ -14,8 +14,17 @@
       "class_token": "",
       "country": "United States",
       "era": "modern",
-      "aliases": ["m-atv", "matv", "m1240"],
-      "keywords": ["mrap", "oshkosh", "m-atv"],
+      "aliases": [
+        "m-atv",
+        "matv",
+        "m1240",
+        "hunter"
+      ],
+      "keywords": [
+        "mrap",
+        "oshkosh",
+        "m-atv"
+      ],
       "runtime_ready": false,
       "values": {
         "curb_weight_kg": {

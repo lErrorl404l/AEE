@@ -19,24 +19,24 @@
     "game_class": "B_MRAP_01_F",
     "class_token": "MRAP",
     "catalogue_id": "m_atv_m1240",
-    "identity_source": "aee_class_table",
-    "identity_evidence": "AEE class token MRAP; class_map.json binds MRAP to the Oshkosh M-ATV M1240. The class name does not name the catalogue vehicle, so the link stays class_only.",
+    "identity_source": "armedassault_hunter_trivia",
+    "identity_evidence": "Armed Assault Wiki, Hunter, ARMA 3 Trivia (wikitext section 36): \"* The Hunter is directly based on the real-world \"M-ATV\" MRAP designed by the Oshkosh Corporation (parodied as an in-universe product of the \"Rozkos\" company).\" Citation: https://armedassault.fandom.com/wiki/Hunter. The page asserts the basis in its strongest form ('directly based on the real-world \"M-ATV\" MRAP designed by the Oshkosh Corporation'). The class is fictional, so the Field Manual statement behind the page is the strongest available evidence. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   },
   {
     "game_class": "I_MRAP_03_F",
     "class_token": "MRAP",
-    "catalogue_id": "m_atv_m1240",
-    "identity_source": "aee_class_table",
-    "identity_evidence": "AEE class token MRAP; the same catalogue MRAP as B_MRAP_01_F. The held catalogue holds one MRAP only, so both factions share it.",
+    "catalogue_id": "lgs_fennek_larv",
+    "identity_source": "armedassault_strider_trivia",
+    "identity_evidence": "Armed Assault Wiki, Strider, ARMA 3 Trivia (wikitext section 39): \"* The Strider is based on the real-world \"LGS Fennek\" LARV.\" Citation: https://armedassault.fandom.com/wiki/Strider. The page asserts the basis ('is based on the real-world \"LGS Fennek\" LARV'). It also states that the in-game classification as an MRAP is incorrect, because the real Fennek is a scout vehicle. The binding records the identity, not the game's category. The previous binding, the Oshkosh M-ATV M1240, is withdrawn: it rested on the MRAP token alone and no page names an M-ATV for the Strider. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   },
   {
     "game_class": "O_MRAP_02_F",
     "class_token": "MRAP",
-    "catalogue_id": "m_atv_m1240",
-    "identity_source": "aee_class_table",
-    "identity_evidence": "AEE class token MRAP; the same catalogue MRAP as B_MRAP_01_F. The held catalogue holds one MRAP only, so both factions share it.",
+    "catalogue_id": "zil_karatel",
+    "identity_source": "armedassault_ifrit_trivia",
+    "identity_evidence": "Armed Assault Wiki, Ifrit, ARMA 3 Trivia (wikitext section 36): \"* The Ifrit appears to be modelled after the ZiL \"Karatel\" (also known as the \"Punisher\" or \"Falcatus\"), an armoured vehicle in limited use with Russian security forces.\" Citation: https://armedassault.fandom.com/wiki/Ifrit. The page hedges: it says the Ifrit 'appears to be modelled after' the Karatel, and names the vehicle's alternate names ('Punisher' and 'Falcatus'). The hedge is recorded and not upgraded. The previous binding, the Oshkosh M-ATV M1240, is withdrawn: it rested on the class token MRAP alone and no page names an M-ATV for the Ifrit. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   },
   {
@@ -229,6 +229,78 @@
     "catalogue_id": "yamaha_grizzly_450",
     "identity_source": "armedassault_quadbike_trivia",
     "identity_evidence": "Armed Assault Wiki, Quadbike, ARMA 3 Trivia (wikitext section 46): \"* The ARMA 3 Quadbike appears to be based on the real-life \"Grizzly 450\" ATV manufactured by the Yamaha Corporation.\" Citation: https://armedassault.fandom.com/wiki/Quadbike. The page hedges: it says the Quadbike 'appears to be based on' the Grizzly 450. The hedge is recorded and not upgraded. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "MRAP_01_base_F",
+    "class_token": "MRAP",
+    "catalogue_id": "m_atv_m1240",
+    "identity_source": "armedassault_hunter_trivia",
+    "identity_evidence": "Armed Assault Wiki, Hunter, ARMA 3 Trivia (wikitext section 36): \"* The Hunter is directly based on the real-world \"M-ATV\" MRAP designed by the Oshkosh Corporation (parodied as an in-universe product of the \"Rozkos\" company).\" Citation: https://armedassault.fandom.com/wiki/Hunter. The page asserts the basis in its strongest form ('directly based on the real-world \"M-ATV\" MRAP designed by the Oshkosh Corporation'). The class is fictional, so the Field Manual statement behind the page is the strongest available evidence. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "B_MRAP_01_hmg_F",
+    "class_token": "MRAP",
+    "catalogue_id": "m_atv_m1240",
+    "identity_source": "armedassault_hunter_trivia",
+    "identity_evidence": "Armed Assault Wiki, Hunter, ARMA 3 Trivia (wikitext section 36): \"* The Hunter is directly based on the real-world \"M-ATV\" MRAP designed by the Oshkosh Corporation (parodied as an in-universe product of the \"Rozkos\" company).\" Citation: https://armedassault.fandom.com/wiki/Hunter. The page asserts the basis in its strongest form ('directly based on the real-world \"M-ATV\" MRAP designed by the Oshkosh Corporation'). The class is fictional, so the Field Manual statement behind the page is the strongest available evidence. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "B_MRAP_01_gmg_F",
+    "class_token": "MRAP",
+    "catalogue_id": "m_atv_m1240",
+    "identity_source": "armedassault_hunter_trivia",
+    "identity_evidence": "Armed Assault Wiki, Hunter, ARMA 3 Trivia (wikitext section 36): \"* The Hunter is directly based on the real-world \"M-ATV\" MRAP designed by the Oshkosh Corporation (parodied as an in-universe product of the \"Rozkos\" company).\" Citation: https://armedassault.fandom.com/wiki/Hunter. The page asserts the basis in its strongest form ('directly based on the real-world \"M-ATV\" MRAP designed by the Oshkosh Corporation'). The class is fictional, so the Field Manual statement behind the page is the strongest available evidence. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "MRAP_02_base_F",
+    "class_token": "MRAP",
+    "catalogue_id": "zil_karatel",
+    "identity_source": "armedassault_ifrit_trivia",
+    "identity_evidence": "Armed Assault Wiki, Ifrit, ARMA 3 Trivia (wikitext section 36): \"* The Ifrit appears to be modelled after the ZiL \"Karatel\" (also known as the \"Punisher\" or \"Falcatus\"), an armoured vehicle in limited use with Russian security forces.\" Citation: https://armedassault.fandom.com/wiki/Ifrit. The page hedges: it says the Ifrit 'appears to be modelled after' the Karatel, and names the vehicle's alternate names ('Punisher' and 'Falcatus'). The hedge is recorded and not upgraded. The previous binding, the Oshkosh M-ATV M1240, is withdrawn: it rested on the class token MRAP alone and no page names an M-ATV for the Ifrit. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "O_MRAP_02_hmg_F",
+    "class_token": "MRAP",
+    "catalogue_id": "zil_karatel",
+    "identity_source": "armedassault_ifrit_trivia",
+    "identity_evidence": "Armed Assault Wiki, Ifrit, ARMA 3 Trivia (wikitext section 36): \"* The Ifrit appears to be modelled after the ZiL \"Karatel\" (also known as the \"Punisher\" or \"Falcatus\"), an armoured vehicle in limited use with Russian security forces.\" Citation: https://armedassault.fandom.com/wiki/Ifrit. The page hedges: it says the Ifrit 'appears to be modelled after' the Karatel, and names the vehicle's alternate names ('Punisher' and 'Falcatus'). The hedge is recorded and not upgraded. The previous binding, the Oshkosh M-ATV M1240, is withdrawn: it rested on the class token MRAP alone and no page names an M-ATV for the Ifrit. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "O_MRAP_02_gmg_F",
+    "class_token": "MRAP",
+    "catalogue_id": "zil_karatel",
+    "identity_source": "armedassault_ifrit_trivia",
+    "identity_evidence": "Armed Assault Wiki, Ifrit, ARMA 3 Trivia (wikitext section 36): \"* The Ifrit appears to be modelled after the ZiL \"Karatel\" (also known as the \"Punisher\" or \"Falcatus\"), an armoured vehicle in limited use with Russian security forces.\" Citation: https://armedassault.fandom.com/wiki/Ifrit. The page hedges: it says the Ifrit 'appears to be modelled after' the Karatel, and names the vehicle's alternate names ('Punisher' and 'Falcatus'). The hedge is recorded and not upgraded. The previous binding, the Oshkosh M-ATV M1240, is withdrawn: it rested on the class token MRAP alone and no page names an M-ATV for the Ifrit. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "MRAP_03_base_F",
+    "class_token": "MRAP",
+    "catalogue_id": "lgs_fennek_larv",
+    "identity_source": "armedassault_strider_trivia",
+    "identity_evidence": "Armed Assault Wiki, Strider, ARMA 3 Trivia (wikitext section 39): \"* The Strider is based on the real-world \"LGS Fennek\" LARV.\" Citation: https://armedassault.fandom.com/wiki/Strider. The page asserts the basis ('is based on the real-world \"LGS Fennek\" LARV'). It also states that the in-game classification as an MRAP is incorrect, because the real Fennek is a scout vehicle. The binding records the identity, not the game's category. The previous binding, the Oshkosh M-ATV M1240, is withdrawn: it rested on the MRAP token alone and no page names an M-ATV for the Strider. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "I_MRAP_03_hmg_F",
+    "class_token": "MRAP",
+    "catalogue_id": "lgs_fennek_larv",
+    "identity_source": "armedassault_strider_trivia",
+    "identity_evidence": "Armed Assault Wiki, Strider, ARMA 3 Trivia (wikitext section 39): \"* The Strider is based on the real-world \"LGS Fennek\" LARV.\" Citation: https://armedassault.fandom.com/wiki/Strider. The page asserts the basis ('is based on the real-world \"LGS Fennek\" LARV'). It also states that the in-game classification as an MRAP is incorrect, because the real Fennek is a scout vehicle. The binding records the identity, not the game's category. The previous binding, the Oshkosh M-ATV M1240, is withdrawn: it rested on the MRAP token alone and no page names an M-ATV for the Strider. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "I_MRAP_03_gmg_F",
+    "class_token": "MRAP",
+    "catalogue_id": "lgs_fennek_larv",
+    "identity_source": "armedassault_strider_trivia",
+    "identity_evidence": "Armed Assault Wiki, Strider, ARMA 3 Trivia (wikitext section 39): \"* The Strider is based on the real-world \"LGS Fennek\" LARV.\" Citation: https://armedassault.fandom.com/wiki/Strider. The page asserts the basis ('is based on the real-world \"LGS Fennek\" LARV'). It also states that the in-game classification as an MRAP is incorrect, because the real Fennek is a scout vehicle. The binding records the identity, not the game's category. The previous binding, the Oshkosh M-ATV M1240, is withdrawn: it rested on the MRAP token alone and no page names an M-ATV for the Strider. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   }
 ]

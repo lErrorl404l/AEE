@@ -92,6 +92,38 @@
   "note": "Tier-5 community compilation. The held bytes are the ARMA 3 Trivia section only. It states the ARMA 3 Hatchback is based on the 2007 Hyundai \"i-Blue\" concept car. The section publishes no mass, dimension, engine, tyre or performance figure, so this source carries an identity claim only and no value object cites it."
  },
  {
+  "source_id": "armedassault_hunter_trivia",
+  "tier": 5,
+  "type": "compilation",
+  "title": "Armed Assault Wiki, Hunter, ARMA 3 Trivia",
+  "edition": "Armed Assault Wiki (Fandom), community wiki, ARMA 3 Trivia section only, captured 2026-10-20",
+  "identifier": "Armed Assault Wiki article 'Hunter', ARMA 3 Trivia section",
+  "locator": "Section 36 of the article wikitext, 'Trivia', under the ARMA 3 heading",
+  "retrieved": "2026-10-20",
+  "url": "https://armedassault.fandom.com/wiki/Hunter",
+  "archive_ref": "ARMA 3 Trivia section held as wikitext at data/vehicle/sources/armedassault_hunter_trivia.wiki",
+  "licence": "Fandom wiki text is available under the Creative Commons Attribution-ShareAlike licence. The page is a community compilation, never a primary source.",
+  "primary_held": false,
+  "sha256": "69c88acbf521019b172bf23d44a5d589d54cc726e0c86c8d11a05dfd23d5a02c",
+  "note": "Tier-5 community compilation. The held bytes are the ARMA 3 Trivia section only. It states the Hunter is directly based on the Oshkosh M-ATV MRAP. The section publishes no mass, dimension, engine, tyre or performance figure, so this source carries an identity claim only and no value object cites it."
+ },
+ {
+  "source_id": "armedassault_ifrit_trivia",
+  "tier": 5,
+  "type": "compilation",
+  "title": "Armed Assault Wiki, Ifrit, ARMA 3 Trivia",
+  "edition": "Armed Assault Wiki (Fandom), community wiki, ARMA 3 Trivia section only, captured 2026-10-20",
+  "identifier": "Armed Assault Wiki article 'Ifrit', ARMA 3 Trivia section",
+  "locator": "Section 36 of the article wikitext, 'Trivia', under the ARMA 3 heading",
+  "retrieved": "2026-10-20",
+  "url": "https://armedassault.fandom.com/wiki/Ifrit",
+  "archive_ref": "ARMA 3 Trivia section held as wikitext at data/vehicle/sources/armedassault_ifrit_trivia.wiki",
+  "licence": "Fandom wiki text is available under the Creative Commons Attribution-ShareAlike licence. The page is a community compilation, never a primary source.",
+  "primary_held": false,
+  "sha256": "9cf6e0466f5feccce590ed2fdfc8fed6db93fefbbd3bfd02ca2937001d522274",
+  "note": "Tier-5 community compilation. The held bytes are the ARMA 3 Trivia section only. It states the Ifrit appears to be modelled after the ZiL Karatel. The section publishes no mass, dimension, engine, tyre or performance figure, so this source carries an identity claim only and no value object cites it."
+ },
+ {
   "source_id": "armedassault_offroad_trivia",
   "tier": 5,
   "type": "compilation",
@@ -122,6 +154,22 @@
   "primary_held": false,
   "sha256": "e7430cfa7bec4b1bb83ce3ce1abeab2ad09005f5245b00153e537a77c0a1e9c7",
   "note": "Tier-5 community compilation. The held bytes are the ARMA 3 Trivia section only. It states the ARMA 3 Quadbike appears to be based on the Yamaha Grizzly 450 ATV. The section publishes no mass, dimension, engine, tyre or performance figure, so this source carries an identity claim only and no value object cites it."
+ },
+ {
+  "source_id": "armedassault_strider_trivia",
+  "tier": 5,
+  "type": "compilation",
+  "title": "Armed Assault Wiki, Strider, ARMA 3 Trivia",
+  "edition": "Armed Assault Wiki (Fandom), community wiki, ARMA 3 Trivia section only, captured 2026-10-20",
+  "identifier": "Armed Assault Wiki article 'Strider', ARMA 3 Trivia section",
+  "locator": "Section 39 of the article wikitext, 'Trivia', under the ARMA 3 heading",
+  "retrieved": "2026-10-20",
+  "url": "https://armedassault.fandom.com/wiki/Strider",
+  "archive_ref": "ARMA 3 Trivia section held as wikitext at data/vehicle/sources/armedassault_strider_trivia.wiki",
+  "licence": "Fandom wiki text is available under the Creative Commons Attribution-ShareAlike licence. The page is a community compilation, never a primary source.",
+  "primary_held": false,
+  "sha256": "b39699b8328195dc98f4c1eca27dc9066277a02bb7b71aa18f2556cc7b4fde16",
+  "note": "Tier-5 community compilation. The held bytes are the ARMA 3 Trivia section only. It states the Strider is based on the LGS Fennek LARV. The section publishes no mass, dimension, engine, tyre or performance figure, so this source carries an identity claim only and no value object cites it."
  },
  {
   "source_id": "armedassault_suv_trivia",
