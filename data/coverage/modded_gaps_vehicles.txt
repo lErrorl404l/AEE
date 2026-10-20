@@ -1,5 +1,4 @@
 # modded match coverage gaps: vehicles
-# 2 unresolved of 435 modded classes (99.5% resolved)
+# 1 unresolved of 435 modded classes (99.8% resolved)
 # class	display	parent	source
-LOP_Nissan_PKM_base	Nissan (PKM)	PO_Pickup_PK_base	po_main.pbo
 rhsusf_fmtv_base	FMTV	Truck_01_base_F	rhsusf_c_fmtv.pbo

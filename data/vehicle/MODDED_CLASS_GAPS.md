@@ -13,13 +13,12 @@ inheritance chain is read from the full scan, so a modded class keeps a base
 game parent, and only a class declared by a modded PBO is scored.
 
 The 2026-10-20 scan of the installed content scores 435 modded vehicle
-classes. The catalogue names 433. Two stay open. The base game scores 78 of
+classes. The catalogue names 434. One stays open. The base game scores 78 of
 79.
 
 | Group | Classes | Why the group stays open |
 |---|---|---|
-| Maker over another maker's entry | 1 | `LOP_Nissan_PKM_base` names a Nissan over the ancestor's Toyota entry. |
-| Family label over a generic class | 1 | `rhsusf_fmtv_base` names a family, and its nearest mapped ancestor is the engine's `Car`. |
+| Family label over a generic class | 1 | `rhsusf_fmtv_base` names a family, and every term that would reach it also reaches another class. |
 
 Twelve StaticWeapon emplacements are excluded from the denominator by kind. A
 tripod mount, a towed howitzer and a MANPADS post are not vehicles, so they
@@ -146,17 +145,41 @@ The RHS KamAZ-5350 is unaffected: it does not descend from the Zamak, so no
 chain reaches it, and its own keyword still names it. The lock
 `test_the_rhs_kamaz_5350_still_resolves_to_the_5350` holds that.
 
-## The two maker labels
+## The two identity-only entries
 
-`LOP_Nissan_PKM_base` inherits `PO_Pickup_PK_base`, whose entry is the Toyota
-T100. The class text says Nissan. A Nissan is not a Toyota, so the rung
-refuses: the ancestor is a different article, not a donor body.
+Two classes name a vehicle that no held document publishes a figure for. Each
+has an entry that carries the identity only: `identity_only` is set, `values`
+is empty, the entry is not runtime-ready, and its runtime row is labelled
+zeros. The identity evidence is the engine class table, the form
+`data/vehicle/class_map.json` records as `aee_class_table`, at grade
+`claimed`. No document is cited and no source record is added, because the
+entry holds no value.
 
-`rhsusf_fmtv_base` inherits `Truck_01_base_F`, which the table does not map.
-Its nearest mapped ancestor is the engine's `Car` class, whose entry is a
-passenger car. The class text says `FMTV`, which the car's entry does not
-carry, so the rung refuses. The entry that would fit is a family of four
-M-numbers, and the class text names none of them.
+`LOP_Nissan_PKM_base` is `Nissan (PKM)` and inherits `PO_Pickup_PK_base`, a
+pickup with a crew-served PKM. The entry `nissan_pickup_technical` names the
+maker and no model: Nissan built several pickups, and no held source names the
+one in the content, so the D21, Navara and Hardbody designations stay out. The
+alias `nissan` names the class, and the ladder answers at the alias layer. The
+token `pkm` stays out of the match terms, because 91 scanned classes carry it,
+the RHS M1151 vehicles among them, so it would answer an M1151 as a Nissan
+technical. The nearest mapped ancestor is the Honda Civic, and it is not the
+answer.
+
+`rhsusf_fmtv_base` is `FMTV` and inherits `Truck_01_base_F`. The entry
+`fmtv_family` names the United States Army Family of Medium Tactical Vehicles,
+claims no M-number and no manufacturer, and holds no figure. It carries no
+match term, so the class stays open. The measurement gives the reason. The
+token `fmtv` as an alias stops 69 vehicle-table classes and moves four. As a
+keyword it ties the four M1078A1R and M1084A1R SOV classes, which resolve on
+that layer, and the runtime returns nothing from a layer with more than one
+candidate, so those four stop resolving. A class name joined as `fmtvbase` is
+not a published designation, so it is not used. The M1078, M1083, M1084 and
+M1085 classes resolve to their own entries, and the locks in
+`tools/tests/test_mod_class_resolution.py` hold both facts.
+
+The layer rule decides this entry: evidence that ties is not evidence. The
+same rule is mirrored in `tools/tests/test_mod_class_resolution.py`, which
+counts a tied layer as no answer.
 
 ## Aircraft
 

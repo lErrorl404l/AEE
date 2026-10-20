@@ -205,9 +205,9 @@
     "known_unresolvable": {
       "vehicle_modded": {
         "armafpv_drone_no_published_designation": 8,
-        "different_maker_than_ancestor": 1,
+        "different_maker_than_ancestor": 0,
         "family_label_over_a_generic_class": 1,
-        "note": "Seventeen modded vehicle classes closed by engine ancestry (433/435): the seven Offroad re-uses and the ten Project OPFOR KAMAZ retextures, which descend from the Zamak and close on it now that the Zamak variants are bound to kamaz_4310. Two remain. LOP_Nissan_PKM_base names a Nissan over the ancestor's Toyota entry, and rhsusf_fmtv_base names a family over the engine's Car class. The rung refuses both rather than answer a different vehicle. The eight aircraft gaps are ArmaFPV FPV drones. None is a failure.",
+        "note": "The vehicle table names 434 of 435 modded classes. Seventeen closed by engine ancestry: the seven Offroad re-uses and the ten Project OPFOR KAMAZ retextures, which descend from the Zamak that the catalogue binds to kamaz_4310. One closed by its own text: LOP_Nissan_PKM_base resolves to nissan_pickup_technical through the maker alias nissan. The entry holds no figure and asserts no model designation. One stays open: rhsusf_fmtv_base. The identity-only entry fmtv_family names the FMTV family and holds no figure, but it advertises no match term. The token fmtv as an alias stops 69 vehicle-table classes and moves four; as a keyword it ties the four M1078A1R and M1084A1R SOV classes, so their layer returns nothing and they stop resolving. The class therefore stays open rather than trade four classes for one. One base-game class stays open: MBT_01_arty_base_F, the fictional M4 Scorcher, which is not a modded gap. The eight aircraft gaps are ArmaFPV FPV drones. None is a failure.",
         "retexture_of_an_unmapped_ancestor": 0
       }
     },
@@ -577,11 +577,11 @@
       ],
       "label": "vehicles",
       "modded": {
-        "hit": 433,
-        "pct": 99.54,
+        "hit": 434,
+        "pct": 99.77,
         "total": 435
       },
-      "unresolved_modded": 2
+      "unresolved_modded": 1
     }
   }
 }

@@ -1,0 +1,24 @@
+{
+  "retrieved": "2026-10-20",
+  "note": "Identity-only capture for the FMTV, the United States Army Family of Medium Tactical Vehicles. The identity evidence is the engine class table: the class name is rhsusf_fmtv_base and the display name is FMTV, which is the family designation itself. The grade is claimed, because the source is the engine class table. That is the form data/vehicle/class_map.json records as aee_class_table: identity evidence only, never a figure. No document citation is invented and no sources.json record is added, because the entry holds no value. No M-number is claimed. The installed content ships the M1078, M1083, M1084 and M1085 members as separate classes with their own display names, and each of those resolves to its own entry, so this entry names the family and no member of it. No manufacturer is asserted either, because the engine text names none. No figure is held: no held source publishes a mass, dimension or engine value for the family, so every runtime field resolves to a labelled absent zero and the entry is not runtime-ready. The entry advertises no match term, and rhsusf_fmtv_base stays open. The measurement gives the reason. The token fmtv as an alias stops 69 vehicle-table classes and moves four, and as a keyword it ties the four M1078A1R and M1084A1R SOV classes, which resolve on that layer, so the layer returns nothing and they stop resolving. A class name joined into fmtvbase is not a published designation and is not used. The bare abbreviation therefore stays out of the canonical name and the model, and the entry names the family in words only. The retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "fmtv_family",
+      "canonical_name": "FMTV family (Family of Medium Tactical Vehicles)",
+      "maker": "United States Army (programme)",
+      "model": "Family of Medium Tactical Vehicles",
+      "variant": "family designation, no member claimed",
+      "variant_id": "fmtv_family",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "United States",
+      "era": "modern",
+      "aliases": [],
+      "keywords": [],
+      "runtime_ready": false,
+      "identity_only": true,
+      "values": {}
+    }
+  ]
+}
