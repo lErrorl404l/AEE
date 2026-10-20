@@ -14,8 +14,17 @@
       "class_token": "",
       "country": "Soviet Union",
       "era": "cold war",
-      "aliases": ["btr-80", "btr80", "btr 80"],
-      "keywords": ["apc", "amphibious", "8x8", "armored personnel carrier", "btr"],
+      "aliases": [
+        "btr-80",
+        "btr80",
+        "btr 80"
+      ],
+      "keywords": [
+        "apc",
+        "amphibious",
+        "8x8",
+        "armored personnel carrier"
+      ],
       "runtime_ready": false,
       "values": {
         "operating_weight_kg": {

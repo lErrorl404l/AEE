@@ -23,8 +23,7 @@
         "apc",
         "amphibious",
         "8x8",
-        "armored personnel carrier",
-        "btr"
+        "armored personnel carrier"
       ],
       "runtime_ready": false,
       "values": {
