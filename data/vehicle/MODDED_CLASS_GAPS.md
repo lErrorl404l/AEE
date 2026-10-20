@@ -13,13 +13,12 @@ inheritance chain is read from the full scan, so a modded class keeps a base
 game parent, and only a class declared by a modded PBO is scored.
 
 The 2026-10-20 scan of the installed content scores 435 modded vehicle
-classes. The catalogue names 430. Five stay open. The base game scores 77
-of 79.
+classes. The catalogue names 434, which is 99.8 %. One class stays open. The
+base game scores 77 of 79.
 
 | Group | Classes | Why the group stays open |
 |---|---|---|
-| Mark against mark on a type stem | 4 | `rhs_t72bd_tv` and `rhs_t72be_tv` tie at the keyword layer on `t72b3` against `t72b`; `rhs_t90saa_tv` and `rhs_t90sab_tv` tie on `t90s` against the T-90SM. A tie is final, so the family rung is never reached. |
-| Configuration word shared by two entries | 1 | `rhsusf_RG33_base` names `RG33 4X4 SOCOM`, and `4x4` is a keyword of seven catalogue entries. The keyword layer ties and the family rung is not reached. |
+| A configuration word on a family stem | 1 | `rhsusf_RG33_base` names `RG33 4X4 SOCOM`. `rg334x4` is a keyword of both RG-33 4x4 entries, so the keyword layer matches two rows and refuses the tie, and the family rung is never reached. The M-number that would answer, M1238, is not in the class text. |
 
 Twelve StaticWeapon emplacements are excluded from the denominator by kind. A
 tripod mount, a towed howitzer and a MANPADS post are not vehicles, so they
@@ -39,8 +38,8 @@ Five family entries carry the corpus: `t72_family`, `rg33_family`,
 `landrover_family`, `fmtv_family` and no T-90 entry. The T-90 family is not
 captured: `t90` is already a curated alias of the T-90 mark, and a family
 entry owning the same word would break the rule that a family designation is
-never a mark's alias. The T-90SA classes would not close even so, because
-they tie on `t90s` at the keyword layer.
+never a mark's alias. The T-90SA classes close without one, on `t90sa`,
+because no mark holds the stem `t90s` now.
 
 A designation a family entry owns is dropped from every mark row. That is the
 same reserved-name rule the generator already applies to a base model, and it
@@ -61,23 +60,54 @@ the 17 inherited closures and `kamaz_5350_mustang` are unchanged with it.
 
 One class moved. `LOP_T72_base` displays `T-72` and answered the T-72M4CZ,
 because the M4CZ carried `t72` as a curated alias, which is the shape the rule
-forbids. With the alias gone the classname's own glue answers instead:
+forbids. With the alias gone the classname's own glue answered instead:
 `LOP_T72_base` folds to `lopt72base`, which holds `t72b`, the T-72B mark's
-published designation, so the keyword layer names `t_72b_obr_1984g`. The
-correct answer for a class that displays `T-72` is the family, and reaching it
-needs a token-boundary rule in the substring layers. This change does not make
-one: the runtime matcher is the specification, and the brief for this work
-forbids changing the ladder. The class is a Project OPFOR scaffolding base
-that no unit places. The move is recorded here so the next change has the
-evidence.
+published designation, so the keyword layer named `t_72b_obr_1984g`. That was
+a weaker answer for a class that displays `T-72`. The derived-stem rule below
+drops `t72b` from the T-72B mark, so the family rung now answers with
+`t72_family`, which is the right identity for a class that names only T-72.
+The class is a Project OPFOR scaffolding base that no unit places. The move is
+recorded here so the next change has the evidence.
 
-The T-72B3 classes name the mark `T-72B3`, which the catalogue holds as
-`t_72b3_obr_2012g`. Its text also carries `t72b`, the stem of the T-72B obr.
-1984g. mark, so the two tie and the runtime refuses the query. The RG-33 4x4
-SOCOM base class likewise names a configuration that seven entries advertise
-as `4x4`. Neither is a family word, and neither is a family answer: the T-72B3
-is a mark, and naming the family for it would be a weaker answer than the one
-the catalogue already holds.
+## The derived-stem rule of 2026-10-20
+
+A mark must not hold a word that another mark's designation extends. The
+keyword layer matches by substring, so a short stem answers every query that a
+longer designation answers. The T-72B obr. 1984g. mark derives `t72b` from
+"T-72B", and `t72b` is a substring of "T-72B3", so the mark tied with the
+T-72B3 mark and the runtime refused the query.
+`tools/validation/gen_vehicle_data.py` now drops a derived keyword when
+another entry's key extends it, and keeps a key that only its own entry
+extends.
+
+Four classes closed on their own text, and none stopped resolving:
+
+| Game class | Display | Term that closed it |
+|---|---|---|
+| `rhs_t72bd_tv` | T-72B3 (obr. 2012g.) | `t72b3`, after `t72b` left the T-72B obr. 1984g. mark |
+| `rhs_t72be_tv` | T-72B3 (obr. 2016g.) | `t72b3` in its own text |
+| `rhs_t90saa_tv` | T-90SA (obr. 2004g.) | `t90sa`, after the `t-90s` alias left the T-90 mark |
+| `rhs_t90sab_tv` | T-90SA (obr. 2016g.) | `t90sa` in its own text |
+
+The T-90 closure has two halves. The T-90 mark curated `t-90s`, a partial
+designation that the T-90SA and the T-90SM both extend, so the alias layer
+could not answer and the query fell to a tie. That alias is gone. The derived
+`t90s`, which both T-90 marks carry from their own canonical names, leaves by
+the same rule. Each mark then answers on its own `t90sa` or `t90sm`.
+
+The rule adds no data. Both marks were already in the corpus with their own
+sources: `t_72b3_obr_2012g` cites `ru_wikipedia_d0_a2_72_d0_913` and
+`wikipedia_t_72`, and `t_90sa` cites `wikipedia_t_90`.
+
+The check compared `(class, display) -> entry` for all 514 scored classes
+before and after. The four closures and the `LOP_T72_base` move are the only
+changes.
+
+## The one class that stays open
+
+| Game class | Display | Why it stays open |
+|---|---|---|
+| `rhsusf_RG33_base` | RG33 4X4 SOCOM | The text names the family and a configuration. `rg334x4` is a keyword of both RG-33 4x4 entries, so the keyword layer matches two rows and refuses the tie, and the family rung is never reached. The M-number that would answer, M1238, is not in the class text. A class whose text names it closes on it: `rhsusf_RG33_CROWS_base` and `rhsusf_RG33_CROWSMK19_base`. |
 
 ## The family-word work of 2026-10-20
 
@@ -108,46 +138,6 @@ fourteen.
 No class changed entry, and no class stopped resolving, in any of the four
 batches. The check compared `(class, display) -> entry` for all 514 scored
 classes before and after each batch.
-
-### What stays open and why the data layer cannot close it
-
-Six of the thirteen remaining gaps block on a term the generator DERIVES from
-an entry's canonical name, not on a curated keyword:
-
-- `t_72b_obr_1984g` derives `t72b` and `t72` from "T-72B", and both are
-  substrings of "T-72B3".
-- `t_90sa` and `t_90sm` both derive `t90s` from their own canonical names.
-- `land_rover_wolf_xd_110` and `snatch_land_rover` both derive the marque pair
-  `landrover` from their canonical names.
-- The four RG-33 entries all derive `rg33` from the word "RG-33".
-
-`tools/validation/identity_designations.py` suppresses a derived term only
-when it is another entry's canonical name, or when the entry curates it as an
-alias. Curating a family word as an alias of one mark is the fault this work
-removes, so it is not available as a fix. Closing these needs a family entry
-that owns the stem, or a curated suppression list in the generator. Both are
-outside a catalogue alias and keyword edit, so the classes stay open and the
-reason is recorded in the lock.
-
-### Every class that stays open
-
-| Game class | Display | Why it stays open |
-|---|---|---|
-| `rhs_t72bd_tv` | T-72B3 (obr. 2012g.) | The keyword layer ties on `t72b3` against `t_72b_obr_1984g`, which derives the family keywords `t72b` and `t72` from "T-72B". |
-| `rhs_t72be_tv` | T-72B3 (obr. 2016g.) | The same tie. The class descends from `rhs_t72bd_tv`. |
-| `rhs_t90saa_tv` | T-90SA (obr. 2004g.) | The keyword layer ties on the derived family stem `t90s`, which both T-90 entries carry. |
-| `rhs_t90sab_tv` | T-90SA (obr. 2016g.) | The same tie. The class descends from `rhs_t90a_tv`. |
-| `rhssaf_army_t72s` | T-72MS | The keyword layer ties the derived `t72` on the T-72B entry against `t72m` on the T-72MS entry. |
-| `LOP_LandRover_base_02` | Land Rover | The text names the maker and no mark. Both Land Rover entries derive the marque pair `landrover`. |
-| `LOP_LandRover_mg_base` | Land Rover (M2) | The same maker-only text. |
-| `rhsusf_RG33_base` | RG33 4X4 SOCOM | The text names the family and a configuration. The derived keyword `rg33` ties four entries. |
-| `rhsusf_RG33_CROWS_base` | M1238A1 ASV (CROWS/M2) | The family keyword ties the four RG-33 entries before the M1238 mark can answer. |
-| `rhsusf_RG33_CROWSMK19_base` | M1238A1 ASV (CROWS/Mk19) | The same family tie. |
-| `rhsusf_rg33_d` | RG-33 | The text names the family alone. |
-| `rhsusf_rg33_m2_d` | RG-33 (M2) | The same family tie. |
-| `rhsusf_fmtv_base` | FMTV | Every term that would reach it also reaches another class. See the identity-only entry section. |
-
-
 
 ## The inheritance rung
 

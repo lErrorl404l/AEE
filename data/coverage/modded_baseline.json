@@ -221,14 +221,14 @@
       },
       "vehicles": {
         "note": "Every class here is named by its own text at a layer the runtime would refuse as a tie, or names no entry at all. A tie is answered as an empty result by the engine, so the measurement reports the class as open even where a weaker layer would have guessed. Closing one needs a term the class's own text carries and no other class does.",
-        "unresolved": 5
+        "unresolved": 1
       }
     },
-    "measured_rows": 135480,
+    "measured_rows": 135427,
     "method": "A class is BASE when the PBO that declares it is in the base game's Addons directory, and MODDED otherwise. Rows come from the binarised configs only. Regenerate with tools/report_match_coverage.py --write-gaps --write-baseline.",
-    "scan": "/tmp/opencode/scan.jsonl",
-    "scan_rows": 174306,
-    "scan_sha256": "afddbc290d351de799b63559f7173e09eb3ea3d19ba013e0fe36b2266e891c71"
+    "scan": "/tmp/opencode/scan_all.jsonl",
+    "scan_rows": 174232,
+    "scan_sha256": "9fbd9fe7b381774b76ab379162032816e65a06c58fc8e808f30183e6c1c21e0a"
   },
   "schema": "aee.match_coverage.baseline/1",
   "tables": {
@@ -590,11 +590,11 @@
       ],
       "label": "vehicles",
       "modded": {
-        "hit": 430,
-        "pct": 98.85,
+        "hit": 434,
+        "pct": 99.77,
         "total": 435
       },
-      "unresolved_modded": 5
+      "unresolved_modded": 1
     }
   }
 }

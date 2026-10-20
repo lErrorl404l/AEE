@@ -1,8 +1,4 @@
 # modded match coverage gaps: vehicles
-# 5 unresolved of 435 modded classes (98.9% resolved)
+# 1 unresolved of 435 modded classes (99.8% resolved)
 # class	display	parent	source
-rhs_t72bd_tv	T-72B3 (obr. 2012g.)	rhs_a3t72tank_base	rhs_c_t72.pbo
-rhs_t72be_tv	T-72B3 (obr. 2016g.)	rhs_t72bd_tv	rhs_c_t72.pbo
-rhs_t90saa_tv	T-90SA (obr. 2004g.)	rhs_t90a_tv	rhs_c_t72.pbo
-rhs_t90sab_tv	T-90SA (obr. 2016g.)	rhs_t90a_tv	rhs_c_t72.pbo
 rhsusf_RG33_base	RG33 4X4 SOCOM	MRAP_01_base_F	rhsusf_c_rg33.pbo
