@@ -17,14 +17,17 @@ must resolve to; each inherited one also names the config chain that puts it
 there. Each open class is listed with the reason it stays open, so a later
 change that closes or breaks one shows up here.
 
-The vehicle table closes thirty-nine modded classes: twenty-one by their own
+The vehicle table closes sixty-nine modded classes: twenty-one by their own
 text (the RHS M1237 RG-33L "Plus" and M1239 SOCOM AUV families, the PHAN
 Typhoon truck, the four Tahoe marks, the RHS Object 681, the Jbad Caterpillar
 789D, and the five the counterpart research closed), one more by the
-identity-only entry its text names (the Project OPFOR Nissan pickup), and
-seventeen by engine ancestry - the seven Arma 3 Offroad re-uses and the ten
-Project OPFOR KAMAZ trucks, whose chain reaches the Zamak that the wiki ties
-to the KamAZ-4310 family.
+identity-only entry its text names (the Project OPFOR Nissan pickup), thirty
+by the family-word work of 2026-10-20 (the twelve M113A3 classes, the sixteen
+M1240A1 classes, the HEMTT A4 and the BTR-70 base, each closed because a
+family word left the specific mark's alias set), and seventeen by engine
+ancestry - the seven Arma 3 Offroad re-uses and the ten Project OPFOR KAMAZ
+trucks, whose chain reaches the Zamak that the wiki ties to the KamAZ-4310
+family.
 
 An inherited closure says the class IS that ancestor in the engine. It does
 not say the mod's own paint names a different real vehicle, because where the
@@ -120,6 +123,39 @@ CLOSED_VEHICLE_CASES: tuple[tuple[str, str, str], ...] = (
     # Closed by the 2026-10-20 identity-only capture: the class names its
     # entry from its own text, so it never reaches the ancestry rung.
     ("LOP_Nissan_PKM_base", "Nissan (PKM)", "nissan_pickup_technical"),
+    # Closed by the 2026-10-20 family-word work: the family term left the
+    # alias or keyword set of the specific mark that shared it, so the mark
+    # the class text names is the only candidate left at that layer.
+    ("LOP_AA_M113_C", "M113A3 M2 (Camo)", "m113a3"),
+    ("LOP_AA_M113_D", "M113A3 M2 (Desert)", "m113a3"),
+    ("LOP_AA_M113_W", "M113A3 M2 (Woodland)", "m113a3"),
+    ("LOP_M113_base", "M113A3 M2", "m113a3"),
+    ("rhsusf_m113_usarmy", "M113A3 (M2)", "m113a3"),
+    ("rhsusf_m113_usarmy_M240", "M113A3 (M240)", "m113a3"),
+    ("rhsusf_m113_usarmy_M2_90", "M113A3 (M2/Early)", "m113a3"),
+    ("rhsusf_m113_usarmy_MK19", "M113A3 (Mk19)", "m113a3"),
+    ("rhsusf_m113_usarmy_MK19_90", "M113A3 (Mk19/Early)", "m113a3"),
+    ("rhsusf_m113_usarmy_medical", "M113A3 (MEV)", "m113a3"),
+    ("rhsusf_m113_usarmy_supply", "M113A3 (Ammo)", "m113a3"),
+    ("rhsusf_m113_usarmy_unarmed", "M113A3 (Unarmed)", "m113a3"),
+    ("rhsusf_m1240a1_usarmy_d", "M1240", "m_atv_m1240a1"),
+    ("rhsusf_m1240a1_usarmy_wd", "M1240", "m_atv_m1240a1"),
+    ("rhsusf_m1240a1_usmc_d", "M1240", "m_atv_m1240a1"),
+    ("rhsusf_m1240a1_usmc_wd", "M1240", "m_atv_m1240a1"),
+    ("rhsusf_m1240a1_m2_usarmy_d", "M1240 (O-GPK/M2)", "m_atv_m1240a1"),
+    ("rhsusf_m1240a1_m2_usarmy_wd", "M1240 (O-GPK/M2)", "m_atv_m1240a1"),
+    ("rhsusf_m1240a1_m2_usmc_d", "M1240 (O-GPK/M2)", "m_atv_m1240a1"),
+    ("rhsusf_m1240a1_m2_usmc_wd", "M1240 (O-GPK/M2)", "m_atv_m1240a1"),
+    ("rhsusf_m1240a1_mk19_usarmy_d", "M1240 (O-GPK/Mk19)", "m_atv_m1240a1"),
+    ("rhsusf_m1240a1_mk19_usarmy_wd", "M1240 (O-GPK/Mk19)", "m_atv_m1240a1"),
+    ("rhsusf_m1240a1_mk19_usmc_d", "M1240 (O-GPK/Mk19)", "m_atv_m1240a1"),
+    ("rhsusf_m1240a1_mk19_usmc_wd", "M1240 (O-GPK/Mk19)", "m_atv_m1240a1"),
+    ("rhsusf_m1240a1_m240_usarmy_d", "M1240 (O-GPK/M240)", "m_atv_m1240a1"),
+    ("rhsusf_m1240a1_m240_usarmy_wd", "M1240 (O-GPK/M240)", "m_atv_m1240a1"),
+    ("rhsusf_m1240a1_m240_usmc_d", "M1240 (O-GPK/M240)", "m_atv_m1240a1"),
+    ("rhsusf_m1240a1_m240_usmc_wd", "M1240 (O-GPK/M240)", "m_atv_m1240a1"),
+    ("rhsusf_HEMTT_A4_base", "M977A4", "m977a4"),
+    ("rhs_btr_base", "BTR-70", "btr_70"),
 )
 
 # Modded classes that stay open on the vehicle side, with the reason.
@@ -254,6 +290,21 @@ IDENTITY_ONLY_VEHICLE_CASES: tuple[tuple[str, str, tuple[str, ...], str], ...] =
 # another class too: fmtv as an alias stops 69 classes and moves four, and as
 # a keyword it ties the four SOV classes that resolve on that layer.
 _FMTV_TAIL = ("Truck_01_base_F", "Truck_F", "Car_F", "Car")
+# The T-72 and T-90 marks: the catalogue entry's canonical name derives the
+# family stem as a keyword (identity_designations._type_stems), so the B
+# mark carries "t72b" and "t72" whatever its curated keyword list says.
+_T72_TAIL = ("rhs_a3t72tank_base", "tank_f", "tank")
+_T90_TAIL = (
+    "rhs_t90a_tv",
+    "rhs_t90_tv",
+    "rhs_t72bd_tv",
+    "rhs_a3t72tank_base",
+    "tank_f",
+    "tank",
+)
+# The RG-33 family: "rg33" is derived from each canonical name's "RG-33"
+# word, so all four entries advertise it.
+_RG33_TAIL = ("rhsusf_RG33_base", "MRAP_01_base_F", "Car_F", "Car")
 
 VEHICLE_OPEN_CASES: tuple[tuple[str, str, tuple[str, ...], str], ...] = (
     (
@@ -261,6 +312,78 @@ VEHICLE_OPEN_CASES: tuple[tuple[str, str, tuple[str, ...], str], ...] = (
         "FMTV",
         _FMTV_TAIL,
         "the family designation fmtv as an alias stops 69 classes and moves four; as a keyword it ties the four SOV classes, so their layer returns nothing",
+    ),
+    (
+        "rhs_t72bd_tv",
+        "T-72B3 (obr. 2012g.)",
+        _T72_TAIL,
+        "the keyword layer ties on t72b3 against the T-72B obr. 1984g. entry, whose canonical name derives the family keywords t72b and t72; a catalogue edit cannot drop a derived keyword without claiming the family as an alias",
+    ),
+    (
+        "rhs_t72be_tv",
+        "T-72B3 (obr. 2016g.)",
+        ("rhs_t72bd_tv", *_T72_TAIL),
+        "the keyword layer ties on t72b3 against the T-72B obr. 1984g. entry, whose canonical name derives the family keywords t72b and t72; a catalogue edit cannot drop a derived keyword without claiming the family as an alias",
+    ),
+    (
+        "rhs_t90saa_tv",
+        "T-90SA (obr. 2004g.)",
+        _T90_TAIL,
+        "the keyword layer ties on the derived family stem t90s, which both the T-90SA and the T-90SM entries carry from their canonical names",
+    ),
+    (
+        "rhs_t90sab_tv",
+        "T-90SA (obr. 2016g.)",
+        _T90_TAIL,
+        "the keyword layer ties on the derived family stem t90s, which both the T-90SA and the T-90SM entries carry from their canonical names",
+    ),
+    (
+        "rhssaf_army_t72s",
+        "T-72MS",
+        ("rhs_t72bd_tv", *_T72_TAIL),
+        "the keyword layer ties on the derived family keyword t72 from the T-72B obr. 1984g. entry against t72m on the T-72MS entry",
+    ),
+    (
+        "LOP_LandRover_base_02",
+        "Land Rover",
+        ("PO_LandRover_base_W", "PO_LandRover_base", "Car_F", "Car"),
+        "the text names the maker Land Rover, not a mark; the marque pair landrover is derived from both canonical names and ties",
+    ),
+    (
+        "LOP_LandRover_mg_base",
+        "Land Rover (M2)",
+        ("PO_LandRover_Base_MG", "PO_LandRover_base", "Car_F", "Car"),
+        "the text names the maker Land Rover, not a mark; the marque pair landrover is derived from both canonical names and ties",
+    ),
+    (
+        "rhsusf_RG33_base",
+        "RG33 4X4 SOCOM",
+        ("MRAP_01_base_F", "Car_F", "Car"),
+        "the text names the RG-33 family and a configuration, not one mark; the derived keyword rg33 ties four entries",
+    ),
+    (
+        "rhsusf_RG33_CROWS_base",
+        "M1238A1 ASV (CROWS/M2)",
+        _RG33_TAIL,
+        "the text names the RG-33 family; the derived keyword rg33 ties the four RG-33 entries before the M1238 mark can answer",
+    ),
+    (
+        "rhsusf_RG33_CROWSMK19_base",
+        "M1238A1 ASV (CROWS/Mk19)",
+        ("rhsusf_RG33_CROWS_base", *_RG33_TAIL),
+        "the text names the RG-33 family; the derived keyword rg33 ties the four RG-33 entries before the M1238 mark can answer",
+    ),
+    (
+        "rhsusf_rg33_d",
+        "RG-33",
+        _RG33_TAIL,
+        "the text names the RG-33 family alone, and the family keyword is derived on all four entries, so no single mark can answer",
+    ),
+    (
+        "rhsusf_rg33_m2_d",
+        "RG-33 (M2)",
+        ("rhsusf_RG33_CROWS_base", *_RG33_TAIL),
+        "the text names the RG-33 family; the derived keyword rg33 ties the four RG-33 entries before the M1238 mark can answer",
     ),
 )
 
@@ -429,18 +552,19 @@ class ClosedModdedVehicleTest(unittest.TestCase):
     def setUpClass(cls) -> None:
         cls.table = rows(VEHICLE_MATCH)
 
-    def test_the_closed_modded_vehicle_class_count_is_twenty_two(self) -> None:
-        self.assertEqual(22, len(CLOSED_VEHICLE_CASES))
+    def test_the_closed_modded_vehicle_class_count_is_fifty_two(self) -> None:
+        # Twenty-two by the earlier work, thirty by the family-word work.
+        self.assertEqual(52, len(CLOSED_VEHICLE_CASES))
 
     def test_each_closed_modded_vehicle_class_resolves(self) -> None:
         for name, display, want in CLOSED_VEHICLE_CASES:
             with self.subTest(game_class=name):
                 self.assertEqual(want, resolve(self.table, name, display))
 
-    def test_the_closed_modded_vehicle_class_count_is_thirty_nine(self) -> None:
-        # Twenty-two by their own text and seventeen by engine ancestry.
+    def test_the_closed_modded_vehicle_class_count_is_sixty_nine(self) -> None:
+        # Fifty-two by their own text and seventeen by engine ancestry.
         self.assertEqual(
-            22 + 17, len(CLOSED_VEHICLE_CASES) + len(INHERITED_VEHICLE_CASES)
+            52 + 17, len(CLOSED_VEHICLE_CASES) + len(INHERITED_VEHICLE_CASES)
         )
 
     def test_each_inherited_class_is_a_descendant_of_the_ancestor_that_answers(
@@ -512,15 +636,31 @@ class OpenModdedVehicleTest(unittest.TestCase):
             with self.subTest(game_class=name):
                 self.assertIsNone(resolve(self.table, name))
 
-    def test_the_open_modded_vehicle_class_count_is_one(self) -> None:
-        # The measured modded gap list. A class that leaves one table has to
-        # arrive in another, so the count is the same number in both.
-        self.assertEqual(1, len(VEHICLE_OPEN_CASES))
+    def gap_classes(self) -> dict:
         body = (REPO / "data/coverage/modded_gaps_vehicles.txt").read_text(
             encoding="utf-8"
         )
-        listed = {line.split("\t")[0] for line in body.splitlines() if line[0] != "#"}
-        self.assertEqual({name for name, _d, _c, _r in VEHICLE_OPEN_CASES}, listed)
+        out = {}
+        for line in body.splitlines():
+            if not line or line.startswith("#"):
+                continue
+            fields = line.split("\t")
+            out[fields[0]] = fields[1]
+        return out
+
+    def test_every_class_in_the_gap_list_is_open(self) -> None:
+        # The gap list is the measured worklist. If the matcher can name a
+        # class the list calls open, the list is lying about the engine.
+        for name, display in self.gap_classes().items():
+            with self.subTest(game_class=name):
+                self.assertIsNone(resolve(self.table, name, display))
+
+    def test_every_documented_open_case_is_in_the_gap_list(self) -> None:
+        listed = self.gap_classes()
+        for name, display, _chain, _reason in VEHICLE_OPEN_CASES:
+            with self.subTest(game_class=name):
+                self.assertIn(name, listed)
+                self.assertEqual(display, listed[name])
 
     def test_every_open_class_states_a_one_line_reason(self) -> None:
         for name, _display, _chain, reason in VEHICLE_OPEN_CASES:

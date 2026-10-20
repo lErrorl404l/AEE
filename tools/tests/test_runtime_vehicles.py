@@ -200,6 +200,7 @@ class TestMatcherLayers(unittest.TestCase):
         self.assertIn(', 5, "closest"', MATCH)
         self.assertIn("_bestScore > _runnerUp", MATCH)
         self.assertIn(str(gen.SCAN_MIN), MATCH)
+
     def test_the_inherited_layer_runs_last_with_confidence_six(self):
         self.assertIn(', 6, "inherited"', MATCH)
         self.assertIn("inheritsFrom (configFile", MATCH)
@@ -475,7 +476,7 @@ class TestReferenceMatcher(unittest.TestCase):
             ("m113a2", "m113a2"),
             ("m939a2", "m923a2"),
             ("civic", "honda_civic_6gen_sedan"),
-            ("m1240", "m_atv_m1240"),
+            ("m1240a1", "m_atv_m1240a1"),
         ):
             with self.subTest(query=query):
                 result = gen.match_row(self.rows, query)

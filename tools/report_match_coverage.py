@@ -128,6 +128,35 @@ MUNITION = re.compile(
 )
 SCAN_MIN = 3
 
+# Why the classes the measurement leaves open stay open. The count is derived
+# from the gap list, so only the reason is written here.
+KNOWN_UNRESOLVABLE = {
+    "vehicles": (
+        "Every class here is named by its own text at a layer the runtime "
+        "would refuse as a tie, or names no entry at all. A tie is answered "
+        "as an empty result by the engine, so the measurement reports the "
+        "class as open even where a weaker layer would have guessed. Closing "
+        "one needs a term the class's own text carries and no other class "
+        "does."
+    ),
+    "aircraft": (
+        "The aircraft ladder refuses a tie the same way. Most of these "
+        "classes carry a family word shared by several catalogue entries "
+        "(the C-130, UH-60, Mi-8 and Su-25 families), so naming one member "
+        "from the family word would answer a different mark. Closing one "
+        "needs the mark's own designation in the class or display text."
+    ),
+    "small_arms": (
+        "The two DSA machine pistols name a chambering and a category, not a "
+        "designation, and their ancestors are themselves unnamed, so there is "
+        "nothing for a chain to answer."
+    ),
+    "vehicle_armament": (
+        "A tied munition is refused. The open classes name a body, a "
+        "seeker or a warhead the catalogue holds for a different store."
+    ),
+}
+
 # A class is a vehicle when its inheritance chain passes one of these.
 LAND = {
     "car",
@@ -211,13 +240,17 @@ def munition_rows(path: Path) -> list:
     return out
 
 
-def matcher(table: list, ancestry=None):
+def matcher(table: list, ancestry=None, trace=None):
     """The runtime ladder: exact class, alias, keyword, closest, then the
     inherited rung.
 
     `ancestry` is the engine parent chain, a callable that returns a class's
     ancestors nearest first as classnames. Only the vehicle table is given
     one, because only its runtime matcher walks the chain.
+
+    `trace`, when given, receives the layer that blocked the match and the
+    candidates it tied between. It is instrumentation for the lock capture and
+    changes no decision.
     """
 
     def match(cls: str = "", display: str = ""):
@@ -237,20 +270,33 @@ def matcher(table: list, ancestry=None):
         hit = [r for r in table if class_key in r["classes"]]
         if len(hit) == 1:
             return hit[0]
+        if len(hit) > 1:
+            if trace is not None:
+                trace.update(layer="exact_class", candidates=[r["id"] for r in hit])
+            return None
         hit = [r for r in table if tokens & set(r["aliases"])]
         if len(hit) == 1:
             return hit[0]
-        # The runtime's keyword layer scans the aliases too, so a curated
-        # alias long enough to be a substring is still a way in.
+        if len(hit) > 1:
+            if trace is not None:
+                trace.update(layer="alias", candidates=[r["id"] for r in hit])
+            return None
+        # The keyword layer scans the keywords alone, as the generated matcher
+        # does. A curated alias is matched by equality at the layer above, so it
+        # is not a substring key here.
         hit = [
             r
             for r in table
             if any(
-                len(w) >= SCAN_MIN and w in key for w in (r["keywords"] + r["aliases"])
+                len(w) >= SCAN_MIN and w in key for w in r["keywords"]
             )
         ]
         if len(hit) == 1:
             return hit[0]
+        if len(hit) > 1:
+            if trace is not None:
+                trace.update(layer="keyword", candidates=[r["id"] for r in hit])
+            return None
         best = None
         best_score = runner = 0
         best_count = 0
@@ -486,6 +532,28 @@ def pct(count: dict) -> float:
     return (100.0 * count["hit"] / count["total"]) if count["total"] else 0.0
 
 
+def _decided(selected: list, match) -> list:
+    """Every scored class and the entry the ladder reaches, or None.
+
+    The measurement reports counts; the per-class decision is what a lock
+    artefact needs, and deriving it here keeps one ladder behind both.
+    """
+    out = []
+    for r in selected:
+        row = match(r["class"], r["display"])
+        # The vehicle and munition ladders return a row; the weapon kernel
+        # returns the catalogue id.
+        out.append(
+            (
+                r["class"],
+                r["display"],
+                (row["id"] if isinstance(row, dict) else row),
+                r["source"],
+            )
+        )
+    return sorted(out)
+
+
 def score(selected: list, match, base: set[str]) -> dict:
     """The coverage of one table, split by who DECLARES the class.
 
@@ -610,6 +678,7 @@ def measure(scanned: list, base: set[str]) -> dict:
         tables[slug(label)] = {
             "label": label,
             **score(sel, match, base),
+            "decided": _decided(sel, match),
             "inherited": (
                 ancestry_closures(sel, table, plain, match, ancestors, base)
                 if label == "vehicles"
@@ -701,6 +770,7 @@ def measure(scanned: list, base: set[str]) -> dict:
             "label": label,
             **score(sel, pick, base),
             "excluded": kept,
+            "decided": _decided(sel, pick),
         }
 
     return {
@@ -859,38 +929,14 @@ def write_baseline(
                 "the binarised configs only. Regenerate with "
                 "tools/report_match_coverage.py --write-gaps --write-baseline."
             ),
-            # The platform worker classified the gaps that survive the corpus.
-            # They are expected to stay unresolved, so a future reader must
-            # not read them as regression.
+            # The count is derived from the measurement, so it cannot drift
+            # from the gap list it describes.
             "known_unresolvable": {
-                "vehicle_modded": {
-                    "retexture_of_an_unmapped_ancestor": 0,
-                    "different_maker_than_ancestor": 0,
-                    "family_label_over_a_generic_class": 1,
-                    "armafpv_drone_no_published_designation": 8,
-                    "note": (
-                        "The vehicle table names 434 of 435 modded classes. "
-                        "Seventeen closed by engine ancestry: the seven Offroad "
-                        "re-uses and the ten Project OPFOR KAMAZ retextures, "
-                        "which descend from the Zamak that the catalogue binds "
-                        "to kamaz_4310. One closed by its own text: "
-                        "LOP_Nissan_PKM_base resolves to nissan_pickup_technical "
-                        "through the maker alias nissan. The entry holds no "
-                        "figure and asserts no model designation. One stays "
-                        "open: rhsusf_fmtv_base. The identity-only entry "
-                        "fmtv_family names the FMTV family and holds no figure, "
-                        "but it advertises no match term. The token fmtv as an "
-                        "alias stops 69 vehicle-table classes and moves four; "
-                        "as a keyword it ties the four M1078A1R and M1084A1R "
-                        "SOV classes, so their layer returns nothing and they "
-                        "stop resolving. The class therefore stays open rather "
-                        "than trade four classes for one. One base-game class "
-                        "stays open: MBT_01_arty_base_F, the fictional M4 "
-                        "Scorcher, which is not a modded gap. The eight "
-                        "aircraft gaps are ArmaFPV FPV drones. None is a "
-                        "failure."
-                    ),
+                name: {
+                    "unresolved": len(modded_gaps(res)),
+                    "note": KNOWN_UNRESOLVABLE.get(name, ""),
                 }
+                for name, res in tables.items()
             },
         },
         "tables": {

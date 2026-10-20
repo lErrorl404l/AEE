@@ -318,33 +318,14 @@ class TestBaselineArtefact(unittest.TestCase):
         self.assertGreater(excluded[m.STATIC_WEAPON_KIND], 0)
 
     def test_the_provenance_records_the_gaps_expected_to_stay(self):
-        known = self.payload["provenance"]["known_unresolvable"]["vehicle_modded"]
-        for key in (
-            "retexture_of_an_unmapped_ancestor",
-            "different_maker_than_ancestor",
-            "family_label_over_a_generic_class",
-            "armafpv_drone_no_published_designation",
-            "note",
-        ):
-            self.assertIn(key, known)
-        self.assertTrue(known["note"])
-        # The classification is a claim about the measurement, so it has to
-        # agree with it: the vehicle gaps and the aircraft gaps it names.
-        vehicle = sum(
-            known[key]
-            for key in (
-                "retexture_of_an_unmapped_ancestor",
-                "different_maker_than_ancestor",
-                "family_label_over_a_generic_class",
-            )
-        )
-        self.assertEqual(
-            vehicle, self.payload["tables"]["vehicles"]["unresolved_modded"]
-        )
-        self.assertEqual(
-            known["armafpv_drone_no_published_designation"],
-            self.payload["tables"]["aircraft"]["unresolved_modded"],
-        )
+        """The count is derived from the measurement, so it cannot drift."""
+        known = self.payload["provenance"]["known_unresolvable"]
+        for name, table in self.payload["tables"].items():
+            with self.subTest(table=name):
+                self.assertIn(name, known)
+                self.assertEqual(known[name]["unresolved"], table["unresolved_modded"])
+                if table["unresolved_modded"]:
+                    self.assertTrue(known[name]["note"].strip())
 
     def test_the_baseline_records_every_class_the_rung_closed(self):
         """A closure is a claim about ancestry, so the chain ships with it."""
@@ -655,11 +636,32 @@ class ZamakBindingLock(unittest.TestCase):
                 )
 
     def test_the_family_is_reachable_from_the_gap_estimate(self) -> None:
-        # The point of the binding: the retextures are gone from the worklist
-        # and the FMTV is the one vehicle class that remains.
+        # The point of the binding: the retextures are gone from the worklist.
+        # The gap list is now measured under the faithful tie rule, so it holds
+        # many more classes; what this lock holds is that none of them is a
+        # closure the binding won.
         body = (COVERAGE / "modded_gaps_vehicles.txt").read_text(encoding="utf-8")
         listed = {line.split("\t")[0] for line in body.splitlines() if line[0] != "#"}
-        self.assertEqual({"rhsusf_fmtv_base"}, listed)
+        closed = {
+            "LOP_UKR_KAMAZ_Fuel",
+            "LOP_CDF_KAMAZ_Fuel",
+            "LOP_IRAN_KAMAZ_Fuel",
+            "LOP_SYR_KAMAZ_Fuel",
+            "LOP_KAMAZ_fuel_base",
+            "LOP_KAMAZ_ammo_base",
+            "LOP_KAMAZ_cov_base",
+            "LOP_KAMAZ_trans_base",
+            "LOP_KAMAZ_rep_base",
+            "LOP_KAMAZ_med_base",
+            "LOP_Offroad_base",
+            "LOP_Offroad_M2_base",
+            "LOP_AA_Offroad",
+            "LOP_AA_Offroad_Police",
+            "LOP_AA_Offroad_M2",
+            "LOP_AA_Offroad_M2_Police",
+            "CBRN_Offroad",
+        }
+        self.assertEqual(set(), listed & closed)
 
 
 if __name__ == "__main__":

@@ -13,17 +13,90 @@ inheritance chain is read from the full scan, so a modded class keeps a base
 game parent, and only a class declared by a modded PBO is scored.
 
 The 2026-10-20 scan of the installed content scores 435 modded vehicle
-classes. The catalogue names 434. One stays open. The base game scores 78 of
-79.
+classes. The catalogue names 422. Thirteen stay open. The base game scores 77
+of 79.
 
 | Group | Classes | Why the group stays open |
 |---|---|---|
 | Family label over a generic class | 1 | `rhsusf_fmtv_base` names a family, and every term that would reach it also reaches another class. |
+| Family designation that is a prefix of a member mark | 5 | `rhs_t72bd_tv`, `rhs_t72be_tv`, `rhs_t90saa_tv`, `rhs_t90sab_tv` and `rhssaf_army_t72s` tie on a family stem that the generator derives from each canonical name. |
+| Maker name with no mark | 2 | `LOP_LandRover_base_02` and `LOP_LandRover_mg_base` name the maker Land Rover, and no held source names the mark. |
+| Family over four marks | 5 | The five RG-33 classes tie on the derived keyword `rg33`, which all four RG-33 entries carry. |
 
 Twelve StaticWeapon emplacements are excluded from the denominator by kind. A
 tripod mount, a towed howitzer and a MANPADS post are not vehicles, so they
 are neither named nor counted as a gap. The baseline records the exclusion
 count.
+
+## The family-word work of 2026-10-20
+
+A family or maker word must not be an alias or a keyword of one specific
+mark. A word that names a family reaches every member, so the layer ties and
+the runtime answers nothing. Thirty classes closed when the family word left
+the specific mark it was blocking:
+
+| Classes | Entry that answers | Term removed | From |
+|---|---|---|---|
+| 12 M113A3 (`rhsusf_m113_usarmy*`, `LOP_M113_base`, `LOP_AA_M113_*`) | `m113a3` | `m113` | the alias set of `m113a2` |
+| 16 M1240A1 (`rhsusf_m1240a1_*`) | `m_atv_m1240a1` | `m1240` | the alias set of `m_atv_m1240` |
+| 1 M977A4 (`rhsusf_HEMTT_A4_base`) | `m977a4` | `hemtt` | the alias set of `m977_hemtt`, where it stays a keyword |
+| 1 BTR-70 (`rhs_btr_base`) | `btr_70` | `btr` | the keyword set of `btr_70` and `btr_80` |
+
+The M1240 case is the one to read closely. The mod displays "M1240" on a
+class whose classname carries `m1240a1`, so the text names both marks. The
+family designation left the base entry, which still answers `matv` and
+`hunter`, and the A1 classes close on `m1240a1` at the alias layer. Removing
+the term from the A1 entry instead would have moved the tie to the keyword
+layer, where the derived `m1240` keyword is still a substring of `m1240a1`.
+
+The HEMTT family keeps `hemtt` as a keyword, because fourteen base and modded
+HEMTT classes are named by that word alone. The alias layer reaches `m977a4`
+first for the A4 class, and the keyword layer names the family for the other
+fourteen.
+
+No class changed entry, and no class stopped resolving, in any of the four
+batches. The check compared `(class, display) -> entry` for all 514 scored
+classes before and after each batch.
+
+### What stays open and why the data layer cannot close it
+
+Six of the thirteen remaining gaps block on a term the generator DERIVES from
+an entry's canonical name, not on a curated keyword:
+
+- `t_72b_obr_1984g` derives `t72b` and `t72` from "T-72B", and both are
+  substrings of "T-72B3".
+- `t_90sa` and `t_90sm` both derive `t90s` from their own canonical names.
+- `land_rover_wolf_xd_110` and `snatch_land_rover` both derive the marque pair
+  `landrover` from their canonical names.
+- The four RG-33 entries all derive `rg33` from the word "RG-33".
+
+`tools/validation/identity_designations.py` suppresses a derived term only
+when it is another entry's canonical name, or when the entry curates it as an
+alias. Curating a family word as an alias of one mark is the fault this work
+removes, so it is not available as a fix. Closing these needs a family entry
+that owns the stem, or a curated suppression list in the generator. Both are
+outside a catalogue alias and keyword edit, so the classes stay open and the
+reason is recorded in the lock.
+
+### Every class that stays open
+
+| Game class | Display | Why it stays open |
+|---|---|---|
+| `rhs_t72bd_tv` | T-72B3 (obr. 2012g.) | The keyword layer ties on `t72b3` against `t_72b_obr_1984g`, which derives the family keywords `t72b` and `t72` from "T-72B". |
+| `rhs_t72be_tv` | T-72B3 (obr. 2016g.) | The same tie. The class descends from `rhs_t72bd_tv`. |
+| `rhs_t90saa_tv` | T-90SA (obr. 2004g.) | The keyword layer ties on the derived family stem `t90s`, which both T-90 entries carry. |
+| `rhs_t90sab_tv` | T-90SA (obr. 2016g.) | The same tie. The class descends from `rhs_t90a_tv`. |
+| `rhssaf_army_t72s` | T-72MS | The keyword layer ties the derived `t72` on the T-72B entry against `t72m` on the T-72MS entry. |
+| `LOP_LandRover_base_02` | Land Rover | The text names the maker and no mark. Both Land Rover entries derive the marque pair `landrover`. |
+| `LOP_LandRover_mg_base` | Land Rover (M2) | The same maker-only text. |
+| `rhsusf_RG33_base` | RG33 4X4 SOCOM | The text names the family and a configuration. The derived keyword `rg33` ties four entries. |
+| `rhsusf_RG33_CROWS_base` | M1238A1 ASV (CROWS/M2) | The family keyword ties the four RG-33 entries before the M1238 mark can answer. |
+| `rhsusf_RG33_CROWSMK19_base` | M1238A1 ASV (CROWS/Mk19) | The same family tie. |
+| `rhsusf_rg33_d` | RG-33 | The text names the family alone. |
+| `rhsusf_rg33_m2_d` | RG-33 (M2) | The same family tie. |
+| `rhsusf_fmtv_base` | FMTV | Every term that would reach it also reaches another class. See the identity-only entry section. |
+
+
 
 ## The inheritance rung
 

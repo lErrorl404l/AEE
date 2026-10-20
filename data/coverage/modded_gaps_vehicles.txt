@@ -1,4 +1,16 @@
 # modded match coverage gaps: vehicles
-# 1 unresolved of 435 modded classes (99.8% resolved)
+# 13 unresolved of 435 modded classes (97.0% resolved)
 # class	display	parent	source
+LOP_LandRover_base_02	Land Rover	PO_LandRover_base_W	po_main.pbo
+LOP_LandRover_mg_base	Land Rover (M2)	PO_LandRover_Base_MG	po_main.pbo
+rhs_t72bd_tv	T-72B3 (obr. 2012g.)	rhs_a3t72tank_base	rhs_c_t72.pbo
+rhs_t72be_tv	T-72B3 (obr. 2016g.)	rhs_t72bd_tv	rhs_c_t72.pbo
+rhs_t90saa_tv	T-90SA (obr. 2004g.)	rhs_t90a_tv	rhs_c_t72.pbo
+rhs_t90sab_tv	T-90SA (obr. 2016g.)	rhs_t90a_tv	rhs_c_t72.pbo
+rhssaf_army_t72s	T-72MS	rhs_t72bd_tv	rhssaf_c_vehicles.pbo
 rhsusf_fmtv_base	FMTV	Truck_01_base_F	rhsusf_c_fmtv.pbo
+rhsusf_RG33_base	RG33 4X4 SOCOM	MRAP_01_base_F	rhsusf_c_rg33.pbo
+rhsusf_RG33_CROWS_base	M1238A1 ASV (CROWS/M2)	rhsusf_RG33_base	rhsusf_c_rg33.pbo
+rhsusf_RG33_CROWSMK19_base	M1238A1 ASV (CROWS/Mk19)	rhsusf_RG33_CROWS_base	rhsusf_c_rg33.pbo
+rhsusf_rg33_d	RG-33	rhsusf_RG33_base	rhsusf_c_rg33.pbo
+rhsusf_rg33_m2_d	RG-33 (M2)	rhsusf_RG33_CROWS_base	rhsusf_c_rg33.pbo

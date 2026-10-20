@@ -203,12 +203,25 @@
     "generated": "2026-10-20",
     "install": "/ext/SteamLibrary/steamapps/common/Arma 3",
     "known_unresolvable": {
-      "vehicle_modded": {
-        "armafpv_drone_no_published_designation": 8,
-        "different_maker_than_ancestor": 0,
-        "family_label_over_a_generic_class": 1,
-        "note": "The vehicle table names 434 of 435 modded classes. Seventeen closed by engine ancestry: the seven Offroad re-uses and the ten Project OPFOR KAMAZ retextures, which descend from the Zamak that the catalogue binds to kamaz_4310. One closed by its own text: LOP_Nissan_PKM_base resolves to nissan_pickup_technical through the maker alias nissan. The entry holds no figure and asserts no model designation. One stays open: rhsusf_fmtv_base. The identity-only entry fmtv_family names the FMTV family and holds no figure, but it advertises no match term. The token fmtv as an alias stops 69 vehicle-table classes and moves four; as a keyword it ties the four M1078A1R and M1084A1R SOV classes, so their layer returns nothing and they stop resolving. The class therefore stays open rather than trade four classes for one. One base-game class stays open: MBT_01_arty_base_F, the fictional M4 Scorcher, which is not a modded gap. The eight aircraft gaps are ArmaFPV FPV drones. None is a failure.",
-        "retexture_of_an_unmapped_ancestor": 0
+      "aircraft": {
+        "note": "The aircraft ladder refuses a tie the same way. Most of these classes carry a family word shared by several catalogue entries (the C-130, UH-60, Mi-8 and Su-25 families), so naming one member from the family word would answer a different mark. Closing one needs the mark's own designation in the class or display text.",
+        "unresolved": 85
+      },
+      "carried_launchers": {
+        "note": "",
+        "unresolved": 0
+      },
+      "small_arms": {
+        "note": "The two DSA machine pistols name a chambering and a category, not a designation, and their ancestors are themselves unnamed, so there is nothing for a chain to answer.",
+        "unresolved": 2
+      },
+      "vehicle_armament": {
+        "note": "A tied munition is refused. The open classes name a body, a seeker or a warhead the catalogue holds for a different store.",
+        "unresolved": 39
+      },
+      "vehicles": {
+        "note": "Every class here is named by its own text at a layer the runtime would refuse as a tie, or names no entry at all. A tie is answered as an empty result by the engine, so the measurement reports the class as open even where a weaker layer would have guessed. Closing one needs a term the class's own text carries and no other class does.",
+        "unresolved": 13
       }
     },
     "measured_rows": 135427,
@@ -221,19 +234,19 @@
   "tables": {
     "aircraft": {
       "base": {
-        "hit": 43,
-        "pct": 100.0,
+        "hit": 40,
+        "pct": 93.02,
         "total": 43
       },
       "excluded": {},
       "inherited": [],
       "label": "aircraft",
       "modded": {
-        "hit": 215,
-        "pct": 96.41,
+        "hit": 138,
+        "pct": 61.88,
         "total": 223
       },
-      "unresolved_modded": 8
+      "unresolved_modded": 85
     },
     "carried_launchers": {
       "base": {
@@ -269,8 +282,8 @@
     },
     "vehicle_armament": {
       "base": {
-        "hit": 13,
-        "pct": 34.21,
+        "hit": 11,
+        "pct": 28.95,
         "total": 38
       },
       "excluded": {
@@ -285,16 +298,16 @@
       "inherited": [],
       "label": "vehicle armament",
       "modded": {
-        "hit": 356,
-        "pct": 95.19,
+        "hit": 335,
+        "pct": 89.57,
         "total": 374
       },
-      "unresolved_modded": 18
+      "unresolved_modded": 39
     },
     "vehicles": {
       "base": {
-        "hit": 78,
-        "pct": 98.73,
+        "hit": 77,
+        "pct": 97.47,
         "total": 79
       },
       "excluded": {
@@ -577,11 +590,11 @@
       ],
       "label": "vehicles",
       "modded": {
-        "hit": 434,
-        "pct": 99.77,
+        "hit": 422,
+        "pct": 97.01,
         "total": 435
       },
-      "unresolved_modded": 1
+      "unresolved_modded": 13
     }
   }
 }

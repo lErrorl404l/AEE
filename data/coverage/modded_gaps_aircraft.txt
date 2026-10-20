@@ -1,6 +1,17 @@
 # modded match coverage gaps: aircraft
-# 8 unresolved of 223 modded classes (96.4% resolved)
+# 85 unresolved of 223 modded classes (61.9% resolved)
 # class	display	parent	source
+121_soar_hibyrd_slick	[SOAR] Hibyrd's MH-60M	vtx_MH60M	121_SOAR_Gear.pbo
+B_Plane_Fighter_01_CASModule_HeavyBomber_2_F	F/A-181 Black Wasp II (10x GBU-12)	B_Plane_Fighter_01_CASModule_MediumBomber_F	anz_napalmmod.pbo
+B_Plane_Fighter_01_CASModule_HeavyBomber_F	F/A-181 Black Wasp II (8x GBU-12)	B_Plane_Fighter_01_CASModule_MediumBomber_F	anz_napalmmod.pbo
+B_Plane_Fighter_01_CASModule_HeavyNapalm_2_F	F/A-181 Black Wasp II (8x MK77 Napalm)	B_Plane_Fighter_01_CASModule_Napalm_F	anz_napalmmod.pbo
+B_Plane_Fighter_01_CASModule_HeavyNapalm_F	F/A-181 Black Wasp II (6x MK77 Napalm)	B_Plane_Fighter_01_CASModule_Napalm_F	anz_napalmmod.pbo
+B_Plane_Fighter_01_CASModule_MediumBomber_2_F	F/A-181 Black Wasp II (6x GBU-12)	B_Plane_Fighter_01_CASModule_Napalm_F	anz_napalmmod.pbo
+B_Plane_Fighter_01_CASModule_MediumBomber_F	F/A-181 Black Wasp II (4x GBU-12)	B_Plane_Fighter_01_CASModule_Napalm_F	anz_napalmmod.pbo
+B_Plane_Fighter_01_CASModule_MediumNapalm_2_F	F/A-181 Black Wasp II (4x MK77 Napalm)	B_Plane_Fighter_01_CASModule_Napalm_F	anz_napalmmod.pbo
+B_Plane_Fighter_01_CASModule_MediumNapalm_F	F/A-181 Black Wasp II (3x MK77 Napalm)	B_Plane_Fighter_01_CASModule_Napalm_F	anz_napalmmod.pbo
+B_Plane_Fighter_01_CASModule_Napalm_F	FA-181 Black Wasp II (2x MK77 Napalm)	Plane_Fighter_01_Base_F	anz_napalmmod.pbo
+B_Plane_Fighter_01_Napalm_F	FA-181 Black Wasp II - MK77	B_Plane_Fighter_01_F	anz_napalmmod.pbo
 ARMAFPV_Crocus_AP_Base	Crocus AP	ARMAFPV_Crocus_AT_Base	ArmaFPV.pbo
 ARMAFPV_Crocus_AT_Base	Crocus AT	drone_base_F	ArmaFPV.pbo
 B_Crocus_AP_TI	Crocus AP TI	B_Crocus_AP	ArmaFPV.pbo
@@ -9,3 +20,69 @@ I_Crocus_AP_TI	Crocus AP TI	I_Crocus_AP	ArmaFPV.pbo
 I_Crocus_AT_TI	Crocus AT TI	I_Crocus_AT	ArmaFPV.pbo
 O_Crocus_AP_TI	Crocus AP TI	O_Crocus_AP	ArmaFPV.pbo
 O_Crocus_AT_TI	Crocus AT TI	O_Crocus_AT	ArmaFPV.pbo
+FIR_ECM_Dummy_1	F-16C Fighting Falcon	FIR_ECM_Dummy_Base	FIR_AirWeaponSystem_US_cfg.pbo
+FIR_ECM_Dummy_2	F/A-18F Super Hornet	FIR_ECM_Dummy_Base	FIR_AirWeaponSystem_US_cfg.pbo
+fza_ah64d_b1	AH-64D BLOCK I	fza_ah64base	fza_ah64_controls.pbo
+fza_ah64d_b2e	DEPRECATED	fza_ah64base	fza_ah64_controls.pbo
+vtx_HH60	HH-60G/M Pavehawk	vtx_H60_base	hct_h60_HH60.pbo
+vtx_H60_base	UH-60M Blackhawk	Heli_Transport_01_base_F	hct_h60_uh60_config.pbo
+vtx_UH60M_MEDEVAC	HH-60M MEDEVAC	vtx_H60_base	hct_h60_uh60_config.pbo
+vtx_UH60M_SLICK	UH-60M Slick	vtx_H60_base	hct_h60_uh60_config.pbo
+CBRN_Mohawk	Merlin	I_Heli_Transport_02_F	PHAN_CW.pbo
+RHS_Mi24_base	Mi-24P	Heli_Attack_02_base_F	rhs_c_a2port_air.pbo
+RHS_Mi24D_Base	Mi-24D	RHS_Mi24V_Base	rhs_c_a2port_air.pbo
+RHS_Mi24D_Early_Base	Mi-24D (early)	RHS_Mi24D_Base	rhs_c_a2port_air.pbo
+RHS_Mi24P_AT_VVS_Base	Mi-24P (AT)	RHS_Mi24P_VVS_Base	rhs_c_a2port_air.pbo
+RHS_Mi24P_CAS_VVS_Base	Mi-24P (CAS)	RHS_Mi24P_VVS_Base	rhs_c_a2port_air.pbo
+RHS_Mi24V_Base	Mi-24V	RHS_Mi24_base	rhs_c_a2port_air.pbo
+rhs_mi8mtv3_base	Mi-8MTV-3	RHS_Mi8_base	rhs_c_a2port_air.pbo
+RHS_Mi8mtv3_Cargo_vvs	Mi-8MTV-3 (Cargo)	RHS_Mi8MTV3_vvs	rhs_c_a2port_air.pbo
+RHS_Mi8MTV3_FAB_vvs	Mi-8MTV-3 (FAB)	RHS_Mi8MTV3_vvs	rhs_c_a2port_air.pbo
+rhs_mi8mtv3_heavy_base	Mi-8MTV-3 (Heavy)	rhs_mi8mtv3_base	rhs_c_a2port_air.pbo
+RHS_Mi8MTV3_UPK23_vvs	Mi-8MTV-3 (UPK)	RHS_Mi8MTV3_vvs	rhs_c_a2port_air.pbo
+RHS_Mi8MTV3_vvs	Mi-8MTV-3	RHS_Mi8MTV3_VVS_Base	rhs_c_a2port_air.pbo
+RHS_Su25SM_CAS_vvs	Su-25 (CAS)	RHS_Su25SM_vvs	rhs_c_a2port_air.pbo
+RHS_Su25SM_CAS_vvsc	Su-25 (CAS)	RHS_Su25SM_vvsc	rhs_c_a2port_air.pbo
+RHS_Su25SM_Cluster_vvs	Su-25 (Cluster)	RHS_Su25SM_vvs	rhs_c_a2port_air.pbo
+RHS_Su25SM_Cluster_vvsc	Su-25 (Cluster)	RHS_Su25SM_vvsc	rhs_c_a2port_air.pbo
+RHS_Su25SM_KH29_vvs	Su-25 (KH29)	RHS_Su25SM_vvs	rhs_c_a2port_air.pbo
+RHS_Su25SM_KH29_vvsc	Su-25 (KH29)	RHS_Su25SM_vvsc	rhs_c_a2port_air.pbo
+RHS_Su25SM_vvs	Su-25	RHS_Su25_VVS_Base	rhs_c_a2port_air.pbo
+rhs_mig29s_base	MiG-29S	Plane_Base_F	rhs_c_mig29.pbo
+rhs_mig29sm_base	MiG-29SM	rhs_mig29s_base	rhs_c_mig29.pbo
+rhs_uh1h_base	UH1H	Helicopter_Base_H	rhsgref_c_air.pbo
+rhs_uh1h_hidf	UH-1H	rhs_uh1h_base	rhsgref_c_air.pbo
+rhs_uh1h_hidf_gunship	UH-1H Gunship	rhs_uh1h_hidf	rhsgref_c_air.pbo
+rhs_uh1h_hidf_unarmed	UH-1H Unarmed	rhs_uh1h_hidf	rhsgref_c_air.pbo
+rhs_uh1h_idap	UH-1H	rhs_uh1h_base	rhsgref_c_air.pbo
+rhs_uh1h_un	UH-1H	rhs_uh1h_base	rhsgref_c_air.pbo
+RHS_AH1Z	AH-1Z	RHS_AH1Z_base	rhsusf_c_a2port_air.pbo
+RHS_AH1Z_base	AH-1Z	Heli_Attack_01_base_F	rhsusf_c_a2port_air.pbo
+RHS_AH1Z_CS	AH-1Z (Close-Support)	RHS_AH1Z	rhsusf_c_a2port_air.pbo
+RHS_AH1Z_GS	AH-1Z (Ground-Suppression)	RHS_AH1Z	rhsusf_c_a2port_air.pbo
+RHS_AH1Z_wd_CS	AH-1Z (Close-Support)	RHS_AH1Z_wd	rhsusf_c_a2port_air.pbo
+RHS_AH1Z_wd_GS	AH-1Z (Ground-Suppression)	RHS_AH1Z_wd	rhsusf_c_a2port_air.pbo
+RHS_AH64_base	AH-64	Heli_Attack_01_base_F	rhsusf_c_a2port_air.pbo
+RHS_AH64D	AH-64D	RHS_AH64_base	rhsusf_c_a2port_air.pbo
+RHS_AH64D_AA	AH-64D (AA)	RHS_AH64D	rhsusf_c_a2port_air.pbo
+RHS_AH64D_CS	AH-64D (Close-Support)	RHS_AH64D	rhsusf_c_a2port_air.pbo
+RHS_AH64D_GS	AH-64D (Ground-Suppression)	RHS_AH64D	rhsusf_c_a2port_air.pbo
+RHS_AH64DGrey	AH-64D (OIF Grey)	RHS_AH64D	rhsusf_c_a2port_air.pbo
+RHS_CH_47F_base	CH-47F	Heli_Transport_02_base_F	rhsusf_c_a2port_air.pbo
+RHS_CH_47F_cargo_base	CH-47F (Cargo)	RHS_CH_47F_base	rhsusf_c_a2port_air.pbo
+RHS_CH_47F_light	CH-47F (D)	RHS_CH_47F	rhsusf_c_a2port_air.pbo
+RHS_UH1Y_base	UH-1Y (MG)	RHS_UH1_Base	rhsusf_c_a2port_air.pbo
+RHS_UH1Y_FFAR	UH-1Y	RHS_UH1Y	rhsusf_c_a2port_air.pbo
+RHS_UH1Y_GS	UH-1Y (Ground-Suppression)	RHS_UH1Y	rhsusf_c_a2port_air.pbo
+RHS_UH1Y_UNARMED	UH-1Y (Unarmed)	RHS_UH1Y_FFAR	rhsusf_c_a2port_air.pbo
+RHS_UH60M	UH-60M	RHS_UH60M_US_base	rhsusf_c_a2port_air.pbo
+RHS_UH60M2	UH-60M (Unarmed)	RHS_UH60M	rhsusf_c_a2port_air.pbo
+RHS_UH60M_base	UH-60	RHS_UH60_Base	rhsusf_c_a2port_air.pbo
+RHS_UH60M_ESSS	UH-60M (ESSS)	RHS_UH60M2	rhsusf_c_a2port_air.pbo
+RHS_UH60M_ESSS2	UH-60M (EWS)	RHS_UH60M_ESSS	rhsusf_c_a2port_air.pbo
+RHS_UH60M_MEV	UH-60M MEV (ESSS)	RHS_UH60M	rhsusf_c_a2port_air.pbo
+RHS_UH60M_MEV2	UH-60M MEV	RHS_UH60M_MEV	rhsusf_c_a2port_air.pbo
+rhsusf_CH53E_USMC	CH-53E	Helicopter_Base_H	rhsusf_c_ch53.pbo
+rhsusf_CH53e_USMC_cargo	CH-53E (Cargo)	rhsusf_CH53E_USMC	rhsusf_c_ch53.pbo
+rhsusf_CH53e_USMC_D_cargo	CH-53E (Cargo)	rhsusf_CH53E_USMC_D	rhsusf_c_ch53.pbo
+rhsusf_CH53E_USMC_GAU21	CH-53E (GAU-21)	rhsusf_CH53E_USMC	rhsusf_c_ch53.pbo
