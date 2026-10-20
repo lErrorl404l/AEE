@@ -14,6 +14,38 @@
   "note": "Identity source for bindings; never a value."
  },
  {
+  "source_id": "armedassault_a143_buzzard_trivia",
+  "tier": 5,
+  "type": "compilation",
+  "title": "Armed Assault Wiki, A-143_Buzzard, ARMA 3 Trivia",
+  "edition": "Armed Assault Wiki (Fandom), community wiki, ARMA 3 Trivia section only, captured 2026-10-20",
+  "identifier": "Armed Assault Wiki article 'A-143_Buzzard', ARMA 3 Trivia section",
+  "locator": "Section 55 of the article wikitext, 'Trivia', under the ARMA 3 heading",
+  "retrieved": "2026-10-20",
+  "url": "https://armedassault.fandom.com/wiki/A-143_Buzzard",
+  "archive_ref": "ARMA 3 Trivia section held as wikitext at data/aircraft/sources/armedassault_a143_buzzard_trivia.wiki",
+  "licence": "Fandom wiki text is available under the Creative Commons Attribution-ShareAlike licence. The page is a community compilation, never a primary source.",
+  "primary_held": false,
+  "sha256": "f3846f3d2a63ccc4954136fa142faa02a5811c5b34528d58d1d121f6d0f49cd7",
+  "note": "Tier-5 community compilation. The held bytes are the ARMA 3 Trivia section only. It states the Buzzard is a slightly modified L-159 ALCA. The section publishes no mass, dimension, engine, tyre or performance figure, so this source carries an identity claim only and no value object cites it."
+ },
+ {
+  "source_id": "armedassault_a164_wipeout_trivia",
+  "tier": 5,
+  "type": "compilation",
+  "title": "Armed Assault Wiki, A-164_Wipeout, ARMA 3 Trivia",
+  "edition": "Armed Assault Wiki (Fandom), community wiki, ARMA 3 Trivia section only, captured 2026-10-20",
+  "identifier": "Armed Assault Wiki article 'A-164_Wipeout', ARMA 3 Trivia section",
+  "locator": "Section 52 of the article wikitext, 'Trivia', under the ARMA 3 heading",
+  "retrieved": "2026-10-20",
+  "url": "https://armedassault.fandom.com/wiki/A-164_Wipeout",
+  "archive_ref": "ARMA 3 Trivia section held as wikitext at data/aircraft/sources/armedassault_a164_wipeout_trivia.wiki",
+  "licence": "Fandom wiki text is available under the Creative Commons Attribution-ShareAlike licence. The page is a community compilation, never a primary source.",
+  "primary_held": false,
+  "sha256": "42990b6556342eccbe32c418593bd7c2a75cc79da5f6d6e63f856981d688f112",
+  "note": "Tier-5 community compilation. The held bytes are the ARMA 3 Trivia section only. It states the Wipeout is directly based on the A-10 Thunderbolt II. The section publishes no mass, dimension, engine, tyre or performance figure, so this source carries an identity claim only and no value object cites it."
+ },
+ {
   "source_id": "armedassault_ah99_blackfoot_trivia",
   "tier": 5,
   "type": "compilation",
@@ -44,6 +76,22 @@
   "primary_held": false,
   "sha256": "aa8309efdbdd52161f827141e4f28852e8728c4784ad730e04b60caab2367e8d",
   "note": "Tier-5 community compilation. The held bytes are the ARMA 3 Trivia section only. It states the Pawnee airframe is based on the MD-500D and its role resembles the AH-6J Little Bird. The section publishes no mass, dimension, engine, tyre or performance figure, so this source carries an identity claim only and no value object cites it."
+ },
+ {
+  "source_id": "armedassault_ar2_darter_trivia",
+  "tier": 5,
+  "type": "compilation",
+  "title": "Armed Assault Wiki, AR-2_Darter, ARMA 3 Trivia",
+  "edition": "Armed Assault Wiki (Fandom), community wiki, ARMA 3 Trivia section only, captured 2026-10-20",
+  "identifier": "Armed Assault Wiki article 'AR-2_Darter', ARMA 3 Trivia section",
+  "locator": "Section 27 of the article wikitext, 'Trivia', under the ARMA 3 heading",
+  "retrieved": "2026-10-20",
+  "url": "https://armedassault.fandom.com/wiki/AR-2_Darter",
+  "archive_ref": "ARMA 3 Trivia section held as wikitext at data/aircraft/sources/armedassault_ar2_darter_trivia.wiki",
+  "licence": "Fandom wiki text is available under the Creative Commons Attribution-ShareAlike licence. The page is a community compilation, never a primary source.",
+  "primary_held": false,
+  "sha256": "31b8954ea6de674ea3469b17fdf7e749997eb9bbdc77e0dd8580e71ff2cb1b96",
+  "note": "Tier-5 community compilation. The held bytes are the ARMA 3 Trivia section only. It states the Darter appears to be based on an enlarged Parrot AR.Drone 2.0. The section publishes no mass, dimension, engine, tyre or performance figure, so this source carries an identity claim only and no value object cites it."
  },
  {
   "source_id": "armedassault_ch49_mohawk_trivia",
@@ -110,6 +158,22 @@
   "note": "Tier-5 community compilation. The held bytes are the ARMA 3 Trivia section only. It states the Kajman draws on the Mi-28, Ka-50, Ka-52 and Mi-24. The section publishes no mass, dimension, engine, tyre or performance figure, so this source carries an identity claim only and no value object cites it."
  },
  {
+  "source_id": "armedassault_mq4a_greyhawk_trivia",
+  "tier": 5,
+  "type": "compilation",
+  "title": "Armed Assault Wiki, MQ4A_Greyhawk, ARMA 3 Trivia",
+  "edition": "Armed Assault Wiki (Fandom), community wiki, ARMA 3 Trivia section only, captured 2026-10-20",
+  "identifier": "Armed Assault Wiki article 'MQ4A_Greyhawk', ARMA 3 Trivia section",
+  "locator": "Section 47 of the article wikitext, 'Trivia', under the ARMA 3 heading",
+  "retrieved": "2026-10-20",
+  "url": "https://armedassault.fandom.com/wiki/MQ4A_Greyhawk",
+  "archive_ref": "ARMA 3 Trivia section held as wikitext at data/aircraft/sources/armedassault_mq4a_greyhawk_trivia.wiki",
+  "licence": "Fandom wiki text is available under the Creative Commons Attribution-ShareAlike licence. The page is a community compilation, never a primary source.",
+  "primary_held": false,
+  "sha256": "9e3f096780251733123590d2f0ddc0fec0a3bb1f4ee824cfa121a8e9e63e2a1b",
+  "note": "Tier-5 community compilation. The held bytes are the ARMA 3 Trivia section only. It states the Greyhawk airframe layout is inspired by the MQ-9 Reaper. The section publishes no mass, dimension, engine, tyre or performance figure, so this source carries an identity claim only and no value object cites it."
+ },
+ {
   "source_id": "armedassault_po30_orca_trivia",
   "tier": 5,
   "type": "compilation",
@@ -124,6 +188,22 @@
   "primary_held": false,
   "sha256": "72a4710e6c1e46d1dbec738d286db8ffdc7b2f4941558316fe855f4f2d3a45a6",
   "note": "Tier-5 community compilation. The held bytes are the ARMA 3 Trivia section only. It states the Orca is based on the Kamov Ka-60 Kasatka. The section publishes no mass, dimension, engine, tyre or performance figure, so this source carries an identity claim only and no value object cites it."
+ },
+ {
+  "source_id": "armedassault_to199_neophron_trivia",
+  "tier": 5,
+  "type": "compilation",
+  "title": "Armed Assault Wiki, To-199_Neophron, ARMA 3 Trivia",
+  "edition": "Armed Assault Wiki (Fandom), community wiki, ARMA 3 Trivia section only, captured 2026-10-20",
+  "identifier": "Armed Assault Wiki article 'To-199_Neophron', ARMA 3 Trivia section",
+  "locator": "Section 50 of the article wikitext, 'Trivia', under the ARMA 3 heading",
+  "retrieved": "2026-10-20",
+  "url": "https://armedassault.fandom.com/wiki/To-199_Neophron",
+  "archive_ref": "ARMA 3 Trivia section held as wikitext at data/aircraft/sources/armedassault_to199_neophron_trivia.wiki",
+  "licence": "Fandom wiki text is available under the Creative Commons Attribution-ShareAlike licence. The page is a community compilation, never a primary source.",
+  "primary_held": false,
+  "sha256": "fd9e4f0ba103b3170284e0e28da9d4d1508fb5a0c533d8094f71567b38c7ac37",
+  "note": "Tier-5 community compilation. The held bytes are the ARMA 3 Trivia section only. It states the Neophron is based on the Yak-130, specifically the single-seat Yak-131 variant. The section publishes no mass, dimension, engine, tyre or performance figure, so this source carries an identity claim only and no value object cites it."
  },
  {
   "source_id": "armedassault_uh80_ghost_hawk_trivia",
