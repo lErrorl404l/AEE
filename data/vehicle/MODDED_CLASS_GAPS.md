@@ -306,19 +306,23 @@ answer.
 
 ## Aircraft
 
-The modded aircraft gaps are eight ArmaFPV first-person-view drones. No
-published source designates a "Crocus" drone. The base game's
-`drone_base_F` row ("AR-2 Darter") resolves to the Parrot AR.Drone 2.0 and is
-locked closed. The aircraft matcher has no inherited layer, and the rung
-would be wrong there: a Crocus FPV drone is not a Parrot AR.Drone, so a chain
-from one to the other would mislabel it.
+The modded aircraft gaps have their own record,
+`data/aircraft/MODDED_CLASS_GAPS.md`. Forty-two stay open: eleven F/A-181
+loadout configurations of an Arma 3 fictional type, eight ArmaFPV Crocus
+drones that no published source designates, and twenty-three that tie at a
+layer above the family rung. The base game's `drone_base_F` row ("AR-2
+Darter") resolves to the Parrot AR.Drone 2.0 and is locked closed.
 
 ## Armament
 
-The PHAN chemical bombs (`PHEN_FSPLUS_*`) stay open in the vehicle armament
-table. They inherit the base game's bomb launcher, and a nerve-agent bomb is
-not the high-explosive bomb it inherits from. The rung is a vehicle rung and
-does not reach that table, and it would be wrong to extend it there.
+The vehicle armament gaps are the gap list
+`data/coverage/modded_gaps_vehicle_armament.txt` and the lock
+`data/munition/modded_coverage.json`. Thirty-six stay open. The PHAN chemical
+bombs (`PHEN_FSPLUS_*`) are one group: a nerve-agent bomb is not the
+high-explosive store it inherits from, so no HE entry may answer it. The rest
+name a role or a description ("1000 lb HE bombs", "WP Marker Rockets", "Smoke
+Launcher"), a mark the corpus does not hold, or a designation the catalogue
+carries on two entries at once.
 
 ## Small arms
 

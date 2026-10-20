@@ -24,6 +24,15 @@ in the output and in the baseline under `excluded`:
   `tools/validation/munition_kind.py`.
 
 
+## Family rows
+
+A family entry names a family and no mark. The runtime matcher answers it
+last, at confidence 7, from a separate `_families` table, and only when
+exactly one family row matches. The measurement reads the same two tables
+from the generated file, so a class the family rung answers counts as
+resolved and never appears in a gap list. A family row is not excluded from
+a table: it is an identity the player sees, and it is what the count credits
+when no mark answers.
 ## Regenerate
 
 ```bash
