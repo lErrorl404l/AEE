@@ -61,6 +61,38 @@ VEHICLE = REPO / "addons/vehicles/functions/fnc_getVehicleMatch.sqf"
 AIRCRAFT = REPO / "addons/flight/functions/fnc_getAircraftMatch.sqf"
 WEAPON = REPO / "addons/ballistics/functions/fnc_getWeaponData.sqf"
 MUNITION_TABLE = REPO / "addons/blast/functions/munition/fnc_getMunitionMatch.sqf"
+DEVICE = REPO / "addons/nightvision/functions/fnc_getDeviceMatch.sqf"
+ITEM_MASS = REPO / "addons/clothing/functions/clothing/fnc_getItemMass.sqf"
+
+# Every generated identity table this report measures. A new generated
+# matcher is added here, never silently omitted: the coverage lock reads
+# this tuple, so a table that stops being measured fails the suite.
+MEASURED_TABLES = (
+    "vehicles",
+    "aircraft",
+    "small_arms",
+    "carried_launchers",
+    "vehicle_armament",
+    "night_vision_devices",
+    "uniforms",
+    "vests",
+    "helmets",
+    "rucksacks",
+)
+
+# The class a table is scored against, from the config taxonomy the engine
+# itself declares. The device table's optic and thermal rows are NOT here:
+# the discriminator between an optic and any other ItemCore descendant is
+# CfgWeapons >> ItemInfo >> type and OpticsModes, which the scan does not
+# hold, so no denominator can be derived from it.
+UNIFORM_ROOT = "uniform_base"
+VEST_ROOTS = {"vest_camo_base", "vest_nocamo_base"}
+HELMET_ROOT = "helmetbase"
+BACKPACK_ROOT = "bag_base"
+NVG_ROOT = "nvgoggles"
+
+# The device ladder accepts a designation of this length at the alias layer.
+DEVICE_MIN = 4
 
 # The base game is the PBOs the install ships. Everything else in a scan is
 # modded. The directory name comes from the install, and the environment
@@ -159,6 +191,29 @@ KNOWN_UNRESOLVABLE = {
     "vehicle_armament": (
         "A tied munition is refused. The open classes name a body, a "
         "seeker or a warhead the catalogue holds for a different store."
+    ),
+    "night_vision_devices": (
+        "The device ladder refuses a tie at every layer above the scored "
+        "one. The open classes carry no published designation, or carry "
+        "one two entries share."
+    ),
+    "uniforms": (
+        "The item-mass resolver names a family the class text carries. "
+        "The open uniforms carry a pattern or a loadout description and "
+        "no product family, and their band fallback needs the live config "
+        "mass the scan does not hold."
+    ),
+    "vests": (
+        "The open vests carry a variant or a maker the table holds for "
+        "another slot, or no published family at all."
+    ),
+    "helmets": (
+        "Most open helmets carry a stringtable display the scan cannot "
+        "localise, so the only identity text left is a generic classname."
+    ),
+    "rucksacks": (
+        "The open rucksacks carry a maker or a capacity description and "
+        "no published pack family."
     ),
 }
 
@@ -263,6 +318,153 @@ def munition_rows(path: Path) -> list:
 def munition_family_rows(path: Path) -> list:
     """The family table of the munition matcher."""
     return _parse(_tables(path)[1], armament=True)
+
+
+def device_rows(path: Path, family: str = "") -> list:
+    """The device table: id, family, mapped classes, aliases, keywords.
+
+    A row is seven columns; the value row carries its own strings, so only
+    the identity columns are read. `family` selects one device family, the
+    same filter the runtime applies before its ladder runs.
+    """
+    out = []
+    for line in path.read_text(encoding="utf-8").splitlines():
+        s = line.strip()
+        if not s.startswith('["'):
+            continue
+        p = re.findall(r'"([^"]*)"', s)
+        if len(p) < 5 or (family and p[1] != family):
+            continue
+        out.append(
+            {
+                "id": p[0],
+                "family": p[1],
+                "classes": [x for x in p[2].split("|") if x],
+                "aliases": [x for x in p[3].split("|") if x],
+                "keywords": [x for x in p[4].split("|") if x],
+            }
+        )
+    return out
+
+
+def device_matcher(table: list, trace=None):
+    """The device ladder: exact class, alias, keyword, then closest.
+
+    The keyword layer answers nothing on a tie and the closest layer below
+    it decides, exactly as the generated matcher does. The table arrives
+    already filtered by family, so one class cannot tie across two families.
+    """
+
+    def match(cls: str = "", display: str = ""):
+        text = (cls + " " + display).strip()
+        key = fold(text)
+        if not key:
+            return None
+        class_key = fold(cls) or key
+        tokens = {fold(t) for t in re.split(r"[ _\-.]+", text) if fold(t)}
+
+        hit = [r for r in table if class_key in r["classes"]]
+        if len(hit) == 1:
+            return hit[0]
+        if len(hit) > 1:
+            if trace is not None:
+                trace.update(layer="exact_class", candidates=[r["id"] for r in hit])
+            return None
+
+        hit = [r for r in table if tokens & set(r["aliases"])]
+        if len(hit) == 1:
+            return hit[0]
+        if len(hit) > 1:
+            if trace is not None:
+                trace.update(layer="alias", candidates=[r["id"] for r in hit])
+            return None
+
+        terms_of = lambda r: r["aliases"] + r["keywords"]  # noqa: E731
+        hit = [
+            r
+            for r in table
+            if any(len(w) >= DEVICE_MIN and w in key for w in terms_of(r))
+        ]
+        if len(hit) == 1:
+            return hit[0]
+
+        best = None
+        best_score = runner = 0
+        best_count = best_name = 0
+        tie = False
+        for r in table:
+            terms = terms_of(r)
+            score = sum(
+                len(w) * (2 if any(c.isdigit() for c in w) else 1)
+                for w in terms
+                if len(w) >= DEVICE_MIN and w in key
+            )
+            count = len(terms)
+            longest = max((len(w) for w in terms), default=0)
+            if score > best_score:
+                runner, best_score, best, best_count, best_name, tie = (
+                    best_score,
+                    score,
+                    r,
+                    count,
+                    longest,
+                    False,
+                )
+            elif score == best_score and score > 0:
+                if count < best_count:
+                    best, best_count, best_name, tie = r, count, longest, False
+                elif count == best_count:
+                    if longest < best_name:
+                        best, best_name, tie = r, longest, False
+                    elif longest == best_name:
+                        tie = True
+            if score < best_score:
+                runner = max(runner, score)
+        if best is not None and not tie and best_score > runner:
+            return best
+        if trace is not None and best is not None and tie:
+            trace.update(layer="closest", candidates=[best["id"]])
+        return None
+
+    return match
+
+
+def equipment_rows(path: Path) -> list:
+    """The item-mass table: family keyword, slot category, in table order.
+
+    Order is the rule: the generator writes the longest family first, and
+    the runtime stops at the first row whose family the identity text
+    carries, so the measurement must not re-sort it.
+    """
+    out = []
+    for line in path.read_text(encoding="utf-8").splitlines():
+        s = line.strip()
+        if not s.startswith('["'):
+            continue
+        p = re.findall(r'"([^"]*)"', s)
+        if len(p) < 2:
+            continue
+        out.append({"id": p[0].lower(), "family": p[0].lower(), "category": p[1]})
+    return out
+
+
+def equipment_matcher(table: list, category: str):
+    """The item-mass resolver, restricted to the slot it is asked about.
+
+    The runtime is handed the categories the caller accepts, and a row of
+    another category is skipped rather than scored. A family is matched as
+    a case-folded substring of the classname and display name, the same
+    `find` the generated resolver runs.
+    """
+
+    def match(cls: str = "", display: str = ""):
+        hay = (cls + " " + display).lower()
+        for r in table:
+            if r["category"] == category and r["family"] in hay:
+                return r
+        return None
+
+    return match
 
 
 def matcher(table: list, ancestry=None, trace=None, families=None):
@@ -641,6 +843,59 @@ def _tidy(text: str) -> str:
     return " ".join(text.split())
 
 
+def _taxonomy(scanned: list, kind: str, roots: set[str], chain) -> list:
+    """The classes of one config kind whose chain passes one of `roots`.
+
+    The root is the engine's own taxonomy, not a list of names, so a mod
+    nobody has written yet is selected by the same rule as an installed
+    one. Rows are deduplicated on class and display name, because several
+    PBOs may declare the same class.
+    """
+    out, seen = [], set()
+    for r in scanned:
+        if r["kind"] != kind:
+            continue
+        key = (r["class"], r["display"])
+        if key in seen:
+            continue
+        if not (set(chain(r["class"])) & roots):
+            continue
+        seen.add(key)
+        out.append(r)
+    return out
+
+
+def _device_reason(cls: str, display: str, table: list) -> str:
+    """Why the device ladder answers nothing for one class."""
+    trace: dict = {}
+    device_matcher(table, trace=trace)(cls, display)
+    if trace.get("layer"):
+        return f"tied at the {trace['layer']} layer"
+    if display.startswith("$"):
+        return "display is a stringtable key the scan cannot localise"
+    return "no published device identity in the identity text"
+
+
+def _clothing_reason(row: dict, category: str, table: list, chain, match) -> str:
+    """Why the item-mass resolver names no family for one class.
+
+    The shapes are the ones the corpus leaves: an identity the scan cannot
+    read, a variant that only repeats a resolved parent, a family of
+    another slot, or no published family at all.
+    """
+    display = row["display"]
+    if display.startswith("$"):
+        return "display is a stringtable key the scan cannot localise"
+    for ancestor in list(chain(row["class"]))[1:]:
+        if match(ancestor, ""):
+            return "variant text of a resolved parent"
+    hay = (row["class"] + " " + display).lower()
+    other = [r for r in table if r["family"] in hay]
+    if other:
+        return f"names the {other[0]['family']!r} {other[0]['category']} family, not {category}"
+    return f"no published {category} family in the identity text"
+
+
 def measure(scanned: list, base: set[str]) -> dict:
     """Walk the scan through every matcher, table by table.
 
@@ -824,6 +1079,59 @@ def measure(scanned: list, base: set[str]) -> dict:
             "decided": _decided(sel, pick),
         }
 
+    # ── Night vision devices ──────────────────────────────────────────────
+    # The NVG rows are scored against the engine taxonomy: a CfgWeapons
+    # class whose chain passes the NVGoggles root. The optic and thermal
+    # rows of the same table are NOT scored here, because the scan holds no
+    # ItemInfo type and no OpticsModes, and those are the only evidence
+    # that tells an optic from a compass. A denominator invented from the
+    # classname would measure the name, not the item.
+    nvg = _taxonomy(scanned, "CfgWeapons", {NVG_ROOT}, wchain)
+    if nvg:
+        dtable = device_rows(DEVICE, "nvg")
+        match_d = device_matcher(dtable)
+        reasons = defaultdict(int)
+        for r in nvg:
+            if match_d(r["class"], r["display"]) is None:
+                reasons[_device_reason(r["class"], r["display"], dtable)] += 1
+        tables[slug("night vision devices")] = {
+            "label": "night vision devices",
+            **score(nvg, match_d, base),
+            "excluded": {},
+            "decided": _decided(nvg, match_d),
+            "reasons": dict(reasons),
+        }
+
+    # ── Clothing and load carriage ────────────────────────────────────────
+    # The item-mass resolver keys on the slot category the caller states,
+    # so each table is measured with its own category, exactly as a caller
+    # that holds the slot would call it. The band fallback below the family
+    # table reads the live config mass, which the scan does not hold; a
+    # class the family table cannot name is reported open, not guessed.
+    eq_table = equipment_rows(ITEM_MASS) if ITEM_MASS.exists() else []
+    for label, category, roots, kind, chain in (
+        ("uniforms", "uniform", {UNIFORM_ROOT}, "CfgWeapons", wchain),
+        ("vests", "vest", VEST_ROOTS, "CfgWeapons", wchain),
+        ("helmets", "helmet", {HELMET_ROOT}, "CfgWeapons", wchain),
+        ("rucksacks", "rucksack", {BACKPACK_ROOT}, "CfgVehicles", chain_of),
+    ):
+        selected = _taxonomy(scanned, kind, roots, chain)
+        if not selected:
+            continue
+        match_e = equipment_matcher(eq_table, category)
+        reasons = defaultdict(int)
+        for r in selected:
+            if match_e(r["class"], r["display"]) is not None:
+                continue
+            reasons[_clothing_reason(r, category, eq_table, chain, match_e)] += 1
+        tables[slug(label)] = {
+            "label": label,
+            **score(selected, match_e, base),
+            "excluded": {},
+            "decided": _decided(selected, match_e),
+            "reasons": dict(reasons),
+        }
+
     return {
         "tables": tables,
         "excluded": excluded,
@@ -845,6 +1153,8 @@ def report(tables: dict) -> None:
             f"modded {modded['hit']}/{modded['total']} ({pct(modded):.1f}%), "
             f"all {both['hit']}/{both['total']} ({pct(both):.1f}%)"
         )
+        for reason, count in sorted(res.get("reasons", {}).items()):
+            print(f"    {count:4d} open: {reason}")
 
 
 def print_evidence(result: dict) -> None:
@@ -974,6 +1284,7 @@ def write_baseline(
             "base_addons": str(install / BASE_ADDONS),
             "base_pbo_count": len(base),
             "base_pbos": sorted(base),
+            "measured_tables": list(MEASURED_TABLES),
             "method": (
                 "A class is BASE when the PBO that declares it is in the base "
                 "game's Addons directory, and MODDED otherwise. Rows come from "
@@ -998,6 +1309,7 @@ def write_baseline(
                 "unresolved_modded": len(modded_gaps(res)),
                 "inherited": res.get("inherited", []),
                 "excluded": res.get("excluded", {}),
+                "reasons": res.get("reasons", {}),
             }
             for name, res in tables.items()
         },

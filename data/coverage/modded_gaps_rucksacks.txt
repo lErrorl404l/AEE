@@ -1,0 +1,255 @@
+# modded match coverage gaps: rucksacks
+# 252 unresolved of 614 modded classes (59.0% resolved)
+# class	display	parent	source
+CFP_Cutters		Bag_Base	ace_compat_cfp.pbo
+ace_gunbag	$STR_ace_gunbag_Displayname	Bag_Base	ace_gunbag.pbo
+ace_gunbag_Tan	$STR_ace_gunbag_Displayname_Tan	ace_gunbag	ace_gunbag.pbo
+ACE_NonSteerableParachute	$STR_ace_parachute_NonSteerableParachute	B_Parachute	ace_parachute.pbo
+ACE_NonSteerableReserveParachute		ACE_ReserveParachute	ace_parachute.pbo
+ACE_ReserveParachute	$STR_ace_parachute_ReserveParachute	ACE_NonSteerableParachute	ace_parachute.pbo
+ACE_TacticalLadder_Pack	$STR_ace_tacticalladder_DisplayName	Bag_Base	ace_tacticalladder.pbo
+ACRE_testBag	ACRE TEST BAG	B_Kitbag_mcamo	acre_sys_radio.pbo
+B_Crocus_AP_Bag	Crocus AP Bag BLUFOR	B_AssaultPack_mcamo	ArmaFPV.pbo
+B_Crocus_AP_TI_Bag	Crocus AP TI Bag BLUFOR	B_AssaultPack_mcamo	ArmaFPV.pbo
+B_Crocus_AT_Bag	Crocus AT Bag BLUFOR	B_AssaultPack_mcamo	ArmaFPV.pbo
+B_Crocus_AT_TI_Bag	Crocus AT TI Bag BLUFOR	B_AssaultPack_mcamo	ArmaFPV.pbo
+I_Crocus_AP_Bag	Crocus AP Bag IND	B_AssaultPack_khk	ArmaFPV.pbo
+I_Crocus_AP_TI_Bag	Crocus AP TI Bag IND	B_AssaultPack_khk	ArmaFPV.pbo
+I_Crocus_AT_Bag	Crocus AT Bag IND	B_AssaultPack_khk	ArmaFPV.pbo
+I_Crocus_AT_TI_Bag	Crocus AT TI Bag IND	B_AssaultPack_khk	ArmaFPV.pbo
+O_Crocus_AP_Bag	Crocus AP Bag OPFOR	B_AssaultPack_ocamo	ArmaFPV.pbo
+O_Crocus_AP_TI_Bag	Crocus AP TI Bag OPFOR	B_AssaultPack_ocamo	ArmaFPV.pbo
+O_Crocus_AT_Bag	Crocus AT Bag OPFOR	B_AssaultPack_ocamo	ArmaFPV.pbo
+O_Crocus_AT_TI_Bag	Crocus AT TI Bag OPFOR	B_AssaultPack_ocamo	ArmaFPV.pbo
+NDS_M224_B_Ammo		B_Carryall_Base	avm224_mortar.pbo
+UKSF_Boatpack	Packed Zodiak (MC)	Weapon_Bag_Base	Backpacks.pbo
+UKSF_drybag_blk	Drybag (BK)	UKSF_drybag_od	Backpacks.pbo
+UKSF_drybag_od	Drybag (OD)	B_AssaultPack_rgr	Backpacks.pbo
+UKSF_FASTPack_MC	FAST Pack (MC)	B_Kitbag_rgr	Backpacks.pbo
+UKSF_KarrimorPack_CB	Karrimor Pack (CB)	UKSF_KarrimorPack_DPM_Sel	Backpacks.pbo
+UKSF_KarrimorPack_DPM_Sel	Karrimor Pack (Selection)	B_Carryall_cbr	Backpacks.pbo
+UKSF_KarrimorPack_MC	Karrimor Pack (MC)	UKSF_KarrimorPack_DPM_Sel	Backpacks.pbo
+Hall_AVS1000	[Z12D] Crye AVS 1000	B_AssaultPack_mcamo	Hall.pbo
+Hall_GPanel	[Z12D] Crye JPC 1.0 General Purpose Backpanel	B_AssaultPack_mcamo	Hall.pbo
+Hall_MPanel	[Z12D] Crye JPC 1.0 Maritime Backpanel	B_AssaultPack_mcamo	Hall.pbo
+Jones_AVS_1000	[UKSF] Crye AVS 1000	B_AssaultPack_mcamo	Jones.pbo
+Jones_MRASAP	[UKSF] Mystery Ranch ASAP	B_AssaultPack_mcamo	Jones.pbo
+Jones_ZIP_Panel	[UKSF] Crye Pouch Zip-On 2.0	B_AssaultPack_mcamo	Jones.pbo
+Marko_NJPC_AVS1000	[S31A] Crye AVS 1000	B_AssaultPack_mcamo	marko.pbo
+Marko_NJPC_Panel	[S31A] Crye NJPC Backpanel	B_AssaultPack_mcamo	marko.pbo
+B_Parachute		Bag_Base	MRHHaloGear.pbo
+MRH_AADEquippedNSParachute	Non Steerable parachute with CYPRES 2 AAD	ACE_NonSteerableParachute	MRHHaloGear.pbo
+MRH_AADEquippedParachute	Steerable parachute with CYPRES 2 AAD	B_Parachute	MRHHaloGear.pbo
+NAVSPECWARGRU2_Arcteryx35L_Civ_Blk	[UKSF] Arcteryx Alpha AR 35	B_AssaultPack_mcamo	NAVSPECWARGRU2_TACDEV_Equipment_Backpacks.pbo
+NAVSPECWARGRU2_Arcteryx35L_Civ_Blu		NAVSPECWARGRU2_Arcteryx35L_Civ_Blk	NAVSPECWARGRU2_TACDEV_Equipment_Backpacks.pbo
+NAVSPECWARGRU2_Arcteryx35L_Civ_Coy		NAVSPECWARGRU2_Arcteryx35L_Civ_Blk	NAVSPECWARGRU2_TACDEV_Equipment_Backpacks.pbo
+NAVSPECWARGRU2_Arcteryx35L_Civ_Gry		NAVSPECWARGRU2_Arcteryx35L_Civ_Blk	NAVSPECWARGRU2_TACDEV_Equipment_Backpacks.pbo
+NAVSPECWARGRU2_Arcteryx35L_Civ_MC		NAVSPECWARGRU2_Arcteryx35L_Civ_Blk	NAVSPECWARGRU2_TACDEV_Equipment_Backpacks.pbo
+NAVSPECWARGRU2_Arcteryx35L_Civ_MCT		NAVSPECWARGRU2_Arcteryx35L_Civ_Blk	NAVSPECWARGRU2_TACDEV_Equipment_Backpacks.pbo
+NAVSPECWARGRU2_Arcteryx35L_Civ_RG		NAVSPECWARGRU2_Arcteryx35L_Civ_Blk	NAVSPECWARGRU2_TACDEV_Equipment_Backpacks.pbo
+NAVSPECWARGRU2_Arcteryx35L_Vest_Blk	[UKSF] Arcteryx Alpha AR 35	B_AssaultPack_mcamo	NAVSPECWARGRU2_TACDEV_Equipment_Backpacks.pbo
+NAVSPECWARGRU2_Arcteryx35L_Vest_Blu		NAVSPECWARGRU2_Arcteryx35L_Vest_Blk	NAVSPECWARGRU2_TACDEV_Equipment_Backpacks.pbo
+NAVSPECWARGRU2_Arcteryx35L_Vest_Coy		NAVSPECWARGRU2_Arcteryx35L_Vest_Blk	NAVSPECWARGRU2_TACDEV_Equipment_Backpacks.pbo
+NAVSPECWARGRU2_Arcteryx35L_Vest_Gry		NAVSPECWARGRU2_Arcteryx35L_Vest_Blk	NAVSPECWARGRU2_TACDEV_Equipment_Backpacks.pbo
+NAVSPECWARGRU2_Arcteryx35L_Vest_MC		NAVSPECWARGRU2_Arcteryx35L_Vest_Blk	NAVSPECWARGRU2_TACDEV_Equipment_Backpacks.pbo
+NAVSPECWARGRU2_Arcteryx35L_Vest_MCT		NAVSPECWARGRU2_Arcteryx35L_Vest_Blk	NAVSPECWARGRU2_TACDEV_Equipment_Backpacks.pbo
+NAVSPECWARGRU2_Arcteryx35L_Vest_RG		NAVSPECWARGRU2_Arcteryx35L_Vest_Blk	NAVSPECWARGRU2_TACDEV_Equipment_Backpacks.pbo
+NAVSPECWARGRU2_LBT14L_Civ_Blk	[UKSF] LBT 14L Day Pack	B_AssaultPack_mcamo	NAVSPECWARGRU2_TACDEV_Equipment_Backpacks.pbo
+NAVSPECWARGRU2_LBT14L_Civ_Blu		NAVSPECWARGRU2_LBT14L_Civ_Blk	NAVSPECWARGRU2_TACDEV_Equipment_Backpacks.pbo
+NAVSPECWARGRU2_LBT14L_Civ_COY		NAVSPECWARGRU2_LBT14L_Civ_Blk	NAVSPECWARGRU2_TACDEV_Equipment_Backpacks.pbo
+NAVSPECWARGRU2_LBT14L_Civ_GRY		NAVSPECWARGRU2_LBT14L_Civ_Blk	NAVSPECWARGRU2_TACDEV_Equipment_Backpacks.pbo
+NAVSPECWARGRU2_LBT14L_Civ_MC		NAVSPECWARGRU2_LBT14L_Civ_Blk	NAVSPECWARGRU2_TACDEV_Equipment_Backpacks.pbo
+NAVSPECWARGRU2_LBT14L_Civ_MCB		NAVSPECWARGRU2_LBT14L_Civ_Blk	NAVSPECWARGRU2_TACDEV_Equipment_Backpacks.pbo
+NAVSPECWARGRU2_LBT14L_Civ_MCT		NAVSPECWARGRU2_LBT14L_Civ_Blk	NAVSPECWARGRU2_TACDEV_Equipment_Backpacks.pbo
+NAVSPECWARGRU2_LBT14L_Civ_RED		NAVSPECWARGRU2_LBT14L_Civ_Blk	NAVSPECWARGRU2_TACDEV_Equipment_Backpacks.pbo
+NAVSPECWARGRU2_LBT14L_Civ_RG		NAVSPECWARGRU2_LBT14L_Civ_Blk	NAVSPECWARGRU2_TACDEV_Equipment_Backpacks.pbo
+NAVSPECWARGRU2_LBT14L_Vest_Blk	[UKSF] LBT 14L Day Pack	B_AssaultPack_mcamo	NAVSPECWARGRU2_TACDEV_Equipment_Backpacks.pbo
+NAVSPECWARGRU2_LBT14L_Vest_Blu		NAVSPECWARGRU2_LBT14L_Vest_Blk	NAVSPECWARGRU2_TACDEV_Equipment_Backpacks.pbo
+NAVSPECWARGRU2_LBT14L_Vest_COY		NAVSPECWARGRU2_LBT14L_Vest_Blk	NAVSPECWARGRU2_TACDEV_Equipment_Backpacks.pbo
+NAVSPECWARGRU2_LBT14L_Vest_GRY		NAVSPECWARGRU2_LBT14L_Vest_Blk	NAVSPECWARGRU2_TACDEV_Equipment_Backpacks.pbo
+NAVSPECWARGRU2_LBT14L_Vest_MC		NAVSPECWARGRU2_LBT14L_Vest_Blk	NAVSPECWARGRU2_TACDEV_Equipment_Backpacks.pbo
+NAVSPECWARGRU2_LBT14L_Vest_MCB		NAVSPECWARGRU2_LBT14L_Vest_Blk	NAVSPECWARGRU2_TACDEV_Equipment_Backpacks.pbo
+NAVSPECWARGRU2_LBT14L_Vest_MCT		NAVSPECWARGRU2_LBT14L_Vest_Blk	NAVSPECWARGRU2_TACDEV_Equipment_Backpacks.pbo
+NAVSPECWARGRU2_LBT14L_Vest_RED		NAVSPECWARGRU2_LBT14L_Vest_Blk	NAVSPECWARGRU2_TACDEV_Equipment_Backpacks.pbo
+NAVSPECWARGRU2_LBT14L_Vest_RG		NAVSPECWARGRU2_LBT14L_Vest_Blk	NAVSPECWARGRU2_TACDEV_Equipment_Backpacks.pbo
+NAVSPECWARGRU2_Mystery3DAPCL_Civ_Blk	[UKSF] Mystery Ranch 3 DAP CL	B_AssaultPack_mcamo	NAVSPECWARGRU2_TACDEV_Equipment_Backpacks.pbo
+NAVSPECWARGRU2_Mystery3DAPCL_Civ_Coy		NAVSPECWARGRU2_Mystery3DAPCL_Civ_Blk	NAVSPECWARGRU2_TACDEV_Equipment_Backpacks.pbo
+NAVSPECWARGRU2_Mystery3DAPCL_Civ_MC		NAVSPECWARGRU2_Mystery3DAPCL_Civ_Blk	NAVSPECWARGRU2_TACDEV_Equipment_Backpacks.pbo
+NAVSPECWARGRU2_Mystery3DAPCL_Civ_RG		NAVSPECWARGRU2_Mystery3DAPCL_Civ_Blk	NAVSPECWARGRU2_TACDEV_Equipment_Backpacks.pbo
+NAVSPECWARGRU2_Mystery3DAPCL_Vest_Blk	[UKSF] Mystery Ranch 3 DAP CL	B_AssaultPack_mcamo	NAVSPECWARGRU2_TACDEV_Equipment_Backpacks.pbo
+NAVSPECWARGRU2_Mystery3DAPCL_Vest_Coy		NAVSPECWARGRU2_Mystery3DAPCL_Vest_Blk	NAVSPECWARGRU2_TACDEV_Equipment_Backpacks.pbo
+NAVSPECWARGRU2_Mystery3DAPCL_Vest_MC		NAVSPECWARGRU2_Mystery3DAPCL_Vest_Blk	NAVSPECWARGRU2_TACDEV_Equipment_Backpacks.pbo
+NAVSPECWARGRU2_Mystery3DAPCL_Vest_RG		NAVSPECWARGRU2_Mystery3DAPCL_Vest_Blk	NAVSPECWARGRU2_TACDEV_Equipment_Backpacks.pbo
+NAVSPECWARGRU2_MysteryASAP_Civ_Blk	[UKSF] Mystery Ranch ASAP	B_AssaultPack_mcamo	NAVSPECWARGRU2_TACDEV_Equipment_Backpacks.pbo
+NAVSPECWARGRU2_MysteryASAP_Civ_Coy		NAVSPECWARGRU2_MysteryASAP_Civ_Blk	NAVSPECWARGRU2_TACDEV_Equipment_Backpacks.pbo
+NAVSPECWARGRU2_MysteryASAP_Civ_Gry		NAVSPECWARGRU2_MysteryASAP_Civ_Blk	NAVSPECWARGRU2_TACDEV_Equipment_Backpacks.pbo
+NAVSPECWARGRU2_MysteryASAP_Civ_MC		NAVSPECWARGRU2_MysteryASAP_Civ_Blk	NAVSPECWARGRU2_TACDEV_Equipment_Backpacks.pbo
+NAVSPECWARGRU2_MysteryASAP_Civ_RG		NAVSPECWARGRU2_MysteryASAP_Civ_Blk	NAVSPECWARGRU2_TACDEV_Equipment_Backpacks.pbo
+NAVSPECWARGRU2_MysteryASAP_Vest_Blk	[UKSF] Mystery Ranch ASAP	B_AssaultPack_mcamo	NAVSPECWARGRU2_TACDEV_Equipment_Backpacks.pbo
+NAVSPECWARGRU2_MysteryASAP_Vest_Coy		NAVSPECWARGRU2_MysteryASAP_Vest_Blk	NAVSPECWARGRU2_TACDEV_Equipment_Backpacks.pbo
+NAVSPECWARGRU2_MysteryASAP_Vest_Gry		NAVSPECWARGRU2_MysteryASAP_Vest_Blk	NAVSPECWARGRU2_TACDEV_Equipment_Backpacks.pbo
+NAVSPECWARGRU2_MysteryASAP_Vest_MC		NAVSPECWARGRU2_MysteryASAP_Vest_Blk	NAVSPECWARGRU2_TACDEV_Equipment_Backpacks.pbo
+NAVSPECWARGRU2_MysteryASAP_Vest_RG		NAVSPECWARGRU2_MysteryASAP_Vest_Blk	NAVSPECWARGRU2_TACDEV_Equipment_Backpacks.pbo
+B_Mortar_01_weapon_F		Weapon_Bag_Base	NDS_M224_mortar.pbo
+NDS_B_M224_mortar	M224 60mm Mortar	Bag_Base	NDS_M224_mortar.pbo
+UKSF__PARACHUTE	Parachute (UKSF)	B_Parachute	Parachute.pbo
+LOP_B_9K38		rhs_rpg_empty	po_main.pbo
+LOP_B_CA_MAAWS_cbr		B_Carryall_cbr	po_main.pbo
+LOP_B_CA_MAAWS_oli		B_Carryall_oli	po_main.pbo
+LOP_B_FP_M249_blk		B_FieldPack_blk	po_main.pbo
+LOP_B_FP_M249_khk		B_FieldPack_khk	po_main.pbo
+LOP_B_FP_MG42_khk		B_FieldPack_khk	po_main.pbo
+LOP_B_FP_MG42_oli		B_FieldPack_oli	po_main.pbo
+LOP_B_FP_MG42_tub	Field Pack (Tubitak)	B_FieldPack_oli	po_main.pbo
+LOP_B_FP_PKM_khk		B_FieldPack_khk	po_main.pbo
+LOP_B_FP_PKM_oli		B_FieldPack_oli	po_main.pbo
+LOP_B_KB_EOD		B_Kitbag_cbr	po_main.pbo
+LOP_B_KB_M249		B_Kitbag_cbr	po_main.pbo
+LOP_B_KB_Med_cbr		B_Kitbag_cbr	po_main.pbo
+LOP_B_KB_Med_rgr		B_Kitbag_rgr	po_main.pbo
+LOP_B_KB_Med_tub	Field Pack (Tubitak/Medic)	B_Kitbag_cbr	po_main.pbo
+LOP_B_MB_Med		rhs_medic_bag	po_main.pbo
+LOP_B_SD_MG42		rhs_sidor	po_main.pbo
+LOP_B_SD_PKM		rhs_sidor	po_main.pbo
+LOP_CDF_AA_Pack		rhs_rpg_empty	po_main.pbo
+LOP_ChDKZ_Caryall_PKM		B_Carryall_oli	po_main.pbo
+LOP_PMC_AT_Pack		LOP_B_CA_MAAWS_cbr	po_main.pbo
+LOP_SLA_AA_Pack		rhs_rpg_empty	po_main.pbo
+LOP_TKA_AA_Pack		rhs_rpg_empty	po_main.pbo
+LOP_TKA_Caryall_PKM		B_Carryall_oli	po_main.pbo
+LOP_US_AA_Pack		LOP_B_9K38	po_main.pbo
+RHS_AGS30_Gun_Bag	AGS-30 Gun Bag	RHS_DShkM_Gun_Bag	rhs_c_heavyweapons.pbo
+RHS_AGS30_Tripod_Bag	AGS-30 6P17 Tripod Bag	RHS_DShkM_TripodHigh_Bag	rhs_c_heavyweapons.pbo
+RHS_DShkM_Gun_Bag	DShkM Gun Bag	RHS_NSV_Gun_Bag	rhs_c_heavyweapons.pbo
+RHS_DShkM_TripodHigh_Bag	DShkM High Tripod Bag	RHS_NSV_Tripod_Bag	rhs_c_heavyweapons.pbo
+RHS_DShkM_TripodLow_Bag	DShkM Low Tripod Bag	RHS_DShkM_TripodHigh_Bag	rhs_c_heavyweapons.pbo
+RHS_Kord_Gun_Bag	KORD Gun Bag	RHS_DShkM_Gun_Bag	rhs_c_heavyweapons.pbo
+RHS_Kord_Tripod_Bag	KORD 6T7 Tripod Bag	RHS_DShkM_TripodHigh_Bag	rhs_c_heavyweapons.pbo
+RHS_Kornet_Gun_Bag	9K133 'Kornet' Gun Bag	RHS_NSV_Gun_Bag	rhs_c_heavyweapons.pbo
+RHS_Kornet_Tripod_Bag	9K133 'Kornet' Tripod Bag	RHS_NSV_Tripod_Bag	rhs_c_heavyweapons.pbo
+RHS_Metis_Gun_Bag	9K115-2 'Metis-M' Gun Bag	RHS_DShkM_Gun_Bag	rhs_c_heavyweapons.pbo
+RHS_Metis_Tripod_Bag	9K115-2 'Metis-M' Tripod Bag	RHS_DShkM_TripodHigh_Bag	rhs_c_heavyweapons.pbo
+RHS_NSV_Gun_Bag	NSV Gun Bag	Weapon_Bag_Base	rhs_c_heavyweapons.pbo
+RHS_NSV_Tripod_Bag	NSV 6T7 Tripod Bag	Weapon_Bag_Base	rhs_c_heavyweapons.pbo
+RHS_Podnos_Bipod_Bag	2B14-1 'Podnos' Bipod Bag	RHS_DShkM_TripodHigh_Bag	rhs_c_heavyweapons.pbo
+RHS_Podnos_Gun_Bag	2B14-1 'Podnos' Gun Bag	RHS_DShkM_Gun_Bag	rhs_c_heavyweapons.pbo
+RHS_SPG9_Gun_Bag	SPG-9 Gun Bag	RHS_DShkM_Gun_Bag	rhs_c_heavyweapons.pbo
+RHS_SPG9_Tripod_Bag	SPG-9 Tripod Bag	RHS_DShkM_TripodHigh_Bag	rhs_c_heavyweapons.pbo
+rhs_M252_Bipod_Bag	M252 Tripod Bag	RHS_M2_Tripod_Bag	rhsusf_c_statics.pbo
+rhs_M252_Gun_Bag	M252 Gun Bag	RHS_M2_Gun_Bag	rhsusf_c_statics.pbo
+RHS_M2_Gun_Bag	M2 Gun Bag	Weapon_Bag_Base	rhsusf_c_statics.pbo
+RHS_M2_MiniTripod_Bag	M3 Minitripod Bag	RHS_M2_Tripod_Bag	rhsusf_c_statics.pbo
+RHS_M2_Tripod_Bag	M2 Tripod Bag	Weapon_Bag_Base	rhsusf_c_statics.pbo
+RHS_Mk19_Gun_Bag	Mk19 Gun Bag	RHS_M2_Gun_Bag	rhsusf_c_statics.pbo
+RHS_Mk19_Tripod_Bag	Mk19 Tripod Bag	RHS_M2_Tripod_Bag	rhsusf_c_statics.pbo
+rhs_Tow_Gun_Bag	TOW Gun Bag	RHS_M2_Gun_Bag	rhsusf_c_statics.pbo
+rhs_TOW_Tripod_Bag	TOW Tripod Bag	RHS_M2_Tripod_Bag	rhsusf_c_statics.pbo
+B_Assault_Diver_Rain		B_AssaultPack_blk_Rain	rt_backpacks.pbo
+Radio_Bag	[Shane] Radio	Bag_Base	shane.pbo
+Bag_Base		ReammoBox	tfar_backpacks.pbo
+tf_anarc164	tf_anarc164 : TFAR_anarc164 deprecated item	TFAR_anarc164	tfar_backpacks.pbo
+tf_anarc210	tf_anarc210 : TFAR_anarc210 deprecated item	TFAR_anarc210	tfar_backpacks.pbo
+tf_anprc155	tf_anprc155 : TFAR_anprc155 deprecated item	TFAR_anprc155	tfar_backpacks.pbo
+tf_anprc155_coyote	tf_anprc155_coyote : TFAR_anprc155_coyote deprecated item	TFAR_anprc155_coyote	tfar_backpacks.pbo
+tf_bussole	tf_bussole : TFAR_bussole deprecated item	TFAR_bussole	tfar_backpacks.pbo
+tf_mr3000	tf_mr3000 : TFAR_mr3000 deprecated item	TFAR_mr3000	tfar_backpacks.pbo
+tf_mr3000_bwmod	tf_mr3000_bwmod : TFAR_mr3000_bwmod deprecated item	TFAR_mr3000_bwmod	tfar_backpacks.pbo
+tf_mr3000_bwmod_tropen	tf_mr3000_bwmod_tropen : TFAR_mr3000_bwmod_tropen deprecated item	TFAR_mr3000_bwmod_tropen	tfar_backpacks.pbo
+tf_mr3000_multicam	tf_mr3000_multicam : TFAR_mr3000_multicam deprecated item	TFAR_mr3000_multicam	tfar_backpacks.pbo
+tf_mr3000_rhs	tf_mr3000_rhs : TFAR_mr3000_rhs deprecated item	TFAR_mr3000_rhs	tfar_backpacks.pbo
+tf_mr6000l	tf_mr6000l : TFAR_mr6000l deprecated item	TFAR_mr6000l	tfar_backpacks.pbo
+tf_rt1523g	tf_rt1523g : TFAR_rt1523g deprecated item	TFAR_rt1523g	tfar_backpacks.pbo
+tf_rt1523g_big	tf_rt1523g_big : TFAR_rt1523g_big deprecated item	TFAR_rt1523g_big	tfar_backpacks.pbo
+tf_rt1523g_big_bwmod	tf_rt1523g_big_bwmod : TFAR_rt1523g_big_bwmod deprecated item	TFAR_rt1523g_big_bwmod	tfar_backpacks.pbo
+tf_rt1523g_big_bwmod_tropen	tf_rt1523g_big_bwmod_tropen : TFAR_rt1523g_big_bwmod_tropen deprecated item	TFAR_rt1523g_big_bwmod_tropen	tfar_backpacks.pbo
+tf_rt1523g_big_rhs	tf_rt1523g_big_rhs : TFAR_rt1523g_big_rhs deprecated item	TFAR_rt1523g_big_rhs	tfar_backpacks.pbo
+tf_rt1523g_black	tf_rt1523g_black : TFAR_rt1523g_black deprecated item	TFAR_rt1523g_black	tfar_backpacks.pbo
+tf_rt1523g_bwmod	tf_rt1523g_bwmod : TFAR_rt1523g_bwmod deprecated item	TFAR_rt1523g_bwmod	tfar_backpacks.pbo
+tf_rt1523g_fabric	tf_rt1523g_fabric : TFAR_rt1523g_fabric deprecated item	TFAR_rt1523g_fabric	tfar_backpacks.pbo
+tf_rt1523g_green	tf_rt1523g_green : TFAR_rt1523g_green deprecated item	TFAR_rt1523g_green	tfar_backpacks.pbo
+tf_rt1523g_rhs	tf_rt1523g_rhs : TFAR_rt1523g_rhs deprecated item	TFAR_rt1523g_rhs	tfar_backpacks.pbo
+tf_rt1523g_sage	tf_rt1523g_sage : TFAR_rt1523g_sage deprecated item	TFAR_rt1523g_sage	tfar_backpacks.pbo
+TFAR_anarc164	AN/ARC-164	TFAR_Bag_Base	tfar_backpacks.pbo
+TFAR_anarc210	AN/ARC-210	TFAR_Bag_Base	tfar_backpacks.pbo
+TFAR_anprc155	AN/PRC-155	TFAR_Bag_Base	tfar_backpacks.pbo
+TFAR_anprc155_coyote	AN/PRC-155 Coyote	TFAR_anprc155	tfar_backpacks.pbo
+TFAR_Bag_Base		Bag_Base	tfar_backpacks.pbo
+TFAR_bussole	Assault Pack Bussole	TFAR_Bag_Base	tfar_backpacks.pbo
+TFAR_mr3000	MR3000	TFAR_Bag_Base	tfar_backpacks.pbo
+TFAR_mr3000_bwmod	MR3000 BWMOD [Flecktarn]	TFAR_mr3000	tfar_backpacks.pbo
+TFAR_mr3000_bwmod_tropen	MR3000 BWMOD [Tropentarn]	TFAR_mr3000_bwmod	tfar_backpacks.pbo
+TFAR_mr3000_multicam	MR3000 Multicam	TFAR_mr3000	tfar_backpacks.pbo
+TFAR_mr3000_rhs	MR3000 RHS	TFAR_mr3000	tfar_backpacks.pbo
+TFAR_mr6000l	MR6000L	TFAR_Bag_Base	tfar_backpacks.pbo
+TFAR_rt1523g	RT-1523G (ASIP)	TFAR_Bag_Base	tfar_backpacks.pbo
+TFAR_rt1523g_big	RT-1523G (ASIP) Big	TFAR_rt1523g	tfar_backpacks.pbo
+TFAR_rt1523g_big_bwmod	RT-1523G (ASIP) Big BWMOD [Flecktarn]	TFAR_rt1523g_big	tfar_backpacks.pbo
+TFAR_rt1523g_big_bwmod_tropen	RT-1523G (ASIP) Big BWMOD [Tropentarn]	TFAR_rt1523g_big_bwmod	tfar_backpacks.pbo
+TFAR_rt1523g_big_rhs	RT-1523G (ASIP) Big RHS	TFAR_rt1523g_big	tfar_backpacks.pbo
+TFAR_rt1523g_black	RT-1523G (ASIP) Black	TFAR_rt1523g_sage	tfar_backpacks.pbo
+TFAR_rt1523g_bwmod	RT-1523G (ASIP) BWMOD long range radio 20km	TFAR_rt1523g	tfar_backpacks.pbo
+TFAR_rt1523g_fabric	RT-1523G (ASIP) Fabric	TFAR_rt1523g_sage	tfar_backpacks.pbo
+TFAR_rt1523g_green	RT-1523G (ASIP) Green	TFAR_rt1523g_sage	tfar_backpacks.pbo
+TFAR_rt1523g_rhs	RT-1523G (ASIP) RHS long range radio 20km	TFAR_rt1523g	tfar_backpacks.pbo
+TFAR_rt1523g_sage	RT-1523G (ASIP) Sage	TFAR_rt1523g	tfar_backpacks.pbo
+Invisi_bp	[UKSF] Blank Panal	B_Carryall_oli	THR_Backpack.pbo
+Frank_AVS_Panel	[ZXX] Custom AVS Backpanel	B_AssaultPack_mcamo	ZuluCustomBackpacks.pbo
+Jepp_AVS_Panel	[ZXX] Custom AVS Backpanel & Hydration Pack	B_AssaultPack_mcamo	ZuluCustomBackpacks.pbo
+Jones_Slickster_Panel	[11A] Ferro Slickster Backpanel	B_AssaultPack_mcamo	ZuluCustomBackpacks.pbo
+Zulu_Smith_JPCPanel	[ZXX] JPC Backpanels & Hydration Pack	B_AssaultPack_mcamo	ZuluCustomBackpacks.pbo
+Zulu_Smith_Panel	[ZXX] AVS Backpanels & Hydration Pack	B_AssaultPack_mcamo	ZuluCustomBackpacks.pbo
+ZuluMed1	[ZXX] Mystery Ranch RATS	B_AssaultPack_mcamo	ZuluCustomBackpacks.pbo
+ZuluMed3	[ZXX] Mystery Ranch RATS (TQ)	B_AssaultPack_mcamo	ZuluCustomBackpacks.pbo
+ZXX_117G_AVS	[ZXX] 117G AVS	B_AssaultPack_mcamo	ZuluCustomBackpacks.pbo
+ZXX_117G_JPC	[ZXX] 117G JPC	B_AssaultPack_mcamo	ZuluCustomBackpacks.pbo
+ZXX_3DAP	[ZXX] Mystery Ranch 3 Day Assault BVS	B_AssaultPack_mcamo	ZuluCustomBackpacks.pbo
+ZXX_3DAP2	[ZXX] Mystery Ranch 3 Day Assault Pack	B_AssaultPack_mcamo	ZuluCustomBackpacks.pbo
+ZXX_ASAP	[ZXX] Mystery Ranch ASAP	B_AssaultPack_mcamo	ZuluCustomBackpacks.pbo
+ZXX_AVS1000_AVS_CB	[ZXX] Crye AVS 1000	B_AssaultPack_mcamo	ZuluCustomBackpacks.pbo
+ZXX_AVS1000_AVS_MC	[ZXX] Crye AVS 1000	B_AssaultPack_mcamo	ZuluCustomBackpacks.pbo
+ZXX_AVS1000_AVS_RG	[ZXX] Crye AVS 1000	B_AssaultPack_mcamo	ZuluCustomBackpacks.pbo
+ZXX_AVS1000_JPC_CB	[ZXX] Crye AVS 1000 (JPC)	B_AssaultPack_mcamo	ZuluCustomBackpacks.pbo
+ZXX_AVS1000_JPC_MC	[ZXX] Crye AVS 1000 (JPC)	B_AssaultPack_mcamo	ZuluCustomBackpacks.pbo
+ZXX_AVS1000_JPC_RG	[ZXX] Crye AVS 1000 (JPC)	B_AssaultPack_mcamo	ZuluCustomBackpacks.pbo
+ZXX_AVS_Panel1	[ZXX] AVS Backpanel	B_AssaultPack_mcamo	ZuluCustomBackpacks.pbo
+ZXX_AVS_Panel2	[ZXX] BFG Large Utility Pouch x2 (AVS)	B_AssaultPack_mcamo	ZuluCustomBackpacks.pbo
+ZXX_AVS_Panel3	[ZXX] AVS Backpanel 2	B_AssaultPack_mcamo	ZuluCustomBackpacks.pbo
+ZXX_AVS_Panel4B	[ZXX] Crye Pouch Zip-On 2.0 (AVS)	B_AssaultPack_mcamo	ZuluCustomBackpacks.pbo
+ZXX_AVS_Panel4NB	[ZXX] Crye Pouch Zip-On 2.0 (AVS)	B_AssaultPack_mcamo	ZuluCustomBackpacks.pbo
+ZXX_AVS_Panel5	[ZXX] Breacher Panel 1 (AVS)	B_AssaultPack_mcamo	ZuluCustomBackpacks.pbo
+ZXX_AVS_Panel6	[ZXX] Breacher Panel 2 (AVS)	B_AssaultPack_mcamo	ZuluCustomBackpacks.pbo
+ZXX_AVS_Panel7_BLK_B_NH	[ZXX] Crye Pack Zip-On 2.0 (AVS)	B_AssaultPack_mcamo	ZuluCustomBackpacks.pbo
+ZXX_AVS_Panel7_BLK_NB_NH	[ZXX] Crye Pack Zip-On 2.0 (AVS)	B_AssaultPack_mcamo	ZuluCustomBackpacks.pbo
+ZXX_AVS_Panel7_CB_B_NH	[ZXX] Crye Pack Zip-On 2.0 (AVS)	B_AssaultPack_mcamo	ZuluCustomBackpacks.pbo
+ZXX_AVS_Panel7_CB_NB_NH	[ZXX] Crye Pack Zip-On 2.0 (AVS)	B_AssaultPack_mcamo	ZuluCustomBackpacks.pbo
+ZXX_AVS_Panel7_MC2_B_NH	[ZXX] Crye Pack Zip-On 2.0 (AVS)	B_AssaultPack_mcamo	ZuluCustomBackpacks.pbo
+ZXX_AVS_Panel7_MC2_NB_NH	[ZXX] Crye Pack Zip-On 2.0 (AVS)	B_AssaultPack_mcamo	ZuluCustomBackpacks.pbo
+ZXX_AVS_Panel7_MC_B_NH	[ZXX] Crye Pack Zip-On 2.0 (AVS)	B_AssaultPack_mcamo	ZuluCustomBackpacks.pbo
+ZXX_AVS_Panel7_MC_NB_NH	[ZXX] Crye Pack Zip-On 2.0 (AVS)	B_AssaultPack_mcamo	ZuluCustomBackpacks.pbo
+ZXX_AVS_Panel7_NF_B_NH	[ZXX] Crye Pack Zip-On 2.0 (AVS)	B_AssaultPack_mcamo	ZuluCustomBackpacks.pbo
+ZXX_AVS_Panel7_NF_NB_NH	[ZXX] Crye Pack Zip-On 2.0 (AVS)	B_AssaultPack_mcamo	ZuluCustomBackpacks.pbo
+ZXX_CL	[ZXX] Mystery Ranch CL	B_AssaultPack_mcamo	ZuluCustomBackpacks.pbo
+ZXX_Gunslinger_CB	[ZXX] Eberlestock G2 Gunslinger II (CB)	B_AssaultPack_mcamo	ZuluCustomBackpacks.pbo
+ZXX_Gunslinger_MC	[ZXX] Eberlestock G2 Gunslinger II (MC)	B_AssaultPack_mcamo	ZuluCustomBackpacks.pbo
+ZXX_Jammer	[ZXX] EW Jammer Bag	B_AssaultPack_mcamo	ZuluCustomBackpacks.pbo
+ZXX_JPC_Panel1	[ZXX] JPC Backpanel	B_AssaultPack_mcamo	ZuluCustomBackpacks.pbo
+ZXX_JPC_Panel2	[ZXX] BFG Large Utility Pouch x2 (JPC)	B_AssaultPack_mcamo	ZuluCustomBackpacks.pbo
+ZXX_JPC_Panel3	[ZXX] JPC Backpanel 2	B_AssaultPack_mcamo	ZuluCustomBackpacks.pbo
+ZXX_JPC_Panel4B	[ZXX] Crye Pouch Zip-On 2.0 (JPC)	B_AssaultPack_mcamo	ZuluCustomBackpacks.pbo
+ZXX_JPC_Panel4NB	[ZXX] Crye Pouch Zip-On 2.0 (JPC)	B_AssaultPack_mcamo	ZuluCustomBackpacks.pbo
+ZXX_JPC_Panel5	[ZXX] Breacher Panel 1 (JPC)	B_AssaultPack_mcamo	ZuluCustomBackpacks.pbo
+ZXX_JPC_Panel6	[ZXX] Breacher Panel 2 (JPC)	B_AssaultPack_mcamo	ZuluCustomBackpacks.pbo
+ZXX_JPC_Panel7_BLK_B_NH	[ZXX] Crye Pack Zip-On 2.0 (JPC)	B_AssaultPack_mcamo	ZuluCustomBackpacks.pbo
+ZXX_JPC_Panel7_BLK_NB_NH	[ZXX] Crye Pack Zip-On 2.0 (JPC)	B_AssaultPack_mcamo	ZuluCustomBackpacks.pbo
+ZXX_JPC_Panel7_CB_B_NH	[ZXX] Crye Pack Zip-On 2.0 (JPC)	B_AssaultPack_mcamo	ZuluCustomBackpacks.pbo
+ZXX_JPC_Panel7_CB_NB_NH	[ZXX] Crye Pack Zip-On 2.0 (JPC)	B_AssaultPack_mcamo	ZuluCustomBackpacks.pbo
+ZXX_JPC_Panel7_MC2_B_NH	[ZXX] Crye Pack Zip-On 2.0 (JPC)	B_AssaultPack_mcamo	ZuluCustomBackpacks.pbo
+ZXX_JPC_Panel7_MC2_NB_NH	[ZXX] Crye Pack Zip-On 2.0 (JPC)	B_AssaultPack_mcamo	ZuluCustomBackpacks.pbo
+ZXX_JPC_Panel7_MC_B_NH	[ZXX] Crye Pack Zip-On 2.0 (JPC)	B_AssaultPack_mcamo	ZuluCustomBackpacks.pbo
+ZXX_JPC_Panel7_MC_NB_NH	[ZXX] Crye Pack Zip-On 2.0 (JPC)	B_AssaultPack_mcamo	ZuluCustomBackpacks.pbo
+ZXX_JPC_Panel7_NF_B_NH	[ZXX] Crye Pack Zip-On 2.0 (JPC)	B_AssaultPack_mcamo	ZuluCustomBackpacks.pbo
+ZXX_JPC_Panel7_NF_NB_NH	[ZXX] Crye Pack Zip-On 2.0 (JPC)	B_AssaultPack_mcamo	ZuluCustomBackpacks.pbo
+ZXX_Slingshot_AVS	[ZXX] 117G Slingshot AVS	B_AssaultPack_mcamo	ZuluCustomBackpacks.pbo
+ZXX_Slingshot_JPC	[ZXX] 117G Slingshot JPC	B_AssaultPack_mcamo	ZuluCustomBackpacks.pbo
+dfs_arzg9	[UKSF] MC5 Parachute	B_Parachute	ZuluParachute.pbo
+ZuluParachutesecours	[UKSF] MC5 Parachute	ACE_ReserveParachute	ZuluParachute.pbo

@@ -1,0 +1,20 @@
+# modded match coverage gaps: helmets
+# 17 unresolved of 138 modded classes (87.7% resolved)
+# class	display	parent	source
+H_Headset_light		HelmetBase	ace_compat_aegis.pbo
+H_Headset_Tactical		HelmetBase	ace_compat_aegis.pbo
+H_HelmetI_I_01_base_F		HelmetBase	ace_compat_atlas.pbo
+EF_H_Protecta		HelmetBase	ace_compat_ef.pbo
+vn_o_headgear_base		H_Booniehat_khk	ace_compat_sog.pbo
+vn_o_helmet_nva_01		vn_o_headgear_base	ace_compat_sog.pbo
+vn_o_helmet_nva_05		vn_o_helmet_nva_01	ace_compat_sog.pbo
+vn_o_helmet_shl61_01		vn_o_headgear_base	ace_compat_sog.pbo
+vn_o_helmet_shl61_02		vn_o_helmet_shl61_01	ace_compat_sog.pbo
+vn_o_helmet_tsh3_01		vn_o_headgear_base	ace_compat_sog.pbo
+lxWS_H_Headset		H_Cap_headphones	ace_compat_ws.pbo
+lxWS_H_Tank_tan_F		HelmetBase	ace_compat_ws.pbo
+H_Construction_earprot_base_F		HelmetBase	ace_hearing.pbo
+H_Construction_headset_base_F		HelmetBase	ace_hearing.pbo
+H_EarProtectors_base_F		HelmetBase	ace_hearing.pbo
+H_HeadSet_base_F		HelmetBase	ace_hearing.pbo
+mgsr_headbag	MGSR: Headbag	HelmetBase	mgsr_headbag.pbo

@@ -41,12 +41,18 @@ from tools import report_match_coverage as m  # noqa: E402
 COVERAGE = REPO / "data" / "coverage"
 BASELINE = COVERAGE / "modded_baseline.json"
 SCHEMA = "aee.match_coverage.baseline/1"
-TABLES = {
-    "vehicles",
-    "aircraft",
-    "small_arms",
-    "carried_launchers",
-    "vehicle_armament",
+# The tool declares the tables it measures, so a matcher added to the tool
+# without a gap list, or a gap list without a measurement, fails here.
+TABLES = set(m.MEASURED_TABLES)
+
+# A table whose scored text is the classname: the config need not declare a
+# display name, so its gap record can carry an empty display field.
+NAMELESS_DISPLAY_TABLES = {
+    "night_vision_devices",
+    "uniforms",
+    "vests",
+    "helmets",
+    "rucksacks",
 }
 
 
@@ -384,7 +390,13 @@ class TestBaselineArtefact(unittest.TestCase):
                     self.assertEqual(len(fields), 4, line)
                     cls, display, parent, source = fields
                     self.assertTrue(cls)
-                    self.assertTrue(display)
+                    if name in NAMELESS_DISPLAY_TABLES:
+                        # The scan can hold a class with no displayName:
+                        # the config declares one, and the class name is
+                        # then the only identity text there is.
+                        pass
+                    else:
+                        self.assertTrue(display)
                     self.assertTrue(parent)
                     # A gap list of modded classes must not name a base PBO.
                     self.assertNotIn(source.lower(), base_pbos)
@@ -491,6 +503,148 @@ class TestBaselineReproduces(unittest.TestCase):
                         f"{want['class']}\t{m._tidy(want['display'])}\t"
                         f"{want['parent']}\t{want['source']}",
                     )
+
+
+class TestDeviceLadder(unittest.TestCase):
+    """The device ladder scores NVG rows by identity alone, and refuses a tie."""
+
+    TABLE = [
+        {
+            "id": "pvs14",
+            "family": "nvg",
+            "classes": ["anpvs14", "pvs14"],
+            "aliases": ["pvs14"],
+            "keywords": ["anpvs14"],
+        },
+        {
+            "id": "pvs31",
+            "family": "nvg",
+            "classes": ["anpvs31", "pvs31"],
+            "aliases": ["pvs31"],
+            "keywords": ["anpvs31"],
+        },
+    ]
+
+    def test_a_mapped_class_is_named_at_the_exact_layer(self):
+        hit = m.device_matcher(self.TABLE)("NVGoggles_PVS14", "")
+        self.assertEqual(hit["id"], "pvs14")
+
+    def test_a_class_token_equal_to_an_alias_is_named(self):
+        hit = m.device_matcher(self.TABLE)("mod_pvs31_kit", "")
+        self.assertEqual(hit["id"], "pvs31")
+
+    def test_a_shared_family_stem_does_not_answer_the_mark(self):
+        # "pvs" is a stem of both entries and names neither. The scored
+        # layer weighs only the designations the query actually holds.
+        self.assertIsNone(m.device_matcher(self.TABLE)("mod_pvs_goggles", ""))
+
+    def test_a_tie_at_the_closest_layer_answers_nothing(self):
+        table = [
+            {
+                "id": "a",
+                "family": "nvg",
+                "classes": [],
+                "aliases": ["abcd"],
+                "keywords": [],
+            },
+            {
+                "id": "b",
+                "family": "nvg",
+                "classes": [],
+                "aliases": ["abcd"],
+                "keywords": [],
+            },
+        ]
+        trace: dict = {}
+        self.assertIsNone(m.device_matcher(table, trace=trace)("xabcd", ""))
+        self.assertEqual(trace["layer"], "closest")
+
+    def test_the_family_filter_keeps_one_family_of_rows(self):
+        # The ENVG-B is both an NVG and a thermal device; the caller states
+        # which one it wants, so the filter runs before the ladder.
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "match.sqf"
+            path.write_text(
+                '["envgb", "nvg", "envgb", "", "", "", ["white", 72, 32, 0.5]],\n'
+                '["envgb_thermal", "thermal", "envgb", "", "", "", [0.04, 640, 480, 30]],\n',
+                encoding="utf-8",
+            )
+            self.assertEqual([r["id"] for r in m.device_rows(path, "nvg")], ["envgb"])
+            self.assertEqual(
+                [r["id"] for r in m.device_rows(path, "thermal")], ["envgb_thermal"]
+            )
+
+
+class TestEquipmentLadder(unittest.TestCase):
+    """The item-mass resolver is the first table row whose family the text
+    carries, restricted to the slot category the caller states."""
+
+    TABLE = [
+        {"id": "pack_slackman", "family": "pack_slackman", "category": "rucksack"},
+        {"id": "slackman", "family": "slackman", "category": "vest"},
+        {"id": "combatuniform", "family": "combatuniform", "category": "uniform"},
+        {"id": "avs", "family": "avs", "category": "vest"},
+    ]
+
+    def test_the_first_row_of_the_category_answers(self):
+        hit = m.equipment_matcher(self.TABLE, "rucksack")("Pack_Slackman", "")
+        self.assertEqual(hit["id"], "pack_slackman")
+
+    def test_a_row_of_another_slot_is_skipped(self):
+        # The same identity text names a vest family, but a caller that
+        # holds a rucksack slot must not weigh it as webbing.
+        hit = m.equipment_matcher(self.TABLE, "vest")("Pack_Slackman", "")
+        self.assertEqual(hit["id"], "slackman")
+
+    def test_the_display_name_is_identity_text(self):
+        hit = m.equipment_matcher(self.TABLE, "uniform")("U_Mod_01", "CombatUniform")
+        self.assertEqual(hit["id"], "combatuniform")
+
+    def test_an_unpublished_family_answers_nothing(self):
+        self.assertIsNone(
+            m.equipment_matcher(self.TABLE, "uniform")("U_Mod_Plain", "Uniform")
+        )
+
+    def test_a_short_family_is_a_substring_and_is_reported_as_another_slot(self):
+        # Faithful to the runtime: "avs" is a substring of NAVSPECWAR, and
+        # the resolver refuses it only because the category contradicts.
+        self.assertIsNone(
+            m.equipment_matcher(self.TABLE, "uniform")("NAVSPECWAR_Uniform", "")
+        )
+        reason = m._clothing_reason(
+            {"class": "NAVSPECWAR_Uniform", "display": ""},
+            "uniform",
+            self.TABLE,
+            lambda _cls: ["navspecwar_uniform", "uniform_base"],
+            m.equipment_matcher(self.TABLE, "uniform"),
+        )
+        self.assertIn("'avs'", reason)
+
+
+class TestTaxonomySelection(unittest.TestCase):
+    """A table's denominator is the engine taxonomy, not a name list."""
+
+    def chain(self, cls: str) -> list:
+        return {
+            "U_Mod_A": ["u_mod_a", "uniform_base", "itemcore", "default"],
+            "V_Mod_B": ["v_mod_b", "vest_camo_base", "itemcore", "default"],
+        }.get(cls, [cls.lower()])
+
+    def test_only_classes_under_the_root_are_selected(self):
+        scanned = [
+            {"kind": "CfgWeapons", "class": "U_Mod_A", "display": "Uniform A"},
+            {"kind": "CfgWeapons", "class": "V_Mod_B", "display": "Vest B"},
+        ]
+        got = m._taxonomy(scanned, "CfgWeapons", {m.UNIFORM_ROOT}, self.chain)
+        self.assertEqual([r["class"] for r in got], ["U_Mod_A"])
+
+    def test_a_class_declared_by_two_pbos_is_counted_once(self):
+        scanned = [
+            {"kind": "CfgWeapons", "class": "U_Mod_A", "display": "Uniform A"},
+            {"kind": "CfgWeapons", "class": "U_Mod_A", "display": "Uniform A"},
+        ]
+        got = m._taxonomy(scanned, "CfgWeapons", {m.UNIFORM_ROOT}, self.chain)
+        self.assertEqual(len(got), 1)
 
 
 class TestInheritanceRung(unittest.TestCase):

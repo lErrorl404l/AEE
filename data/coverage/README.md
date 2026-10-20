@@ -64,7 +64,10 @@ names it instead. The tool stops with an error when the install or its
 ## `modded_gaps_<table>.txt`
 
 One file per table: `vehicles`, `aircraft`, `small_arms`,
-`carried_launchers`, `vehicle_armament`. Three `#` comment lines carry the
+`carried_launchers`, `vehicle_armament`, `night_vision_devices`,
+`uniforms`, `vests`, `helmets`, `rucksacks`. `INVENTORY.md` states every
+generated identity table, the corpus behind it, and the tables this
+measurement does not score. Three `#` comment lines carry the
 table name, the unresolved count and the resolved percentage. Every line
 after them is one unresolved modded class, tab-separated:
 
@@ -87,7 +90,10 @@ mark's canonical name, five tie on the derived RG-33 family keyword, two name
 the maker Land Rover and no mark, and one names the FMTV family over a
 generic class. `data/vehicle/MODDED_CLASS_GAPS.md` gives each class and its
 reason. `tables` holds, per table, the `base` and `modded` counts
-(`hit`, `total`, `pct`), `unresolved_modded`, and `excluded` by kind.
+(`hit`, `total`, `pct`), `unresolved_modded`, `excluded` by kind, and
+`reasons`: the shape of the open classes, counted. `provenance` also holds
+`measured_tables`, so a table cannot drop out of the measurement without
+the lock noticing.
 
 `tools/tests/test_match_coverage.py` holds the lock. It re-derives every
 table from the scan and compares the result with this file, and it checks
