@@ -209,8 +209,8 @@ tools/validation/gen_equipment_data.py and must not be edited by hand.
 A classname carries a family keyword (pvs14, peq15, prc152, alice). The
 table holds the median published mass for each family and category, with
 the number of published rows behind it. A classname that carries no known
-family returns 0: the item is unknown, not guessed, and the coverage test
-reports it.
+family falls to the type rung: the caller's stated slot names the kind of
+item, and the answer is that kind with no figure, never a guessed mass.
 
 A caller that knows the slot category passes it as the second argument, so
 a family keyword shared by two categories (a pack and a belt named ALICE)
@@ -305,7 +305,21 @@ if ((_match == 0) && (_known != "")) then {
 
 // The trace names what resolved and, when nothing did, says so: an item
 // that falls to 0 is the case a carried-load figure is hardest to explain.
-private _logMsg = format ["item mass: %1 -> %2 kg (family '%3')", _item, _match, _family];
+// ─── Type: the caller's own slot ────────────────────────────────────────
+// Nothing above named a family. The caller stated which slot it holds, so
+// the KIND of item is known even when no published family names it: the
+// answer is the type entry for that slot. A type entry names a kind,
+// never a model, and carries no figure, so the mass stays 0 and the
+// grade is stated in the trace.
+private _typeName = "";
+if ((_allowed isNotEqualTo []) && {(_allowed select 0) != ""}) then {
+    _typeName = _allowed select 0;
+};
+if (_typeName != "") then {
+    _family = _typeName;
+};
+
+private _logMsg = format ["item mass: %1 -> %2 kg (family '%3', grade '%4')", _item, _match, _family, (["family", "type"] select (_match == 0 && _typeName != ""))];
 AEE_LOG_DEBUG(_logMsg);
 _match
 """

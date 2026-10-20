@@ -81,6 +81,12 @@ layer returns an empty array.
   closest       the longest alias or keyword substring of the query,
                 at least 4 characters, with a strictly lower
                 runner-up score. A tie returns [].                    4
+  type          nothing above names the device, so the KIND is the
+                answer: "night-vision device", "thermal optic" or
+                "optic". The caller's family states it; with no family
+                the config does, from the item type and the optics
+                modes. A type entry names a kind, never a model, and
+                carries no figure.                                    5
 
 The vehicle matcher runs a fifth inheritance layer. A device row names no
 supported game class token, so that layer has no meaning here and is
@@ -170,6 +176,37 @@ private _result = {
      _row select 5, _row select 6]
 };
 
+private _typeAnswer = {
+    // The type rung. It answers the KIND of the device when no identity layer
+    // can, and a tie falls here too: two candidate marks name no single mark,
+    // but the config still states the kind. Nothing above names the device, so the KIND is the
+    // answer. The caller's family states it; with no family the config does:
+    // item type 616 is the night vision item type, and a sight is told from
+    // any other inventory item by the optics modes it declares. A type entry
+    // names a kind, never a model, and carries no figure.
+    params ["_className", "_family"];
+    private _kind = _family;
+    if (_kind == "") then {
+        private _itemType = getNumber (configFile >> "CfgWeapons" >> _className >> "ItemInfo" >> "type");
+        private _modes = ("true" configClasses (configFile >> "CfgWeapons" >> _className >> "ItemInfo" >> "OpticsModes"));
+        private _thermal = false;
+        {
+            if (!_thermal && {getArray (_x >> "thermalMode") isNotEqualTo []}) then { _thermal = true; };
+            if (!_thermal && {"Ti" in getArray (_x >> "visionMode")}) then { _thermal = true; };
+        } forEach _modes;
+        if (_itemType == 616) then { _kind = "nvg"; };
+        if (_kind == "" && {_thermal}) then { _kind = "thermal"; };
+        if (_kind == "" && {(count _modes) > 0}) then { _kind = "optic"; };
+    };
+    if (_kind == "") exitWith { [] };
+    private _typeName = switch (_kind) do {
+        case "nvg": { "night-vision device" };
+        case "thermal": { "thermal optic" };
+        default { "optic" };
+    };
+    [_typeName, _kind, 8, "type", "", []]
+};
+
 private _candidates = [];
 
 // Layer 1: exact class. The normalised class equals a mapped class name.
@@ -180,7 +217,7 @@ private _candidates = [];
     };
 } forEach _table;
 if ((count _candidates) == 1) exitWith { [_candidates select 0, 1, "exact_class"] call _result };
-if ((count _candidates) > 1) exitWith { [] };
+if ((count _candidates) > 1) exitWith { [_className, _family] call _typeAnswer };
 
 // Layer 2: alias. A query token equals a catalogue alias.
 _candidates = [];
@@ -194,7 +231,7 @@ _candidates = [];
     if (_hit) then { _candidates pushBack _row; };
 } forEach _table;
 if ((count _candidates) == 1) exitWith { [_candidates select 0, 2, "alias"] call _result };
-if ((count _candidates) > 1) exitWith { [] };
+if ((count _candidates) > 1) exitWith { [_className, _family] call _typeAnswer };
 
 // Layer 3: keyword. The query holds a keyword of at least four characters.
 _candidates = [];
@@ -277,7 +314,8 @@ private _tie = false;
 if ((_bestRow isNotEqualTo []) && {!_tie} && _bestScore > _runnerUp) exitWith {
     [_bestRow, 4, "closest"] call _result
 };
-[]
+
+[_className, _family] call _typeAnswer
 """
 
 DATA_TEMPLATE = """#include "..\\script_component.hpp"
@@ -473,6 +511,17 @@ def _query_tokens(text: str) -> set[str]:
     }
 
 
+def type_entry(family: str) -> list[object] | None:
+    """The type answer. The harness holds no config, so only the caller's
+    family can state the kind; with no family it answers nothing."""
+    if not family:
+        return None
+    name = {"nvg": "night-vision device", "thermal": "thermal optic"}.get(
+        family, "optic"
+    )
+    return [name, family, 8, "type", "", []]
+
+
 def match_row(
     rows: Sequence[Sequence[object]],
     class_name: str,
@@ -513,7 +562,7 @@ def match_row(
     if len(alias) == 1:
         return result(alias[0], 2, "alias")
     if len(alias) > 1:
-        return None
+        return type_entry(family)
 
     # The substring layer scans ALIASES as well as keywords. A device whose
     # full designation is held as an alias ("pas13v1") must be able to
@@ -577,7 +626,8 @@ def match_row(
                     runner_up = score
     if best is not None and not tie and best_score > runner_up:
         return result(best, 4, "closest")
-    return None
+
+    return type_entry(family)
 
 
 def render_match(rows: Sequence[Sequence[object]]) -> str:

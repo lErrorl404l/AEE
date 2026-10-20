@@ -114,6 +114,11 @@ layer returns an empty array.
                 more characters in the query. A family row is
                 identity-only and answers only when it is the only
                 one, so it never takes an answer from a mark.           7
+  type          nothing above names the vehicle, so the ENGINE kind is
+                the answer: "armoured vehicle", "truck", "motorcycle",
+                "car" or "vehicle" from the config taxonomy. A type
+                entry names a kind, never a model, and carries no
+                figure.                                               8
 
 A row has nine columns:
 
@@ -199,6 +204,26 @@ private _result = {
      _row select 7, _row select 8]
 };
 
+private _typeAnswer = {
+    // The type rung. It answers the KIND of the class when no identity layer
+    // can, and it is also what a tie falls to: two candidate marks name no
+    // single mark, but the engine still states the kind. It names a kind,
+    // never a model, and carries no figure.
+    //
+    // Nothing above named the vehicle, so the ENGINE kind is the answer: the config's own taxonomy says what kind of ground vehicle
+    // this is, and that is a statement about the class, not about a model. A
+    // type entry carries no catalogue id, no variant and no figure, and it
+    // never runs while a higher layer has answered.
+    params ["_className"];
+    private _kind = "";
+    if (_className isKindOf "Tank") then { _kind = "armoured vehicle" };
+    if ((_kind == "") && {_className isKindOf "Truck"}) then { _kind = "truck" };
+    if ((_kind == "") && {_className isKindOf "Motorcycle"}) then { _kind = "motorcycle" };
+    if ((_kind == "") && {_className isKindOf "Car"}) then { _kind = "car" };
+    if (_kind == "") then { _kind = "vehicle" };
+    [_kind, "", "", 8, "type", "", []]
+};
+
 private _candidates = [];
 
 // Layer 1: exact class. The normalised class equals a mapped game class.
@@ -209,7 +234,7 @@ private _candidates = [];
     };
 } forEach _table;
 if ((count _candidates) == 1) exitWith { [_candidates select 0, 1, "exact_class"] call _result };
-if ((count _candidates) > 1) exitWith { [] };
+if ((count _candidates) > 1) exitWith { [_className] call _typeAnswer };
 
 // Layer 2: alias. A query token equals a catalogue alias.
 _candidates = [];
@@ -223,7 +248,7 @@ _candidates = [];
     if (_hit) then { _candidates pushBack _row; };
 } forEach _table;
 if ((count _candidates) == 1) exitWith { [_candidates select 0, 2, "alias"] call _result };
-if ((count _candidates) > 1) exitWith { [] };
+if ((count _candidates) > 1) exitWith { [_className] call _typeAnswer };
 
 // Layer 3: keyword. The query holds a keyword of at least four characters.
 _candidates = [];
@@ -237,7 +262,7 @@ _candidates = [];
     if (_hit) then { _candidates pushBack _row; };
 } forEach _table;
 if ((count _candidates) == 1) exitWith { [_candidates select 0, 3, "keyword"] call _result };
-if ((count _candidates) > 1) exitWith { [] };
+if ((count _candidates) > 1) exitWith { [_className] call _typeAnswer };
 
 // Layer 4: inheritance. The class isKindOf the entry class token.
 _candidates = [];
@@ -248,7 +273,7 @@ _candidates = [];
     };
 } forEach _table;
 if ((count _candidates) == 1) exitWith { [_candidates select 0, 4, "inheritance"] call _result };
-if ((count _candidates) > 1) exitWith { [] };
+if ((count _candidates) > 1) exitWith { [_className] call _typeAnswer };
 
 // Layer 5: closest. The longest alias or keyword substring of the query,
 // at least four characters, with a strictly lower runner-up score.
@@ -385,7 +410,8 @@ _candidates = [];
     if (_hit) then { _candidates pushBack _row; };
 } forEach _families;
 if ((count _candidates) == 1) exitWith { [_candidates select 0, 7, "family"] call _result };
-[]
+
+[_className] call _typeAnswer
 """
 
 DATA_TEMPLATE = """#include "..\\script_component.hpp"
@@ -1038,13 +1064,13 @@ def match_row(
     if len(exact) == 1:
         return result(exact[0], 1, "exact_class")
     if len(exact) > 1:
-        return None
+        return type_entry(class_name, ancestors)
 
     alias = [row for row in rows if set(str(row[COL_ALIASES]).split("|")) & tokens]
     if len(alias) == 1:
         return result(alias[0], 2, "alias")
     if len(alias) > 1:
-        return None
+        return type_entry(class_name, ancestors)
 
     keyword = [
         row
@@ -1057,7 +1083,7 @@ def match_row(
     if len(keyword) == 1:
         return result(keyword[0], 3, "keyword")
     if len(keyword) > 1:
-        return None
+        return type_entry(class_name, ancestors)
 
     inherit = [
         row
@@ -1067,7 +1093,7 @@ def match_row(
     if len(inherit) == 1:
         return result(inherit[0], 4, "inheritance")
     if len(inherit) > 1:
-        return None
+        return type_entry(class_name, ancestors)
 
     best: Sequence[object] | None = None
     best_score = 0
@@ -1114,7 +1140,8 @@ def match_row(
     ]
     if len(family) == 1:
         return result(family[0], 7, "family")
-    return None
+
+    return type_entry(class_name, ancestors)
 
 
 def render_match(

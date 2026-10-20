@@ -32,6 +32,9 @@ The ladder, in order:
                   or more characters in the query. A family row is
                   identity-only and answers only when it is the only
                   one, so it never takes an answer from a mark
+  6 type          nothing above names the munition, so the kind is the
+                  answer. A type entry names a kind, never a model, and
+                  carries no figure
 
 An ambiguous match returns an empty array, and so does an unknown class.
 There is no default: the caller falls back on its own documented estimate
@@ -301,7 +304,7 @@ private _candidates = [];
     };
 } forEach _table;
 if ((count _candidates) == 1) exitWith { [_candidates select 0, 1, "exact_class"] call _result };
-if ((count _candidates) > 1) exitWith { [] };
+if ((count _candidates) > 1) exitWith { ["munition", "munition", 8, "type", "", []] };
 
 // Layer 2: alias. A query token equals a curated alias.
 _candidates = [];
@@ -315,7 +318,7 @@ _candidates = [];
     if (_hit) then { _candidates pushBack _row; };
 } forEach _table;
 if ((count _candidates) == 1) exitWith { [_candidates select 0, 2, "alias"] call _result };
-if ((count _candidates) > 1) exitWith { [] };
+if ((count _candidates) > 1) exitWith { ["munition", "munition", 8, "type", "", []] };
 
 // Layer 3: keyword. The query holds a derived designation.
 _candidates = [];
@@ -329,7 +332,7 @@ _candidates = [];
     if (_hit) then { _candidates pushBack _row; };
 } forEach _table;
 if ((count _candidates) == 1) exitWith { [_candidates select 0, 3, "keyword"] call _result };
-if ((count _candidates) > 1) exitWith { [] };
+if ((count _candidates) > 1) exitWith { ["munition", "munition", 8, "type", "", []] };
 
 // Layer 4: closest. The total of every designation of the entry that the
 // query holds, with a type number worth double.
@@ -414,4 +417,9 @@ _candidates = [];
     if (_hit) then { _candidates pushBack _row; };
 } forEach _families;
 if ((count _candidates) == 1) exitWith { [_candidates select 0, 7, "family"] call _result };
-[]
+
+// Layer 6: type. Nothing above names the munition, so the KIND is the
+// answer. The class reached here already passed the kind screen, so the
+// config states it is a munition and no source names which one. A type
+// entry names a kind, never a model, and carries no figure.
+["munition", "munition", 8, "type", "", []]
