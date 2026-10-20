@@ -2,38 +2,47 @@
 """Modded-class resolution locks (vehicle and aircraft identity ladders).
 
 The runtime matchers name a game class from the class text and the display
-name alone. A modded class resolves when its own text carries a designation
-the catalogue entry publishes: the exact mapped class, a curated alias, a
-keyword or the closest layer. It resolves to nothing when the text carries
-no such designation, and that is the correct answer - the matcher never
-guesses.
+name. The vehicle matcher has one more layer: where the text names nothing,
+the ENGINE ancestry answers, from the config parent chain. A modded class
+resolves when its own text carries a designation the catalogue entry
+publishes - the exact mapped class, a curated alias, a keyword or the closest
+layer - or, on the vehicle side, when it is a descendant of an ancestor the
+table names AND its own text names what that ancestor's entry is. It resolves
+to nothing when neither holds, and that is the correct answer: the matcher
+never guesses.
 
 This module locks the modded gaps that were closed and the modded classes
 that stay open on purpose. Each closed class names the catalogue entry it
-must resolve to. Each open class is listed with the reason it stays open, so
-a later change that closes or breaks one shows up here.
+must resolve to; each inherited one also names the config chain that puts it
+there. Each open class is listed with the reason it stays open, so a later
+change that closes or breaks one shows up here.
 
-The two tables are independent. The vehicle table closed twenty-one modded
-classes: the RHS M1237 RG-33L "Plus" and M1239 SOCOM AUV families, the
-PHAN Typhoon truck, the four Tahoe marks, the RHS Object 681, the Jbad
-Caterpillar 789D, and the five the counterpart research closed (the SUV, the
-Hatchback, the two Van re-uses and the RHS civilian Zamak retexture). The
-aircraft table closed one: the base game's fictional AR-2 Darter, whose
+The vehicle table closes thirty-eight modded classes: twenty-one by their own
+text (the RHS M1237 RG-33L "Plus" and M1239 SOCOM AUV families, the PHAN
+Typhoon truck, the four Tahoe marks, the RHS Object 681, the Jbad Caterpillar
+789D, and the five the counterpart research closed) and seventeen by engine
+ancestry - the seven Arma 3 Offroad re-uses and the ten Project OPFOR KAMAZ
+trucks, whose chain reaches the Zamak that the wiki ties to the KamAZ-4310
+family. An inherited closure says the class IS that ancestor in the engine.
+It does not say the mod's own paint names a different real vehicle, because
+where the class text names a different article the rung refuses: the two that
+stay open are LOP_Nissan_PKM_base, a Nissan over the ancestor's Toyota entry,
+and rhsusf_fmtv_base, a family label over the engine's Car class.
+
+The aircraft table closed one: the base game's fictional AR-2 Darter, whose
 display name the wiki ties to the Parrot AR.Drone 2.0. Every remaining
 aircraft gap is an ArmaFPV first-person-view drone whose own text ("Crocus
-AT TI") states no designation any published source holds, so a row would
-have to invent one.
+AT TI") states no designation any published source holds, so a row would have
+to invent one.
 
-The remaining nineteen vehicle gaps are locked below with the reason each
-stays open, and data/vehicle/MODDED_CLASS_GAPS.md holds the same table with
-its evidence. The KamAZ-4310 entry publishes the real truck and binds the
-Arma 3 Zamak classes through the wiki's own statement ("Zamak is simply
-Kamaz spelt backwards, which is the name of the company that designs the
-real-life "KamAZ-4310" family of trucks that the Zamak is based on"). The
-Project OPFOR KAMAZ trucks are retextures of that Zamak, but no source
-states the chain and their own text carries no 4310 token, so they stay
-open. An alias on the maker word would close them and capture the RHS
-KamAZ-5350 at the same time. That is a false answer, not a closure.
+The KamAZ-4310 entry publishes the real truck and binds the Arma 3 Zamak
+classes through the wiki's own statement ("Zamak is simply Kamaz spelt
+backwards, which is the name of the company that designs the real-life
+"KamAZ-4310" family of trucks that the Zamak is based on"). The Project OPFOR
+KAMAZ trucks carry no 4310 token, so no text layer may name them: an alias on
+the maker word would also capture the RHS KamAZ-5350, which is a different
+truck. The chain separates them, because the 5350 does not descend from the
+Zamak.
 
 Run: python3 -m unittest tools.tests.test_mod_class_resolution -v
 """
@@ -116,123 +125,60 @@ VEHICLE_EMPLACEMENT_CASES: tuple[str, ...] = (
     "RHS_M119_base",
 )
 
-# A mod that re-uses a base-game FICTIONAL vehicle carries the base game's
-# own unresolved identity: the display name is the fictional one ("Offroad",
-# "SUV", "Hatchback", "Zamak Transport", "Van (Utility)") and the class text
-# states no real designation. The Arma 3 Offroad is the one that stays open
-# after the counterpart research: its real identity is a composite (Audi Q7
-# pickup-concept front, Mitsubishi L200 rear), so a class text that names
-# only the fictional name names neither donor. The SUV, Hatchback, Van and
-# RHS Zamak re-uses now resolve and are locked as closed cases below.
-VEHICLE_FICTIONAL_REUSE_CASES: tuple[tuple[str, str, str], ...] = (
-    (
-        "LOP_Offroad_base",
-        "Offroad",
-        "fictional Offroad display; the real identity is a two-donor composite and the text names neither donor",
-    ),
-    (
-        "LOP_Offroad_M2_base",
-        "Offroad (M2)",
-        "fictional Offroad display; the same composite identity, plus an Arma-only M2 mount",
-    ),
-    (
-        "CBRN_Offroad",
-        "Offroad",
-        "fictional Offroad display; the same composite identity as the base game",
-    ),
-    (
-        "LOP_AA_Offroad",
-        "ANA Offroad",
-        "fictional Offroad display behind a faction prefix; the text names no donor",
-    ),
-    (
-        "LOP_AA_Offroad_Police",
-        "ANP Offroad",
-        "fictional Offroad display behind a faction prefix; the text names no donor",
-    ),
-    (
-        "LOP_AA_Offroad_M2",
-        "ANA Offroad (M2)",
-        "fictional Offroad display behind a faction prefix; the text names no donor",
-    ),
-    (
-        "LOP_AA_Offroad_M2_Police",
-        "ANP Offroad (M2)",
-        "fictional Offroad display behind a faction prefix; the text names no donor",
-    ),
+# The modded classes the inherited rung closes: the class, its display, the
+# config chain from the class to the nearest ancestor the table maps by
+# classname, and the entry that ancestor names. A closure here says the class
+# IS that ancestor in the engine, and that its own text names what the
+# ancestor's entry is. It does not say the mod's paint names another article.
+INHERITED_VEHICLE_CASES: tuple[tuple[str, str, tuple[str, ...], str], ...] = (
+    ("CBRN_Offroad", "Offroad", ("Offroad_01_civil_base_F", "Offroad_01_unarmed_base_F"), "offroad_q7_l200_composite"),
+    ("LOP_Offroad_base", "Offroad", ("Offroad_01_civil_base_F", "Offroad_01_unarmed_base_F"), "offroad_q7_l200_composite"),
+    ("LOP_AA_Offroad", "ANA Offroad", ("LOP_Offroad_base", "Offroad_01_civil_base_F", "Offroad_01_unarmed_base_F"), "offroad_q7_l200_composite"),
+    ("LOP_AA_Offroad_Police", "ANP Offroad", ("LOP_Offroad_base", "Offroad_01_civil_base_F", "Offroad_01_unarmed_base_F"), "offroad_q7_l200_composite"),
+    ("LOP_Offroad_M2_base", "Offroad (M2)", ("Offroad_01_armed_base_F", "Offroad_01_military_base_F", "Offroad_01_base_F"), "offroad_q7_l200_composite"),
+    ("LOP_AA_Offroad_M2", "ANA Offroad (M2)", ("LOP_Offroad_M2_base", "Offroad_01_armed_base_F", "Offroad_01_military_base_F", "Offroad_01_base_F"), "offroad_q7_l200_composite"),
+    ("LOP_AA_Offroad_M2_Police", "ANP Offroad (M2)", ("LOP_Offroad_M2_base", "Offroad_01_armed_base_F", "Offroad_01_military_base_F", "Offroad_01_base_F"), "offroad_q7_l200_composite"),
 )
 
-# A modded class whose text names only the maker, or only a family. The
-# KamAZ trucks of Project OPFOR are retextures of the Arma 3 Truck_02 Zamak
-# and state "KAMAZ" plus a body word. No class name and no display name in
-# the installed content carries a model token: the scan holds no "4310"
-# anywhere, so the maker plus a body cannot name the KamAZ-4310 without
-# capturing the RHS KamAZ-5350 classes at the same time. The family base
-# classes (FMTV, the LOP "_base" scaffolding) state a family, and a family is
-# not one vehicle, so the catalogue correctly refuses to name one. The Zamak
-# classes these trucks retexture are bound to the KamAZ-4310, but no read
-# source states the retexture chain, so the retextures stay open.
-VEHICLE_MAKER_OR_FAMILY_CASES: tuple[tuple[str, str, str], ...] = (
-    (
-        "LOP_KAMAZ_fuel_base",
-        "KamAZ (fuel)",
-        "maker plus fuel body; the model is not published for this retexture",
-    ),
-    (
-        "LOP_UKR_KAMAZ_Fuel",
-        "KAMAZ (fuel)",
-        "maker plus fuel body; the model is not published for this retexture",
-    ),
-    (
-        "LOP_CDF_KAMAZ_Fuel",
-        "KAMAZ (fuel)",
-        "maker plus fuel body; the model is not published for this retexture",
-    ),
-    (
-        "LOP_IRAN_KAMAZ_Fuel",
-        "KAMAZ (fuel)",
-        "maker plus fuel body; the model is not published for this retexture",
-    ),
-    (
-        "LOP_SYR_KAMAZ_Fuel",
-        "KAMAZ (fuel)",
-        "maker plus fuel body; the model is not published for this retexture",
-    ),
-    (
-        "LOP_KAMAZ_cov_base",
-        "KAMAZ (covered)",
-        "maker plus covered body; the model is not published for this retexture",
-    ),
-    (
-        "LOP_KAMAZ_trans_base",
-        "KAMAZ (open)",
-        "maker plus open body; the model is not published for this retexture",
-    ),
-    (
-        "LOP_KAMAZ_rep_base",
-        "KAMAZ (repair)",
-        "maker plus repair body; the model is not published for this retexture",
-    ),
-    (
-        "LOP_KAMAZ_med_base",
-        "Kamaz Medical",
-        "maker plus medical body; the model is not published for this retexture",
-    ),
-    (
-        "LOP_KAMAZ_ammo_base",
-        "KAMAZ (ammo)",
-        "maker plus ammo body; the model is not published for this retexture",
-    ),
-    (
-        "rhsusf_fmtv_base",
-        "FMTV",
-        "family label with no M-number token in the class name or the display",
-    ),
-    (
-        "LOP_Nissan_PKM_base",
-        "Nissan (PKM)",
-        "maker plus the fitted PKM; no model is published for this technical",
-    ),
+# The base-game Offroad classes are mapped classes, so the exact layer names
+# them and the rung is never reached. They are locked here to prove the rule
+# is about the ENGINE ancestry and not about who declares the class.
+EXACT_BASE_CASES: tuple[tuple[str, str, str], ...] = (
+    ("Offroad_01_repair_base_F", "Offroad (Repair)", "offroad_q7_l200_composite"),
+    ("Offroad_01_AT_base_F", "Offroad (AT)", "offroad_q7_l200_composite"),
+    ("C_Offroad_01_repair_F", "Offroad (Services)", "offroad_q7_l200_composite"),
+)
+
+# The chains the open classes walk. Every one of them ends at the engine's own
+# Car class, the nearest ancestor the table maps, and no class text names the
+# passenger car that entry holds. A chain that ends at Car is the proof the
+# rung looked: the Zamak classes above Car are not mapped by any entry.
+_KAMAZ_FUEL_TAIL = (
+    "O_Truck_02_fuel_F",
+    "Truck_02_fuel_base_F",
+    "Truck_02_base_F",
+    "Truck_F",
+    "Car_F",
+    "Car",
+)
+_NISSAN_TAIL = ("PO_Pickup_PK_base", "Car_F", "Car")
+_FMTV_TAIL = ("Truck_01_base_F", "Truck_F", "Car_F", "Car")
+
+# The modded classes that stay open, with the reason. Each names a different
+# article than the nearest mapped ancestor, so the rung refuses it.
+VEHICLE_OPEN_CASES: tuple[tuple[str, str, tuple[str, ...], str], ...] = (
+    ("LOP_KAMAZ_fuel_base", "KamAZ (fuel)", _KAMAZ_FUEL_TAIL, "maker plus a body: the Zamak above Car is named only by a displayName a mod rewrites, so no entry maps it"),
+    ("LOP_UKR_KAMAZ_Fuel", "KAMAZ (fuel)", ("LOP_KAMAZ_fuel_base", *_KAMAZ_FUEL_TAIL), "as LOP_KAMAZ_fuel_base, through the same chain"),
+    ("LOP_CDF_KAMAZ_Fuel", "KAMAZ (fuel)", ("LOP_KAMAZ_fuel_base", *_KAMAZ_FUEL_TAIL), "as LOP_KAMAZ_fuel_base, through the same chain"),
+    ("LOP_IRAN_KAMAZ_Fuel", "KAMAZ (fuel)", ("LOP_KAMAZ_fuel_base", *_KAMAZ_FUEL_TAIL), "as LOP_KAMAZ_fuel_base, through the same chain"),
+    ("LOP_SYR_KAMAZ_Fuel", "KAMAZ (fuel)", ("LOP_KAMAZ_fuel_base", *_KAMAZ_FUEL_TAIL), "as LOP_KAMAZ_fuel_base, through the same chain"),
+    ("LOP_KAMAZ_cov_base", "KAMAZ (covered)", ("O_Truck_02_covered_F", "Truck_02_base_F", "Truck_F", "Car_F", "Car"), "as LOP_KAMAZ_fuel_base, through the covered body"),
+    ("LOP_KAMAZ_trans_base", "KAMAZ (open)", ("O_Truck_02_transport_F", "Truck_02_transport_base_F", "Truck_02_base_F", "Truck_F", "Car_F", "Car"), "as LOP_KAMAZ_fuel_base, through the cargo body"),
+    ("LOP_KAMAZ_rep_base", "KAMAZ (repair)", ("O_Truck_02_box_F", "Truck_02_box_base_F", "Truck_02_base_F", "Truck_F", "Car_F", "Car"), "as LOP_KAMAZ_fuel_base, through the repair body"),
+    ("LOP_KAMAZ_med_base", "Kamaz Medical", ("O_Truck_02_medical_F", "Truck_02_medical_base_F", "Truck_02_box_base_F", "Truck_02_base_F", "Truck_F", "Car_F", "Car"), "as LOP_KAMAZ_fuel_base, through the medical body"),
+    ("LOP_KAMAZ_ammo_base", "KAMAZ (ammo)", ("O_Truck_02_Ammo_F", "Truck_02_Ammo_base_F", "Truck_02_base_F", "Truck_F", "Car_F", "Car"), "as LOP_KAMAZ_fuel_base, through the ammo body"),
+    ("LOP_Nissan_PKM_base", "Nissan (PKM)", _NISSAN_TAIL, "a Nissan: the nearest mapped ancestor is the engine's Car class, whose entry it does not name"),
+    ("rhsusf_fmtv_base", "FMTV", _FMTV_TAIL, "a family label: the nearest mapped ancestor is the engine's Car class, whose entry it does not name"),
 )
 
 # Modded aircraft gaps. Every one is an ArmaFPV FPV drone or its base class.
@@ -263,6 +209,31 @@ def fold(text: str) -> str:
     return "".join(char for char in text.lower() if char.isascii() and char.isalnum())
 
 
+def ancestor_blob(row: dict[str, object]) -> str:
+    """The identity text one entry is published under, folded."""
+    parts = [str(row["id"]), *[str(x) for x in row["aliases"]], *[str(x) for x in row["keywords"]]]
+    return fold("|".join(parts))
+
+
+def claims(row: dict[str, object], tokens: set[str]) -> bool:
+    """True when a class token names something the entry is identified by."""
+    blob = ancestor_blob(row)
+    return any(len(token) >= SCAN_MIN and token in blob for token in tokens)
+
+
+def named_ancestor(
+    table: list[dict[str, object]], name: str
+) -> dict[str, object] | None:
+    """The one entry that maps this ancestor classname, or None.
+
+    The mapped-class test only: a mod may rewrite any ancestor's displayName,
+    so the classname is the evidence and the text is not.
+    """
+    key = fold(name)
+    hit = [row for row in table if key in row["classes"]]
+    return hit[0] if len(hit) == 1 else None
+
+
 def rows(path: Path) -> list[dict[str, object]]:
     """Parse the generated identity table of one matcher file."""
     out: list[dict[str, object]] = []
@@ -284,11 +255,18 @@ def rows(path: Path) -> list[dict[str, object]]:
     return out
 
 
-def resolve(table: list[dict[str, object]], name: str, display: str = "") -> str | None:
-    """Mirror the runtime ladder: exact class, alias, keyword, closest.
+def resolve(
+    table: list[dict[str, object]],
+    name: str,
+    display: str = "",
+    chain: tuple[str, ...] | None = None,
+) -> str | None:
+    """Mirror the runtime ladder: exact, alias, keyword, closest, inherited.
 
     Layer one reads the CLASS alone, the later layers read the identity text
-    the engine holds (class name, raw display name and its localisation).
+    the engine holds (class name, raw display name and its localisation). The
+    inherited layer needs the engine class tree, so the caller passes the
+    config chain, nearest ancestor first. Without a chain it cannot run.
     """
     identity = name + " " + display
     key = fold(name)
@@ -342,6 +320,16 @@ def resolve(table: list[dict[str, object]], name: str, display: str = "") -> str
             runner_up = max(runner_up, score)
     if best is not None and not tie and best_score > runner_up:
         return str(best["id"])
+    if chain is None:
+        return None
+    # Layer 6: inherited. The nearest ancestor the table names answers, and
+    # only for a class whose own text names that entry.
+    tokens = {fold(token) for token in re.split(r"[ _\-.]+", identity) if fold(token)}
+    for ancestor in chain:
+        found = named_ancestor(table, ancestor)
+        if found is None:
+            continue
+        return str(found["id"]) if claims(found, tokens) else None
     return None
 
 
@@ -361,6 +349,48 @@ class ClosedModdedVehicleTest(unittest.TestCase):
         for name, display, want in CLOSED_VEHICLE_CASES:
             with self.subTest(game_class=name):
                 self.assertEqual(want, resolve(self.table, name, display))
+
+    def test_the_closed_modded_vehicle_class_count_is_twenty_eight(self) -> None:
+        # Twenty-one by their own text and seven by engine ancestry.
+        self.assertEqual(21 + 7, len(CLOSED_VEHICLE_CASES) + len(INHERITED_VEHICLE_CASES))
+
+    def test_each_inherited_class_is_a_descendant_of_the_ancestor_that_answers(
+        self,
+    ) -> None:
+        # The chain is the claim. Its head is the class, its tail the nearest
+        # ancestor the table names, and the entry is that ancestor's.
+        for name, display, chain, want in INHERITED_VEHICLE_CASES:
+            with self.subTest(game_class=name):
+                self.assertGreater(len(chain), 0)
+                self.assertEqual(want, resolve(self.table, name, display, chain))
+                self.assertNotEqual(
+                    want,
+                    resolve(self.table, name, display),
+                    "the class must have no identity of its own",
+                )
+
+    def test_a_mapped_base_class_is_named_by_the_exact_layer(self) -> None:
+        for name, display, want in EXACT_BASE_CASES:
+            with self.subTest(game_class=name):
+                self.assertEqual(want, resolve(self.table, name, display))
+
+    def test_an_inherited_class_needs_its_chain(self) -> None:
+        for name, display, _chain, _want in INHERITED_VEHICLE_CASES:
+            with self.subTest(game_class=name):
+                self.assertIsNone(resolve(self.table, name, display))
+
+    def test_ancestry_alone_names_nothing(self) -> None:
+        # A class descended from a mapped class, whose own text names that
+        # entry nowhere, is a different article. The rung refuses it, so a
+        # short chain can never become a guess.
+        self.assertIsNone(
+            resolve(
+                self.table,
+                "Mod_Anonymous_Body",
+                "",
+                ("Offroad_01_base_F",),
+            )
+        )
 
     def test_the_rg33l_plus_alias_names_one_entry(self) -> None:
         # M1237 is the uparmoured RG-33L "Plus" designation the held WarWheels
@@ -393,31 +423,30 @@ class OpenModdedVehicleTest(unittest.TestCase):
             with self.subTest(game_class=name):
                 self.assertIsNone(resolve(self.table, name))
 
-    def test_the_open_modded_vehicle_class_count_is_nineteen(self) -> None:
-        # Seven fictional re-uses and twelve maker or family names. The count
-        # is the measured modded gap list, so a class that leaves one table
-        # has to arrive in another. The five StaticWeapon emplacements are
-        # excluded from the denominator by kind, so they are not gaps.
-        total = len(VEHICLE_FICTIONAL_REUSE_CASES) + len(VEHICLE_MAKER_OR_FAMILY_CASES)
-        self.assertEqual(19, total)
+    def test_the_open_modded_vehicle_class_count_is_twelve(self) -> None:
+        # The measured modded gap list. A class that leaves one table has to
+        # arrive in another, so the count is the same number in both.
+        self.assertEqual(12, len(VEHICLE_OPEN_CASES))
+        body = (REPO / "data/coverage/modded_gaps_vehicles.txt").read_text(
+            encoding="utf-8"
+        )
+        listed = {line.split("\t")[0] for line in body.splitlines() if line[0] != "#"}
+        self.assertEqual({name for name, _d, _c, _r in VEHICLE_OPEN_CASES}, listed)
 
     def test_every_open_class_states_a_one_line_reason(self) -> None:
-        for name, _display, reason in (
-            VEHICLE_FICTIONAL_REUSE_CASES + VEHICLE_MAKER_OR_FAMILY_CASES
-        ):
+        for name, _display, _chain, reason in VEHICLE_OPEN_CASES:
             with self.subTest(game_class=name):
                 self.assertTrue(reason.strip())
                 self.assertNotIn("\n", reason)
 
-    def test_a_fictional_display_re_use_stays_open(self) -> None:
-        for name, display, _reason in VEHICLE_FICTIONAL_REUSE_CASES:
+    def test_an_open_class_is_refused_with_and_without_its_chain(self) -> None:
+        # Open means the rung looked and refused, not that the chain is short:
+        # these classes have a nearest named ancestor, and it is another
+        # article.
+        for name, display, chain, _reason in VEHICLE_OPEN_CASES:
             with self.subTest(game_class=name):
                 self.assertIsNone(resolve(self.table, name, display))
-
-    def test_a_maker_or_family_name_stays_open(self) -> None:
-        for name, display, _reason in VEHICLE_MAKER_OR_FAMILY_CASES:
-            with self.subTest(game_class=name):
-                self.assertIsNone(resolve(self.table, name, display))
+                self.assertIsNone(resolve(self.table, name, display, chain))
 
 
 class Kamaz4310EntryTest(unittest.TestCase):
@@ -460,12 +489,23 @@ class Kamaz4310EntryTest(unittest.TestCase):
         self.assertNotIn("kamaz", terms)
         self.assertNotIn("4310", terms)
 
-    def test_no_installed_kamaz_class_resolves_to_the_entry(self) -> None:
-        for name, display, _reason in VEHICLE_MAKER_OR_FAMILY_CASES:
+    def test_no_kamaz_class_names_the_entry_by_text_or_by_chain(self) -> None:
+        # The retextures descend from the Zamak in config, and that is not
+        # enough. No class text carries a model, and no entry maps the Zamak
+        # variants, so the nearest mapped ancestor is the engine's Car class
+        # and the rung refuses it. A maker word would close ten classes and
+        # capture the RHS KamAZ-5350 at the same time.
+        seen = 0
+        for name, display, chain, _reason in VEHICLE_OPEN_CASES:
             if "KAMAZ" not in name.upper():
                 continue
+            seen += 1
             with self.subTest(game_class=name):
                 self.assertNotEqual("kamaz_4310", resolve(self.table, name, display))
+                self.assertNotEqual(
+                    "kamaz_4310", resolve(self.table, name, display, chain)
+                )
+        self.assertEqual(10, seen)
 
     def test_the_rhs_kamaz_5350_still_resolves_to_the_5350(self) -> None:
         self.assertEqual(

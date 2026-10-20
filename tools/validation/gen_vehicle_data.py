@@ -9,7 +9,7 @@ files:
   addons/vehicles/functions/fnc_getVehicleMatch.sqf   the identity ladder
   addons/vehicles/functions/fnc_getVehicleData.sqf    the value row lookup
 
-The match file holds the table and the five-layer ladder. The data file is
+The match file holds the table and the six-layer ladder. The data file is
 a thin consumer that returns the value row. CBA PREP compiles one function
 per file, so the two entry points live in two generated files.
 
@@ -102,6 +102,13 @@ layer returns an empty array.
   closest       the longest alias or keyword substring of the query,
                 at least 4 characters, with a strictly lower
                 runner-up score. A tie returns [].                    5
+  inherited     the class text names no entry, so the ENGINE ancestry
+                answers: the nearest config ancestor the table maps by
+                classname, when the class text names a designation
+                that entry claims. This layer states ancestry, not
+                identity: a class whose text describes a different
+                thing than its ancestor returns [], whatever the
+                chain says.                                             6
 
 A row has nine columns:
 
@@ -308,6 +315,47 @@ private _tie = false;
 if ((_bestRow isNotEqualTo []) && {!_tie} && _bestScore > _runnerUp) exitWith {
     [_bestRow, 5, "closest"] call _result
 };
+
+// Layer 6: inherited. The class text names no entry, so the ENGINE ancestry
+// answers. Walk the config parent chain to the nearest ancestor the table
+// names by MAPPED CLASS, and answer that ancestor's entry when the class's
+// own text names a designation the entry claims.
+//
+// Two limits keep the claim honest. The ancestor is matched by classname and
+// never by text: any mod may rewrite an ancestor's displayName, so only the
+// classname is stable evidence. And the class's own text has to name the
+// entry, so a class that describes a different article than its ancestor
+// returns [] instead of the neighbour's identity.
+private _inheritedRow = [];
+private _decided = false;
+private _ancestor = inheritsFrom (configFile >> "CfgVehicles" >> _className);
+while {isClass _ancestor && {!_decided}} do {
+    private _ancestorKey = [configName _ancestor] call _normalise;
+    private _ancestorHits = [];
+    {
+        _x params ["_catalogue", "_variant", "_type", "_token", "_classes", "_aliases", "_keywords", "_source", "_values"];
+        if (((_classes splitString "|") find _ancestorKey) >= 0) then {
+            _ancestorHits pushBack _x;
+        };
+    } forEach _table;
+    if (_ancestorHits isNotEqualTo []) then {
+        // The nearest named ancestor decides, and it is not walked past.
+        _decided = true;
+        if ((count _ancestorHits) == 1) then {
+            private _entry = _ancestorHits select 0;
+            private _claims = 0;
+            {
+                if ((count _x) >= __SCAN__ && {(((_entry select 0) + "|" + (_entry select 5) + "|" + (_entry select 6)) find _x) >= 0}) then {
+                    _claims = _claims + 1;
+                };
+            } forEach _tokens;
+            if (_claims > 0) then { _inheritedRow = _entry; };
+        };
+    } else {
+        _ancestor = inheritsFrom _ancestor;
+    };
+};
+if (_inheritedRow isNotEqualTo []) exitWith { [_inheritedRow, 6, "inherited"] call _result };
 []
 """
 
@@ -659,9 +707,7 @@ def build_rows(
         entry = _mapping(record)
         if entry is None:
             continue
-        words = set(designations(entry)) | set(
-            _normalised_list(entry.get("keywords"))
-        )
+        words = set(designations(entry)) | set(_normalised_list(entry.get("keywords")))
         for key in words:
             tally[key] = tally.get(key, 0) + 1
     shared = frozenset(k for k, n in tally.items() if n > SHARED_WORD_MAX)
@@ -780,17 +826,48 @@ def _query_tokens(text: str) -> set[str]:
     return {normalise(token) for token in folded.split() if normalise(token)}
 
 
+def _named_ancestor(
+    rows: Sequence[Sequence[object]], class_name: str
+) -> Sequence[object] | None:
+    """The one entry that maps an ancestor classname, or None.
+
+    The mapped-class test only. A mod may rewrite any ancestor's displayName,
+    so an ancestor named by its text is not stable evidence; its classname is.
+    """
+    key = normalise(class_name)
+    picked = [row for row in rows if key in str(row[COL_CLASSES]).split("|")]
+    return picked[0] if len(picked) == 1 else None
+
+
+def _claims(row: Sequence[object], tokens: set[str]) -> bool:
+    """True when a query token names something the entry is identified by.
+
+    The retexture test: a class that carries the ancestor's family word, or a
+    maker or model the ancestor's entry is published under, is the same article
+    in new paint. A class that carries neither is a different article, and the
+    inherited layer must refuse it even where the config chain is short.
+    """
+    blob = "|".join(
+        (str(row[COL_CATALOGUE]), str(row[COL_ALIASES]), str(row[COL_KEYWORDS]))
+    )
+    return any(len(token) >= SCAN_MIN and token in blob for token in tokens)
+
+
 def match_row(
-    rows: Sequence[Sequence[object]], class_name: str, display_name: str = ""
+    rows: Sequence[Sequence[object]],
+    class_name: str,
+    display_name: str = "",
+    ancestors: Sequence[str] = (),
 ) -> list[object] | None:
-    """Reference mirror of the generated five-layer ladder.
+    """Reference mirror of the generated six-layer ladder.
 
     The generated SQF file is the runtime authority. This mirror exists so the
     Python harness can prove that the emitted table resolves an identity to a
     value row. It reads identity text only and returns the same seven-element
     result array, or None. The inheritance layer approximates ``isKindOf`` by
     an exact token match, because the harness cannot query the engine class
-    tree.
+    tree. The inherited layer needs that tree, so the caller passes the
+    ancestor classnames, nearest first.
     """
     key = normalise(class_name)
     if key == "":
@@ -866,6 +943,16 @@ def match_row(
                     runner_up = score
     if best is not None and not tie and best_score > runner_up:
         return result(best, 5, "closest")
+
+    for ancestor_name in ancestors:
+        found = _named_ancestor(rows, ancestor_name)
+        if found is None:
+            continue
+        # The nearest named ancestor decides. When the class text does not
+        # name its entry, the neighbour is a different thing, not a donor.
+        if _claims(found, tokens):
+            return result(found, 6, "inherited")
+        return None
     return None
 
 

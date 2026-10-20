@@ -66,7 +66,7 @@ def row(source: str, cls: str, display: str, parent: str = "") -> dict:
 
 
 def always(match: bool):
-    return lambda _identity: match
+    return lambda _cls="", _display="": match
 
 
 class TestSplit(unittest.TestCase):
@@ -320,13 +320,66 @@ class TestBaselineArtefact(unittest.TestCase):
     def test_the_provenance_records_the_gaps_expected_to_stay(self):
         known = self.payload["provenance"]["known_unresolvable"]["vehicle_modded"]
         for key in (
-            "fictional_display_reuse",
-            "maker_or_family_only",
+            "retexture_of_an_unmapped_ancestor",
+            "different_maker_than_ancestor",
+            "family_label_over_a_generic_class",
             "armafpv_drone_no_published_designation",
             "note",
         ):
             self.assertIn(key, known)
         self.assertTrue(known["note"])
+        # The classification is a claim about the measurement, so it has to
+        # agree with it: the vehicle gaps and the aircraft gaps it names.
+        vehicle = sum(
+            known[key]
+            for key in (
+                "retexture_of_an_unmapped_ancestor",
+                "different_maker_than_ancestor",
+                "family_label_over_a_generic_class",
+            )
+        )
+        self.assertEqual(vehicle, self.payload["tables"]["vehicles"]["unresolved_modded"])
+        self.assertEqual(
+            known["armafpv_drone_no_published_designation"],
+            self.payload["tables"]["aircraft"]["unresolved_modded"],
+        )
+
+    def test_the_baseline_records_every_class_the_rung_closed(self):
+        """A closure is a claim about ancestry, so the chain ships with it."""
+        for name, table in self.payload["tables"].items():
+            with self.subTest(table=name):
+                if name != "vehicles":
+                    # Only the vehicle matcher walks the config chain.
+                    self.assertEqual(table["inherited"], [])
+        vehicles = self.payload["tables"]["vehicles"]["inherited"]
+        self.assertGreater(len(vehicles), 0)
+        for record in vehicles:
+            with self.subTest(game_class=record["class"]):
+                for key in (
+                    "class",
+                    "display",
+                    "source",
+                    "ancestor",
+                    "chain",
+                    "catalogue_id",
+                    "named",
+                ):
+                    self.assertIn(key, record)
+                self.assertTrue(record["ancestor"])
+                self.assertEqual(record["chain"][0], record["class"])
+                self.assertEqual(record["chain"][-1], record["ancestor"])
+                self.assertGreater(len(record["chain"]), 1)
+                self.assertTrue(record["catalogue_id"])
+                self.assertTrue(record["named"])
+
+    def test_an_inherited_class_is_not_a_gap(self):
+        vehicles = self.payload["tables"]["vehicles"]
+        closed = {record["class"] for record in vehicles["inherited"]}
+        body = (COVERAGE / "modded_gaps_vehicles.txt").read_text(encoding="utf-8")
+        listed = {
+            line.split("\t")[0] for line in body.splitlines() if line and line[0] != "#"
+        }
+        self.assertEqual(closed & listed, set())
 
     def test_the_gap_files_agree_with_the_baseline(self):
         base_pbos = set(self.payload["provenance"]["base_pbos"])
@@ -411,10 +464,7 @@ class TestBaselineReproduces(unittest.TestCase):
     def test_the_named_emplacements_are_excluded_not_unresolved(self):
         """The five RHS emplacements are weapon positions, not missing vehicles."""
         classes = {r["class"].lower() for r in self.result["emplacements"]}
-        gaps = {
-            g["class"].lower()
-            for g in m.modded_gaps(self.tables["vehicles"])
-        }
+        gaps = {g["class"].lower() for g in m.modded_gaps(self.tables["vehicles"])}
         for cls in (
             "rhs_m2staticmg_base",
             "rhs_m2staticmg_minitripod_base",
@@ -458,6 +508,82 @@ class TestBaselineReproduces(unittest.TestCase):
                         f"{want['class']}\t{m._tidy(want['display'])}\t"
                         f"{want['parent']}\t{want['source']}",
                     )
+
+
+class TestInheritanceRung(unittest.TestCase):
+    """The rung answers an unnamed class from the ENGINE ancestry, and refuses
+    where the class text names a different article than its ancestor."""
+
+    TABLE = [
+        {
+            "id": "kamaz_like",
+            "classes": ["zamakbase"],
+            "aliases": ["kamazlike"],
+            "keywords": [],
+        },
+        {"id": "car_like", "classes": ["car"], "aliases": [], "keywords": []},
+    ]
+    TRUCK_CHAIN = ["ZamakBase", "TruckBase", "Car"]
+
+    def chain(self, _cls: str) -> list:
+        return self.TRUCK_CHAIN
+
+    def rung(self, cls: str, display: str, chain=None):
+        match = m.matcher(self.TABLE, chain or self.chain)
+        return match(cls, display)
+
+    def test_a_class_that_names_its_ancestor_inherits_its_row(self):
+        # The mod says KAMAZ, the ancestor is the entry the table maps, and
+        # the config chain states the descent. All three agree.
+        row = self.rung("Mod_KAMAZ_fuel", "KAMAZ (fuel)")
+        self.assertIsNotNone(row)
+        self.assertEqual(row["id"], "kamaz_like")
+
+    def test_a_class_that_names_another_article_is_refused(self):
+        # A Nissan is not the ancestor's Toyota. The chain holds and the rung
+        # still refuses, because ancestry is not identity.
+        self.assertIsNone(self.rung("Mod_Nissan_PKM", "Nissan (PKM)"))
+
+    def test_a_generic_ancestor_blocks_a_distant_one(self):
+        # The nearest ancestor the table maps decides even when it is the
+        # engine's own Car class: walking past it would answer a specific
+        # class with a distant neighbour, which is a guess.
+        chain = lambda _cls: ["Car", "ZamakBase"]
+        self.assertIsNone(self.rung("Mod_KAMAZ_fuel", "KAMAZ (fuel)", chain))
+
+    def test_ancestry_alone_names_nothing(self):
+        self.assertIsNone(self.rung("Mod_Anonymous_Body", ""))
+
+    def test_the_rung_never_pre_empts_a_text_layer(self):
+        # A class the ladder already names keeps that answer, whatever the
+        # chain would say. This is why the rung runs last.
+        chain = lambda _cls: ["Car"]
+        self.assertEqual(self.rung("kamaz_like", "")["id"], "kamaz_like")
+
+    def test_the_closure_records_the_chain_and_the_ancestor(self):
+        selected = [row("some_mod.pbo", "Mod_KAMAZ_fuel", "KAMAZ (fuel)", "ZamakBase")]
+        table = list(self.TABLE)
+        plain = m.matcher(table)
+        chained = m.matcher(table, self.chain)
+        closed = m.ancestry_closures(
+            selected, table, plain, chained, self.chain, {"base.pbo"}
+        )
+        self.assertEqual(len(closed), 1)
+        record = closed[0]
+        self.assertEqual(record["ancestor"], "ZamakBase")
+        self.assertEqual(record["chain"], ["Mod_KAMAZ_fuel", "ZamakBase"])
+        self.assertEqual(record["catalogue_id"], "kamaz_like")
+        self.assertEqual(record["group"], "modded")
+        self.assertEqual(record["named"], ["kamaz"])
+
+    def test_a_text_resolved_class_is_not_recorded_as_inherited(self):
+        selected = [row("some_mod.pbo", "kamaz_like", "")]
+        table = list(self.TABLE)
+        plain = m.matcher(table)
+        closed = m.ancestry_closures(
+            selected, table, plain, plain, self.chain, {"base.pbo"}
+        )
+        self.assertEqual(closed, [])
 
 
 if __name__ == "__main__":
