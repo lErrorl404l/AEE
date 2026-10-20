@@ -28,6 +28,11 @@ layer returns an empty array.
                 identity: a class whose text describes a different
                 thing than its ancestor returns [], whatever the
                 chain says.                                             6
+  family        the class text names a family and no mark: exactly one
+                row of the family table carries a designation of 3 or
+                more characters in the query. A family row is
+                identity-only and answers only when it is the only
+                one, so it never takes an answer from a mark.           7
 
 A row has nine columns:
 
@@ -363,6 +368,13 @@ private _table = [
     ["zsu_23_4_shilka", "zsu_23_4_shilka", "tracked", "", "", "zsu234shilka", "zsu234|zsu234shilk", "wikipedia_zsu_23_4_shilka", [19000, 0, 0, 0, 0, "", ""]]
 ];
 
+// Family rows. A family entry names a family and no mark, so it is
+// identity-only and lives in its own table: no layer above can reach it,
+// and the last layer alone reads it. The columns are the ones above.
+private _families = [
+
+];
+
 // [catalogue_id, variant_id, vehicle_type, confidence, matched_by,
 //  source_record_id, value_row]
 private _result = {
@@ -540,4 +552,21 @@ while {isClass _ancestor && {!_decided}} do {
     };
 };
 if (_inheritedRow isNotEqualTo []) exitWith { [_inheritedRow, 6, "inherited"] call _result };
+
+// Layer 7: family. The class text names a family and no mark. A family row
+// is identity-only, so it carries no class, no alias and no value, and it
+// is read here alone. The scan is the keyword rule, over the declared
+// family designations. Exactly one candidate answers: two families in one
+// query name no single family, and none names nothing.
+_candidates = [];
+{
+    _x params ["_catalogue", "_variant", "_type", "_token", "_classes", "_aliases", "_keywords", "_source", "_values"];
+    private _row = _x;
+    private _hit = false;
+    {
+        if ((count _x) >= 3 && {_query find _x >= 0}) then { _hit = true; };
+    } forEach (_keywords splitString "|");
+    if (_hit) then { _candidates pushBack _row; };
+} forEach _families;
+if ((count _candidates) == 1) exitWith { [_candidates select 0, 7, "family"] call _result };
 []

@@ -125,9 +125,7 @@ def row_designations(entries: list[dict]) -> dict[str, list[str]]:
     out = {}
     for cid, keys in derived.items():
         out[cid] = [
-            key
-            for key in keys
-            if key not in shared and whole.get(key, cid) == cid
+            key for key in keys if key not in shared and whole.get(key, cid) == cid
         ]
     return out
 
@@ -175,7 +173,33 @@ def rows(entries: list[dict]) -> list[str]:
     return out
 
 
-MATCH_TEMPLATE = '''#include "..\\..\\script_component.hpp"
+def is_family(entry: dict) -> bool:
+    """True when the entry names a family and no mark."""
+    return entry.get("family") is True
+
+
+def family_rows(entries: list[dict]) -> list[str]:
+    """The family table: identity-only rows that name a family and no mark.
+
+    A family row carries no class, no alias, no source and no value. Its
+    designation is the entry's own keyword list and is never derived, so a
+    family cannot pick up a mark's term from a name.
+    """
+    out = []
+    for entry in sorted(entries, key=lambda e: e["catalogue_id"]):
+        keywords = "|".join(
+            sorted({_fold(key) for key in (entry.get("keywords") or []) if _fold(key)})
+        )
+        values = ", ".join(f"{0:g}" for _ in FIELDS)
+        extra = ", ".join('""' for _ in TEXT_FIELDS)
+        out.append(
+            f'    ["{entry["catalogue_id"]}", "{entry.get("munition_type", "")}", '
+            f'"", "", "{keywords}", "", [{values}, {extra}]]'
+        )
+    return out
+
+
+MATCH_TEMPLATE = """#include "..\\..\\script_component.hpp"
 /*
 Munition identity matcher.
 
@@ -204,6 +228,11 @@ The ladder, in order:
   4 closest       the best-scoring entry, where a designation carrying a
                   type number counts double because a type number
                   identifies while a plain word only describes
+  5 family        the class text names a family and no mark: exactly one
+                  row of the family table carries a designation of {scan}
+                  or more characters in the query. A family row is
+                  identity-only and answers only when it is the only
+                  one, so it never takes an answer from a mark
 
 An ambiguous match returns an empty array, and so does an unknown class.
 There is no default: the caller falls back on its own documented estimate
@@ -276,6 +305,13 @@ if (_screened) exitWith {{ [] }};
 
 private _table = [
 {rows}
+];
+
+// Family rows. A family entry names a family and no mark, so it is
+// identity-only and lives in its own table: no layer above can reach it,
+// and the last layer alone reads it. The columns are the ones above.
+private _families = [
+{families}
 ];
 
 private _result = {{
@@ -389,10 +425,27 @@ private _tie = false;
 if ((_bestRow isNotEqualTo []) && {{!_tie}} && _bestScore > _runnerUp) exitWith {{
     [_bestRow, 4, "closest"] call _result
 }};
-[]
-'''
 
-DATA_TEMPLATE = '''#include "..\\..\\script_component.hpp"
+// Layer 5: family. The class text names a family and no mark. A family row
+// is identity-only, so it carries no class, no alias and no value, and it
+// is read here alone. The scan is the keyword rule, over the declared
+// family designations. Exactly one candidate answers: two families in one
+// query name no single family, and none names nothing.
+_candidates = [];
+{{
+    _x params ["_catalogue", "_type", "_classes", "_aliases", "_keywords", "_source", "_values"];
+    private _row = _x;
+    private _hit = false;
+    {{
+        if ((count _x) >= {scan} && {{_query find _x >= 0}}) then {{ _hit = true; }};
+    }} forEach (_keywords splitString "|");
+    if (_hit) then {{ _candidates pushBack _row; }};
+}} forEach _families;
+if ((count _candidates) == 1) exitWith {{ [_candidates select 0, 7, "family"] call _result }};
+[]
+"""
+
+DATA_TEMPLATE = """#include "..\\..\\script_component.hpp"
 /*
 Munition runtime lookup.
 
@@ -421,15 +474,21 @@ if (_className == "") exitWith {{ [] }};
 private _match = [_className] call FUNC(getMunitionMatch);
 if (_match isEqualTo []) exitWith {{ [] }};
 _match select 5
-'''
+"""
 
 
 def build() -> tuple[str, str]:
     entries = load()
-    body = "\n".join(f"{row}," for row in rows(entries))
+    marks = [entry for entry in entries if not is_family(entry)]
+    families = [entry for entry in entries if is_family(entry)]
+    body = "\n".join(f"{row}," for row in rows(marks))
     body = body.rstrip(",")
+    family_body = "\n".join(f"{row}," for row in family_rows(families))
+    family_body = family_body.rstrip(",")
     screen = "[" + ", ".join(f'"{t}"' for t in SCREEN_TERMS) + "]"
-    match = MATCH_TEMPLATE.format(rows=body, scan=SCAN_MIN, screen=screen)
+    match = MATCH_TEMPLATE.format(
+        rows=body, families=family_body, scan=SCAN_MIN, screen=screen
+    )
     return match, DATA_TEMPLATE.format()
 
 

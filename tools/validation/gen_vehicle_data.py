@@ -109,6 +109,11 @@ layer returns an empty array.
                 identity: a class whose text describes a different
                 thing than its ancestor returns [], whatever the
                 chain says.                                             6
+  family        the class text names a family and no mark: exactly one
+                row of the family table carries a designation of 3 or
+                more characters in the query. A family row is
+                identity-only and answers only when it is the only
+                one, so it never takes an answer from a mark.           7
 
 A row has nine columns:
 
@@ -177,6 +182,13 @@ private _tokens = [];
 
 private _table = [
 __ROWS__
+];
+
+// Family rows. A family entry names a family and no mark, so it is
+// identity-only and lives in its own table: no layer above can reach it,
+// and the last layer alone reads it. The columns are the ones above.
+private _families = [
+__FAMILIES__
 ];
 
 // [catalogue_id, variant_id, vehicle_type, confidence, matched_by,
@@ -356,6 +368,23 @@ while {isClass _ancestor && {!_decided}} do {
     };
 };
 if (_inheritedRow isNotEqualTo []) exitWith { [_inheritedRow, 6, "inherited"] call _result };
+
+// Layer 7: family. The class text names a family and no mark. A family row
+// is identity-only, so it carries no class, no alias and no value, and it
+// is read here alone. The scan is the keyword rule, over the declared
+// family designations. Exactly one candidate answers: two families in one
+// query name no single family, and none names nothing.
+_candidates = [];
+{
+    _x params ["_catalogue", "_variant", "_type", "_token", "_classes", "_aliases", "_keywords", "_source", "_values"];
+    private _row = _x;
+    private _hit = false;
+    {
+        if ((count _x) >= __SCAN__ && {_query find _x >= 0}) then { _hit = true; };
+    } forEach (_keywords splitString "|");
+    if (_hit) then { _candidates pushBack _row; };
+} forEach _families;
+if ((count _candidates) == 1) exitWith { [_candidates select 0, 7, "family"] call _result };
 []
 """
 
@@ -686,9 +715,13 @@ def build_rows(
     records: Iterable[object],
     mappings: dict[str, list[str]] | None = None,
 ) -> list[list[object]]:
-    """Build every row and sort it. The order is catalogue then variant."""
+    """Build every row and sort it. The order is catalogue then variant.
+
+    A family entry emits no row here. It names a family and no mark, so it
+    belongs to its own table, which no rung above the family rung reads.
+    """
     table = mappings if mappings is not None else {}
-    records = [record for record in records]
+    records = [record for record in records if not _is_family(record)]
     # Every entry's own folded canonical name. A derived designation equal
     # to another entry's name is that entry's identity, not this one's.
     identities: set[str] = set()
@@ -730,6 +763,58 @@ def load_rows(data_dir: Path = DEFAULT_DATA) -> list[list[object]]:
     load = catalogue.load(data_dir)
     index = class_index(load, load_binding_classes(data_dir))
     return build_rows((entry.to_mapping() for entry in load.entries), index)
+
+
+def _is_family(record: object) -> bool:
+    """True when the record names a family and no mark."""
+    entry = _mapping(record)
+    return entry is not None and entry.get("family") is True
+
+
+def build_family_row(record: object) -> list[object] | None:
+    """Return the family row of a family entry, or None when no row emits.
+
+    The row keeps the nine-column shape, so the result formatter is the one
+    the mark table uses. Its class, alias and source columns stay empty: a
+    family names no mark, and it is reached by its designation alone. The
+    designation is the entry's own keyword list and is never derived, so a
+    family cannot pick up a mark's term from its name.
+    """
+    if not _is_family(record):
+        return None
+    fields = resolve_row(record)
+    if fields is None:
+        return None
+    entry = _mapping(record)
+    assert entry is not None
+    return [
+        _text(entry.get("catalogue_id")) or "",
+        _text(entry.get("variant_id")) or "",
+        _text(entry.get("vehicle_type")) or "",
+        "",
+        "",
+        "",
+        "|".join(_normalised_list(entry.get("keywords"))),
+        "",
+        [field.value for field in fields],
+    ]
+
+
+def build_family_rows(records: Iterable[object]) -> list[list[object]]:
+    """Build every family row and sort it. The order is catalogue, variant."""
+    rows = [
+        row
+        for row in (build_family_row(record) for record in records)
+        if row is not None
+    ]
+    rows.sort(key=lambda row: (str(row[COL_CATALOGUE]), str(row[COL_VARIANT])))
+    return rows
+
+
+def load_family_rows(data_dir: Path = DEFAULT_DATA) -> list[list[object]]:
+    """Read the catalogue layer and build the family table."""
+    load = catalogue.load(data_dir)
+    return build_family_rows(entry.to_mapping() for entry in load.entries)
 
 
 def _number(value: object) -> int | float:
@@ -858,8 +943,9 @@ def match_row(
     class_name: str,
     display_name: str = "",
     ancestors: Sequence[str] = (),
+    families: Sequence[Sequence[object]] = (),
 ) -> list[object] | None:
-    """Reference mirror of the generated six-layer ladder.
+    """Reference mirror of the generated seven-layer ladder.
 
     The generated SQF file is the runtime authority. This mirror exists so the
     Python harness can prove that the emitted table resolves an identity to a
@@ -868,6 +954,10 @@ def match_row(
     an exact token match, because the harness cannot query the engine class
     tree. The inherited layer needs that tree, so the caller passes the
     ancestor classnames, nearest first.
+
+    ``families`` is the family table. The family layer runs last, and only a
+    single family row matching a designation of at least ``SCAN_MIN``
+    characters answers. Two families in one query answer nothing.
     """
     key = normalise(class_name)
     if key == "":
@@ -953,13 +1043,32 @@ def match_row(
         if _claims(found, tokens):
             return result(found, 6, "inherited")
         return None
+
+    family = [
+        row
+        for row in families
+        if any(
+            len(word) >= SCAN_MIN and word in query
+            for word in str(row[COL_KEYWORDS]).split("|")
+        )
+    ]
+    if len(family) == 1:
+        return result(family[0], 7, "family")
     return None
 
 
-def render_match(rows: Sequence[Sequence[object]]) -> str:
-    """Render the matcher file for the given rows."""
+def render_match(
+    rows: Sequence[Sequence[object]],
+    families: Sequence[Sequence[object]] = (),
+) -> str:
+    """Render the matcher file for the given rows and family rows."""
     body = ",\n".join(format_row(row) for row in rows)
-    return MATCH_TEMPLATE.replace("__ROWS__", body).replace("__SCAN__", str(SCAN_MIN))
+    family_body = ",\n".join(format_row(row) for row in families)
+    return (
+        MATCH_TEMPLATE.replace("__ROWS__", body)
+        .replace("__FAMILIES__", family_body)
+        .replace("__SCAN__", str(SCAN_MIN))
+    )
 
 
 def render_data() -> str:
@@ -976,7 +1085,9 @@ def render_bands(rows: Sequence[Sequence[object]]) -> str:
 def write_outputs(data_dir: Path = DEFAULT_DATA) -> list[list[object]]:
     """Write every generated file and return the matcher rows."""
     rows = load_rows(data_dir)
-    MATCH_OUT.write_text(render_match(rows), encoding="utf-8")
+    MATCH_OUT.write_text(
+        render_match(rows, load_family_rows(data_dir)), encoding="utf-8"
+    )
     DATA_OUT.write_text(render_data(), encoding="utf-8")
     BANDS_OUT.write_text(render_bands(load_band_rows(data_dir)), encoding="utf-8")
     return rows
@@ -995,7 +1106,7 @@ def check_outputs(
     """
     rows = load_rows(data_dir)
     expected = {
-        match_out: render_match(rows),
+        match_out: render_match(rows, load_family_rows(data_dir)),
         data_out: render_data(),
         bands_out: render_bands(load_band_rows(data_dir)),
     }

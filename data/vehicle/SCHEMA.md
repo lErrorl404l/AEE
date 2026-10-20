@@ -156,6 +156,7 @@ the registry only and rejects a capture whose `sources` array is not empty.
 | `keywords` | array | Lowercase match words. |
 | `runtime_ready` | boolean | True when section 10 is satisfied. |
 | `identity_only` | boolean | Optional. True when a held source names the vehicle and publishes no figure. The entry then carries no values, emits a labelled-zero row and is never runtime-ready. Without the flag an entry with no resolved field is a gate error, because a lead is not an entry. |
+| `family` | boolean | Optional. True when the entry names a family and no mark. The entry is identity-only, carries no alias, no class token and no value, and publishes the family designations the source states as `keywords`. The matcher reads it from a separate table at the last rung, so it never answers for a mark. |
 | `values` | object | The value objects, keyed by field name. |
 
 Rules:
@@ -176,6 +177,12 @@ Rules:
   non-absent value. It is a report flag. It never blocks a row.
 - `class_token` is an identity signal only. It never fills a value. A
   class map binds the class explicitly.
+- A `family` entry names a family and no mark. Its `canonical_name` ends
+  with the word "family", its `variant` says that no member is claimed,
+  and its `keywords` hold the family designations the source publishes.
+  It must fail validation when it carries an alias, a value, a class
+  token or a mark's name. A family word must never be an alias or a
+  keyword of one specific mark: the family entry owns it.
 
 ## 7. The class-to-catalogue map
 
@@ -496,6 +503,13 @@ The ladder runs in this order. Each layer carries one confidence.
    `[]` and does not walk further. This layer states ancestry, which the
    config declares, and never identity: a class that describes a
    different article than its ancestor stays unnamed.
+7. `family`: the class text names a family and no mark. Only a family
+   entry reaches this rung, and only from its own table. The scan is the
+   keyword rule: a family designation of at least four characters in the
+   normalised query. Exactly one family row answers. Zero answers
+   nothing, and two name no single family. Because a family row is not
+   in the mark table, no earlier rung can choose it, so it never takes
+   an answer from a mark.
 
 Rules:
 
@@ -503,10 +517,13 @@ Rules:
   weaker layer runs only when the stronger layer yields none.
 - A tie at any layer, meaning two or more candidates tie, returns `[]`.
 - `matched_by` is one of `exact_class`, `alias`, `keyword`,
-  `inheritance`, `inherited`, `closest`.
-- `confidence` is an integer. It is 1 for `exact_class` and 6 for
-  `inherited`, which runs after `closest` because a class the text layers
-  already name keeps that answer.
+  `inheritance`, `inherited`, `closest`, `family`.
+- `confidence` is an integer. It is 1 for `exact_class` and 7 for
+  `family`, which runs last of all. `inherited` is 6, and it runs after
+  `closest` because a class the text layers already name keeps that
+  answer. `family` is 7 because a family names no mark: it is the
+  weakest statement the matcher can make, and it is made only when
+  nothing stronger named the class.
 - The inherited layer is the only one that reads the config tree, and it
   reads it for ancestry only.
 - A runtime row is emitted for every catalogue entry with a complete

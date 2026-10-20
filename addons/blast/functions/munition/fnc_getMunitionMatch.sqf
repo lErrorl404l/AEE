@@ -27,6 +27,11 @@ The ladder, in order:
   4 closest       the best-scoring entry, where a designation carrying a
                   type number counts double because a type number
                   identifies while a plain word only describes
+  5 family        the class text names a family and no mark: exactly one
+                  row of the family table carries a designation of 3
+                  or more characters in the query. A family row is
+                  identity-only and answers only when it is the only
+                  one, so it never takes an answer from a mark
 
 An ambiguous match returns an empty array, and so does an unknown class.
 There is no default: the caller falls back on its own documented estimate
@@ -273,6 +278,13 @@ private _table = [
     ["zuni", "rocket", "", "zuni", "zunirocket|zuni", "wikipedia_zuni_rocket", [36.1, 0, 0, 127, 2000, ""]]
 ];
 
+// Family rows. A family entry names a family and no mark, so it is
+// identity-only and lives in its own table: no layer above can reach it,
+// and the last layer alone reads it. The columns are the ones above.
+private _families = [
+
+];
+
 private _result = {
     params ["_row", "_confidence", "_layer"];
     [_row select 0, _row select 1, _confidence, _layer, _row select 5, _row select 6]
@@ -384,4 +396,21 @@ private _tie = false;
 if ((_bestRow isNotEqualTo []) && {!_tie} && _bestScore > _runnerUp) exitWith {
     [_bestRow, 4, "closest"] call _result
 };
+
+// Layer 5: family. The class text names a family and no mark. A family row
+// is identity-only, so it carries no class, no alias and no value, and it
+// is read here alone. The scan is the keyword rule, over the declared
+// family designations. Exactly one candidate answers: two families in one
+// query name no single family, and none names nothing.
+_candidates = [];
+{
+    _x params ["_catalogue", "_type", "_classes", "_aliases", "_keywords", "_source", "_values"];
+    private _row = _x;
+    private _hit = false;
+    {
+        if ((count _x) >= 3 && {_query find _x >= 0}) then { _hit = true; };
+    } forEach (_keywords splitString "|");
+    if (_hit) then { _candidates pushBack _row; };
+} forEach _families;
+if ((count _candidates) == 1) exitWith { [_candidates select 0, 7, "family"] call _result };
 []

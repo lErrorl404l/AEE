@@ -70,6 +70,15 @@ sys.path.insert(0, str(REPO))
 
 VEHICLE_MATCH = REPO / "addons" / "vehicles" / "functions" / "fnc_getVehicleMatch.sqf"
 AIRCRAFT_MATCH = REPO / "addons" / "flight" / "functions" / "fnc_getAircraftMatch.sqf"
+MUNITION_MATCH = (
+    REPO / "addons" / "blast" / "functions" / "munition" / "fnc_getMunitionMatch.sqf"
+)
+
+# The generator that emits the vehicle ladder, the coverage measurement, and
+# the corpus validator. The family rung is specified by the runtime file and
+# the two Python mirrors must answer the same, so the locks compare them.
+from tools import report_match_coverage as report  # noqa: E402
+from tools.validation import gen_vehicle_data, validate_vehicle_data  # noqa: E402
 
 # The shortest alias or keyword the closest layer accepts, as the runtime does.
 SCAN_MIN = 3
@@ -444,10 +453,22 @@ def named_ancestor(
     return hit[0] if len(hit) == 1 else None
 
 
-def rows(path: Path) -> list[dict[str, object]]:
-    """Parse the generated identity table of one matcher file."""
+FAMILY_MARKER = "private _families = ["
+
+
+def _tables(path: Path) -> tuple[str, str]:
+    """Split a matcher file into its mark table text and its family text."""
+    text = path.read_text(encoding="utf-8")
+    if FAMILY_MARKER not in text:
+        return text, ""
+    head, _, rest = text.partition(FAMILY_MARKER)
+    family, _, _ = rest.partition("\n];")
+    return head, family
+
+
+def _parse(text: str) -> list[dict[str, object]]:
     out: list[dict[str, object]] = []
-    for line in path.read_text(encoding="utf-8").splitlines():
+    for line in text.splitlines():
         stripped = line.strip()
         if not stripped.startswith('["'):
             continue
@@ -465,18 +486,32 @@ def rows(path: Path) -> list[dict[str, object]]:
     return out
 
 
+def rows(path: Path) -> list[dict[str, object]]:
+    """Parse the mark table of one matcher file."""
+    return _parse(_tables(path)[0])
+
+
+def family_rows(path: Path) -> list[dict[str, object]]:
+    """Parse the family table of one matcher file."""
+    return _parse(_tables(path)[1])
+
+
 def resolve(
     table: list[dict[str, object]],
     name: str,
     display: str = "",
     chain: tuple[str, ...] | None = None,
+    families: list[dict[str, object]] | None = None,
 ) -> str | None:
-    """Mirror the runtime ladder: exact, alias, keyword, closest, inherited.
+    """Mirror the runtime ladder: exact, alias, keyword, closest, inherited,
+    family.
 
     Layer one reads the CLASS alone, the later layers read the identity text
     the engine holds (class name, raw display name and its localisation). The
     inherited layer needs the engine class tree, so the caller passes the
-    config chain, nearest ancestor first. Without a chain it cannot run.
+    config chain, nearest ancestor first. Without a chain it cannot run. The
+    family layer reads the separate family table, and exactly one match
+    answers.
     """
     identity = name + " " + display
     key = fold(name)
@@ -530,17 +565,25 @@ def resolve(
             runner_up = max(runner_up, score)
     if best is not None and not tie and best_score > runner_up:
         return str(best["id"])
-    if chain is None:
-        return None
-    # Layer 6: inherited. The nearest ancestor the table names answers, and
-    # only for a class whose own text names that entry.
-    tokens = {fold(token) for token in re.split(r"[ _\-.]+", identity) if fold(token)}
-    for ancestor in chain:
-        found = named_ancestor(table, ancestor)
-        if found is None:
-            continue
-        return str(found["id"]) if claims(found, tokens) else None
-    return None
+    if chain is not None:
+        # Layer 6: inherited. The nearest ancestor the table names answers,
+        # and only for a class whose own text names that entry.
+        tokens = {
+            fold(token) for token in re.split(r"[ _\-.]+", identity) if fold(token)
+        }
+        for ancestor in chain:
+            found = named_ancestor(table, ancestor)
+            if found is None:
+                continue
+            return str(found["id"]) if claims(found, tokens) else None
+    # Layer 7: family. A family row names a family and no mark, and exactly
+    # one row matching a designation answers.
+    hit = [
+        row
+        for row in (families or [])
+        if any(len(word) >= SCAN_MIN and word in query for word in row["keywords"])
+    ]
+    return str(hit[0]["id"]) if len(hit) == 1 else None
 
 
 class ClosedModdedVehicleTest(unittest.TestCase):
@@ -767,10 +810,10 @@ class IdentityOnlyVehicleEntryTest(unittest.TestCase):
         )
         self.assertIsNone(re.search(r"m10\d\d", identity))
 
-    def test_the_family_entry_advertises_no_match_term(self) -> None:
-        # The measured reason the class stays open: every term that reaches
-        # rhsusf_fmtv_base also reaches another class, so the entry carries
-        # none and the class is refused.
+    def test_the_family_entry_advertises_no_family_term(self) -> None:
+        # The entry names the FMTV family. Until the corpus marks it as a
+        # family entry its row sits in the mark table, and there it must
+        # carry no family word: a family word on a mark row ties the ladder.
         row = [r for r in self.table if r["id"] == "fmtv_family"]
         self.assertEqual(1, len(row))
         self.assertEqual([], row[0]["aliases"])
@@ -785,24 +828,40 @@ class IdentityOnlyVehicleEntryTest(unittest.TestCase):
                 self.assertEqual(want, resolve(self.table, name, display))
 
     def test_the_family_alias_would_capture_the_m_number_classes(self) -> None:
-        # An alias is matched by equality, so fmtv as an alias answers the
-        # classes whose own name carries the token and ties the rest, which
-        # the strict mirror reads as no answer.
-        family = [r for r in self.table if r["id"] == "fmtv_family"][0]
-        fixed = [dict(r) for r in self.table if r["id"] != "fmtv_family"]
-        fixed.append({**family, "aliases": ["fmtv"], "keywords": []})
+        # An alias is matched by equality, so fmtv as an alias of a family
+        # row in the MARK table answers the classes whose own name carries
+        # the token and ties the rest, which the strict mirror reads as no
+        # answer. That is why the family row must stay out of the mark table.
+        entry = self.entry("fmtv_family.json")
+        fixed = [dict(r) for r in self.table]
+        fixed.append(
+            {
+                "id": entry["catalogue_id"],
+                "classes": [],
+                "aliases": ["fmtv"],
+                "keywords": [],
+            }
+        )
         for name, display, want in self.M_NUMBER_CASES:
             with self.subTest(game_class=name):
                 self.assertNotEqual(want, resolve(fixed, name, display))
         self.assertIsNone(resolve(fixed, "rhsusf_M1078A1P2_fmtv_usarmy", "M1078A1P2"))
 
     def test_the_family_keyword_would_tie_the_sov_classes(self) -> None:
-        # A keyword is matched by substring, so fmtv on that layer meets the
-        # SOV classes' own keyword and the layer yields two candidates. The
-        # runtime returns nothing from a tied layer, so they stop resolving.
-        family = [r for r in self.table if r["id"] == "fmtv_family"][0]
-        fixed = [dict(r) for r in self.table if r["id"] != "fmtv_family"]
-        fixed.append({**family, "aliases": [], "keywords": ["fmtv"]})
+        # A keyword is matched by substring, so fmtv in the MARK table meets
+        # the SOV classes' own keyword and the layer yields two candidates.
+        # The runtime returns nothing from a tied layer, so they stop
+        # resolving. The separate family table avoids that.
+        entry = self.entry("fmtv_family.json")
+        fixed = [dict(r) for r in self.table]
+        fixed.append(
+            {
+                "id": entry["catalogue_id"],
+                "classes": [],
+                "aliases": [],
+                "keywords": ["fmtv"],
+            }
+        )
         for name, display, _want in self.M_NUMBER_CASES:
             with self.subTest(game_class=name):
                 self.assertIsNone(resolve(fixed, name, display))
@@ -899,6 +958,228 @@ class OpenModdedAircraftTest(unittest.TestCase):
         for name, display in AIRCRAFT_OPEN_CASES:
             with self.subTest(game_class=name):
                 self.assertIsNone(resolve(self.table, name, display))
+
+
+# A synthetic family row, in the nine-column shape the generator emits: it
+# names a family and no mark, so the class, alias and source columns are
+# empty and only the keyword column carries a designation.
+def family_row(cid: str, keyword: str) -> tuple[object, ...]:
+    return (cid, cid, "tracked", "", "", "", keyword, "", [0, 0, 0, 0, 0, "", ""])
+
+
+def family_table(cid: str, keyword: str) -> dict[str, object]:
+    return {"id": cid, "classes": [], "aliases": [], "keywords": [keyword]}
+
+
+T72_FAMILY_ROW = family_row("t72_family", "t72")
+
+
+class FamilyRungTest(unittest.TestCase):
+    """The family rung: last, exactly one, and never a mark's answer.
+
+    A family entry names a family and no mark. The runtime keeps it in a
+    separate `_families` table, so no rung above can reach it, and reads it
+    at confidence 7. The two Python mirrors must follow the same rule,
+    including the exactly-one test, because the generator harness and the
+    coverage measurement are what say a class resolves.
+    """
+
+    def test_every_matcher_carries_a_separate_family_table(self) -> None:
+        for path in (VEHICLE_MATCH, AIRCRAFT_MATCH, MUNITION_MATCH):
+            with self.subTest(matcher=path.name):
+                text = path.read_text(encoding="utf-8")
+                self.assertIn("private _families = [", text)
+                self.assertGreater(
+                    text.index("private _families = ["),
+                    text.index("private _table = ["),
+                )
+                self.assertIn("} forEach _families;", text)
+
+    def test_the_family_rung_is_last_and_carries_confidence_seven(self) -> None:
+        for path, previous in (
+            (VEHICLE_MATCH, '6, "inherited"'),
+            (AIRCRAFT_MATCH, '5, "closest"'),
+            (MUNITION_MATCH, '4, "closest"'),
+        ):
+            with self.subTest(matcher=path.name):
+                text = path.read_text(encoding="utf-8")
+                self.assertIn('7, "family"] call _result', text)
+                self.assertGreater(
+                    text.index('7, "family"] call _result'),
+                    text.index(previous),
+                )
+
+    def test_the_generator_and_both_mirrors_agree_on_a_family(self) -> None:
+        name, display = "rhs_t72bd_tv", "T-72B3 (obr. 2012g.)"
+        generated = gen_vehicle_data.match_row(
+            [], name, display, families=[T72_FAMILY_ROW]
+        )
+        self.assertIsNotNone(generated)
+        assert generated is not None
+        self.assertEqual("t72_family", generated[0])
+        self.assertEqual(7, generated[3])
+        self.assertEqual("family", generated[4])
+
+        measured = report.matcher([], families=[family_table("t72_family", "t72")])(
+            name, display
+        )
+        self.assertIsNotNone(measured)
+        assert measured is not None
+        self.assertEqual("t72_family", measured["id"])
+
+        resolved = resolve(
+            [], name, display, families=[family_table("t72_family", "t72")]
+        )
+        self.assertEqual("t72_family", resolved)
+
+    def test_two_families_in_one_query_answer_nothing(self) -> None:
+        name = "rg33_t72_test"
+        families = [
+            family_table("t72_family", "t72"),
+            family_table("rg33_family", "rg33"),
+        ]
+        self.assertIsNone(
+            gen_vehicle_data.match_row(
+                [],
+                name,
+                "",
+                families=[
+                    family_row("t72_family", "t72"),
+                    family_row("rg33_family", "rg33"),
+                ],
+            )
+        )
+        self.assertIsNone(report.matcher([], families=families)(name, ""))
+        self.assertIsNone(resolve([], name, "", families=families))
+
+    def test_no_family_answers_when_none_names_the_class(self) -> None:
+        name, display = "rhs_t90saa_tv", "T-90SA (obr. 2004g.)"
+        self.assertIsNone(
+            gen_vehicle_data.match_row([], name, display, families=[T72_FAMILY_ROW])
+        )
+        self.assertIsNone(
+            report.matcher([], families=[family_table("t72_family", "t72")])(
+                name, display
+            )
+        )
+        self.assertIsNone(
+            resolve([], name, display, families=[family_table("t72_family", "t72")])
+        )
+
+    def test_a_family_never_wins_over_a_mark(self) -> None:
+        mark_row = (
+            "t72b3",
+            "t72b3",
+            "tracked",
+            "",
+            "",
+            "",
+            "t72b3",
+            "",
+            [44000, 0, 0, 0, 0, "", ""],
+        )
+        mark = {"id": "t72b3", "classes": [], "aliases": [], "keywords": ["t72b3"]}
+        names = (("rhs_t72bd_tv", "T-72B3 (obr. 2012g.)"),)
+
+        for name, display in names:
+            with self.subTest(game_class=name):
+                generated = gen_vehicle_data.match_row(
+                    [mark_row], name, display, families=[T72_FAMILY_ROW]
+                )
+                self.assertIsNotNone(generated)
+                assert generated is not None
+                self.assertEqual("t72b3", generated[0])
+                self.assertNotEqual("family", generated[4])
+
+                measured = report.matcher(
+                    [mark], families=[family_table("t72_family", "t72")]
+                )(name, display)
+                self.assertIsNotNone(measured)
+                assert measured is not None
+                self.assertEqual("t72b3", measured["id"])
+
+                self.assertEqual(
+                    "t72b3",
+                    resolve(
+                        [mark],
+                        name,
+                        display,
+                        families=[family_table("t72_family", "t72")],
+                    ),
+                )
+
+    def test_a_designation_shorter_than_the_scan_is_ignored(self) -> None:
+        self.assertIsNone(
+            gen_vehicle_data.match_row(
+                [], "rhs_t7_thing", "", families=[family_row("t7_family", "t7")]
+            )
+        )
+        self.assertIsNone(
+            report.matcher([], families=[family_table("t7_family", "t7")])(
+                "rhs_t7_thing", ""
+            )
+        )
+
+    def test_the_generator_separates_family_records_from_mark_records(self) -> None:
+        record: dict[str, object] = {
+            "catalogue_id": "x_family",
+            "variant_id": "x_family",
+            "canonical_name": "T-72 family",
+            "variant": "family designation, no mark claimed",
+            "vehicle_type": "tracked",
+            "aliases": [],
+            "keywords": ["T-72"],
+            "values": {},
+            "family": True,
+        }
+        row = gen_vehicle_data.build_family_row(record)
+        self.assertIsNotNone(row)
+        assert row is not None
+        self.assertEqual("t72", row[6])
+        self.assertEqual("", row[4])
+        self.assertEqual("", row[5])
+        self.assertEqual("", row[7])
+        self.assertEqual([], [r[0] for r in gen_vehicle_data.build_rows([record])])
+        self.assertEqual(
+            ["x_family"],
+            [r[0] for r in gen_vehicle_data.build_family_rows([record])],
+        )
+        self.assertIsNone(
+            gen_vehicle_data.build_family_row({**record, "family": False})
+        )
+
+    def test_the_validator_requires_a_family_to_name_the_family_alone(self) -> None:
+        base: dict[str, object] = {
+            "catalogue_id": "x_family",
+            "canonical_name": "T-72 family",
+            "variant": "family designation, no mark claimed",
+            "identity_only": True,
+            "runtime_ready": False,
+            "values": {},
+            "aliases": [],
+            "keywords": ["t72"],
+            "class_token": "",
+        }
+        errors: list[str] = []
+        validate_vehicle_data.validate_family_shape("x_family", base, errors)
+        self.assertEqual([], errors)
+        for field, bad in (
+            ("aliases", ["t72"]),
+            ("values", {"operating_weight_kg": {"value": 1}}),
+            ("canonical_name", "T-72B3"),
+            ("canonical_name", "T-72B3 family"),
+            ("canonical_name", "T-72B3 obr. 2012g. family"),
+            ("keywords", []),
+            ("identity_only", False),
+            ("class_token", "Tank_F"),
+            ("variant", "obr. 2012g."),
+        ):
+            with self.subTest(field=field, value=bad):
+                errors = []
+                validate_vehicle_data.validate_family_shape(
+                    "x_family", {**base, field: bad}, errors
+                )
+                self.assertTrue(errors)
 
 
 if __name__ == "__main__":
