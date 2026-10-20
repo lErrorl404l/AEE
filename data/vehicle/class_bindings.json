@@ -42,17 +42,17 @@
   {
     "game_class": "B_MBT_01_cannon_F",
     "class_token": "Tank",
-    "catalogue_id": "m1_abrams",
-    "identity_source": "aee_class_table",
-    "identity_evidence": "AEE class token Tank; class_map.json binds Tank to the M1 Abrams. The class name does not name the catalogue vehicle, so the link stays class_only.",
+    "catalogue_id": "merkava_mk4",
+    "identity_source": "armedassault_m2a1_slammer_trivia",
+    "identity_evidence": "Armed Assault Wiki, M2A1_Slammer, ARMA 3 Trivia (wikitext section 41): \"* The Slammer is based on the Israeli-made \"Merkava Mark IV\" MBT. However, unlike the real-world Merkava tank, the in-game Slammer either has unrealistic features or lacks capabilities that it possesses in reality:\" Citation: https://armedassault.fandom.com/wiki/M2A1_Slammer. The page asserts the basis ('is based on the Israeli-made \"Merkava Mark IV\" MBT'). The page also lists the capabilities the in-game vehicle lacks, which does not change the identity. The previous binding, the M1 Abrams, is withdrawn: no page names an Abrams for the Slammer. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   },
   {
     "game_class": "I_MBT_03_cannon_F",
     "class_token": "Tank",
-    "catalogue_id": "m1_abrams",
-    "identity_source": "aee_class_table",
-    "identity_evidence": "AEE class token Tank; the same catalogue vehicle as B_MBT_01_cannon_F. The class name does not name the catalogue vehicle, so the link stays class_only.",
+    "catalogue_id": "leopard_2a6",
+    "identity_source": "armedassault_mbt52_kuma_trivia",
+    "identity_evidence": "Armed Assault Wiki, MBT-52_Kuma, ARMA 3 Trivia (wikitext section 45): \"* The Kuma is based on the real-world \"Leopard 2\" MBT. ** More specifically, it is based on the \"Revolution\" upgrade package made by Rheinmetall Defence AG that is designed to enhance the Leopard 2's capabilities in urban areas and low-intensity warfare.\" Citation: https://armedassault.fandom.com/wiki/MBT-52_Kuma. The page asserts the basis twice: 'The Kuma is based on the real-world \"Leopard 2\" MBT', and 'more specifically, it is based on the \"Revolution\" upgrade package made by Rheinmetall Defence AG'. The corpus holds the Leopard 2A6 and not the Revolution package, so the binding names the base vehicle and the evidence names the package. The previous binding, the M1 Abrams, is withdrawn: no page names an Abrams for the Kuma. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   },
   {
@@ -90,25 +90,25 @@
   {
     "game_class": "B_Truck_01_transport_F",
     "class_token": "Truck",
-    "catalogue_id": "m923a2",
-    "identity_source": "aee_class_table",
-    "identity_evidence": "AEE class token Truck; class_map.json binds Truck to the M923A2 5 ton 6x6 cargo truck. The class name does not name the catalogue vehicle, so the link stays class_only.",
+    "catalogue_id": "m977_hemtt",
+    "identity_source": "armedassault_hemtt_trivia",
+    "identity_evidence": "Armed Assault Wiki, HEMTT, ARMA 3 Trivia (wikitext section 40): \"* The HEMTT is based on its real-life vehicle of the same name, the Oshkosh \"M977\" heavy utility truck used by all branches of the U.S. military and several other nations (both NATO and non-NATO).\" Citation: https://armedassault.fandom.com/wiki/HEMTT. The page asserts the basis ('is based on its real-life vehicle of the same name, the Oshkosh \"M977\" heavy utility truck used by all branches of the U.S. military and several other nations'). The corpus holds the M977 HEMTT. The previous binding, the M923A2, is withdrawn: no page names an M923 for the HEMTT. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   },
   {
     "game_class": "I_Truck_02_transport_F",
     "class_token": "Truck",
-    "catalogue_id": "m923a2",
-    "identity_source": "aee_class_table",
-    "identity_evidence": "AEE class token Truck; the same catalogue truck as B_Truck_01_transport_F. The class name does not name the catalogue vehicle, so the link stays class_only.",
+    "catalogue_id": "kamaz_4310",
+    "identity_source": "armedassault_zamak_trivia",
+    "identity_evidence": "Armed Assault Wiki, Zamak, ARMA 3 Trivia (wikitext section 15): \"* Zamak is simply Kamaz spelt backwards, which is the name of the company that designs the real-life \"KamAZ-4310\" family of trucks that the Zamak is based on.\" Citation: https://armedassault.fandom.com/wiki/Zamak. The page asserts the basis ('Zamak is simply Kamaz spelt backwards, which is the name of the company that designs the real-life \"KamAZ-4310\" family of trucks that the Zamak is based on'). The corpus holds the KamAZ-4310. The previous binding, the M923A2, is withdrawn: no page names an M923 for the Zamak. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   },
   {
     "game_class": "O_Truck_02_transport_F",
     "class_token": "Truck",
-    "catalogue_id": "m923a2",
-    "identity_source": "aee_class_table",
-    "identity_evidence": "AEE class token Truck; the same catalogue truck as B_Truck_01_transport_F. The class name does not name the catalogue vehicle, so the link stays class_only.",
+    "catalogue_id": "kamaz_4310",
+    "identity_source": "armedassault_zamak_trivia",
+    "identity_evidence": "Armed Assault Wiki, Zamak, ARMA 3 Trivia (wikitext section 15): \"* Zamak is simply Kamaz spelt backwards, which is the name of the company that designs the real-life \"KamAZ-4310\" family of trucks that the Zamak is based on.\" Citation: https://armedassault.fandom.com/wiki/Zamak. The page asserts the basis ('Zamak is simply Kamaz spelt backwards, which is the name of the company that designs the real-life \"KamAZ-4310\" family of trucks that the Zamak is based on'). The corpus holds the KamAZ-4310. The previous binding, the M923A2, is withdrawn: no page names an M923 for the Zamak. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   },
   {
@@ -357,6 +357,230 @@
     "catalogue_id": "bm2t_stalker",
     "identity_source": "armedassault_zsu39_tigris_trivia",
     "identity_evidence": "Armed Assault Wiki, ZSU-39_Tigris, ARMA 3 Trivia (wikitext section 43): \"* Like the Kamysh, the chassis of the Tigris is likely based on the Belarusian-made \"BM-2T Stalker\" designed by Minotor Service Enterprise. ** However, its gun turret is a shared design (also used by the NATO Cheetah) that is modelled after the real-world \"Marksman\" anti-aircraft gun system then-designed by the British manufacturer Marconi Electronic Systems Limited (MES).\" Citation: https://armedassault.fandom.com/wiki/ZSU-39_Tigris. The page hedges: 'the chassis of the Tigris is likely based on the Belarusian-made \"BM-2T Stalker\" designed by Minotor Service Enterprise', and 'its gun turret is a shared design (also used by the NATO Cheetah) that is modelled after the real-world \"Marksman\" anti-aircraft gun system'. Both hedges are recorded and not upgraded. The Marksman turret is a subsystem and has no entry. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "B_MBT_01_TUSK_F",
+    "class_token": "Tank",
+    "catalogue_id": "merkava_mk4",
+    "identity_source": "armedassault_m2a1_slammer_trivia",
+    "identity_evidence": "Armed Assault Wiki, M2A1_Slammer, ARMA 3 Trivia (wikitext section 41): \"* The Slammer is based on the Israeli-made \"Merkava Mark IV\" MBT. However, unlike the real-world Merkava tank, the in-game Slammer either has unrealistic features or lacks capabilities that it possesses in reality:\" Citation: https://armedassault.fandom.com/wiki/M2A1_Slammer. The page asserts the basis ('is based on the Israeli-made \"Merkava Mark IV\" MBT'). The page also lists the capabilities the in-game vehicle lacks, which does not change the identity. The previous binding, the M1 Abrams, is withdrawn: no page names an Abrams for the Slammer. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8). B_MBT_01_TUSK_F is the Slammer UP: the same page and bullet cover the hull, and the UP is that hull with the add-on armour package.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "MBT_01_mlrs_base_F",
+    "class_token": "Tank",
+    "catalogue_id": "m270_mlrs",
+    "identity_source": "armedassault_m5_sandstorm_trivia",
+    "identity_evidence": "Armed Assault Wiki, M5_Sandstorm, ARMA 3 Trivia (wikitext section 38): \"* The Sandstorm's rocket launcher pod is modelled after the \"MLRS\" used by the real-world \"M270 MLRS\". ** The chassis on the other hand, is based on the \"Merkava Mark IV\" MBT. However, this configuration is purely fictitious as a dedicated MRL variant was never envisioned for the Merkava family of tanks (only a prototype armed with a self-propelled howitzer existed).\" Citation: https://armedassault.fandom.com/wiki/M5_Sandstorm. The page asserts both donors: 'The Sandstorm's rocket launcher pod is modelled after the \"MLRS\" used by the real-world \"M270 MLRS\"' and 'The chassis on the other hand, is based on the \"Merkava Mark IV\" MBT'. The corpus holds both donors. The bound entry is the launcher system, which gives the vehicle its role, and the evidence names the chassis donor. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "B_MBT_01_mlrs_F",
+    "class_token": "Tank",
+    "catalogue_id": "m270_mlrs",
+    "identity_source": "armedassault_m5_sandstorm_trivia",
+    "identity_evidence": "Armed Assault Wiki, M5_Sandstorm, ARMA 3 Trivia (wikitext section 38): \"* The Sandstorm's rocket launcher pod is modelled after the \"MLRS\" used by the real-world \"M270 MLRS\". ** The chassis on the other hand, is based on the \"Merkava Mark IV\" MBT. However, this configuration is purely fictitious as a dedicated MRL variant was never envisioned for the Merkava family of tanks (only a prototype armed with a self-propelled howitzer existed).\" Citation: https://armedassault.fandom.com/wiki/M5_Sandstorm. The page asserts both donors: 'The Sandstorm's rocket launcher pod is modelled after the \"MLRS\" used by the real-world \"M270 MLRS\"' and 'The chassis on the other hand, is based on the \"Merkava Mark IV\" MBT'. The corpus holds both donors. The bound entry is the launcher system, which gives the vehicle its role, and the evidence names the chassis donor. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "Truck_02_base_F",
+    "class_token": "Truck",
+    "catalogue_id": "kamaz_4310",
+    "identity_source": "armedassault_zamak_trivia",
+    "identity_evidence": "Armed Assault Wiki, Zamak, ARMA 3 Trivia (wikitext section 15): \"* Zamak is simply Kamaz spelt backwards, which is the name of the company that designs the real-life \"KamAZ-4310\" family of trucks that the Zamak is based on.\" Citation: https://armedassault.fandom.com/wiki/Zamak. The page asserts the basis ('Zamak is simply Kamaz spelt backwards, which is the name of the company that designs the real-life \"KamAZ-4310\" family of trucks that the Zamak is based on'). The corpus holds the KamAZ-4310. The previous binding, the M923A2, is withdrawn: no page names an M923 for the Zamak. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "O_Truck_02_covered_F",
+    "class_token": "Truck",
+    "catalogue_id": "kamaz_4310",
+    "identity_source": "armedassault_zamak_trivia",
+    "identity_evidence": "Armed Assault Wiki, Zamak, ARMA 3 Trivia (wikitext section 15): \"* Zamak is simply Kamaz spelt backwards, which is the name of the company that designs the real-life \"KamAZ-4310\" family of trucks that the Zamak is based on.\" Citation: https://armedassault.fandom.com/wiki/Zamak. The page asserts the basis ('Zamak is simply Kamaz spelt backwards, which is the name of the company that designs the real-life \"KamAZ-4310\" family of trucks that the Zamak is based on'). The corpus holds the KamAZ-4310. The previous binding, the M923A2, is withdrawn: no page names an M923 for the Zamak. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "O_Truck_02_fuel_F",
+    "class_token": "Truck",
+    "catalogue_id": "kamaz_4310",
+    "identity_source": "armedassault_zamak_trivia",
+    "identity_evidence": "Armed Assault Wiki, Zamak, ARMA 3 Trivia (wikitext section 15): \"* Zamak is simply Kamaz spelt backwards, which is the name of the company that designs the real-life \"KamAZ-4310\" family of trucks that the Zamak is based on.\" Citation: https://armedassault.fandom.com/wiki/Zamak. The page asserts the basis ('Zamak is simply Kamaz spelt backwards, which is the name of the company that designs the real-life \"KamAZ-4310\" family of trucks that the Zamak is based on'). The corpus holds the KamAZ-4310. The previous binding, the M923A2, is withdrawn: no page names an M923 for the Zamak. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "O_Truck_02_box_F",
+    "class_token": "Truck",
+    "catalogue_id": "kamaz_4310",
+    "identity_source": "armedassault_zamak_trivia",
+    "identity_evidence": "Armed Assault Wiki, Zamak, ARMA 3 Trivia (wikitext section 15): \"* Zamak is simply Kamaz spelt backwards, which is the name of the company that designs the real-life \"KamAZ-4310\" family of trucks that the Zamak is based on.\" Citation: https://armedassault.fandom.com/wiki/Zamak. The page asserts the basis ('Zamak is simply Kamaz spelt backwards, which is the name of the company that designs the real-life \"KamAZ-4310\" family of trucks that the Zamak is based on'). The corpus holds the KamAZ-4310. The previous binding, the M923A2, is withdrawn: no page names an M923 for the Zamak. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "O_Truck_02_medical_F",
+    "class_token": "Truck",
+    "catalogue_id": "kamaz_4310",
+    "identity_source": "armedassault_zamak_trivia",
+    "identity_evidence": "Armed Assault Wiki, Zamak, ARMA 3 Trivia (wikitext section 15): \"* Zamak is simply Kamaz spelt backwards, which is the name of the company that designs the real-life \"KamAZ-4310\" family of trucks that the Zamak is based on.\" Citation: https://armedassault.fandom.com/wiki/Zamak. The page asserts the basis ('Zamak is simply Kamaz spelt backwards, which is the name of the company that designs the real-life \"KamAZ-4310\" family of trucks that the Zamak is based on'). The corpus holds the KamAZ-4310. The previous binding, the M923A2, is withdrawn: no page names an M923 for the Zamak. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "O_Truck_02_Ammo_F",
+    "class_token": "Truck",
+    "catalogue_id": "kamaz_4310",
+    "identity_source": "armedassault_zamak_trivia",
+    "identity_evidence": "Armed Assault Wiki, Zamak, ARMA 3 Trivia (wikitext section 15): \"* Zamak is simply Kamaz spelt backwards, which is the name of the company that designs the real-life \"KamAZ-4310\" family of trucks that the Zamak is based on.\" Citation: https://armedassault.fandom.com/wiki/Zamak. The page asserts the basis ('Zamak is simply Kamaz spelt backwards, which is the name of the company that designs the real-life \"KamAZ-4310\" family of trucks that the Zamak is based on'). The corpus holds the KamAZ-4310. The previous binding, the M923A2, is withdrawn: no page names an M923 for the Zamak. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "I_Truck_02_covered_F",
+    "class_token": "Truck",
+    "catalogue_id": "kamaz_4310",
+    "identity_source": "armedassault_zamak_trivia",
+    "identity_evidence": "Armed Assault Wiki, Zamak, ARMA 3 Trivia (wikitext section 15): \"* Zamak is simply Kamaz spelt backwards, which is the name of the company that designs the real-life \"KamAZ-4310\" family of trucks that the Zamak is based on.\" Citation: https://armedassault.fandom.com/wiki/Zamak. The page asserts the basis ('Zamak is simply Kamaz spelt backwards, which is the name of the company that designs the real-life \"KamAZ-4310\" family of trucks that the Zamak is based on'). The corpus holds the KamAZ-4310. The previous binding, the M923A2, is withdrawn: no page names an M923 for the Zamak. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "I_Truck_02_fuel_F",
+    "class_token": "Truck",
+    "catalogue_id": "kamaz_4310",
+    "identity_source": "armedassault_zamak_trivia",
+    "identity_evidence": "Armed Assault Wiki, Zamak, ARMA 3 Trivia (wikitext section 15): \"* Zamak is simply Kamaz spelt backwards, which is the name of the company that designs the real-life \"KamAZ-4310\" family of trucks that the Zamak is based on.\" Citation: https://armedassault.fandom.com/wiki/Zamak. The page asserts the basis ('Zamak is simply Kamaz spelt backwards, which is the name of the company that designs the real-life \"KamAZ-4310\" family of trucks that the Zamak is based on'). The corpus holds the KamAZ-4310. The previous binding, the M923A2, is withdrawn: no page names an M923 for the Zamak. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "I_Truck_02_box_F",
+    "class_token": "Truck",
+    "catalogue_id": "kamaz_4310",
+    "identity_source": "armedassault_zamak_trivia",
+    "identity_evidence": "Armed Assault Wiki, Zamak, ARMA 3 Trivia (wikitext section 15): \"* Zamak is simply Kamaz spelt backwards, which is the name of the company that designs the real-life \"KamAZ-4310\" family of trucks that the Zamak is based on.\" Citation: https://armedassault.fandom.com/wiki/Zamak. The page asserts the basis ('Zamak is simply Kamaz spelt backwards, which is the name of the company that designs the real-life \"KamAZ-4310\" family of trucks that the Zamak is based on'). The corpus holds the KamAZ-4310. The previous binding, the M923A2, is withdrawn: no page names an M923 for the Zamak. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "I_Truck_02_medical_F",
+    "class_token": "Truck",
+    "catalogue_id": "kamaz_4310",
+    "identity_source": "armedassault_zamak_trivia",
+    "identity_evidence": "Armed Assault Wiki, Zamak, ARMA 3 Trivia (wikitext section 15): \"* Zamak is simply Kamaz spelt backwards, which is the name of the company that designs the real-life \"KamAZ-4310\" family of trucks that the Zamak is based on.\" Citation: https://armedassault.fandom.com/wiki/Zamak. The page asserts the basis ('Zamak is simply Kamaz spelt backwards, which is the name of the company that designs the real-life \"KamAZ-4310\" family of trucks that the Zamak is based on'). The corpus holds the KamAZ-4310. The previous binding, the M923A2, is withdrawn: no page names an M923 for the Zamak. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "I_Truck_02_Ammo_F",
+    "class_token": "Truck",
+    "catalogue_id": "kamaz_4310",
+    "identity_source": "armedassault_zamak_trivia",
+    "identity_evidence": "Armed Assault Wiki, Zamak, ARMA 3 Trivia (wikitext section 15): \"* Zamak is simply Kamaz spelt backwards, which is the name of the company that designs the real-life \"KamAZ-4310\" family of trucks that the Zamak is based on.\" Citation: https://armedassault.fandom.com/wiki/Zamak. The page asserts the basis ('Zamak is simply Kamaz spelt backwards, which is the name of the company that designs the real-life \"KamAZ-4310\" family of trucks that the Zamak is based on'). The corpus holds the KamAZ-4310. The previous binding, the M923A2, is withdrawn: no page names an M923 for the Zamak. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "Truck_03_base_F",
+    "class_token": "Truck",
+    "catalogue_id": "kamaz_63968_typhoon_k",
+    "identity_source": "armedassault_tempest_trivia",
+    "identity_evidence": "Armed Assault Wiki, Tempest, ARMA 3 Trivia (wikitext section 37): \"* The Tempest is based on the real-world \"Typhoon\" 6x6 MRAP designed by KamAZ (specifically the \"KamAZ-63968\").\" Citation: https://armedassault.fandom.com/wiki/Tempest. The page asserts the basis ('is based on the real-world \"Typhoon\" 6x6 MRAP designed by KamAZ (specifically the \"KamAZ-63968\")'). The corpus holds the KamAZ-63968 Typhoon-K. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "O_Truck_03_transport_F",
+    "class_token": "Truck",
+    "catalogue_id": "kamaz_63968_typhoon_k",
+    "identity_source": "armedassault_tempest_trivia",
+    "identity_evidence": "Armed Assault Wiki, Tempest, ARMA 3 Trivia (wikitext section 37): \"* The Tempest is based on the real-world \"Typhoon\" 6x6 MRAP designed by KamAZ (specifically the \"KamAZ-63968\").\" Citation: https://armedassault.fandom.com/wiki/Tempest. The page asserts the basis ('is based on the real-world \"Typhoon\" 6x6 MRAP designed by KamAZ (specifically the \"KamAZ-63968\")'). The corpus holds the KamAZ-63968 Typhoon-K. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "O_Truck_03_covered_F",
+    "class_token": "Truck",
+    "catalogue_id": "kamaz_63968_typhoon_k",
+    "identity_source": "armedassault_tempest_trivia",
+    "identity_evidence": "Armed Assault Wiki, Tempest, ARMA 3 Trivia (wikitext section 37): \"* The Tempest is based on the real-world \"Typhoon\" 6x6 MRAP designed by KamAZ (specifically the \"KamAZ-63968\").\" Citation: https://armedassault.fandom.com/wiki/Tempest. The page asserts the basis ('is based on the real-world \"Typhoon\" 6x6 MRAP designed by KamAZ (specifically the \"KamAZ-63968\")'). The corpus holds the KamAZ-63968 Typhoon-K. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "O_Truck_03_fuel_F",
+    "class_token": "Truck",
+    "catalogue_id": "kamaz_63968_typhoon_k",
+    "identity_source": "armedassault_tempest_trivia",
+    "identity_evidence": "Armed Assault Wiki, Tempest, ARMA 3 Trivia (wikitext section 37): \"* The Tempest is based on the real-world \"Typhoon\" 6x6 MRAP designed by KamAZ (specifically the \"KamAZ-63968\").\" Citation: https://armedassault.fandom.com/wiki/Tempest. The page asserts the basis ('is based on the real-world \"Typhoon\" 6x6 MRAP designed by KamAZ (specifically the \"KamAZ-63968\")'). The corpus holds the KamAZ-63968 Typhoon-K. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "O_Truck_03_ammo_F",
+    "class_token": "Truck",
+    "catalogue_id": "kamaz_63968_typhoon_k",
+    "identity_source": "armedassault_tempest_trivia",
+    "identity_evidence": "Armed Assault Wiki, Tempest, ARMA 3 Trivia (wikitext section 37): \"* The Tempest is based on the real-world \"Typhoon\" 6x6 MRAP designed by KamAZ (specifically the \"KamAZ-63968\").\" Citation: https://armedassault.fandom.com/wiki/Tempest. The page asserts the basis ('is based on the real-world \"Typhoon\" 6x6 MRAP designed by KamAZ (specifically the \"KamAZ-63968\")'). The corpus holds the KamAZ-63968 Typhoon-K. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "O_Truck_03_repair_F",
+    "class_token": "Truck",
+    "catalogue_id": "kamaz_63968_typhoon_k",
+    "identity_source": "armedassault_tempest_trivia",
+    "identity_evidence": "Armed Assault Wiki, Tempest, ARMA 3 Trivia (wikitext section 37): \"* The Tempest is based on the real-world \"Typhoon\" 6x6 MRAP designed by KamAZ (specifically the \"KamAZ-63968\").\" Citation: https://armedassault.fandom.com/wiki/Tempest. The page asserts the basis ('is based on the real-world \"Typhoon\" 6x6 MRAP designed by KamAZ (specifically the \"KamAZ-63968\")'). The corpus holds the KamAZ-63968 Typhoon-K. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "O_Truck_03_medical_F",
+    "class_token": "Truck",
+    "catalogue_id": "kamaz_63968_typhoon_k",
+    "identity_source": "armedassault_tempest_trivia",
+    "identity_evidence": "Armed Assault Wiki, Tempest, ARMA 3 Trivia (wikitext section 37): \"* The Tempest is based on the real-world \"Typhoon\" 6x6 MRAP designed by KamAZ (specifically the \"KamAZ-63968\").\" Citation: https://armedassault.fandom.com/wiki/Tempest. The page asserts the basis ('is based on the real-world \"Typhoon\" 6x6 MRAP designed by KamAZ (specifically the \"KamAZ-63968\")'). The corpus holds the KamAZ-63968 Typhoon-K. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "B_Truck_01_covered_F",
+    "class_token": "Truck",
+    "catalogue_id": "m977_hemtt",
+    "identity_source": "armedassault_hemtt_trivia",
+    "identity_evidence": "Armed Assault Wiki, HEMTT, ARMA 3 Trivia (wikitext section 40): \"* The HEMTT is based on its real-life vehicle of the same name, the Oshkosh \"M977\" heavy utility truck used by all branches of the U.S. military and several other nations (both NATO and non-NATO).\" Citation: https://armedassault.fandom.com/wiki/HEMTT. The page asserts the basis ('is based on its real-life vehicle of the same name, the Oshkosh \"M977\" heavy utility truck used by all branches of the U.S. military and several other nations'). The corpus holds the M977 HEMTT. The previous binding, the M923A2, is withdrawn: no page names an M923 for the HEMTT. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "B_Truck_01_box_F",
+    "class_token": "Truck",
+    "catalogue_id": "m977_hemtt",
+    "identity_source": "armedassault_hemtt_trivia",
+    "identity_evidence": "Armed Assault Wiki, HEMTT, ARMA 3 Trivia (wikitext section 40): \"* The HEMTT is based on its real-life vehicle of the same name, the Oshkosh \"M977\" heavy utility truck used by all branches of the U.S. military and several other nations (both NATO and non-NATO).\" Citation: https://armedassault.fandom.com/wiki/HEMTT. The page asserts the basis ('is based on its real-life vehicle of the same name, the Oshkosh \"M977\" heavy utility truck used by all branches of the U.S. military and several other nations'). The corpus holds the M977 HEMTT. The previous binding, the M923A2, is withdrawn: no page names an M923 for the HEMTT. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "B_Truck_01_fuel_F",
+    "class_token": "Truck",
+    "catalogue_id": "m977_hemtt",
+    "identity_source": "armedassault_hemtt_trivia",
+    "identity_evidence": "Armed Assault Wiki, HEMTT, ARMA 3 Trivia (wikitext section 40): \"* The HEMTT is based on its real-life vehicle of the same name, the Oshkosh \"M977\" heavy utility truck used by all branches of the U.S. military and several other nations (both NATO and non-NATO).\" Citation: https://armedassault.fandom.com/wiki/HEMTT. The page asserts the basis ('is based on its real-life vehicle of the same name, the Oshkosh \"M977\" heavy utility truck used by all branches of the U.S. military and several other nations'). The corpus holds the M977 HEMTT. The previous binding, the M923A2, is withdrawn: no page names an M923 for the HEMTT. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "B_Truck_01_ammo_F",
+    "class_token": "Truck",
+    "catalogue_id": "m977_hemtt",
+    "identity_source": "armedassault_hemtt_trivia",
+    "identity_evidence": "Armed Assault Wiki, HEMTT, ARMA 3 Trivia (wikitext section 40): \"* The HEMTT is based on its real-life vehicle of the same name, the Oshkosh \"M977\" heavy utility truck used by all branches of the U.S. military and several other nations (both NATO and non-NATO).\" Citation: https://armedassault.fandom.com/wiki/HEMTT. The page asserts the basis ('is based on its real-life vehicle of the same name, the Oshkosh \"M977\" heavy utility truck used by all branches of the U.S. military and several other nations'). The corpus holds the M977 HEMTT. The previous binding, the M923A2, is withdrawn: no page names an M923 for the HEMTT. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "B_Truck_01_repair_F",
+    "class_token": "Truck",
+    "catalogue_id": "m977_hemtt",
+    "identity_source": "armedassault_hemtt_trivia",
+    "identity_evidence": "Armed Assault Wiki, HEMTT, ARMA 3 Trivia (wikitext section 40): \"* The HEMTT is based on its real-life vehicle of the same name, the Oshkosh \"M977\" heavy utility truck used by all branches of the U.S. military and several other nations (both NATO and non-NATO).\" Citation: https://armedassault.fandom.com/wiki/HEMTT. The page asserts the basis ('is based on its real-life vehicle of the same name, the Oshkosh \"M977\" heavy utility truck used by all branches of the U.S. military and several other nations'). The corpus holds the M977 HEMTT. The previous binding, the M923A2, is withdrawn: no page names an M923 for the HEMTT. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "B_Truck_01_medical_F",
+    "class_token": "Truck",
+    "catalogue_id": "m977_hemtt",
+    "identity_source": "armedassault_hemtt_trivia",
+    "identity_evidence": "Armed Assault Wiki, HEMTT, ARMA 3 Trivia (wikitext section 40): \"* The HEMTT is based on its real-life vehicle of the same name, the Oshkosh \"M977\" heavy utility truck used by all branches of the U.S. military and several other nations (both NATO and non-NATO).\" Citation: https://armedassault.fandom.com/wiki/HEMTT. The page asserts the basis ('is based on its real-life vehicle of the same name, the Oshkosh \"M977\" heavy utility truck used by all branches of the U.S. military and several other nations'). The corpus holds the M977 HEMTT. The previous binding, the M923A2, is withdrawn: no page names an M923 for the HEMTT. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "B_Truck_01_mover_F",
+    "class_token": "Truck",
+    "catalogue_id": "m977_hemtt",
+    "identity_source": "armedassault_hemtt_trivia",
+    "identity_evidence": "Armed Assault Wiki, HEMTT, ARMA 3 Trivia (wikitext section 40): \"* The HEMTT is based on its real-life vehicle of the same name, the Oshkosh \"M977\" heavy utility truck used by all branches of the U.S. military and several other nations (both NATO and non-NATO).\" Citation: https://armedassault.fandom.com/wiki/HEMTT. The page asserts the basis ('is based on its real-life vehicle of the same name, the Oshkosh \"M977\" heavy utility truck used by all branches of the U.S. military and several other nations'). The corpus holds the M977 HEMTT. The previous binding, the M923A2, is withdrawn: no page names an M923 for the HEMTT. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   }
 ]

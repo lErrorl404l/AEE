@@ -172,6 +172,22 @@
   "note": "Tier-5 community compilation. The held bytes are the ARMA 3 Trivia section only. It states the ARMA 3 Hatchback is based on the 2007 Hyundai \"i-Blue\" concept car. The section publishes no mass, dimension, engine, tyre or performance figure, so this source carries an identity claim only and no value object cites it."
  },
  {
+  "source_id": "armedassault_hemtt_trivia",
+  "tier": 5,
+  "type": "compilation",
+  "title": "Armed Assault Wiki, HEMTT, ARMA 3 Trivia",
+  "edition": "Armed Assault Wiki (Fandom), community wiki, ARMA 3 Trivia section only, captured 2026-10-20",
+  "identifier": "Armed Assault Wiki article 'HEMTT', ARMA 3 Trivia section",
+  "locator": "Section 40 of the article wikitext, 'Trivia', under the ARMA 3 heading",
+  "retrieved": "2026-10-20",
+  "url": "https://armedassault.fandom.com/wiki/HEMTT",
+  "archive_ref": "ARMA 3 Trivia section held as wikitext at data/vehicle/sources/armedassault_hemtt_trivia.wiki",
+  "licence": "Fandom wiki text is available under the Creative Commons Attribution-ShareAlike licence. The page is a community compilation, never a primary source.",
+  "primary_held": false,
+  "sha256": "9089952816f242e95af7c8d037ce7d519b4646ed3609be5e6ddd35663d8acc4f",
+  "note": "Tier-5 community compilation. The held bytes are the ARMA 3 Trivia section only. It states the HEMTT is based on the Oshkosh M977. The section publishes no mass, dimension, engine, tyre or performance figure, so this source carries an identity claim only and no value object cites it."
+ },
+ {
   "source_id": "armedassault_hunter_trivia",
   "tier": 5,
   "type": "compilation",
@@ -234,6 +250,54 @@
   "primary_held": false,
   "sha256": "8670af43a7350a5923d0874f4d34a81eee53c9a31e489f0abdc0882f82749873",
   "note": "Tier-5 community compilation. The held bytes are the ARMA 3 Trivia section only. It states the Panther is based on the IMI Namer APC. The section publishes no mass, dimension, engine, tyre or performance figure, so this source carries an identity claim only and no value object cites it."
+ },
+ {
+  "source_id": "armedassault_m2a1_slammer_trivia",
+  "tier": 5,
+  "type": "compilation",
+  "title": "Armed Assault Wiki, M2A1_Slammer, ARMA 3 Trivia",
+  "edition": "Armed Assault Wiki (Fandom), community wiki, ARMA 3 Trivia section only, captured 2026-10-20",
+  "identifier": "Armed Assault Wiki article 'M2A1_Slammer', ARMA 3 Trivia section",
+  "locator": "Section 41 of the article wikitext, 'Trivia', under the ARMA 3 heading",
+  "retrieved": "2026-10-20",
+  "url": "https://armedassault.fandom.com/wiki/M2A1_Slammer",
+  "archive_ref": "ARMA 3 Trivia section held as wikitext at data/vehicle/sources/armedassault_m2a1_slammer_trivia.wiki",
+  "licence": "Fandom wiki text is available under the Creative Commons Attribution-ShareAlike licence. The page is a community compilation, never a primary source.",
+  "primary_held": false,
+  "sha256": "6e529e29dfc58d535691f01d9b39d79c95ab692c8a7b62b10f40514a20673956",
+  "note": "Tier-5 community compilation. The held bytes are the ARMA 3 Trivia section only. It states the Slammer is based on the Merkava Mark IV MBT. The section publishes no mass, dimension, engine, tyre or performance figure, so this source carries an identity claim only and no value object cites it."
+ },
+ {
+  "source_id": "armedassault_m5_sandstorm_trivia",
+  "tier": 5,
+  "type": "compilation",
+  "title": "Armed Assault Wiki, M5_Sandstorm, ARMA 3 Trivia",
+  "edition": "Armed Assault Wiki (Fandom), community wiki, ARMA 3 Trivia section only, captured 2026-10-20",
+  "identifier": "Armed Assault Wiki article 'M5_Sandstorm', ARMA 3 Trivia section",
+  "locator": "Section 38 of the article wikitext, 'Trivia', under the ARMA 3 heading",
+  "retrieved": "2026-10-20",
+  "url": "https://armedassault.fandom.com/wiki/M5_Sandstorm",
+  "archive_ref": "ARMA 3 Trivia section held as wikitext at data/vehicle/sources/armedassault_m5_sandstorm_trivia.wiki",
+  "licence": "Fandom wiki text is available under the Creative Commons Attribution-ShareAlike licence. The page is a community compilation, never a primary source.",
+  "primary_held": false,
+  "sha256": "227f7ea82c91849434ba10b1aaf2dc66548e39a133c157f29120db14c6f4b168",
+  "note": "Tier-5 community compilation. The held bytes are the ARMA 3 Trivia section only. It states the Sandstorm launcher pod is modelled after the M270 MLRS and its chassis based on the Merkava Mark IV. The section publishes no mass, dimension, engine, tyre or performance figure, so this source carries an identity claim only and no value object cites it."
+ },
+ {
+  "source_id": "armedassault_mbt52_kuma_trivia",
+  "tier": 5,
+  "type": "compilation",
+  "title": "Armed Assault Wiki, MBT-52_Kuma, ARMA 3 Trivia",
+  "edition": "Armed Assault Wiki (Fandom), community wiki, ARMA 3 Trivia section only, captured 2026-10-20",
+  "identifier": "Armed Assault Wiki article 'MBT-52_Kuma', ARMA 3 Trivia section",
+  "locator": "Section 45 of the article wikitext, 'Trivia', under the ARMA 3 heading",
+  "retrieved": "2026-10-20",
+  "url": "https://armedassault.fandom.com/wiki/MBT-52_Kuma",
+  "archive_ref": "ARMA 3 Trivia section held as wikitext at data/vehicle/sources/armedassault_mbt52_kuma_trivia.wiki",
+  "licence": "Fandom wiki text is available under the Creative Commons Attribution-ShareAlike licence. The page is a community compilation, never a primary source.",
+  "primary_held": false,
+  "sha256": "34254b0ef9acd2ff3152346d7e906e559714313089b077c8476bc2a9ac94ac2e",
+  "note": "Tier-5 community compilation. The held bytes are the ARMA 3 Trivia section only. It states the Kuma is based on the Leopard 2 and specifically on the Rheinmetall Revolution upgrade package. The section publishes no mass, dimension, engine, tyre or performance figure, so this source carries an identity claim only and no value object cites it."
  },
  {
   "source_id": "armedassault_mse3_marid_trivia",
@@ -316,6 +380,22 @@
   "note": "Tier-5 community compilation. The held bytes are the ARMA 3 Trivia section only. It states the ARMA 3 SUV appears to be based on the BMW X6 concept car. The section publishes no mass, dimension, engine, tyre or performance figure, so this source carries an identity claim only and no value object cites it."
  },
  {
+  "source_id": "armedassault_tempest_trivia",
+  "tier": 5,
+  "type": "compilation",
+  "title": "Armed Assault Wiki, Tempest, ARMA 3 Trivia",
+  "edition": "Armed Assault Wiki (Fandom), community wiki, ARMA 3 Trivia section only, captured 2026-10-20",
+  "identifier": "Armed Assault Wiki article 'Tempest', ARMA 3 Trivia section",
+  "locator": "Section 37 of the article wikitext, 'Trivia', under the ARMA 3 heading",
+  "retrieved": "2026-10-20",
+  "url": "https://armedassault.fandom.com/wiki/Tempest",
+  "archive_ref": "ARMA 3 Trivia section held as wikitext at data/vehicle/sources/armedassault_tempest_trivia.wiki",
+  "licence": "Fandom wiki text is available under the Creative Commons Attribution-ShareAlike licence. The page is a community compilation, never a primary source.",
+  "primary_held": false,
+  "sha256": "7cce54b9e58498a32bd3c9b4c29d3bb7bfac382cc1172a32b8c145e511a11084",
+  "note": "Tier-5 community compilation. The held bytes are the ARMA 3 Trivia section only. It states the Tempest is based on the KamAZ-63968 Typhoon. The section publishes no mass, dimension, engine, tyre or performance figure, so this source carries an identity claim only and no value object cites it."
+ },
+ {
   "source_id": "armedassault_van_trivia",
   "tier": 5,
   "type": "compilation",
@@ -330,6 +410,22 @@
   "primary_held": false,
   "sha256": "769cd27e1c89b14bfa3487dbc42ce3543ef1013724cfe03640e8845d3a562092",
   "note": "Tier-5 community compilation. The held bytes are the ARMA 3 Trivia section only. It states the Van is based on the Mercedes-Benz \"Sprinter\" series. The section publishes no mass, dimension, engine, tyre or performance figure, so this source carries an identity claim only and no value object cites it."
+ },
+ {
+  "source_id": "armedassault_zamak_trivia",
+  "tier": 5,
+  "type": "compilation",
+  "title": "Armed Assault Wiki, Zamak, ARMA 3 Trivia",
+  "edition": "Armed Assault Wiki (Fandom), community wiki, ARMA 3 Trivia section only, captured 2026-10-20",
+  "identifier": "Armed Assault Wiki article 'Zamak', ARMA 3 Trivia section",
+  "locator": "Section 15 of the article wikitext, 'Trivia', under the ARMA 3 heading",
+  "retrieved": "2026-10-20",
+  "url": "https://armedassault.fandom.com/wiki/Zamak",
+  "archive_ref": "ARMA 3 Trivia section held as wikitext at data/vehicle/sources/armedassault_zamak_trivia.wiki",
+  "licence": "Fandom wiki text is available under the Creative Commons Attribution-ShareAlike licence. The page is a community compilation, never a primary source.",
+  "primary_held": false,
+  "sha256": "c303fd89a1413587b4118ad7c4607c291051102372701d56671a1974ea144ffa",
+  "note": "Tier-5 community compilation. The held bytes are the ARMA 3 Trivia section only. It states the Zamak is based on the KamAZ-4310 truck family. The section publishes no mass, dimension, engine, tyre or performance figure, so this source carries an identity claim only and no value object cites it."
  },
  {
   "source_id": "armedassault_zsu39_tigris_trivia",

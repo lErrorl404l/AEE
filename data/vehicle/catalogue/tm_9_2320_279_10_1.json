@@ -14,8 +14,19 @@
       "class_token": "",
       "country": "United States",
       "era": "modern",
-      "aliases": ["m977", "hemtt", "m977 hemtt", "heavy expanded mobility tactical truck"],
-      "keywords": ["truck", "cargo", "8x8", "hemtt", "heavy expanded mobility tactical truck"],
+      "aliases": [
+        "m977",
+        "hemtt",
+        "m977 hemtt",
+        "heavy expanded mobility tactical truck"
+      ],
+      "keywords": [
+        "truck",
+        "cargo",
+        "8x8",
+        "hemtt",
+        "heavy expanded mobility tactical truck"
+      ],
       "runtime_ready": false,
       "values": {
         "length_mm": {
