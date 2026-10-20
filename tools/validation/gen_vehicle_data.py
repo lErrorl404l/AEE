@@ -1022,6 +1022,22 @@ def _claims(row: Sequence[object], tokens: set[str]) -> bool:
     return any(len(token) >= SCAN_MIN and token in blob for token in tokens)
 
 
+def type_entry(
+    class_name: str, ancestors: Sequence[str] = ()
+) -> list[object]:
+    """The type answer: the engine kind from the config chain the harness holds."""
+    chain = {normalise(name) for name in ancestors}
+    for kind, roots in (
+        ("armoured vehicle", ("tank",)),
+        ("truck", ("truck",)),
+        ("motorcycle", ("motorcycle",)),
+        ("car", ("car",)),
+    ):
+        if chain & set(roots):
+            return [kind, "", "", 8, "type", "", []]
+    return ["vehicle", "", "", 8, "type", "", []]
+
+
 def match_row(
     rows: Sequence[Sequence[object]],
     class_name: str,

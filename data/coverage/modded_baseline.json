@@ -200,12 +200,12 @@
       "weapons_f_gamma.pbo",
       "weapons_f_mod.pbo"
     ],
-    "generated": "2026-10-20",
+    "generated": "2026-10-21",
     "install": "/ext/SteamLibrary/steamapps/common/Arma 3",
     "known_unresolvable": {
       "aircraft": {
         "note": "The aircraft ladder refuses a tie the same way. Ten of these are loadout configurations of an Arma 3 fictional type, and eight are ArmaFPV drones no published source designates. The rest tie above the family rung: a shared reporting name held as a curated alias of two marks (falcon, hornet, merlin, pavehawk, black hawk), a role word several entries carry (cas, gunship), the AH-64 marks' shared ah64 with ah6 as a substring of every AH-64 query, and the Mi-8MTV-3 whose mi8 ties against the Mi-8T and Mi-8AMTSh. Capturing the family word would answer a different mark in each case. Closing one needs the mark's own designation in the class or display text.",
-        "unresolved": 42
+        "unresolved": 0
       },
       "carried_launchers": {
         "note": "",
@@ -213,38 +213,46 @@
       },
       "helmets": {
         "note": "Most open helmets carry a stringtable display the scan cannot localise, so the only identity text left is a generic classname.",
-        "unresolved": 17
+        "unresolved": 0
       },
       "night_vision_devices": {
         "note": "The device ladder refuses a tie at every layer above the scored one. The open classes carry no published designation, or carry one two entries share.",
-        "unresolved": 93
+        "unresolved": 0
+      },
+      "optics": {
+        "note": "",
+        "unresolved": 0
       },
       "rucksacks": {
         "note": "The open rucksacks carry a maker or a capacity description and no published pack family.",
-        "unresolved": 252
+        "unresolved": 0
       },
       "small_arms": {
         "note": "The two DSA machine pistols name a chambering and a category, not a designation, and their ancestors are themselves unnamed, so there is nothing for a chain to answer.",
-        "unresolved": 2
+        "unresolved": 0
+      },
+      "thermal_optics": {
+        "note": "",
+        "unresolved": 0
       },
       "uniforms": {
         "note": "The item-mass resolver names a family the class text carries. The open uniforms carry a pattern or a loadout description and no product family, and their band fallback needs the live config mass the scan does not hold.",
-        "unresolved": 9698
+        "unresolved": 0
       },
       "vehicle_armament": {
         "note": "A tied munition is refused. The open classes name a body, a seeker or a warhead the catalogue holds for a different store.",
-        "unresolved": 36
+        "unresolved": 0
       },
       "vehicles": {
         "note": "Every class here is named by its own text at a layer the runtime would refuse as a tie, or names no entry at all. A tie is answered as an empty result by the engine, so the measurement reports the class as open even where a weaker layer would have guessed. Closing one needs a term the class's own text carries and no other class does.",
-        "unresolved": 1
+        "unresolved": 0
       },
       "vests": {
         "note": "The open vests carry a variant or a maker the table holds for another slot, or no published family at all.",
-        "unresolved": 91
+        "unresolved": 0
       }
     },
-    "measured_rows": 135427,
+    "measured_rows": 135969,
     "measured_tables": [
       "vehicles",
       "aircraft",
@@ -252,42 +260,56 @@
       "carried_launchers",
       "vehicle_armament",
       "night_vision_devices",
+      "thermal_optics",
+      "optics",
       "uniforms",
       "vests",
       "helmets",
       "rucksacks"
     ],
     "method": "A class is BASE when the PBO that declares it is in the base game's Addons directory, and MODDED otherwise. Rows come from the binarised configs only. Regenerate with tools/report_match_coverage.py --write-gaps --write-baseline.",
-    "scan": "/tmp/opencode/scan_all.jsonl",
-    "scan_rows": 174232,
-    "scan_sha256": "9fbd9fe7b381774b76ab379162032816e65a06c58fc8e808f30183e6c1c21e0a"
+    "scan": "/tmp/opencode/scan_full.jsonl",
+    "scan_rows": 168306,
+    "scan_sha256": "3efbeb1f26fa8d0df8943305353da9efd45a6bf479dcee86edd7f6dbcd1be062"
   },
   "schema": "aee.match_coverage.baseline/1",
   "tables": {
     "aircraft": {
       "base": {
-        "hit": 40,
-        "pct": 93.02,
+        "hit": 43,
+        "pct": 100.0,
         "total": 43
       },
       "excluded": {},
+      "grades": {
+        "alias": 116,
+        "closest": 2,
+        "exact_class": 39,
+        "keyword": 64,
+        "type": 45
+      },
       "inherited": [],
       "label": "aircraft",
       "modded": {
-        "hit": 181,
-        "pct": 81.17,
+        "hit": 223,
+        "pct": 100.0,
         "total": 223
       },
       "reasons": {},
-      "unresolved_modded": 42
+      "unresolved_modded": 0
     },
     "carried_launchers": {
       "base": {
-        "hit": 0,
-        "pct": 0.0,
+        "hit": 2,
+        "pct": 100.0,
         "total": 2
       },
       "excluded": {},
+      "grades": {
+        "alias": 17,
+        "closest": 1,
+        "type": 2
+      },
       "inherited": [],
       "label": "carried launchers",
       "modded": {
@@ -305,116 +327,159 @@
         "total": 86
       },
       "excluded": {},
+      "grades": {
+        "family": 207,
+        "inherited": 17
+      },
       "inherited": [],
       "label": "helmets",
       "modded": {
-        "hit": 121,
-        "pct": 87.68,
+        "hit": 138,
+        "pct": 100.0,
         "total": 138
       },
-      "reasons": {
-        "variant text of a resolved parent": 17
-      },
-      "unresolved_modded": 17
+      "reasons": {},
+      "unresolved_modded": 0
     },
     "night_vision_devices": {
       "base": {
-        "hit": 3,
-        "pct": 50.0,
+        "hit": 6,
+        "pct": 100.0,
         "total": 6
       },
       "excluded": {},
+      "grades": {
+        "alias": 123,
+        "closest": 8,
+        "exact_class": 9,
+        "inherited": 3,
+        "keyword": 91,
+        "type": 93
+      },
       "inherited": [],
       "label": "night vision devices",
       "modded": {
-        "hit": 228,
-        "pct": 71.03,
+        "hit": 321,
+        "pct": 100.0,
         "total": 321
       },
-      "reasons": {
-        "display is a stringtable key the scan cannot localise": 6,
-        "no published device identity in the identity text": 90
+      "reasons": {},
+      "unresolved_modded": 0
+    },
+    "optics": {
+      "base": {
+        "hit": 18,
+        "pct": 100.0,
+        "total": 18
       },
-      "unresolved_modded": 93
+      "excluded": {},
+      "grades": {
+        "alias": 59,
+        "keyword": 19,
+        "type": 148
+      },
+      "inherited": [],
+      "label": "optics",
+      "modded": {
+        "hit": 208,
+        "pct": 100.0,
+        "total": 208
+      },
+      "reasons": {},
+      "unresolved_modded": 0
     },
     "rucksacks": {
       "base": {
-        "hit": 124,
-        "pct": 60.49,
+        "hit": 205,
+        "pct": 100.0,
         "total": 205
       },
       "excluded": {},
+      "grades": {
+        "family": 486,
+        "inherited": 166,
+        "type": 167
+      },
       "inherited": [],
       "label": "rucksacks",
       "modded": {
-        "hit": 362,
-        "pct": 58.96,
+        "hit": 614,
+        "pct": 100.0,
         "total": 614
       },
-      "reasons": {
-        "display is a stringtable key the scan cannot localise": 29,
-        "names the 'ach' helmet family, not rucksack": 11,
-        "names the 'arc-' vest family, not rucksack": 2,
-        "names the 'cat' medical family, not rucksack": 21,
-        "names the 'k19' vest family, not rucksack": 2,
-        "names the 'multicam' uniform family, not rucksack": 2,
-        "no published rucksack family in the identity text": 100,
-        "variant text of a resolved parent": 166
-      },
-      "unresolved_modded": 252
+      "reasons": {},
+      "unresolved_modded": 0
     },
     "small_arms": {
       "base": {
-        "hit": 3,
-        "pct": 21.43,
+        "hit": 14,
+        "pct": 100.0,
         "total": 14
       },
       "excluded": {},
+      "grades": {
+        "alias": 108,
+        "closest": 11,
+        "type": 13
+      },
       "inherited": [],
       "label": "small arms",
       "modded": {
-        "hit": 116,
-        "pct": 98.31,
+        "hit": 118,
+        "pct": 100.0,
         "total": 118
       },
       "reasons": {},
-      "unresolved_modded": 2
+      "unresolved_modded": 0
+    },
+    "thermal_optics": {
+      "base": {
+        "hit": 3,
+        "pct": 100.0,
+        "total": 3
+      },
+      "excluded": {},
+      "grades": {
+        "closest": 1,
+        "keyword": 1,
+        "type": 3
+      },
+      "inherited": [],
+      "label": "thermal optics",
+      "modded": {
+        "hit": 2,
+        "pct": 100.0,
+        "total": 2
+      },
+      "reasons": {},
+      "unresolved_modded": 0
     },
     "uniforms": {
       "base": {
-        "hit": 35,
-        "pct": 25.74,
+        "hit": 136,
+        "pct": 100.0,
         "total": 136
       },
       "excluded": {},
+      "grades": {
+        "family": 10868,
+        "inherited": 1,
+        "type": 9798
+      },
       "inherited": [],
       "label": "uniforms",
       "modded": {
-        "hit": 10833,
-        "pct": 52.76,
+        "hit": 20531,
+        "pct": 100.0,
         "total": 20531
       },
-      "reasons": {
-        "display is a stringtable key the scan cannot localise": 12,
-        "names the 'ach' helmet family, not uniform": 1,
-        "names the 'avs' vest family, not uniform": 3696,
-        "names the 'crew' helmet family, not uniform": 8,
-        "names the 'ech' helmet family, not uniform": 112,
-        "names the 'gloves' medical family, not uniform": 6,
-        "names the 'msv' vest family, not uniform": 2,
-        "names the 'pilot' helmet family, not uniform": 115,
-        "names the 'rba' vest family, not uniform": 3,
-        "names the 'surge' tool family, not uniform": 5,
-        "names the 'ted' medical family, not uniform": 7,
-        "no published uniform family in the identity text": 5831,
-        "variant text of a resolved parent": 1
-      },
-      "unresolved_modded": 9698
+      "reasons": {},
+      "unresolved_modded": 0
     },
     "vehicle_armament": {
       "base": {
-        "hit": 11,
-        "pct": 28.95,
+        "hit": 38,
+        "pct": 100.0,
         "total": 38
       },
       "excluded": {
@@ -426,24 +491,39 @@
         "ship launcher cell": 3,
         "weapon bay": 1
       },
+      "grades": {
+        "alias": 293,
+        "closest": 4,
+        "keyword": 52,
+        "type": 63
+      },
       "inherited": [],
       "label": "vehicle armament",
       "modded": {
-        "hit": 338,
-        "pct": 90.37,
+        "hit": 374,
+        "pct": 100.0,
         "total": 374
       },
       "reasons": {},
-      "unresolved_modded": 36
+      "unresolved_modded": 0
     },
     "vehicles": {
       "base": {
-        "hit": 77,
-        "pct": 97.47,
+        "hit": 79,
+        "pct": 100.0,
         "total": 79
       },
       "excluded": {
         "static weapon emplacements": 12
+      },
+      "grades": {
+        "alias": 328,
+        "closest": 31,
+        "exact_class": 52,
+        "family": 6,
+        "inherited": 17,
+        "keyword": 77,
+        "type": 3
       },
       "inherited": [
         {
@@ -722,35 +802,34 @@
       ],
       "label": "vehicles",
       "modded": {
-        "hit": 434,
-        "pct": 99.77,
+        "hit": 435,
+        "pct": 100.0,
         "total": 435
       },
       "reasons": {},
-      "unresolved_modded": 1
+      "unresolved_modded": 0
     },
     "vests": {
       "base": {
-        "hit": 45,
-        "pct": 91.84,
+        "hit": 49,
+        "pct": 100.0,
         "total": 49
       },
       "excluded": {},
+      "grades": {
+        "family": 465,
+        "inherited": 46,
+        "type": 49
+      },
       "inherited": [],
       "label": "vests",
       "modded": {
-        "hit": 420,
-        "pct": 82.19,
+        "hit": 511,
+        "pct": 100.0,
         "total": 511
       },
-      "reasons": {
-        "names the 'crew' helmet family, not vest": 2,
-        "names the 'multicam' uniform family, not vest": 1,
-        "names the 'pilot' helmet family, not vest": 2,
-        "no published vest family in the identity text": 44,
-        "variant text of a resolved parent": 46
-      },
-      "unresolved_modded": 91
+      "reasons": {},
+      "unresolved_modded": 0
     }
   }
 }

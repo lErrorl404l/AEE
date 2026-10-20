@@ -78,6 +78,10 @@ TABLE_BRANCH = "isKindOf (_x select 0)"
 TABLE_ROW_RE = re.compile(
     r'\["([A-Z][A-Za-z0-9_]*)"\s*,\s*(\[[^\]]*\]|-?[0-9][0-9.]*)\]'
 )
+# The type rung names a KIND of vehicle, not a class token. Its isKindOf
+# literals are classification, so they are not inventory tokens and no
+# catalogue entry can ever cover them.
+TYPE_RUNG_RE = re.compile(r"private _typeAnswer = \{.*?\n\};", re.S)
 # A class list for a nearEntities query.
 QUERY_RE = re.compile(r"nearEntities\s*\[\s*\[([^\]]*)\]")
 QUOTED_RE = re.compile(r'"([A-Za-z_][A-Za-z0-9_]*)"')
@@ -184,6 +188,7 @@ def collect(root: Path) -> dict[str, TokenRefs]:
     for path in _source_files(root):
         location_prefix = f"{root.name}/{path.relative_to(root).as_posix()}"
         text = strip_comments(path.read_text(encoding="utf-8", errors="replace"))
+        text = TYPE_RUNG_RE.sub("", text)
         has_table = TABLE_BRANCH in text
         for number, line in enumerate(text.splitlines(), start=1):
             location = f"{location_prefix}:{number}"

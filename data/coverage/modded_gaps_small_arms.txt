@@ -1,5 +1,3 @@
 # modded match coverage gaps: small arms
-# 2 unresolved of 118 modded classes (98.3% resolved)
+# 0 unresolved of 118 modded classes (100.0% resolved)
 # class	display	parent	source
-DSA_MachinePistol45	.45 Machine-pistol	hgun_Pistol_heavy_01_F	DSA.pbo
-DSA_MachinePistol9mm	9mm Machine-pistol	hgun_P07_F	DSA.pbo

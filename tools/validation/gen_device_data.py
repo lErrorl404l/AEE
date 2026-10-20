@@ -185,21 +185,21 @@ private _typeAnswer = {
     // can, and a tie falls here too: two candidate marks name no single mark,
     // but the config still states the kind. Nothing above names the device, so the KIND is the
     // answer. The caller's family states it; with no family the config does:
-    // item type 616 is the night vision item type, and a sight is told from
-    // any other inventory item by the optics modes it declares. A type entry
+    // the NVGoggles root states night vision, and a sight is told from any
+    // other inventory item by the optics modes it declares. A type entry
     // names a kind, never a model, and carries no figure.
     params ["_className", "_family"];
     private _kind = _family;
     if (_kind == "") then {
-        private _itemType = getNumber (configFile >> "CfgWeapons" >> _className >> "ItemInfo" >> "type");
+        // The engine gives night vision its own root, so the chain states it.
+        if (_className isKindOf "NVGoggles") then { _kind = "nvg"; };
         private _modes = ("true" configClasses (configFile >> "CfgWeapons" >> _className >> "ItemInfo" >> "OpticsModes"));
         private _thermal = false;
         {
             if (!_thermal && {getArray (_x >> "thermalMode") isNotEqualTo []}) then { _thermal = true; };
             if (!_thermal && {"Ti" in getArray (_x >> "visionMode")}) then { _thermal = true; };
         } forEach _modes;
-        if (_itemType == 616) then { _kind = "nvg"; };
-        if (_kind == "" && {_thermal}) then { _kind = "thermal"; };
+        if (_kind == "" && _thermal) then { _kind = "thermal"; };
         if (_kind == "" && {(count _modes) > 0}) then { _kind = "optic"; };
     };
     if (_kind == "") exitWith { [] };

@@ -179,9 +179,12 @@ class TestGeneratedMatchFile(unittest.TestCase):
         self.assertIn("_tableAll select", MATCH)
         self.assertIn("(_x select 1) == _family", MATCH)
 
-    def test_reads_no_source_registry_and_no_config_value(self):
+    def test_reads_no_source_registry_and_no_engine_figure(self):
+        # Identity comes from the class name, the display name and the
+        # optics modes the config declares. No engine FIGURE is a source:
+        # a mass, a speed or a power is not an identity signal.
         self.assertNotIn("sources.json", MATCH)
-        for command in ("getNumber", "getMass", "enginePower", "maxSpeed"):
+        for command in ("getMass", "enginePower", "maxSpeed", "getNumber"):
             self.assertNotIn(command, MATCH, f"the matcher reads {command}")
 
     def test_uses_class_identity_only(self):
@@ -207,20 +210,21 @@ class TestMatcherLayers(unittest.TestCase):
         self.assertIn("_bestScore > _runnerUp", MATCH)
         self.assertIn(str(gen.SCAN_MIN), MATCH)
 
-    def test_a_tie_at_a_layer_returns_empty(self):
-        # Two layers, not three: the KEYWORD layer no longer gives up when
-        # several entries hold a designation the query contains. One of
-        # them may name the exact mark while the others share only the
-        # family stem, so it falls through to the scored layer, which still
-        # answers nothing on a real draw.
+    def test_a_tie_at_a_layer_falls_to_the_kind(self):
+        # Two layers tie: the exact class and the alias. The keyword layer
+        # still falls through to the scored layer instead of giving up. A
+        # tie names no single mark, so it answers the KIND rather than a
+        # guess between two entries.
         self.assertEqual(
-            MATCH.count("if ((count _candidates) > 1) exitWith { [] };"), 2
+            MATCH.count("exitWith { [_className, _family] call _typeAnswer };"), 2
         )
         self.assertIn("_tie = true", MATCH)
 
-    def test_no_match_returns_empty(self):
+    def test_an_empty_class_returns_empty_and_the_ladder_ends_on_the_kind(self):
         self.assertIn('if (_className == "") exitWith { [] };', MATCH)
-        self.assertTrue(MATCH.rstrip().endswith("[]"))
+        self.assertTrue(
+            MATCH.rstrip().endswith("[_className, _family] call _typeAnswer")
+        )
 
     def test_the_result_is_the_documented_six_element_array(self):
         self.assertIn("[_row select 0, _row select 1, _confidence, _layer,", MATCH)
@@ -296,8 +300,13 @@ class TestResolutionMirror(unittest.TestCase):
         assert result is not None
         self.assertEqual(result[COL_DEVICE], "pvs14")
 
-    def test_an_unknown_class_returns_none(self):
-        self.assertIsNone(gen.match_row(rows(), "zzzznotadevice", family="nvg"))
+    def test_an_unknown_class_states_its_kind(self):
+        result = gen.match_row(rows(), "zzzznotadevice", family="nvg")
+        assert result is not None
+        self.assertEqual(result[COL_DEVICE], "night-vision device")
+        self.assertEqual(result[3], "type")
+        # With no family the mirror holds no config, so no kind is claimed.
+        self.assertIsNone(gen.match_row(rows(), "zzzznotadevice"))
 
     def test_the_family_filter_separates_the_shared_class(self):
         table = rows()
@@ -538,14 +547,18 @@ class TestUnmatchedThermalFallback(unittest.TestCase):
     figure is never copied from a sibling device.
     """
 
-    def test_an_unknown_thermal_class_matches_nothing(self):
-        self.assertIsNone(
-            gen.match_row(rows(), "zzzznotathermaldevice", family="thermal")
-        )
+    def test_an_unknown_thermal_class_states_the_thermal_kind(self):
+        result = gen.match_row(rows(), "zzzznotathermaldevice", family="thermal")
+        assert result is not None
+        self.assertEqual(result[COL_DEVICE], "thermal optic")
+        self.assertEqual(result[3], "type")
 
-    def test_a_fallback_only_token_matches_nothing(self):
-        # "clipon" is a static-fallback token with no corpus row.
-        self.assertIsNone(gen.match_row(rows(), "clipon", family="thermal"))
+    def test_a_fallback_only_token_falls_to_the_kind(self):
+        # "clipon" is a static-fallback token with no corpus row: the
+        # corpus names no device, so the kind answers.
+        result = gen.match_row(rows(), "clipon", family="thermal")
+        assert result is not None
+        self.assertEqual(result[COL_DEVICE], "thermal optic")
 
     def test_the_resolver_reads_the_generated_matcher(self):
         self.assertIn("call EFUNC(nightvision,getDeviceMatch)", THERMAL)

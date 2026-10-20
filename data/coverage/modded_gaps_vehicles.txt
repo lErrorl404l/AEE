@@ -1,4 +1,3 @@
 # modded match coverage gaps: vehicles
-# 1 unresolved of 435 modded classes (99.8% resolved)
+# 0 unresolved of 435 modded classes (100.0% resolved)
 # class	display	parent	source
-rhsusf_RG33_base	RG33 4X4 SOCOM	MRAP_01_base_F	rhsusf_c_rg33.pbo

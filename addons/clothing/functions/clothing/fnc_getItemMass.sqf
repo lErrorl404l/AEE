@@ -478,7 +478,7 @@ private _inheritedFamily = "";
 if (_match == 0) then {
     private _ancestor = inheritsFrom (configFile >> "CfgWeapons" >> _item);
     private _tries = 0;
-    while {isClass _ancestor && {_inherited == 0} && {_tries < 12}} do {
+    while {isClass _ancestor && _inherited == 0 && _tries < 12} do {
         private _ancestorName = toLower (configName _ancestor);
         {
             _x params ["_familyName", "_category", "_mass"];

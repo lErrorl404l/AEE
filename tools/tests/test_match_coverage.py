@@ -303,11 +303,28 @@ class TestBaselineArtefact(unittest.TestCase):
                     table["modded"]["total"] - table["modded"]["hit"],
                 )
 
-    def test_the_baseline_is_not_a_claim_of_full_coverage(self):
-        # The lock must not read as "the target is met": the closing workers
-        # have not run, so at least one table still holds a modded gap.
-        gaps = sum(t["unresolved_modded"] for t in self.payload["tables"].values())
-        self.assertGreater(gaps, 0)
+    def test_every_class_is_resolved_and_graded(self):
+        """Full resolution is a graded claim, never a silent 100%.
+
+        Every class resolves, and every class carries the grade that
+        answered it. The type rung is the last resort and is counted
+        apart, so a table leaning on it is visible in the artefact.
+        """
+        for name, table in self.payload["tables"].items():
+            with self.subTest(table=name):
+                self.assertEqual(table["unresolved_modded"], 0)
+                self.assertEqual(table["modded"]["hit"], table["modded"]["total"])
+                grades = table["grades"]
+                self.assertTrue(grades)
+                self.assertEqual(
+                    sum(grades.values()),
+                    table["base"]["total"] + table["modded"]["total"],
+                )
+        # The last-resort rung is counted, so a table leaning on it is
+        # visible rather than hidden inside a resolved total.
+        self.assertTrue(
+            any("type" in table["grades"] for table in self.payload["tables"].values())
+        )
 
     def test_every_table_states_what_it_excluded(self):
         # An exclusion that is not recorded is a silent raise of coverage.
@@ -645,6 +662,122 @@ class TestTaxonomySelection(unittest.TestCase):
         ]
         got = m._taxonomy(scanned, "CfgWeapons", {m.UNIFORM_ROOT}, self.chain)
         self.assertEqual(len(got), 1)
+
+
+class TestSameSlotRule(unittest.TestCase):
+    """A family of another slot never answers, whatever substring it is."""
+
+    TABLE = [
+        {"id": "avs", "family": "avs", "category": "vest"},
+        {"id": "combatuniform", "family": "combatuniform", "category": "uniform"},
+    ]
+
+    def test_a_vest_family_inside_a_uniform_name_is_refused(self):
+        # "avs" is a substring of NAVSPECWAR. A uniform slot must not
+        # weigh it as webbing.
+        match = m.equipment_matcher(self.TABLE, "uniform")
+        self.assertIsNone(match("NAVSPECWAR_Uniform", ""))
+
+    def test_the_same_text_resolves_the_vest_in_the_vest_slot(self):
+        match = m.equipment_matcher(self.TABLE, "vest")
+        self.assertEqual(match("NAVSPECWAR_Uniform", "")["id"], "avs")
+
+    def test_the_type_answer_is_the_slot_that_was_asked_for(self):
+        row = m.equipment_matcher(self.TABLE, "uniform", type_entry="uniform")(
+            "NAVSPECWAR_Uniform", ""
+        )
+        self.assertEqual(row["id"], "uniform")
+
+    def test_the_generated_resolver_filters_by_the_stated_slot(self):
+        text = m.ITEM_MASS.read_text(encoding="utf-8")
+        self.assertIn("_category in _allowed", text)
+        self.assertIn("_typeName = _allowed select 0", text)
+
+
+class TestTypeRung(unittest.TestCase):
+    """The last rung names a kind, never a model, and never overrides."""
+
+    TABLE = [
+        {
+            "id": "pvs14",
+            "family": "nvg",
+            "classes": ["pvs14"],
+            "aliases": ["pvs14"],
+            "keywords": [],
+        }
+    ]
+
+    def test_a_published_identity_is_not_overridden_by_the_kind(self):
+        row = m.device_matcher(self.TABLE, type_entry="night-vision device")(
+            "NVGoggles_PVS14", ""
+        )
+        self.assertEqual(row["id"], "pvs14")
+
+    def test_the_kind_answers_when_nothing_above_it_can(self):
+        row = m.device_matcher(self.TABLE, type_entry="night-vision device")(
+            "mod_unknown_goggles", ""
+        )
+        self.assertEqual(row["id"], "night-vision device")
+        self.assertTrue(row.get("type"))
+
+    def test_a_tie_falls_to_the_kind_but_never_to_a_weaker_mark(self):
+        table = [
+            {"id": "a", "family": "nvg", "classes": ["tied"], "aliases": [], "keywords": []},
+            {"id": "b", "family": "nvg", "classes": ["tied"], "aliases": [], "keywords": []},
+        ]
+        row = m.device_matcher(table, type_entry="night-vision device")("tied", "")
+        self.assertEqual(row["id"], "night-vision device")
+
+    def test_the_engine_kind_comes_from_the_config_chain(self):
+        self.assertEqual(
+            m._engine_kind(["mbt_01_base_f", "tank_f", "tank", "all"], m.VEHICLE_KINDS, m.VEHICLE_FALLBACK),
+            "armoured vehicle",
+        )
+        self.assertEqual(
+            m._engine_kind(["mod_uav", "uav", "air"], m.AIRCRAFT_KINDS, m.AIRCRAFT_FALLBACK),
+            "unmanned aerial vehicle",
+        )
+        self.assertEqual(
+            m._engine_kind(["mod_unknown"], m.AIRCRAFT_KINDS, m.AIRCRAFT_FALLBACK),
+            "aircraft",
+        )
+
+
+class TestFutureMod(unittest.TestCase):
+    """A class no corpus has ever seen resolves by grammar and slot alone."""
+
+    def test_an_unseen_uniform_resolves_to_its_slot(self):
+        table = m.equipment_rows(m.ITEM_MASS)
+        row = m.equipment_matcher(table, "uniform", type_entry="uniform")(
+            "Uniform_ModTest_2026", ""
+        )
+        self.assertEqual(row["id"], "uniform")
+
+    def test_an_unseen_uniform_is_selected_by_the_engine_root(self):
+        scanned = [
+            {"kind": "CfgWeapons", "class": "Uniform_ModTest_2026", "display": ""}
+        ]
+        got = m._taxonomy(
+            scanned,
+            "CfgWeapons",
+            {m.UNIFORM_ROOT},
+            lambda cls: [cls.lower(), "uniform_base"],
+        )
+        self.assertEqual([r["class"] for r in got], ["Uniform_ModTest_2026"])
+
+    def test_an_unseen_nvg_resolves_to_its_kind(self):
+        table = m.device_rows(m.DEVICE, "nvg")
+        row = m.device_matcher(table, type_entry="night-vision device")(
+            "NVG_ModTest_Gen4", ""
+        )
+        self.assertEqual(row["id"], "night-vision device")
+
+    def test_an_unseen_vest_resolves_to_its_slot(self):
+        table = m.equipment_rows(m.ITEM_MASS)
+        row = m.equipment_matcher(table, "vest", type_entry="vest")(
+            "Vest_ModTest_2026", ""
+        )
+        self.assertEqual(row["id"], "vest")
 
 
 class TestInheritanceRung(unittest.TestCase):

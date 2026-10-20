@@ -851,12 +851,23 @@ class OpenModdedVehicleTest(unittest.TestCase):
                     resolve(self.table, name, display, families=self.families)
                 )
 
-    def test_every_documented_open_case_is_in_the_gap_list(self) -> None:
-        listed = self.gap_classes()
-        for name, display, _chain, _reason in VEHICLE_OPEN_CASES:
+    def test_every_documented_open_case_resolves_to_its_engine_kind(self) -> None:
+        """A class the corpus cannot name still names a kind of vehicle.
+
+        The print below records why no catalogue identity exists for it.
+        The type rung answers instead, so no entry is invented and the gap
+        list is empty.
+        """
+        self.assertEqual(self.gap_classes(), {})
+        for name, display, chain, _reason in VEHICLE_OPEN_CASES:
             with self.subTest(game_class=name):
-                self.assertIn(name, listed)
-                self.assertEqual(display, listed[name])
+                # The kind is derived from the config chain alone, so no
+                # corpus row is needed to state it.
+                answer = gen_vehicle_data.match_row(
+                    [], name, display, ancestors=chain
+                )
+                assert answer is not None
+                self.assertEqual(answer[4], "type")
 
     def test_every_open_class_states_a_one_line_reason(self) -> None:
         for name, _display, _chain, reason in VEHICLE_OPEN_CASES:
@@ -1256,25 +1267,34 @@ class FamilyRungTest(unittest.TestCase):
             family_table("t72_family", "t72"),
             family_table("rg33_family", "rg33"),
         ]
-        self.assertIsNone(
-            gen_vehicle_data.match_row(
-                [],
-                name,
-                "",
-                families=[
-                    family_row("t72_family", "t72"),
-                    family_row("rg33_family", "rg33"),
-                ],
-            )
+        # Two families name no single family, so no family row answers.
+        # The rung below family then states the kind: the class is still a
+        # vehicle, and neither family is credited.
+        answer = gen_vehicle_data.match_row(
+            [],
+            name,
+            "",
+            families=[
+                family_row("t72_family", "t72"),
+                family_row("rg33_family", "rg33"),
+            ],
         )
+        assert answer is not None
+        self.assertEqual(answer[4], "type")
+        self.assertNotIn(answer[0], ("t72_family", "rg33_family"))
         self.assertIsNone(report.matcher([], families=families)(name, ""))
         self.assertIsNone(resolve([], name, "", families=families))
 
     def test_no_family_answers_when_none_names_the_class(self) -> None:
         name, display = "rhs_t90saa_tv", "T-90SA (obr. 2004g.)"
-        self.assertIsNone(
-            gen_vehicle_data.match_row([], name, display, families=[T72_FAMILY_ROW])
+        # No family designation in the query, so the family row is not
+        # credited; the rung below it states the kind instead.
+        answer = gen_vehicle_data.match_row(
+            [], name, display, families=[T72_FAMILY_ROW]
         )
+        assert answer is not None
+        self.assertEqual(answer[4], "type")
+        self.assertNotEqual(answer[0], T72_FAMILY_ROW[0])
         self.assertIsNone(
             report.matcher([], families=[family_table("t72_family", "t72")])(
                 name, display
@@ -1327,11 +1347,14 @@ class FamilyRungTest(unittest.TestCase):
                 )
 
     def test_a_designation_shorter_than_the_scan_is_ignored(self) -> None:
-        self.assertIsNone(
-            gen_vehicle_data.match_row(
-                [], "rhs_t7_thing", "", families=[family_row("t7_family", "t7")]
-            )
+        # The short family names nothing, so the kind answers instead: the
+        # rung refuses to credit a family it never matched, and no weaker
+        # identity layer is reached.
+        answer = gen_vehicle_data.match_row(
+            [], "rhs_t7_thing", "", families=[family_row("t7_family", "t7")]
         )
+        assert answer is not None
+        self.assertEqual(answer[4], "type")
         self.assertIsNone(
             report.matcher([], families=[family_table("t7_family", "t7")])(
                 "rhs_t7_thing", ""

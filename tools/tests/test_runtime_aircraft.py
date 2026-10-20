@@ -233,16 +233,18 @@ class TestMatcherLayers(unittest.TestCase):
         self.assertIn("_bestScore > _runnerUp", MATCH)
         self.assertIn(str(gen.SCAN_MIN), MATCH)
 
-    def test_a_tie_at_a_layer_returns_empty(self):
-        # Every layer that finds more than one candidate returns [].
+    def test_a_tie_at_a_layer_falls_to_the_kind(self):
+        # Every layer that finds more than one candidate answers the KIND
+        # of aircraft: two candidate marks name no single mark, and no
+        # weaker mark layer answers the tie.
         self.assertEqual(
-            MATCH.count("if ((count _candidates) > 1) exitWith { [] };"), 4
+            MATCH.count("exitWith { [_className] call _typeAnswer };"), 4
         )
         self.assertIn("_tie = true", MATCH)
 
-    def test_no_match_returns_empty(self):
+    def test_an_empty_class_returns_empty_and_the_ladder_ends_on_the_kind(self):
         self.assertIn('if (_className == "") exitWith { [] };', MATCH)
-        self.assertTrue(MATCH.rstrip().endswith("[]"))
+        self.assertTrue(MATCH.rstrip().endswith("[_className] call _typeAnswer"))
 
     def test_the_result_is_the_documented_seven_element_array(self):
         self.assertIn(

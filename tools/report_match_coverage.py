@@ -1515,6 +1515,7 @@ def write_baseline(
                 "unresolved_modded": len(modded_gaps(res)),
                 "inherited": res.get("inherited", []),
                 "excluded": res.get("excluded", {}),
+                "grades": res.get("grades", {}),
                 "reasons": res.get("reasons", {}),
             }
             for name, res in tables.items()
