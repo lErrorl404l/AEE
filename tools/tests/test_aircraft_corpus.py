@@ -352,7 +352,7 @@ class CatalogueExpansionTest(unittest.TestCase):
         # AW101 Merlin. The old ch47_chinook binding was wrong.
         binding = self._bindings()["I_Heli_Transport_02_F"]
         self.assertEqual("aw101_merlin", binding.catalogue_id)
-        self.assertEqual("src_armedassault_wiki", binding.identity_source)
+        self.assertEqual("armedassault_ch49_mohawk_trivia", binding.identity_source)
 
     def test_gryphon_binds_to_the_gripen(self) -> None:
         binding = self._bindings()["I_Plane_Fighter_04_F"]
