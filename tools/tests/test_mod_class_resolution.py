@@ -17,17 +17,24 @@ must resolve to; each inherited one also names the config chain that puts it
 there. Each open class is listed with the reason it stays open, so a later
 change that closes or breaks one shows up here.
 
-The vehicle table closes thirty-eight modded classes: twenty-one by their own
+The vehicle table closes thirty-nine modded classes: twenty-one by their own
 text (the RHS M1237 RG-33L "Plus" and M1239 SOCOM AUV families, the PHAN
 Typhoon truck, the four Tahoe marks, the RHS Object 681, the Jbad Caterpillar
-789D, and the five the counterpart research closed) and seventeen by engine
-ancestry - the seven Arma 3 Offroad re-uses and the ten Project OPFOR KAMAZ
-trucks, whose chain reaches the Zamak that the wiki ties to the KamAZ-4310
-family. An inherited closure says the class IS that ancestor in the engine.
-It does not say the mod's own paint names a different real vehicle, because
-where the class text names a different article the rung refuses: the two that
-stay open are LOP_Nissan_PKM_base, a Nissan over the ancestor's Toyota entry,
-and rhsusf_fmtv_base, a family label over the engine's Car class.
+789D, and the five the counterpart research closed), one more by the
+identity-only entry its text names (the Project OPFOR Nissan pickup), and
+seventeen by engine ancestry - the seven Arma 3 Offroad re-uses and the ten
+Project OPFOR KAMAZ trucks, whose chain reaches the Zamak that the wiki ties
+to the KamAZ-4310 family.
+
+An inherited closure says the class IS that ancestor in the engine. It does
+not say the mod's own paint names a different real vehicle, because where the
+class text names a different article the rung refuses. The FMTV family now has
+an identity-only entry too, but it stays open: every term that would reach
+`rhsusf_fmtv_base` also reaches other classes, so the entry advertises none of
+them and the class is refused rather than trade four classes for one.
+`LOP_Nissan_PKM_base` closes on the maker alias, which names no other class.
+The base game's fictional M4 Scorcher also stays open, and it is not a modded
+gap.
 
 The aircraft table closed one: the base game's fictional AR-2 Darter, whose
 display name the wiki ties to the Parrot AR.Drone 2.0. Every remaining
@@ -110,6 +117,9 @@ CLOSED_VEHICLE_CASES: tuple[tuple[str, str, str], ...] = (
     ("CBRN_Containment_Vehicle", "Van (Utility)", "mercedes_benz_sprinter"),
     ("Gendarmerie_CBRN_Vehicle", "Van (Utility)", "mercedes_benz_sprinter"),
     ("RHS_Civ_Truck_02_transport_F", "Zamak Transport", "kamaz_4310"),
+    # Closed by the 2026-10-20 identity-only capture: the class names its
+    # entry from its own text, so it never reaches the ancestry rung.
+    ("LOP_Nissan_PKM_base", "Nissan (PKM)", "nissan_pickup_technical"),
 )
 
 # Modded classes that stay open on the vehicle side, with the reason.
@@ -227,27 +237,30 @@ EXACT_BASE_CASES: tuple[tuple[str, str, str], ...] = (
     ("C_Offroad_01_repair_F", "Offroad (Services)", "offroad_q7_l200_composite"),
 )
 
-# The chains the two open classes walk. Each ends at the engine's own Car
-# class, the nearest ancestor the table maps, and no class text names the
-# passenger car that entry holds. A chain that ends at Car is the proof the
-# rung looked.
-_NISSAN_TAIL = ("PO_Pickup_PK_base", "Car_F", "Car")
-_FMTV_TAIL = ("Truck_01_base_F", "Truck_F", "Car_F", "Car")
-
-# The modded classes that stay open, with the reason. Each names a different
-# article than the nearest mapped ancestor, so the rung refuses it.
-VEHICLE_OPEN_CASES: tuple[tuple[str, str, tuple[str, ...], str], ...] = (
+# The chain the identity-only closure walks. It ends at the engine's own Car
+# class, the nearest ancestor the table maps, so a lock can prove the closure
+# is the class text and not the ancestry.
+IDENTITY_ONLY_VEHICLE_CASES: tuple[tuple[str, str, tuple[str, ...], str], ...] = (
     (
         "LOP_Nissan_PKM_base",
         "Nissan (PKM)",
-        _NISSAN_TAIL,
-        "a Nissan: the nearest mapped ancestor is the engine's Car class, whose entry it does not name",
+        ("PO_Pickup_PK_base", "Car_F", "Car"),
+        "nissan_pickup_technical",
     ),
+)
+
+# The modded classes that stay open, with the reason. The FMTV family has an
+# identity-only entry, but every term that would reach the class reaches
+# another class too: fmtv as an alias stops 69 classes and moves four, and as
+# a keyword it ties the four SOV classes that resolve on that layer.
+_FMTV_TAIL = ("Truck_01_base_F", "Truck_F", "Car_F", "Car")
+
+VEHICLE_OPEN_CASES: tuple[tuple[str, str, tuple[str, ...], str], ...] = (
     (
         "rhsusf_fmtv_base",
         "FMTV",
         _FMTV_TAIL,
-        "a family label: the nearest mapped ancestor is the engine's Car class, whose entry it does not name",
+        "the family designation fmtv as an alias stops 69 classes and moves four; as a keyword it ties the four SOV classes, so their layer returns nothing",
     ),
 )
 
@@ -416,18 +429,18 @@ class ClosedModdedVehicleTest(unittest.TestCase):
     def setUpClass(cls) -> None:
         cls.table = rows(VEHICLE_MATCH)
 
-    def test_the_closed_modded_vehicle_class_count_is_twenty_one(self) -> None:
-        self.assertEqual(21, len(CLOSED_VEHICLE_CASES))
+    def test_the_closed_modded_vehicle_class_count_is_twenty_two(self) -> None:
+        self.assertEqual(22, len(CLOSED_VEHICLE_CASES))
 
     def test_each_closed_modded_vehicle_class_resolves(self) -> None:
         for name, display, want in CLOSED_VEHICLE_CASES:
             with self.subTest(game_class=name):
                 self.assertEqual(want, resolve(self.table, name, display))
 
-    def test_the_closed_modded_vehicle_class_count_is_thirty_eight(self) -> None:
-        # Twenty-one by their own text and seventeen by engine ancestry.
+    def test_the_closed_modded_vehicle_class_count_is_thirty_nine(self) -> None:
+        # Twenty-two by their own text and seventeen by engine ancestry.
         self.assertEqual(
-            21 + 17, len(CLOSED_VEHICLE_CASES) + len(INHERITED_VEHICLE_CASES)
+            22 + 17, len(CLOSED_VEHICLE_CASES) + len(INHERITED_VEHICLE_CASES)
         )
 
     def test_each_inherited_class_is_a_descendant_of_the_ancestor_that_answers(
@@ -499,10 +512,10 @@ class OpenModdedVehicleTest(unittest.TestCase):
             with self.subTest(game_class=name):
                 self.assertIsNone(resolve(self.table, name))
 
-    def test_the_open_modded_vehicle_class_count_is_two(self) -> None:
+    def test_the_open_modded_vehicle_class_count_is_one(self) -> None:
         # The measured modded gap list. A class that leaves one table has to
         # arrive in another, so the count is the same number in both.
-        self.assertEqual(2, len(VEHICLE_OPEN_CASES))
+        self.assertEqual(1, len(VEHICLE_OPEN_CASES))
         body = (REPO / "data/coverage/modded_gaps_vehicles.txt").read_text(
             encoding="utf-8"
         )
@@ -523,6 +536,136 @@ class OpenModdedVehicleTest(unittest.TestCase):
             with self.subTest(game_class=name):
                 self.assertIsNone(resolve(self.table, name, display))
                 self.assertIsNone(resolve(self.table, name, display, chain))
+
+
+class IdentityOnlyVehicleEntryTest(unittest.TestCase):
+    """The two identity-only entries name a vehicle and hold no figure.
+
+    Both exist because the class text names an article the ancestry does not.
+    The Nissan closes on the maker alias. The FMTV entry names the family but
+    advertises no match term, because every term that would reach its class
+    also reaches another one, so that class stays open. The lock holds the
+    entry shape as well as both outcomes: no figure, no invented model
+    designation, no M-number, and no term that captures a class which already
+    resolves elsewhere.
+    """
+
+    table: list[dict[str, object]] = []
+
+    # The four M-number classes whose own name carries "fmtv". They resolved
+    # to their own entries before the family entry existed, and they must
+    # still do so after it.
+    M_NUMBER_CASES: tuple[tuple[str, str, str], ...] = (
+        (
+            "rhsusf_M1078A1R_SOV_M2_D_fmtv_socom",
+            "M1078A1R SOV (M2)",
+            "m1078a1r_socom_sov",
+        ),
+        (
+            "rhsusf_M1078A1R_SOV_M2_WD_fmtv_socom",
+            "M1078A1R SOV (M2)",
+            "m1078a1r_socom_sov",
+        ),
+        (
+            "rhsusf_M1084A1R_SOV_M2_D_fmtv_socom",
+            "M1084A1R SOV (M2)",
+            "m1084a1r_socom_sov",
+        ),
+        (
+            "rhsusf_M1084A1R_SOV_M2_WD_fmtv_socom",
+            "M1084A1R SOV (M2)",
+            "m1084a1r_socom_sov",
+        ),
+    )
+
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.table = rows(VEHICLE_MATCH)
+
+    def entry(self, name: str) -> dict[str, object]:
+        capture = json.loads(
+            (REPO / "data/vehicle/catalogue" / name).read_text(encoding="utf-8")
+        )
+        self.assertEqual(1, len(capture["entries"]))
+        return capture["entries"][0]
+
+    def test_each_entry_is_identity_only_and_holds_no_figure(self) -> None:
+        for name in ("nissan_pickup_technical.json", "fmtv_family.json"):
+            with self.subTest(capture=name):
+                entry = self.entry(name)
+                self.assertIs(True, entry["identity_only"])
+                self.assertEqual({}, entry["values"])
+                self.assertIs(False, entry["runtime_ready"])
+                self.assertEqual("", entry["class_token"])
+
+    def test_the_nissan_entry_asserts_the_maker_and_no_model(self) -> None:
+        entry = self.entry("nissan_pickup_technical.json")
+        self.assertEqual("Nissan", entry["maker"])
+        self.assertEqual(["nissan"], entry["aliases"])
+        self.assertNotIn("pkm", entry["aliases"])
+        identity = fold(
+            " ".join(str(entry[key]) for key in ("canonical_name", "model", "variant"))
+        )
+        for invented in ("d21", "navara", "hardbody"):
+            self.assertNotIn(invented, identity)
+
+    def test_the_nissan_class_resolves_from_its_own_text(self) -> None:
+        name, display, _chain, want = IDENTITY_ONLY_VEHICLE_CASES[0]
+        self.assertEqual(want, resolve(self.table, name, display))
+        self.assertNotEqual(
+            "honda_civic_6gen_sedan", resolve(self.table, name, display)
+        )
+
+    def test_the_family_entry_claims_no_m_number(self) -> None:
+        entry = self.entry("fmtv_family.json")
+        identity = fold(
+            " ".join(
+                [str(entry[key]) for key in ("canonical_name", "model", "variant")]
+                + [str(x) for x in entry["aliases"]]
+                + [str(x) for x in entry["keywords"]]
+            )
+        )
+        self.assertIsNone(re.search(r"m10\d\d", identity))
+
+    def test_the_family_entry_advertises_no_match_term(self) -> None:
+        # The measured reason the class stays open: every term that reaches
+        # rhsusf_fmtv_base also reaches another class, so the entry carries
+        # none and the class is refused.
+        row = [r for r in self.table if r["id"] == "fmtv_family"]
+        self.assertEqual(1, len(row))
+        self.assertEqual([], row[0]["aliases"])
+        self.assertNotIn("fmtv", row[0]["keywords"])
+        name, display, chain, _want = VEHICLE_OPEN_CASES[0]
+        self.assertIsNone(resolve(self.table, name, display))
+        self.assertIsNone(resolve(self.table, name, display, chain))
+
+    def test_each_m_number_class_still_resolves_to_its_own_entry(self) -> None:
+        for name, display, want in self.M_NUMBER_CASES:
+            with self.subTest(game_class=name):
+                self.assertEqual(want, resolve(self.table, name, display))
+
+    def test_the_family_alias_would_capture_the_m_number_classes(self) -> None:
+        # An alias is matched by equality, so fmtv as an alias answers the
+        # classes whose own name carries the token and ties the rest, which
+        # the strict mirror reads as no answer.
+        family = [r for r in self.table if r["id"] == "fmtv_family"][0]
+        fixed = [dict(r) for r in self.table if r["id"] != "fmtv_family"]
+        fixed.append({**family, "aliases": ["fmtv"], "keywords": []})
+        for name, display, want in self.M_NUMBER_CASES:
+            with self.subTest(game_class=name):
+                self.assertNotEqual(want, resolve(fixed, name, display))
+        self.assertIsNone(resolve(fixed, "rhsusf_M1078A1P2_fmtv_usarmy", "M1078A1P2"))
+
+    def test_the_family_keyword_would_tie_the_sov_classes(self) -> None:
+        # A keyword is matched by substring, so fmtv on that layer meets the
+        # SOV classes' own keyword and the layer yields two candidates. The
+        # runtime returns nothing from a tied layer, so they stop resolving.
+        family = [r for r in self.table if r["id"] == "fmtv_family"][0]
+        fixed = [dict(r) for r in self.table if r["id"] != "fmtv_family"]
+        fixed.append({**family, "aliases": [], "keywords": ["fmtv"]})
+        for name, display, _want in self.M_NUMBER_CASES:
+            with self.subTest(game_class=name):
+                self.assertIsNone(resolve(fixed, name, display))
 
 
 class Kamaz4310EntryTest(unittest.TestCase):

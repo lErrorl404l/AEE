@@ -656,10 +656,10 @@ class ZamakBindingLock(unittest.TestCase):
 
     def test_the_family_is_reachable_from_the_gap_estimate(self) -> None:
         # The point of the binding: the retextures are gone from the worklist
-        # and the two maker labels are what remains.
+        # and the FMTV is the one vehicle class that remains.
         body = (COVERAGE / "modded_gaps_vehicles.txt").read_text(encoding="utf-8")
         listed = {line.split("\t")[0] for line in body.splitlines() if line[0] != "#"}
-        self.assertEqual({"LOP_Nissan_PKM_base", "rhsusf_fmtv_base"}, listed)
+        self.assertEqual({"rhsusf_fmtv_base"}, listed)
 
 
 if __name__ == "__main__":

@@ -1,0 +1,26 @@
+{
+  "retrieved": "2026-10-20",
+  "note": "Identity-only capture for the Nissan pickup the installed content ships as LOP_Nissan_PKM_base, display 'Nissan (PKM)'. The identity evidence is the engine class table: the class name carries the maker word Nissan and the crew-served PKM configuration, and the class inherits PO_Pickup_PK_base, which is a pickup that carries a PKM, so the class is a Nissan-based technical. The grade is claimed, because the source is the engine class table. That is the form data/vehicle/class_map.json records as aee_class_table: identity evidence only, never a figure. No document citation is invented and no sources.json record is added, because the entry holds no value. No model designation is asserted. Nissan built several pickups and no held source names the one in the content, so the D21, Navara and Hardbody designations stay out. No figure is held: no held source publishes a mass, dimension or engine value for the model, so every runtime field resolves to a labelled absent zero and the entry is not runtime-ready. The maker word is the only alias. The token pkm is never a match term: it appears on 91 scanned classes, the RHS M1151 vehicles that carry a PKM among them, so it would answer an M1151 as a Nissan technical. The retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "nissan_pickup_technical",
+      "canonical_name": "Nissan pickup technical with PKM",
+      "maker": "Nissan",
+      "model": "not stated",
+      "variant": "pickup with a crew-served PKM machine gun",
+      "variant_id": "nissan_pickup_technical_pkm",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "Japan",
+      "era": "modern",
+      "aliases": [
+        "nissan"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "identity_only": true,
+      "values": {}
+    }
+  ]
+}
