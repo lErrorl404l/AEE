@@ -17,27 +17,30 @@ must resolve to; each inherited one also names the config chain that puts it
 there. Each open class is listed with the reason it stays open, so a later
 change that closes or breaks one shows up here.
 
-The vehicle table closes seventy-seven modded classes: twenty-one by their
+The vehicle table closes eighty-one modded classes: twenty-five by their
 own text (the RHS M1237 RG-33L "Plus" and M1239 SOCOM AUV families, the PHAN
 Typhoon truck, the four Tahoe marks, the RHS Object 681, the Jbad Caterpillar
-789D, and the five the counterpart research closed), one more by the
-identity-only entry its text names (the Project OPFOR Nissan pickup), thirty
-by the family-word work of 2026-10-20 (the twelve M113A3 classes, the sixteen
-M1240A1 classes, the HEMTT A4 and the BTR-70 base, each closed because a
-family word left the specific mark's alias set), eight by the family rung of
-2026-10-20, and seventeen by engine ancestry - the seven Arma 3 Offroad
-re-uses and the ten Project OPFOR KAMAZ trucks, whose chain reaches the Zamak
-that the wiki ties to the KamAZ-4310 family.
+789D, the five the counterpart research closed, and the four the derived-stem
+rule closed), one more by the identity-only entry its text names (the Project
+OPFOR Nissan pickup), thirty by the family-word work of 2026-10-20 (the twelve
+M113A3 classes, the sixteen M1240A1 classes, the HEMTT A4 and the BTR-70
+base, each closed because a family word left the specific mark's alias set),
+eight by the family rung of 2026-10-20, and seventeen by engine ancestry - the
+seven Arma 3 Offroad re-uses and the ten Project OPFOR KAMAZ trucks, whose
+chain reaches the Zamak that the wiki ties to the KamAZ-4310 family.
 
 The family rung answers a class whose text names a family and no mark. The
 family entry is identity-only and sits in its own table, so the family word is
 never a mark's keyword: that is what closed the two Land Rover base classes,
 the two RG-33 marks and the FMTV base class. It also let the T-72MS and the
 two M1238A1 marks answer on their own terms once `t72` and `rg33` left the
-marks that were claiming them. Five modded classes still tie above the rung:
-the two T-72B3 marks against `t72b`, the two T-90SA marks against `t90s`, and
-the RG-33 4x4 SOCOM base against the configuration word `4x4`. A tie is
-final, so the family rung is never reached for them.
+marks that were claiming them. The derived-stem rule closed the last four text
+gaps above the rung: a mark must not hold a word that another mark's
+designation extends, so the T-72B obr. 1984g. mark no longer carries `t72b`
+and the T-90 marks no longer carry `t90s`. The two T-72B3 marks answer on
+`t72b3` and the two T-90SA marks on `t90sa`. One modded class still ties above
+the rung: the RG-33 4x4 SOCOM base, whose text matches both RG-33 4x4 entries
+on `rg334x4`. A tie is final, so the family rung is never reached for it.
 
 An inherited closure says the class IS that ancestor in the engine. It does
 not say the mod's own paint names a different real vehicle, because where the
@@ -140,6 +143,13 @@ CLOSED_VEHICLE_CASES: tuple[tuple[str, str, str], ...] = (
     ("tahoe_LUMI", "Chevrolet Tahoe'08 Lumi Edition", "chevrolet_tahoe_gmt900"),
     ("rhs_Ob_681_2", "Obyekt-681-2", "object_681"),
     ("Jbad_cat_dumper", "Cat 789D", "caterpillar_789d"),
+    # Closed by the derived-stem rule: a mark no longer holds a word that
+    # another mark's designation extends, so the longer designation answers.
+    ("rhs_t72bd_tv", "T-72B3 (obr. 2012g.)", "t_72b3_obr_2012g"),
+    ("rhs_t72be_tv", "T-72B3 (obr. 2016g.)", "t_72b3_obr_2012g"),
+    # Closed by removing the partial designation t90s from the T-90 mark.
+    ("rhs_t90saa_tv", "T-90SA (obr. 2004g.)", "t_90sa"),
+    ("rhs_t90sab_tv", "T-90SA (obr. 2016g.)", "t_90sa"),
     # Closed by the 2026-10-20 counterpart research: each display name now
     # carries a maker or a model the wiki names, so the ladder resolves it.
     ("LOP_SUV_base", "SUV", "bmw_x6_concept"),
@@ -327,30 +337,6 @@ _T90_TAIL = (
 _RG33_TAIL = ("rhsusf_RG33_base", "MRAP_01_base_F", "Car_F", "Car")
 
 VEHICLE_OPEN_CASES: tuple[tuple[str, str, tuple[str, ...], str], ...] = (
-    (
-        "rhs_t72bd_tv",
-        "T-72B3 (obr. 2012g.)",
-        _T72_TAIL,
-        "the keyword layer ties on t72b3 against the T-72B obr. 1984g. entry, whose canonical name still derives t72b; the family rung cannot answer a tied query",
-    ),
-    (
-        "rhs_t72be_tv",
-        "T-72B3 (obr. 2016g.)",
-        ("rhs_t72bd_tv", *_T72_TAIL),
-        "the keyword layer ties on t72b3 against the T-72B obr. 1984g. entry, whose canonical name still derives t72b; the family rung cannot answer a tied query",
-    ),
-    (
-        "rhs_t90saa_tv",
-        "T-90SA (obr. 2004g.)",
-        _T90_TAIL,
-        "the keyword layer ties on t90s, which both the T-90SA and the T-90SM entries carry from their canonical names; the family owns t90 but cannot answer a tied query",
-    ),
-    (
-        "rhs_t90sab_tv",
-        "T-90SA (obr. 2016g.)",
-        _T90_TAIL,
-        "the keyword layer ties on t90s, which both the T-90SA and the T-90SM entries carry from their canonical names; the family owns t90 but cannot answer a tied query",
-    ),
     (
         "rhsusf_RG33_base",
         "RG33 4X4 SOCOM",
@@ -742,9 +728,10 @@ class ClosedModdedVehicleTest(unittest.TestCase):
         cls.table = rows(VEHICLE_MATCH)
         cls.families = family_rows(VEHICLE_MATCH)
 
-    def test_the_closed_modded_vehicle_class_count_is_fifty_two(self) -> None:
-        # Twenty-two by the earlier work, thirty by the family-word work.
-        self.assertEqual(52, len(CLOSED_VEHICLE_CASES))
+    def test_the_closed_modded_vehicle_class_count_is_fifty_six(self) -> None:
+        # Twenty-two by the earlier work, thirty by the family-word work and
+        # four by the derived-stem rule.
+        self.assertEqual(56, len(CLOSED_VEHICLE_CASES))
 
     def test_the_family_work_closed_eight_more(self) -> None:
         self.assertEqual(8, len(FAMILY_CLOSED_VEHICLE_CASES))
@@ -766,10 +753,10 @@ class ClosedModdedVehicleTest(unittest.TestCase):
             with self.subTest(game_class=name):
                 self.assertEqual(want, resolve(self.table, name, display))
 
-    def test_the_closed_modded_vehicle_class_count_is_sixty_nine(self) -> None:
-        # Fifty-two by their own text and seventeen by engine ancestry.
+    def test_the_closed_modded_vehicle_class_count_is_seventy_three(self) -> None:
+        # Fifty-six by their own text and seventeen by engine ancestry.
         self.assertEqual(
-            52 + 17, len(CLOSED_VEHICLE_CASES) + len(INHERITED_VEHICLE_CASES)
+            56 + 17, len(CLOSED_VEHICLE_CASES) + len(INHERITED_VEHICLE_CASES)
         )
 
     def test_each_inherited_class_is_a_descendant_of_the_ancestor_that_answers(

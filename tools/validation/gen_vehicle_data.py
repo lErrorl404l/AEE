@@ -718,6 +718,39 @@ def class_index(
     return {key: sorted(value) for key, value in owners.items()}
 
 
+def _prune_shadowed_keywords(rows: list[list[object]]) -> None:
+    """Drop a keyword that is a strict prefix of another entry's key.
+
+    The keyword layer matches by substring, so a shorter stem answers every
+    query that a longer designation answers. A mark holding `t72b` therefore
+    ties with the mark holding `t72b3`, and the runtime refuses a tie. The
+    short word names the longer mark just as well, so it is not an identity:
+    it is dropped. A key is kept when only its own entry extends it.
+    """
+    per_row = [
+        [
+            key
+            for key in (str(row[COL_KEYWORDS]) + "|" + str(row[COL_ALIASES])).split("|")
+            if key
+        ]
+        for row in rows
+    ]
+    for index, row in enumerate(rows):
+        kept = []
+        for key in str(row[COL_KEYWORDS]).split("|"):
+            if not key:
+                continue
+            shadowed = any(
+                len(other) > len(key) and other.startswith(key)
+                for position, keys in enumerate(per_row)
+                if position != index
+                for other in keys
+            )
+            if not shadowed:
+                kept.append(key)
+        row[COL_KEYWORDS] = "|".join(kept)
+
+
 def build_rows(
     records: Iterable[object],
     mappings: dict[str, list[str]] | None = None,
@@ -771,6 +804,7 @@ def build_rows(
         row = build_row(entry, classes, reserved, shared, family_words)
         if row is not None:
             rows.append(row)
+    _prune_shadowed_keywords(rows)
     rows.sort(key=lambda row: (str(row[COL_CATALOGUE]), str(row[COL_VARIANT])))
     return rows
 
