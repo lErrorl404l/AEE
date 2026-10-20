@@ -19,6 +19,16 @@ layer returns an empty array.
   closest       the longest alias or keyword substring of the query,
                 at least 4 characters, with a strictly lower
                 runner-up score. A tie returns [].                    4
+  inherited     the class text names no entry, so the ENGINE ancestry
+                answers: the nearest ancestor a row maps by classname,
+                when the class text names a designation that row
+                claims. Ancestry, not identity.                       5
+  type          nothing above names the device, so the KIND is the
+                answer: "night-vision device", "thermal optic" or
+                "optic". The caller's family states it; with no family
+                the config does, from the item type and the optics
+                modes. A type entry names a kind, never a model, and
+                carries no figure.                                    6
 
 The vehicle matcher runs a fifth inheritance layer. A device row names no
 supported game class token, so that layer has no meaning here and is
@@ -150,6 +160,37 @@ private _result = {
      _row select 5, _row select 6]
 };
 
+private _typeAnswer = {
+    // The type rung. It answers the KIND of the device when no identity layer
+    // can, and a tie falls here too: two candidate marks name no single mark,
+    // but the config still states the kind. Nothing above names the device, so the KIND is the
+    // answer. The caller's family states it; with no family the config does:
+    // the NVGoggles root states night vision, and a sight is told from any
+    // other inventory item by the optics modes it declares. A type entry
+    // names a kind, never a model, and carries no figure.
+    params ["_className", "_family"];
+    private _kind = _family;
+    if (_kind == "") then {
+        // The engine gives night vision its own root, so the chain states it.
+        if (_className isKindOf "NVGoggles") then { _kind = "nvg"; };
+        private _modes = ("true" configClasses (configFile >> "CfgWeapons" >> _className >> "ItemInfo" >> "OpticsModes"));
+        private _thermal = false;
+        {
+            if (!_thermal && {getArray (_x >> "thermalMode") isNotEqualTo []}) then { _thermal = true; };
+            if (!_thermal && {"Ti" in getArray (_x >> "visionMode")}) then { _thermal = true; };
+        } forEach _modes;
+        if (_kind == "" && _thermal) then { _kind = "thermal"; };
+        if (_kind == "" && {(count _modes) > 0}) then { _kind = "optic"; };
+    };
+    if (_kind == "") exitWith { [] };
+    private _typeName = switch (_kind) do {
+        case "nvg": { "night-vision device" };
+        case "thermal": { "thermal optic" };
+        default { "optic" };
+    };
+    [_typeName, _kind, 8, "type", "", []]
+};
+
 private _candidates = [];
 
 // Layer 1: exact class. The normalised class equals a mapped class name.
@@ -160,7 +201,7 @@ private _candidates = [];
     };
 } forEach _table;
 if ((count _candidates) == 1) exitWith { [_candidates select 0, 1, "exact_class"] call _result };
-if ((count _candidates) > 1) exitWith { [] };
+if ((count _candidates) > 1) exitWith { [_className, _family] call _typeAnswer };
 
 // Layer 2: alias. A query token equals a catalogue alias.
 _candidates = [];
@@ -174,7 +215,7 @@ _candidates = [];
     if (_hit) then { _candidates pushBack _row; };
 } forEach _table;
 if ((count _candidates) == 1) exitWith { [_candidates select 0, 2, "alias"] call _result };
-if ((count _candidates) > 1) exitWith { [] };
+if ((count _candidates) > 1) exitWith { [_className, _family] call _typeAnswer };
 
 // Layer 3: keyword. The query holds a keyword of at least four characters.
 _candidates = [];
@@ -257,4 +298,41 @@ private _tie = false;
 if ((_bestRow isNotEqualTo []) && {!_tie} && _bestScore > _runnerUp) exitWith {
     [_bestRow, 4, "closest"] call _result
 };
-[]
+
+// Layer 5: inherited. The class text names no entry, so the ENGINE
+// ancestry answers: walk the config parent chain to the nearest ancestor
+// whose normalised classname a row maps, and answer that row when the
+// class's own text names a designation the row carries. Ancestry is not
+// identity: a class whose text describes a different device than its
+// ancestor answers nothing here.
+private _inheritedRow = [];
+private _decided = false;
+private _ancestor = inheritsFrom (configFile >> "CfgWeapons" >> _className);
+while {isClass _ancestor && {!_decided}} do {
+    private _ancestorKey = [configName _ancestor] call _normalise;
+    private _ancestorHits = [];
+    {
+        _x params ["_device", "_devFamily", "_classes", "_aliases", "_keywords", "_source", "_values"];
+        if (((_classes splitString "|") find _ancestorKey) >= 0) then {
+            _ancestorHits pushBack _x;
+        };
+    } forEach _table;
+    if (_ancestorHits isNotEqualTo []) then {
+        _decided = true;
+        if ((count _ancestorHits) == 1) then {
+            private _entry = _ancestorHits select 0;
+            private _claims = 0;
+            {
+                if ((count _x) >= 4 && {(((_entry select 0) + "|" + (_entry select 3) + "|" + (_entry select 4)) find _x) >= 0}) then {
+                    _claims = _claims + 1;
+                };
+            } forEach _tokens;
+            if (_claims > 0) then { _inheritedRow = _entry; };
+        };
+    } else {
+        _ancestor = inheritsFrom _ancestor;
+    };
+};
+if (_inheritedRow isNotEqualTo []) exitWith { [_inheritedRow, 5, "inherited"] call _result };
+
+[_className, _family] call _typeAnswer

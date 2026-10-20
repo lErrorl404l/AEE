@@ -74,6 +74,8 @@ MEASURED_TABLES = (
     "carried_launchers",
     "vehicle_armament",
     "night_vision_devices",
+    "thermal_optics",
+    "optics",
     "uniforms",
     "vests",
     "helmets",
@@ -93,6 +95,31 @@ NVG_ROOT = "nvgoggles"
 
 # The device ladder accepts a designation of this length at the alias layer.
 DEVICE_MIN = 4
+
+# The ENGINE kind a type entry states, from the config chain the class
+# passes. It names a kind, never a model: a tank and a tracked APC are both
+# armoured vehicles, and the chain is the engine's own statement.
+VEHICLE_KINDS = (
+    ("armoured vehicle", {"tank"}),
+    ("truck", {"truck"}),
+    ("motorcycle", {"motorcycle"}),
+    ("car", {"car"}),
+)
+AIRCRAFT_KINDS = (
+    ("helicopter", {"helicopter"}),
+    ("fixed-wing aircraft", {"plane"}),
+    ("unmanned aerial vehicle", {"uav"}),
+)
+VEHICLE_FALLBACK = "vehicle"
+AIRCRAFT_FALLBACK = "aircraft"
+
+
+def _engine_kind(chain: list, kinds: tuple, fallback: str) -> str:
+    seen = set(chain)
+    for kind, roots in kinds:
+        if seen & roots:
+            return kind
+    return fallback
 
 # The base game is the PBOs the install ships. Everything else in a scan is
 # modded. The directory name comes from the install, and the environment
@@ -347,7 +374,7 @@ def device_rows(path: Path, family: str = "") -> list:
     return out
 
 
-def device_matcher(table: list, trace=None):
+def device_matcher(table: list, trace=None, type_entry=None, ancestry=None):
     """The device ladder: exact class, alias, keyword, then closest.
 
     The keyword layer answers nothing on a tie and the closest layer below
@@ -365,19 +392,23 @@ def device_matcher(table: list, trace=None):
 
         hit = [r for r in table if class_key in r["classes"]]
         if len(hit) == 1:
+            if trace is not None:
+                trace.update(layer="exact_class", candidates=[hit[0]["id"]])
             return hit[0]
         if len(hit) > 1:
             if trace is not None:
                 trace.update(layer="exact_class", candidates=[r["id"] for r in hit])
-            return None
+            return _type_row(type_entry, cls, trace)
 
         hit = [r for r in table if tokens & set(r["aliases"])]
         if len(hit) == 1:
+            if trace is not None:
+                trace.update(layer="alias", candidates=[hit[0]["id"]])
             return hit[0]
         if len(hit) > 1:
             if trace is not None:
                 trace.update(layer="alias", candidates=[r["id"] for r in hit])
-            return None
+            return _type_row(type_entry, cls, trace)
 
         terms_of = lambda r: r["aliases"] + r["keywords"]  # noqa: E731
         hit = [
@@ -386,6 +417,8 @@ def device_matcher(table: list, trace=None):
             if any(len(w) >= DEVICE_MIN and w in key for w in terms_of(r))
         ]
         if len(hit) == 1:
+            if trace is not None:
+                trace.update(layer="keyword", candidates=[hit[0]["id"]])
             return hit[0]
 
         best = None
@@ -421,10 +454,34 @@ def device_matcher(table: list, trace=None):
             if score < best_score:
                 runner = max(runner, score)
         if best is not None and not tie and best_score > runner:
+            if trace is not None:
+                trace.update(layer="closest", candidates=[best["id"]])
             return best
         if trace is not None and best is not None and tie:
             trace.update(layer="closest", candidates=[best["id"]])
-        return None
+
+        # The inherited rung: the nearest ancestor a row maps by classname,
+        # when the class text names a designation that row carries.
+        if ancestry is not None and cls:
+            for name in ancestry(cls):
+                key_name = fold(name)
+                hits = [r for r in table if key_name in r["classes"]]
+                if not hits:
+                    continue
+                if len(hits) == 1:
+                    blob = fold(
+                        hits[0]["id"]
+                        + "|"
+                        + "|".join(hits[0]["aliases"])
+                        + "|"
+                        + "|".join(hits[0]["keywords"])
+                    )
+                    if any(len(t) >= DEVICE_MIN and t in blob for t in tokens):
+                        if trace is not None:
+                            trace.update(layer="inherited", candidates=[hits[0]["id"]])
+                        return hits[0]
+                break
+        return _type_row(type_entry, cls, trace)
 
     return match
 
@@ -448,7 +505,9 @@ def equipment_rows(path: Path) -> list:
     return out
 
 
-def equipment_matcher(table: list, category: str):
+def equipment_matcher(
+    table: list, category: str, trace=None, type_entry=None, ancestry=None
+):
     """The item-mass resolver, restricted to the slot it is asked about.
 
     The runtime is handed the categories the caller accepts, and a row of
@@ -461,13 +520,37 @@ def equipment_matcher(table: list, category: str):
         hay = (cls + " " + display).lower()
         for r in table:
             if r["category"] == category and r["family"] in hay:
+                if trace is not None:
+                    trace.update(layer="family", candidates=[r["id"]])
                 return r
-        return None
+        # A variant of a named item is still that item: the ancestor's
+        # classname carries the family, so its published mass answers.
+        if ancestry is not None and cls:
+            for name in ancestry(cls):
+                hay_ancestor = str(name).lower()
+                for r in table:
+                    if r["category"] == category and r["family"] in hay_ancestor:
+                        if trace is not None:
+                            trace.update(layer="inherited", candidates=[r["id"]])
+                        return r
+        return _type_row(type_entry, cls, trace) if type_entry is not None else None
 
     return match
 
 
-def matcher(table: list, ancestry=None, trace=None, families=None):
+def _type_row(type_entry, cls: str, trace) -> dict | None:
+    """The kind-of-item answer, or None when the caller states no kind."""
+    if type_entry is None:
+        return None
+    kind = type_entry(cls) if callable(type_entry) else type_entry
+    if not kind:
+        return None
+    if trace is not None:
+        trace.update(layer="type", candidates=[kind])
+    return {"id": kind, "classes": [], "aliases": [], "keywords": [], "type": True}
+
+
+def matcher(table: list, ancestry=None, trace=None, families=None, type_entry=None):
     """The runtime ladder: exact class, alias, keyword, closest, then the
     inherited rung, then the family rung.
 
@@ -480,9 +563,14 @@ def matcher(table: list, ancestry=None, trace=None, families=None):
     never take an answer from a mark. Exactly one family row matching a
     designation of `SCAN_MIN` or more characters answers; two answer nothing.
 
-    `trace`, when given, receives the layer that blocked the match and the
-    candidates it tied between. It is instrumentation for the lock capture and
-    changes no decision.
+    `trace`, when given, receives the layer that answered, or the layer that
+    blocked the match and the candidates it tied between. It is
+    instrumentation and changes no decision.
+
+    `type_entry` is the last rung: when nothing above names the class, the
+    kind of item it is answers. It is a string, or a callable that receives
+    the classname and returns the kind from the engine chain. A type entry
+    carries no model and no figure.
     """
 
     def match(cls: str = "", display: str = ""):
@@ -501,18 +589,22 @@ def matcher(table: list, ancestry=None, trace=None, families=None):
         tokens = {fold(t) for t in re.split(r"[ _\-.]+", text) if fold(t)}
         hit = [r for r in table if class_key in r["classes"]]
         if len(hit) == 1:
+            if trace is not None:
+                trace.update(layer="exact_class", candidates=[hit[0]["id"]])
             return hit[0]
         if len(hit) > 1:
             if trace is not None:
                 trace.update(layer="exact_class", candidates=[r["id"] for r in hit])
-            return None
+            return _type_row(type_entry, cls, trace)
         hit = [r for r in table if tokens & set(r["aliases"])]
         if len(hit) == 1:
+            if trace is not None:
+                trace.update(layer="alias", candidates=[hit[0]["id"]])
             return hit[0]
         if len(hit) > 1:
             if trace is not None:
                 trace.update(layer="alias", candidates=[r["id"] for r in hit])
-            return None
+            return _type_row(type_entry, cls, trace)
         # The keyword layer scans the keywords alone, as the generated matcher
         # does. A curated alias is matched by equality at the layer above, so it
         # is not a substring key here.
@@ -522,11 +614,13 @@ def matcher(table: list, ancestry=None, trace=None, families=None):
             if any(len(w) >= SCAN_MIN and w in key for w in r["keywords"])
         ]
         if len(hit) == 1:
+            if trace is not None:
+                trace.update(layer="keyword", candidates=[hit[0]["id"]])
             return hit[0]
         if len(hit) > 1:
             if trace is not None:
                 trace.update(layer="keyword", candidates=[r["id"] for r in hit])
-            return None
+            return _type_row(type_entry, cls, trace)
         best = None
         best_score = runner = 0
         best_count = 0
@@ -566,6 +660,8 @@ def matcher(table: list, ancestry=None, trace=None, families=None):
             if score < best_score:
                 runner = max(runner, score)
         if best and not tie and best_score > runner:
+            if trace is not None:
+                trace.update(layer="closest", candidates=[best["id"]])
             return best
         # Nothing in the class text names an entry. The engine ancestry is
         # the last evidence there is, and it is used only when the class
@@ -573,6 +669,8 @@ def matcher(table: list, ancestry=None, trace=None, families=None):
         if ancestry is not None and cls:
             row, _ancestor = inherited_row(table, cls, tokens, ancestry)
             if row is not None:
+                if trace is not None:
+                    trace.update(layer="inherited", candidates=[row["id"]])
                 return row
         # Last rung: the class text names a family and no mark. The family
         # table is separate, so no rung above could have answered from it.
@@ -583,10 +681,13 @@ def matcher(table: list, ancestry=None, trace=None, families=None):
                 if any(len(w) >= SCAN_MIN and w in key for w in r["keywords"])
             ]
             if len(hit) == 1:
+                if trace is not None:
+                    trace.update(layer="family", candidates=[hit[0]["id"]])
                 return hit[0]
             if len(hit) > 1 and trace is not None:
                 trace.update(layer="family", candidates=[r["id"] for r in hit])
-        return None
+        # Last rung: the kind of item it is. It names a kind, never a model.
+        return _type_row(type_entry, cls, trace)
 
     return match
 
@@ -656,7 +757,7 @@ def ancestry_closures(
         if plain(r["class"], r["display"]) is not None:
             continue
         row = chained(r["class"], r["display"])
-        if row is None:
+        if row is None or row.get("type"):
             continue
         tokens = {
             fold(t)
@@ -699,7 +800,7 @@ def weapon_table() -> list:
     return out
 
 
-def weapon_matcher(table: list):
+def weapon_matcher(table: list, trace=None, type_entry=None):
     """The kernel's two layers: whole-token equality, then substring."""
     index: dict[str, tuple] = {}
     for wid, aliases in table:
@@ -714,12 +815,21 @@ def weapon_matcher(table: list):
             if hit and hit[1] > best_len:
                 best, best_len = hit[0], hit[1]
         if best:
+            if trace is not None:
+                trace.update(layer="alias", candidates=[best])
             return best
         key = fold(text)
         for wid, aliases in table:
             for a in aliases:
                 if len(a) >= 4 and a in key and len(a) > best_len:
                     best, best_len = wid, len(a)
+        if best:
+            if trace is not None:
+                trace.update(layer="closest", candidates=[best])
+        elif type_entry is not None:
+            if trace is not None:
+                trace.update(layer="type", candidates=[type_entry])
+            return type_entry
         return best
 
     return match
@@ -797,6 +907,22 @@ def _decided(selected: list, match) -> list:
     return sorted(out)
 
 
+def grades(selected: list, factory) -> dict:
+    """The grade that answered for every scored class, counted.
+
+    `factory(trace)` returns a matcher bound to that trace, so each class
+    is scored on a fresh trace and the layer that answered it is recorded
+    without changing any decision.
+    """
+    out: dict[str, int] = {}
+    for r in selected:
+        trace: dict = {}
+        factory(trace)(r["class"], r["display"])
+        layer = trace.get("layer", "none")
+        out[layer] = out.get(layer, 0) + 1
+    return dict(sorted(out.items()))
+
+
 def score(selected: list, match, base: set[str]) -> dict:
     """The coverage of one table, split by who DECLARES the class.
 
@@ -859,6 +985,28 @@ def _taxonomy(scanned: list, kind: str, roots: set[str], chain) -> list:
         if key in seen:
             continue
         if not (set(chain(r["class"])) & roots):
+            continue
+        seen.add(key)
+        out.append(r)
+    return out
+
+
+def _optic_rows(scanned: list, thermal_only: bool = False) -> list:
+    """The CfgWeapons classes the config states are sights.
+
+    An optic declares optics modes; a thermal sight further declares a
+    thermal palette or the thermal vision mode in one of them. The scan
+    holds both, so the denominator is the config's statement, not a
+    classname pattern.
+    """
+    out, seen = [], set()
+    for r in scanned:
+        if r["kind"] != "CfgWeapons" or not r.get("optics_modes"):
+            continue
+        if thermal_only and not r.get("thermal_mode"):
+            continue
+        key = (r["class"], r["display"])
+        if key in seen:
             continue
         seen.add(key)
         out.append(r)
@@ -968,18 +1116,33 @@ def measure(scanned: list, base: set[str]) -> dict:
         (ground, VEHICLE, "vehicles", emplacements),
         (air, AIRCRAFT, "aircraft", []),
     ):
+        kinds, fallback = (
+            (VEHICLE_KINDS, VEHICLE_FALLBACK)
+            if label == "vehicles"
+            else (AIRCRAFT_KINDS, AIRCRAFT_FALLBACK)
+        )
+
+        def engine_kind_for(cls: str, kinds=kinds, fallback=fallback) -> str:
+            return _engine_kind(chain_of(cls), kinds, fallback)
+
         table = rows(path)
         families = family_rows(path)
         plain = matcher(table, families=families)
         match = (
-            matcher(table, ancestors, families=families)
+            matcher(table, ancestors, families=families, type_entry=engine_kind_for)
             if label == "vehicles"
-            else plain
+            else matcher(table, families=families, type_entry=engine_kind_for)
         )
         tables[slug(label)] = {
             "label": label,
             **score(sel, match, base),
             "decided": _decided(sel, match),
+            "grades": grades(
+                sel,
+                lambda tr, t=table, f=families, k=engine_kind_for, a=(
+                    ancestors if label == "vehicles" else None
+                ): matcher(t, a, trace=tr, families=f, type_entry=k),
+            ),
             "inherited": (
                 ancestry_closures(sel, table, plain, match, ancestors, base)
                 if label == "vehicles"
@@ -1053,6 +1216,7 @@ def measure(scanned: list, base: set[str]) -> dict:
         matcher(
             munition_rows(MUNITION_TABLE),
             families=munition_family_rows(MUNITION_TABLE),
+            type_entry="munition",
         )
         if MUNITION_TABLE.exists()
         else None
@@ -1064,7 +1228,21 @@ def measure(scanned: list, base: set[str]) -> dict:
     ):
         if not sel:
             continue
-        pick = match_m if (label == "vehicle armament" and match_m) else match_w
+        kind = (
+            "munition"
+            if label == "vehicle armament"
+            else ("launcher" if label == "carried launchers" else "small arm")
+        )
+        if label == "vehicle armament" and match_m:
+            factory = lambda tr, k=kind: matcher(
+                munition_rows(MUNITION_TABLE), trace=tr, type_entry=k
+            )
+            pick = match_m
+        else:
+            factory = lambda tr, k=kind: weapon_matcher(
+                weapon_table(), trace=tr, type_entry=k
+            )
+            pick = weapon_matcher(weapon_table(), type_entry=kind)
         # The armament table's denominator is what the shared kind filter
         # left in it, so the kinds it dropped belong in its record.
         kept = (
@@ -1077,6 +1255,7 @@ def measure(scanned: list, base: set[str]) -> dict:
             **score(sel, pick, base),
             "excluded": kept,
             "decided": _decided(sel, pick),
+            "grades": grades(sel, factory),
         }
 
     # ── Night vision devices ──────────────────────────────────────────────
@@ -1086,19 +1265,37 @@ def measure(scanned: list, base: set[str]) -> dict:
     # ItemInfo type and no OpticsModes, and those are the only evidence
     # that tells an optic from a compass. A denominator invented from the
     # classname would measure the name, not the item.
-    nvg = _taxonomy(scanned, "CfgWeapons", {NVG_ROOT}, wchain)
-    if nvg:
-        dtable = device_rows(DEVICE, "nvg")
-        match_d = device_matcher(dtable)
+    for label, family, type_name, selected in (
+        (
+            "night vision devices",
+            "nvg",
+            "night-vision device",
+            _taxonomy(scanned, "CfgWeapons", {NVG_ROOT}, wchain),
+        ),
+        ("thermal optics", "thermal", "thermal optic", _optic_rows(scanned, True)),
+        ("optics", "optic", "optic", _optic_rows(scanned, False)),
+    ):
+        if not selected:
+            continue
+        dtable = device_rows(DEVICE, family)
+        match_d = device_matcher(
+            dtable, type_entry=type_name, ancestry=lambda c: wchain(c)[1:]
+        )
         reasons = defaultdict(int)
-        for r in nvg:
+        for r in selected:
             if match_d(r["class"], r["display"]) is None:
                 reasons[_device_reason(r["class"], r["display"], dtable)] += 1
-        tables[slug("night vision devices")] = {
-            "label": "night vision devices",
-            **score(nvg, match_d, base),
+        tables[slug(label)] = {
+            "label": label,
+            **score(selected, match_d, base),
             "excluded": {},
-            "decided": _decided(nvg, match_d),
+            "decided": _decided(selected, match_d),
+            "grades": grades(
+                selected,
+                lambda tr, t=dtable, n=type_name: device_matcher(
+                    t, trace=tr, type_entry=n, ancestry=lambda c: wchain(c)[1:]
+                ),
+            ),
             "reasons": dict(reasons),
         }
 
@@ -1118,7 +1315,9 @@ def measure(scanned: list, base: set[str]) -> dict:
         selected = _taxonomy(scanned, kind, roots, chain)
         if not selected:
             continue
-        match_e = equipment_matcher(eq_table, category)
+        match_e = equipment_matcher(
+            eq_table, category, type_entry=category, ancestry=lambda c: chain(c)[1:]
+        )
         reasons = defaultdict(int)
         for r in selected:
             if match_e(r["class"], r["display"]) is not None:
@@ -1129,6 +1328,13 @@ def measure(scanned: list, base: set[str]) -> dict:
             **score(selected, match_e, base),
             "excluded": {},
             "decided": _decided(selected, match_e),
+            "grades": grades(
+                selected,
+                lambda tr, c=category, ch=chain: equipment_matcher(
+                    eq_table, c, trace=tr, type_entry=c,
+                    ancestry=lambda x: ch(x)[1:],
+                ),
+            ),
             "reasons": dict(reasons),
         }
 
@@ -1309,6 +1515,7 @@ def write_baseline(
                 "unresolved_modded": len(modded_gaps(res)),
                 "inherited": res.get("inherited", []),
                 "excluded": res.get("excluded", {}),
+                "grades": res.get("grades", {}),
                 "reasons": res.get("reasons", {}),
             }
             for name, res in tables.items()

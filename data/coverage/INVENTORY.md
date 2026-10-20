@@ -36,13 +36,29 @@ and the worklists in `modded_gaps_<table>.txt`.
 | `tools/gen_fuel_data.py`, `gen_daylight.py`, `gen_gnss.py`, `gen_tide_constituents.py`, `gen_twilight.py`, `gen_wmm.py`, `gen_space_weather.py`, `gen_ownership_sentinels.py` | hashmap and numeric tables | `data/physics/`, `data/` | none | Keyed on a physical quantity, not on a game class. |
 | `tools/validation/gen_mgrs_tables.py`, `gen_symbology_tables.py`, `gen_terrain_tables.py`, `gen_meteor_showers.py`, `gen_wildlife_ecology.py`, `tools/gen_variation_families.py` | `mgrs_tables.sqf`, `symbology_tables.sqf`, `terrain_symbols.sqf`, `fnc_meteorShowers.sqf`, `ecology_corpus.sqf`, `asset_map.sqf`, `variation_families.sqf` | `data/` | lookup kernels | Keyed on a grid, a symbol, a Koppen code or a terrain, not on a config class. |
 
-## One table the scan cannot bound
+## The device and item tables are bounded by the config
 
-`fnc_getDeviceMatch.sqf` also holds `thermal` and `optic` rows, and
-`fnc_getItemMass.sqf` also holds suppressor, medical, tool, radio and other
-slot categories. The scan holds no `CfgWeapons >> ItemInfo >> type` and no
-`OpticsModes`, and those are the only config evidence that separates an
-optic from a compass or a helmet. A denominator taken from the classname
-would measure the name, not the item, so the thermal and optic rows are
-named here and left unmeasured. The NVG rows are measurable because the
-engine gives night vision its own root, `NVGoggles`.
+`tools/scan_game_classes.py` records `CfgWeapons >> ItemInfo`: the slot
+item class, the numeric item type, the optics modes, and whether a mode
+declares a thermal palette or the thermal vision mode. With that, the
+device table's families are each bounded on the installed content:
+
+- `night_vision_devices` (family `nvg`): every `CfgWeapons` class whose
+  chain passes `NVGoggles`.
+- `thermal_optics`: every class declaring optics modes with a thermal
+  palette or the thermal vision mode.
+- `optics`: every class declaring optics modes.
+
+`fnc_getItemMass.sqf` holds suppressor, medical, tool, radio and other slot
+categories that are not scored here: the campaign measures the four worn
+or carried slots the operator named. The ladder itself is shared, so a
+category added to the measured set needs one table row and no new mirror.
+
+## The last rung
+
+Every measured matcher ends with the type rung, which answers the kind of
+item when no identity can: the engine kind for a vehicle or an aircraft,
+the caller's family or the config's item type for a device, the kind
+screen's verdict for a munition, and the caller's slot for an item. A type
+entry names a kind, never a model, and carries no figure, so full
+resolution is a graded claim rather than a silent 100%.

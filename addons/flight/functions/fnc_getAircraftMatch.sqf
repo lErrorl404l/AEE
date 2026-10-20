@@ -26,6 +26,10 @@ layer returns an empty array.
                 more characters in the query. A family row is
                 identity-only and answers only when it is the only
                 one, so it never takes an answer from a mark.           7
+  type          nothing above names the aircraft, so the ENGINE kind is
+                the answer: "helicopter", "fixed-wing aircraft",
+                "unmanned aerial vehicle" or "aircraft". A type entry
+                names a kind, never a model, and carries no figure.     8
 
 A row has nine columns:
 
@@ -354,6 +358,24 @@ private _result = {
      _row select 7, _row select 8]
 };
 
+private _typeAnswer = {
+    // The type rung. It answers the KIND of the class when no identity layer
+    // can, and it is also what a tie falls to: two candidate marks name no
+    // single mark, but the engine still states the kind. It names a kind,
+    // never a model, and carries no figure.
+    //
+    // Nothing above named the aircraft, so the ENGINE kind is the answer: the config's own taxonomy says whether this is a
+    // helicopter, a fixed-wing aircraft or an unmanned aerial vehicle. A type
+    // entry names a kind, never a model, and carries no figure.
+    params ["_className"];
+    private _kind = "";
+    if (_className isKindOf "Helicopter") then { _kind = "helicopter" };
+    if ((_kind == "") && {_className isKindOf "Plane"}) then { _kind = "fixed-wing aircraft" };
+    if ((_kind == "") && {_className isKindOf "UAV"}) then { _kind = "unmanned aerial vehicle" };
+    if (_kind == "") then { _kind = "aircraft" };
+    [_kind, "", "", 8, "type", "", []]
+};
+
 private _candidates = [];
 
 // Layer 1: exact class. The normalised class equals a mapped game class.
@@ -364,7 +386,7 @@ private _candidates = [];
     };
 } forEach _table;
 if ((count _candidates) == 1) exitWith { [_candidates select 0, 1, "exact_class"] call _result };
-if ((count _candidates) > 1) exitWith { [] };
+if ((count _candidates) > 1) exitWith { [_className] call _typeAnswer };
 
 // Layer 2: alias. A query token equals a catalogue alias.
 _candidates = [];
@@ -378,7 +400,7 @@ _candidates = [];
     if (_hit) then { _candidates pushBack _row; };
 } forEach _table;
 if ((count _candidates) == 1) exitWith { [_candidates select 0, 2, "alias"] call _result };
-if ((count _candidates) > 1) exitWith { [] };
+if ((count _candidates) > 1) exitWith { [_className] call _typeAnswer };
 
 // Layer 3: keyword. The query holds a keyword of at least four characters.
 _candidates = [];
@@ -392,7 +414,7 @@ _candidates = [];
     if (_hit) then { _candidates pushBack _row; };
 } forEach _table;
 if ((count _candidates) == 1) exitWith { [_candidates select 0, 3, "keyword"] call _result };
-if ((count _candidates) > 1) exitWith { [] };
+if ((count _candidates) > 1) exitWith { [_className] call _typeAnswer };
 
 // Layer 4: inheritance. The class isKindOf the entry class token.
 _candidates = [];
@@ -403,7 +425,7 @@ _candidates = [];
     };
 } forEach _table;
 if ((count _candidates) == 1) exitWith { [_candidates select 0, 4, "inheritance"] call _result };
-if ((count _candidates) > 1) exitWith { [] };
+if ((count _candidates) > 1) exitWith { [_className] call _typeAnswer };
 
 // Layer 5: closest. The longest alias or keyword substring of the query,
 // at least four characters, with a strictly lower runner-up score.
@@ -499,4 +521,5 @@ _candidates = [];
     if (_hit) then { _candidates pushBack _row; };
 } forEach _families;
 if ((count _candidates) == 1) exitWith { [_candidates select 0, 7, "family"] call _result };
-[]
+
+[_className] call _typeAnswer

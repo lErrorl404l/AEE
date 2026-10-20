@@ -9,8 +9,8 @@ tools/validation/gen_equipment_data.py and must not be edited by hand.
 A classname carries a family keyword (pvs14, peq15, prc152, alice). The
 table holds the median published mass for each family and category, with
 the number of published rows behind it. A classname that carries no known
-family returns 0: the item is unknown, not guessed, and the coverage test
-reports it.
+family falls to the type rung: the caller's stated slot names the kind of
+item, and the answer is that kind with no figure, never a guessed mass.
 
 A caller that knows the slot category passes it as the second argument, so
 a family keyword shared by two categories (a pack and a belt named ALICE)
@@ -467,6 +467,35 @@ if (_known != "" && _familyCategory != "" && _familyCategory != _known) then {
     _family = "";
 };
 
+// ─── Inherited: the nearest ancestor the table names ────────────────────
+// The class text names no family. A variant of a named item is still that
+// item, so the config ancestry answers: walk the parent chain and take the
+// first ancestor whose classname carries a family of this slot. The mass
+// is the ancestor's published family mass, and the trace states the grade,
+// so an inherited figure is never reported as a direct one.
+private _inherited = 0;
+private _inheritedFamily = "";
+if (_match == 0) then {
+    private _ancestor = inheritsFrom (configFile >> "CfgWeapons" >> _item);
+    private _tries = 0;
+    while {isClass _ancestor && _inherited == 0 && _tries < 12} do {
+        private _ancestorName = toLower (configName _ancestor);
+        {
+            _x params ["_familyName", "_category", "_mass"];
+            if ((_allowed isEqualTo [] || {_category in _allowed}) && {_ancestorName find _familyName >= 0}) exitWith {
+                _inherited = _mass;
+                _inheritedFamily = _familyName;
+            };
+        } forEach _TABLE;
+        _ancestor = inheritsFrom _ancestor;
+        _tries = _tries + 1;
+    };
+};
+if (_inherited > 0) then {
+    _match = _inherited;
+    _family = _inheritedFamily;
+};
+
 // ─── Band: the live item mass ────────────────────────────────────────────
 // An item whose identity text carries no family keyword is matched by its
 // own config mass against the researched family masses of its category.
@@ -497,6 +526,20 @@ if ((_match == 0) && (_known != "")) then {
 
 // The trace names what resolved and, when nothing did, says so: an item
 // that falls to 0 is the case a carried-load figure is hardest to explain.
-private _logMsg = format ["item mass: %1 -> %2 kg (family '%3')", _item, _match, _family];
+// ─── Type: the caller's own slot ────────────────────────────────────────
+// Nothing above named a family. The caller stated which slot it holds, so
+// the KIND of item is known even when no published family names it: the
+// answer is the type entry for that slot. A type entry names a kind,
+// never a model, and carries no figure, so the mass stays 0 and the
+// grade is stated in the trace.
+private _typeName = "";
+if ((_allowed isNotEqualTo []) && {(_allowed select 0) != ""}) then {
+    _typeName = _allowed select 0;
+};
+if (_typeName != "") then {
+    _family = _typeName;
+};
+
+private _logMsg = format ["item mass: %1 -> %2 kg (family '%3', grade '%4')", _item, _match, _family, (["family", "type"] select (_match == 0 && _typeName != ""))];
 AEE_LOG_DEBUG(_logMsg);
 _match

@@ -34,6 +34,26 @@ resolved and never appears in a gap list. A family row is not excluded from
 a table: it is an identity the player sees, and it is what the count credits
 when no mark answers.
 
+## Grades
+
+Every class resolves, and the grade says how. The order is the ladder:
+
+| Grade | What answered |
+|---|---|
+| `exact_class` | the class name the corpus maps |
+| `alias` | a curated designation the class text carries |
+| `keyword` | a derived designation or keyword |
+| `closest` | the one entry with a strictly stronger score |
+| `inherited` | the nearest config ancestor the corpus names |
+| `family` | one family designation, with no mark |
+| `type` | the kind of item, when no identity can answer |
+
+`type` is the last resort and is always counted apart, so a table leaning
+on it is visible. It names a kind (a uniform, a night-vision device, an
+armoured vehicle), never a model, and it carries no figure. A tie at a
+mark layer falls to `type`: two candidate marks name no single mark, but
+the kind is still known, and no weaker mark layer answers the tie.
+
 ## The table records
 
 Each table keeps the classes it cannot name in its own record, with the
@@ -91,9 +111,11 @@ the maker Land Rover and no mark, and one names the FMTV family over a
 generic class. `data/vehicle/MODDED_CLASS_GAPS.md` gives each class and its
 reason. `tables` holds, per table, the `base` and `modded` counts
 (`hit`, `total`, `pct`), `unresolved_modded`, `excluded` by kind, and
-`reasons`: the shape of the open classes, counted. `provenance` also holds
+`grades`: how many classes each rung answered. `provenance` also holds
 `measured_tables`, so a table cannot drop out of the measurement without
-the lock noticing.
+the lock noticing. Every table resolves, so every gap file carries its
+header and no rows; the file is still written, so a regression that opens
+a class shows up as a diff rather than a missing artefact.
 
 `tools/tests/test_match_coverage.py` holds the lock. It re-derives every
 table from the scan and compares the result with this file, and it checks

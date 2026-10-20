@@ -12,7 +12,7 @@ decodes directly rather than shelling out to an unpacking tool. A whole
 install scans in seconds.
 
 Each row is {source, kind, class, display, parent, fmt, feeds, magazines,
-ammo, damage}:
+ammo, damage, item_parent, item_type, optics_modes, thermal_mode}:
   kind    CfgVehicles, CfgWeapons, CfgMagazines or CfgAmmo
   display the resolved display name; a $STR_ key is resolved from the
           stringtable.xml files inside the scanned PBOs themselves
@@ -29,6 +29,17 @@ ammo, damage}:
           burst limit, a pod inhibit - lives in CfgWeapons and declares
           magazines like any weapon, but nothing it can reach does any
           damage, which is how it is told apart from a weapon
+  item_parent the ItemInfo slot item class (`UniformItem`, `VestItem`,
+          the optics item). This is the config's own statement of which
+          slot the class belongs to.
+  item_type the numeric ItemInfo `type` id when the config declares one,
+          else null. The NVG root declares 616; most clothing declares
+          none and is identified by its slot item class instead.
+  optics_modes the OpticsModes a sight offers, empty for a class that is
+          not an optic.
+  thermal_mode true when any optics mode declares a thermal palette
+          (`thermalMode[]`) or the thermal vision mode (`visionMode` holds
+          `Ti`), which is what makes an optic a thermal sight.
   fmt     "bin" for a binarised config, "cpp" for raw source. Raw source
           is NOT preprocessed here, so a config built from macros can
           mis-associate a display name: trust "bin" for measurement.
@@ -40,6 +51,7 @@ a base-game key still resolves:
         ".../steamapps/common/Arma 3/Addons" \
         ".../steamapps/workshop/content/107410"
 """
+
 from __future__ import annotations
 
 import json
@@ -230,7 +242,9 @@ def cpp_classes(txt: str):
                 elif c == "}":
                     d -= 1
                 elif d == 1 and body.startswith("class ", k):
-                    m = re.match(r"class\s+([A-Za-z0-9_]+)\s*(?::\s*([A-Za-z0-9_]+))?", body[k:])
+                    m = re.match(
+                        r"class\s+([A-Za-z0-9_]+)\s*(?::\s*([A-Za-z0-9_]+))?", body[k:]
+                    )
                     if m:
                         e = body.find("{", k)
                         dn = ""
@@ -271,7 +285,9 @@ def scan(path: Path, table: dict):
             for key, body in STR_RE.findall(txt):
                 m = ENG_RE.search(body)
                 if m:
-                    strings[key.strip().upper()] = re.sub(r"\s+", " ", m.group(1)).strip()
+                    strings[key.strip().upper()] = re.sub(
+                        r"\s+", " ", m.group(1)
+                    ).strip()
         elif n.endswith("config.bin") or (
             n.endswith("config.cpp") and data[:4] == b"\0raP"
         ):
@@ -300,7 +316,7 @@ def scan(path: Path, table: dict):
                         # A weapon hangs its magazines on itself or on its
                         # muzzle subclasses, so both are read.
                         mags = list(cb.get("magazines") or [])
-                        for muzzle in (cb.get("muzzles") or []):
+                        for muzzle in cb.get("muzzles") or []:
                             moff = cb["__children__"].get(str(muzzle))
                             if moff is None:
                                 continue
@@ -323,6 +339,7 @@ def scan(path: Path, table: dict):
                                 [str(m) for m in mags],
                                 str(cb.get("ammo") or ""),
                                 _damage(cb),
+                                *_item_info(r, cb),
                             )
                         )
             except Exception:
@@ -352,6 +369,54 @@ def _damage(cb) -> float:
         if isinstance(value, (int, float)):
             out = max(out, float(value))
     return out
+
+
+def _item_info(r, cb) -> tuple:
+    """The ItemInfo slot declaration of one CfgWeapons class.
+
+    This is the config's own statement of what the class IS as an item:
+    the slot item class it inherits (`UniformItem`, `VestItem`, the optics
+    item), the numeric `type` id when the config declares one, the optics
+    modes it offers, and whether any mode declares a thermal palette.
+
+    The measured tables key on this: without it an optic and a compass are
+    both `ItemCore` descendants, and a uniform and a vest are both
+    `CfgWeapons` entries with no magazines. Returns
+    `(item_parent, item_type, optics_modes, thermal_mode)`; an absent
+    ItemInfo is four empty values, never a guess.
+    """
+    parent, type_id, modes, thermal = "", None, [], False
+    off = cb.get("__children__", {}).get("ItemInfo")
+    if off is None:
+        return parent, type_id, modes, thermal
+    try:
+        info = r.body(off)
+    except Exception:
+        return parent, type_id, modes, thermal
+    parent = str(info.get("__parent__") or "")
+    value = info.get("type")
+    if isinstance(value, (int, float)):
+        type_id = int(value)
+    modes_off = info.get("__children__", {}).get("OpticsModes")
+    if modes_off is None:
+        return parent, type_id, modes, thermal
+    try:
+        node = r.body(modes_off)
+    except Exception:
+        return parent, type_id, modes, thermal
+    for name, mode_off in node.get("__children__", {}).items():
+        modes.append(str(name))
+        try:
+            mode = r.body(mode_off)
+        except Exception:
+            continue
+        # Two config statements make a sight thermal: the palette pair
+        # (`thermalMode[]`), and the thermal vision mode. Either is the
+        # config's own evidence, and no figure is read.
+        vision = mode.get("visionMode") or []
+        if mode.get("thermalMode") or "Ti" in [str(v) for v in vision]:
+            thermal = True
+    return parent, type_id, modes, thermal
 
 
 def collect_strings(pbos) -> dict:
@@ -403,7 +468,8 @@ def main() -> int:
                 continue
             for row in rows:
                 kind, cls, dn, parent, fmt, feeds = row[:6]
-                mags, ammo, damage = (list(row[6:]) + [[], "", 0.0])[:3]
+                rest = (list(row[6:]) + [[], "", 0.0, "", None, [], False])[:7]
+                mags, ammo, damage, item_parent, item_type, modes, thermal = rest
                 out.write(
                     json.dumps(
                         {
@@ -417,6 +483,10 @@ def main() -> int:
                             "magazines": mags,
                             "ammo": ammo,
                             "damage": damage,
+                            "item_parent": item_parent,
+                            "item_type": item_type,
+                            "optics_modes": modes,
+                            "thermal_mode": thermal,
                         }
                     )
                     + "\n"
