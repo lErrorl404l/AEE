@@ -111,6 +111,7 @@ private _table = [
     ["bae_systems_rg_33l_6x6", "bae_systems_rg_33l_6x6", "wheeled", "", "", "baesystemsrg33l6x6|m1232|m1237|rg33l", "rg33|6x6|systemsrg33l|rg33l6x6|baesystemsrg33l", "armyrecognition_rg33_4x4", [24000, 0, 0, 0, 0, "", ""]],
     ["bae_systems_rg_33l_socom_armored_utility_vehicle_auv", "bae_systems_rg_33l_socom_armored_utility_vehicle_auv", "wheeled", "", "", "baesystemsrg33lsocomarmoredutilityvehicleauv|m1239|rg33lsocom|socomauv", "rg33l|rg33|systemsrg33l|socomarmored|armoredutility|utilityvehicle|vehicleauv|baesystemsrg33lsocomarmoredutilityvehicle|baesystemsrg33lsocomarmoredutilityvehicleau|rg33lsoco", "bae_rg33l_auv_brochure", [26473, 0, 0, 0, 0, "", ""]],
     ["bionix", "bionix", "tracked", "", "", "bionix|bionixafv", "singapore", "wikipedia_bionix", [23000, 0, 0, 0, 354.207439, "", ""]],
+    ["bm2t_stalker", "bm2t_stalker", "tracked", "", "", "2tstalker|bm2tstalker|kamysh|stalker|tigris", "bm2t|bm2|2tstalke|bm2tstalke", "", [0, 0, 0, 0, 0, "", ""]],
     ["bm_21_grad", "bm_21_grad", "wheeled", "", "", "bm21grad", "bm21|bm21gra", "wikipedia_bm_21_grad", [13710, 0, 0, 0, 0, "", ""]],
     ["bmc_kirpi", "bmc_kirpi", "wheeled", "", "", "kirpi|bmckirpi", "mineresistant", "wikipedia_bmc_kirpi", [20000, 355.6, 1219.2, 400, 275, "automatic", ""]],
     ["bmd_1", "bmd_1", "tracked", "", "", "bmd1", "", "wikipedia_bmd_1", [7500, 0, 0, 0, 0, "", ""]],

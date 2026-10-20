@@ -14,8 +14,20 @@
       "class_token": "",
       "country": "United Kingdom",
       "era": "modern",
-      "aliases": ["warrior", "fv510", "fv510 warrior", "warrior tracked armoured vehicle", "mora", "fv720"],
-      "keywords": ["ifv", "tracked", "warrior", "infantry fighting vehicle"],
+      "aliases": [
+        "warrior",
+        "fv510",
+        "fv510 warrior",
+        "warrior tracked armoured vehicle",
+        "mora",
+        "fv720"
+      ],
+      "keywords": [
+        "ifv",
+        "tracked",
+        "warrior",
+        "infantry fighting vehicle"
+      ],
       "runtime_ready": false,
       "values": {
         "operating_weight_kg": {

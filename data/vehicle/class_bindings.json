@@ -66,25 +66,25 @@
   {
     "game_class": "B_APC_Tracked_01_rcws_F",
     "class_token": "Tracked_APC",
-    "catalogue_id": "m113a2",
-    "identity_source": "aee_class_table",
-    "identity_evidence": "AEE class token Tracked_APC; class_map.json binds Tracked_APC to the M113A2. The plan example used the M577A2 gross of 11719 kg, a 3 percent difference inside the same M113 family. The link stays class_only.",
+    "catalogue_id": "namer",
+    "identity_source": "armedassault_ifv6c_panther_trivia",
+    "identity_evidence": "Armed Assault Wiki, IFV-6c_Panther, ARMA 3 Trivia (wikitext section 38): \"* The Panther is based on the real-world \"Namer\" APC designed by IMI Systems Ltd of Israel.\" Citation: https://armedassault.fandom.com/wiki/IFV-6c_Panther. The page asserts the basis ('is based on the real-world \"Namer\" APC designed by IMI Systems Ltd of Israel'). The previous binding, the M113A2, is withdrawn: it rested on the Tracked_APC token alone and no page names an M113 for the Panther. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   },
   {
     "game_class": "I_APC_tracked_03_cannon_F",
     "class_token": "Tracked_APC",
-    "catalogue_id": "m113a2",
-    "identity_source": "aee_class_table",
-    "identity_evidence": "AEE class token Tracked_APC; the same catalogue vehicle as B_APC_Tracked_01_rcws_F. The class name does not name the catalogue vehicle, so the link stays class_only.",
+    "catalogue_id": "fv510_warrior",
+    "identity_source": "armedassault_fv720_mora_trivia",
+    "identity_evidence": "Armed Assault Wiki, FV-720_Mora, ARMA 3 Trivia (wikitext section 46): \"* The Mora is based on the real-world \"FV510 Warrior\" IFV manufactured by BAE Systems.\" Citation: https://armedassault.fandom.com/wiki/FV-720_Mora. The page asserts the basis ('is based on the real-world \"FV510 Warrior\" IFV manufactured by BAE Systems'). The previous binding, the M113A2, is withdrawn: no page names an M113 for the Mora. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   },
   {
     "game_class": "O_APC_Tracked_02_cannon_F",
     "class_token": "Tracked_APC",
-    "catalogue_id": "m113a2",
-    "identity_source": "aee_class_table",
-    "identity_evidence": "AEE class token Tracked_APC; the same catalogue vehicle as B_APC_Tracked_01_rcws_F. The class name does not name the catalogue vehicle, so the link stays class_only.",
+    "catalogue_id": "bm2t_stalker",
+    "identity_source": "armedassault_btrk_kamysh_trivia",
+    "identity_evidence": "Armed Assault Wiki, BTR-K_Kamysh, ARMA 3 Trivia (wikitext section 46): \"* The Kamysh's chassis appears to be loosely based on the \"BM-2T Stalker\" designed by the Belarusian vehicle manufacturer, Minotor Service Enterprise. On the other hand, its turret is modelled after the \"Samson RCWS-30\" designed by Rafael Advanced Defense Systems of Israel.\" Citation: https://armedassault.fandom.com/wiki/BTR-K_Kamysh. The page hedges: 'The Kamysh's chassis appears to be loosely based on the \"BM-2T Stalker\" designed by the Belarusian vehicle manufacturer, Minotor Service Enterprise', and 'its turret is modelled after the \"Samson RCWS-30\"'. Both hedges are recorded and not upgraded. The Samson turret is a subsystem and has no entry. The previous binding, the M113A2, is withdrawn: no page names an M113 for the Kamysh. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   },
   {
@@ -333,6 +333,30 @@
     "catalogue_id": "pandur_ii",
     "identity_source": "armedassault_afv4_gorgon_trivia",
     "identity_evidence": "Armed Assault Wiki, AFV-4_Gorgon, ARMA 3 Trivia (wikitext section 48): \"* The Gorgon is based on the real-world 8x8 variant of the \"Pandur II\".\" Citation: https://armedassault.fandom.com/wiki/AFV-4_Gorgon. The page asserts the basis ('is based on the real-world 8x8 variant of the \"Pandur II\"'). The corpus holds the Pandur II 8x8. The previous binding, the BTR-80, is withdrawn: it rested on the Wheeled_APC token alone and no page names a BTR for the Gorgon. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "B_APC_Tracked_01_AA_F",
+    "class_token": "Tracked_APC",
+    "catalogue_id": "namer",
+    "identity_source": "armedassault_ifv6a_cheetah_trivia",
+    "identity_evidence": "Armed Assault Wiki, IFV-6a_Cheetah, ARMA 3 Trivia (wikitext section 42): \"* As with its parent vehicle, the Cheetah's chassis is modelled after IMI Systems Ltd's \"Namer\" APC, whereas its turret is directly based on the real-world \"Marksman\" anti-aircraft gun system then-designed by the British manufacturer Marconi Electronic Systems Limited (MES).\" Citation: https://armedassault.fandom.com/wiki/IFV-6a_Cheetah. The page asserts both donors: 'the Cheetah's chassis is modelled after IMI Systems Ltd's \"Namer\" APC, whereas its turret is directly based on the real-world \"Marksman\" anti-aircraft gun system'. The corpus holds the Namer and not the Marksman turret, which is a subsystem and not a vehicle (data/vehicle/RESEARCH_GAPS.md). The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "B_APC_Tracked_01_CRV_F",
+    "class_token": "Tracked_APC",
+    "catalogue_id": "namer",
+    "identity_source": "armedassault_crv6e_bobcat_trivia",
+    "identity_evidence": "Armed Assault Wiki, CRV-6e_Bobcat, ARMA 3 Trivia (wikitext section 14): \"* As with its parent vehicle, the Bobcat is based on the real-world \"Namer\" APC. ** More specifically, it is a modified prototype variant known as the \"Achzaka\" ARV. In turn, the Achzaka resulted in the creation of the \"Nemmera\" ARV which is based on the \"Merkava Mark IV\" MBT chassis.\" Citation: https://armedassault.fandom.com/wiki/CRV-6e_Bobcat. The page asserts the basis twice: the Bobcat 'is based on the real-world \"Namer\" APC', and 'more specifically, it is a modified prototype variant known as the \"Achzaka\" ARV'. The corpus holds the Namer and not the Achzaka; the Achzarit entry is a different conversion and is not bound here. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "O_APC_Tracked_02_AA_F",
+    "class_token": "Tracked_APC",
+    "catalogue_id": "bm2t_stalker",
+    "identity_source": "armedassault_zsu39_tigris_trivia",
+    "identity_evidence": "Armed Assault Wiki, ZSU-39_Tigris, ARMA 3 Trivia (wikitext section 43): \"* Like the Kamysh, the chassis of the Tigris is likely based on the Belarusian-made \"BM-2T Stalker\" designed by Minotor Service Enterprise. ** However, its gun turret is a shared design (also used by the NATO Cheetah) that is modelled after the real-world \"Marksman\" anti-aircraft gun system then-designed by the British manufacturer Marconi Electronic Systems Limited (MES).\" Citation: https://armedassault.fandom.com/wiki/ZSU-39_Tigris. The page hedges: 'the chassis of the Tigris is likely based on the Belarusian-made \"BM-2T Stalker\" designed by Minotor Service Enterprise', and 'its gun turret is a shared design (also used by the NATO Cheetah) that is modelled after the real-world \"Marksman\" anti-aircraft gun system'. Both hedges are recorded and not upgraded. The Marksman turret is a subsystem and has no entry. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   }
 ]

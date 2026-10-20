@@ -59,6 +59,7 @@ private _table = [
     ["bae_systems_rg_33l_6x6", "wheeled", 0, 24000, 8585, 2438, 3454],
     ["bae_systems_rg_33l_socom_armored_utility_vehicle_auv", "wheeled", 0, 26473, 8839, 2769, 2845],
     ["bionix", "tracked", 1, 23000, 5900, 2700, 2600],
+    ["bm2t_stalker", "tracked", 1, 0, 0, 0, 0],
     ["bm_21_grad", "wheeled", 0, 13710, 7350, 2400, 3090],
     ["bmc_kirpi", "wheeled", 0, 20000, 7350, 2640, 3210],
     ["bmd_1", "tracked", 1, 7500, 5410, 2530, 1970],
