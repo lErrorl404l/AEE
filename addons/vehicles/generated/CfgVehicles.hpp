@@ -76,6 +76,7 @@ class CfgVehicles {
     class B_MBT_01_base_F;
     class Hatchback_01_base_F;
     class Hatchback_01_sport_base_F;
+    class Heli_Light_01_armed_base_F;
     class Heli_Light_01_civil_base_F;
     class Heli_Light_01_unarmed_base_F;
     class Heli_Transport_02_base_F;
@@ -99,14 +100,15 @@ class CfgVehicles {
         mass = 15559.394557;
     };
     class B_APC_Tracked_01_rcws_F: B_APC_Tracked_01_base_F {
+        maxSpeed = 85.2;
         mass = 12988.662235;
     };
     class B_APC_Wheeled_01_cannon_F: B_APC_Wheeled_01_base_F {
-        maxSpeed = 80;
+        maxSpeed = 100;
         mass = 15559.394557;
     };
     class B_MBT_01_cannon_F: B_MBT_01_base_F {
-        maxSpeed = 72;
+        maxSpeed = 64;
         mass = 62273.044493;
     };
     class B_MRAP_01_F: MRAP_01_base_F {
@@ -123,40 +125,37 @@ class CfgVehicles {
         mass = 1710.389328;
     };
     class C_Offroad_01_F: Offroad_01_civil_base_F {
-        maxSpeed = 160;
         mass = 1830.517007;
     };
     class C_SUV_01_F: SUV_01_base_F {
-        maxSpeed = 108;
         mass = 2002.127976;
     };
     class C_Van_01_transport_F: Van_01_transport_base_F {
-        maxSpeed = 90;
         mass = 3935.611564;
     };
     class I_APC_Wheeled_03_cannon_F: I_APC_Wheeled_03_base_F {
-        maxSpeed = 80;
+        maxSpeed = 110;
         mass = 15559.394557;
     };
     class I_APC_tracked_03_cannon_F: I_APC_tracked_03_base_F {
+        maxSpeed = 75;
         mass = 12988.662235;
     };
     class I_MBT_03_cannon_F: I_MBT_03_base_F {
-        maxSpeed = 72;
+        maxSpeed = 70;
         mass = 62273.044493;
     };
     class I_MRAP_03_F: MRAP_03_base_F {
         mass = 12725.525416;
     };
     class I_Truck_02_transport_F: Truck_02_transport_base_F {
-        maxSpeed = 88;
+        maxSpeed = 85;
         mass = 10870.982873;
     };
     class O_APC_Tracked_02_cannon_F: O_APC_Tracked_02_base_F {
         mass = 12988.662235;
     };
     class O_APC_Wheeled_02_rcws_v2_F: APC_Wheeled_02_base_v2_F {
-        maxSpeed = 80;
         mass = 15559.394557;
     };
     class O_MBT_02_cannon_F: O_MBT_02_base_F {
@@ -167,10 +166,13 @@ class CfgVehicles {
         mass = 12725.525416;
     };
     class O_Truck_02_transport_F: Truck_02_transport_base_F {
-        maxSpeed = 88;
+        maxSpeed = 85;
         mass = 10870.982873;
     };
     class B_Heli_Light_01_F: Heli_Light_01_unarmed_base_F {
+        fuelConsumptionRate = 0;
+    };
+    class B_Heli_Light_01_armed_F: Heli_Light_01_armed_base_F {
         fuelConsumptionRate = 0;
     };
     class C_Heli_Light_01_civil_F: Heli_Light_01_civil_base_F {
