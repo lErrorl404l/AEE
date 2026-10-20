@@ -2,57 +2,153 @@
   {
     "game_class": "C_Hatchback_01_F",
     "class_token": "Car",
-    "catalogue_id": "honda_civic_6gen_hatchback",
-    "identity_source": "aee_class_table",
-    "identity_evidence": "AEE class token Car; paired with the Honda Civic 6th generation hatchback. The class name does not name the catalogue vehicle, so the link stays class_only.",
+    "catalogue_id": "hyundai_iblue_concept",
+    "identity_source": "armedassault_hatchback_trivia",
+    "identity_evidence": "Armed Assault Wiki, Hatchback, ARMA 3 Trivia (wikitext section 72): \"* The ARMA 3 Hatchback is based on the 2007 model of the \"i-Blue\" concept car designed by Hyundai.\" Citation: https://armedassault.fandom.com/wiki/Hatchback. The page asserts the basis ('is based on ... designed by Hyundai'), which is the strongest form the source offers, but the source is an editor statement and not a manufacturer document. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   },
   {
     "game_class": "C_Hatchback_01_sport_F",
     "class_token": "Car",
-    "catalogue_id": "honda_civic_6gen_hatchback",
-    "identity_source": "aee_class_table",
-    "identity_evidence": "AEE class token Car; same hatchback body as C_Hatchback_01_F. The sport trim has no separate catalogue entry, so the base hatchback is used and the link stays class_only.",
+    "catalogue_id": "hyundai_iblue_concept",
+    "identity_source": "armedassault_hatchback_trivia",
+    "identity_evidence": "Armed Assault Wiki, Hatchback, ARMA 3 Trivia (wikitext section 72): \"* The ARMA 3 Hatchback is based on the 2007 model of the \"i-Blue\" concept car designed by Hyundai.\" Citation: https://armedassault.fandom.com/wiki/Hatchback. The page asserts the basis ('is based on ... designed by Hyundai'), which is the strongest form the source offers, but the source is an editor statement and not a manufacturer document. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   },
   {
     "game_class": "B_MRAP_01_F",
     "class_token": "MRAP",
     "catalogue_id": "m_atv_m1240",
-    "identity_source": "aee_class_table",
-    "identity_evidence": "AEE class token MRAP; class_map.json binds MRAP to the Oshkosh M-ATV M1240. The class name does not name the catalogue vehicle, so the link stays class_only.",
+    "identity_source": "armedassault_hunter_trivia",
+    "identity_evidence": "Armed Assault Wiki, Hunter, ARMA 3 Trivia (wikitext section 36): \"* The Hunter is directly based on the real-world \"M-ATV\" MRAP designed by the Oshkosh Corporation (parodied as an in-universe product of the \"Rozkos\" company).\" Citation: https://armedassault.fandom.com/wiki/Hunter. The page asserts the basis in its strongest form ('directly based on the real-world \"M-ATV\" MRAP designed by the Oshkosh Corporation'). The class is fictional, so the Field Manual statement behind the page is the strongest available evidence. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   },
   {
     "game_class": "I_MRAP_03_F",
     "class_token": "MRAP",
-    "catalogue_id": "m_atv_m1240",
-    "identity_source": "aee_class_table",
-    "identity_evidence": "AEE class token MRAP; the same catalogue MRAP as B_MRAP_01_F. The held catalogue holds one MRAP only, so both factions share it.",
+    "catalogue_id": "lgs_fennek_larv",
+    "identity_source": "armedassault_strider_trivia",
+    "identity_evidence": "Armed Assault Wiki, Strider, ARMA 3 Trivia (wikitext section 39): \"* The Strider is based on the real-world \"LGS Fennek\" LARV.\" Citation: https://armedassault.fandom.com/wiki/Strider. The page asserts the basis ('is based on the real-world \"LGS Fennek\" LARV'). It also states that the in-game classification as an MRAP is incorrect, because the real Fennek is a scout vehicle. The binding records the identity, not the game's category. The previous binding, the Oshkosh M-ATV M1240, is withdrawn: it rested on the MRAP token alone and no page names an M-ATV for the Strider. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   },
   {
     "game_class": "O_MRAP_02_F",
     "class_token": "MRAP",
-    "catalogue_id": "m_atv_m1240",
-    "identity_source": "aee_class_table",
-    "identity_evidence": "AEE class token MRAP; the same catalogue MRAP as B_MRAP_01_F. The held catalogue holds one MRAP only, so both factions share it.",
+    "catalogue_id": "zil_karatel",
+    "identity_source": "armedassault_ifrit_trivia",
+    "identity_evidence": "Armed Assault Wiki, Ifrit, ARMA 3 Trivia (wikitext section 36): \"* The Ifrit appears to be modelled after the ZiL \"Karatel\" (also known as the \"Punisher\" or \"Falcatus\"), an armoured vehicle in limited use with Russian security forces.\" Citation: https://armedassault.fandom.com/wiki/Ifrit. The page hedges: it says the Ifrit 'appears to be modelled after' the Karatel, and names the vehicle's alternate names ('Punisher' and 'Falcatus'). The hedge is recorded and not upgraded. The previous binding, the Oshkosh M-ATV M1240, is withdrawn: it rested on the class token MRAP alone and no page names an M-ATV for the Ifrit. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   },
   {
     "game_class": "B_MBT_01_cannon_F",
     "class_token": "Tank",
-    "catalogue_id": "m1_abrams",
-    "identity_source": "aee_class_table",
-    "identity_evidence": "AEE class token Tank; class_map.json binds Tank to the M1 Abrams. The class name does not name the catalogue vehicle, so the link stays class_only.",
+    "catalogue_id": "merkava_mk4",
+    "identity_source": "armedassault_m2a1_slammer_trivia",
+    "identity_evidence": "Armed Assault Wiki, M2A1_Slammer, ARMA 3 Trivia (wikitext section 41): \"* The Slammer is based on the Israeli-made \"Merkava Mark IV\" MBT. However, unlike the real-world Merkava tank, the in-game Slammer either has unrealistic features or lacks capabilities that it possesses in reality:\" Citation: https://armedassault.fandom.com/wiki/M2A1_Slammer. The page asserts the basis ('is based on the Israeli-made \"Merkava Mark IV\" MBT'). The page also lists the capabilities the in-game vehicle lacks, which does not change the identity. The previous binding, the M1 Abrams, is withdrawn: no page names an Abrams for the Slammer. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   },
   {
     "game_class": "I_MBT_03_cannon_F",
     "class_token": "Tank",
-    "catalogue_id": "m1_abrams",
-    "identity_source": "aee_class_table",
-    "identity_evidence": "AEE class token Tank; the same catalogue vehicle as B_MBT_01_cannon_F. The class name does not name the catalogue vehicle, so the link stays class_only.",
+    "catalogue_id": "leopard_2a6",
+    "identity_source": "armedassault_mbt52_kuma_trivia",
+    "identity_evidence": "Armed Assault Wiki, MBT-52_Kuma, ARMA 3 Trivia (wikitext section 45): \"* The Kuma is based on the real-world \"Leopard 2\" MBT. ** More specifically, it is based on the \"Revolution\" upgrade package made by Rheinmetall Defence AG that is designed to enhance the Leopard 2's capabilities in urban areas and low-intensity warfare.\" Citation: https://armedassault.fandom.com/wiki/MBT-52_Kuma. The page asserts the basis twice: 'The Kuma is based on the real-world \"Leopard 2\" MBT', and 'more specifically, it is based on the \"Revolution\" upgrade package made by Rheinmetall Defence AG'. The corpus holds the Leopard 2A6 and not the Revolution package, so the binding names the base vehicle and the evidence names the package. The previous binding, the M1 Abrams, is withdrawn: no page names an Abrams for the Kuma. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "B_APC_Tracked_01_rcws_F",
+    "class_token": "Tracked_APC",
+    "catalogue_id": "namer",
+    "identity_source": "armedassault_ifv6c_panther_trivia",
+    "identity_evidence": "Armed Assault Wiki, IFV-6c_Panther, ARMA 3 Trivia (wikitext section 38): \"* The Panther is based on the real-world \"Namer\" APC designed by IMI Systems Ltd of Israel.\" Citation: https://armedassault.fandom.com/wiki/IFV-6c_Panther. The page asserts the basis ('is based on the real-world \"Namer\" APC designed by IMI Systems Ltd of Israel'). The previous binding, the M113A2, is withdrawn: it rested on the Tracked_APC token alone and no page names an M113 for the Panther. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "I_APC_tracked_03_cannon_F",
+    "class_token": "Tracked_APC",
+    "catalogue_id": "fv510_warrior",
+    "identity_source": "armedassault_fv720_mora_trivia",
+    "identity_evidence": "Armed Assault Wiki, FV-720_Mora, ARMA 3 Trivia (wikitext section 46): \"* The Mora is based on the real-world \"FV510 Warrior\" IFV manufactured by BAE Systems.\" Citation: https://armedassault.fandom.com/wiki/FV-720_Mora. The page asserts the basis ('is based on the real-world \"FV510 Warrior\" IFV manufactured by BAE Systems'). The previous binding, the M113A2, is withdrawn: no page names an M113 for the Mora. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "O_APC_Tracked_02_cannon_F",
+    "class_token": "Tracked_APC",
+    "catalogue_id": "bm2t_stalker",
+    "identity_source": "armedassault_btrk_kamysh_trivia",
+    "identity_evidence": "Armed Assault Wiki, BTR-K_Kamysh, ARMA 3 Trivia (wikitext section 46): \"* The Kamysh's chassis appears to be loosely based on the \"BM-2T Stalker\" designed by the Belarusian vehicle manufacturer, Minotor Service Enterprise. On the other hand, its turret is modelled after the \"Samson RCWS-30\" designed by Rafael Advanced Defense Systems of Israel.\" Citation: https://armedassault.fandom.com/wiki/BTR-K_Kamysh. The page hedges: 'The Kamysh's chassis appears to be loosely based on the \"BM-2T Stalker\" designed by the Belarusian vehicle manufacturer, Minotor Service Enterprise', and 'its turret is modelled after the \"Samson RCWS-30\"'. Both hedges are recorded and not upgraded. The Samson turret is a subsystem and has no entry. The previous binding, the M113A2, is withdrawn: no page names an M113 for the Kamysh. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "B_Truck_01_transport_F",
+    "class_token": "Truck",
+    "catalogue_id": "m977_hemtt",
+    "identity_source": "armedassault_hemtt_trivia",
+    "identity_evidence": "Armed Assault Wiki, HEMTT, ARMA 3 Trivia (wikitext section 40): \"* The HEMTT is based on its real-life vehicle of the same name, the Oshkosh \"M977\" heavy utility truck used by all branches of the U.S. military and several other nations (both NATO and non-NATO).\" Citation: https://armedassault.fandom.com/wiki/HEMTT. The page asserts the basis ('is based on its real-life vehicle of the same name, the Oshkosh \"M977\" heavy utility truck used by all branches of the U.S. military and several other nations'). The corpus holds the M977 HEMTT. The previous binding, the M923A2, is withdrawn: no page names an M923 for the HEMTT. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "I_Truck_02_transport_F",
+    "class_token": "Truck",
+    "catalogue_id": "kamaz_4310",
+    "identity_source": "armedassault_zamak_trivia",
+    "identity_evidence": "Armed Assault Wiki, Zamak, ARMA 3 Trivia (wikitext section 15): \"* Zamak is simply Kamaz spelt backwards, which is the name of the company that designs the real-life \"KamAZ-4310\" family of trucks that the Zamak is based on.\" Citation: https://armedassault.fandom.com/wiki/Zamak. The page asserts the basis ('Zamak is simply Kamaz spelt backwards, which is the name of the company that designs the real-life \"KamAZ-4310\" family of trucks that the Zamak is based on'). The corpus holds the KamAZ-4310. The previous binding, the M923A2, is withdrawn: no page names an M923 for the Zamak. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "O_Truck_02_transport_F",
+    "class_token": "Truck",
+    "catalogue_id": "kamaz_4310",
+    "identity_source": "armedassault_zamak_trivia",
+    "identity_evidence": "Armed Assault Wiki, Zamak, ARMA 3 Trivia (wikitext section 15): \"* Zamak is simply Kamaz spelt backwards, which is the name of the company that designs the real-life \"KamAZ-4310\" family of trucks that the Zamak is based on.\" Citation: https://armedassault.fandom.com/wiki/Zamak. The page asserts the basis ('Zamak is simply Kamaz spelt backwards, which is the name of the company that designs the real-life \"KamAZ-4310\" family of trucks that the Zamak is based on'). The corpus holds the KamAZ-4310. The previous binding, the M923A2, is withdrawn: no page names an M923 for the Zamak. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "B_APC_Wheeled_01_cannon_F",
+    "class_token": "Wheeled_APC",
+    "catalogue_id": "patria_amv",
+    "identity_source": "armedassault_amv7_marshall_trivia",
+    "identity_evidence": "Armed Assault Wiki, AMV-7_Marshall, ARMA 3 Trivia (wikitext section 44): \"* The Marshall is based on the real-world \"Armored Modular Vehicle\" designed by Patria of Finland. ** More specifically, it is based on the \"Badger\" IFV, a locally manufactured variant of the AMV designed by Denel SOC Ltd of South Africa. The Badger combines the AMV's chassis with that of Denel's \"Modular Combat Turret\" (MCT), though the real Badger uses a 30 mm autocannon as opposed to the Marshall's 40 mm.\" Citation: https://armedassault.fandom.com/wiki/AMV-7_Marshall. The page asserts the basis twice: the Marshall 'is based on the real-world \"Armored Modular Vehicle\" designed by Patria of Finland', and 'more specifically, it is based on the \"Badger\" IFV, a locally manufactured variant of the AMV designed by Denel SOC Ltd of South Africa'. The corpus holds the Patria AMV and not the Badger variant, so the binding names the base vehicle and the evidence names the variant. The Badger variant is recorded as a missing capture in data/vehicle/RESEARCH_GAPS.md. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "I_APC_Wheeled_03_cannon_F",
+    "class_token": "Wheeled_APC",
+    "catalogue_id": "pandur_ii",
+    "identity_source": "armedassault_afv4_gorgon_trivia",
+    "identity_evidence": "Armed Assault Wiki, AFV-4_Gorgon, ARMA 3 Trivia (wikitext section 48): \"* The Gorgon is based on the real-world 8x8 variant of the \"Pandur II\".\" Citation: https://armedassault.fandom.com/wiki/AFV-4_Gorgon. The page asserts the basis ('is based on the real-world 8x8 variant of the \"Pandur II\"'). The corpus holds the Pandur II 8x8. The previous binding, the BTR-80, is withdrawn: it rested on the Wheeled_APC token alone and no page names a BTR for the Gorgon. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "O_APC_Wheeled_02_rcws_v2_F",
+    "class_token": "Wheeled_APC",
+    "catalogue_id": "otokar_arma_6x6",
+    "identity_source": "armedassault_mse3_marid_trivia",
+    "identity_evidence": "Armed Assault Wiki, MSE-3_Marid, ARMA 3 Trivia (wikitext section 39): \"* The Marid is based on the real-world 6x6 variant of the \"Arma\", a Turkish-made APC designed by Otokar. The in-game vehicle is in turn parodied as the product of an Armaverse company named \"Otorak\", a deliberate misspelling of the real company's name.\" Citation: https://armedassault.fandom.com/wiki/MSE-3_Marid. The page asserts the basis ('is based on the real-world 6x6 variant of the \"Arma\", a Turkish-made APC designed by Otokar'). The previous binding, the BTR-80, is withdrawn: it rested on the Wheeled_APC token alone and no page names a BTR for the Marid. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "C_Offroad_01_F",
+    "class_token": "Car",
+    "catalogue_id": "offroad_q7_l200_composite",
+    "identity_source": "armedassault_offroad_trivia",
+    "identity_evidence": "Armed Assault Wiki, Offroad, ARMA 3 Trivia: \"ARMA 3's Offroad appears to be an amalgamation of two vehicle designs with custom body parts mixed in: it takes the front end of the Audi \\\"Q7\\\" (pickup configuration concept) while the rear resembles the Mitsubishi \\\"L200\\\".\" The link is graded claimed because the page hedges ('appears to be') and names two donors, not one vehicle. The previous bindings, the Land Rover Wolf and the Toyota Land Cruiser J70, are withdrawn: no page read names a Land Rover for an Offroad, and the Toyota Hilux statement belongs to Armed Assault.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "C_SUV_01_F",
+    "class_token": "Car",
+    "catalogue_id": "bmw_x6_concept",
+    "identity_source": "armedassault_suv_trivia",
+    "identity_evidence": "Armed Assault Wiki, SUV, ARMA 3 Trivia (wikitext section 47): \"* ARMA 3's SUV appears to be based on the real-world BMW \"X6\" (specifically the X6's concept car model). Accordingly, the in-universe SUV is manufactured by an Armaverse company called \"FTW\".\" Citation: https://armedassault.fandom.com/wiki/SUV. The page hedges: it says the SUV 'appears to be based on' the BMW X6, specifically the X6's concept car model. The hedge is recorded and not upgraded. The previous binding, the Peugeot P4, is withdrawn because no page read for this research names a Peugeot for the ARMA 3 SUV. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "C_Van_01_transport_F",
+    "class_token": "Car",
+    "catalogue_id": "mercedes_benz_sprinter",
+    "identity_source": "armedassault_van_trivia",
+    "identity_evidence": "Armed Assault Wiki, Van, ARMA 3 Trivia (wikitext section 18): \"* The Van is based on the \"Sprinter\" series of commercial vehicles manufactured by Germany-based automotive company Mercedes-Benz, a subsidiary of Daimler AG.\" Citation: https://armedassault.fandom.com/wiki/Van. The page asserts the basis ('is based on the 'Sprinter' series ... manufactured by ... Mercedes-Benz') and names the series, not a model mark. It cites the Bohemia Interactive OPREP for IDAP. The previous binding, the GAZ-66, is withdrawn: no page read for this research names a GAZ for the ARMA 3 Van. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   },
   {
@@ -60,55 +156,7 @@
     "class_token": "Tank",
     "catalogue_id": "m1_abrams",
     "identity_source": "aee_class_table",
-    "identity_evidence": "AEE class token Tank; the same catalogue vehicle as B_MBT_01_cannon_F. The class name does not name the catalogue vehicle, so the link stays class_only.",
-    "grade": "claimed"
-  },
-  {
-    "game_class": "B_APC_Tracked_01_rcws_F",
-    "class_token": "Tracked_APC",
-    "catalogue_id": "m113a2",
-    "identity_source": "aee_class_table",
-    "identity_evidence": "AEE class token Tracked_APC; class_map.json binds Tracked_APC to the M113A2. The plan example used the M577A2 gross of 11719 kg, a 3 percent difference inside the same M113 family. The link stays class_only.",
-    "grade": "claimed"
-  },
-  {
-    "game_class": "I_APC_tracked_03_cannon_F",
-    "class_token": "Tracked_APC",
-    "catalogue_id": "m113a2",
-    "identity_source": "aee_class_table",
-    "identity_evidence": "AEE class token Tracked_APC; the same catalogue vehicle as B_APC_Tracked_01_rcws_F. The class name does not name the catalogue vehicle, so the link stays class_only.",
-    "grade": "claimed"
-  },
-  {
-    "game_class": "O_APC_Tracked_02_cannon_F",
-    "class_token": "Tracked_APC",
-    "catalogue_id": "m113a2",
-    "identity_source": "aee_class_table",
-    "identity_evidence": "AEE class token Tracked_APC; the same catalogue vehicle as B_APC_Tracked_01_rcws_F. The class name does not name the catalogue vehicle, so the link stays class_only.",
-    "grade": "claimed"
-  },
-  {
-    "game_class": "B_Truck_01_transport_F",
-    "class_token": "Truck",
-    "catalogue_id": "m923a2",
-    "identity_source": "aee_class_table",
-    "identity_evidence": "AEE class token Truck; class_map.json binds Truck to the M923A2 5 ton 6x6 cargo truck. The class name does not name the catalogue vehicle, so the link stays class_only.",
-    "grade": "claimed"
-  },
-  {
-    "game_class": "I_Truck_02_transport_F",
-    "class_token": "Truck",
-    "catalogue_id": "m923a2",
-    "identity_source": "aee_class_table",
-    "identity_evidence": "AEE class token Truck; the same catalogue truck as B_Truck_01_transport_F. The class name does not name the catalogue vehicle, so the link stays class_only.",
-    "grade": "claimed"
-  },
-  {
-    "game_class": "O_Truck_02_transport_F",
-    "class_token": "Truck",
-    "catalogue_id": "m923a2",
-    "identity_source": "aee_class_table",
-    "identity_evidence": "AEE class token Truck; the same catalogue truck as B_Truck_01_transport_F. The class name does not name the catalogue vehicle, so the link stays class_only.",
+    "identity_evidence": "AEE class token Tank; the same catalogue vehicle as B_MBT_01_cannon_F. The class name does not name the catalogue vehicle, so the link stays class_only. Retained on 2026-10-20 without a source: the Armed Assault Wiki research neither states a counterpart for this class nor holds one for its family, so the existing engine class-table link is left in place rather than replaced by a guess. data/vehicle/RESEARCH_GAPS.md records the open question. The concrete binding cannot be dropped yet because data/physics/mass_calibration.json is an approved artefact whose row set must equal the bound classes: removing the binding needs a census re-run and operator re-approval.",
     "grade": "claimed"
   },
   {
@@ -116,55 +164,7 @@
     "class_token": "Wheeled_APC",
     "catalogue_id": "btr_80",
     "identity_source": "aee_class_table",
-    "identity_evidence": "AEE class token Wheeled_APC; the same catalogue vehicle as B_APC_Wheeled_01_cannon_F. The gun-armed wheeled AFV is heavier than the BTR-80, so the pairing is weak and recorded as such.",
-    "grade": "claimed"
-  },
-  {
-    "game_class": "B_APC_Wheeled_01_cannon_F",
-    "class_token": "Wheeled_APC",
-    "catalogue_id": "btr_80",
-    "identity_source": "aee_class_table",
-    "identity_evidence": "AEE class token Wheeled_APC; class_map.json binds Wheeled_APC to the BTR-80. The class name does not name the catalogue vehicle, so the link stays class_only.",
-    "grade": "claimed"
-  },
-  {
-    "game_class": "I_APC_Wheeled_03_cannon_F",
-    "class_token": "Wheeled_APC",
-    "catalogue_id": "btr_80",
-    "identity_source": "aee_class_table",
-    "identity_evidence": "AEE class token Wheeled_APC; the same catalogue vehicle as B_APC_Wheeled_01_cannon_F. The class name does not name the catalogue vehicle, so the link stays class_only.",
-    "grade": "claimed"
-  },
-  {
-    "game_class": "O_APC_Wheeled_02_rcws_v2_F",
-    "class_token": "Wheeled_APC",
-    "catalogue_id": "btr_80",
-    "identity_source": "aee_class_table",
-    "identity_evidence": "AEE class token Wheeled_APC; the same catalogue vehicle as B_APC_Wheeled_01_cannon_F. The class name does not name the catalogue vehicle, so the link stays class_only.",
-    "grade": "claimed"
-  },
-  {
-    "game_class": "C_Offroad_01_F",
-    "class_token": "Car",
-    "catalogue_id": "land_rover_wolf_xd_110",
-    "identity_source": "aee_class_table",
-    "identity_evidence": "AEE class token Car; the class is a light off-road 4x4 utility vehicle, paired with the held Land Rover Wolf (XD 110) light off-road utility 4x4. The class name does not name the catalogue vehicle, so the link stays class_only.",
-    "grade": "claimed"
-  },
-  {
-    "game_class": "C_SUV_01_F",
-    "class_token": "Car",
-    "catalogue_id": "peugeot_p4",
-    "identity_source": "aee_class_table",
-    "identity_evidence": "AEE class token Car; the class is a sport utility vehicle, paired with the held Peugeot P4 light 4x4 utility. The held catalogue holds no sport utility vehicle, so the pairing is weak and recorded as such.",
-    "grade": "claimed"
-  },
-  {
-    "game_class": "C_Van_01_transport_F",
-    "class_token": "Car",
-    "catalogue_id": "gaz_66",
-    "identity_source": "aee_class_table",
-    "identity_evidence": "AEE class token Car; the class is a light commercial van, paired with the held GAZ-66 light utility truck. The held catalogue holds no van, so the pairing is weak and recorded as such.",
+    "identity_evidence": "AEE class token Wheeled_APC; the same catalogue vehicle as B_APC_Wheeled_01_cannon_F. The gun-armed wheeled AFV is heavier than the BTR-80, so the pairing is weak and recorded as such. Retained on 2026-10-20 without a source: the Armed Assault Wiki research neither states a counterpart for this class nor holds one for its family, so the existing engine class-table link is left in place rather than replaced by a guess. data/vehicle/RESEARCH_GAPS.md records the open question. The concrete binding cannot be dropped yet because data/physics/mass_calibration.json is an approved artefact whose row set must equal the bound classes: removing the binding needs a census re-run and operator re-approval.",
     "grade": "claimed"
   }
 ]

@@ -1,11 +1,10 @@
 # modded match coverage gaps: aircraft
-# 9 unresolved of 223 modded classes (96.0% resolved)
+# 8 unresolved of 223 modded classes (96.4% resolved)
 # class	display	parent	source
 ARMAFPV_Crocus_AP_Base	Crocus AP	ARMAFPV_Crocus_AT_Base	ArmaFPV.pbo
 ARMAFPV_Crocus_AT_Base	Crocus AT	drone_base_F	ArmaFPV.pbo
 B_Crocus_AP_TI	Crocus AP TI	B_Crocus_AP	ArmaFPV.pbo
 B_Crocus_AT_TI	Crocus AT TI	B_Crocus_AT	ArmaFPV.pbo
-drone_base_F	AR-2 Darter	Helicopter_Base_F	ArmaFPV.pbo
 I_Crocus_AP_TI	Crocus AP TI	I_Crocus_AP	ArmaFPV.pbo
 I_Crocus_AT_TI	Crocus AT TI	I_Crocus_AT	ArmaFPV.pbo
 O_Crocus_AP_TI	Crocus AP TI	O_Crocus_AP	ArmaFPV.pbo

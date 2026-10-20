@@ -1,0 +1,29 @@
+{
+  "retrieved": "2026-10-20",
+  "note": "Capture for the 2007 Hyundai \"i-Blue\" concept car, the design the Armed Assault Wiki names for the ARMA 3 Hatchback. The source states the basis and publishes no mass, dimension, engine or tyre figure, so the entry is identity only and every runtime field resolves to a labelled absent zero. The capture holds one entry and the retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "hyundai_iblue_concept",
+      "canonical_name": "Hyundai i-Blue concept car",
+      "maker": "Hyundai",
+      "model": "i-Blue",
+      "variant": "2007 concept car",
+      "variant_id": "hyundai_iblue_concept",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "South Korea",
+      "era": "modern",
+      "aliases": [
+        "hatchback",
+        "hyundai i-blue",
+        "i-blue",
+        "iblue"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "identity_only": true,
+      "values": {}
+    }
+  ]
+}

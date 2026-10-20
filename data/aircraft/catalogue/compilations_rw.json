@@ -18,7 +18,8 @@
       "era": "historical",
       "aliases": [
         "comanche",
-        "rah66"
+        "rah66",
+        "blackfoot"
       ],
       "keywords": [
         "scout",
@@ -51,7 +52,10 @@
       "era": "contemporary",
       "aliases": [
         "black hawk",
-        "uh60"
+        "uh60",
+        "ghost hawk",
+        "ghost",
+        "mh-80"
       ],
       "keywords": [
         "utility",
@@ -257,7 +261,8 @@
       "era": "contemporary",
       "aliases": [
         "havoc",
-        "mi28"
+        "mi28",
+        "kajman"
       ],
       "keywords": [
         "attack",

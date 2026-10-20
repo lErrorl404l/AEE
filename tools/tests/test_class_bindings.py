@@ -82,7 +82,15 @@ class ClassBindingsTest(unittest.TestCase):
         self.assertTrue(any("unknown identity_source" in e for e in errors), errors)
 
     def test_a_claimed_engine_binding_names_the_token(self) -> None:
+        # The rule fires on engine evidence only. The researched bindings cite
+        # wiki pages, so point one record at the engine class table first.
         records = copy.deepcopy(self.records)
+        engine = next(
+            source_id
+            for source_id, source in self.sources.items()
+            if source.get("type") in v.catalogue.ENGINE_MAPPING_SOURCE_TYPES
+        )
+        records[0]["identity_source"] = engine
         records[0]["identity_evidence"] = "no token named here"
         errors = v.validate_bindings(records, self.ids, self.sources)
         self.assertTrue(

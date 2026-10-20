@@ -18,7 +18,8 @@
       "era": "contemporary",
       "aliases": [
         "md500",
-        "hummingbird"
+        "hummingbird",
+        "pawnee"
       ],
       "keywords": [
         "light",
@@ -83,7 +84,6 @@
       "era": "contemporary",
       "aliases": [
         "md530",
-        "pawnee",
         "defender"
       ],
       "keywords": [
@@ -132,7 +132,8 @@
       "country": "US",
       "era": "contemporary",
       "aliases": [
-        "md500 civil"
+        "md500 civil",
+        "m900"
       ],
       "keywords": [
         "civil",

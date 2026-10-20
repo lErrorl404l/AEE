@@ -13,22 +13,27 @@ that stay open on purpose. Each closed class names the catalogue entry it
 must resolve to. Each open class is listed with the reason it stays open, so
 a later change that closes or breaks one shows up here.
 
-The two tables are independent. The vehicle table closed sixteen modded
+The two tables are independent. The vehicle table closed twenty-one modded
 classes: the RHS M1237 RG-33L "Plus" and M1239 SOCOM AUV families, the
-PHAN Typhoon truck, the four Tahoe marks, the RHS Object 681 and the Jbad
-Caterpillar 789D. The aircraft table closed none: every modded aircraft gap
-is an ArmaFPV first-person-view drone whose own text ("Crocus AT TI", "AR-2
-Darter") states no designation any published source holds, so a row would
+PHAN Typhoon truck, the four Tahoe marks, the RHS Object 681, the Jbad
+Caterpillar 789D, and the five the counterpart research closed (the SUV, the
+Hatchback, the two Van re-uses and the RHS civilian Zamak retexture). The
+aircraft table closed one: the base game's fictional AR-2 Darter, whose
+display name the wiki ties to the Parrot AR.Drone 2.0. Every remaining
+aircraft gap is an ArmaFPV first-person-view drone whose own text ("Crocus
+AT TI") states no designation any published source holds, so a row would
 have to invent one.
 
-The second round closed no further vehicle class and the closed count stays
-sixteen. The remaining twenty-nine vehicle gaps are locked below with the
-reason each stays open, and data/vehicle/MODDED_CLASS_GAPS.md holds the same
-table with its evidence. The KamAZ-4310 entry publishes the real truck, but
-no installed class names the model: the Project OPFOR trucks state "KAMAZ"
-and a body word alone, and the class name carries no 4310 token, so an
-alias on the maker word would capture the RHS KamAZ-5350 as well. That is a
-false answer, not a closure, so the entry binds no class.
+The remaining nineteen vehicle gaps are locked below with the reason each
+stays open, and data/vehicle/MODDED_CLASS_GAPS.md holds the same table with
+its evidence. The KamAZ-4310 entry publishes the real truck and binds the
+Arma 3 Zamak classes through the wiki's own statement ("Zamak is simply
+Kamaz spelt backwards, which is the name of the company that designs the
+real-life "KamAZ-4310" family of trucks that the Zamak is based on"). The
+Project OPFOR KAMAZ trucks are retextures of that Zamak, but no source
+states the chain and their own text carries no 4310 token, so they stay
+open. An alias on the maker word would close them and capture the RHS
+KamAZ-5350 at the same time. That is a false answer, not a closure.
 
 Run: python3 -m unittest tools.tests.test_mod_class_resolution -v
 """
@@ -89,6 +94,13 @@ CLOSED_VEHICLE_CASES: tuple[tuple[str, str, str], ...] = (
     ("tahoe_LUMI", "Chevrolet Tahoe'08 Lumi Edition", "chevrolet_tahoe_gmt900"),
     ("rhs_Ob_681_2", "Obyekt-681-2", "object_681"),
     ("Jbad_cat_dumper", "Cat 789D", "caterpillar_789d"),
+    # Closed by the 2026-10-20 counterpart research: each display name now
+    # carries a maker or a model the wiki names, so the ladder resolves it.
+    ("LOP_SUV_base", "SUV", "bmw_x6_concept"),
+    ("LOP_Hatchback_base", "Hatchback", "hyundai_iblue_concept"),
+    ("CBRN_Containment_Vehicle", "Van (Utility)", "mercedes_benz_sprinter"),
+    ("Gendarmerie_CBRN_Vehicle", "Van (Utility)", "mercedes_benz_sprinter"),
+    ("RHS_Civ_Truck_02_transport_F", "Zamak Transport", "kamaz_4310"),
 )
 
 # Modded classes that stay open on the vehicle side, with the reason.
@@ -107,70 +119,46 @@ VEHICLE_EMPLACEMENT_CASES: tuple[str, ...] = (
 # A mod that re-uses a base-game FICTIONAL vehicle carries the base game's
 # own unresolved identity: the display name is the fictional one ("Offroad",
 # "SUV", "Hatchback", "Zamak Transport", "Van (Utility)") and the class text
-# states no real designation. The corpus holds two conflicting real-world
-# links for the Arma 3 Offroad (data/vehicle/class_bindings.json names the
-# Land Rover Wolf; data/vehicle/stringtable_bindings.json names the Toyota
-# Land Cruiser J70), so promoting either to an alias would invent an answer.
+# states no real designation. The Arma 3 Offroad is the one that stays open
+# after the counterpart research: its real identity is a composite (Audi Q7
+# pickup-concept front, Mitsubishi L200 rear), so a class text that names
+# only the fictional name names neither donor. The SUV, Hatchback, Van and
+# RHS Zamak re-uses now resolve and are locked as closed cases below.
 VEHICLE_FICTIONAL_REUSE_CASES: tuple[tuple[str, str, str], ...] = (
     (
         "LOP_Offroad_base",
         "Offroad",
-        "fictional Offroad display; the corpus holds two conflicting real links (Land Rover Wolf, Toyota Land Cruiser J70)",
+        "fictional Offroad display; the real identity is a two-donor composite and the text names neither donor",
     ),
     (
         "LOP_Offroad_M2_base",
         "Offroad (M2)",
-        "fictional Offroad display; same contested real identity, plus an Arma-only M2 mount",
+        "fictional Offroad display; the same composite identity, plus an Arma-only M2 mount",
     ),
     (
         "CBRN_Offroad",
         "Offroad",
-        "fictional Offroad display; same contested real identity as the base game",
+        "fictional Offroad display; the same composite identity as the base game",
     ),
     (
         "LOP_AA_Offroad",
         "ANA Offroad",
-        "fictional Offroad display behind a faction prefix; no real model published",
+        "fictional Offroad display behind a faction prefix; the text names no donor",
     ),
     (
         "LOP_AA_Offroad_Police",
         "ANP Offroad",
-        "fictional Offroad display behind a faction prefix; no real model published",
+        "fictional Offroad display behind a faction prefix; the text names no donor",
     ),
     (
         "LOP_AA_Offroad_M2",
         "ANA Offroad (M2)",
-        "fictional Offroad display behind a faction prefix; no real model published",
+        "fictional Offroad display behind a faction prefix; the text names no donor",
     ),
     (
         "LOP_AA_Offroad_M2_Police",
         "ANP Offroad (M2)",
-        "fictional Offroad display behind a faction prefix; no real model published",
-    ),
-    (
-        "LOP_SUV_base",
-        "SUV",
-        "fictional SUV display; the text names a body class, not a model",
-    ),
-    (
-        "LOP_Hatchback_base",
-        "Hatchback",
-        "fictional Hatchback display; the text names a body class, not a model",
-    ),
-    (
-        "CBRN_Containment_Vehicle",
-        "Van (Utility)",
-        "fictional Van display; the text names a body class, not a model",
-    ),
-    (
-        "Gendarmerie_CBRN_Vehicle",
-        "Van (Utility)",
-        "fictional Van display; the text names a body class, not a model",
-    ),
-    (
-        "RHS_Civ_Truck_02_transport_F",
-        "Zamak Transport",
-        "fictional Zamak display; the RHS civilian retexture names no real model",
+        "fictional Offroad display behind a faction prefix; the text names no donor",
     ),
 )
 
@@ -181,7 +169,9 @@ VEHICLE_FICTIONAL_REUSE_CASES: tuple[tuple[str, str, str], ...] = (
 # anywhere, so the maker plus a body cannot name the KamAZ-4310 without
 # capturing the RHS KamAZ-5350 classes at the same time. The family base
 # classes (FMTV, the LOP "_base" scaffolding) state a family, and a family is
-# not one vehicle, so the catalogue correctly refuses to name one.
+# not one vehicle, so the catalogue correctly refuses to name one. The Zamak
+# classes these trucks retexture are bound to the KamAZ-4310, but no read
+# source states the retexture chain, so the retextures stay open.
 VEHICLE_MAKER_OR_FAMILY_CASES: tuple[tuple[str, str, str], ...] = (
     (
         "LOP_KAMAZ_fuel_base",
@@ -246,11 +236,10 @@ VEHICLE_MAKER_OR_FAMILY_CASES: tuple[tuple[str, str, str], ...] = (
 )
 
 # Modded aircraft gaps. Every one is an ArmaFPV FPV drone or its base class.
-# No published source designates a "Crocus" FPV drone, and the "AR-2 Darter"
-# display belongs to the base game's own fictional quadcopter, so the corpus
-# cannot name them without inventing a designation.
+# No published source designates a "Crocus" FPV drone, so the corpus cannot
+# name them without inventing a designation. The base game's "AR-2 Darter"
+# display now resolves to the Parrot AR.Drone 2.0 and is locked as closed.
 AIRCRAFT_OPEN_CASES: tuple[tuple[str, str], ...] = (
-    ("drone_base_F", "AR-2 Darter"),
     ("ARMAFPV_Crocus_AT_Base", "Crocus AT"),
     ("ARMAFPV_Crocus_AP_Base", "Crocus AP"),
     ("O_Crocus_AT_TI", "Crocus AT TI"),
@@ -261,10 +250,12 @@ AIRCRAFT_OPEN_CASES: tuple[tuple[str, str], ...] = (
     ("I_Crocus_AP_TI", "Crocus AP TI"),
 )
 
-# Modded aircraft classes that resolve. The aircraft corpus holds only the
-# types the AEE identity contract supports, and no modded aircraft gap fell
-# inside one, so the closed set is empty rather than absent.
-CLOSED_AIRCRAFT_CASES: tuple[tuple[str, str, str], ...] = ()
+# The modded aircraft classes that resolve. The drone_base_F row is the base
+# game's fictional quadcopter; the wiki names the Parrot AR.Drone 2.0 for it
+# at grade "resemblance", which is enough for the keyword layer.
+CLOSED_AIRCRAFT_CASES: tuple[tuple[str, str, str], ...] = (
+    ("drone_base_F", "AR-2 Darter", "parrot_ar_drone_2"),
+)
 
 
 def fold(text: str) -> str:
@@ -363,8 +354,8 @@ class ClosedModdedVehicleTest(unittest.TestCase):
     def setUpClass(cls) -> None:
         cls.table = rows(VEHICLE_MATCH)
 
-    def test_the_closed_modded_vehicle_class_count_is_sixteen(self) -> None:
-        self.assertEqual(16, len(CLOSED_VEHICLE_CASES))
+    def test_the_closed_modded_vehicle_class_count_is_twenty_one(self) -> None:
+        self.assertEqual(21, len(CLOSED_VEHICLE_CASES))
 
     def test_each_closed_modded_vehicle_class_resolves(self) -> None:
         for name, display, want in CLOSED_VEHICLE_CASES:
@@ -402,16 +393,13 @@ class OpenModdedVehicleTest(unittest.TestCase):
             with self.subTest(game_class=name):
                 self.assertIsNone(resolve(self.table, name))
 
-    def test_the_open_modded_vehicle_class_count_is_twenty_nine(self) -> None:
-        # Five emplacements, twelve fictional re-uses and twelve maker or
-        # family names. The count is the measured modded gap list, so a
-        # class that leaves one table has to arrive in another.
-        total = (
-            len(VEHICLE_EMPLACEMENT_CASES)
-            + len(VEHICLE_FICTIONAL_REUSE_CASES)
-            + len(VEHICLE_MAKER_OR_FAMILY_CASES)
-        )
-        self.assertEqual(29, total)
+    def test_the_open_modded_vehicle_class_count_is_nineteen(self) -> None:
+        # Seven fictional re-uses and twelve maker or family names. The count
+        # is the measured modded gap list, so a class that leaves one table
+        # has to arrive in another. The five StaticWeapon emplacements are
+        # excluded from the denominator by kind, so they are not gaps.
+        total = len(VEHICLE_FICTIONAL_REUSE_CASES) + len(VEHICLE_MAKER_OR_FAMILY_CASES)
+        self.assertEqual(19, total)
 
     def test_every_open_class_states_a_one_line_reason(self) -> None:
         for name, _display, reason in (
@@ -433,12 +421,14 @@ class OpenModdedVehicleTest(unittest.TestCase):
 
 
 class Kamaz4310EntryTest(unittest.TestCase):
-    """The KamAZ-4310 entry publishes the truck and binds no game class.
+    """The KamAZ-4310 entry publishes the truck and binds the Zamak classes.
 
-    No installed class text names the model, so a maker alias would have to
-    carry the closure. A "kamaz" alias would also capture the RHS KamAZ-5350
-    classes, which is a false answer, so the entry advertises the model only
-    and the maker-name classes stay open.
+    The wiki states the relation: "Zamak is simply Kamaz spelt backwards ...
+    the real-life "KamAZ-4310" family of trucks that the Zamak is based on".
+    That statement carries the Arma 3 Zamak classes to the entry. It does not
+    carry the Project OPFOR KAMAZ retextures: no source says they retexture the
+    Zamak, and a "kamaz" alias would also capture the RHS KamAZ-5350 classes,
+    which is a false answer, so those classes stay open.
     """
 
     table: list[dict[str, object]] = []
@@ -485,7 +475,7 @@ class Kamaz4310EntryTest(unittest.TestCase):
 
 
 class OpenModdedAircraftTest(unittest.TestCase):
-    """The modded aircraft gaps stay open and the closed set is locked empty."""
+    """The modded aircraft gaps stay open and the closed set is locked."""
 
     table: list[dict[str, object]] = []
 
@@ -493,8 +483,13 @@ class OpenModdedAircraftTest(unittest.TestCase):
     def setUpClass(cls) -> None:
         cls.table = rows(AIRCRAFT_MATCH)
 
-    def test_the_closed_modded_aircraft_class_count_is_zero(self) -> None:
-        self.assertEqual(0, len(CLOSED_AIRCRAFT_CASES))
+    def test_the_closed_modded_aircraft_class_count_is_one(self) -> None:
+        self.assertEqual(1, len(CLOSED_AIRCRAFT_CASES))
+
+    def test_each_closed_modded_aircraft_class_resolves(self) -> None:
+        for name, display, want in CLOSED_AIRCRAFT_CASES:
+            with self.subTest(game_class=name):
+                self.assertEqual(want, resolve(self.table, name, display))
 
     def test_every_modded_aircraft_gap_stays_open(self) -> None:
         for name, display in AIRCRAFT_OPEN_CASES:

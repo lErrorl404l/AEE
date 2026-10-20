@@ -1,0 +1,28 @@
+{
+  "retrieved": "2026-10-20",
+  "note": "Capture for the Mercedes-Benz Sprinter series, the vehicle the Armed Assault Wiki names for the ARMA 3 Van, Truck Boxer and Fuel Truck. The page names the series and no model mark, and publishes no mass, dimension, engine or tyre figure, so the entry is identity only and every runtime field resolves to a labelled absent zero.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "mercedes_benz_sprinter",
+      "canonical_name": "Mercedes-Benz Sprinter",
+      "maker": "Mercedes-Benz",
+      "model": "Sprinter",
+      "variant": "commercial vehicle series",
+      "variant_id": "mercedes_benz_sprinter",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "Germany",
+      "era": "modern",
+      "aliases": [
+        "mercedes-benz sprinter",
+        "sprinter",
+        "van"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "identity_only": true,
+      "values": {}
+    }
+  ]
+}

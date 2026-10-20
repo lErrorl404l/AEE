@@ -1,0 +1,30 @@
+{
+  "retrieved": "2026-10-20",
+  "note": "Capture for the BM-2T Stalker, the Belarusian chassis the Armed Assault Wiki names for the ARMA 3 BTR-K Kamysh and ZSU-39 Tigris. The page hedges ('appears to be loosely based on' for the Kamysh, 'is likely based on' for the Tigris), so the grade stays claimed with the hedge recorded. The Samson RCWS-30 and Marksman turrets are subsystems and stay as notes. The page publishes no mass, dimension, engine or tyre figure, so the entry is identity only and every runtime field resolves to a labelled absent zero.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "bm2t_stalker",
+      "canonical_name": "BM-2T Stalker",
+      "maker": "Minotor Service Enterprise",
+      "model": "BM-2T Stalker",
+      "variant": "intelligence fighting vehicle",
+      "variant_id": "bm2t_stalker",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "Belarus",
+      "era": "modern",
+      "aliases": [
+        "2t stalker",
+        "bm-2t stalker",
+        "kamysh",
+        "stalker",
+        "tigris"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "identity_only": true,
+      "values": {}
+    }
+  ]
+}

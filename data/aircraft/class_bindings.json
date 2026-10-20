@@ -3,96 +3,96 @@
     "game_class": "B_CTRG_Heli_Transport_01_sand_F",
     "class_token": "Helicopter",
     "catalogue_id": "uh60a_black_hawk",
-    "identity_source": "aee_air_class_table",
-    "identity_evidence": "B_CTRG_Heli_Transport_01_sand_F is an Arma 3 Helicopter class; it is a variant of the B_Heli_Transport_01_F family bound to uh60a_black_hawk. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "identity_source": "armedassault_uh80_ghost_hawk_trivia",
+    "identity_evidence": "Armed Assault Wiki, UH-80_Ghost_Hawk, ARMA 3 Trivia (wikitext section 45): \"* The Ghost Hawk is ARMA 3's take on the real-world stealth variant of the Sikorsky \"UH-60 Black Hawk\". This heavily modified variant of the Black Hawk was flown by U.S. special operations in Abbottabad, Pakistan, during the 2011 Osama Bin Laden raid (officially named as \"Operation Neptune Spear\").\" Citation: https://armedassault.fandom.com/wiki/UH-80_Ghost_Hawk. The page asserts the basis ('ARMA 3's take on the real-world stealth variant of the Sikorsky \"UH-60 Black Hawk\"') and cites the 2011 Abbottabad raid for the stealth configuration. The corpus holds the UH-60A. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   },
   {
     "game_class": "B_CTRG_Heli_Transport_01_tropic_F",
     "class_token": "Helicopter",
     "catalogue_id": "uh60a_black_hawk",
-    "identity_source": "aee_air_class_table",
-    "identity_evidence": "B_CTRG_Heli_Transport_01_tropic_F is an Arma 3 Helicopter class; it is a variant of the B_Heli_Transport_01_F family bound to uh60a_black_hawk. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "identity_source": "armedassault_uh80_ghost_hawk_trivia",
+    "identity_evidence": "Armed Assault Wiki, UH-80_Ghost_Hawk, ARMA 3 Trivia (wikitext section 45): \"* The Ghost Hawk is ARMA 3's take on the real-world stealth variant of the Sikorsky \"UH-60 Black Hawk\". This heavily modified variant of the Black Hawk was flown by U.S. special operations in Abbottabad, Pakistan, during the 2011 Osama Bin Laden raid (officially named as \"Operation Neptune Spear\").\" Citation: https://armedassault.fandom.com/wiki/UH-80_Ghost_Hawk. The page asserts the basis ('ARMA 3's take on the real-world stealth variant of the Sikorsky \"UH-60 Black Hawk\"') and cites the 2011 Abbottabad raid for the stealth configuration. The corpus holds the UH-60A. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   },
   {
     "game_class": "B_Heli_Attack_01_F",
     "class_token": "Helicopter",
     "catalogue_id": "rah66_comanche",
-    "identity_source": "aee_air_class_table",
-    "identity_evidence": "B_Heli_Attack_01_F is an Arma 3 Helicopter class for the AH-99 Blackfoot; the class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "identity_source": "armedassault_ah99_blackfoot_trivia",
+    "identity_evidence": "Armed Assault Wiki, AH-99_Blackfoot, ARMA 3 Trivia (wikitext section 54): \"* As stated in the Field Manual, the Blackfoot's origins are derived from the real-world \"RAH-66 Comanche\" prototype helicopter. Its Stub Wings sub-variant is similarly based on a proposed configuration of the Comanche that utilised an external stores rack to carry up to eight AGM-114 Hellfire missiles (four on each wing like the in-game version).\" Citation: https://armedassault.fandom.com/wiki/AH-99_Blackfoot. The page asserts the basis and attributes it to the Field Manual (\"the Blackfoot's origins are derived from the real-world \"RAH-66 Comanche\" prototype helicopter\"). The corpus holds the Comanche. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   },
   {
     "game_class": "B_Heli_Attack_01_dynamicLoadout_F",
     "class_token": "Helicopter",
     "catalogue_id": "rah66_comanche",
-    "identity_source": "aee_air_class_table",
-    "identity_evidence": "B_Heli_Attack_01_dynamicLoadout_F is an Arma 3 Helicopter class; it is a variant of the B_Heli_Attack_01_F family bound to rah66_comanche. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "identity_source": "armedassault_ah99_blackfoot_trivia",
+    "identity_evidence": "Armed Assault Wiki, AH-99_Blackfoot, ARMA 3 Trivia (wikitext section 54): \"* As stated in the Field Manual, the Blackfoot's origins are derived from the real-world \"RAH-66 Comanche\" prototype helicopter. Its Stub Wings sub-variant is similarly based on a proposed configuration of the Comanche that utilised an external stores rack to carry up to eight AGM-114 Hellfire missiles (four on each wing like the in-game version).\" Citation: https://armedassault.fandom.com/wiki/AH-99_Blackfoot. The page asserts the basis and attributes it to the Field Manual (\"the Blackfoot's origins are derived from the real-world \"RAH-66 Comanche\" prototype helicopter\"). The corpus holds the Comanche. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   },
   {
     "game_class": "B_Heli_Attack_01_pylons_dynamicLoadout_F",
     "class_token": "Helicopter",
     "catalogue_id": "rah66_comanche",
-    "identity_source": "aee_air_class_table",
-    "identity_evidence": "B_Heli_Attack_01_pylons_dynamicLoadout_F is an Arma 3 Helicopter class; it is a variant of the B_Heli_Attack_01_F family bound to rah66_comanche. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "identity_source": "armedassault_ah99_blackfoot_trivia",
+    "identity_evidence": "Armed Assault Wiki, AH-99_Blackfoot, ARMA 3 Trivia (wikitext section 54): \"* As stated in the Field Manual, the Blackfoot's origins are derived from the real-world \"RAH-66 Comanche\" prototype helicopter. Its Stub Wings sub-variant is similarly based on a proposed configuration of the Comanche that utilised an external stores rack to carry up to eight AGM-114 Hellfire missiles (four on each wing like the in-game version).\" Citation: https://armedassault.fandom.com/wiki/AH-99_Blackfoot. The page asserts the basis and attributes it to the Field Manual (\"the Blackfoot's origins are derived from the real-world \"RAH-66 Comanche\" prototype helicopter\"). The corpus holds the Comanche. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   },
   {
     "game_class": "B_Heli_Light_01_F",
     "class_token": "Helicopter",
     "catalogue_id": "md500",
-    "identity_source": "aee_air_class_table",
-    "identity_evidence": "B_Heli_Light_01_F is an Arma 3 Helicopter class for the MH-9 Hummingbird; the class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "identity_source": "armedassault_mh9_hummingbird_trivia",
+    "identity_evidence": "Armed Assault Wiki, MH-9_Hummingbird, ARMA 3 Trivia (wikitext section 32): \"* The airframe is based on the real-world McDonnell Douglas \"MD-500D\" light helicopter and uses the same seamless cockpit windscreen and tail structure. The main difference is its appearance, most notably the Hummingbird's addition of vents at the base of the tailboom, but is largely identical to the real MD-500D.\" Citation: https://armedassault.fandom.com/wiki/MH-9_Hummingbird. The page asserts the basis ('The airframe is based on the real-world McDonnell Douglas \"MD-500D\" light helicopter') and names the role separately ('closely resemble that of the real-world \"MH-6 Little Bird\"'). The bound entry is the airframe the page states; the role is recorded here and not bound. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   },
   {
     "game_class": "B_Heli_Light_01_armed_F",
     "class_token": "Helicopter",
-    "catalogue_id": "md530_defender",
-    "identity_source": "aee_air_class_table",
-    "identity_evidence": "B_Heli_Light_01_armed_F is an Arma 3 Helicopter class for the AH-9 Pawnee; the class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "catalogue_id": "md500",
+    "identity_source": "armedassault_ah9_pawnee_trivia",
+    "identity_evidence": "Armed Assault Wiki, AH-9_Pawnee, ARMA 3 Trivia (wikitext section 39): \"* As with the Hummingbird, the Pawnee's airframe is based on the real-world McDonnell Douglas \"MD-500D\" light helicopter and uses the same seamless cockpit windscreen and tail structure.\" Citation: https://armedassault.fandom.com/wiki/AH-9_Pawnee. The page asserts the basis ('As with the Hummingbird, the Pawnee's airframe is based on the real-world McDonnell Douglas \"MD-500D\" light helicopter') and names the role separately ('Its role on the other hand, closely resembles that of the \"AH-6J Little Bird\"'). The previous binding, the MD 530 Defender, is withdrawn: the page states the MD-500D airframe and no page names an MD 530 for the Pawnee. The 'pawnee' alias moves with it. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   },
   {
     "game_class": "B_Heli_Light_01_dynamicLoadout_F",
     "class_token": "Helicopter",
-    "catalogue_id": "md530_defender",
-    "identity_source": "aee_air_class_table",
-    "identity_evidence": "B_Heli_Light_01_dynamicLoadout_F is an Arma 3 Helicopter class; it is a variant of the B_Heli_Light_01_armed_F family bound to md530_defender. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "catalogue_id": "md500",
+    "identity_source": "armedassault_ah9_pawnee_trivia",
+    "identity_evidence": "Armed Assault Wiki, AH-9_Pawnee, ARMA 3 Trivia (wikitext section 39): \"* As with the Hummingbird, the Pawnee's airframe is based on the real-world McDonnell Douglas \"MD-500D\" light helicopter and uses the same seamless cockpit windscreen and tail structure.\" Citation: https://armedassault.fandom.com/wiki/AH-9_Pawnee. The page asserts the basis ('As with the Hummingbird, the Pawnee's airframe is based on the real-world McDonnell Douglas \"MD-500D\" light helicopter') and names the role separately ('Its role on the other hand, closely resembles that of the \"AH-6J Little Bird\"'). The previous binding, the MD 530 Defender, is withdrawn: the page states the MD-500D airframe and no page names an MD 530 for the Pawnee. The 'pawnee' alias moves with it. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   },
   {
     "game_class": "B_Heli_Light_01_stripped_F",
     "class_token": "Helicopter",
     "catalogue_id": "md500",
-    "identity_source": "aee_air_class_table",
-    "identity_evidence": "B_Heli_Light_01_stripped_F is an Arma 3 Helicopter class; it is a variant of the B_Heli_Light_01_F family bound to md500. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "identity_source": "armedassault_mh9_hummingbird_trivia",
+    "identity_evidence": "Armed Assault Wiki, MH-9_Hummingbird, ARMA 3 Trivia (wikitext section 32): \"* The airframe is based on the real-world McDonnell Douglas \"MD-500D\" light helicopter and uses the same seamless cockpit windscreen and tail structure. The main difference is its appearance, most notably the Hummingbird's addition of vents at the base of the tailboom, but is largely identical to the real MD-500D.\" Citation: https://armedassault.fandom.com/wiki/MH-9_Hummingbird. The page asserts the basis ('The airframe is based on the real-world McDonnell Douglas \"MD-500D\" light helicopter') and names the role separately ('closely resemble that of the real-world \"MH-6 Little Bird\"'). The bound entry is the airframe the page states; the role is recorded here and not bound. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   },
   {
     "game_class": "B_Heli_Transport_01_F",
     "class_token": "Helicopter",
     "catalogue_id": "uh60a_black_hawk",
-    "identity_source": "aee_air_class_table",
-    "identity_evidence": "B_Heli_Transport_01_F is an Arma 3 Helicopter class for the UH-80 Ghost Hawk; the class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "identity_source": "armedassault_uh80_ghost_hawk_trivia",
+    "identity_evidence": "Armed Assault Wiki, UH-80_Ghost_Hawk, ARMA 3 Trivia (wikitext section 45): \"* The Ghost Hawk is ARMA 3's take on the real-world stealth variant of the Sikorsky \"UH-60 Black Hawk\". This heavily modified variant of the Black Hawk was flown by U.S. special operations in Abbottabad, Pakistan, during the 2011 Osama Bin Laden raid (officially named as \"Operation Neptune Spear\").\" Citation: https://armedassault.fandom.com/wiki/UH-80_Ghost_Hawk. The page asserts the basis ('ARMA 3's take on the real-world stealth variant of the Sikorsky \"UH-60 Black Hawk\"') and cites the 2011 Abbottabad raid for the stealth configuration. The corpus holds the UH-60A. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   },
   {
     "game_class": "B_Heli_Transport_01_camo_F",
     "class_token": "Helicopter",
     "catalogue_id": "uh60a_black_hawk",
-    "identity_source": "aee_air_class_table",
-    "identity_evidence": "B_Heli_Transport_01_camo_F is an Arma 3 Helicopter class; it is a variant of the B_Heli_Transport_01_F family bound to uh60a_black_hawk. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "identity_source": "armedassault_uh80_ghost_hawk_trivia",
+    "identity_evidence": "Armed Assault Wiki, UH-80_Ghost_Hawk, ARMA 3 Trivia (wikitext section 45): \"* The Ghost Hawk is ARMA 3's take on the real-world stealth variant of the Sikorsky \"UH-60 Black Hawk\". This heavily modified variant of the Black Hawk was flown by U.S. special operations in Abbottabad, Pakistan, during the 2011 Osama Bin Laden raid (officially named as \"Operation Neptune Spear\").\" Citation: https://armedassault.fandom.com/wiki/UH-80_Ghost_Hawk. The page asserts the basis ('ARMA 3's take on the real-world stealth variant of the Sikorsky \"UH-60 Black Hawk\"') and cites the 2011 Abbottabad raid for the stealth configuration. The corpus holds the UH-60A. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   },
   {
     "game_class": "B_Heli_Transport_01_pylons_F",
     "class_token": "Helicopter",
     "catalogue_id": "uh60a_black_hawk",
-    "identity_source": "aee_air_class_table",
-    "identity_evidence": "B_Heli_Transport_01_pylons_F is an Arma 3 Helicopter class; it is a variant of the B_Heli_Transport_01_F family bound to uh60a_black_hawk. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "identity_source": "armedassault_uh80_ghost_hawk_trivia",
+    "identity_evidence": "Armed Assault Wiki, UH-80_Ghost_Hawk, ARMA 3 Trivia (wikitext section 45): \"* The Ghost Hawk is ARMA 3's take on the real-world stealth variant of the Sikorsky \"UH-60 Black Hawk\". This heavily modified variant of the Black Hawk was flown by U.S. special operations in Abbottabad, Pakistan, during the 2011 Osama Bin Laden raid (officially named as \"Operation Neptune Spear\").\" Citation: https://armedassault.fandom.com/wiki/UH-80_Ghost_Hawk. The page asserts the basis ('ARMA 3's take on the real-world stealth variant of the Sikorsky \"UH-60 Black Hawk\"') and cites the 2011 Abbottabad raid for the stealth configuration. The corpus holds the UH-60A. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   },
   {
@@ -131,24 +131,24 @@
     "game_class": "B_Plane_CAS_01_Cluster_F",
     "class_token": "Plane",
     "catalogue_id": "a10a_thunderbolt_ii",
-    "identity_source": "aee_air_class_table",
-    "identity_evidence": "B_Plane_CAS_01_Cluster_F is an Arma 3 Plane class; it is a variant of the B_Plane_CAS_01_F family bound to a10a_thunderbolt_ii. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "identity_source": "armedassault_a164_wipeout_trivia",
+    "identity_evidence": "Armed Assault Wiki, A-164_Wipeout, ARMA 3 Trivia (wikitext section 52): \"* As stated in its Field Manual entry, the Wipeout is directly based on the real-world \"A-10 Thunderbolt II\" attack jet then-designed by Fairchild Republic which is now owned by M7 Aerospace, itself a subsidiary of the U.S.-based division of Elbit Systems (with support for the A-10 having since been taken over by Northrop Grumman).\" Citation: https://armedassault.fandom.com/wiki/A-164_Wipeout. The page asserts the basis and attributes it to the Field Manual (\"the Wipeout is directly based on the real-world \"A-10 Thunderbolt II\" attack jet\"). The corpus holds the A-10A. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   },
   {
     "game_class": "B_Plane_CAS_01_F",
     "class_token": "Plane",
     "catalogue_id": "a10a_thunderbolt_ii",
-    "identity_source": "aee_air_class_table",
-    "identity_evidence": "B_Plane_CAS_01_F is an Arma 3 Plane class for the A-164 Wipeout; the class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "identity_source": "armedassault_a164_wipeout_trivia",
+    "identity_evidence": "Armed Assault Wiki, A-164_Wipeout, ARMA 3 Trivia (wikitext section 52): \"* As stated in its Field Manual entry, the Wipeout is directly based on the real-world \"A-10 Thunderbolt II\" attack jet then-designed by Fairchild Republic which is now owned by M7 Aerospace, itself a subsidiary of the U.S.-based division of Elbit Systems (with support for the A-10 having since been taken over by Northrop Grumman).\" Citation: https://armedassault.fandom.com/wiki/A-164_Wipeout. The page asserts the basis and attributes it to the Field Manual (\"the Wipeout is directly based on the real-world \"A-10 Thunderbolt II\" attack jet\"). The corpus holds the A-10A. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   },
   {
     "game_class": "B_Plane_CAS_01_dynamicLoadout_F",
     "class_token": "Plane",
     "catalogue_id": "a10a_thunderbolt_ii",
-    "identity_source": "aee_air_class_table",
-    "identity_evidence": "B_Plane_CAS_01_dynamicLoadout_F is an Arma 3 Plane class; it is a variant of the B_Plane_CAS_01_F family bound to a10a_thunderbolt_ii. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "identity_source": "armedassault_a164_wipeout_trivia",
+    "identity_evidence": "Armed Assault Wiki, A-164_Wipeout, ARMA 3 Trivia (wikitext section 52): \"* As stated in its Field Manual entry, the Wipeout is directly based on the real-world \"A-10 Thunderbolt II\" attack jet then-designed by Fairchild Republic which is now owned by M7 Aerospace, itself a subsidiary of the U.S.-based division of Elbit Systems (with support for the A-10 having since been taken over by Northrop Grumman).\" Citation: https://armedassault.fandom.com/wiki/A-164_Wipeout. The page asserts the basis and attributes it to the Field Manual (\"the Wipeout is directly based on the real-world \"A-10 Thunderbolt II\" attack jet\"). The corpus holds the A-10A. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   },
   {
@@ -179,8 +179,8 @@
     "game_class": "C_Heli_Light_01_civil_F",
     "class_token": "Helicopter",
     "catalogue_id": "md500_civil",
-    "identity_source": "aee_air_class_table",
-    "identity_evidence": "C_Heli_Light_01_civil_F is an Arma 3 Helicopter class for the MD 500 civil; the class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "identity_source": "armedassault_m900_trivia",
+    "identity_evidence": "Armed Assault Wiki, M900, ARMA 3 Trivia (wikitext section 33): \"* The M900's airframe is based on the McDonnell Douglas \"MD-500D\" series of light helicopters. It is visually similar in almost all respects, though one notable difference is the addition of vents at the base of the tail boom.\" Citation: https://armedassault.fandom.com/wiki/M900. The page asserts the basis (\"The M900's airframe is based on the McDonnell Douglas \"MD-500D\" series of light helicopters\"). The civil airframe is the bound entry; the previous binding rested on the class token alone. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   },
   {
@@ -339,8 +339,8 @@
     "game_class": "C_IDAP_Heli_Transport_02_F",
     "class_token": "Helicopter",
     "catalogue_id": "aw101_merlin",
-    "identity_source": "src_armedassault_wiki",
-    "identity_evidence": "C_IDAP_Heli_Transport_02_F is an Arma 3 Helicopter class; it is a variant of the I_Heli_Transport_02_F family that the Armed Assault Wiki names as the AW101 Merlin. The link stays a claimed community identity lead.",
+    "identity_source": "armedassault_ch49_mohawk_trivia",
+    "identity_evidence": "Armed Assault Wiki, CH-49_Mohawk, ARMA 3 Trivia (wikitext section 33): \"* As stated in its Field Manual entry, the Mohawk is based on the real-world AgustaWestland \"AW101 Merlin\" helicopter, otherwise also designated as the \"Merlin HC3\" by the Royal Air Force.\" Citation: https://armedassault.fandom.com/wiki/CH-49_Mohawk. The page asserts the basis and attributes it to the Field Manual (\"the Mohawk is based on the real-world AgustaWestland \"AW101 Merlin\" helicopter, otherwise also designated as the \"Merlin HC3\" by the Royal Air Force\"). The corpus holds the AW101 Merlin. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   },
   {
@@ -395,8 +395,8 @@
     "game_class": "I_Heli_Transport_02_F",
     "class_token": "Helicopter",
     "catalogue_id": "aw101_merlin",
-    "identity_source": "src_armedassault_wiki",
-    "identity_evidence": "I_Heli_Transport_02_F is an Arma 3 Helicopter class for the CH-49 Mohawk; the Armed Assault Wiki names the CH-49 Mohawk as the AW101 Merlin, so the link is a claimed community identity lead and the corpus holds the AW101 values from the Leonardo brochure.",
+    "identity_source": "armedassault_ch49_mohawk_trivia",
+    "identity_evidence": "Armed Assault Wiki, CH-49_Mohawk, ARMA 3 Trivia (wikitext section 33): \"* As stated in its Field Manual entry, the Mohawk is based on the real-world AgustaWestland \"AW101 Merlin\" helicopter, otherwise also designated as the \"Merlin HC3\" by the Royal Air Force.\" Citation: https://armedassault.fandom.com/wiki/CH-49_Mohawk. The page asserts the basis and attributes it to the Field Manual (\"the Mohawk is based on the real-world AgustaWestland \"AW101 Merlin\" helicopter, otherwise also designated as the \"Merlin HC3\" by the Royal Air Force\"). The corpus holds the AW101 Merlin. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   },
   {
@@ -427,32 +427,32 @@
     "game_class": "I_Plane_Fighter_03_AA_F",
     "class_token": "Plane",
     "catalogue_id": "l159_alca",
-    "identity_source": "aee_air_class_table",
-    "identity_evidence": "I_Plane_Fighter_03_AA_F is an Arma 3 Plane class for the A-143 Buzzard; the class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "identity_source": "armedassault_a143_buzzard_trivia",
+    "identity_evidence": "Armed Assault Wiki, A-143_Buzzard, ARMA 3 Trivia (wikitext section 55): \"* The Buzzard is a slightly modified version of the real-world Czech-made \"L-159 ALCA\" jet trainer/light attack jet manufactured by Aero Vodochody. It even uses an updated port of the L-159 model from ArmA 2's Army of the Czech Republic DLC.\" Citation: https://armedassault.fandom.com/wiki/A-143_Buzzard. The page asserts the basis ('a slightly modified version of the real-world Czech-made \"L-159 ALCA\"') and records that the model is an updated port of the ArmA 2 L-159. The corpus holds the L-159 ALCA. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   },
   {
     "game_class": "I_Plane_Fighter_03_CAS_F",
     "class_token": "Plane",
     "catalogue_id": "l159_alca",
-    "identity_source": "aee_air_class_table",
-    "identity_evidence": "I_Plane_Fighter_03_CAS_F is an Arma 3 Plane class for the A-143 Buzzard; the class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "identity_source": "armedassault_a143_buzzard_trivia",
+    "identity_evidence": "Armed Assault Wiki, A-143_Buzzard, ARMA 3 Trivia (wikitext section 55): \"* The Buzzard is a slightly modified version of the real-world Czech-made \"L-159 ALCA\" jet trainer/light attack jet manufactured by Aero Vodochody. It even uses an updated port of the L-159 model from ArmA 2's Army of the Czech Republic DLC.\" Citation: https://armedassault.fandom.com/wiki/A-143_Buzzard. The page asserts the basis ('a slightly modified version of the real-world Czech-made \"L-159 ALCA\"') and records that the model is an updated port of the ArmA 2 L-159. The corpus holds the L-159 ALCA. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   },
   {
     "game_class": "I_Plane_Fighter_03_Cluster_F",
     "class_token": "Plane",
     "catalogue_id": "l159_alca",
-    "identity_source": "aee_air_class_table",
-    "identity_evidence": "I_Plane_Fighter_03_Cluster_F is an Arma 3 Plane class; it is a variant of the I_Plane_Fighter_03_CAS_F family bound to l159_alca. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "identity_source": "armedassault_a143_buzzard_trivia",
+    "identity_evidence": "Armed Assault Wiki, A-143_Buzzard, ARMA 3 Trivia (wikitext section 55): \"* The Buzzard is a slightly modified version of the real-world Czech-made \"L-159 ALCA\" jet trainer/light attack jet manufactured by Aero Vodochody. It even uses an updated port of the L-159 model from ArmA 2's Army of the Czech Republic DLC.\" Citation: https://armedassault.fandom.com/wiki/A-143_Buzzard. The page asserts the basis ('a slightly modified version of the real-world Czech-made \"L-159 ALCA\"') and records that the model is an updated port of the ArmA 2 L-159. The corpus holds the L-159 ALCA. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   },
   {
     "game_class": "I_Plane_Fighter_03_dynamicLoadout_F",
     "class_token": "Plane",
     "catalogue_id": "l159_alca",
-    "identity_source": "aee_air_class_table",
-    "identity_evidence": "I_Plane_Fighter_03_dynamicLoadout_F is an Arma 3 Plane class for the A-143 Buzzard; the class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "identity_source": "armedassault_a143_buzzard_trivia",
+    "identity_evidence": "Armed Assault Wiki, A-143_Buzzard, ARMA 3 Trivia (wikitext section 55): \"* The Buzzard is a slightly modified version of the real-world Czech-made \"L-159 ALCA\" jet trainer/light attack jet manufactured by Aero Vodochody. It even uses an updated port of the L-159 model from ArmA 2's Army of the Czech Republic DLC.\" Citation: https://armedassault.fandom.com/wiki/A-143_Buzzard. The page asserts the basis ('a slightly modified version of the real-world Czech-made \"L-159 ALCA\"') and records that the model is an updated port of the ArmA 2 L-159. The corpus holds the L-159 ALCA. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   },
   {
@@ -475,88 +475,88 @@
     "game_class": "O_Heli_Attack_02_F",
     "class_token": "Helicopter",
     "catalogue_id": "mi28_havoc",
-    "identity_source": "aee_air_class_table",
-    "identity_evidence": "O_Heli_Attack_02_F is an Arma 3 Helicopter class for the Mi-48 Kajman; the class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "identity_source": "armedassault_mi48_kajman_trivia",
+    "identity_evidence": "Armed Assault Wiki, Mi-48_Kajman, ARMA 3 Trivia (wikitext section 44): \"* As stated in the Field Manual and in a livestream event held by the studio on March 8th, 2023, the Kajman's design and capabilities draw inspiration from three real-world Russian attack helicopters designed by the Mil Moscow Helicopter Plant and Kamov Design Bureau. Both companies are subsidiaries of Rostec, their state-owned parent company. ** Specifically, it uses the cockpit layout of the Mil \"Mi-28\", tail boom and coaxial rotor design of the Kamov \"Ka-50\"/\"Ka-52\", and fuselage/passenger cabin of the Mil \"Mi-24\".\" Citation: https://armedassault.fandom.com/wiki/Mi-48_Kajman. The page asserts a composite basis and attributes it to the Field Manual: the design 'draw[s] inspiration from three real-world Russian attack helicopters', and 'it uses the cockpit layout of the Mil \"Mi-28\", tail boom and coaxial rotor design of the Kamov \"Ka-50\"/\"Ka-52\", and fuselage/passenger cabin of the Mil \"Mi-24\"'. The bound entry is the cockpit donor the page names first; every donor is named here and none is asserted as the whole identity. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   },
   {
     "game_class": "O_Heli_Attack_02_black_F",
     "class_token": "Helicopter",
     "catalogue_id": "mi28_havoc",
-    "identity_source": "aee_air_class_table",
-    "identity_evidence": "O_Heli_Attack_02_black_F is an Arma 3 Helicopter class; it is a variant of the O_Heli_Attack_02_F family bound to mi28_havoc. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "identity_source": "armedassault_mi48_kajman_trivia",
+    "identity_evidence": "Armed Assault Wiki, Mi-48_Kajman, ARMA 3 Trivia (wikitext section 44): \"* As stated in the Field Manual and in a livestream event held by the studio on March 8th, 2023, the Kajman's design and capabilities draw inspiration from three real-world Russian attack helicopters designed by the Mil Moscow Helicopter Plant and Kamov Design Bureau. Both companies are subsidiaries of Rostec, their state-owned parent company. ** Specifically, it uses the cockpit layout of the Mil \"Mi-28\", tail boom and coaxial rotor design of the Kamov \"Ka-50\"/\"Ka-52\", and fuselage/passenger cabin of the Mil \"Mi-24\".\" Citation: https://armedassault.fandom.com/wiki/Mi-48_Kajman. The page asserts a composite basis and attributes it to the Field Manual: the design 'draw[s] inspiration from three real-world Russian attack helicopters', and 'it uses the cockpit layout of the Mil \"Mi-28\", tail boom and coaxial rotor design of the Kamov \"Ka-50\"/\"Ka-52\", and fuselage/passenger cabin of the Mil \"Mi-24\"'. The bound entry is the cockpit donor the page names first; every donor is named here and none is asserted as the whole identity. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   },
   {
     "game_class": "O_Heli_Attack_02_dynamicLoadout_F",
     "class_token": "Helicopter",
     "catalogue_id": "mi28_havoc",
-    "identity_source": "aee_air_class_table",
-    "identity_evidence": "O_Heli_Attack_02_dynamicLoadout_F is an Arma 3 Helicopter class; it is a variant of the O_Heli_Attack_02_F family bound to mi28_havoc. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "identity_source": "armedassault_mi48_kajman_trivia",
+    "identity_evidence": "Armed Assault Wiki, Mi-48_Kajman, ARMA 3 Trivia (wikitext section 44): \"* As stated in the Field Manual and in a livestream event held by the studio on March 8th, 2023, the Kajman's design and capabilities draw inspiration from three real-world Russian attack helicopters designed by the Mil Moscow Helicopter Plant and Kamov Design Bureau. Both companies are subsidiaries of Rostec, their state-owned parent company. ** Specifically, it uses the cockpit layout of the Mil \"Mi-28\", tail boom and coaxial rotor design of the Kamov \"Ka-50\"/\"Ka-52\", and fuselage/passenger cabin of the Mil \"Mi-24\".\" Citation: https://armedassault.fandom.com/wiki/Mi-48_Kajman. The page asserts a composite basis and attributes it to the Field Manual: the design 'draw[s] inspiration from three real-world Russian attack helicopters', and 'it uses the cockpit layout of the Mil \"Mi-28\", tail boom and coaxial rotor design of the Kamov \"Ka-50\"/\"Ka-52\", and fuselage/passenger cabin of the Mil \"Mi-24\"'. The bound entry is the cockpit donor the page names first; every donor is named here and none is asserted as the whole identity. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   },
   {
     "game_class": "O_Heli_Attack_02_dynamicLoadout_black_F",
     "class_token": "Helicopter",
     "catalogue_id": "mi28_havoc",
-    "identity_source": "aee_air_class_table",
-    "identity_evidence": "O_Heli_Attack_02_dynamicLoadout_black_F is an Arma 3 Helicopter class; it is a variant of the O_Heli_Attack_02_F family bound to mi28_havoc. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "identity_source": "armedassault_mi48_kajman_trivia",
+    "identity_evidence": "Armed Assault Wiki, Mi-48_Kajman, ARMA 3 Trivia (wikitext section 44): \"* As stated in the Field Manual and in a livestream event held by the studio on March 8th, 2023, the Kajman's design and capabilities draw inspiration from three real-world Russian attack helicopters designed by the Mil Moscow Helicopter Plant and Kamov Design Bureau. Both companies are subsidiaries of Rostec, their state-owned parent company. ** Specifically, it uses the cockpit layout of the Mil \"Mi-28\", tail boom and coaxial rotor design of the Kamov \"Ka-50\"/\"Ka-52\", and fuselage/passenger cabin of the Mil \"Mi-24\".\" Citation: https://armedassault.fandom.com/wiki/Mi-48_Kajman. The page asserts a composite basis and attributes it to the Field Manual: the design 'draw[s] inspiration from three real-world Russian attack helicopters', and 'it uses the cockpit layout of the Mil \"Mi-28\", tail boom and coaxial rotor design of the Kamov \"Ka-50\"/\"Ka-52\", and fuselage/passenger cabin of the Mil \"Mi-24\"'. The bound entry is the cockpit donor the page names first; every donor is named here and none is asserted as the whole identity. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   },
   {
     "game_class": "O_Heli_Light_02_F",
     "class_token": "Helicopter",
-    "catalogue_id": "light_utility_rotary",
-    "identity_source": "aee_air_class_table",
-    "identity_evidence": "O_Heli_Light_02_F is an Arma 3 Helicopter class for the PO-30 Orca; the class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "catalogue_id": "ka60_kasatka",
+    "identity_source": "armedassault_po30_orca_trivia",
+    "identity_evidence": "Armed Assault Wiki, PO-30_Orca, ARMA 3 Trivia (wikitext section 39): \"* The Orca is based on the real-world Kamov \"Ka-60 Kasatka\" helicopter, which was previously featured in ARMA 2's Private Military Company DLC.\" Citation: https://armedassault.fandom.com/wiki/PO-30_Orca. The page asserts the basis ('is based on the real-world Kamov \"Ka-60 Kasatka\" helicopter') and records that the Alpha build used the real designation. The previous binding, the Mil Mi-2, is withdrawn: no page names a Mi-2 for the Orca. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   },
   {
     "game_class": "O_Heli_Light_02_dynamicLoadout_F",
     "class_token": "Helicopter",
-    "catalogue_id": "light_utility_rotary",
-    "identity_source": "aee_air_class_table",
-    "identity_evidence": "O_Heli_Light_02_dynamicLoadout_F is an Arma 3 Helicopter class; it is a variant of the O_Heli_Light_02_F family bound to light_utility_rotary. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "catalogue_id": "ka60_kasatka",
+    "identity_source": "armedassault_po30_orca_trivia",
+    "identity_evidence": "Armed Assault Wiki, PO-30_Orca, ARMA 3 Trivia (wikitext section 39): \"* The Orca is based on the real-world Kamov \"Ka-60 Kasatka\" helicopter, which was previously featured in ARMA 2's Private Military Company DLC.\" Citation: https://armedassault.fandom.com/wiki/PO-30_Orca. The page asserts the basis ('is based on the real-world Kamov \"Ka-60 Kasatka\" helicopter') and records that the Alpha build used the real designation. The previous binding, the Mil Mi-2, is withdrawn: no page names a Mi-2 for the Orca. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   },
   {
     "game_class": "O_Heli_Light_02_unarmed_F",
     "class_token": "Helicopter",
-    "catalogue_id": "light_utility_rotary",
-    "identity_source": "aee_air_class_table",
-    "identity_evidence": "O_Heli_Light_02_unarmed_F is an Arma 3 Helicopter class; it is a variant of the O_Heli_Light_02_F family bound to light_utility_rotary. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "catalogue_id": "ka60_kasatka",
+    "identity_source": "armedassault_po30_orca_trivia",
+    "identity_evidence": "Armed Assault Wiki, PO-30_Orca, ARMA 3 Trivia (wikitext section 39): \"* The Orca is based on the real-world Kamov \"Ka-60 Kasatka\" helicopter, which was previously featured in ARMA 2's Private Military Company DLC.\" Citation: https://armedassault.fandom.com/wiki/PO-30_Orca. The page asserts the basis ('is based on the real-world Kamov \"Ka-60 Kasatka\" helicopter') and records that the Alpha build used the real designation. The previous binding, the Mil Mi-2, is withdrawn: no page names a Mi-2 for the Orca. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   },
   {
     "game_class": "O_Heli_Light_02_v2_F",
     "class_token": "Helicopter",
-    "catalogue_id": "light_utility_rotary",
-    "identity_source": "aee_air_class_table",
-    "identity_evidence": "O_Heli_Light_02_v2_F is an Arma 3 Helicopter class; it is a variant of the O_Heli_Light_02_F family bound to light_utility_rotary. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "catalogue_id": "ka60_kasatka",
+    "identity_source": "armedassault_po30_orca_trivia",
+    "identity_evidence": "Armed Assault Wiki, PO-30_Orca, ARMA 3 Trivia (wikitext section 39): \"* The Orca is based on the real-world Kamov \"Ka-60 Kasatka\" helicopter, which was previously featured in ARMA 2's Private Military Company DLC.\" Citation: https://armedassault.fandom.com/wiki/PO-30_Orca. The page asserts the basis ('is based on the real-world Kamov \"Ka-60 Kasatka\" helicopter') and records that the Alpha build used the real designation. The previous binding, the Mil Mi-2, is withdrawn: no page names a Mi-2 for the Orca. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   },
   {
     "game_class": "O_Plane_CAS_02_Cluster_F",
     "class_token": "Plane",
-    "catalogue_id": "su25_frogfoot",
-    "identity_source": "aee_air_class_table",
-    "identity_evidence": "O_Plane_CAS_02_Cluster_F is an Arma 3 Plane class; it is a variant of the O_Plane_CAS_02_F family bound to su25_frogfoot. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "catalogue_id": "yak130_mitten",
+    "identity_source": "armedassault_to199_neophron_trivia",
+    "identity_evidence": "Armed Assault Wiki, To-199_Neophron, ARMA 3 Trivia (wikitext section 50): \"* The Neophron is based on the real-world \"Yak-130\" jet (specifically the single-seater \"Yak-131\" variant) designed by the Yakovlev Design Bureau, a subsidiary of the United Aircraft Corporation.\" Citation: https://armedassault.fandom.com/wiki/To-199_Neophron. The page asserts the basis ('is based on the real-world \"Yak-130\" jet (specifically the single-seater \"Yak-131\" variant) designed by the Yakovlev Design Bureau'). The corpus holds the Yak-130 and not the Yak-131 variant. The previous binding, the Su-25 Frogfoot, is withdrawn: no page names a Su-25 for the Neophron. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   },
   {
     "game_class": "O_Plane_CAS_02_F",
     "class_token": "Plane",
-    "catalogue_id": "su25_frogfoot",
-    "identity_source": "aee_air_class_table",
-    "identity_evidence": "O_Plane_CAS_02_F is an Arma 3 Plane class for the To-199 Neophron; the class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "catalogue_id": "yak130_mitten",
+    "identity_source": "armedassault_to199_neophron_trivia",
+    "identity_evidence": "Armed Assault Wiki, To-199_Neophron, ARMA 3 Trivia (wikitext section 50): \"* The Neophron is based on the real-world \"Yak-130\" jet (specifically the single-seater \"Yak-131\" variant) designed by the Yakovlev Design Bureau, a subsidiary of the United Aircraft Corporation.\" Citation: https://armedassault.fandom.com/wiki/To-199_Neophron. The page asserts the basis ('is based on the real-world \"Yak-130\" jet (specifically the single-seater \"Yak-131\" variant) designed by the Yakovlev Design Bureau'). The corpus holds the Yak-130 and not the Yak-131 variant. The previous binding, the Su-25 Frogfoot, is withdrawn: no page names a Su-25 for the Neophron. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   },
   {
     "game_class": "O_Plane_CAS_02_dynamicLoadout_F",
     "class_token": "Plane",
-    "catalogue_id": "su25_frogfoot",
-    "identity_source": "aee_air_class_table",
-    "identity_evidence": "O_Plane_CAS_02_dynamicLoadout_F is an Arma 3 Plane class; it is a variant of the O_Plane_CAS_02_F family bound to su25_frogfoot. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "catalogue_id": "yak130_mitten",
+    "identity_source": "armedassault_to199_neophron_trivia",
+    "identity_evidence": "Armed Assault Wiki, To-199_Neophron, ARMA 3 Trivia (wikitext section 50): \"* The Neophron is based on the real-world \"Yak-130\" jet (specifically the single-seater \"Yak-131\" variant) designed by the Yakovlev Design Bureau, a subsidiary of the United Aircraft Corporation.\" Citation: https://armedassault.fandom.com/wiki/To-199_Neophron. The page asserts the basis ('is based on the real-world \"Yak-130\" jet (specifically the single-seater \"Yak-131\" variant) designed by the Yakovlev Design Bureau'). The corpus holds the Yak-130 and not the Yak-131 variant. The previous binding, the Su-25 Frogfoot, is withdrawn: no page names a Su-25 for the Neophron. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   },
   {
@@ -715,72 +715,72 @@
     "game_class": "B_UAV_02_CAS_F",
     "class_token": "UAV",
     "catalogue_id": "mq9a_reaper",
-    "identity_source": "src_armedassault_wiki",
-    "identity_evidence": "B_UAV_02_CAS_F is an Arma 3 UAV class; it is a variant of the MQ-4A Greyhawk family that the Armed Assault Wiki names as the MQ-9 basis, so the UAV class token binds it to the General Atomics MQ-9A Reaper analogue at grade claimed, and the corpus holds the MQ-9A figures from the ODIN Worldwide Equipment Guide 2025 (src_odin_weg_2025).",
+    "identity_source": "armedassault_mq4a_greyhawk_trivia",
+    "identity_evidence": "Armed Assault Wiki, MQ4A_Greyhawk, ARMA 3 Trivia (wikitext section 47): \"* As stated in the Field Manual, the general layout of the Greyhawk's airframe like its wings, tail, and sensor turret is inspired by the real-world \"MQ-9 Reaper\" UCAV designed by the American energy and defence corporation, General Atomics.\" Citation: https://armedassault.fandom.com/wiki/MQ4A_Greyhawk. The page asserts the basis and attributes it to the Field Manual ('the general layout of the Greyhawk's airframe like its wings, tail, and sensor turret is inspired by the real-world \"MQ-9 Reaper\" UCAV'). The K40 Ababil-3 page redirects here, so one binding serves both names. The corpus holds the MQ-9A Reaper. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   },
   {
     "game_class": "B_UAV_02_F",
     "class_token": "UAV",
     "catalogue_id": "mq9a_reaper",
-    "identity_source": "src_armedassault_wiki",
-    "identity_evidence": "B_UAV_02_F is an Arma 3 UAV class for the MQ-4A Greyhawk, a fictional unmanned combat air vehicle; the Armed Assault Wiki names the MQ-9 as its basis, so the UAV class token binds it to the General Atomics MQ-9A Reaper analogue at grade claimed, and the corpus holds the MQ-9A figures from the ODIN Worldwide Equipment Guide 2025 (src_odin_weg_2025).",
+    "identity_source": "armedassault_mq4a_greyhawk_trivia",
+    "identity_evidence": "Armed Assault Wiki, MQ4A_Greyhawk, ARMA 3 Trivia (wikitext section 47): \"* As stated in the Field Manual, the general layout of the Greyhawk's airframe like its wings, tail, and sensor turret is inspired by the real-world \"MQ-9 Reaper\" UCAV designed by the American energy and defence corporation, General Atomics.\" Citation: https://armedassault.fandom.com/wiki/MQ4A_Greyhawk. The page asserts the basis and attributes it to the Field Manual ('the general layout of the Greyhawk's airframe like its wings, tail, and sensor turret is inspired by the real-world \"MQ-9 Reaper\" UCAV'). The K40 Ababil-3 page redirects here, so one binding serves both names. The corpus holds the MQ-9A Reaper. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   },
   {
     "game_class": "B_UAV_02_dynamicLoadout_F",
     "class_token": "UAV",
     "catalogue_id": "mq9a_reaper",
-    "identity_source": "src_armedassault_wiki",
-    "identity_evidence": "B_UAV_02_dynamicLoadout_F is an Arma 3 UAV class; it is a variant of the MQ-4A Greyhawk family that the Armed Assault Wiki names as the MQ-9 basis, so the UAV class token binds it to the General Atomics MQ-9A Reaper analogue at grade claimed, and the corpus holds the MQ-9A figures from the ODIN Worldwide Equipment Guide 2025 (src_odin_weg_2025).",
+    "identity_source": "armedassault_mq4a_greyhawk_trivia",
+    "identity_evidence": "Armed Assault Wiki, MQ4A_Greyhawk, ARMA 3 Trivia (wikitext section 47): \"* As stated in the Field Manual, the general layout of the Greyhawk's airframe like its wings, tail, and sensor turret is inspired by the real-world \"MQ-9 Reaper\" UCAV designed by the American energy and defence corporation, General Atomics.\" Citation: https://armedassault.fandom.com/wiki/MQ4A_Greyhawk. The page asserts the basis and attributes it to the Field Manual ('the general layout of the Greyhawk's airframe like its wings, tail, and sensor turret is inspired by the real-world \"MQ-9 Reaper\" UCAV'). The K40 Ababil-3 page redirects here, so one binding serves both names. The corpus holds the MQ-9A Reaper. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   },
   {
     "game_class": "I_UAV_02_CAS_F",
     "class_token": "UAV",
     "catalogue_id": "mq9a_reaper",
-    "identity_source": "src_armedassault_wiki",
-    "identity_evidence": "I_UAV_02_CAS_F is an Arma 3 UAV class; it is a variant of the MQ-4A Greyhawk family that the Armed Assault Wiki names as the MQ-9 basis, so the UAV class token binds it to the General Atomics MQ-9A Reaper analogue at grade claimed, and the corpus holds the MQ-9A figures from the ODIN Worldwide Equipment Guide 2025 (src_odin_weg_2025).",
+    "identity_source": "armedassault_mq4a_greyhawk_trivia",
+    "identity_evidence": "Armed Assault Wiki, MQ4A_Greyhawk, ARMA 3 Trivia (wikitext section 47): \"* As stated in the Field Manual, the general layout of the Greyhawk's airframe like its wings, tail, and sensor turret is inspired by the real-world \"MQ-9 Reaper\" UCAV designed by the American energy and defence corporation, General Atomics.\" Citation: https://armedassault.fandom.com/wiki/MQ4A_Greyhawk. The page asserts the basis and attributes it to the Field Manual ('the general layout of the Greyhawk's airframe like its wings, tail, and sensor turret is inspired by the real-world \"MQ-9 Reaper\" UCAV'). The K40 Ababil-3 page redirects here, so one binding serves both names. The corpus holds the MQ-9A Reaper. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   },
   {
     "game_class": "I_UAV_02_F",
     "class_token": "UAV",
     "catalogue_id": "mq9a_reaper",
-    "identity_source": "src_armedassault_wiki",
-    "identity_evidence": "I_UAV_02_F is an Arma 3 UAV class for the MQ-4A Greyhawk, a fictional unmanned combat air vehicle; the Armed Assault Wiki names the MQ-9 as its basis, so the UAV class token binds it to the General Atomics MQ-9A Reaper analogue at grade claimed, and the corpus holds the MQ-9A figures from the ODIN Worldwide Equipment Guide 2025 (src_odin_weg_2025).",
+    "identity_source": "armedassault_mq4a_greyhawk_trivia",
+    "identity_evidence": "Armed Assault Wiki, MQ4A_Greyhawk, ARMA 3 Trivia (wikitext section 47): \"* As stated in the Field Manual, the general layout of the Greyhawk's airframe like its wings, tail, and sensor turret is inspired by the real-world \"MQ-9 Reaper\" UCAV designed by the American energy and defence corporation, General Atomics.\" Citation: https://armedassault.fandom.com/wiki/MQ4A_Greyhawk. The page asserts the basis and attributes it to the Field Manual ('the general layout of the Greyhawk's airframe like its wings, tail, and sensor turret is inspired by the real-world \"MQ-9 Reaper\" UCAV'). The K40 Ababil-3 page redirects here, so one binding serves both names. The corpus holds the MQ-9A Reaper. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   },
   {
     "game_class": "I_UAV_02_dynamicLoadout_F",
     "class_token": "UAV",
     "catalogue_id": "mq9a_reaper",
-    "identity_source": "src_armedassault_wiki",
-    "identity_evidence": "I_UAV_02_dynamicLoadout_F is an Arma 3 UAV class; it is a variant of the MQ-4A Greyhawk family that the Armed Assault Wiki names as the MQ-9 basis, so the UAV class token binds it to the General Atomics MQ-9A Reaper analogue at grade claimed, and the corpus holds the MQ-9A figures from the ODIN Worldwide Equipment Guide 2025 (src_odin_weg_2025).",
+    "identity_source": "armedassault_mq4a_greyhawk_trivia",
+    "identity_evidence": "Armed Assault Wiki, MQ4A_Greyhawk, ARMA 3 Trivia (wikitext section 47): \"* As stated in the Field Manual, the general layout of the Greyhawk's airframe like its wings, tail, and sensor turret is inspired by the real-world \"MQ-9 Reaper\" UCAV designed by the American energy and defence corporation, General Atomics.\" Citation: https://armedassault.fandom.com/wiki/MQ4A_Greyhawk. The page asserts the basis and attributes it to the Field Manual ('the general layout of the Greyhawk's airframe like its wings, tail, and sensor turret is inspired by the real-world \"MQ-9 Reaper\" UCAV'). The K40 Ababil-3 page redirects here, so one binding serves both names. The corpus holds the MQ-9A Reaper. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   },
   {
     "game_class": "O_UAV_02_CAS_F",
     "class_token": "UAV",
     "catalogue_id": "mq9a_reaper",
-    "identity_source": "src_armedassault_wiki",
-    "identity_evidence": "O_UAV_02_CAS_F is an Arma 3 UAV class; it is a variant of the MQ-4A Greyhawk family that the Armed Assault Wiki names as the MQ-9 basis, so the UAV class token binds it to the General Atomics MQ-9A Reaper analogue at grade claimed, and the corpus holds the MQ-9A figures from the ODIN Worldwide Equipment Guide 2025 (src_odin_weg_2025).",
+    "identity_source": "armedassault_mq4a_greyhawk_trivia",
+    "identity_evidence": "Armed Assault Wiki, MQ4A_Greyhawk, ARMA 3 Trivia (wikitext section 47): \"* As stated in the Field Manual, the general layout of the Greyhawk's airframe like its wings, tail, and sensor turret is inspired by the real-world \"MQ-9 Reaper\" UCAV designed by the American energy and defence corporation, General Atomics.\" Citation: https://armedassault.fandom.com/wiki/MQ4A_Greyhawk. The page asserts the basis and attributes it to the Field Manual ('the general layout of the Greyhawk's airframe like its wings, tail, and sensor turret is inspired by the real-world \"MQ-9 Reaper\" UCAV'). The K40 Ababil-3 page redirects here, so one binding serves both names. The corpus holds the MQ-9A Reaper. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   },
   {
     "game_class": "O_UAV_02_F",
     "class_token": "UAV",
     "catalogue_id": "mq9a_reaper",
-    "identity_source": "src_armedassault_wiki",
-    "identity_evidence": "O_UAV_02_F is an Arma 3 UAV class for the MQ-4A Greyhawk, a fictional unmanned combat air vehicle; the Armed Assault Wiki names the MQ-9 as its basis, so the UAV class token binds it to the General Atomics MQ-9A Reaper analogue at grade claimed, and the corpus holds the MQ-9A figures from the ODIN Worldwide Equipment Guide 2025 (src_odin_weg_2025).",
+    "identity_source": "armedassault_mq4a_greyhawk_trivia",
+    "identity_evidence": "Armed Assault Wiki, MQ4A_Greyhawk, ARMA 3 Trivia (wikitext section 47): \"* As stated in the Field Manual, the general layout of the Greyhawk's airframe like its wings, tail, and sensor turret is inspired by the real-world \"MQ-9 Reaper\" UCAV designed by the American energy and defence corporation, General Atomics.\" Citation: https://armedassault.fandom.com/wiki/MQ4A_Greyhawk. The page asserts the basis and attributes it to the Field Manual ('the general layout of the Greyhawk's airframe like its wings, tail, and sensor turret is inspired by the real-world \"MQ-9 Reaper\" UCAV'). The K40 Ababil-3 page redirects here, so one binding serves both names. The corpus holds the MQ-9A Reaper. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   },
   {
     "game_class": "O_UAV_02_dynamicLoadout_F",
     "class_token": "UAV",
     "catalogue_id": "mq9a_reaper",
-    "identity_source": "src_armedassault_wiki",
-    "identity_evidence": "O_UAV_02_dynamicLoadout_F is an Arma 3 UAV class; it is a variant of the MQ-4A Greyhawk family that the Armed Assault Wiki names as the MQ-9 basis, so the UAV class token binds it to the General Atomics MQ-9A Reaper analogue at grade claimed, and the corpus holds the MQ-9A figures from the ODIN Worldwide Equipment Guide 2025 (src_odin_weg_2025).",
+    "identity_source": "armedassault_mq4a_greyhawk_trivia",
+    "identity_evidence": "Armed Assault Wiki, MQ4A_Greyhawk, ARMA 3 Trivia (wikitext section 47): \"* As stated in the Field Manual, the general layout of the Greyhawk's airframe like its wings, tail, and sensor turret is inspired by the real-world \"MQ-9 Reaper\" UCAV designed by the American energy and defence corporation, General Atomics.\" Citation: https://armedassault.fandom.com/wiki/MQ4A_Greyhawk. The page asserts the basis and attributes it to the Field Manual ('the general layout of the Greyhawk's airframe like its wings, tail, and sensor turret is inspired by the real-world \"MQ-9 Reaper\" UCAV'). The K40 Ababil-3 page redirects here, so one binding serves both names. The corpus holds the MQ-9A Reaper. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   },
   {
@@ -789,6 +789,126 @@
     "catalogue_id": "ch5_rainbow",
     "identity_source": "aee_air_class_table",
     "identity_evidence": "O_T_UAV_04_CAS_F is an Arma 3 UAV class for the KH-3A Fenghuang, a fictional unmanned combat air vehicle; the class name does not name the real aircraft, so the UAV class token binds it to the CASC CH-5 Rainbow analogue at grade claimed, and the corpus holds the CH-5 figures from the ODIN Worldwide Equipment Guide 2025 (src_odin_weg_2025).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "Heli_Light_01_civil_base_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "md500_civil",
+    "identity_source": "armedassault_m900_trivia",
+    "identity_evidence": "Armed Assault Wiki, M900, ARMA 3 Trivia (wikitext section 33): \"* The M900's airframe is based on the McDonnell Douglas \"MD-500D\" series of light helicopters. It is visually similar in almost all respects, though one notable difference is the addition of vents at the base of the tail boom.\" Citation: https://armedassault.fandom.com/wiki/M900. The page asserts the basis (\"The M900's airframe is based on the McDonnell Douglas \"MD-500D\" series of light helicopters\"). The civil airframe is the bound entry; the previous binding rested on the class token alone. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "Heli_Light_01_base_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "md500",
+    "identity_source": "armedassault_mh9_hummingbird_trivia",
+    "identity_evidence": "Armed Assault Wiki, MH-9_Hummingbird, ARMA 3 Trivia (wikitext section 32): \"* The airframe is based on the real-world McDonnell Douglas \"MD-500D\" light helicopter and uses the same seamless cockpit windscreen and tail structure. The main difference is its appearance, most notably the Hummingbird's addition of vents at the base of the tailboom, but is largely identical to the real MD-500D.\" Citation: https://armedassault.fandom.com/wiki/MH-9_Hummingbird. The page asserts the basis ('The airframe is based on the real-world McDonnell Douglas \"MD-500D\" light helicopter') and names the role separately ('closely resemble that of the real-world \"MH-6 Little Bird\"'). The bound entry is the airframe the page states; the role is recorded here and not bound. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "Heli_Light_01_armed_base_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "md500",
+    "identity_source": "armedassault_ah9_pawnee_trivia",
+    "identity_evidence": "Armed Assault Wiki, AH-9_Pawnee, ARMA 3 Trivia (wikitext section 39): \"* As with the Hummingbird, the Pawnee's airframe is based on the real-world McDonnell Douglas \"MD-500D\" light helicopter and uses the same seamless cockpit windscreen and tail structure.\" Citation: https://armedassault.fandom.com/wiki/AH-9_Pawnee. The page asserts the basis ('As with the Hummingbird, the Pawnee's airframe is based on the real-world McDonnell Douglas \"MD-500D\" light helicopter') and names the role separately ('Its role on the other hand, closely resembles that of the \"AH-6J Little Bird\"'). The previous binding, the MD 530 Defender, is withdrawn: the page states the MD-500D airframe and no page names an MD 530 for the Pawnee. The 'pawnee' alias moves with it. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "Heli_Transport_01_base_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "uh60a_black_hawk",
+    "identity_source": "armedassault_uh80_ghost_hawk_trivia",
+    "identity_evidence": "Armed Assault Wiki, UH-80_Ghost_Hawk, ARMA 3 Trivia (wikitext section 45): \"* The Ghost Hawk is ARMA 3's take on the real-world stealth variant of the Sikorsky \"UH-60 Black Hawk\". This heavily modified variant of the Black Hawk was flown by U.S. special operations in Abbottabad, Pakistan, during the 2011 Osama Bin Laden raid (officially named as \"Operation Neptune Spear\").\" Citation: https://armedassault.fandom.com/wiki/UH-80_Ghost_Hawk. The page asserts the basis ('ARMA 3's take on the real-world stealth variant of the Sikorsky \"UH-60 Black Hawk\"') and cites the 2011 Abbottabad raid for the stealth configuration. The corpus holds the UH-60A. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "Heli_Attack_01_base_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "rah66_comanche",
+    "identity_source": "armedassault_ah99_blackfoot_trivia",
+    "identity_evidence": "Armed Assault Wiki, AH-99_Blackfoot, ARMA 3 Trivia (wikitext section 54): \"* As stated in the Field Manual, the Blackfoot's origins are derived from the real-world \"RAH-66 Comanche\" prototype helicopter. Its Stub Wings sub-variant is similarly based on a proposed configuration of the Comanche that utilised an external stores rack to carry up to eight AGM-114 Hellfire missiles (four on each wing like the in-game version).\" Citation: https://armedassault.fandom.com/wiki/AH-99_Blackfoot. The page asserts the basis and attributes it to the Field Manual (\"the Blackfoot's origins are derived from the real-world \"RAH-66 Comanche\" prototype helicopter\"). The corpus holds the Comanche. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "Heli_Transport_02_base_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "aw101_merlin",
+    "identity_source": "armedassault_ch49_mohawk_trivia",
+    "identity_evidence": "Armed Assault Wiki, CH-49_Mohawk, ARMA 3 Trivia (wikitext section 33): \"* As stated in its Field Manual entry, the Mohawk is based on the real-world AgustaWestland \"AW101 Merlin\" helicopter, otherwise also designated as the \"Merlin HC3\" by the Royal Air Force.\" Citation: https://armedassault.fandom.com/wiki/CH-49_Mohawk. The page asserts the basis and attributes it to the Field Manual (\"the Mohawk is based on the real-world AgustaWestland \"AW101 Merlin\" helicopter, otherwise also designated as the \"Merlin HC3\" by the Royal Air Force\"). The corpus holds the AW101 Merlin. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "Heli_Light_02_base_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "ka60_kasatka",
+    "identity_source": "armedassault_po30_orca_trivia",
+    "identity_evidence": "Armed Assault Wiki, PO-30_Orca, ARMA 3 Trivia (wikitext section 39): \"* The Orca is based on the real-world Kamov \"Ka-60 Kasatka\" helicopter, which was previously featured in ARMA 2's Private Military Company DLC.\" Citation: https://armedassault.fandom.com/wiki/PO-30_Orca. The page asserts the basis ('is based on the real-world Kamov \"Ka-60 Kasatka\" helicopter') and records that the Alpha build used the real designation. The previous binding, the Mil Mi-2, is withdrawn: no page names a Mi-2 for the Orca. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "Heli_Attack_02_base_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "mi28_havoc",
+    "identity_source": "armedassault_mi48_kajman_trivia",
+    "identity_evidence": "Armed Assault Wiki, Mi-48_Kajman, ARMA 3 Trivia (wikitext section 44): \"* As stated in the Field Manual and in a livestream event held by the studio on March 8th, 2023, the Kajman's design and capabilities draw inspiration from three real-world Russian attack helicopters designed by the Mil Moscow Helicopter Plant and Kamov Design Bureau. Both companies are subsidiaries of Rostec, their state-owned parent company. ** Specifically, it uses the cockpit layout of the Mil \"Mi-28\", tail boom and coaxial rotor design of the Kamov \"Ka-50\"/\"Ka-52\", and fuselage/passenger cabin of the Mil \"Mi-24\".\" Citation: https://armedassault.fandom.com/wiki/Mi-48_Kajman. The page asserts a composite basis and attributes it to the Field Manual: the design 'draw[s] inspiration from three real-world Russian attack helicopters', and 'it uses the cockpit layout of the Mil \"Mi-28\", tail boom and coaxial rotor design of the Kamov \"Ka-50\"/\"Ka-52\", and fuselage/passenger cabin of the Mil \"Mi-24\"'. The bound entry is the cockpit donor the page names first; every donor is named here and none is asserted as the whole identity. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "Plane_Fighter_03_base_F",
+    "class_token": "Plane",
+    "catalogue_id": "l159_alca",
+    "identity_source": "armedassault_a143_buzzard_trivia",
+    "identity_evidence": "Armed Assault Wiki, A-143_Buzzard, ARMA 3 Trivia (wikitext section 55): \"* The Buzzard is a slightly modified version of the real-world Czech-made \"L-159 ALCA\" jet trainer/light attack jet manufactured by Aero Vodochody. It even uses an updated port of the L-159 model from ArmA 2's Army of the Czech Republic DLC.\" Citation: https://armedassault.fandom.com/wiki/A-143_Buzzard. The page asserts the basis ('a slightly modified version of the real-world Czech-made \"L-159 ALCA\"') and records that the model is an updated port of the ArmA 2 L-159. The corpus holds the L-159 ALCA. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "Plane_CAS_01_base_F",
+    "class_token": "Plane",
+    "catalogue_id": "a10a_thunderbolt_ii",
+    "identity_source": "armedassault_a164_wipeout_trivia",
+    "identity_evidence": "Armed Assault Wiki, A-164_Wipeout, ARMA 3 Trivia (wikitext section 52): \"* As stated in its Field Manual entry, the Wipeout is directly based on the real-world \"A-10 Thunderbolt II\" attack jet then-designed by Fairchild Republic which is now owned by M7 Aerospace, itself a subsidiary of the U.S.-based division of Elbit Systems (with support for the A-10 having since been taken over by Northrop Grumman).\" Citation: https://armedassault.fandom.com/wiki/A-164_Wipeout. The page asserts the basis and attributes it to the Field Manual (\"the Wipeout is directly based on the real-world \"A-10 Thunderbolt II\" attack jet\"). The corpus holds the A-10A. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "Plane_CAS_02_base_F",
+    "class_token": "Plane",
+    "catalogue_id": "yak130_mitten",
+    "identity_source": "armedassault_to199_neophron_trivia",
+    "identity_evidence": "Armed Assault Wiki, To-199_Neophron, ARMA 3 Trivia (wikitext section 50): \"* The Neophron is based on the real-world \"Yak-130\" jet (specifically the single-seater \"Yak-131\" variant) designed by the Yakovlev Design Bureau, a subsidiary of the United Aircraft Corporation.\" Citation: https://armedassault.fandom.com/wiki/To-199_Neophron. The page asserts the basis ('is based on the real-world \"Yak-130\" jet (specifically the single-seater \"Yak-131\" variant) designed by the Yakovlev Design Bureau'). The corpus holds the Yak-130 and not the Yak-131 variant. The previous binding, the Su-25 Frogfoot, is withdrawn: no page names a Su-25 for the Neophron. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "UAV_02_base_F",
+    "class_token": "UAV",
+    "catalogue_id": "mq9a_reaper",
+    "identity_source": "armedassault_mq4a_greyhawk_trivia",
+    "identity_evidence": "Armed Assault Wiki, MQ4A_Greyhawk, ARMA 3 Trivia (wikitext section 47): \"* As stated in the Field Manual, the general layout of the Greyhawk's airframe like its wings, tail, and sensor turret is inspired by the real-world \"MQ-9 Reaper\" UCAV designed by the American energy and defence corporation, General Atomics.\" Citation: https://armedassault.fandom.com/wiki/MQ4A_Greyhawk. The page asserts the basis and attributes it to the Field Manual ('the general layout of the Greyhawk's airframe like its wings, tail, and sensor turret is inspired by the real-world \"MQ-9 Reaper\" UCAV'). The K40 Ababil-3 page redirects here, so one binding serves both names. The corpus holds the MQ-9A Reaper. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "UAV_01_base_F",
+    "class_token": "UAV",
+    "catalogue_id": "parrot_ar_drone_2",
+    "identity_source": "armedassault_ar2_darter_trivia",
+    "identity_evidence": "Armed Assault Wiki, AR-2_Darter, ARMA 3 Trivia (wikitext section 27): \"* The Darter appears to be based on an enlarged version of the \"AR.Drone Version 2.0\" (using the indoor hull) manufactured by Parrot SA of France.\" Citation: https://armedassault.fandom.com/wiki/AR-2_Darter. The page hedges: 'The Darter appears to be based on an enlarged version of the \"AR.Drone Version 2.0\" (using the indoor hull) manufactured by Parrot SA of France.' The hedge is recorded and not upgraded. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "B_UAV_01_F",
+    "class_token": "UAV",
+    "catalogue_id": "parrot_ar_drone_2",
+    "identity_source": "armedassault_ar2_darter_trivia",
+    "identity_evidence": "Armed Assault Wiki, AR-2_Darter, ARMA 3 Trivia (wikitext section 27): \"* The Darter appears to be based on an enlarged version of the \"AR.Drone Version 2.0\" (using the indoor hull) manufactured by Parrot SA of France.\" Citation: https://armedassault.fandom.com/wiki/AR-2_Darter. The page hedges: 'The Darter appears to be based on an enlarged version of the \"AR.Drone Version 2.0\" (using the indoor hull) manufactured by Parrot SA of France.' The hedge is recorded and not upgraded. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "O_UAV_01_F",
+    "class_token": "UAV",
+    "catalogue_id": "parrot_ar_drone_2",
+    "identity_source": "armedassault_ar2_darter_trivia",
+    "identity_evidence": "Armed Assault Wiki, AR-2_Darter, ARMA 3 Trivia (wikitext section 27): \"* The Darter appears to be based on an enlarged version of the \"AR.Drone Version 2.0\" (using the indoor hull) manufactured by Parrot SA of France.\" Citation: https://armedassault.fandom.com/wiki/AR-2_Darter. The page hedges: 'The Darter appears to be based on an enlarged version of the \"AR.Drone Version 2.0\" (using the indoor hull) manufactured by Parrot SA of France.' The hedge is recorded and not upgraded. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   }
 ]

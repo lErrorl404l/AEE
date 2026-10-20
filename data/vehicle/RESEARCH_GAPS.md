@@ -211,3 +211,118 @@ Plus is the uparmoured mark. An entry was NOT created on the base vehicle's
 numbers.
 
 Needed: a source stating the M1237's own weight, dimensions or power.
+
+## 9. Armed Assault Wiki counterpart rows
+
+The source is the research file `.omo/research/arma3-vehicle-counterparts.md`,
+which reads the Armed Assault Wiki per-vehicle Trivia section. Every applied
+row holds its section wikitext under `data/vehicle/sources/` or
+`data/aircraft/sources/`. This section holds the rows that are NOT applied.
+
+### 9.1 Contested: T-100 Varsuk (MBT_02_base_F, O_MBT_02_cannon_F)
+
+One page gives two different answers, so both are held and neither is bound.
+
+- Field Manual statement. *T-100 Varsuk*, Trivia,
+  https://armedassault.fandom.com/wiki/T-100_Varsuk: "As stated in the Field
+  Manual, the Varsuk is inspired by the real-world \"T-95\" main battle tank
+  designed by Uralvagonzavod."
+- Editor observation, same section: "However, both the Varsuk's turret and
+  chassis bear a stronger resemblance to the \"Black Eagle\" tank, another
+  cancelled concept MBT that was then-designed by Omsktransmash."
+- Held bytes. `data/vehicle/sources/armedassault_t100_varsuk_trivia.wiki`,
+  section 44.
+
+No entry exists for the T-95 or the Black Eagle and none was created. The
+class-table binding that pointed `O_MBT_02_cannon_F` at the M1 Abrams is
+removed: no source names an Abrams for the Varsuk, and a contested row is not
+a licence to keep a weaker claim. The class now binds nothing.
+
+Known residual defect. The matcher answers "T-100 Varsuk" with the Toyota
+T100 pickup, because both share the token `t100`. The corpus has no rule that
+refuses a contested identity, so this is recorded and not patched by an
+invented binding.
+
+### 9.2 Rows graded `none`
+
+- T-100X Futura (`MBT_02_railgun_base_F`). The page gives no real-world
+  basis. It is a fictional railgun variant of the T-100.
+- 2S9 Sochor (`MBT_02_arty_base_F`). The page states the design is not based
+  on a real vehicle and names the 2S35 Koalitsiya-SV as a similar concept
+  only.
+
+Both get no entry and no binding.
+
+### 9.3 Row with a named donor set and no possible binding: M4 Scorcher
+
+`MBT_01_arty_base_F`. *M4 Scorcher*, Trivia,
+https://armedassault.fandom.com/wiki/M4_Scorcher, section 45: "The Scorcher
+itself is fictitious as the \"Mark IV\" variant of the Israeli \"Merkava\"
+MBT never had a dedicated SPG configuration." The turret profile "seems to
+be based on the \"A7\" variant of the \"M109 Paladin\"", and the howitzer is
+drawn from the NLOS-C "Concept Technology Demonstrator".
+
+The corpus holds the Merkava Mk IV and the M109A6. It does not hold the
+M109A7 or the NLOS-C CTD, and the page states the vehicle never existed, so a
+binding would assert an identity the page denies. No entry and no binding.
+
+### 9.4 Donors the pages name that the corpus does not hold
+
+These stay as notes on the bound parent entry. No entry was created for a
+subsystem and no figure was invented for a missing variant.
+
+- Patria AMV "Badger" IFV variant (Denel SOC Ltd). Bound parent: `patria_amv`.
+- Namer "Achzaka" ARV prototype. Bound parent: `namer`. The held
+  `achzarit` entry is a different conversion and is not bound.
+- Marksman anti-aircraft turret (Marconi Electronic Systems). Named by the
+  Cheetah and Tigris rows. Bound parents: `namer` and `bm2t_stalker`.
+- Samson RCWS-30 turret (Rafael). Named by the Kamysh and Slammer rows.
+  Bound parent: `bm2t_stalker`.
+- Yak-131 single-seat variant. Bound parent: `yak130_mitten`.
+- M109A7 Paladin. The held `m109a6_paladin` is the A6 mark and is not
+  substituted.
+- Leopard 2 "Revolution" upgrade package (Rheinmetall). Bound parent:
+  `leopard_2a6`.
+
+### 9.5 UGV classes bind no catalogue entry
+
+The UGV Stomper and UGV Saif rows are bound to `darpa_crusher_ugcv` by the
+display-name alias, and the concrete binding layer records nothing for
+`UGV_01_base_F`, `UGV_01_rcws_base_F`, `O_UGV_01_F` and `O_UGV_01_rcws_F`.
+The reason is the token table: `data/vehicle/classes.json` carries no UGV
+token, the binding layer requires a class token, and an empty token fails
+`validate_class_bindings.py`. A UGV token must be added to the supported set
+before those four classes can bind.
+
+### 9.6 Offroad display name
+
+The Offroad row is bound to `offroad_q7_l200_composite` by class. The entry
+carries `offroad` as a keyword, and `offroad` is a category word that
+`gen_vehicle_data.py` drops from both the alias and the keyword list, so the
+bare display name "Offroad" resolves to no entry. The composite carries no
+other display-name alias. This is unchanged by the counterpart work and is
+recorded here as a finding.
+
+### 9.7 Donor entries hold an identity and no mass
+
+Eleven applied counterparts hold an identity and no published mass, because
+the held Trivia section states no mass, dimension, engine or tyre figure:
+
+`hyundai_iblue_concept`, `bmw_x6_concept`, `mercedes_benz_sprinter`,
+`yamaha_grizzly_450`, `zil_karatel`, `lgs_fennek_larv`, `otokar_arma_6x6`,
+`bm2t_stalker`, `darpa_crusher_ugcv`, `parrot_ar_drone_2` and
+`offroad_q7_l200_composite`.
+
+The class bindings to those entries are recorded at the identity layer and
+carry no figure. Two build steps expect a held real mass for every bound
+class, and neither can emit for these:
+
+- `gen_physics_config.py` stops with "no held real mass in
+  data/physics/mass_calibration.json; the mass override cannot emit it".
+- `gen_vehicle_mass_model.py` builds from the calibrated set only, so these
+  classes carry no mass class.
+
+The gap is a missing published mass, not a missing identity. A later capture
+that holds a tier-1 to tier-5 figure for one of these vehicles closes it per
+vehicle. Until then no mass is derived, substituted or invented, and the
+generated physics header stays as it is.

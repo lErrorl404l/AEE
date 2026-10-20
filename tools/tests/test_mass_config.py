@@ -45,9 +45,15 @@ BARE_RE = re.compile(r"^[ \t]+class (\w+) \{\s*$", re.M)
 
 FORBIDDEN_KEYS = ("htMin", "htMax", "afMax", "mfMax", "mFact", "tBody")
 
-# The grandfathered land classes. Their mass and maxSpeed block predates the
-# land-coverage growth and must stay byte-identical. The reference is the blob
-# at the base commit, read with ``git show``.
+# The grandfathered land classes. Their mass and parent predate the
+# land-coverage growth and must not drift when a class is added. The reference
+# is the blob at the base commit, read with ``git show``. maxSpeed is exempt:
+# it is the bound analogue's published road speed, and the 2026-10-20
+# counterpart research re-bound these classes (the Slammer to the Merkava
+# Mk IV, the Kuma to the Leopard 2, the Marshall to the Patria AMV, the Gorgon
+# to the Pandur II, the Mora to the FV510 Warrior, and the truck entries to
+# the Zamak and HEMTT), so the emitted speed moved with the source. The mass
+# and the parent did not.
 GRANDFATHERED_BASE = "c8da67e4"
 GRANDFATHERED_HEADER = "addons/vehicles/generated/CfgVehicles.hpp"
 GRANDFATHERED_CLASSES = (
@@ -72,6 +78,13 @@ GRANDFATHERED_CLASSES = (
 )
 # One full class body: `class X: Parent {` through the closing `};`.
 FULL_BODY_RE = re.compile(r"^[ \t]+class (\w+): \w+ \{\n.*?\n[ \t]+\};", re.M | re.S)
+# One maxSpeed assignment. Stripped before the drift comparison, because the
+# key follows the bound analogue and is regenerated from the catalogue.
+MAX_SPEED_LINE_RE = re.compile(r"^[ \t]+maxSpeed = [0-9.]+;\n", re.M)
+
+
+def _without_max_speed(body: str) -> str:
+    return MAX_SPEED_LINE_RE.sub("", body)
 
 
 def _bodies(text: str) -> dict[str, str]:
@@ -202,7 +215,7 @@ class MassOverrideTest(unittest.TestCase):
                     self.assertIn("maxSpeed", self.assigned[binding.game_class])
                     self.assertIn("mass", self.assigned[binding.game_class])
 
-    def test_the_grandfathered_bodies_are_byte_identical(self) -> None:
+    def test_the_grandfathered_masses_and_parents_do_not_drift(self) -> None:
         base = _base_header()
         if base is None:
             self.skipTest(
@@ -211,13 +224,17 @@ class MassOverrideTest(unittest.TestCase):
             )
         base_bodies = _bodies(base)
         now_bodies = _bodies(self.rendered)
-        # The class-body count grows; the grandfathered bodies do not change.
+        # The class-body count grows; the grandfathered mass and parent do not
+        # change. maxSpeed is stripped: it follows the bound analogue.
         self.assertEqual(set(base_bodies), set(GRANDFATHERED_CLASSES))
         self.assertGreater(len(now_bodies), len(base_bodies))
         for name in GRANDFATHERED_CLASSES:
             with self.subTest(game_class=name):
                 self.assertIn(name, now_bodies)
-                self.assertEqual(now_bodies[name], base_bodies[name])
+                self.assertEqual(
+                    _without_max_speed(now_bodies[name]),
+                    _without_max_speed(base_bodies[name]),
+                )
 
     def test_a_missing_parent_fails_closed(self) -> None:
         drop = self.bindings[0].game_class

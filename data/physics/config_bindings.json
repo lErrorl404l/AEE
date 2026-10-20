@@ -14,32 +14,46 @@
     "grade": "documented"
   },
   {
-    "game_class": "B_APC_Wheeled_01_cannon_F",
+    "game_class": "B_APC_Tracked_01_rcws_F",
     "config_class": "CfgVehicles",
     "key": "maxSpeed",
-    "value": 80,
+    "value": 85.2,
     "unit": "km/h",
     "value_source": {
-      "source_id": "btr_80_technical_description_2001",
-      "locator": "Section 3, Skorosti dvizheniya, printed pages 9 and 10, row Maksimalnaya po shosse, km/h",
+      "source_id": "wikipedia_namer",
+      "locator": "Infobox, speed row",
       "field": "max_speed_kmh"
     },
     "conversion": "identity",
-    "grade": "documented"
+    "grade": "claimed"
+  },
+  {
+    "game_class": "B_APC_Wheeled_01_cannon_F",
+    "config_class": "CfgVehicles",
+    "key": "maxSpeed",
+    "value": 100,
+    "unit": "km/h",
+    "value_source": {
+      "source_id": "wikipedia_patria_amv",
+      "locator": "Infobox, speed row, on land entry",
+      "field": "max_speed_kmh"
+    },
+    "conversion": "identity",
+    "grade": "claimed"
   },
   {
     "game_class": "B_MBT_01_cannon_F",
     "config_class": "CfgVehicles",
     "key": "maxSpeed",
-    "value": 72,
+    "value": 64,
     "unit": "km/h",
     "value_source": {
-      "source_id": "tm_9_2350_255_10",
-      "locator": "EQUIPMENT DESCRIPTION, PERFORMANCE DATA, printed page 1-16, Performance, Forward speed maximum (paved level surface)",
+      "source_id": "wikipedia_merkava",
+      "locator": "Infobox, speed row, on road entry",
       "field": "max_speed_kmh"
     },
     "conversion": "identity",
-    "grade": "documented"
+    "grade": "claimed"
   },
   {
     "game_class": "B_Truck_01_transport_F",
@@ -48,110 +62,68 @@
     "value": 88,
     "unit": "km/h",
     "value_source": {
-      "source_id": "tm_9_2320_272_10",
-      "locator": "Table 1-9A, Maximum Safe Operating Speeds, page 1-23, Highway/secondary roads, column W/ABS",
+      "source_id": "tm_9_2320_279_10_1",
+      "locator": "Table 1-2, Equipment Data, printed page 1-29, OPERATING SPEEDS, Maximum Speed (all models), Standard Tire, Highway",
       "field": "max_speed_kmh"
     },
     "conversion": "identity",
     "grade": "documented"
-  },
-  {
-    "game_class": "C_Offroad_01_F",
-    "config_class": "CfgVehicles",
-    "key": "maxSpeed",
-    "value": 160,
-    "unit": "km/h",
-    "value_source": {
-      "source_id": "elite_uk_forces_land_rover_wolf",
-      "locator": "Elite UK Forces Wolf (XD 110) specifications: 'Maximum speed 160 kph on mettled road'",
-      "field": "max_speed_kmh"
-    },
-    "conversion": "identity",
-    "grade": "claimed"
-  },
-  {
-    "game_class": "C_SUV_01_F",
-    "config_class": "CfgVehicles",
-    "key": "maxSpeed",
-    "value": 108,
-    "unit": "km/h",
-    "value_source": {
-      "source_id": "peugeot_p4",
-      "locator": "Infobox automobile, speed row, 108 to 118 km/h",
-      "field": "max_speed_kmh"
-    },
-    "conversion": "identity",
-    "grade": "claimed"
-  },
-  {
-    "game_class": "C_Van_01_transport_F",
-    "config_class": "CfgVehicles",
-    "key": "maxSpeed",
-    "value": 90,
-    "unit": "km/h",
-    "value_source": {
-      "source_id": "gaz_66",
-      "locator": "Specifications section, speed entry",
-      "field": "max_speed_kmh"
-    },
-    "conversion": "identity",
-    "grade": "claimed"
   },
   {
     "game_class": "I_APC_Wheeled_03_cannon_F",
     "config_class": "CfgVehicles",
     "key": "maxSpeed",
-    "value": 80,
+    "value": 110,
     "unit": "km/h",
     "value_source": {
-      "source_id": "btr_80_technical_description_2001",
-      "locator": "Section 3, Skorosti dvizheniya, printed pages 9 and 10, row Maksimalnaya po shosse, km/h",
+      "source_id": "tatra_defence_pandur_ii_datasheet",
+      "locator": "Front panel, Speed",
       "field": "max_speed_kmh"
     },
     "conversion": "identity",
-    "grade": "documented"
+    "grade": "claimed"
+  },
+  {
+    "game_class": "I_APC_tracked_03_cannon_F",
+    "config_class": "CfgVehicles",
+    "key": "maxSpeed",
+    "value": 75,
+    "unit": "km/h",
+    "value_source": {
+      "source_id": "wikipedia_fv510_warrior",
+      "locator": "Infobox, Specifications section, Maximum speed row",
+      "field": "max_speed_kmh"
+    },
+    "conversion": "identity",
+    "grade": "claimed"
   },
   {
     "game_class": "I_MBT_03_cannon_F",
     "config_class": "CfgVehicles",
     "key": "maxSpeed",
-    "value": 72,
+    "value": 70,
     "unit": "km/h",
     "value_source": {
-      "source_id": "tm_9_2350_255_10",
-      "locator": "EQUIPMENT DESCRIPTION, PERFORMANCE DATA, printed page 1-16, Performance, Forward speed maximum (paved level surface)",
+      "source_id": "knds_leopard_2_a6",
+      "locator": "Specifications table, Speed row",
       "field": "max_speed_kmh"
     },
     "conversion": "identity",
-    "grade": "documented"
+    "grade": "claimed"
   },
   {
     "game_class": "I_Truck_02_transport_F",
     "config_class": "CfgVehicles",
     "key": "maxSpeed",
-    "value": 88,
+    "value": 85,
     "unit": "km/h",
     "value_source": {
-      "source_id": "tm_9_2320_272_10",
-      "locator": "Table 1-9A, Maximum Safe Operating Speeds, page 1-23, Highway/secondary roads, column W/ABS",
+      "source_id": "ru_wikipedia_kamaz_4310",
+      "locator": "\u041a\u0430\u0440\u0442\u043e\u0447\u043a\u0430, \u043c\u0430\u043a\u0441. \u0441\u043a\u043e\u0440\u043e\u0441\u0442\u044c = 85 \u043a\u043c/\u0447",
       "field": "max_speed_kmh"
     },
     "conversion": "identity",
-    "grade": "documented"
-  },
-  {
-    "game_class": "O_APC_Wheeled_02_rcws_v2_F",
-    "config_class": "CfgVehicles",
-    "key": "maxSpeed",
-    "value": 80,
-    "unit": "km/h",
-    "value_source": {
-      "source_id": "btr_80_technical_description_2001",
-      "locator": "Section 3, Skorosti dvizheniya, printed pages 9 and 10, row Maksimalnaya po shosse, km/h",
-      "field": "max_speed_kmh"
-    },
-    "conversion": "identity",
-    "grade": "documented"
+    "grade": "claimed"
   },
   {
     "game_class": "O_MBT_02_cannon_F",
@@ -171,18 +143,32 @@
     "game_class": "O_Truck_02_transport_F",
     "config_class": "CfgVehicles",
     "key": "maxSpeed",
-    "value": 88,
+    "value": 85,
     "unit": "km/h",
     "value_source": {
-      "source_id": "tm_9_2320_272_10",
-      "locator": "Table 1-9A, Maximum Safe Operating Speeds, page 1-23, Highway/secondary roads, column W/ABS",
+      "source_id": "ru_wikipedia_kamaz_4310",
+      "locator": "\u041a\u0430\u0440\u0442\u043e\u0447\u043a\u0430, \u043c\u0430\u043a\u0441. \u0441\u043a\u043e\u0440\u043e\u0441\u0442\u044c = 85 \u043a\u043c/\u0447",
       "field": "max_speed_kmh"
     },
     "conversion": "identity",
-    "grade": "documented"
+    "grade": "claimed"
   },
   {
     "game_class": "B_Heli_Light_01_F",
+    "config_class": "CfgVehicles",
+    "key": "fuelConsumptionRate",
+    "value": 0,
+    "unit": "unitless",
+    "value_source": {
+      "source_id": "src_md500e_2023",
+      "locator": "60.5 Gallon (229 liter) Crash Resistant Fuel System",
+      "field": "fuel_capacity"
+    },
+    "conversion": "structural_zero",
+    "grade": "derived"
+  },
+  {
+    "game_class": "B_Heli_Light_01_armed_F",
     "config_class": "CfgVehicles",
     "key": "fuelConsumptionRate",
     "value": 0,

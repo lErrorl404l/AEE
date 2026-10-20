@@ -353,14 +353,14 @@
       "class": "B_Heli_Light_01_armed_F",
       "class_token": "Helicopter",
       "state": "recorded",
-      "catalogue_id": "md530_defender",
+      "catalogue_id": "md500",
       "reason": "runtime row emitted and class binding held"
     },
     {
       "class": "B_Heli_Light_01_dynamicLoadout_F",
       "class_token": "Helicopter",
       "state": "recorded",
-      "catalogue_id": "md530_defender",
+      "catalogue_id": "md500",
       "reason": "runtime row emitted and class binding held"
     },
     {
@@ -541,9 +541,9 @@
     {
       "class": "B_UAV_01_F",
       "class_token": "Helicopter",
-      "state": "no_source",
-      "catalogue_id": null,
-      "reason": "toy-grade miniature quadcopter (AR-2 Darter) with no real counterpart, so the next source to seek is the NASA report Recent NASA Wind Tunnel Free-Flight Testing of a Multirotor Unmanned Aircraft System, a US Government work in the public domain."
+      "state": "recorded",
+      "catalogue_id": "parrot_ar_drone_2",
+      "reason": "runtime row emitted and class binding held"
     },
     {
       "class": "B_UAV_02_CAS_F",
@@ -983,28 +983,28 @@
       "class": "O_Heli_Light_02_F",
       "class_token": "Helicopter",
       "state": "recorded",
-      "catalogue_id": "light_utility_rotary",
+      "catalogue_id": "ka60_kasatka",
       "reason": "runtime row emitted and class binding held"
     },
     {
       "class": "O_Heli_Light_02_dynamicLoadout_F",
       "class_token": "Helicopter",
       "state": "recorded",
-      "catalogue_id": "light_utility_rotary",
+      "catalogue_id": "ka60_kasatka",
       "reason": "runtime row emitted and class binding held"
     },
     {
       "class": "O_Heli_Light_02_unarmed_F",
       "class_token": "Helicopter",
       "state": "recorded",
-      "catalogue_id": "light_utility_rotary",
+      "catalogue_id": "ka60_kasatka",
       "reason": "runtime row emitted and class binding held"
     },
     {
       "class": "O_Heli_Light_02_v2_F",
       "class_token": "Helicopter",
       "state": "recorded",
-      "catalogue_id": "light_utility_rotary",
+      "catalogue_id": "ka60_kasatka",
       "reason": "runtime row emitted and class binding held"
     },
     {
@@ -1123,21 +1123,21 @@
       "class": "O_Plane_CAS_02_Cluster_F",
       "class_token": "Plane",
       "state": "recorded",
-      "catalogue_id": "su25_frogfoot",
+      "catalogue_id": "yak130_mitten",
       "reason": "runtime row emitted and class binding held"
     },
     {
       "class": "O_Plane_CAS_02_F",
       "class_token": "Plane",
       "state": "recorded",
-      "catalogue_id": "su25_frogfoot",
+      "catalogue_id": "yak130_mitten",
       "reason": "runtime row emitted and class binding held"
     },
     {
       "class": "O_Plane_CAS_02_dynamicLoadout_F",
       "class_token": "Plane",
       "state": "recorded",
-      "catalogue_id": "su25_frogfoot",
+      "catalogue_id": "yak130_mitten",
       "reason": "runtime row emitted and class binding held"
     },
     {
@@ -1241,9 +1241,9 @@
     {
       "class": "O_UAV_01_F",
       "class_token": "Helicopter",
-      "state": "no_source",
-      "catalogue_id": null,
-      "reason": "toy-grade miniature quadcopter (AR-2 Darter) with no real counterpart, so the next source to seek is the NASA report Recent NASA Wind Tunnel Free-Flight Testing of a Multirotor Unmanned Aircraft System, a US Government work in the public domain."
+      "state": "recorded",
+      "catalogue_id": "parrot_ar_drone_2",
+      "reason": "runtime row emitted and class binding held"
     },
     {
       "class": "O_UAV_02_CAS_F",

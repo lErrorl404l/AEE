@@ -550,7 +550,16 @@ def validate_catalogue(
         # value or a named derivation. An absent field is a labelled zero.
         vehicle_kind = vehicle_type if isinstance(vehicle_type, str) else ""
         resolved = vehicle_catalogue.resolve_fields(vehicle_kind, values)
-        if not any(field.grade != "absent" for field in resolved.values()):
+        # An identity-only entry is a vehicle a source names and publishes no
+        # figure for. It must carry no values, and it projects labelled zeros.
+        identity_only = entry.get("identity_only") is True
+        if identity_only and values:
+            errors.append(
+                f"catalogue {cid}: identity_only is set, so values must be empty"
+            )
+        if not identity_only and not any(
+            field.grade != "absent" for field in resolved.values()
+        ):
             errors.append(
                 f"catalogue {cid}: no runtime field resolves from a held value "
                 "or a named derivation"

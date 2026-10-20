@@ -40,7 +40,7 @@
       "display_name": "Offroad",
       "display_name_source": "Addons/language_f/a3/language_f/stringtable.xml",
       "config_locator": "Expansion/Addons/soft_f_exp.pbo > Offroad_01\\config.bin",
-      "catalogue_id": "toyota_land_cruiser_70",
+      "catalogue_id": "offroad_q7_l200_composite",
       "matched_tokens": [
         "offroad"
       ]
@@ -51,7 +51,7 @@
       "display_name": "Offroad (AT)",
       "display_name_source": "Addons/language_f_gamma/a3/language_f_gamma/stringtable.xml",
       "config_locator": "Addons/soft_f.pbo > Offroad_01\\config.bin",
-      "catalogue_id": "toyota_land_cruiser_70",
+      "catalogue_id": "offroad_q7_l200_composite",
       "matched_tokens": [
         "offroad"
       ]
@@ -66,17 +66,6 @@
       "matched_tokens": [
         "m2a4",
         "slammer"
-      ]
-    },
-    {
-      "game_class": "B_MBT_01_mlrs_base_F",
-      "display_name_key": "$STR_A3_CfgVehicles_B_MBT_01_MLRS0",
-      "display_name": "M5 Sandstorm MLRS",
-      "display_name_source": "Addons/language_f_gamma/a3/language_f_gamma/stringtable.xml",
-      "config_locator": "Addons/armor_f_gamma/a3/armor_f_gamma/MBT_01/config.cpp",
-      "catalogue_id": "astros_ii",
-      "matched_tokens": [
-        "mlrs"
       ]
     },
     {
@@ -103,34 +92,12 @@
       ]
     },
     {
-      "game_class": "C_Hatchback_01_F",
-      "display_name_key": "$STR_A3_CfgVehicles_Car_Base0",
-      "display_name": "Hatchback",
-      "display_name_source": "Addons/language_f_gamma/a3/language_f_gamma/stringtable.xml",
-      "config_locator": "Addons/soft_f_gamma.pbo > Hatchback_01\\config.bin",
-      "catalogue_id": "honda_civic_6gen_hatchback",
-      "matched_tokens": [
-        "hatchback"
-      ]
-    },
-    {
-      "game_class": "C_Hatchback_01_sport_F",
-      "display_name_key": "$STR_A3_CfgVehicles_C_car_sport0",
-      "display_name": "Hatchback (Sport)",
-      "display_name_source": "Addons/language_f_gamma/a3/language_f_gamma/stringtable.xml",
-      "config_locator": "Addons/soft_f_gamma.pbo > Hatchback_01\\config.bin",
-      "catalogue_id": "honda_civic_6gen_hatchback",
-      "matched_tokens": [
-        "hatchback"
-      ]
-    },
-    {
       "game_class": "C_IDAP_Offroad_01_F",
       "display_name_key": "$STR_A3_CfgVehicles_Offroad_Base0",
       "display_name": "Offroad",
       "display_name_source": "Addons/language_f/a3/language_f/stringtable.xml",
       "config_locator": "Orange/Addons/soft_f_orange.pbo > Offroad_01\\config.bin",
-      "catalogue_id": "toyota_land_cruiser_70",
+      "catalogue_id": "offroad_q7_l200_composite",
       "matched_tokens": [
         "offroad"
       ]
@@ -141,7 +108,7 @@
       "display_name": "Offroad (Services)",
       "display_name_source": "Addons/language_f_bootcamp/a3/language_f_bootcamp/stringtable.xml",
       "config_locator": "Addons/soft_f.pbo > Offroad_01\\config.bin",
-      "catalogue_id": "toyota_land_cruiser_70",
+      "catalogue_id": "offroad_q7_l200_composite",
       "matched_tokens": [
         "offroad"
       ]
@@ -155,17 +122,6 @@
       "catalogue_id": "hmmwv_m998",
       "matched_tokens": [
         "hmmwv"
-      ]
-    },
-    {
-      "game_class": "Hatchback_01_base_F",
-      "display_name_key": "$STR_A3_CfgVehicles_Car_Base0",
-      "display_name": "Hatchback",
-      "display_name_source": "Addons/language_f_gamma/a3/language_f_gamma/stringtable.xml",
-      "config_locator": "Addons/soft_f_gamma.pbo > Hatchback_01\\config.bin",
-      "catalogue_id": "honda_civic_6gen_hatchback",
-      "matched_tokens": [
-        "hatchback"
       ]
     },
     {
@@ -185,7 +141,7 @@
       "display_name": "Offroad (AT)",
       "display_name_source": "Addons/language_f_gamma/a3/language_f_gamma/stringtable.xml",
       "config_locator": "Addons/soft_f.pbo > Offroad_01\\config.bin",
-      "catalogue_id": "toyota_land_cruiser_70",
+      "catalogue_id": "offroad_q7_l200_composite",
       "matched_tokens": [
         "offroad"
       ]
@@ -1522,17 +1478,6 @@
       ]
     },
     {
-      "game_class": "MBT_01_mlrs_base_F",
-      "display_name_key": "$STR_A3_CfgVehicles_B_MBT_01_MLRS0",
-      "display_name": "M5 Sandstorm MLRS",
-      "display_name_source": "Addons/language_f_gamma/a3/language_f_gamma/stringtable.xml",
-      "config_locator": "Addons/armor_f_gamma/a3/armor_f_gamma/MBT_01/config.cpp",
-      "catalogue_id": "astros_ii",
-      "matched_tokens": [
-        "mlrs"
-      ]
-    },
-    {
       "game_class": "OTR21_Base",
       "display_name_key": "",
       "display_name": "",
@@ -1547,7 +1492,7 @@
       "display_name": "Offroad (AT)",
       "display_name_source": "Addons/language_f_gamma/a3/language_f_gamma/stringtable.xml",
       "config_locator": "Addons/soft_f.pbo > Offroad_01\\config.bin",
-      "catalogue_id": "toyota_land_cruiser_70",
+      "catalogue_id": "offroad_q7_l200_composite",
       "matched_tokens": [
         "offroad"
       ]
@@ -1558,7 +1503,7 @@
       "display_name": "Offroad (AT)",
       "display_name_source": "Addons/language_f_gamma/a3/language_f_gamma/stringtable.xml",
       "config_locator": "Addons/soft_f.pbo > Offroad_01\\config.bin",
-      "catalogue_id": "toyota_land_cruiser_70",
+      "catalogue_id": "offroad_q7_l200_composite",
       "matched_tokens": [
         "offroad"
       ]
@@ -1569,7 +1514,7 @@
       "display_name": "Offroad",
       "display_name_source": "Addons/language_f/a3/language_f/stringtable.xml",
       "config_locator": "Addons/soft_f.pbo > Offroad_01\\config.bin",
-      "catalogue_id": "toyota_land_cruiser_70",
+      "catalogue_id": "offroad_q7_l200_composite",
       "matched_tokens": [
         "offroad"
       ]
@@ -1580,7 +1525,7 @@
       "display_name": "Offroad (Repair)",
       "display_name_source": "Addons/language_f_bootcamp/a3/language_f_bootcamp/stringtable.xml",
       "config_locator": "Addons/soft_f.pbo > Offroad_01\\config.bin",
-      "catalogue_id": "toyota_land_cruiser_70",
+      "catalogue_id": "offroad_q7_l200_composite",
       "matched_tokens": [
         "offroad"
       ]
@@ -1591,7 +1536,7 @@
       "display_name": "Offroad",
       "display_name_source": "Addons/language_f/a3/language_f/stringtable.xml",
       "config_locator": "Addons/soft_f.pbo > Offroad_01\\config.bin",
-      "catalogue_id": "toyota_land_cruiser_70",
+      "catalogue_id": "offroad_q7_l200_composite",
       "matched_tokens": [
         "offroad"
       ]
@@ -6330,7 +6275,7 @@
       "display_name": "Offroad (AT)",
       "display_name_source": "Addons/language_f_gamma/a3/language_f_gamma/stringtable.xml",
       "config_locator": "Addons/soft_f.pbo > Offroad_01\\config.bin",
-      "catalogue_id": "toyota_land_cruiser_70",
+      "catalogue_id": "offroad_q7_l200_composite",
       "matched_tokens": [
         "offroad"
       ]
@@ -6341,7 +6286,7 @@
       "display_name": "Offroad (AT)",
       "display_name_source": "Addons/language_f_gamma/a3/language_f_gamma/stringtable.xml",
       "config_locator": "Addons/soft_f.pbo > Offroad_01\\config.bin",
-      "catalogue_id": "toyota_land_cruiser_70",
+      "catalogue_id": "offroad_q7_l200_composite",
       "matched_tokens": [
         "offroad"
       ]
@@ -6464,7 +6409,7 @@
     {
       "game_class": "rhssaf_army_o_ural",
       "display_name_key": "$STR_RHSSAF_ARMY_URAL_DISPLAYNAME",
-      "display_name": "Ural\u00a0375D",
+      "display_name": "Ural 375D",
       "display_name_source": "843632231/addons/rhssaf_main.pbo > Stringtable.xml",
       "config_locator": "843632231/addons/rhssaf_c_vehicles.pbo > config.bin",
       "catalogue_id": "ural_375d",
@@ -6475,7 +6420,7 @@
     {
       "game_class": "rhssaf_army_o_ural_fuel",
       "display_name_key": "$STR_RHSSAF_ARMY_URAL_FUEL_DISPLAYNAME",
-      "display_name": "Ural\u00a0375D\u00a0(Fuel)",
+      "display_name": "Ural 375D (Fuel)",
       "display_name_source": "843632231/addons/rhssaf_main.pbo > Stringtable.xml",
       "config_locator": "843632231/addons/rhssaf_c_vehicles.pbo > config.bin",
       "catalogue_id": "ural_375d",
@@ -6486,7 +6431,7 @@
     {
       "game_class": "rhssaf_army_o_ural_open",
       "display_name_key": "$STR_RHSSAF_ARMY_URAL_OPEN_DISPLAYNAME",
-      "display_name": "Ural\u00a0375D\u00a0(Open)",
+      "display_name": "Ural 375D (Open)",
       "display_name_source": "843632231/addons/rhssaf_main.pbo > Stringtable.xml",
       "config_locator": "843632231/addons/rhssaf_c_vehicles.pbo > config.bin",
       "catalogue_id": "ural_375d",
@@ -6519,7 +6464,7 @@
     {
       "game_class": "rhssaf_army_ural",
       "display_name_key": "$STR_RHSSAF_ARMY_URAL_DISPLAYNAME",
-      "display_name": "Ural\u00a0375D",
+      "display_name": "Ural 375D",
       "display_name_source": "843632231/addons/rhssaf_main.pbo > Stringtable.xml",
       "config_locator": "843632231/addons/rhssaf_c_vehicles.pbo > config.bin",
       "catalogue_id": "ural_375d",
@@ -6530,7 +6475,7 @@
     {
       "game_class": "rhssaf_army_ural_fuel",
       "display_name_key": "$STR_RHSSAF_ARMY_URAL_FUEL_DISPLAYNAME",
-      "display_name": "Ural\u00a0375D\u00a0(Fuel)",
+      "display_name": "Ural 375D (Fuel)",
       "display_name_source": "843632231/addons/rhssaf_main.pbo > Stringtable.xml",
       "config_locator": "843632231/addons/rhssaf_c_vehicles.pbo > config.bin",
       "catalogue_id": "ural_375d",
@@ -6541,7 +6486,7 @@
     {
       "game_class": "rhssaf_army_ural_open",
       "display_name_key": "$STR_RHSSAF_ARMY_URAL_OPEN_DISPLAYNAME",
-      "display_name": "Ural\u00a0375D\u00a0(Open)",
+      "display_name": "Ural 375D (Open)",
       "display_name_source": "843632231/addons/rhssaf_main.pbo > Stringtable.xml",
       "config_locator": "843632231/addons/rhssaf_c_vehicles.pbo > config.bin",
       "catalogue_id": "ural_375d",
@@ -6634,7 +6579,7 @@
     {
       "game_class": "rhssaf_un_ural",
       "display_name_key": "$STR_RHSSAF_ARMY_URAL_DISPLAYNAME",
-      "display_name": "Ural\u00a0375D",
+      "display_name": "Ural 375D",
       "display_name_source": "843632231/addons/rhssaf_main.pbo > Stringtable.xml",
       "config_locator": "843632231/addons/rhssaf_c_vehicles.pbo > config.bin",
       "catalogue_id": "ural_375d",
