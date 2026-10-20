@@ -19,12 +19,16 @@ layer returns an empty array.
   closest       the longest alias or keyword substring of the query,
                 at least 4 characters, with a strictly lower
                 runner-up score. A tie returns [].                    4
+  inherited     the class text names no entry, so the ENGINE ancestry
+                answers: the nearest ancestor a row maps by classname,
+                when the class text names a designation that row
+                claims. Ancestry, not identity.                       5
   type          nothing above names the device, so the KIND is the
                 answer: "night-vision device", "thermal optic" or
                 "optic". The caller's family states it; with no family
                 the config does, from the item type and the optics
                 modes. A type entry names a kind, never a model, and
-                carries no figure.                                    5
+                carries no figure.                                    6
 
 The vehicle matcher runs a fifth inheritance layer. A device row names no
 supported game class token, so that layer has no meaning here and is
@@ -294,5 +298,41 @@ private _tie = false;
 if ((_bestRow isNotEqualTo []) && {!_tie} && _bestScore > _runnerUp) exitWith {
     [_bestRow, 4, "closest"] call _result
 };
+
+// Layer 5: inherited. The class text names no entry, so the ENGINE
+// ancestry answers: walk the config parent chain to the nearest ancestor
+// whose normalised classname a row maps, and answer that row when the
+// class's own text names a designation the row carries. Ancestry is not
+// identity: a class whose text describes a different device than its
+// ancestor answers nothing here.
+private _inheritedRow = [];
+private _decided = false;
+private _ancestor = inheritsFrom (configFile >> "CfgWeapons" >> _className);
+while {isClass _ancestor && {!_decided}} do {
+    private _ancestorKey = [configName _ancestor] call _normalise;
+    private _ancestorHits = [];
+    {
+        _x params ["_device", "_devFamily", "_classes", "_aliases", "_keywords", "_source", "_values"];
+        if (((_classes splitString "|") find _ancestorKey) >= 0) then {
+            _ancestorHits pushBack _x;
+        };
+    } forEach _table;
+    if (_ancestorHits isNotEqualTo []) then {
+        _decided = true;
+        if ((count _ancestorHits) == 1) then {
+            private _entry = _ancestorHits select 0;
+            private _claims = 0;
+            {
+                if ((count _x) >= 4 && {(((_entry select 0) + "|" + (_entry select 3) + "|" + (_entry select 4)) find _x) >= 0}) then {
+                    _claims = _claims + 1;
+                };
+            } forEach _tokens;
+            if (_claims > 0) then { _inheritedRow = _entry; };
+        };
+    } else {
+        _ancestor = inheritsFrom _ancestor;
+    };
+};
+if (_inheritedRow isNotEqualTo []) exitWith { [_inheritedRow, 5, "inherited"] call _result };
 
 [_className, _family] call _typeAnswer

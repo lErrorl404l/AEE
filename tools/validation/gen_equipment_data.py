@@ -275,6 +275,35 @@ if (_known != "" && _familyCategory != "" && _familyCategory != _known) then {
     _family = "";
 };
 
+// ─── Inherited: the nearest ancestor the table names ────────────────────
+// The class text names no family. A variant of a named item is still that
+// item, so the config ancestry answers: walk the parent chain and take the
+// first ancestor whose classname carries a family of this slot. The mass
+// is the ancestor's published family mass, and the trace states the grade,
+// so an inherited figure is never reported as a direct one.
+private _inherited = 0;
+private _inheritedFamily = "";
+if (_match == 0) then {
+    private _ancestor = inheritsFrom (configFile >> "CfgWeapons" >> _item);
+    private _tries = 0;
+    while {isClass _ancestor && {_inherited == 0} && {_tries < 12}} do {
+        private _ancestorName = toLower (configName _ancestor);
+        {
+            _x params ["_familyName", "_category", "_mass"];
+            if ((_allowed isEqualTo [] || {_category in _allowed}) && {_ancestorName find _familyName >= 0}) exitWith {
+                _inherited = _mass;
+                _inheritedFamily = _familyName;
+            };
+        } forEach _TABLE;
+        _ancestor = inheritsFrom _ancestor;
+        _tries = _tries + 1;
+    };
+};
+if (_inherited > 0) then {
+    _match = _inherited;
+    _family = _inheritedFamily;
+};
+
 // ─── Band: the live item mass ────────────────────────────────────────────
 // An item whose identity text carries no family keyword is matched by its
 // own config mass against the researched family masses of its category.

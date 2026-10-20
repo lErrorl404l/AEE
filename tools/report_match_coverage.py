@@ -374,7 +374,7 @@ def device_rows(path: Path, family: str = "") -> list:
     return out
 
 
-def device_matcher(table: list, trace=None, type_entry=None):
+def device_matcher(table: list, trace=None, type_entry=None, ancestry=None):
     """The device ladder: exact class, alias, keyword, then closest.
 
     The keyword layer answers nothing on a tie and the closest layer below
@@ -459,6 +459,28 @@ def device_matcher(table: list, trace=None, type_entry=None):
             return best
         if trace is not None and best is not None and tie:
             trace.update(layer="closest", candidates=[best["id"]])
+
+        # The inherited rung: the nearest ancestor a row maps by classname,
+        # when the class text names a designation that row carries.
+        if ancestry is not None and cls:
+            for name in ancestry(cls):
+                key_name = fold(name)
+                hits = [r for r in table if key_name in r["classes"]]
+                if not hits:
+                    continue
+                if len(hits) == 1:
+                    blob = fold(
+                        hits[0]["id"]
+                        + "|"
+                        + "|".join(hits[0]["aliases"])
+                        + "|"
+                        + "|".join(hits[0]["keywords"])
+                    )
+                    if any(len(t) >= DEVICE_MIN and t in blob for t in tokens):
+                        if trace is not None:
+                            trace.update(layer="inherited", candidates=[hits[0]["id"]])
+                        return hits[0]
+                break
         return _type_row(type_entry, cls, trace)
 
     return match
@@ -483,7 +505,9 @@ def equipment_rows(path: Path) -> list:
     return out
 
 
-def equipment_matcher(table: list, category: str, trace=None, type_entry=None):
+def equipment_matcher(
+    table: list, category: str, trace=None, type_entry=None, ancestry=None
+):
     """The item-mass resolver, restricted to the slot it is asked about.
 
     The runtime is handed the categories the caller accepts, and a row of
@@ -499,12 +523,17 @@ def equipment_matcher(table: list, category: str, trace=None, type_entry=None):
                 if trace is not None:
                     trace.update(layer="family", candidates=[r["id"]])
                 return r
-        if type_entry is not None:
-            if trace is not None:
-                trace.update(layer="type", candidates=[type_entry])
-            return {"id": type_entry, "family": type_entry,
-                    "category": category, "type": True}
-        return None
+        # A variant of a named item is still that item: the ancestor's
+        # classname carries the family, so its published mass answers.
+        if ancestry is not None and cls:
+            for name in ancestry(cls):
+                hay_ancestor = str(name).lower()
+                for r in table:
+                    if r["category"] == category and r["family"] in hay_ancestor:
+                        if trace is not None:
+                            trace.update(layer="inherited", candidates=[r["id"]])
+                        return r
+        return _type_row(type_entry, cls, trace) if type_entry is not None else None
 
     return match
 
@@ -1249,7 +1278,9 @@ def measure(scanned: list, base: set[str]) -> dict:
         if not selected:
             continue
         dtable = device_rows(DEVICE, family)
-        match_d = device_matcher(dtable, type_entry=type_name)
+        match_d = device_matcher(
+            dtable, type_entry=type_name, ancestry=lambda c: wchain(c)[1:]
+        )
         reasons = defaultdict(int)
         for r in selected:
             if match_d(r["class"], r["display"]) is None:
@@ -1262,7 +1293,7 @@ def measure(scanned: list, base: set[str]) -> dict:
             "grades": grades(
                 selected,
                 lambda tr, t=dtable, n=type_name: device_matcher(
-                    t, trace=tr, type_entry=n
+                    t, trace=tr, type_entry=n, ancestry=lambda c: wchain(c)[1:]
                 ),
             ),
             "reasons": dict(reasons),
@@ -1284,7 +1315,9 @@ def measure(scanned: list, base: set[str]) -> dict:
         selected = _taxonomy(scanned, kind, roots, chain)
         if not selected:
             continue
-        match_e = equipment_matcher(eq_table, category, type_entry=category)
+        match_e = equipment_matcher(
+            eq_table, category, type_entry=category, ancestry=lambda c: chain(c)[1:]
+        )
         reasons = defaultdict(int)
         for r in selected:
             if match_e(r["class"], r["display"]) is not None:
@@ -1297,8 +1330,9 @@ def measure(scanned: list, base: set[str]) -> dict:
             "decided": _decided(selected, match_e),
             "grades": grades(
                 selected,
-                lambda tr, c=category: equipment_matcher(
-                    eq_table, c, trace=tr, type_entry=c
+                lambda tr, c=category, ch=chain: equipment_matcher(
+                    eq_table, c, trace=tr, type_entry=c,
+                    ancestry=lambda x: ch(x)[1:],
                 ),
             ),
             "reasons": dict(reasons),
