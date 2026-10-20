@@ -697,17 +697,19 @@ def write_baseline(
             # not read them as regression.
             "known_unresolvable": {
                 "vehicle_modded": {
-                    "fictional_display_reuse": 12,
+                    "fictional_display_reuse": 7,
                     "maker_or_family_only": 12,
-                    "armafpv_drone_no_published_designation": 9,
+                    "armafpv_drone_no_published_designation": 8,
                     "note": (
-                        "Classes left after sixteen modded vehicle gaps were "
-                        "closed (411/440 at commit 0ff5ecd0). The fictional "
-                        "display re-uses hold a contested real-world link in "
-                        "the corpus: the Arma 3 Offroad carries two conflicting "
-                        "bindings. The three groups are the platform worker's "
-                        "classification and are not stated to be disjoint. "
-                        "None of them is a failure."
+                        "Classes left after twenty-one modded vehicle gaps were "
+                        "closed (416/435 after the counterpart research). Seven "
+                        "are Offroad display re-uses: the class carries no text "
+                        "a source designates, and the composite entry's only key "
+                        "for the fictional name is a category word the runtime "
+                        "drops. Twelve state a maker or a family and no model, "
+                        "ten of them the Project OPFOR KAMAZ retextures. The "
+                        "eight aircraft gaps are ArmaFPV FPV drones. None of "
+                        "them is a failure."
                     ),
                 }
             },

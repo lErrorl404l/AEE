@@ -200,14 +200,14 @@
       "weapons_f_gamma.pbo",
       "weapons_f_mod.pbo"
     ],
-    "generated": "2026-10-19",
+    "generated": "2026-10-20",
     "install": "/ext/SteamLibrary/steamapps/common/Arma 3",
     "known_unresolvable": {
       "vehicle_modded": {
-        "armafpv_drone_no_published_designation": 9,
-        "fictional_display_reuse": 12,
+        "armafpv_drone_no_published_designation": 8,
+        "fictional_display_reuse": 7,
         "maker_or_family_only": 12,
-        "note": "Classes left after sixteen modded vehicle gaps were closed (411/440 at commit 0ff5ecd0). The fictional display re-uses hold a contested real-world link in the corpus: the Arma 3 Offroad carries two conflicting bindings. The three groups are the platform worker's classification and are not stated to be disjoint. None of them is a failure."
+        "note": "Classes left after twenty-one modded vehicle gaps were closed (416/435 after the counterpart research). Seven are Offroad display re-uses: the class carries no text a source designates, and the composite entry's only key for the fictional name is a category word the runtime drops. Twelve state a maker or a family and no model, ten of them the Project OPFOR KAMAZ retextures. The eight aircraft gaps are ArmaFPV FPV drones. None of them is a failure."
       }
     },
     "measured_rows": 135427,
@@ -220,18 +220,18 @@
   "tables": {
     "aircraft": {
       "base": {
-        "hit": 27,
-        "pct": 62.79,
+        "hit": 38,
+        "pct": 88.37,
         "total": 43
       },
       "excluded": {},
       "label": "aircraft",
       "modded": {
-        "hit": 214,
-        "pct": 95.96,
+        "hit": 215,
+        "pct": 96.41,
         "total": 223
       },
-      "unresolved_modded": 9
+      "unresolved_modded": 8
     },
     "carried_launchers": {
       "base": {
@@ -288,8 +288,8 @@
     },
     "vehicles": {
       "base": {
-        "hit": 21,
-        "pct": 26.58,
+        "hit": 74,
+        "pct": 93.67,
         "total": 79
       },
       "excluded": {
@@ -297,11 +297,11 @@
       },
       "label": "vehicles",
       "modded": {
-        "hit": 411,
-        "pct": 94.48,
+        "hit": 416,
+        "pct": 95.63,
         "total": 435
       },
-      "unresolved_modded": 24
+      "unresolved_modded": 19
     }
   }
 }
