@@ -22,10 +22,10 @@ once, keyed by game class. No class leaves the report in silence.
 ## Expansion coverage target
 
 - Roster classes: 139
-- matched-and-sourced (`recorded`): 99
+- matched-and-sourced (`recorded`): 101
 - `lead`: 0
-- `no_source`: 40
-- Target (recorded + no_source equals the roster size): met (99 + 40 = 139 of 139)
+- `no_source`: 38
+- Target (recorded + no_source equals the roster size): met (101 + 38 = 139 of 139)
 
 ## Class coverage
 
@@ -37,8 +37,8 @@ once, keyed by game class. No class leaves the report in silence.
 | `B_Heli_Attack_01_dynamicLoadout_F` | `Helicopter` | recorded | `rah66_comanche` | runtime row emitted and class binding held |
 | `B_Heli_Attack_01_pylons_dynamicLoadout_F` | `Helicopter` | recorded | `rah66_comanche` | runtime row emitted and class binding held |
 | `B_Heli_Light_01_F` | `Helicopter` | recorded | `md500` | runtime row emitted and class binding held |
-| `B_Heli_Light_01_armed_F` | `Helicopter` | recorded | `md530_defender` | runtime row emitted and class binding held |
-| `B_Heli_Light_01_dynamicLoadout_F` | `Helicopter` | recorded | `md530_defender` | runtime row emitted and class binding held |
+| `B_Heli_Light_01_armed_F` | `Helicopter` | recorded | `md500` | runtime row emitted and class binding held |
+| `B_Heli_Light_01_dynamicLoadout_F` | `Helicopter` | recorded | `md500` | runtime row emitted and class binding held |
 | `B_Heli_Light_01_stripped_F` | `Helicopter` | recorded | `md500` | runtime row emitted and class binding held |
 | `B_Heli_Transport_01_F` | `Helicopter` | recorded | `uh60a_black_hawk` | runtime row emitted and class binding held |
 | `B_Heli_Transport_01_camo_F` | `Helicopter` | recorded | `uh60a_black_hawk` | runtime row emitted and class binding held |
@@ -64,7 +64,7 @@ once, keyed by game class. No class leaves the report in silence.
 | `B_T_VTOL_01_vehicle_F` | `Plane` | no_source | none | fictional tiltrotor (V-44X Blackfish) with no single real counterpart, so the next source to seek is the NATOPS Flight Manual for the MV-22B Osprey (A1-MV22AB-000-NFM), a US Navy manual in the public domain. |
 | `B_T_VTOL_01_vehicle_blue_F` | `Plane` | no_source | none | fictional tiltrotor (V-44X Blackfish) with no single real counterpart, so the next source to seek is the NATOPS Flight Manual for the MV-22B Osprey (A1-MV22AB-000-NFM), a US Navy manual in the public domain. |
 | `B_T_VTOL_01_vehicle_olive_F` | `Plane` | no_source | none | fictional tiltrotor (V-44X Blackfish) with no single real counterpart, so the next source to seek is the NATOPS Flight Manual for the MV-22B Osprey (A1-MV22AB-000-NFM), a US Navy manual in the public domain. |
-| `B_UAV_01_F` | `Helicopter` | no_source | none | toy-grade miniature quadcopter (AR-2 Darter) with no real counterpart, so the next source to seek is the NASA report Recent NASA Wind Tunnel Free-Flight Testing of a Multirotor Unmanned Aircraft System, a US Government work in the public domain. |
+| `B_UAV_01_F` | `Helicopter` | recorded | `parrot_ar_drone_2` | runtime row emitted and class binding held |
 | `B_UAV_02_CAS_F` | `UAV` | recorded | `mq9a_reaper` | runtime row emitted and class binding held |
 | `B_UAV_02_F` | `UAV` | recorded | `mq9a_reaper` | runtime row emitted and class binding held |
 | `B_UAV_02_dynamicLoadout_F` | `UAV` | recorded | `mq9a_reaper` | runtime row emitted and class binding held |
@@ -127,10 +127,10 @@ once, keyed by game class. No class leaves the report in silence.
 | `O_Heli_Attack_02_black_F` | `Helicopter` | recorded | `mi28_havoc` | runtime row emitted and class binding held |
 | `O_Heli_Attack_02_dynamicLoadout_F` | `Helicopter` | recorded | `mi28_havoc` | runtime row emitted and class binding held |
 | `O_Heli_Attack_02_dynamicLoadout_black_F` | `Helicopter` | recorded | `mi28_havoc` | runtime row emitted and class binding held |
-| `O_Heli_Light_02_F` | `Helicopter` | recorded | `light_utility_rotary` | runtime row emitted and class binding held |
-| `O_Heli_Light_02_dynamicLoadout_F` | `Helicopter` | recorded | `light_utility_rotary` | runtime row emitted and class binding held |
-| `O_Heli_Light_02_unarmed_F` | `Helicopter` | recorded | `light_utility_rotary` | runtime row emitted and class binding held |
-| `O_Heli_Light_02_v2_F` | `Helicopter` | recorded | `light_utility_rotary` | runtime row emitted and class binding held |
+| `O_Heli_Light_02_F` | `Helicopter` | recorded | `ka60_kasatka` | runtime row emitted and class binding held |
+| `O_Heli_Light_02_dynamicLoadout_F` | `Helicopter` | recorded | `ka60_kasatka` | runtime row emitted and class binding held |
+| `O_Heli_Light_02_unarmed_F` | `Helicopter` | recorded | `ka60_kasatka` | runtime row emitted and class binding held |
+| `O_Heli_Light_02_v2_F` | `Helicopter` | recorded | `ka60_kasatka` | runtime row emitted and class binding held |
 | `O_Heli_Transport_04_F` | `Helicopter` | recorded | `mi26_halo` | runtime row emitted and class binding held |
 | `O_Heli_Transport_04_ammo_F` | `Helicopter` | recorded | `mi26_halo` | runtime row emitted and class binding held |
 | `O_Heli_Transport_04_ammo_black_F` | `Helicopter` | recorded | `mi26_halo` | runtime row emitted and class binding held |
@@ -147,9 +147,9 @@ once, keyed by game class. No class leaves the report in silence.
 | `O_Heli_Transport_04_medevac_black_F` | `Helicopter` | recorded | `mi26_halo` | runtime row emitted and class binding held |
 | `O_Heli_Transport_04_repair_F` | `Helicopter` | recorded | `mi26_halo` | runtime row emitted and class binding held |
 | `O_Heli_Transport_04_repair_black_F` | `Helicopter` | recorded | `mi26_halo` | runtime row emitted and class binding held |
-| `O_Plane_CAS_02_Cluster_F` | `Plane` | recorded | `su25_frogfoot` | runtime row emitted and class binding held |
-| `O_Plane_CAS_02_F` | `Plane` | recorded | `su25_frogfoot` | runtime row emitted and class binding held |
-| `O_Plane_CAS_02_dynamicLoadout_F` | `Plane` | recorded | `su25_frogfoot` | runtime row emitted and class binding held |
+| `O_Plane_CAS_02_Cluster_F` | `Plane` | recorded | `yak130_mitten` | runtime row emitted and class binding held |
+| `O_Plane_CAS_02_F` | `Plane` | recorded | `yak130_mitten` | runtime row emitted and class binding held |
+| `O_Plane_CAS_02_dynamicLoadout_F` | `Plane` | recorded | `yak130_mitten` | runtime row emitted and class binding held |
 | `O_Plane_Fighter_02_Cluster_F` | `Plane` | recorded | `su57_felon` | runtime row emitted and class binding held |
 | `O_Plane_Fighter_02_F` | `Plane` | recorded | `su57_felon` | runtime row emitted and class binding held |
 | `O_Plane_Fighter_02_Stealth_F` | `Plane` | recorded | `su57_felon` | runtime row emitted and class binding held |
@@ -164,7 +164,7 @@ once, keyed by game class. No class leaves the report in silence.
 | `O_T_VTOL_02_vehicle_ghex_F` | `Plane` | no_source | none | fictional stealth VTOL (Y-32 Xi'an) with no named real counterpart, so the next source to seek is the NASA report Overview of STOVL Aircraft Propulsion Research (NTRS 19940014880), a US Government work in the public domain. |
 | `O_T_VTOL_02_vehicle_grey_F` | `Plane` | no_source | none | fictional stealth VTOL (Y-32 Xi'an) with no named real counterpart, so the next source to seek is the NASA report Overview of STOVL Aircraft Propulsion Research (NTRS 19940014880), a US Government work in the public domain. |
 | `O_T_VTOL_02_vehicle_hex_F` | `Plane` | no_source | none | fictional stealth VTOL (Y-32 Xi'an) with no named real counterpart, so the next source to seek is the NASA report Overview of STOVL Aircraft Propulsion Research (NTRS 19940014880), a US Government work in the public domain. |
-| `O_UAV_01_F` | `Helicopter` | no_source | none | toy-grade miniature quadcopter (AR-2 Darter) with no real counterpart, so the next source to seek is the NASA report Recent NASA Wind Tunnel Free-Flight Testing of a Multirotor Unmanned Aircraft System, a US Government work in the public domain. |
+| `O_UAV_01_F` | `Helicopter` | recorded | `parrot_ar_drone_2` | runtime row emitted and class binding held |
 | `O_UAV_02_CAS_F` | `UAV` | recorded | `mq9a_reaper` | runtime row emitted and class binding held |
 | `O_UAV_02_F` | `UAV` | recorded | `mq9a_reaper` | runtime row emitted and class binding held |
 | `O_UAV_02_dynamicLoadout_F` | `UAV` | recorded | `mq9a_reaper` | runtime row emitted and class binding held |
@@ -187,8 +187,8 @@ once, keyed by game class. No class leaves the report in silence.
 |---|---|---|---|---|---|
 | `Air` | engine_base | no_source | none | no | no emitted runtime row and no class binding held |
 | `Helicopter` | engine_base | recorded | `ah1j_seacobra`, `ah1s_cobra`, `ah1w_super_cobra`, `ah1z_viper`, `ah64a_apache`, `ah64e_apache_guardian`, `ah6_little_bird`, `as332_super_puma`, `as350_ecureuil`, `as355_twinstar`, `as365_dauphin`, `as532_cougar`, `aw101_hm2`, `aw101_merlin`, `aw139`, `aw149`, `aw159_wildcat`, `bell205`, `bell206b_jetranger`, `bell212`, `bell407`, `bell412`, `bell412ep`, `bell429`, `bell525`, `bk117`, `bo105`, `camcopter_s100`, `ch46_sea_knight`, `ch47_chinook`, `ch47a_chinook`, `ch47b_chinook`, `ch47c_chinook`, `ch53d_sea_stallion`, `ch53e_super_stallion`, `ch53k_king_stallion`, `ec135`, `ec145`, `ec155`, `ec225_super_puma`, `ec665_tiger`, `hh60g_pave_hawk`, `ka27_helix`, `ka29_helix_b`, `ka32_helix_c`, `ka50_hokum`, `ka60_kasatka`, `light_utility_rotary`, `lynx_has3`, `md500`, `md500_civil`, `md530_defender`, `md902_explorer`, `mh47g_chinook`, `mh53e_sea_dragon`, `mh60g_pave_hawk`, `mh60r_seahawk`, `mh60s_knighthawk`, `mh6m_mission_enhanced`, `mi10_harke`, `mi14_haze`, `mi171_hip_h`, `mi17_hip`, `mi24a_hind_a`, `mi24p_hind_f`, `mi26_halo`, `mi28_havoc`, `mi35m_hind_e`, `mi38_halo`, `mi4_hound`, `mi6_hook`, `mi8_hip`, `mq8_fire_scout`, `mq8c_fire_scout`, `nh90_nfh`, `oh58a_kiowa`, `oh58c_kiowa`, `oh58d_kiowa_warrior`, `oh6a_cayuse`, `rah66_comanche`, `rq8_fire_scout`, `s76`, `s92`, `sa321_super_frelon`, `sa330_puma`, `sa341_gazelle`, `sa342_gazelle`, `sh60b_seahawk`, `th67_creek`, `uh1n_twin_huey`, `uh1y_venom`, `uh60a_black_hawk`, `uh60l_black_hawk`, `uh72a_lakota`, `w3_sokol`, `wg13_lynx`, `z10_thunderbolt`, `z19_thunderbolt`, `z20_black_eagle`, `z8_haoyang`, `z9_haitun` | yes | runtime row emitted and class binding held |
-| `Plane` | engine_base | recorded | `a10a_thunderbolt_ii`, `cessna_172_skyhawk`, `fa18e_super_hornet`, `jas39c_gripen`, `l159_alca`, `su25_frogfoot`, `su57_felon` | yes | runtime row emitted and class binding held |
-| `UAV` | engine_base | recorded | `ch5_rainbow`, `mq9a_reaper` | yes | runtime row emitted and class binding held |
+| `Plane` | engine_base | recorded | `a10a_thunderbolt_ii`, `cessna_172_skyhawk`, `fa18e_super_hornet`, `jas39c_gripen`, `l159_alca`, `su25_frogfoot`, `su57_felon`, `yak130_mitten` | yes | runtime row emitted and class binding held |
+| `UAV` | engine_base | recorded | `ch5_rainbow`, `mq9a_reaper`, `parrot_ar_drone_2` | yes | runtime row emitted and class binding held |
 
 ## Excluded tokens
 

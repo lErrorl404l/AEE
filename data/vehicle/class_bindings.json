@@ -56,14 +56,6 @@
     "grade": "claimed"
   },
   {
-    "game_class": "O_MBT_02_cannon_F",
-    "class_token": "Tank",
-    "catalogue_id": "m1_abrams",
-    "identity_source": "aee_class_table",
-    "identity_evidence": "AEE class token Tank; the same catalogue vehicle as B_MBT_01_cannon_F. The class name does not name the catalogue vehicle, so the link stays class_only.",
-    "grade": "claimed"
-  },
-  {
     "game_class": "B_APC_Tracked_01_rcws_F",
     "class_token": "Tracked_APC",
     "catalogue_id": "namer",
@@ -464,14 +456,6 @@
     "grade": "claimed"
   },
   {
-    "game_class": "I_Truck_02_Ammo_F",
-    "class_token": "Truck",
-    "catalogue_id": "kamaz_4310",
-    "identity_source": "armedassault_zamak_trivia",
-    "identity_evidence": "Armed Assault Wiki, Zamak, ARMA 3 Trivia (wikitext section 15): \"* Zamak is simply Kamaz spelt backwards, which is the name of the company that designs the real-life \"KamAZ-4310\" family of trucks that the Zamak is based on.\" Citation: https://armedassault.fandom.com/wiki/Zamak. The page asserts the basis ('Zamak is simply Kamaz spelt backwards, which is the name of the company that designs the real-life \"KamAZ-4310\" family of trucks that the Zamak is based on'). The corpus holds the KamAZ-4310. The previous binding, the M923A2, is withdrawn: no page names an M923 for the Zamak. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
-    "grade": "claimed"
-  },
-  {
     "game_class": "Truck_03_base_F",
     "class_token": "Truck",
     "catalogue_id": "kamaz_63968_typhoon_k",
@@ -560,7 +544,7 @@
     "grade": "claimed"
   },
   {
-    "game_class": "B_Truck_01_repair_F",
+    "game_class": "B_Truck_01_Repair_F",
     "class_token": "Truck",
     "catalogue_id": "m977_hemtt",
     "identity_source": "armedassault_hemtt_trivia",

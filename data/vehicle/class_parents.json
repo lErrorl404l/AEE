@@ -1,9 +1,39 @@
 [
   {
+    "game_class": "APC_Wheeled_01_base_F",
+    "parent_class": "Wheeled_APC_F",
+    "source_kind": "pbo_config",
+    "source_locator": "armor_f_beta.pbo > config.bin, CfgVehicles/APC_Wheeled_01_base_F: parent Wheeled_APC_F"
+  },
+  {
+    "game_class": "APC_Wheeled_02_base_F",
+    "parent_class": "Wheeled_APC_F",
+    "source_kind": "pbo_config",
+    "source_locator": "armor_f_beta.pbo > config.bin, CfgVehicles/APC_Wheeled_02_base_F: parent Wheeled_APC_F"
+  },
+  {
+    "game_class": "APC_Wheeled_03_base_F",
+    "parent_class": "Wheeled_APC_F",
+    "source_kind": "pbo_config",
+    "source_locator": "armor_f_gamma.pbo > config.bin, CfgVehicles/APC_Wheeled_03_base_F: parent Wheeled_APC_F"
+  },
+  {
     "game_class": "B_AFV_Wheeled_01_cannon_F",
     "parent_class": "AFV_Wheeled_01_base_F",
     "source_kind": "pbo_config",
     "source_locator": "tank/addons/armor_f_tank.pbo > afv_wheeled_01/config.cpp:3269"
+  },
+  {
+    "game_class": "B_APC_Tracked_01_AA_F",
+    "parent_class": "B_APC_Tracked_01_base_F",
+    "source_kind": "pbo_config",
+    "source_locator": "armor_f_beta.pbo > config.bin, CfgVehicles/B_APC_Tracked_01_AA_F: parent B_APC_Tracked_01_base_F"
+  },
+  {
+    "game_class": "B_APC_Tracked_01_CRV_F",
+    "parent_class": "B_APC_Tracked_01_base_F",
+    "source_kind": "pbo_config",
+    "source_locator": "armor_f_beta.pbo > config.bin, CfgVehicles/B_APC_Tracked_01_CRV_F: parent B_APC_Tracked_01_base_F"
   },
   {
     "game_class": "B_APC_Tracked_01_rcws_F",
@@ -18,16 +48,88 @@
     "source_locator": "addons/armor_f_beta.pbo > apc_wheeled_01/config.cpp:2086"
   },
   {
+    "game_class": "B_APC_Wheeled_03_cannon_F",
+    "parent_class": "B_APC_Wheeled_03_base_F",
+    "source_kind": "pbo_config",
+    "source_locator": "armor_f_gamma.pbo > config.bin, CfgVehicles/B_APC_Wheeled_03_cannon_F: parent B_APC_Wheeled_03_base_F"
+  },
+  {
+    "game_class": "B_MBT_01_TUSK_F",
+    "parent_class": "B_MBT_01_cannon_F",
+    "source_kind": "pbo_config",
+    "source_locator": "armor_f_epc.pbo > config.bin, CfgVehicles/B_MBT_01_TUSK_F: parent B_MBT_01_cannon_F"
+  },
+  {
     "game_class": "B_MBT_01_cannon_F",
     "parent_class": "B_MBT_01_base_F",
     "source_kind": "pbo_config",
     "source_locator": "addons/armor_f_epc.pbo > mbt_01/config.cpp:58"
   },
   {
+    "game_class": "B_MBT_01_mlrs_F",
+    "parent_class": "B_MBT_01_mlrs_base_F",
+    "source_kind": "pbo_config",
+    "source_locator": "armor_f_gamma.pbo > config.bin, CfgVehicles/B_MBT_01_mlrs_F: parent B_MBT_01_mlrs_base_F"
+  },
+  {
     "game_class": "B_MRAP_01_F",
     "parent_class": "MRAP_01_base_F",
     "source_kind": "pbo_config",
     "source_locator": "addons/soft_f.pbo > mrap_01/config.cpp:878"
+  },
+  {
+    "game_class": "B_MRAP_01_gmg_F",
+    "parent_class": "MRAP_01_gmg_base_F",
+    "source_kind": "pbo_config",
+    "source_locator": "soft_f.pbo > config.bin, CfgVehicles/B_MRAP_01_gmg_F: parent MRAP_01_gmg_base_F"
+  },
+  {
+    "game_class": "B_MRAP_01_hmg_F",
+    "parent_class": "MRAP_01_hmg_base_F",
+    "source_kind": "pbo_config",
+    "source_locator": "soft_f.pbo > config.bin, CfgVehicles/B_MRAP_01_hmg_F: parent MRAP_01_hmg_base_F"
+  },
+  {
+    "game_class": "B_Truck_01_Repair_F",
+    "parent_class": "B_Truck_01_mover_F",
+    "source_kind": "pbo_config",
+    "source_locator": "soft_f_gamma.pbo > config.bin, CfgVehicles/B_Truck_01_Repair_F: parent B_Truck_01_mover_F"
+  },
+  {
+    "game_class": "B_Truck_01_ammo_F",
+    "parent_class": "B_Truck_01_mover_F",
+    "source_kind": "pbo_config",
+    "source_locator": "soft_f_gamma.pbo > config.bin, CfgVehicles/B_Truck_01_ammo_F: parent B_Truck_01_mover_F"
+  },
+  {
+    "game_class": "B_Truck_01_box_F",
+    "parent_class": "B_Truck_01_mover_F",
+    "source_kind": "pbo_config",
+    "source_locator": "soft_f_gamma.pbo > config.bin, CfgVehicles/B_Truck_01_box_F: parent B_Truck_01_mover_F"
+  },
+  {
+    "game_class": "B_Truck_01_covered_F",
+    "parent_class": "B_Truck_01_transport_F",
+    "source_kind": "pbo_config",
+    "source_locator": "soft_f_beta.pbo > config.bin, CfgVehicles/B_Truck_01_covered_F: parent B_Truck_01_transport_F"
+  },
+  {
+    "game_class": "B_Truck_01_fuel_F",
+    "parent_class": "B_Truck_01_mover_F",
+    "source_kind": "pbo_config",
+    "source_locator": "soft_f_gamma.pbo > config.bin, CfgVehicles/B_Truck_01_fuel_F: parent B_Truck_01_mover_F"
+  },
+  {
+    "game_class": "B_Truck_01_medical_F",
+    "parent_class": "B_Truck_01_transport_F",
+    "source_kind": "pbo_config",
+    "source_locator": "soft_f_gamma.pbo > config.bin, CfgVehicles/B_Truck_01_medical_F: parent B_Truck_01_transport_F"
+  },
+  {
+    "game_class": "B_Truck_01_mover_F",
+    "parent_class": "B_Truck_01_transport_F",
+    "source_kind": "pbo_config",
+    "source_locator": "soft_f_gamma.pbo > config.bin, CfgVehicles/B_Truck_01_mover_F: parent B_Truck_01_transport_F"
   },
   {
     "game_class": "B_Truck_01_transport_F",
@@ -54,16 +156,40 @@
     "source_locator": "addons/soft_f.pbo > offroad_01/config.cpp:1032"
   },
   {
+    "game_class": "C_Quadbike_01_F",
+    "parent_class": "Quadbike_01_base_F",
+    "source_kind": "pbo_config",
+    "source_locator": "soft_f.pbo > config.bin, CfgVehicles/C_Quadbike_01_F: parent Quadbike_01_base_F"
+  },
+  {
     "game_class": "C_SUV_01_F",
     "parent_class": "SUV_01_base_F",
     "source_kind": "pbo_config",
     "source_locator": "addons/soft_f_gamma.pbo > suv_01/config.cpp:470"
   },
   {
+    "game_class": "C_Van_01_box_F",
+    "parent_class": "Van_01_box_base_F",
+    "source_kind": "pbo_config",
+    "source_locator": "soft_f_gamma.pbo > config.bin, CfgVehicles/C_Van_01_box_F: parent Van_01_box_base_F"
+  },
+  {
+    "game_class": "C_Van_01_fuel_F",
+    "parent_class": "Van_01_fuel_base_F",
+    "source_kind": "pbo_config",
+    "source_locator": "soft_f_gamma.pbo > config.bin, CfgVehicles/C_Van_01_fuel_F: parent Van_01_fuel_base_F"
+  },
+  {
     "game_class": "C_Van_01_transport_F",
     "parent_class": "Van_01_transport_base_F",
     "source_kind": "pbo_config",
     "source_locator": "addons/soft_f_gamma.pbo > van_01/config.cpp:836"
+  },
+  {
+    "game_class": "Hatchback_01_base_F",
+    "parent_class": "Car_F",
+    "source_kind": "pbo_config",
+    "source_locator": "soft_f_gamma.pbo > config.bin, CfgVehicles/Hatchback_01_base_F: parent Car_F"
   },
   {
     "game_class": "I_APC_Wheeled_03_cannon_F",
@@ -78,6 +204,18 @@
     "source_locator": "addons/armor_f_epb.pbo > apc_tracked_03/config.cpp:2252"
   },
   {
+    "game_class": "I_G_Van_01_fuel_F",
+    "parent_class": "Van_01_fuel_base_F",
+    "source_kind": "pbo_config",
+    "source_locator": "soft_f_bootcamp.pbo > config.bin, CfgVehicles/I_G_Van_01_fuel_F: parent Van_01_fuel_base_F"
+  },
+  {
+    "game_class": "I_G_Van_01_transport_F",
+    "parent_class": "Van_01_transport_base_F",
+    "source_kind": "pbo_config",
+    "source_locator": "soft_f_bootcamp.pbo > config.bin, CfgVehicles/I_G_Van_01_transport_F: parent Van_01_transport_base_F"
+  },
+  {
     "game_class": "I_MBT_03_cannon_F",
     "parent_class": "I_MBT_03_base_F",
     "source_kind": "pbo_config",
@@ -90,10 +228,76 @@
     "source_locator": "addons/soft_f_beta.pbo > mrap_03/config.cpp:1167"
   },
   {
+    "game_class": "I_MRAP_03_gmg_F",
+    "parent_class": "MRAP_03_gmg_base_F",
+    "source_kind": "pbo_config",
+    "source_locator": "soft_f_beta.pbo > config.bin, CfgVehicles/I_MRAP_03_gmg_F: parent MRAP_03_gmg_base_F"
+  },
+  {
+    "game_class": "I_MRAP_03_hmg_F",
+    "parent_class": "MRAP_03_hmg_base_F",
+    "source_kind": "pbo_config",
+    "source_locator": "soft_f_beta.pbo > config.bin, CfgVehicles/I_MRAP_03_hmg_F: parent MRAP_03_hmg_base_F"
+  },
+  {
+    "game_class": "I_Truck_02_box_F",
+    "parent_class": "Truck_02_box_base_F",
+    "source_kind": "pbo_config",
+    "source_locator": "soft_f_gamma.pbo > config.bin, CfgVehicles/I_Truck_02_box_F: parent Truck_02_box_base_F"
+  },
+  {
+    "game_class": "I_Truck_02_covered_F",
+    "parent_class": "Truck_02_base_F",
+    "source_kind": "pbo_config",
+    "source_locator": "soft_f_beta.pbo > config.bin, CfgVehicles/I_Truck_02_covered_F: parent Truck_02_base_F"
+  },
+  {
+    "game_class": "I_Truck_02_fuel_F",
+    "parent_class": "Truck_02_fuel_base_F",
+    "source_kind": "pbo_config",
+    "source_locator": "soft_f_gamma.pbo > config.bin, CfgVehicles/I_Truck_02_fuel_F: parent Truck_02_fuel_base_F"
+  },
+  {
+    "game_class": "I_Truck_02_medical_F",
+    "parent_class": "Truck_02_medical_base_F",
+    "source_kind": "pbo_config",
+    "source_locator": "soft_f_gamma.pbo > config.bin, CfgVehicles/I_Truck_02_medical_F: parent Truck_02_medical_base_F"
+  },
+  {
     "game_class": "I_Truck_02_transport_F",
     "parent_class": "Truck_02_transport_base_F",
     "source_kind": "pbo_config",
     "source_locator": "addons/soft_f_beta.pbo > truck_02/config.cpp:1721"
+  },
+  {
+    "game_class": "MBT_01_mlrs_base_F",
+    "parent_class": "MBT_01_base_F",
+    "source_kind": "pbo_config",
+    "source_locator": "armor_f_gamma.pbo > config.bin, CfgVehicles/MBT_01_mlrs_base_F: parent MBT_01_base_F"
+  },
+  {
+    "game_class": "MRAP_01_base_F",
+    "parent_class": "Car_F",
+    "source_kind": "pbo_config",
+    "source_locator": "soft_f.pbo > config.bin, CfgVehicles/MRAP_01_base_F: parent Car_F"
+  },
+  {
+    "game_class": "MRAP_02_base_F",
+    "parent_class": "Car_F",
+    "source_kind": "pbo_config",
+    "source_locator": "soft_f.pbo > config.bin, CfgVehicles/MRAP_02_base_F: parent Car_F"
+  },
+  {
+    "game_class": "MRAP_03_base_F",
+    "parent_class": "Car_F",
+    "source_kind": "pbo_config",
+    "source_locator": "soft_f_beta.pbo > config.bin, CfgVehicles/MRAP_03_base_F: parent Car_F"
+  },
+  {
+    "game_class": "O_APC_Tracked_02_AA_F",
+    "parent_class": "O_APC_Tracked_02_base_F",
+    "source_kind": "pbo_config",
+    "source_locator": "armor_f_beta.pbo > config.bin, CfgVehicles/O_APC_Tracked_02_AA_F: parent O_APC_Tracked_02_base_F"
   },
   {
     "game_class": "O_APC_Tracked_02_cannon_F",
@@ -120,9 +324,111 @@
     "source_locator": "addons/soft_f.pbo > mrap_02/config.cpp:1070"
   },
   {
+    "game_class": "O_MRAP_02_gmg_F",
+    "parent_class": "MRAP_02_gmg_base_F",
+    "source_kind": "pbo_config",
+    "source_locator": "soft_f.pbo > config.bin, CfgVehicles/O_MRAP_02_gmg_F: parent MRAP_02_gmg_base_F"
+  },
+  {
+    "game_class": "O_MRAP_02_hmg_F",
+    "parent_class": "MRAP_02_hmg_base_F",
+    "source_kind": "pbo_config",
+    "source_locator": "soft_f.pbo > config.bin, CfgVehicles/O_MRAP_02_hmg_F: parent MRAP_02_hmg_base_F"
+  },
+  {
+    "game_class": "O_Truck_02_Ammo_F",
+    "parent_class": "Truck_02_Ammo_base_F",
+    "source_kind": "pbo_config",
+    "source_locator": "soft_f_gamma.pbo > config.bin, CfgVehicles/O_Truck_02_Ammo_F: parent Truck_02_Ammo_base_F"
+  },
+  {
+    "game_class": "O_Truck_02_box_F",
+    "parent_class": "Truck_02_box_base_F",
+    "source_kind": "pbo_config",
+    "source_locator": "soft_f_gamma.pbo > config.bin, CfgVehicles/O_Truck_02_box_F: parent Truck_02_box_base_F"
+  },
+  {
+    "game_class": "O_Truck_02_covered_F",
+    "parent_class": "Truck_02_base_F",
+    "source_kind": "pbo_config",
+    "source_locator": "soft_f_beta.pbo > config.bin, CfgVehicles/O_Truck_02_covered_F: parent Truck_02_base_F"
+  },
+  {
+    "game_class": "O_Truck_02_fuel_F",
+    "parent_class": "Truck_02_fuel_base_F",
+    "source_kind": "pbo_config",
+    "source_locator": "soft_f_gamma.pbo > config.bin, CfgVehicles/O_Truck_02_fuel_F: parent Truck_02_fuel_base_F"
+  },
+  {
+    "game_class": "O_Truck_02_medical_F",
+    "parent_class": "Truck_02_medical_base_F",
+    "source_kind": "pbo_config",
+    "source_locator": "soft_f_gamma.pbo > config.bin, CfgVehicles/O_Truck_02_medical_F: parent Truck_02_medical_base_F"
+  },
+  {
     "game_class": "O_Truck_02_transport_F",
     "parent_class": "Truck_02_transport_base_F",
     "source_kind": "pbo_config",
     "source_locator": "addons/soft_f_beta.pbo > truck_02/config.cpp:1460"
+  },
+  {
+    "game_class": "O_Truck_03_ammo_F",
+    "parent_class": "Truck_03_base_F",
+    "source_kind": "pbo_config",
+    "source_locator": "soft_f_epc.pbo > config.bin, CfgVehicles/O_Truck_03_ammo_F: parent Truck_03_base_F"
+  },
+  {
+    "game_class": "O_Truck_03_covered_F",
+    "parent_class": "Truck_03_base_F",
+    "source_kind": "pbo_config",
+    "source_locator": "soft_f_epc.pbo > config.bin, CfgVehicles/O_Truck_03_covered_F: parent Truck_03_base_F"
+  },
+  {
+    "game_class": "O_Truck_03_fuel_F",
+    "parent_class": "Truck_03_base_F",
+    "source_kind": "pbo_config",
+    "source_locator": "soft_f_epc.pbo > config.bin, CfgVehicles/O_Truck_03_fuel_F: parent Truck_03_base_F"
+  },
+  {
+    "game_class": "O_Truck_03_medical_F",
+    "parent_class": "Truck_03_base_F",
+    "source_kind": "pbo_config",
+    "source_locator": "soft_f_epc.pbo > config.bin, CfgVehicles/O_Truck_03_medical_F: parent Truck_03_base_F"
+  },
+  {
+    "game_class": "O_Truck_03_repair_F",
+    "parent_class": "Truck_03_base_F",
+    "source_kind": "pbo_config",
+    "source_locator": "soft_f_epc.pbo > config.bin, CfgVehicles/O_Truck_03_repair_F: parent Truck_03_base_F"
+  },
+  {
+    "game_class": "O_Truck_03_transport_F",
+    "parent_class": "Truck_03_base_F",
+    "source_kind": "pbo_config",
+    "source_locator": "soft_f_epc.pbo > config.bin, CfgVehicles/O_Truck_03_transport_F: parent Truck_03_base_F"
+  },
+  {
+    "game_class": "Quadbike_01_base_F",
+    "parent_class": "Car_F",
+    "source_kind": "pbo_config",
+    "source_locator": "soft_f.pbo > config.bin, CfgVehicles/Quadbike_01_base_F: parent Car_F"
+  },
+  {
+    "game_class": "SUV_01_base_F",
+    "parent_class": "Car_F",
+    "source_kind": "pbo_config",
+    "source_locator": "soft_f_gamma.pbo > config.bin, CfgVehicles/SUV_01_base_F: parent Car_F"
+  },
+  {
+    "game_class": "Truck_02_base_F",
+    "parent_class": "Truck_F",
+    "source_kind": "pbo_config",
+    "source_locator": "soft_f_beta.pbo > config.bin, CfgVehicles/Truck_02_base_F: parent Truck_F"
+  },
+  {
+    "game_class": "Truck_03_base_F",
+    "parent_class": "Truck_F",
+    "source_kind": "pbo_config",
+    "source_locator": "soft_f_epc.pbo > config.bin, CfgVehicles/Truck_03_base_F: parent Truck_F"
   }
 ]

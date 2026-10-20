@@ -9,11 +9,11 @@ labelled absent zero. This file lists the resolved provenance of each
 row and the next source class for each absent field. A missing field
 is a labelled zero, not a refusal.
 
-- Catalogue entries: 241
-- Emitted runtime rows: 241
+- Catalogue entries: 242
+- Emitted runtime rows: 242
 - Runtime-ready entries: 15
-- Entries with an absent runtime field: 226
-- Absent fields: 548
+- Entries with an absent runtime field: 227
+- Absent fields: 551
 
 ## a10a_thunderbolt_ii - Fairchild A-10A Thunderbolt II (fixed_wing)
 
@@ -3287,6 +3287,25 @@ is a labelled zero, not a refusal.
 |---|---|
 | `operating_weight_kg` | a tier 2 operating manual or a tier 4 manufacturer datasheet |
 | `rated_power_w` | the engine maker rating, or a tier 4 manufacturer datasheet |
+
+## parrot_ar_drone_2 - Parrot AR.Drone 2.0 (rotary_wing)
+
+- Capture: `data/aircraft/catalogue/armedassault_ar2_darter_trivia.json`
+- Required set: rotary_wing (3 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | absent | 0 | `` |  | no held value and no derivation applies |
+| `rated_power_w` | absent | 0 | `` |  | no held value and no derivation applies |
+| `rotor_disc_area_m2` | absent | 0 | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `operating_weight_kg` | a tier 2 operating manual or a tier 4 manufacturer datasheet |
+| `rated_power_w` | the engine maker rating, or a tier 4 manufacturer datasheet |
+| `rotor_disc_area_m2` | a tier 3 or tier 4 rotor diameter datasheet |
 
 ## pchela_1t - Yakovlev Pchela-1T (fixed_wing)
 
