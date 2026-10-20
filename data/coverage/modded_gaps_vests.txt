@@ -1,0 +1,94 @@
+# modded match coverage gaps: vests
+# 91 unresolved of 511 modded classes (82.2% resolved)
+# class	display	parent	source
+V_Press_AAN_F	Vest (Press) (AAN)	Vest_Camo_Base	3den_Objects.pbo
+backgore	backgore	Vest_Camo_Base	3dwounds.pbo
+bulletholes	bulletholes	Vest_Camo_Base	3dwounds.pbo
+bulletholes2	bulletholes2	Vest_Camo_Base	3dwounds.pbo
+damagedchest	Damaged Chest	Vest_Camo_Base	3dwounds.pbo
+guts	guts	Vest_Camo_Base	3dwounds.pbo
+guts2	guts2	Vest_Camo_Base	3dwounds.pbo
+guts3	guts3	Vest_Camo_Base	3dwounds.pbo
+FIR_pilot_vest	Pilot Survival Vest	Vest_Camo_Base	FIR_PilotCrewPack_US.pbo
+FIR_SaftyVest_Orange	Ground Crew Safty Vest(Orange)	FIR_SaftyVest_Yellow	FIR_PilotCrewPack_US.pbo
+FIR_SaftyVest_Yellow	Ground Crew Safty Vest(Yellow)	Vest_Camo_Base	FIR_PilotCrewPack_US.pbo
+fir_usarmy_pilot_multicam_vest	US ARMY Helicopter Pilot/Crew Vest(Multicam)	Vest_Camo_Base	FIR_PilotCrewPack_US.pbo
+fir_usarmy_pilot_vest	US ARMY Helicopter Pilot/Crew Vest(UCP)	Vest_Camo_Base	FIR_PilotCrewPack_US.pbo
+mbg_alien_magic_armored_pouch_01	Magic Armored Pouch	mbg_alien_magic_pouch_01	mbg_aliens_01.pbo
+mbg_alien_magic_armored_pouch_02	Magic Armored Pouch	mbg_alien_magic_pouch_01	mbg_aliens_01.pbo
+mbg_alien_magic_pouch_01	Magic Pouch	Vest_NoCamo_Base	mbg_aliens_01.pbo
+LOP_V_Carrier_ANA	[PO]Bulletproof Vest (Spec4e)	LOP_V_Carrier_OLV	po_factions_me.pbo
+LOP_V_Carrier_BLK	[PO]Bulletproof Vest (Black)	LOP_V_Carrier_OLV	po_factions_me.pbo
+LOP_V_Carrier_OLV	[PO]Bulletproof Vest (Olive)	V_Press_F	po_factions_me.pbo
+LOP_V_Carrier_TAN	[PO]Bulletproof Vest (Tan)	LOP_V_Carrier_OLV	po_factions_me.pbo
+LOP_V_Carrier_WDL	[PO]Bulletproof Vest (M81)	LOP_V_Carrier_OLV	po_factions_me.pbo
+LOP_V_CarrierLite_OLV		V_PlateCarrierIA1_dgtl	po_factions_me.pbo
+rhs_gear_OFF	Officer Gear	rhs_chicom	rhs_c_troops.pbo
+rhssaf_balistic_vest_base	PBB M-98	Vest_Camo_Base	rhssaf_c_gear.pbo
+rhssaf_tactical_vest_base	PBB M-99T-A1	Vest_Camo_Base	rhssaf_c_gear.pbo
+rhssaf_vest_md12_digital	PBB M-12 (Digital)	rhssaf_balistic_vest_base	rhssaf_c_gear.pbo
+rhssaf_vest_md12_digital_desert	PBB M-12 (Digital/Desert)	rhssaf_balistic_vest_base	rhssaf_c_gear.pbo
+rhssaf_vest_md12_m70_rifleman	PBB M-12 (Rifleman/M70 mags)	rhssaf_balistic_vest_base	rhssaf_c_gear.pbo
+rhssaf_vest_md98_digital	PBB M-98 (Digital)	rhssaf_balistic_vest_base	rhssaf_c_gear.pbo
+rhssaf_vest_md98_md2camo	PBB M-98 (MDU02)	rhssaf_balistic_vest_base	rhssaf_c_gear.pbo
+rhssaf_vest_md98_officer	PBB M-98 (Officer)	rhssaf_balistic_vest_base	rhssaf_c_gear.pbo
+rhssaf_vest_md98_rifleman	PBB M-98 (Woodland/Rifleman)	rhssaf_balistic_vest_base	rhssaf_c_gear.pbo
+rhssaf_vest_md98_woodland	PBB M-98 (Woodland)	rhssaf_balistic_vest_base	rhssaf_c_gear.pbo
+rhssaf_vest_md99_digital	PBB M-99T (Digital)	rhssaf_balistic_vest_base	rhssaf_c_gear.pbo
+rhssaf_vest_md99_digital_radio	PBB M-99T (Digital/Radio)	rhssaf_balistic_vest_base	rhssaf_c_gear.pbo
+rhssaf_vest_md99_digital_rifleman	PBB M-99T (Digital/Rifleman)	rhssaf_balistic_vest_base	rhssaf_c_gear.pbo
+rhssaf_vest_md99_digital_rifleman_radio	PBB M-99T (Digital/Rifleman/Radio)	rhssaf_balistic_vest_base	rhssaf_c_gear.pbo
+rhssaf_vest_md99_md2camo	PBB M-99T (MDU02)	rhssaf_balistic_vest_base	rhssaf_c_gear.pbo
+rhssaf_vest_md99_md2camo_radio	PBB M-99T (MDU02/Radio)	rhssaf_balistic_vest_base	rhssaf_c_gear.pbo
+rhssaf_vest_md99_md2camo_rifleman	PBB M-99T (MDU02/Rifleman)	rhssaf_balistic_vest_base	rhssaf_c_gear.pbo
+rhssaf_vest_md99_md2camo_rifleman_radio	PBB M-99T (MDU02/Rifleman/Radio)	rhssaf_balistic_vest_base	rhssaf_c_gear.pbo
+rhssaf_vest_md99_woodland	PBB M-99T (Woodland)	rhssaf_balistic_vest_base	rhssaf_c_gear.pbo
+rhssaf_vest_md99_woodland_radio	PBB M-99T (Woodland/Radio)	rhssaf_balistic_vest_base	rhssaf_c_gear.pbo
+rhssaf_vest_md99_woodland_rifleman	PBB M-99T (Woodland/Rifleman)	rhssaf_balistic_vest_base	rhssaf_c_gear.pbo
+rhssaf_vest_md99_woodland_rifleman_radio	PBB M-99T (Woodland/Rifleman/Radio)	rhssaf_balistic_vest_base	rhssaf_c_gear.pbo
+rhssaf_vest_md99a5_md2camo_rifleman	PBB M-99A5 w/M-98	rhssaf_balistic_vest_base	rhssaf_c_gear.pbo
+V_I_G_resistanceLeader_F_Rain		V_I_G_resistanceLeader_F	rt_vests.pbo
+vss_01_BLK	[VSS] Spiritus Systems MicroFight 01 [BLK]	V_PlateCarrier1_rgr	v_spiritussys.pbo
+vss_01_M81	[VSS] Spiritus Systems MicroFight 01 [M81]	V_PlateCarrier1_rgr	v_spiritussys.pbo
+vss_01_MC	[VSS] Spiritus Systems MicroFight 01 [MC]	V_PlateCarrier1_rgr	v_spiritussys.pbo
+vss_01_MCA	[VSS] Spiritus Systems MicroFight 01 [MCA]	V_PlateCarrier1_rgr	v_spiritussys.pbo
+vss_01_MCTP	[VSS] Spiritus Systems MicroFight 01 [MCTP]	V_PlateCarrier1_rgr	v_spiritussys.pbo
+vss_01_RG	[VSS] Spiritus Systems MicroFight 01 [RG]	V_PlateCarrier1_rgr	v_spiritussys.pbo
+vss_01_WG	[VSS] Spiritus Systems MicroFight 01 [WG]	V_PlateCarrier1_rgr	v_spiritussys.pbo
+vss_02_BLK	[VSS] Spiritus Systems MicroFight 02 [BLK]	V_PlateCarrier1_rgr	v_spiritussys.pbo
+vss_02_M81	[VSS] Spiritus Systems MicroFight 02 [M81]	V_PlateCarrier1_rgr	v_spiritussys.pbo
+vss_02_MC	[VSS] Spiritus Systems MicroFight 02 [MC]	V_PlateCarrier1_rgr	v_spiritussys.pbo
+vss_02_MCA	[VSS] Spiritus Systems MicroFight 02 [MCA]	V_PlateCarrier1_rgr	v_spiritussys.pbo
+vss_02_MCTP	[VSS] Spiritus Systems MicroFight 02 [MCTP]	V_PlateCarrier1_rgr	v_spiritussys.pbo
+vss_02_RG	[VSS] Spiritus Systems MicroFight 02 [RG]	V_PlateCarrier1_rgr	v_spiritussys.pbo
+vss_02_WG	[VSS] Spiritus Systems MicroFight 02 [WG]	V_PlateCarrier1_rgr	v_spiritussys.pbo
+vss_03_BLK	[VSS] Spiritus Systems MicroFight 03 [BLK]	V_PlateCarrier1_rgr	v_spiritussys.pbo
+vss_03_M81	[VSS] Spiritus Systems MicroFight 03 [M81]	V_PlateCarrier1_rgr	v_spiritussys.pbo
+vss_03_MC	[VSS] Spiritus Systems MicroFight 03 [MC]	V_PlateCarrier1_rgr	v_spiritussys.pbo
+vss_03_MCA	[VSS] Spiritus Systems MicroFight 03 [MCA]	V_PlateCarrier1_rgr	v_spiritussys.pbo
+vss_03_MCTP	[VSS] Spiritus Systems MicroFight 03 [MCTP]	V_PlateCarrier1_rgr	v_spiritussys.pbo
+vss_03_RG	[VSS] Spiritus Systems MicroFight 03 [RG]	V_PlateCarrier1_rgr	v_spiritussys.pbo
+vss_03_WG	[VSS] Spiritus Systems MicroFight 03 [WG]	V_PlateCarrier1_rgr	v_spiritussys.pbo
+vss_04_BLK	[VSS] Spiritus Systems MicroFight 04 [BLK]	V_PlateCarrier1_rgr	v_spiritussys.pbo
+vss_04_M81	[VSS] Spiritus Systems MicroFight 04 [M81]	V_PlateCarrier1_rgr	v_spiritussys.pbo
+vss_04_MC	[VSS] Spiritus Systems MicroFight 04 [MC]	V_PlateCarrier1_rgr	v_spiritussys.pbo
+vss_04_MCA	[VSS] Spiritus Systems MicroFight 04 [MCA]	V_PlateCarrier1_rgr	v_spiritussys.pbo
+vss_04_MCTP	[VSS] Spiritus Systems MicroFight 04 [MCTP]	V_PlateCarrier1_rgr	v_spiritussys.pbo
+vss_04_RG	[VSS] Spiritus Systems MicroFight 04 [RG]	V_PlateCarrier1_rgr	v_spiritussys.pbo
+vss_04_WG	[VSS] Spiritus Systems MicroFight 04 [WG]	V_PlateCarrier1_rgr	v_spiritussys.pbo
+vss_05_BLK	[VSS] Spiritus Systems MicroFight 05 [BLK]	V_PlateCarrier1_rgr	v_spiritussys.pbo
+vss_05_M81	[VSS] Spiritus Systems MicroFight 05 [M81]	V_PlateCarrier1_rgr	v_spiritussys.pbo
+vss_05_MC	[VSS] Spiritus Systems MicroFight 05 [MC]	V_PlateCarrier1_rgr	v_spiritussys.pbo
+vss_05_MCA	[VSS] Spiritus Systems MicroFight 05 [MCA]	V_PlateCarrier1_rgr	v_spiritussys.pbo
+vss_05_MCTP	[VSS] Spiritus Systems MicroFight 05 [MCTP]	V_PlateCarrier1_rgr	v_spiritussys.pbo
+vss_05_RG	[VSS] Spiritus Systems MicroFight 05 [RG]	V_PlateCarrier1_rgr	v_spiritussys.pbo
+vss_05_WG	[VSS] Spiritus Systems MicroFight 05 [WG]	V_PlateCarrier1_rgr	v_spiritussys.pbo
+vss_06_BLK	[VSS] Spiritus Systems MicroFight 06 [BLK]	V_PlateCarrier1_rgr	v_spiritussys.pbo
+vss_06_M81	[VSS] Spiritus Systems MicroFight 06 [M81]	V_PlateCarrier1_rgr	v_spiritussys.pbo
+vss_06_MC	[VSS] Spiritus Systems MicroFight 06 [MC]	V_PlateCarrier1_rgr	v_spiritussys.pbo
+vss_06_MCA	[VSS] Spiritus Systems MicroFight 06 [MCA]	V_PlateCarrier1_rgr	v_spiritussys.pbo
+vss_06_MCTP	[VSS] Spiritus Systems MicroFight 06 [MCTP]	V_PlateCarrier1_rgr	v_spiritussys.pbo
+vss_06_RG	[VSS] Spiritus Systems MicroFight 06 [RG]	V_PlateCarrier1_rgr	v_spiritussys.pbo
+vss_06_WG	[VSS] Spiritus Systems MicroFight 06 [WG]	V_PlateCarrier1_rgr	v_spiritussys.pbo
+GoG_HolsterSwordVest	Melee holster	Vest_Camo_Base	WebKnight_Melee_New_weapons.pbo
+GoG_HolsterSwordVestBack	Melee holster (Back)	Vest_Camo_Base	WebKnight_Melee_New_weapons.pbo
