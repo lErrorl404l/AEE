@@ -1,0 +1,20 @@
+{
+  "retrieved": "2026-10-20",
+  "note": "Identity-only capture for the JDAM, the Joint Direct Attack Munition guidance family. The entry names the family and no variant: it holds no figure, carries no alias and claims no member. The identity evidence is the engine class table and the corpus itself: the installed content displays 'GBU-31 JDAM 2000lb', 'GBU-32 JDAM 1000lb' and 'GBU-31 JDAM' on classes whose own text carries the JDAM designation, and the GBU-31 and GBU-38 entries each publish JDAM as a designation. The grade is claimed, because the evidence is identity text and not a held figure. No document citation is invented. The keyword holds the family designation the display names carry. A mark entry must not claim it: the family owns it, and the family rung alone reads it.",
+  "entries": [
+    {
+      "catalogue_id": "jdam_family",
+      "canonical_name": "JDAM family",
+      "munition_type": "bomb",
+      "aliases": [],
+      "keywords": [
+        "jdam"
+      ],
+      "identity_only": true,
+      "runtime_ready": false,
+      "family": true,
+      "values": {},
+      "variant": "family designation, no variant claimed"
+    }
+  ]
+}

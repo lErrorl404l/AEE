@@ -176,8 +176,8 @@ private _table = [
     ["gbu24_paveway", "bomb", "", "gbu24|pavewayiii|pw3", "gbu24pavewayiii|gbu24|gbu24paveway|pavewayiii|pw3", "wikipedia_gbu_24_paveway_iii", [1050, 0, 910, 457.2, 4390, ""]],
     ["gbu31_jdam", "bomb", "", "gbu31|gbu56", "gbu31jdam|gbu31|gbu56", "wikipedia_joint_direct_attack_munition", [910, 0, 0, 0, 0, ""]],
     ["gbu32_jdam", "bomb", "", "gbu32|gbu55", "gbu32jdam|gbu32|gbu55", "wikipedia_joint_direct_attack_munition", [450, 0, 0, 0, 0, ""]],
-    ["gbu38_jdam", "bomb", "", "gbu38|gbu54|jdam|ljdam", "gbu38jdam|gbu38|gbu54|jdam|ljdam", "wikipedia_joint_direct_attack_munition", [230, 0, 0, 0, 0, ""]],
-    ["gbu39_sdb", "bomb", "", "gbu39|sdb", "gbu39smalldiameterbomb|gbu39|gbu39small|smalldiameter|diameterbomb", "wikipedia_gbu_39_small_diameter_bomb", [129, 93, 0, 0, 1800, ""]],
+    ["gbu38_jdam", "bomb", "", "gbu38|gbu54|ljdam", "gbu38jdam|gbu38|gbu54|ljdam", "wikipedia_joint_direct_attack_munition", [230, 0, 0, 0, 0, ""]],
+    ["gbu39_sdb", "bomb", "", "gbu39", "gbu39smalldiameterbomb|gbu39|gbu39small|smalldiameter|diameterbomb", "wikipedia_gbu_39_small_diameter_bomb", [129, 93, 0, 0, 1800, ""]],
     ["gbu53_stormbreaker", "bomb", "", "gbu53|sdbii|stormbreaker", "gbu53|bstormbreaker|sdbii|stormbreaker", "wikipedia_gbu_53_b_stormbreaker", [93, 48, 0, 150, 1760, ""]],
     ["gcs1", "bomb", "", "gcs1", "gcs1", "", [0, 0, 0, 0, 0, ""]],
     ["gsh23", "cannon", "", "gsh23", "gryazevshipunovgsh23|gsh23", "wikipedia_gryazev_shipunov_gsh_23", [49.2, 0, 0, 23, 1387, ""]],
@@ -282,7 +282,8 @@ private _table = [
 // identity-only and lives in its own table: no layer above can reach it,
 // and the last layer alone reads it. The columns are the ones above.
 private _families = [
-
+    ["jdam_family", "bomb", "", "", "jdam", "", [0, 0, 0, 0, 0, ""]],
+    ["sdb_family", "bomb", "", "", "sdb", "", [0, 0, 0, 0, 0, ""]]
 ];
 
 private _result = {

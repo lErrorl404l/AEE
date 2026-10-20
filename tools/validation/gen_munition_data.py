@@ -45,6 +45,7 @@ _REPO = Path(__file__).parents[2]
 if str(_REPO) not in sys.path:
     sys.path.insert(0, str(_REPO))
 
+from tools.validation import vehicle_catalogue
 from tools.validation.identity_designations import designations as _designations
 from tools.validation.identity_designations import fold as _fold
 from tools.validation.munition_kind import SCREEN_TERMS
@@ -151,15 +152,27 @@ def source_of(entry: dict) -> str:
     return ""
 
 
-def rows(entries: list[dict]) -> list[str]:
+def rows(entries: list[dict], family_words: frozenset[str] = frozenset()) -> list[str]:
+    """Render the mark table. A family-owned designation is dropped here.
+
+    A family entry owns its designation, so no mark may carry it: while both
+    the GBU-31 and the GBU-38 published JDAM, every query naming the munition
+    family tied and no mark could answer.
+    """
     keys = row_designations(entries)
     out = []
     for entry in sorted(entries, key=lambda e: e["catalogue_id"]):
         cid = entry["catalogue_id"]
         aliases = "|".join(
-            sorted({_fold(a) for a in (entry.get("aliases") or []) if _fold(a)})
+            sorted(
+                {
+                    _fold(a)
+                    for a in (entry.get("aliases") or [])
+                    if _fold(a) and _fold(a) not in family_words
+                }
+            )
         )
-        keywords = "|".join(keys[cid])
+        keywords = "|".join(k for k in keys[cid] if k not in family_words)
         classes = "|".join(
             sorted({_fold(c) for c in (entry.get("classes") or []) if _fold(c)})
         )
@@ -477,11 +490,32 @@ _match select 5
 """
 
 
+def family_errors(entries: list[dict]) -> list[str]:
+    """The shape a munition family entry must carry, as every corpus checks it."""
+    errors: list[str] = []
+    for entry in entries:
+        if not is_family(entry):
+            continue
+        cid = str(entry.get("catalogue_id", "<none>"))
+        family = entry.get("family")
+        if not isinstance(family, bool):
+            errors.append(f"catalogue {cid}: family must be true or false")
+            continue
+        errors.extend(vehicle_catalogue.family_shape_errors(cid, entry))
+    return errors
+
+
 def build() -> tuple[str, str]:
     entries = load()
     marks = [entry for entry in entries if not is_family(entry)]
     families = [entry for entry in entries if is_family(entry)]
-    body = "\n".join(f"{row}," for row in rows(marks))
+    family_words = frozenset(
+        _fold(word)
+        for entry in families
+        for word in (entry.get("keywords") or [])
+        if _fold(word)
+    )
+    body = "\n".join(f"{row}," for row in rows(marks, family_words))
     body = body.rstrip(",")
     family_body = "\n".join(f"{row}," for row in family_rows(families))
     family_body = family_body.rstrip(",")
@@ -494,6 +528,10 @@ def build() -> tuple[str, str]:
 
 def main(argv=None) -> int:
     args = sys.argv[1:] if argv is None else argv
+    errors = family_errors(load())
+    if errors:
+        print("\n".join(errors))
+        return 1
     match, data = build()
     n = len(load())
     if "--check" in args:
@@ -508,13 +546,15 @@ def main(argv=None) -> int:
                 + "), run python3 tools/validation/gen_munition_data.py"
             )
             return 1
-        print(f"munition projection: {n} rows (fresh)")
+        families = sum(1 for entry in load() if is_family(entry))
+        print(f"munition projection: {n - families} rows and {families} family rows (fresh)")
         return 0
     MATCH_OUT.write_text(match, encoding="utf-8")
     DATA_OUT.write_text(data, encoding="utf-8")
+    families = sum(1 for entry in load() if is_family(entry))
     print(
-        f"munition projection: {n} rows -> fnc_getMunitionMatch.sqf and "
-        "fnc_getMunitionData.sqf"
+        f"munition projection: {n - families} rows and {families} family rows -> "
+        "fnc_getMunitionMatch.sqf and fnc_getMunitionData.sqf"
     )
     return 0
 

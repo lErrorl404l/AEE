@@ -27,6 +27,7 @@ sys.path.insert(0, str(ROOT))
 
 from tools import report_match_coverage as coverage  # noqa: E402
 from tools.validation import identity_designations  # noqa: E402
+from tools.validation import gen_munition_data  # noqa: E402
 from tools.validation import register_munition_source  # noqa: E402
 from tools.validation.munition_kind import (  # noqa: E402
     is_munition,
@@ -42,7 +43,7 @@ REGISTRY = ROOT / "data" / "munition" / "sources.json"
 EXPECTED = {
     "small arms": (116, 118),
     "carried launchers": (18, 18),
-    "vehicle armament": (335, 374),
+    "vehicle armament": (338, 374),
 }
 
 # Every modded class this work closed, and the row it resolves to. These are
@@ -64,6 +65,12 @@ CLOSED = {
     "rksla3_wpn_qjk99_127_1_pod QJK99-12.7-1 Gunpod": "qjk99_gun",
     "rksla3_wpn_uk1000gp UK 1000lb GP": "uk_1000lb_gp",
     "rksla3_wpn_uk500gp UK 500lb GP": "uk_500lb_gp",
+    # Closed by the family rung of 2026-10-20: the display names the JDAM or
+    # the Small Diameter Bomb family, which the family entry now owns, so the
+    # mark answers on its own designation.
+    "FIR_GBU31 GBU-31 JDAM 2000lb": "gbu31_jdam",
+    "FIR_GBU32 GBU-32 JDAM 1000lb": "gbu32_jdam",
+    "FIR_GBU53 GBU-53 SDB II 250lb": "gbu53_stormbreaker",
 }
 
 # The entries this work wrote hold no figure: the source states the identity
@@ -103,7 +110,8 @@ def matchers() -> dict:
         "small arms": coverage.weapon_matcher(coverage.weapon_table()),
         "carried launchers": coverage.weapon_matcher(coverage.weapon_table()),
         "vehicle armament": coverage.matcher(
-            coverage.munition_rows(coverage.MUNITION_TABLE)
+            coverage.munition_rows(coverage.MUNITION_TABLE),
+            families=coverage.munition_family_rows(coverage.MUNITION_TABLE),
         ),
     }
 
@@ -290,3 +298,40 @@ class TestIdentityRules(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class MunitionFamilyRungTest(unittest.TestCase):
+    """A munition family names the family and no variant.
+
+    The family row lives in its own table, so no mark layer reads it. The
+    designation it owns is dropped from every mark row, which is what lets
+    the GBU-31, the GBU-32 and the GBU-53 answer on their own designations.
+    """
+
+    def test_the_family_rows_are_identity_only_and_own_their_designation(self):
+        table = coverage.munition_rows(coverage.MUNITION_TABLE)
+        families = coverage.munition_family_rows(coverage.MUNITION_TABLE)
+        self.assertEqual(["jdam_family", "sdb_family"], [r["id"] for r in families])
+        words = {word for row in families for word in row["keywords"]}
+        self.assertEqual({"jdam", "sdb"}, words)
+        for row in table:
+            with self.subTest(entry=row["id"]):
+                self.assertEqual(
+                    [], sorted(words & (set(row["keywords"]) | set(row["aliases"])))
+                )
+        for cid in ("jdam_family", "sdb_family"):
+            held = entry(cid)
+            self.assertIs(True, held["family"])
+            self.assertIs(True, held["identity_only"])
+            self.assertEqual({}, held["values"])
+            self.assertEqual([], held["aliases"])
+            self.assertTrue(held["keywords"])
+
+    def test_the_generator_refuses_a_family_entry_that_names_a_mark(self):
+        bad = {**entry("sdb_family"), "canonical_name": "GBU-53 SDB II family"}
+        self.assertTrue(gen_munition_data.family_errors([bad]))
+
+    def test_the_family_rows_are_what_the_generator_writes(self):
+        self.assertEqual(
+            gen_munition_data.family_errors(gen_munition_data.load()), []
+        )

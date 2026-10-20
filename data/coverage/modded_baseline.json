@@ -217,7 +217,7 @@
       },
       "vehicle_armament": {
         "note": "A tied munition is refused. The open classes name a body, a seeker or a warhead the catalogue holds for a different store.",
-        "unresolved": 39
+        "unresolved": 36
       },
       "vehicles": {
         "note": "Every class here is named by its own text at a layer the runtime would refuse as a tie, or names no entry at all. A tie is answered as an empty result by the engine, so the measurement reports the class as open even where a weaker layer would have guessed. Closing one needs a term the class's own text carries and no other class does.",
@@ -298,11 +298,11 @@
       "inherited": [],
       "label": "vehicle armament",
       "modded": {
-        "hit": 335,
-        "pct": 89.57,
+        "hit": 338,
+        "pct": 90.37,
         "total": 374
       },
-      "unresolved_modded": 39
+      "unresolved_modded": 36
     },
     "vehicles": {
       "base": {

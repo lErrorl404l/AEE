@@ -893,7 +893,7 @@
       ]
     },
     "vehicle armament": {
-      "resolved": 335,
+      "resolved": 338,
       "total": 374,
       "rows": [
         [
@@ -1189,12 +1189,12 @@
         [
           "FIR_GBU31",
           "GBU-31 JDAM 2000lb",
-          null
+          "gbu31_jdam"
         ],
         [
           "FIR_GBU32",
           "GBU-32 JDAM 1000lb",
-          null
+          "gbu32_jdam"
         ],
         [
           "FIR_GBU38",
@@ -1209,7 +1209,7 @@
         [
           "FIR_GBU53",
           "GBU-53 SDB II 250lb",
-          null
+          "gbu53_stormbreaker"
         ],
         [
           "FIR_GBU54",
@@ -2900,9 +2900,6 @@
     "FIR_CBU104": "The alias layer ties between cbu89_gator, wcmd, and the runtime refuses a tie rather than guessing which store the text means.",
     "FIR_CBU105": "The alias layer ties between cbu97_sfw, wcmd, and the runtime refuses a tie rather than guessing which store the text means.",
     "FIR_CMLauncher": "No layer names it: no mapped class, alias or keyword of the query reaches one entry.",
-    "FIR_GBU31": "The alias layer ties between gbu31_jdam, gbu38_jdam, and the runtime refuses a tie rather than guessing which store the text means.",
-    "FIR_GBU32": "The alias layer ties between gbu32_jdam, gbu38_jdam, and the runtime refuses a tie rather than guessing which store the text means.",
-    "FIR_GBU53": "The alias layer ties between gbu39_sdb, gbu53_stormbreaker, and the runtime refuses a tie rather than guessing which store the text means.",
     "FIR_GBU55": "The alias layer ties between gbu32_jdam, gbu38_jdam, and the runtime refuses a tie rather than guessing which store the text means.",
     "FIR_GBU56": "The alias layer ties between gbu31_jdam, gbu38_jdam, and the runtime refuses a tie rather than guessing which store the text means.",
     "FIR_Kh25MPU": "The keyword layer ties between kh25, m242_bushmaster, and the runtime refuses a tie rather than guessing which store the text means.",

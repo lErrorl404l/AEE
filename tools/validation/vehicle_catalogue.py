@@ -683,11 +683,17 @@ def family_shape_errors(cid: str, entry: Mapping[str, object]) -> list[str]:
         # A family designation ends in a digit or a word ("T-72", "C-130",
         # "Cessna"). A letter straight after a digit is a mark suffix
         # ("T-72B3", "UH-60M"), so the stem is a mark and not a family.
+        words = stem.split()
         if (
             not stem
             or "(" in stem
             or " obr" in f" {stem.lower()}"
             or re.search(r"\d[A-Za-z]", stem)
+            # A designation carrying a type number is one word ("T-72",
+            # "RG-33", "F/A-18"). A stem that carries one and continues
+            # ("GBU-53 SDB II") names the mark and then its family, so it is
+            # a mark's name and not the family's.
+            or (words and any(ch.isdigit() for ch in words[0]) and len(words) > 1)
         ):
             errors.append(
                 f"catalogue {cid}: a family entry must name the family and no mark"

@@ -1,14 +1,11 @@
 # modded match coverage gaps: vehicle armament
-# 39 unresolved of 374 modded classes (89.6% resolved)
+# 36 unresolved of 374 modded classes (90.4% resolved)
 # class	display	parent	source
 ANZ_WPLauncher	WP Marker Rockets	RocketPods	anz_napalmmod.pbo
 disco_nimrod_bomb_launcher	1000 lb HE bombs	Mk82BombLauncher	disco_nimrod.pbo
 FIR_CBU104	CBU-104 Gator WCMD	FIR_GPSClusterBombLauncher	FIR_AirWeaponSystem_US_cfg.pbo
 FIR_CBU105	CBU-105 WCMD SFW	Mk82BombLauncher	FIR_AirWeaponSystem_US_cfg.pbo
 FIR_CMLauncher	CHF/FLR	SmokeLauncher	FIR_AirWeaponSystem_US_cfg.pbo
-FIR_GBU31	GBU-31 JDAM 2000lb	FIR_GuidedBombLauncher	FIR_AirWeaponSystem_US_cfg.pbo
-FIR_GBU32	GBU-32 JDAM 1000lb	FIR_GuidedBombLauncher	FIR_AirWeaponSystem_US_cfg.pbo
-FIR_GBU53	GBU-53 SDB II 250lb	FIR_GuidedBombLauncher	FIR_AirWeaponSystem_US_cfg.pbo
 FIR_GBU55	GBU-55 LJDAM 1000lb	FIR_GuidedBombLauncher	FIR_AirWeaponSystem_US_cfg.pbo
 FIR_GBU56	GBU-56 LJDAM 2000lb	FIR_GuidedBombLauncher	FIR_AirWeaponSystem_US_cfg.pbo
 FIR_Kh25MPU	Kh-25MPU	MissileLauncher	FIR_AirWeaponSystem_US_cfg.pbo
