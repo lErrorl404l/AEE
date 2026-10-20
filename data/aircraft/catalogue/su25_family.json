@@ -1,0 +1,27 @@
+{
+  "retrieved": "2026-10-20",
+  "note": "Identity-only capture for the Su-25, the Sukhoi close air support family. The entry names the family and no mark: it publishes no figure, carries no alias and claims no member. The identity evidence is the aircraft catalogue itself: the Sukhoi Su-25, Su-25SM and Su-25T Frogfoot entries each carry the Su-25 designation in a published name, and the RHS game classes display it. The grade is claimed, because the evidence is published identity text and not a held figure. No document citation is invented and no sources.json record is created. The keyword holds the family designation the member names carry. A mark entry must not claim it: the family owns it, and the family rung alone reads it.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "su25_family",
+      "canonical_name": "Su-25 family",
+      "maker": "Sukhoi",
+      "model": "Su-25",
+      "variant": "family designation, no member claimed",
+      "variant_id": "su25_family",
+      "vehicle_type": "fixed_wing",
+      "class_token": "",
+      "country": "RU",
+      "era": "contemporary",
+      "aliases": [],
+      "keywords": [
+        "su25"
+      ],
+      "runtime_ready": false,
+      "identity_only": true,
+      "family": true,
+      "values": {}
+    }
+  ]
+}

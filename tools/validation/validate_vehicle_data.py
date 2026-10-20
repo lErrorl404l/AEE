@@ -483,51 +483,11 @@ def validate_family_shape(
 ) -> None:
     """Check the shape an entry that names a family must carry.
 
-    A family entry is identity-only: it names a family and no mark, and the
-    matcher answers it from a separate table at the last rung alone. So it
-    must carry no value, no alias, no class token and no runtime-ready flag,
-    and it must publish at least one family designation as a keyword. Its
-    canonical name must end with the word "family" and name that family
-    alone: a mark's own name, or a mark qualifier, belongs to a mark entry
-    and would answer for the family's siblings.
+    The rule is shared with the aircraft and munition validators, so it lives
+    in ``vehicle_catalogue`` and this function keeps the name this module has
+    always exposed.
     """
-    if entry.get("identity_only") is not True:
-        errors.append(f"catalogue {cid}: a family entry must be identity_only")
-    if entry.get("runtime_ready") is not False:
-        errors.append(f"catalogue {cid}: a family entry must not be runtime_ready")
-    values = _mapping(entry.get("values")) or {}
-    if values:
-        errors.append(f"catalogue {cid}: a family entry must hold no value")
-    if _sequence(entry.get("aliases")) or []:
-        errors.append(f"catalogue {cid}: a family entry must carry no alias")
-    if not (_sequence(entry.get("keywords")) or []):
-        errors.append(f"catalogue {cid}: a family entry must carry its designation")
-    if _text(entry.get("class_token")) not in (None, ""):
-        errors.append(f"catalogue {cid}: a family entry must carry no class token")
-    canonical = (_text(entry.get("canonical_name")) or "").strip()
-    match = re.search(r"\bfamily\b", canonical, re.I)
-    if match is None:
-        errors.append(
-            f"catalogue {cid}: a family entry's canonical name must name the family"
-        )
-    else:
-        stem = canonical[: match.start()].strip().rstrip(",")
-        # A family designation ends in a digit or a word ("T-72", "C-130",
-        # "Cessna"). A letter straight after a digit is a mark suffix
-        # ("T-72B3", "UH-60M"), so the stem is a mark and not a family.
-        if (
-            not stem
-            or "(" in stem
-            or " obr" in f" {stem.lower()}"
-            or re.search(r"\d[A-Za-z]", stem)
-        ):
-            errors.append(
-                f"catalogue {cid}: a family entry must name the family and no mark"
-            )
-    if "family" not in (_text(entry.get("variant")) or "").lower():
-        errors.append(
-            f"catalogue {cid}: a family entry's variant must say it is family-level"
-        )
+    errors.extend(vehicle_catalogue.family_shape_errors(cid, entry))
 
 
 def validate_catalogue(

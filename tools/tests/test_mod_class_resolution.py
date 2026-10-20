@@ -47,11 +47,16 @@ continues to the family rung rather than treating the refusal as an answer.
 The base game's fictional M4 Scorcher also stays open, and it is not a modded
 gap.
 
-The aircraft table closed one: the base game's fictional AR-2 Darter, whose
-display name the wiki ties to the Parrot AR.Drone 2.0. Every remaining
-aircraft gap is an ArmaFPV first-person-view drone whose own text ("Crocus
-AT TI") states no designation any published source holds, so a row would have
-to invent one.
+The aircraft table closed forty-four: the base game's fictional AR-2 Darter,
+whose display name the wiki ties to the Parrot AR.Drone 2.0, and forty-three
+modded classes closed by the family-word work of 2026-10-20. Nine family
+entries carry the corpus: `uh1_family`, `uh60_family`, `hh60_family`,
+`ah1_family`, `mi24_family`, `su25_family`, `ch53_family`, `ch47_family` and
+`mig29_family`. Each owns one designation, so no mark row carries it, and a
+class that names its own mark now answers at the keyword layer. Forty-two
+modded classes still stay open: ten F/A-181 loadout configurations of an
+Arma 3 fictional type, eight ArmaFPV Crocus drones that no published source
+designates, and twenty-three that tie at a layer above the family rung.
 
 The KamAZ-4310 entry publishes the real truck and binds the Arma 3 Zamak
 classes through the wiki's own statement ("Zamak is simply Kamaz spelt
@@ -88,6 +93,7 @@ MUNITION_MATCH = (
 from tools import report_match_coverage as report  # noqa: E402
 from tools.validation import (  # noqa: E402
     gen_vehicle_data,
+    validate_aircraft_data,
     validate_vehicle_data,
     vehicle_catalogue,
 )
@@ -407,26 +413,149 @@ FAMILY_CLOSED_VEHICLE_CASES: tuple[tuple[str, str, tuple[str, ...], str], ...] =
     ),
 )
 
-# Modded aircraft gaps. Every one is an ArmaFPV FPV drone or its base class.
-# No published source designates a "Crocus" FPV drone, so the corpus cannot
-# name them without inventing a designation. The base game's "AR-2 Darter"
-# display now resolves to the Parrot AR.Drone 2.0 and is locked as closed.
+# Modded aircraft classes that stay open, grouped by the reason they stay
+# open. A tie at any layer above the family rung is final, so the family rung
+# is never reached for them.
+#
+# The F/A-181 configurations name an Arma 3 fictional type and a weapon
+# loadout: "10x GBU-12" is not a designation, and the type is nobody's real
+# aircraft. The shared configuration words ("cas", "bomber", "heavy") are
+# keywords of several catalogue entries, so the keyword layer ties.
 AIRCRAFT_OPEN_CASES: tuple[tuple[str, str], ...] = (
-    ("ARMAFPV_Crocus_AT_Base", "Crocus AT"),
+    # Arma 3 fiction, and a loadout rather than a designation.
+    (
+        "B_Plane_Fighter_01_CASModule_HeavyBomber_2_F",
+        "F/A-181 Black Wasp II (10x GBU-12)",
+    ),
+    ("B_Plane_Fighter_01_CASModule_HeavyBomber_F", "F/A-181 Black Wasp II (8x GBU-12)"),
+    (
+        "B_Plane_Fighter_01_CASModule_HeavyNapalm_2_F",
+        "F/A-181 Black Wasp II (8x MK77 Napalm)",
+    ),
+    (
+        "B_Plane_Fighter_01_CASModule_HeavyNapalm_F",
+        "F/A-181 Black Wasp II (6x MK77 Napalm)",
+    ),
+    (
+        "B_Plane_Fighter_01_CASModule_MediumBomber_2_F",
+        "F/A-181 Black Wasp II (6x GBU-12)",
+    ),
+    (
+        "B_Plane_Fighter_01_CASModule_MediumBomber_F",
+        "F/A-181 Black Wasp II (4x GBU-12)",
+    ),
+    (
+        "B_Plane_Fighter_01_CASModule_MediumNapalm_2_F",
+        "F/A-181 Black Wasp II (4x MK77 Napalm)",
+    ),
+    (
+        "B_Plane_Fighter_01_CASModule_MediumNapalm_F",
+        "F/A-181 Black Wasp II (3x MK77 Napalm)",
+    ),
+    ("B_Plane_Fighter_01_CASModule_Napalm_F", "FA-181 Black Wasp II (2x MK77 Napalm)"),
+    ("B_Plane_Fighter_01_Napalm_F", "FA-181 Black Wasp II - MK77"),
+    # No published source designates a Crocus FPV drone, so a row would have
+    # to invent a designation.
     ("ARMAFPV_Crocus_AP_Base", "Crocus AP"),
-    ("O_Crocus_AT_TI", "Crocus AT TI"),
-    ("O_Crocus_AP_TI", "Crocus AP TI"),
-    ("B_Crocus_AT_TI", "Crocus AT TI"),
+    ("ARMAFPV_Crocus_AT_Base", "Crocus AT"),
     ("B_Crocus_AP_TI", "Crocus AP TI"),
-    ("I_Crocus_AT_TI", "Crocus AT TI"),
+    ("B_Crocus_AT_TI", "Crocus AT TI"),
     ("I_Crocus_AP_TI", "Crocus AP TI"),
+    ("I_Crocus_AT_TI", "Crocus AT TI"),
+    ("O_Crocus_AP_TI", "Crocus AP TI"),
+    ("O_Crocus_AT_TI", "Crocus AT TI"),
+    # A shared name is a curated alias of two marks, so the alias layer ties
+    # before any keyword is read: "falcon" names two F-16 marks, "hornet" two
+    # F/A-18 marks, "merlin" two AW101 marks, "pavehawk" two H-60 marks and
+    # "black hawk" two UH-60 marks.
+    ("FIR_ECM_Dummy_1", "F-16C Fighting Falcon"),
+    ("FIR_ECM_Dummy_2", "F/A-18F Super Hornet"),
+    ("CBRN_Mohawk", "Merlin"),
+    ("vtx_HH60", "HH-60G/M Pavehawk"),
+    ("vtx_H60_base", "UH-60M Blackhawk"),
+    # The AH-64 marks share "ah64", and "ah6" is a substring of every AH-64
+    # query, so the keyword layer always ties. A family entry owning "ah64"
+    # would leave only "ah6" and answer the AH-6 Little Bird, which is why no
+    # AH-64 family entry exists.
+    ("RHS_AH64_base", "AH-64"),
+    ("RHS_AH64D", "AH-64D"),
+    ("RHS_AH64D_AA", "AH-64D (AA)"),
+    ("RHS_AH64D_CS", "AH-64D (Close-Support)"),
+    ("RHS_AH64D_GS", "AH-64D (Ground-Suppression)"),
+    ("RHS_AH64DGrey", "AH-64D (OIF Grey)"),
+    ("fza_ah64d_b1", "AH-64D BLOCK I"),
+    ("fza_ah64d_b2e", "DEPRECATED"),
+    # The Mi-8MTV-3 mark is not held. "mi8" names the Mi-8T and Mi-8AMTSh,
+    # and the Mi-17 entry derives "mi8m" from its published mi-8mt alias, so
+    # the keyword layer ties. A Mi-8 family entry would leave "mi8m" alone
+    # and answer the Mi-17 for a Mi-8MTV-3, which is the wrong airframe.
+    ("rhs_mi8mtv3_base", "Mi-8MTV-3"),
+    ("RHS_Mi8MTV3_vvs", "Mi-8MTV-3"),
+    ("RHS_Mi8mtv3_Cargo_vvs", "Mi-8MTV-3 (Cargo)"),
+    ("RHS_Mi8MTV3_FAB_vvs", "Mi-8MTV-3 (FAB)"),
+    ("RHS_Mi8MTV3_UPK23_vvs", "Mi-8MTV-3 (UPK)"),
+    ("rhs_mi8mtv3_heavy_base", "Mi-8MTV-3 (Heavy)"),
+    # A role word is a keyword of several entries: "cas" of the A-10 and the
+    # Su-25, "gunship" of the Ka-50, Mi-24P and Mi-28. The keyword layer ties.
+    ("RHS_Mi24P_CAS_VVS_Base", "Mi-24P (CAS)"),
+    ("RHS_Su25SM_CAS_vvs", "Su-25 (CAS)"),
+    ("RHS_Su25SM_CAS_vvsc", "Su-25 (CAS)"),
+    ("rhs_uh1h_hidf_gunship", "UH-1H Gunship"),
+    # "mh60" is shared by four MH-60 marks, and "mh6" is a substring of
+    # "mh60m", so a MH-60 family entry would answer the MH-6M.
+    ("121_soar_hibyrd_slick", "[SOAR] Hibyrd's MH-60M"),
 )
 
 # The modded aircraft classes that resolve. The drone_base_F row is the base
 # game's fictional quadcopter; the wiki names the Parrot AR.Drone 2.0 for it
-# at grade "resemblance", which is enough for the keyword layer.
+# at grade "resemblance", which is enough for the keyword layer. The other
+# forty-three closed by the family-word work: each names its own mark, and the
+# family entry now owns the shared designation the marks used to compete for.
 CLOSED_AIRCRAFT_CASES: tuple[tuple[str, str, str], ...] = (
     ("drone_base_F", "AR-2 Darter", "parrot_ar_drone_2"),
+    ("RHS_AH1Z", "AH-1Z", "ah1z_viper"),
+    ("RHS_AH1Z_CS", "AH-1Z (Close-Support)", "ah1z_viper"),
+    ("RHS_AH1Z_GS", "AH-1Z (Ground-Suppression)", "ah1z_viper"),
+    ("RHS_AH1Z_base", "AH-1Z", "ah1z_viper"),
+    ("RHS_AH1Z_wd_CS", "AH-1Z (Close-Support)", "ah1z_viper"),
+    ("RHS_AH1Z_wd_GS", "AH-1Z (Ground-Suppression)", "ah1z_viper"),
+    ("RHS_CH_47F_base", "CH-47F", "ch47f_chinook"),
+    ("RHS_CH_47F_cargo_base", "CH-47F (Cargo)", "ch47f_chinook"),
+    ("RHS_CH_47F_light", "CH-47F (D)", "ch47f_chinook"),
+    ("RHS_Mi24D_Base", "Mi-24D", "mi24d_hind_d"),
+    ("RHS_Mi24D_Early_Base", "Mi-24D (early)", "mi24d_hind_d"),
+    ("RHS_Mi24P_AT_VVS_Base", "Mi-24P (AT)", "mi24p_hind_f"),
+    ("RHS_Mi24V_Base", "Mi-24V", "mi24v_hind_e"),
+    ("RHS_Mi24_base", "Mi-24P", "mi24p_hind_f"),
+    ("RHS_Su25SM_Cluster_vvs", "Su-25 (Cluster)", "su25sm_frogfoot"),
+    ("RHS_Su25SM_Cluster_vvsc", "Su-25 (Cluster)", "su25sm_frogfoot"),
+    ("RHS_Su25SM_KH29_vvs", "Su-25 (KH29)", "su25sm_frogfoot"),
+    ("RHS_Su25SM_KH29_vvsc", "Su-25 (KH29)", "su25sm_frogfoot"),
+    ("RHS_Su25SM_vvs", "Su-25", "su25sm_frogfoot"),
+    ("RHS_UH1Y_FFAR", "UH-1Y", "uh1y_venom"),
+    ("RHS_UH1Y_GS", "UH-1Y (Ground-Suppression)", "uh1y_venom"),
+    ("RHS_UH1Y_UNARMED", "UH-1Y (Unarmed)", "uh1y_venom"),
+    ("RHS_UH1Y_base", "UH-1Y (MG)", "uh1y_venom"),
+    ("RHS_UH60M", "UH-60M", "uh60m_black_hawk"),
+    ("RHS_UH60M2", "UH-60M (Unarmed)", "uh60m_black_hawk"),
+    ("RHS_UH60M_ESSS", "UH-60M (ESSS)", "uh60m_black_hawk"),
+    ("RHS_UH60M_ESSS2", "UH-60M (EWS)", "uh60m_black_hawk"),
+    ("RHS_UH60M_MEV", "UH-60M MEV (ESSS)", "uh60m_black_hawk"),
+    ("RHS_UH60M_MEV2", "UH-60M MEV", "uh60m_black_hawk"),
+    ("RHS_UH60M_base", "UH-60", "uh60m_black_hawk"),
+    ("rhs_mig29s_base", "MiG-29S", "mig29s_fulcrum_c"),
+    ("rhs_mig29sm_base", "MiG-29SM", "mig29s_fulcrum_c"),
+    ("rhs_uh1h_base", "UH1H", "uh1h_iroquois"),
+    ("rhs_uh1h_hidf", "UH-1H", "uh1h_iroquois"),
+    ("rhs_uh1h_hidf_unarmed", "UH-1H Unarmed", "uh1h_iroquois"),
+    ("rhs_uh1h_idap", "UH-1H", "uh1h_iroquois"),
+    ("rhs_uh1h_un", "UH-1H", "uh1h_iroquois"),
+    ("rhsusf_CH53E_USMC", "CH-53E", "ch53e_super_stallion"),
+    ("rhsusf_CH53E_USMC_GAU21", "CH-53E (GAU-21)", "ch53e_super_stallion"),
+    ("rhsusf_CH53e_USMC_D_cargo", "CH-53E (Cargo)", "ch53e_super_stallion"),
+    ("rhsusf_CH53e_USMC_cargo", "CH-53E (Cargo)", "ch53e_super_stallion"),
+    ("vtx_UH60M_MEDEVAC", "HH-60M MEDEVAC", "uh60m_black_hawk"),
+    ("vtx_UH60M_SLICK", "UH-60M Slick", "uh60m_black_hawk"),
 )
 
 
@@ -990,23 +1119,61 @@ class OpenModdedAircraftTest(unittest.TestCase):
     """The modded aircraft gaps stay open and the closed set is locked."""
 
     table: list[dict[str, object]] = []
+    families: list[dict[str, object]] = []
 
     @classmethod
     def setUpClass(cls) -> None:
         cls.table = rows(AIRCRAFT_MATCH)
+        cls.families = family_rows(AIRCRAFT_MATCH)
 
-    def test_the_closed_modded_aircraft_class_count_is_one(self) -> None:
-        self.assertEqual(1, len(CLOSED_AIRCRAFT_CASES))
+    def test_the_closed_modded_aircraft_class_count_is_forty_four(self) -> None:
+        # One by the earlier resemblance research, forty-three by the
+        # family-word work of 2026-10-20.
+        self.assertEqual(44, len(CLOSED_AIRCRAFT_CASES))
 
     def test_each_closed_modded_aircraft_class_resolves(self) -> None:
         for name, display, want in CLOSED_AIRCRAFT_CASES:
             with self.subTest(game_class=name):
-                self.assertEqual(want, resolve(self.table, name, display))
+                self.assertEqual(
+                    want, resolve(self.table, name, display, families=self.families)
+                )
 
     def test_every_modded_aircraft_gap_stays_open(self) -> None:
         for name, display in AIRCRAFT_OPEN_CASES:
             with self.subTest(game_class=name):
-                self.assertIsNone(resolve(self.table, name, display))
+                self.assertIsNone(
+                    resolve(self.table, name, display, families=self.families)
+                )
+
+    def test_the_modded_aircraft_gap_count_is_forty_two(self) -> None:
+        # Ten F/A-181 loadout configurations, eight Crocus drones, and
+        # twenty-three that tie at a layer above the family rung.
+        self.assertEqual(42, len(AIRCRAFT_OPEN_CASES))
+
+    def test_no_mark_row_carries_a_family_designation(self) -> None:
+        # The family owns its designation. While a mark carried it, every
+        # query naming the family tied at the keyword layer and no mark could
+        # answer, so the suppression is what makes the closures possible.
+        family_words = {str(word) for row in self.families for word in row["keywords"]}
+        self.assertTrue(family_words)
+        for row in self.table:
+            with self.subTest(entry=row["id"]):
+                self.assertEqual([], sorted(family_words & set(row["keywords"])))
+                self.assertEqual([], sorted(family_words & set(row["aliases"])))
+
+    def test_each_aircraft_family_row_is_identity_only(self) -> None:
+        self.assertEqual(9, len(self.families))
+        for row in self.families:
+            with self.subTest(entry=row["id"]):
+                self.assertTrue(str(row["id"]).endswith("_family"))
+                self.assertEqual([], row["classes"])
+                self.assertEqual([], row["aliases"])
+                self.assertGreaterEqual(len(row["keywords"]), 1)
+                for word in row["keywords"]:
+                    self.assertTrue(
+                        word.isalnum() and len(word) >= SCAN_MIN,
+                        f"{row['id']} keyword {word} must be a folded designation",
+                    )
 
 
 # A synthetic family row, in the nine-column shape the generator emits: it
@@ -1244,6 +1411,64 @@ class FamilyRungTest(unittest.TestCase):
                     "x_family", {**base, field: bad}, errors
                 )
                 self.assertTrue(errors)
+
+    def test_the_aircraft_validator_applies_the_same_family_rule(self) -> None:
+        # The asset is one rule, not one rule per corpus: the aircraft
+        # validator calls the shared shape check, so a family entry that would
+        # answer for a mark is refused here too.
+        entry: dict[str, object] = {
+            "catalogue_id": "uh60_family",
+            "canonical_name": "UH-60 family",
+            "maker": "Sikorsky",
+            "model": "UH-60",
+            "variant": "family designation, no member claimed",
+            "variant_id": "uh60_family",
+            "vehicle_type": "rotary_wing",
+            "class_token": "",
+            "country": "US",
+            "era": "modern",
+            "aliases": [],
+            "keywords": ["uh60"],
+            "runtime_ready": False,
+            "identity_only": True,
+            "family": True,
+            "values": {},
+        }
+        self.assertEqual([], validate_aircraft_data.validate_catalogue([entry], {}))
+        for field, bad in (
+            ("canonical_name", "UH-60M family"),
+            ("keywords", []),
+            ("aliases", ["uh60"]),
+            ("identity_only", False),
+            ("values", {"operating_weight_kg": {"value": 1}}),
+            ("variant", "M"),
+        ):
+            with self.subTest(field=field, value=bad):
+                self.assertTrue(
+                    validate_aircraft_data.validate_catalogue(
+                        [{**entry, field: bad}], {}
+                    )
+                )
+        self.assertTrue(
+            validate_aircraft_data.validate_catalogue([{**entry, "family": "yes"}], {})
+        )
+
+    def test_the_aircraft_family_entries_pass_the_validator(self) -> None:
+        loaded = vehicle_catalogue.load(
+            REPO / "data/aircraft", profile=vehicle_catalogue.AIRCRAFT_PROFILE
+        )
+        families = [entry.to_mapping() for entry in loaded.entries if entry.family]
+        self.assertEqual(9, len(families))
+        self.assertEqual([], validate_aircraft_data.validate_catalogue(families, {}))
+        # A family designation is never one mark's alias: the family owns it,
+        # and the family rung alone reads it. A mark's variant id is a variant
+        # selector, not a matcher alias, so it is not tested here.
+        words = {word for entry in families for word in entry["keywords"]}
+        for entry in loaded.entries:
+            if entry.family:
+                continue
+            with self.subTest(entry=entry.catalogue_id):
+                self.assertEqual([], sorted(words & set(entry.aliases)))
 
 
 if __name__ == "__main__":

@@ -103,6 +103,7 @@ to name its formula. It exits 1 on an error.
 | `data/aircraft/SOURCE_GAPS.md` | coverage | Generated per-entry missing fields. |
 | `data/aircraft/CLASS_MAPPING_GAPS.md` | coverage | Generated unmapped classes and tokens. |
 | `data/aircraft/RESEARCH_GAPS.md` | entry | The hand-written lead and data-gap register. |
+| `data/aircraft/MODDED_CLASS_GAPS.md` | coverage | The modded classes the ladder cannot name, with the reason and its evidence. |
 | `tools/validation/gen_aircraft_systems.py` | generator | Writes the systems lookup from the corpus. |
 | `addons/flight/functions/fnc_getAircraftSystems.sqf` | generated | The fixed-order systems row. It returns `[]` for an unknown class. |
 | `addons/vehicles/generated/CfgVehicles.hpp` | generated | The load-time config, the aircraft `fuelCapacity` and the land physics keys. |

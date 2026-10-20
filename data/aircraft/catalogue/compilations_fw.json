@@ -1,6 +1,6 @@
 {
   "retrieved": "2026-10-06",
-  "note": "First-slice aircraft catalogue capture. The Su-57's prototypes were the T-50 series of the PAK FA programme (wikipedia_su57_t50), so the entry answers to those designations. Note the KAI T-50 Golden Eagle is a different aircraft and is not held here.",
+  "note": "First-slice aircraft catalogue capture. The Su-57's prototypes were the T-50 series of the PAK FA programme (wikipedia_su57_t50), so the entry answers to those designations. Note the KAI T-50 Golden Eagle is a different aircraft and is not held here. The Su-25 designation is owned by the identity-only su25_family entry and is not an alias of the Su-25 mark: a family word must never be one mark's alias, or a query that names the family answers one member of it.",
   "sources": [],
   "entries": [
     {
@@ -17,8 +17,7 @@
       "country": "RU",
       "era": "contemporary",
       "aliases": [
-        "frogfoot",
-        "su25"
+        "frogfoot"
       ],
       "keywords": [
         "cas",

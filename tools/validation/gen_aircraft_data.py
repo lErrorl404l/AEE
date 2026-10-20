@@ -466,6 +466,7 @@ def build_row(
     mapped_classes: Iterable[str] = (),
     reserved_identities: frozenset[str] = frozenset(),
     shared_words: frozenset[str] = frozenset(),
+    family_words: frozenset[str] = frozenset(),
 ) -> list[object] | None:
     """Return one runtime row, or None when the record has no identity.
 
@@ -473,6 +474,12 @@ def build_row(
     bindings link to the entry. It fills column 4 as a normalised blob. Every
     value column is graded in ``resolve_row``: a held value, a named derivation
     or a labelled zero.
+
+    ``family_words`` holds the designations a FAMILY entry owns. A mark must
+    never claim one: "uh60" names the UH-60 family, so as a keyword of the
+    UH-60M mark it would tie every query that names the family and no mark
+    could answer. The family entry owns it, and the family rung alone reads
+    it.
     """
     fields = resolve_row(record)
     if fields is None:
@@ -497,7 +504,7 @@ def build_row(
     own_identity = _designation_fold(entry.get("canonical_name") or "")
     keyword_keys: list[str] = []
     for key in _normalised_list(entry.get("keywords")):
-        if key in alias_keys or key in _CATEGORY_WORDS:
+        if key in alias_keys or key in _CATEGORY_WORDS or key in family_words:
             continue
         # A curated keyword is held for documentation and many of them are
         # categories ("mrap", "attack", "mainbattletank") or makers. Those
@@ -507,7 +514,7 @@ def build_row(
             continue
         keyword_keys.append(key)
     for key in designations(entry):
-        if key in alias_keys or key in keyword_keys:
+        if key in alias_keys or key in keyword_keys or key in family_words:
             continue
         # A base model owns its own name; a sub-mark may not claim it.
         if key != own_identity and key in reserved_identities:
@@ -565,7 +572,8 @@ def build_rows(
     belongs to its own table, which no rung above the family rung reads.
     """
     table = mappings if mappings is not None else {}
-    records = [record for record in records if not _is_family(record)]
+    all_records = list(records)
+    records = [record for record in all_records if not _is_family(record)]
     identities: set[str] = set()
     for record in records:
         entry = _mapping(record)
@@ -586,6 +594,15 @@ def build_rows(
         for key in words:
             tally[key] = tally.get(key, 0) + 1
     shared = frozenset(k for k, n in tally.items() if n > SHARED_WORD_MAX)
+    # The designations a family entry owns belong to the family rung alone.
+    # Counting them over the mark entries too would let a mark claim one and
+    # tie every query that names the family.
+    family_words = frozenset(
+        key
+        for record in all_records
+        if _is_family(record)
+        for key in _normalised_list((_mapping(record) or {}).get("keywords"))
+    )
     rows: list[list[object]] = []
     for record in records:
         entry = _mapping(record)
@@ -593,7 +610,7 @@ def build_rows(
             continue
         cid = entry.get("catalogue_id")
         classes = table.get(cid, ()) if isinstance(cid, str) else ()
-        row = build_row(entry, classes, reserved, shared)
+        row = build_row(entry, classes, reserved, shared, family_words)
         if row is not None:
             rows.append(row)
     rows.sort(key=lambda row: (str(row[COL_CATALOGUE]), str(row[COL_VARIANT])))

@@ -140,11 +140,16 @@ KNOWN_UNRESOLVABLE = {
         "does."
     ),
     "aircraft": (
-        "The aircraft ladder refuses a tie the same way. Most of these "
-        "classes carry a family word shared by several catalogue entries "
-        "(the C-130, UH-60, Mi-8 and Su-25 families), so naming one member "
-        "from the family word would answer a different mark. Closing one "
-        "needs the mark's own designation in the class or display text."
+        "The aircraft ladder refuses a tie the same way. Ten of these are "
+        "loadout configurations of an Arma 3 fictional type, and eight are "
+        "ArmaFPV drones no published source designates. The rest tie above "
+        "the family rung: a shared reporting name held as a curated alias of "
+        "two marks (falcon, hornet, merlin, pavehawk, black hawk), a role "
+        "word several entries carry (cas, gunship), the AH-64 marks' shared "
+        "ah64 with ah6 as a substring of every AH-64 query, and the Mi-8MTV-3 "
+        "whose mi8 ties against the Mi-8T and Mi-8AMTSh. Capturing the family "
+        "word would answer a different mark in each case. Closing one needs "
+        "the mark's own designation in the class or display text."
     ),
     "small_arms": (
         "The two DSA machine pistols name a chambering and a category, not a "
