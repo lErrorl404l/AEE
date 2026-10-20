@@ -99,5 +99,54 @@ class ConfigTextsTest(unittest.TestCase):
         )
 
 
+class ReopenedClassTest(unittest.TestCase):
+    """A class an addon reopens keeps the identity its first declaration states.
+
+    The sounds addons reopen a vehicle class to attach sounds and state no
+    displayName. The engine keeps the display name the class already had, so
+    the reopen must not erase it.
+    """
+
+    def test_a_reopening_without_a_display_name_keeps_the_first(self) -> None:
+        tree = g.parse_class_tree(
+            [
+                (
+                    "Addons/soft_f.pbo > Offroad_01\\config.bin",
+                    'class Offroad_01_base_F: Car_F { displayName = "$STR_A3_Offroad"; };\n',
+                ),
+                (
+                    "Addons/sounds_f/a3/sounds_f/config.cpp",
+                    'class Offroad_01_base_F: Car_F { soundGetIn[] = {"a",1,1}; };\n',
+                ),
+            ]
+        )
+        self.assertEqual(tree["Offroad_01_base_F"].display_name, "$STR_A3_Offroad")
+        self.assertEqual(
+            g.resolve_display_name(tree, "Offroad_01_base_F"),
+            ("$STR_A3_Offroad", "Addons/soft_f.pbo > Offroad_01\\config.bin"),
+        )
+
+    def test_a_literal_display_name_of_a_reopening_is_not_taken(self) -> None:
+        # Only a stringtable key is a display the binder can resolve, so a
+        # reopening that states a literal name is not read as the class's own.
+        tree = g.parse_class_tree(
+            [
+                ("a/config.cpp", "class Truck: Car_F { };\n"),
+                ("b/config.cpp", 'class Truck { displayName = "Truck-3"; };\n'),
+            ]
+        )
+        self.assertIsNone(tree["Truck"].display_name)
+
+    def test_the_first_declaration_keeps_its_parent_and_locator(self) -> None:
+        tree = g.parse_class_tree(
+            [
+                ("a/config.cpp", "class Truck: Car_F { };\n"),
+                ("b/config.cpp", "class Truck: StaticWeapon { };\n"),
+            ]
+        )
+        self.assertEqual(tree["Truck"].parent, "Car_F")
+        self.assertEqual(tree["Truck"].locator, "a/config.cpp")
+
+
 if __name__ == "__main__":
     raise SystemExit(unittest.main())

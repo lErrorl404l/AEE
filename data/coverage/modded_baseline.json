@@ -207,8 +207,8 @@
         "armafpv_drone_no_published_designation": 8,
         "different_maker_than_ancestor": 1,
         "family_label_over_a_generic_class": 1,
-        "note": "Seven modded Offroad classes closed by engine ancestry (423/435). Twelve remain. Ten are the Project OPFOR KAMAZ retextures: they descend from the Zamak in config, and no entry maps the Zamak variants, so the nearest mapped ancestor is the engine's Car class. LOP_Nissan_PKM_base names a Nissan over the ancestor's Toyota entry, and rhsusf_fmtv_base names a family over the same Car class. The rung refuses all twelve rather than answer a different vehicle. The eight aircraft gaps are ArmaFPV FPV drones. None is a failure.",
-        "retexture_of_an_unmapped_ancestor": 10
+        "note": "Seventeen modded vehicle classes closed by engine ancestry (433/435): the seven Offroad re-uses and the ten Project OPFOR KAMAZ retextures, which descend from the Zamak and close on it now that the Zamak variants are bound to kamaz_4310. Two remain. LOP_Nissan_PKM_base names a Nissan over the ancestor's Toyota entry, and rhsusf_fmtv_base names a family over the engine's Car class. The rung refuses both rather than answer a different vehicle. The eight aircraft gaps are ArmaFPV FPV drones. None is a failure.",
+        "retexture_of_an_unmapped_ancestor": 0
       }
     },
     "measured_rows": 135427,
@@ -318,6 +318,38 @@
           "source": "PHAN_CW.pbo"
         },
         {
+          "ancestor": "O_Truck_02_fuel_F",
+          "catalogue_id": "kamaz_4310",
+          "chain": [
+            "LOP_UKR_KAMAZ_Fuel",
+            "LOP_KAMAZ_fuel_base",
+            "O_Truck_02_fuel_F"
+          ],
+          "class": "LOP_UKR_KAMAZ_Fuel",
+          "display": "KAMAZ (fuel)",
+          "group": "modded",
+          "named": [
+            "kamaz"
+          ],
+          "source": "po_factions_eu.pbo"
+        },
+        {
+          "ancestor": "O_Truck_02_fuel_F",
+          "catalogue_id": "kamaz_4310",
+          "chain": [
+            "LOP_CDF_KAMAZ_Fuel",
+            "LOP_KAMAZ_fuel_base",
+            "O_Truck_02_fuel_F"
+          ],
+          "class": "LOP_CDF_KAMAZ_Fuel",
+          "display": "KAMAZ (fuel)",
+          "group": "modded",
+          "named": [
+            "kamaz"
+          ],
+          "source": "po_factions_fic.pbo"
+        },
+        {
           "ancestor": "Offroad_01_unarmed_base_F",
           "catalogue_id": "offroad_q7_l200_composite",
           "chain": [
@@ -388,6 +420,38 @@
           "source": "po_factions_me.pbo"
         },
         {
+          "ancestor": "O_Truck_02_fuel_F",
+          "catalogue_id": "kamaz_4310",
+          "chain": [
+            "LOP_IRAN_KAMAZ_Fuel",
+            "LOP_KAMAZ_fuel_base",
+            "O_Truck_02_fuel_F"
+          ],
+          "class": "LOP_IRAN_KAMAZ_Fuel",
+          "display": "KAMAZ (fuel)",
+          "group": "modded",
+          "named": [
+            "kamaz"
+          ],
+          "source": "po_factions_me.pbo"
+        },
+        {
+          "ancestor": "O_Truck_02_fuel_F",
+          "catalogue_id": "kamaz_4310",
+          "chain": [
+            "LOP_SYR_KAMAZ_Fuel",
+            "LOP_KAMAZ_fuel_base",
+            "O_Truck_02_fuel_F"
+          ],
+          "class": "LOP_SYR_KAMAZ_Fuel",
+          "display": "KAMAZ (fuel)",
+          "group": "modded",
+          "named": [
+            "kamaz"
+          ],
+          "source": "po_factions_me.pbo"
+        },
+        {
           "ancestor": "Offroad_01_unarmed_base_F",
           "catalogue_id": "offroad_q7_l200_composite",
           "chain": [
@@ -419,15 +483,105 @@
             "offroad"
           ],
           "source": "po_main.pbo"
+        },
+        {
+          "ancestor": "O_Truck_02_covered_F",
+          "catalogue_id": "kamaz_4310",
+          "chain": [
+            "LOP_KAMAZ_cov_base",
+            "O_Truck_02_covered_F"
+          ],
+          "class": "LOP_KAMAZ_cov_base",
+          "display": "KAMAZ (covered)",
+          "group": "modded",
+          "named": [
+            "kamaz"
+          ],
+          "source": "po_main.pbo"
+        },
+        {
+          "ancestor": "O_Truck_02_transport_F",
+          "catalogue_id": "kamaz_4310",
+          "chain": [
+            "LOP_KAMAZ_trans_base",
+            "O_Truck_02_transport_F"
+          ],
+          "class": "LOP_KAMAZ_trans_base",
+          "display": "KAMAZ (open)",
+          "group": "modded",
+          "named": [
+            "kamaz"
+          ],
+          "source": "po_main.pbo"
+        },
+        {
+          "ancestor": "O_Truck_02_medical_F",
+          "catalogue_id": "kamaz_4310",
+          "chain": [
+            "LOP_KAMAZ_med_base",
+            "O_Truck_02_medical_F"
+          ],
+          "class": "LOP_KAMAZ_med_base",
+          "display": "Kamaz Medical",
+          "group": "modded",
+          "named": [
+            "kamaz"
+          ],
+          "source": "po_main.pbo"
+        },
+        {
+          "ancestor": "O_Truck_02_box_F",
+          "catalogue_id": "kamaz_4310",
+          "chain": [
+            "LOP_KAMAZ_rep_base",
+            "O_Truck_02_box_F"
+          ],
+          "class": "LOP_KAMAZ_rep_base",
+          "display": "KAMAZ (repair)",
+          "group": "modded",
+          "named": [
+            "kamaz"
+          ],
+          "source": "po_main.pbo"
+        },
+        {
+          "ancestor": "O_Truck_02_fuel_F",
+          "catalogue_id": "kamaz_4310",
+          "chain": [
+            "LOP_KAMAZ_fuel_base",
+            "O_Truck_02_fuel_F"
+          ],
+          "class": "LOP_KAMAZ_fuel_base",
+          "display": "KamAZ (fuel)",
+          "group": "modded",
+          "named": [
+            "kamaz"
+          ],
+          "source": "po_main.pbo"
+        },
+        {
+          "ancestor": "O_Truck_02_Ammo_F",
+          "catalogue_id": "kamaz_4310",
+          "chain": [
+            "LOP_KAMAZ_ammo_base",
+            "O_Truck_02_Ammo_F"
+          ],
+          "class": "LOP_KAMAZ_ammo_base",
+          "display": "KAMAZ (ammo)",
+          "group": "modded",
+          "named": [
+            "kamaz"
+          ],
+          "source": "po_main.pbo"
         }
       ],
       "label": "vehicles",
       "modded": {
-        "hit": 423,
-        "pct": 97.24,
+        "hit": 433,
+        "pct": 99.54,
         "total": 435
       },
-      "unresolved_modded": 12
+      "unresolved_modded": 2
     }
   }
 }
