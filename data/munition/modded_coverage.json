@@ -1,2650 +1,2939 @@
 {
- "note": "Captured measurement of the MODDED content installed on the development machine: every CfgWeapons class each matcher table scores, and the catalogue row the runtime ladder resolves it to (null when it resolves to nothing). Base game = the scanned PBOs whose name is one of the 196 files in the game's Addons directory; everything else is modded. Captured from a scan of the game and the installed workshop content; regenerate by re-running tools/scan_game_classes.py and the capture that wrote this file. The live measurement is tools/report_match_coverage.py; this file exists so the test suite can lock what was measured.",
- "captured": "2026-10-19",
- "base_game_pbos": 196,
- "tables": {
-  "small arms": {
-   "resolved": 116,
-   "total": 118,
-   "rows": [
-    [
-     "DSA_MachinePistol45",
-     ".45 Machine-pistol",
-     null
-    ],
-    [
-     "DSA_MachinePistol9mm",
-     "9mm Machine-pistol",
-     null
-    ],
-    [
-     "KAR_XM7",
-     "Sig MCX Spear",
-     "mcxspear"
-    ],
-    [
-     "KAR_XM7_BLK",
-     "Sig MCX Spear (Black)",
-     "mcxspear"
-    ],
-    [
-     "KAR_XM7_BLK_G",
-     "Sig MCX Spear (Grip/Black)",
-     "mcxspear"
-    ],
-    [
-     "Louetta_HK416_1",
-     "[TFL] HK416A5 1",
-     "hk416a5"
-    ],
-    [
-     "Louetta_HK416_5",
-     "[TFL] HK416A5 5.45x39mm Conversion Kit",
-     "hk416a5"
-    ],
-    [
-     "Louetta_MCX",
-     "[TFL] MCX",
-     "sigmcx"
-    ],
-    [
-     "Louetta_MCX_2",
-     "[TFL] MCX 2",
-     "sigmcx"
-    ],
-    [
-     "Louetta_MCX_2_blk",
-     "[TFL] MCX 2 Black",
-     "sigmcx"
-    ],
-    [
-     "Louetta_MCX_blk",
-     "[TFL] MCX Black",
-     "sigmcx"
-    ],
-    [
-     "Louetta_mk48_1",
-     "[TFL] MK48 Mod 0",
-     "mk48"
-    ],
-    [
-     "Louetta_mk48_2",
-     "[TFL] MK48 Mod 0 Tan",
-     "mk48"
-    ],
-    [
-     "Louetta_mk48_3",
-     "[TFL] MK48 Mod 0 Tan Heat Sheild",
-     "mk48"
-    ],
-    [
-     "QIN_CZ_BREN2_556_11",
-     "CZ BREN 2 (11\")",
-     "556"
-    ],
-    [
-     "QIN_CZ_BREN2_556_11_GL",
-     "CZ BREN 2 (11\") GL",
-     "556"
-    ],
-    [
-     "QIN_CZ_BREN2_556_14",
-     "CZ BREN 2 (14\")",
-     "556"
-    ],
-    [
-     "QIN_CZ_BREN2_556_14_GL",
-     "CZ BREN 2 (14\") GL",
-     "556"
-    ],
-    [
-     "QIN_CZ_BREN2_556_8",
-     "CZ BREN 2 (8\")",
-     "556"
-    ],
-    [
-     "QIN_CZ_BREN2_762_14",
-     "CZ 807 (14\")",
-     "cz807"
-    ],
-    [
-     "QIN_CZ_BREN2_762_14_GL",
-     "CZ 807 (14\") GL",
-     "cz807"
-    ],
-    [
-     "QIN_CZ_BREN2_762_8",
-     "CZ 807 (8\")",
-     "cz807"
-    ],
-    [
-     "TFB_249",
-     "[TFB] M249",
-     "m249"
-    ],
-    [
-     "TFB_m110sass",
-     "[TFB] M110 SASS",
-     "m110"
-    ],
-    [
-     "TFB_mk48",
-     "[TFB] MK48",
-     "mk48"
-    ],
-    [
-     "UKSF_A2_B",
-     "[ZSQN] L119A2 BLK/GRN",
-     "coltcanadac8_2"
-    ],
-    [
-     "rhs_weap_6p53",
-     "6P53",
-     "sr1vektor"
-    ],
-    [
-     "rhs_weap_SCARH_CQC",
-     "SCAR-H (CQC)",
-     "scarh"
-    ],
-    [
-     "rhs_weap_SCARH_LB",
-     "SCAR-H (LB)",
-     "scarh"
-    ],
-    [
-     "rhs_weap_SCARH_STD",
-     "SCAR-H (STD)",
-     "scarh"
-    ],
-    [
-     "rhs_weap_ak103_gp25",
-     "AK-103 (GP-25)",
-     "ak103"
-    ],
-    [
-     "rhs_weap_ak103_gp25_npz",
-     "AK-103 (GP-25/B-13)",
-     "ak103"
-    ],
-    [
-     "rhs_weap_ak105_npz",
-     "AK-105 (B-13)",
-     "ak105"
-    ],
-    [
-     "rhs_weap_ak74",
-     "AK-74",
-     "ak74"
-    ],
-    [
-     "rhs_weap_ak74_2",
-     "AK-74 (Plum)",
-     "ak74"
-    ],
-    [
-     "rhs_weap_ak74_3",
-     "AK-74 (Green)",
-     "ak74"
-    ],
-    [
-     "rhs_weap_ak74_gp25",
-     "AK-74 (GP-25)",
-     "ak74"
-    ],
-    [
-     "rhs_weap_ak74m_camo",
-     "AK-74M (Camo)",
-     "ak74m"
-    ],
-    [
-     "rhs_weap_ak74m_camo_folded",
-     "AK-74M (Folded)",
-     "ak74m"
-    ],
-    [
-     "rhs_weap_ak74m_camo_npz",
-     "AK-74M (Camo/B-13)",
-     "ak74m"
-    ],
-    [
-     "rhs_weap_ak74m_desert",
-     "AK-74M (Desert)",
-     "ak74m"
-    ],
-    [
-     "rhs_weap_ak74m_desert_folded",
-     "AK-74M (Folded)",
-     "ak74m"
-    ],
-    [
-     "rhs_weap_ak74m_desert_npz",
-     "AK-74M (Desert/B-13)",
-     "ak74m"
-    ],
-    [
-     "rhs_weap_ak74m_fullplum",
-     "AK-74M (Plum)",
-     "ak74m"
-    ],
-    [
-     "rhs_weap_ak74m_fullplum_folded",
-     "AK-74M (Folded)",
-     "ak74m"
-    ],
-    [
-     "rhs_weap_ak74m_fullplum_gp25",
-     "AK-74M (GP-25/Plum)",
-     "ak74m"
-    ],
-    [
-     "rhs_weap_ak74m_fullplum_gp25_folded",
-     "AK-74M (GP-25)",
-     "ak74m"
-    ],
-    [
-     "rhs_weap_ak74m_fullplum_gp25_npz",
-     "AK-74M (GP-25/Plum/B-13)",
-     "ak74m"
-    ],
-    [
-     "rhs_weap_ak74m_fullplum_npz",
-     "AK-74M (Plum/B-13)",
-     "ak74m"
-    ],
-    [
-     "rhs_weap_ak74m_gp25",
-     "AK-74M (GP-25)",
-     "ak74m"
-    ],
-    [
-     "rhs_weap_ak74m_gp25_folded",
-     "AK-74M (GP-25)",
-     "ak74m"
-    ],
-    [
-     "rhs_weap_ak74m_zenitco01",
-     "AK-74M (Zenitco)",
-     "ak74m"
-    ],
-    [
-     "rhs_weap_ak74mr_gp25",
-     "AK-74MR (UUK/GP-25)",
-     "ak74m"
-    ],
-    [
-     "rhs_weap_ak74n_2",
-     "AK-74N (Plum)",
-     "ak74n"
-    ],
-    [
-     "rhs_weap_ak74n_2_gp25",
-     "AK-74N (Plum/GP-25)",
-     "ak74n"
-    ],
-    [
-     "rhs_weap_ak74n_2_gp25_npz",
-     "AK-74N (Plum/GP-25/B-13)",
-     "ak74n"
-    ],
-    [
-     "rhs_weap_ak74n_2_npz",
-     "AK-74N (Plum/B-13)",
-     "ak74n"
-    ],
-    [
-     "rhs_weap_akm",
-     "AKM",
-     "akm"
-    ],
-    [
-     "rhs_weap_akm_gp25",
-     "AKM (GP-25)",
-     "akm"
-    ],
-    [
-     "rhs_weap_akmn_gp25",
-     "AKMN (GP-25)",
-     "akmn"
-    ],
-    [
-     "rhs_weap_akms",
-     "AKMS",
-     "akms"
-    ],
-    [
-     "rhs_weap_akms_gp25",
-     "AKMS (GP-25)",
-     "akms"
-    ],
-    [
-     "rhs_weap_aks74",
-     "AKS-74",
-     "aks74"
-    ],
-    [
-     "rhs_weap_aks74_2",
-     "AKS-74 (Plum)",
-     "aks74"
-    ],
-    [
-     "rhs_weap_aks74_2_folded",
-     "AKS-74 (Plum, Folded)",
-     "aks74"
-    ],
-    [
-     "rhs_weap_aks74_gp25",
-     "AKS-74 (GP-25)",
-     "aks74"
-    ],
-    [
-     "rhs_weap_aks74n_2",
-     "AKS-74N (Plum)",
-     "aks74n"
-    ],
-    [
-     "rhs_weap_aks74n_2_folded",
-     "AKS-74N (Plum, Folded)",
-     "aks74n"
-    ],
-    [
-     "rhs_weap_aks74n_2_npz",
-     "AKS-74N (Plum/B-13)",
-     "aks74n"
-    ],
-    [
-     "rhs_weap_aks74n_npz",
-     "AKS-74N (NPZ)",
-     "aks74n"
-    ],
-    [
-     "rhs_weap_asval",
-     "AS Val",
-     "asval"
-    ],
-    [
-     "rhs_weap_cz99",
-     "CZ99",
-     "cz99"
-    ],
-    [
-     "rhs_weap_dsr1",
-     "DSR-1",
-     "dsr1"
-    ],
-    [
-     "rhs_weap_g36c",
-     "HK G36C",
-     "g36c"
-    ],
-    [
-     "rhs_weap_g36kv",
-     "HK G36KV",
-     "g36k"
-    ],
-    [
-     "rhs_weap_g36kv_ag36",
-     "HK G36KV (AG36)",
-     "ag36"
-    ],
-    [
-     "rhs_weap_hk416d10_m320",
-     "HK416 D10 (M320)",
-     "hk416"
-    ],
-    [
-     "rhs_weap_hk416d145_m320",
-     "HK416 D14.5 (M320)",
-     "hk416"
-    ],
-    [
-     "rhs_weap_lmg_minimipara",
-     "FN Minimi Para",
-     "fnminimi"
-    ],
-    [
-     "rhs_weap_m16a4_carryhandle_M203",
-     "M16A4 (Carryhandle/M203)",
-     "m16a4"
-    ],
-    [
-     "rhs_weap_m21a_pbg40",
-     "M21A (PBG)",
-     "zastavam21a"
-    ],
-    [
-     "rhs_weap_m21a_pr_pbg40",
-     "M21A (Rail/PBG)",
-     "zastavam21a"
-    ],
-    [
-     "rhs_weap_m240B_CAP",
-     "M240B (CAP)",
-     "m240b"
-    ],
-    [
-     "rhs_weap_m24sws",
-     "M24 SWS",
-     "m24"
-    ],
-    [
-     "rhs_weap_m40a5",
-     "M40A5",
-     "m40a5"
-    ],
-    [
-     "rhs_weap_m4_m203",
-     "M4 (M203)",
-     "m203"
-    ],
-    [
-     "rhs_weap_m4_m320",
-     "M4 (M320)",
-     "m320"
-    ],
-    [
-     "rhs_weap_m4a1_blockII_M203",
-     "M4A1 Block II (M203)",
-     "m4a1"
-    ],
-    [
-     "rhs_weap_m4a1_m203",
-     "M4A1 PIP (M203)",
-     "m4a1"
-    ],
-    [
-     "rhs_weap_m4a1_m320",
-     "M4A1 PIP (M320)",
-     "m4a1"
-    ],
-    [
-     "rhs_weap_m70ab2",
-     "M70AB2",
-     "m70ab2"
-    ],
-    [
-     "rhs_weap_m70ab2",
-     "M-70AB2",
-     "m70ab2"
-    ],
-    [
-     "rhs_weap_m70b3n",
-     "M70B3N",
-     "apm70"
-    ],
-    [
-     "rhs_weap_m70b3n_pbg40",
-     "M70B3N (PBG)",
-     "apm70"
-    ],
-    [
-     "rhs_weap_m76",
-     "M76",
-     "m76"
-    ],
-    [
-     "rhs_weap_m76",
-     "M-76",
-     "m76"
-    ],
-    [
-     "rhs_weap_m84",
-     "M84",
-     "zastavam84"
-    ],
-    [
-     "rhs_weap_makarov_pm",
-     "PM",
-     "makarovpm"
-    ],
-    [
-     "rhs_weap_makarov_pmm",
-     "PMM",
-     "pmm"
-    ],
-    [
-     "rhs_weap_mk18_m320",
-     "Mk 18 Mod 1 (M320)",
-     "mk18_2"
-    ],
-    [
-     "rhs_weap_pm63",
-     "PM-63",
-     "pm63rak"
-    ],
-    [
-     "rhs_weap_pp2000",
-     "PP-2000",
-     "pp2000"
-    ],
-    [
-     "rhs_weap_pp2000_folded",
-     "PP-2000 (Folded)",
-     "pp2000"
-    ],
-    [
-     "rhs_weap_pya",
-     "MP-443",
-     "pya"
-    ],
-    [
-     "rhs_weap_rpk74m",
-     "RPK-74M",
-     "rpk74m"
-    ],
-    [
-     "rhs_weap_rpk74m_folded",
-     "RPK-74M (Folded)",
-     "rpk74m"
-    ],
-    [
-     "rhs_weap_savz61",
-     "Sa vz. 61",
-     "savz61skorpion"
-    ],
-    [
-     "rhs_weap_savz61_folded",
-     "Sa vz. 61 (Folded)",
-     "savz61skorpion"
-    ],
-    [
-     "rhs_weap_scorpion",
-     "M84A Scorpion",
-     "zastavam84skorpion"
-    ],
-    [
-     "rhs_weap_sr25",
-     "Mk 11 Mod 0",
-     "sr25"
-    ],
-    [
-     "rhs_weap_tt33",
-     "TT-33",
-     "tt33"
-    ],
-    [
-     "rhs_weap_type94_new",
-     "Type 94 Nambu",
-     "type94nambu"
-    ],
-    [
-     "rhs_weap_vhsd2_bg",
-     "VHS-D2 (VHS-BG)",
-     "vhsd2"
-    ],
-    [
-     "rhs_weap_vhsd2_bg_ct15x",
-     "VHS-D2 (VHS-BG/CT-1.5x)",
-     "vhsd2"
-    ],
-    [
-     "rhs_weap_vss",
-     "VSS Vintorez",
-     "vssvintorez"
-    ],
-    [
-     "rhsusf_weap_glock17g4",
-     "Glock 17",
-     "glock17"
-    ],
-    [
-     "rhsusf_weap_m1911a1",
-     "M1911A1",
-     "m1911"
-    ],
-    [
-     "rhsusf_weap_m9",
-     "M9 Beretta",
-     "92_m9"
-    ]
-   ]
+  "note": "Captured measurement of the MODDED content installed on the development machine: every CfgWeapons class each matcher table scores, and the catalogue row the runtime ladder resolves it to (null when it resolves to nothing). Base game = the scanned PBOs whose name is one of the 196 files in the game's Addons directory; everything else is modded. Captured from a scan of the game and the installed workshop content; regenerate by re-running tools/scan_game_classes.py and the capture that wrote this file. The live measurement is tools/report_match_coverage.py; this file exists so the test suite can lock what was measured.",
+  "captured": "2026-10-20",
+  "base_game_pbos": [
+    "3den.pbo",
+    "3den_language.pbo",
+    "a3.pbo",
+    "air_f.pbo",
+    "air_f_beta.pbo",
+    "air_f_epb.pbo",
+    "air_f_epc.pbo",
+    "air_f_gamma.pbo",
+    "animals_f.pbo",
+    "animals_f_beta.pbo",
+    "anims_f.pbo",
+    "anims_f_bootcamp.pbo",
+    "anims_f_data.pbo",
+    "anims_f_epa.pbo",
+    "anims_f_epc.pbo",
+    "anims_f_exp_a.pbo",
+    "anims_f_mod.pbo",
+    "armor_f.pbo",
+    "armor_f_beta.pbo",
+    "armor_f_decade.pbo",
+    "armor_f_epb.pbo",
+    "armor_f_epc.pbo",
+    "armor_f_gamma.pbo",
+    "baseconfig_f.pbo",
+    "boat_f.pbo",
+    "boat_f_beta.pbo",
+    "boat_f_epc.pbo",
+    "boat_f_gamma.pbo",
+    "cargoposes_f.pbo",
+    "characters_f.pbo",
+    "characters_f_beta.pbo",
+    "characters_f_bootcamp.pbo",
+    "characters_f_decade.pbo",
+    "characters_f_epa.pbo",
+    "characters_f_epb.pbo",
+    "characters_f_epc.pbo",
+    "characters_f_gamma.pbo",
+    "data_f.pbo",
+    "data_f_bootcamp.pbo",
+    "data_f_decade.pbo",
+    "data_f_exp_a.pbo",
+    "data_f_exp_b.pbo",
+    "data_f_mod.pbo",
+    "data_f_warlords.pbo",
+    "drones_f.pbo",
+    "dubbing_f.pbo",
+    "dubbing_f_beta.pbo",
+    "dubbing_f_bootcamp.pbo",
+    "dubbing_f_epa.pbo",
+    "dubbing_f_epb.pbo",
+    "dubbing_f_epc.pbo",
+    "dubbing_f_gamma.pbo",
+    "dubbing_f_warlords.pbo",
+    "dubbing_radio_f.pbo",
+    "dubbing_radio_f_data_eng.pbo",
+    "dubbing_radio_f_data_engb.pbo",
+    "dubbing_radio_f_data_gre.pbo",
+    "dubbing_radio_f_data_per.pbo",
+    "dubbing_radio_f_data_vr.pbo",
+    "editor_f.pbo",
+    "editorpreviews_f.pbo",
+    "editorpreviews_f_decade.pbo",
+    "functions_f.pbo",
+    "functions_f_bootcamp.pbo",
+    "functions_f_decade.pbo",
+    "functions_f_epa.pbo",
+    "functions_f_epc.pbo",
+    "functions_f_exp_a.pbo",
+    "functions_f_warlords.pbo",
+    "language_f.pbo",
+    "language_f_beta.pbo",
+    "language_f_bootcamp.pbo",
+    "language_f_decade.pbo",
+    "language_f_epa.pbo",
+    "language_f_epb.pbo",
+    "language_f_epc.pbo",
+    "language_f_exp_a.pbo",
+    "language_f_exp_b.pbo",
+    "language_f_gamma.pbo",
+    "language_f_mod.pbo",
+    "language_f_warlords.pbo",
+    "languagemissions_f.pbo",
+    "languagemissions_f_beta.pbo",
+    "languagemissions_f_bootcamp.pbo",
+    "languagemissions_f_epa.pbo",
+    "languagemissions_f_epb.pbo",
+    "languagemissions_f_epc.pbo",
+    "languagemissions_f_exp_a.pbo",
+    "languagemissions_f_gamma.pbo",
+    "map_altis.pbo",
+    "map_altis_data.pbo",
+    "map_altis_data_layers.pbo",
+    "map_altis_data_layers_00_00.pbo",
+    "map_altis_data_layers_00_01.pbo",
+    "map_altis_data_layers_01_00.pbo",
+    "map_altis_data_layers_01_01.pbo",
+    "map_altis_scenes_f.pbo",
+    "map_data.pbo",
+    "map_stratis.pbo",
+    "map_stratis_data.pbo",
+    "map_stratis_data_layers.pbo",
+    "map_stratis_scenes_f.pbo",
+    "map_vr.pbo",
+    "map_vr_scenes_f.pbo",
+    "misc_f.pbo",
+    "missions_f.pbo",
+    "missions_f_beta.pbo",
+    "missions_f_beta_data.pbo",
+    "missions_f_beta_video.pbo",
+    "missions_f_bootcamp.pbo",
+    "missions_f_bootcamp_data.pbo",
+    "missions_f_bootcamp_video.pbo",
+    "missions_f_data.pbo",
+    "missions_f_epa.pbo",
+    "missions_f_epa_data.pbo",
+    "missions_f_epa_video.pbo",
+    "missions_f_epb.pbo",
+    "missions_f_epc.pbo",
+    "missions_f_exp_a.pbo",
+    "missions_f_exp_a_data.pbo",
+    "missions_f_gamma.pbo",
+    "missions_f_gamma_data.pbo",
+    "missions_f_gamma_video.pbo",
+    "missions_f_video.pbo",
+    "missions_f_warlords.pbo",
+    "modules_f.pbo",
+    "modules_f_beta.pbo",
+    "modules_f_beta_data.pbo",
+    "modules_f_bootcamp.pbo",
+    "modules_f_data.pbo",
+    "modules_f_epb.pbo",
+    "modules_f_exp_a.pbo",
+    "modules_f_warlords.pbo",
+    "music_f.pbo",
+    "music_f_bootcamp.pbo",
+    "music_f_bootcamp_music.pbo",
+    "music_f_epa.pbo",
+    "music_f_epa_music.pbo",
+    "music_f_epb.pbo",
+    "music_f_epb_music.pbo",
+    "music_f_epc.pbo",
+    "music_f_epc_music.pbo",
+    "music_f_music.pbo",
+    "plants_f.pbo",
+    "props_f_decade.pbo",
+    "props_f_exp_a.pbo",
+    "roads_f.pbo",
+    "rocks_f.pbo",
+    "signs_f.pbo",
+    "soft_f.pbo",
+    "soft_f_beta.pbo",
+    "soft_f_bootcamp.pbo",
+    "soft_f_epc.pbo",
+    "soft_f_gamma.pbo",
+    "sounds_f.pbo",
+    "sounds_f_arsenal.pbo",
+    "sounds_f_bootcamp.pbo",
+    "sounds_f_characters.pbo",
+    "sounds_f_decade.pbo",
+    "sounds_f_environment.pbo",
+    "sounds_f_epb.pbo",
+    "sounds_f_epc.pbo",
+    "sounds_f_exp_a.pbo",
+    "sounds_f_mod.pbo",
+    "sounds_f_sfx.pbo",
+    "sounds_f_vehicles.pbo",
+    "static_f.pbo",
+    "static_f_beta.pbo",
+    "static_f_gamma.pbo",
+    "structures_f.pbo",
+    "structures_f_bootcamp.pbo",
+    "structures_f_data.pbo",
+    "structures_f_epa.pbo",
+    "structures_f_epb.pbo",
+    "structures_f_epc.pbo",
+    "structures_f_exp_a.pbo",
+    "structures_f_households.pbo",
+    "structures_f_ind.pbo",
+    "structures_f_mil.pbo",
+    "structures_f_wrecks.pbo",
+    "ui_f.pbo",
+    "ui_f_bootcamp.pbo",
+    "ui_f_data.pbo",
+    "ui_f_decade.pbo",
+    "ui_f_exp_a.pbo",
+    "uifonts_f.pbo",
+    "uifonts_f_data.pbo",
+    "weapons_f.pbo",
+    "weapons_f_beta.pbo",
+    "weapons_f_bootcamp.pbo",
+    "weapons_f_decade.pbo",
+    "weapons_f_epa.pbo",
+    "weapons_f_epb.pbo",
+    "weapons_f_epc.pbo",
+    "weapons_f_gamma.pbo",
+    "weapons_f_mod.pbo"
+  ],
+  "tables": {
+    "small arms": {
+      "resolved": 116,
+      "total": 118,
+      "rows": [
+        [
+          "DSA_MachinePistol45",
+          ".45 Machine-pistol",
+          null
+        ],
+        [
+          "DSA_MachinePistol9mm",
+          "9mm Machine-pistol",
+          null
+        ],
+        [
+          "KAR_XM7",
+          "Sig MCX Spear",
+          "mcxspear"
+        ],
+        [
+          "KAR_XM7_BLK",
+          "Sig MCX Spear (Black)",
+          "mcxspear"
+        ],
+        [
+          "KAR_XM7_BLK_G",
+          "Sig MCX Spear (Grip/Black)",
+          "mcxspear"
+        ],
+        [
+          "Louetta_HK416_1",
+          "[TFL] HK416A5 1",
+          "hk416a5"
+        ],
+        [
+          "Louetta_HK416_5",
+          "[TFL] HK416A5 5.45x39mm Conversion Kit",
+          "hk416a5"
+        ],
+        [
+          "Louetta_MCX",
+          "[TFL] MCX",
+          "sigmcx"
+        ],
+        [
+          "Louetta_MCX_2",
+          "[TFL] MCX 2",
+          "sigmcx"
+        ],
+        [
+          "Louetta_MCX_2_blk",
+          "[TFL] MCX 2 Black",
+          "sigmcx"
+        ],
+        [
+          "Louetta_MCX_blk",
+          "[TFL] MCX Black",
+          "sigmcx"
+        ],
+        [
+          "Louetta_mk48_1",
+          "[TFL] MK48 Mod 0",
+          "mk48"
+        ],
+        [
+          "Louetta_mk48_2",
+          "[TFL] MK48 Mod 0 Tan",
+          "mk48"
+        ],
+        [
+          "Louetta_mk48_3",
+          "[TFL] MK48 Mod 0 Tan Heat Sheild",
+          "mk48"
+        ],
+        [
+          "QIN_CZ_BREN2_556_11",
+          "CZ BREN 2 (11\")",
+          "556"
+        ],
+        [
+          "QIN_CZ_BREN2_556_11_GL",
+          "CZ BREN 2 (11\") GL",
+          "556"
+        ],
+        [
+          "QIN_CZ_BREN2_556_14",
+          "CZ BREN 2 (14\")",
+          "556"
+        ],
+        [
+          "QIN_CZ_BREN2_556_14_GL",
+          "CZ BREN 2 (14\") GL",
+          "556"
+        ],
+        [
+          "QIN_CZ_BREN2_556_8",
+          "CZ BREN 2 (8\")",
+          "556"
+        ],
+        [
+          "QIN_CZ_BREN2_762_14",
+          "CZ 807 (14\")",
+          "cz807"
+        ],
+        [
+          "QIN_CZ_BREN2_762_14_GL",
+          "CZ 807 (14\") GL",
+          "cz807"
+        ],
+        [
+          "QIN_CZ_BREN2_762_8",
+          "CZ 807 (8\")",
+          "cz807"
+        ],
+        [
+          "TFB_249",
+          "[TFB] M249",
+          "m249"
+        ],
+        [
+          "TFB_m110sass",
+          "[TFB] M110 SASS",
+          "m110"
+        ],
+        [
+          "TFB_mk48",
+          "[TFB] MK48",
+          "mk48"
+        ],
+        [
+          "UKSF_A2_B",
+          "[ZSQN] L119A2 BLK/GRN",
+          "coltcanadac8_2"
+        ],
+        [
+          "rhs_weap_6p53",
+          "6P53",
+          "sr1vektor"
+        ],
+        [
+          "rhs_weap_SCARH_CQC",
+          "SCAR-H (CQC)",
+          "scarh"
+        ],
+        [
+          "rhs_weap_SCARH_LB",
+          "SCAR-H (LB)",
+          "scarh"
+        ],
+        [
+          "rhs_weap_SCARH_STD",
+          "SCAR-H (STD)",
+          "scarh"
+        ],
+        [
+          "rhs_weap_ak103_gp25",
+          "AK-103 (GP-25)",
+          "ak103"
+        ],
+        [
+          "rhs_weap_ak103_gp25_npz",
+          "AK-103 (GP-25/B-13)",
+          "ak103"
+        ],
+        [
+          "rhs_weap_ak105_npz",
+          "AK-105 (B-13)",
+          "ak105"
+        ],
+        [
+          "rhs_weap_ak74",
+          "AK-74",
+          "ak74"
+        ],
+        [
+          "rhs_weap_ak74_2",
+          "AK-74 (Plum)",
+          "ak74"
+        ],
+        [
+          "rhs_weap_ak74_3",
+          "AK-74 (Green)",
+          "ak74"
+        ],
+        [
+          "rhs_weap_ak74_gp25",
+          "AK-74 (GP-25)",
+          "ak74"
+        ],
+        [
+          "rhs_weap_ak74m_camo",
+          "AK-74M (Camo)",
+          "ak74m"
+        ],
+        [
+          "rhs_weap_ak74m_camo_folded",
+          "AK-74M (Folded)",
+          "ak74m"
+        ],
+        [
+          "rhs_weap_ak74m_camo_npz",
+          "AK-74M (Camo/B-13)",
+          "ak74m"
+        ],
+        [
+          "rhs_weap_ak74m_desert",
+          "AK-74M (Desert)",
+          "ak74m"
+        ],
+        [
+          "rhs_weap_ak74m_desert_folded",
+          "AK-74M (Folded)",
+          "ak74m"
+        ],
+        [
+          "rhs_weap_ak74m_desert_npz",
+          "AK-74M (Desert/B-13)",
+          "ak74m"
+        ],
+        [
+          "rhs_weap_ak74m_fullplum",
+          "AK-74M (Plum)",
+          "ak74m"
+        ],
+        [
+          "rhs_weap_ak74m_fullplum_folded",
+          "AK-74M (Folded)",
+          "ak74m"
+        ],
+        [
+          "rhs_weap_ak74m_fullplum_gp25",
+          "AK-74M (GP-25/Plum)",
+          "ak74m"
+        ],
+        [
+          "rhs_weap_ak74m_fullplum_gp25_folded",
+          "AK-74M (GP-25)",
+          "ak74m"
+        ],
+        [
+          "rhs_weap_ak74m_fullplum_gp25_npz",
+          "AK-74M (GP-25/Plum/B-13)",
+          "ak74m"
+        ],
+        [
+          "rhs_weap_ak74m_fullplum_npz",
+          "AK-74M (Plum/B-13)",
+          "ak74m"
+        ],
+        [
+          "rhs_weap_ak74m_gp25",
+          "AK-74M (GP-25)",
+          "ak74m"
+        ],
+        [
+          "rhs_weap_ak74m_gp25_folded",
+          "AK-74M (GP-25)",
+          "ak74m"
+        ],
+        [
+          "rhs_weap_ak74m_zenitco01",
+          "AK-74M (Zenitco)",
+          "ak74m"
+        ],
+        [
+          "rhs_weap_ak74mr_gp25",
+          "AK-74MR (UUK/GP-25)",
+          "ak74m"
+        ],
+        [
+          "rhs_weap_ak74n_2",
+          "AK-74N (Plum)",
+          "ak74n"
+        ],
+        [
+          "rhs_weap_ak74n_2_gp25",
+          "AK-74N (Plum/GP-25)",
+          "ak74n"
+        ],
+        [
+          "rhs_weap_ak74n_2_gp25_npz",
+          "AK-74N (Plum/GP-25/B-13)",
+          "ak74n"
+        ],
+        [
+          "rhs_weap_ak74n_2_npz",
+          "AK-74N (Plum/B-13)",
+          "ak74n"
+        ],
+        [
+          "rhs_weap_akm",
+          "AKM",
+          "akm"
+        ],
+        [
+          "rhs_weap_akm_gp25",
+          "AKM (GP-25)",
+          "akm"
+        ],
+        [
+          "rhs_weap_akmn_gp25",
+          "AKMN (GP-25)",
+          "akmn"
+        ],
+        [
+          "rhs_weap_akms",
+          "AKMS",
+          "akms"
+        ],
+        [
+          "rhs_weap_akms_gp25",
+          "AKMS (GP-25)",
+          "akms"
+        ],
+        [
+          "rhs_weap_aks74",
+          "AKS-74",
+          "aks74"
+        ],
+        [
+          "rhs_weap_aks74_2",
+          "AKS-74 (Plum)",
+          "aks74"
+        ],
+        [
+          "rhs_weap_aks74_2_folded",
+          "AKS-74 (Plum, Folded)",
+          "aks74"
+        ],
+        [
+          "rhs_weap_aks74_gp25",
+          "AKS-74 (GP-25)",
+          "aks74"
+        ],
+        [
+          "rhs_weap_aks74n_2",
+          "AKS-74N (Plum)",
+          "aks74n"
+        ],
+        [
+          "rhs_weap_aks74n_2_folded",
+          "AKS-74N (Plum, Folded)",
+          "aks74n"
+        ],
+        [
+          "rhs_weap_aks74n_2_npz",
+          "AKS-74N (Plum/B-13)",
+          "aks74n"
+        ],
+        [
+          "rhs_weap_aks74n_npz",
+          "AKS-74N (NPZ)",
+          "aks74n"
+        ],
+        [
+          "rhs_weap_asval",
+          "AS Val",
+          "asval"
+        ],
+        [
+          "rhs_weap_cz99",
+          "CZ99",
+          "cz99"
+        ],
+        [
+          "rhs_weap_dsr1",
+          "DSR-1",
+          "dsr1"
+        ],
+        [
+          "rhs_weap_g36c",
+          "HK G36C",
+          "g36c"
+        ],
+        [
+          "rhs_weap_g36kv",
+          "HK G36KV",
+          "g36k"
+        ],
+        [
+          "rhs_weap_g36kv_ag36",
+          "HK G36KV (AG36)",
+          "ag36"
+        ],
+        [
+          "rhs_weap_hk416d10_m320",
+          "HK416 D10 (M320)",
+          "hk416"
+        ],
+        [
+          "rhs_weap_hk416d145_m320",
+          "HK416 D14.5 (M320)",
+          "hk416"
+        ],
+        [
+          "rhs_weap_lmg_minimipara",
+          "FN Minimi Para",
+          "fnminimi"
+        ],
+        [
+          "rhs_weap_m16a4_carryhandle_M203",
+          "M16A4 (Carryhandle/M203)",
+          "m16a4"
+        ],
+        [
+          "rhs_weap_m21a_pbg40",
+          "M21A (PBG)",
+          "zastavam21a"
+        ],
+        [
+          "rhs_weap_m21a_pr_pbg40",
+          "M21A (Rail/PBG)",
+          "zastavam21a"
+        ],
+        [
+          "rhs_weap_m240B_CAP",
+          "M240B (CAP)",
+          "m240b"
+        ],
+        [
+          "rhs_weap_m24sws",
+          "M24 SWS",
+          "m24"
+        ],
+        [
+          "rhs_weap_m40a5",
+          "M40A5",
+          "m40a5"
+        ],
+        [
+          "rhs_weap_m4_m203",
+          "M4 (M203)",
+          "m203"
+        ],
+        [
+          "rhs_weap_m4_m320",
+          "M4 (M320)",
+          "m320"
+        ],
+        [
+          "rhs_weap_m4a1_blockII_M203",
+          "M4A1 Block II (M203)",
+          "m4a1"
+        ],
+        [
+          "rhs_weap_m4a1_m203",
+          "M4A1 PIP (M203)",
+          "m4a1"
+        ],
+        [
+          "rhs_weap_m4a1_m320",
+          "M4A1 PIP (M320)",
+          "m4a1"
+        ],
+        [
+          "rhs_weap_m70ab2",
+          "M-70AB2",
+          "m70ab2"
+        ],
+        [
+          "rhs_weap_m70ab2",
+          "M70AB2",
+          "m70ab2"
+        ],
+        [
+          "rhs_weap_m70b3n",
+          "M70B3N",
+          "apm70"
+        ],
+        [
+          "rhs_weap_m70b3n_pbg40",
+          "M70B3N (PBG)",
+          "apm70"
+        ],
+        [
+          "rhs_weap_m76",
+          "M-76",
+          "m76"
+        ],
+        [
+          "rhs_weap_m76",
+          "M76",
+          "m76"
+        ],
+        [
+          "rhs_weap_m84",
+          "M84",
+          "zastavam84"
+        ],
+        [
+          "rhs_weap_makarov_pm",
+          "PM",
+          "makarovpm"
+        ],
+        [
+          "rhs_weap_makarov_pmm",
+          "PMM",
+          "pmm"
+        ],
+        [
+          "rhs_weap_mk18_m320",
+          "Mk 18 Mod 1 (M320)",
+          "mk18_2"
+        ],
+        [
+          "rhs_weap_pm63",
+          "PM-63",
+          "pm63rak"
+        ],
+        [
+          "rhs_weap_pp2000",
+          "PP-2000",
+          "pp2000"
+        ],
+        [
+          "rhs_weap_pp2000_folded",
+          "PP-2000 (Folded)",
+          "pp2000"
+        ],
+        [
+          "rhs_weap_pya",
+          "MP-443",
+          "pya"
+        ],
+        [
+          "rhs_weap_rpk74m",
+          "RPK-74M",
+          "rpk74m"
+        ],
+        [
+          "rhs_weap_rpk74m_folded",
+          "RPK-74M (Folded)",
+          "rpk74m"
+        ],
+        [
+          "rhs_weap_savz61",
+          "Sa vz. 61",
+          "savz61skorpion"
+        ],
+        [
+          "rhs_weap_savz61_folded",
+          "Sa vz. 61 (Folded)",
+          "savz61skorpion"
+        ],
+        [
+          "rhs_weap_scorpion",
+          "M84A Scorpion",
+          "zastavam84skorpion"
+        ],
+        [
+          "rhs_weap_sr25",
+          "Mk 11 Mod 0",
+          "sr25"
+        ],
+        [
+          "rhs_weap_tt33",
+          "TT-33",
+          "tt33"
+        ],
+        [
+          "rhs_weap_type94_new",
+          "Type 94 Nambu",
+          "type94nambu"
+        ],
+        [
+          "rhs_weap_vhsd2_bg",
+          "VHS-D2 (VHS-BG)",
+          "vhsd2"
+        ],
+        [
+          "rhs_weap_vhsd2_bg_ct15x",
+          "VHS-D2 (VHS-BG/CT-1.5x)",
+          "vhsd2"
+        ],
+        [
+          "rhs_weap_vss",
+          "VSS Vintorez",
+          "vssvintorez"
+        ],
+        [
+          "rhsusf_weap_glock17g4",
+          "Glock 17",
+          "glock17"
+        ],
+        [
+          "rhsusf_weap_m1911a1",
+          "M1911A1",
+          "m1911"
+        ],
+        [
+          "rhsusf_weap_m9",
+          "M9 Beretta",
+          "92_m9"
+        ]
+      ]
+    },
+    "carried launchers": {
+      "resolved": 18,
+      "total": 18,
+      "rows": [
+        [
+          "RPG29_Lorad",
+          "RPG-29",
+          "rpg29"
+        ],
+        [
+          "RPG_30K",
+          "RPG 30",
+          "rpg30"
+        ],
+        [
+          "rhs_weap_M136",
+          "M136 (HEAT)",
+          "m136at4"
+        ],
+        [
+          "rhs_weap_M136_hedp",
+          "M136 (HEDP)",
+          "m136at4"
+        ],
+        [
+          "rhs_weap_M136_hp",
+          "M136 (HP)",
+          "m136at4"
+        ],
+        [
+          "rhs_weap_fgm148",
+          "FGM-148 Javelin",
+          "fgm148javelin"
+        ],
+        [
+          "rhs_weap_fim92",
+          "FIM-92F",
+          "92f"
+        ],
+        [
+          "rhs_weap_m72a7",
+          "M72A7",
+          "m72a7law"
+        ],
+        [
+          "rhs_weap_m80",
+          "RBR-M80",
+          "m80"
+        ],
+        [
+          "rhs_weap_maaws",
+          "M3 MAAWS",
+          "m3maaws"
+        ],
+        [
+          "rhs_weap_mk40_sraw",
+          "Mk 40 Mod 0 SRAW",
+          "mk40sraw"
+        ],
+        [
+          "rhs_weap_mk41_sraw",
+          "Mk 41 Mod 0 SRAW-MPV",
+          "mk40sraw"
+        ],
+        [
+          "rhs_weap_rpg18",
+          "RPG-18",
+          "rpg18"
+        ],
+        [
+          "rhs_weap_rpg26",
+          "RPG-26",
+          "rpg26"
+        ],
+        [
+          "rhs_weap_rpg7",
+          "RPG-7V2",
+          "rpg7"
+        ],
+        [
+          "rhs_weap_rpg75",
+          "RPG-75",
+          "rpg75"
+        ],
+        [
+          "rhs_weap_rshg2",
+          "RShG-2",
+          "rshg2"
+        ],
+        [
+          "rhs_weap_smaw",
+          "MK153 Mod 0 SMAW (Black)",
+          "mk153smaw"
+        ]
+      ]
+    },
+    "vehicle armament": {
+      "resolved": 335,
+      "total": 374,
+      "rows": [
+        [
+          "ANZ_Napalmlauncher",
+          "MK77 Napalm",
+          "mk77"
+        ],
+        [
+          "ANZ_Napalmlauncher_Module_CAS",
+          "MK77 Napalm_Module_CAS",
+          "mk77"
+        ],
+        [
+          "ANZ_WPLauncher",
+          "WP Marker Rockets",
+          null
+        ],
+        [
+          "FIR_9K121",
+          "9K121 Vikhr",
+          "vikhr"
+        ],
+        [
+          "FIR_AAM3",
+          "AAM-3",
+          "aam3"
+        ],
+        [
+          "FIR_AAM3T",
+          "AAM-3 Training",
+          "aam3"
+        ],
+        [
+          "FIR_AAM4",
+          "AAM-4",
+          "aam4"
+        ],
+        [
+          "FIR_AAM4T",
+          "AAM-4 Training",
+          "aam4"
+        ],
+        [
+          "FIR_AAM5",
+          "AAM-5",
+          "aam5"
+        ],
+        [
+          "FIR_AGM114",
+          "AGM-114 Hellfire",
+          "agm114_hellfire"
+        ],
+        [
+          "FIR_AGM123",
+          "AGM-123 Skipper II",
+          "agm123_skipper"
+        ],
+        [
+          "FIR_AGM154",
+          "AGM-154 JSOW",
+          "agm154_jsow"
+        ],
+        [
+          "FIR_AGM158",
+          "AGM-158 JASSM",
+          "agm158_jassm"
+        ],
+        [
+          "FIR_AGM62",
+          "AGM-62 Walleye",
+          "agm62_walleye"
+        ],
+        [
+          "FIR_AGM65",
+          "AGM-65 Maverick",
+          "agm65_maverick"
+        ],
+        [
+          "FIR_AGM84D",
+          "AGM-84D Harpoon",
+          "agm84_harpoon"
+        ],
+        [
+          "FIR_AGM84E",
+          "AGM-84E SLAM",
+          "agm84_harpoon"
+        ],
+        [
+          "FIR_AGM84H",
+          "AGM-84H/K SLAM-ER",
+          "agm84_harpoon"
+        ],
+        [
+          "FIR_AGM88",
+          "AGM-88 HARM",
+          "agm88_harm"
+        ],
+        [
+          "FIR_AIM120",
+          "AIM-120 AMRAAM",
+          "aim120_amraam"
+        ],
+        [
+          "FIR_AIM132",
+          "AIM-132 ASRAAM",
+          "aim132_asraam"
+        ],
+        [
+          "FIR_AIM174",
+          "AIM-174B",
+          "aim174b"
+        ],
+        [
+          "FIR_AIM54",
+          "AIM-54 Phoenix",
+          "aim54_phoenix"
+        ],
+        [
+          "FIR_AIM7",
+          "AIM-7 Sparrow",
+          "aim7_sparrow"
+        ],
+        [
+          "FIR_AIM9D",
+          "AIM-9D Sidewinder",
+          "aim9_sidewinder"
+        ],
+        [
+          "FIR_AIM9H",
+          "AIM-9H Sidewinder",
+          "aim9_sidewinder"
+        ],
+        [
+          "FIR_AIM9L",
+          "AIM-9 Sidewinder",
+          "aim9_sidewinder"
+        ],
+        [
+          "FIR_AIM9P",
+          "AIM-9P Sidewinder",
+          "aim9_sidewinder"
+        ],
+        [
+          "FIR_AIM9X",
+          "AIM-9X Sidewinder",
+          "aim9_sidewinder"
+        ],
+        [
+          "FIR_APKWS_Launcher",
+          "APKWS II",
+          "apkws"
+        ],
+        [
+          "FIR_ASM1",
+          "ASM-1",
+          "asm1_type80"
+        ],
+        [
+          "FIR_ASM2",
+          "ASM-2",
+          "asm2_type93"
+        ],
+        [
+          "FIR_BDU57",
+          "BDU-57 LGTR",
+          "lgtr"
+        ],
+        [
+          "FIR_BLU107",
+          "BLU-107/B Durandal",
+          "blu107_durandal"
+        ],
+        [
+          "FIR_Brimstone",
+          "Brimstone AGM",
+          "brimstone"
+        ],
+        [
+          "FIR_CATM120",
+          "CATM-120",
+          "aim120_amraam"
+        ],
+        [
+          "FIR_CATM54",
+          "CATM-54",
+          "aim54_phoenix"
+        ],
+        [
+          "FIR_CATM7",
+          "CATM-7",
+          "aim7_sparrow"
+        ],
+        [
+          "FIR_CATM9M",
+          "CATM-9M",
+          "aim9_sidewinder"
+        ],
+        [
+          "FIR_CBU100",
+          "Mk-20 Rockeye II",
+          "cbu100_rockeye"
+        ],
+        [
+          "FIR_CBU103",
+          "CBU-103 WCMD",
+          "wcmd"
+        ],
+        [
+          "FIR_CBU104",
+          "CBU-104 Gator WCMD",
+          null
+        ],
+        [
+          "FIR_CBU105",
+          "CBU-105 WCMD SFW",
+          null
+        ],
+        [
+          "FIR_CBU78",
+          "CBU-78 Gator",
+          "cbu89_gator"
+        ],
+        [
+          "FIR_CBU87",
+          "CBU-87",
+          "cbu87"
+        ],
+        [
+          "FIR_CBU89",
+          "CBU-89 Gator",
+          "cbu89_gator"
+        ],
+        [
+          "FIR_CBU97",
+          "CBU-97",
+          "cbu97_sfw"
+        ],
+        [
+          "FIR_CMLauncher",
+          "CHF/FLR",
+          null
+        ],
+        [
+          "FIR_EGBU12",
+          "EGBU-12 Enhanced PaveWay II",
+          "gbu12_paveway"
+        ],
+        [
+          "FIR_FAB250",
+          "FAB-250",
+          "fab250"
+        ],
+        [
+          "FIR_GAU12",
+          "GAU-12 Equalizer",
+          "gau12_equalizer"
+        ],
+        [
+          "FIR_GAU22",
+          "GAU-22/A Equalizer",
+          "gau12_equalizer"
+        ],
+        [
+          "FIR_GAU8",
+          "GAU-8/A Avenger",
+          "gau8_avenger"
+        ],
+        [
+          "FIR_GBU10",
+          "GBU-10 PaveWay II",
+          "gbu10_paveway"
+        ],
+        [
+          "FIR_GBU12",
+          "GBU-12 PaveWay II",
+          "gbu12_paveway"
+        ],
+        [
+          "FIR_GBU12_PW1",
+          "GBU-12/B PaveWay I",
+          "gbu12_paveway"
+        ],
+        [
+          "FIR_GBU16",
+          "GBU-16 PaveWay II",
+          "gbu16_paveway"
+        ],
+        [
+          "FIR_GBU24",
+          "GBU-24 PaveWay III",
+          "gbu24_paveway"
+        ],
+        [
+          "FIR_GBU31",
+          "GBU-31 JDAM 2000lb",
+          null
+        ],
+        [
+          "FIR_GBU32",
+          "GBU-32 JDAM 1000lb",
+          null
+        ],
+        [
+          "FIR_GBU38",
+          "GBU-38 JDAM 500lb",
+          "gbu38_jdam"
+        ],
+        [
+          "FIR_GBU39",
+          "GBU-39 SDB 250lb",
+          "gbu39_sdb"
+        ],
+        [
+          "FIR_GBU53",
+          "GBU-53 SDB II 250lb",
+          null
+        ],
+        [
+          "FIR_GBU54",
+          "GBU-54 LJDAM 500lb",
+          "gbu38_jdam"
+        ],
+        [
+          "FIR_GBU55",
+          "GBU-55 LJDAM 1000lb",
+          null
+        ],
+        [
+          "FIR_GBU56",
+          "GBU-56 LJDAM 2000lb",
+          null
+        ],
+        [
+          "FIR_GCS1",
+          "GCS-1 500lb",
+          "gcs1"
+        ],
+        [
+          "FIR_GEPOD30",
+          "GAU-13/A Gun pod",
+          "d30_2a18"
+        ],
+        [
+          "FIR_Gsh302",
+          "Gsh-30-2",
+          "gsh302"
+        ],
+        [
+          "FIR_IRIS_T",
+          "IRIS-T",
+          "iris_t"
+        ],
+        [
+          "FIR_KAB250L",
+          "KAB-250L",
+          "kab500l"
+        ],
+        [
+          "FIR_KAB500KR",
+          "KAB-500Kr",
+          "kab500l"
+        ],
+        [
+          "FIR_KAB500L",
+          "KAB-500L",
+          "kab500l"
+        ],
+        [
+          "FIR_KAB500SE",
+          "KAB-500S-E",
+          "kab500l"
+        ],
+        [
+          "FIR_KGGB_Launcher",
+          "KGGB",
+          "kggb"
+        ],
+        [
+          "FIR_Kh25ML",
+          "Kh-25ML",
+          "kh25"
+        ],
+        [
+          "FIR_Kh25MPU",
+          "Kh-25MPU",
+          null
+        ],
+        [
+          "FIR_Kh25MS",
+          "Kh-25MS",
+          null
+        ],
+        [
+          "FIR_Kh25MT",
+          "Kh-25MT",
+          "kh25"
+        ],
+        [
+          "FIR_Kh25MTP",
+          "Kh-25MTP",
+          null
+        ],
+        [
+          "FIR_Kh29D",
+          "Kh-29D",
+          "kh29"
+        ],
+        [
+          "FIR_Kh29L",
+          "Kh-29L",
+          "kh29"
+        ],
+        [
+          "FIR_Kh29T",
+          "Kh-29T",
+          "kh29"
+        ],
+        [
+          "FIR_LZuni_Launcher",
+          "Laser Zuni Launcher",
+          "zuni"
+        ],
+        [
+          "FIR_M39",
+          "M39A2",
+          "m39_atacms"
+        ],
+        [
+          "FIR_M61A2",
+          "M61A2 Vulcan",
+          "m61_vulcan"
+        ],
+        [
+          "FIR_MW1",
+          "MW-1",
+          "mw1"
+        ],
+        [
+          "FIR_Meteor",
+          "Meteor",
+          "meteor"
+        ],
+        [
+          "FIR_Mk12",
+          "Mk 12 Autocannon",
+          "colt_mk12_cannon"
+        ],
+        [
+          "FIR_Mk76",
+          "Mk76 Practice Bomb",
+          "pab100"
+        ],
+        [
+          "FIR_PAVEWAY_IV",
+          "Paveway IV 500lb",
+          "paveway_iv"
+        ],
+        [
+          "FIR_Poniard_Launcher",
+          "Poniard",
+          "logir_poniard"
+        ],
+        [
+          "FIR_R27ER",
+          "R-27ER",
+          "r27"
+        ],
+        [
+          "FIR_R27ET",
+          "R-27ET",
+          "r27"
+        ],
+        [
+          "FIR_R60M",
+          "R-60M",
+          "r60"
+        ],
+        [
+          "FIR_R73",
+          "R-73",
+          "r73"
+        ],
+        [
+          "FIR_R77",
+          "R-77",
+          "r77"
+        ],
+        [
+          "FIR_RBK250",
+          "RBK-250",
+          "rbk250"
+        ],
+        [
+          "FIR_RBK500_SPBE_D",
+          "RBK-500 SPBE-D",
+          "rbk500"
+        ],
+        [
+          "FIR_S13_Launcher",
+          "S-13 Rocket",
+          "s13"
+        ],
+        [
+          "FIR_S25_Launcher",
+          "S-25 Rocket",
+          "s25"
+        ],
+        [
+          "FIR_S8_Launcher",
+          "S-8 Rocket",
+          "s8_rocket"
+        ],
+        [
+          "FIR_Scalpel",
+          "Scalpel LCDPB",
+          "storm_shadow"
+        ],
+        [
+          "FIR_Skyflash",
+          "Skyflash",
+          "skyflash"
+        ],
+        [
+          "FIR_Smokewinder",
+          "Smokewinder",
+          null
+        ],
+        [
+          "FIR_Zuni_Launcher",
+          "Zuni Launcher",
+          "zuni"
+        ],
+        [
+          "FIR_mk82_Snakeye_Launcher",
+          "Mk82",
+          "mk82"
+        ],
+        [
+          "FIR_mk83",
+          "Mk83",
+          "mk83"
+        ],
+        [
+          "FIR_mk84",
+          "Mk84",
+          "mk84"
+        ],
+        [
+          "KAT_CAS_R_80mm_GAS_POD",
+          "Hydra GAS 19x",
+          "hydra70"
+        ],
+        [
+          "LOP_AZP23",
+          "AZP-23 Amur",
+          null
+        ],
+        [
+          "LOP_D10",
+          "D-10",
+          "d10_tank_gun"
+        ],
+        [
+          "LOP_D81",
+          "D-81",
+          "2a46"
+        ],
+        [
+          "LOP_DT",
+          "DT",
+          "dt_machine_gun"
+        ],
+        [
+          "LOP_PKT",
+          "PKT",
+          "pkt"
+        ],
+        [
+          "LOP_S53",
+          "ZiS S-53",
+          "zis_s53"
+        ],
+        [
+          "PHEN_FSPLUS_AsphyxiantBomb_Unguided_rack",
+          "[Tier 2] Asphyxiant Gas",
+          null
+        ],
+        [
+          "PHEN_FSPLUS_BlisterBomb_Unguided_rack",
+          "Blister Agent",
+          null
+        ],
+        [
+          "PHEN_FSPLUS_NerveBomb_Unguided_rack",
+          "[Tier 3] Nerve Gas",
+          null
+        ],
+        [
+          "PHEN_FSPLUS_NovaBomb_Unguided_rack",
+          "[Tier 5] Nova Gas",
+          null
+        ],
+        [
+          "PHEN_FSPLUS_RiotCSGasBomb_Unguided_rack",
+          "[Tier 1] Riot CS Gas",
+          null
+        ],
+        [
+          "RHS_9M79_1Launcher",
+          "9M79-1",
+          "tochka"
+        ],
+        [
+          "RHS_M2_Abrams_Gunner",
+          "M2 CSAMM",
+          "m2_browning"
+        ],
+        [
+          "RHS_MK19",
+          "Mk. 19",
+          "mk19"
+        ],
+        [
+          "RHS_MKV_M134",
+          "Port M134",
+          "m134_minigun"
+        ],
+        [
+          "RHS_weap_AGM114N_base_Launcher",
+          "AGM-114N Hellfire II",
+          "agm114_hellfire"
+        ],
+        [
+          "RHS_weap_Ags30",
+          "AGS-30",
+          "ags30"
+        ],
+        [
+          "RHS_weap_M119",
+          "M119A2",
+          "m119"
+        ],
+        [
+          "RHS_weap_M242BC",
+          "25mm M242",
+          "m242_bushmaster"
+        ],
+        [
+          "RHS_weap_gau19",
+          "GAU-19/A",
+          "gau19"
+        ],
+        [
+          "RHS_weap_gau8",
+          "GAU-8",
+          "gau8_avenger"
+        ],
+        [
+          "Tornado_AWS_CANNON_W",
+          "BK-27",
+          "bk27"
+        ],
+        [
+          "Tornado_AWS_stormshadow",
+          "Storm Shadow",
+          "storm_shadow"
+        ],
+        [
+          "VTX_HMG_M3M",
+          "GAU-21",
+          "m3m_gau21"
+        ],
+        [
+          "ace_hellfire_launcher",
+          "AGM-114K Hellfire II",
+          "agm114_hellfire"
+        ],
+        [
+          "ace_hellfire_launcher_L",
+          "AGM-114L Hellfire \"Longbow\"",
+          "agm114_hellfire"
+        ],
+        [
+          "ace_hellfire_launcher_N",
+          "AGM-114N Hellfire II",
+          "agm114_hellfire"
+        ],
+        [
+          "disco_nimrod_bomb_launcher",
+          "1000 lb HE bombs",
+          null
+        ],
+        [
+          "disco_nimrod_harpoon_launcher",
+          "AGM-84 Harpoon",
+          "agm84_harpoon"
+        ],
+        [
+          "disco_nimrod_sidewinder_launcher",
+          "AIM-9L Sidewinder",
+          "aim9_sidewinder"
+        ],
+        [
+          "fza_275_m151_wep",
+          "M151 HEDP",
+          "hydra70"
+        ],
+        [
+          "fza_275_m255a1_wep",
+          "M255A1 FLEC",
+          "hydra70"
+        ],
+        [
+          "fza_275_m257_wep",
+          "M257 IL",
+          "hydra70"
+        ],
+        [
+          "fza_275_m261_wep",
+          "M261 MPSM",
+          "hydra70"
+        ],
+        [
+          "fza_275_m278_wep",
+          "M278 IR IL",
+          "hydra70"
+        ],
+        [
+          "fza_agm114fa_wep",
+          "AGM-114FA",
+          "agm114_hellfire"
+        ],
+        [
+          "fza_agm114k2a_wep",
+          "AGM-114K2A",
+          "agm114_hellfire"
+        ],
+        [
+          "fza_agm114k_wep",
+          "AGM-114K",
+          "agm114_hellfire"
+        ],
+        [
+          "fza_agm114l_wep",
+          "AGM-114L",
+          "agm114_hellfire"
+        ],
+        [
+          "fza_agm114n_wep",
+          "AGM-114N",
+          "agm114_hellfire"
+        ],
+        [
+          "fza_m230",
+          "M230-E1",
+          "m230"
+        ],
+        [
+          "missiles_SCALPEL_Tornado_AWS",
+          "AGM-25 SCALPEL",
+          "storm_shadow"
+        ],
+        [
+          "rhs_weap_2a14",
+          "2A14",
+          "zu23_2a14"
+        ],
+        [
+          "rhs_weap_2a26",
+          "2A26",
+          "2a46"
+        ],
+        [
+          "rhs_weap_2a70",
+          "2A70",
+          "2a70"
+        ],
+        [
+          "rhs_weap_2b14",
+          "2B14-1 'Podnos'",
+          "2b14_podnos"
+        ],
+        [
+          "rhs_weap_2k4",
+          "2K4",
+          "drakon_3m7"
+        ],
+        [
+          "rhs_weap_2p130",
+          "2P130-1",
+          "rocket_9m41"
+        ],
+        [
+          "rhs_weap_902a",
+          "Smoke 902A",
+          null
+        ],
+        [
+          "rhs_weap_9k11",
+          "9K11",
+          "malyutka"
+        ],
+        [
+          "rhs_weap_9k133",
+          "9K133",
+          "kornet"
+        ],
+        [
+          "rhs_weap_9m111",
+          "9M111",
+          "fagot"
+        ],
+        [
+          "rhs_weap_9m113",
+          "9M113",
+          "konkurs"
+        ],
+        [
+          "rhs_weap_9m119",
+          "9M111",
+          "fagot"
+        ],
+        [
+          "rhs_weap_AGM114K_base_Launcher",
+          "AGM-114K Hellfire II",
+          "agm114_hellfire"
+        ],
+        [
+          "rhs_weap_AGM114L_Launcher",
+          "AGM-114L Hellfire II",
+          "agm114_hellfire"
+        ],
+        [
+          "rhs_weap_AGM114M_base_Launcher",
+          "AGM-114M Hellfire II",
+          "agm114_hellfire"
+        ],
+        [
+          "rhs_weap_AIM120",
+          "AIM-120",
+          "aim120_amraam"
+        ],
+        [
+          "rhs_weap_AIM120D",
+          "AIM-120D",
+          "aim120_amraam"
+        ],
+        [
+          "rhs_weap_AIM9M",
+          "AIM-9M",
+          "aim9_sidewinder"
+        ],
+        [
+          "rhs_weap_ATAS_launcher",
+          "ATAS",
+          "fim92_stinger"
+        ],
+        [
+          "rhs_weap_DAGR_Launcher",
+          "DAGR",
+          "dagr"
+        ],
+        [
+          "rhs_weap_DSHKM",
+          "DShKM",
+          "dshk"
+        ],
+        [
+          "rhs_weap_FFARLauncher",
+          "Hydra (M151 HE)",
+          "hydra70"
+        ],
+        [
+          "rhs_weap_FFARLauncher_M229",
+          "Hydra (M229 HEPD)",
+          "hydra70"
+        ],
+        [
+          "rhs_weap_FFARLauncher_M257",
+          "Hydra (M257 ILLUM)",
+          "hydra70"
+        ],
+        [
+          "rhs_weap_HellfireLauncher",
+          "AGM-114L Hellfire II",
+          "agm114_hellfire"
+        ],
+        [
+          "rhs_weap_Igla_twice",
+          "9K38 (Djigit)",
+          "igla"
+        ],
+        [
+          "rhs_weap_M197",
+          "M197",
+          "m197"
+        ],
+        [
+          "rhs_weap_M230",
+          "M230",
+          "m230"
+        ],
+        [
+          "rhs_weap_M301",
+          "M301",
+          null
+        ],
+        [
+          "rhs_weap_M3W_A29",
+          "2xM3 HMG",
+          "m2_browning"
+        ],
+        [
+          "rhs_weap_SPG9",
+          "SPG-9",
+          "spg9"
+        ],
+        [
+          "rhs_weap_SidewinderLauncher",
+          "AIM-9X",
+          "aim9_sidewinder"
+        ],
+        [
+          "rhs_weap_TOW_Launcher",
+          "BGM-71 TOW Launcher",
+          "bgm71_tow"
+        ],
+        [
+          "rhs_weap_TOW_Launcher_static",
+          "BGM-71 TOW Launcher",
+          "bgm71_tow"
+        ],
+        [
+          "rhs_weap_afganit_smoke",
+          "Smoke Launcher",
+          null
+        ],
+        [
+          "rhs_weap_agm65",
+          "AGM-65 Maverick",
+          "agm65_maverick"
+        ],
+        [
+          "rhs_weap_azp23",
+          "AZP-23",
+          null
+        ],
+        [
+          "rhs_weap_cbu100",
+          "CBU-100",
+          "cbu100_rockeye"
+        ],
+        [
+          "rhs_weap_cbu87",
+          "CBU-87",
+          "cbu87"
+        ],
+        [
+          "rhs_weap_cbu89",
+          "CBU-89",
+          "cbu89_gator"
+        ],
+        [
+          "rhs_weap_d10t2s",
+          "D10-T2S",
+          "d10_tank_gun"
+        ],
+        [
+          "rhs_weap_d10t2s_2",
+          "D10-T2S",
+          "d10_tank_gun"
+        ],
+        [
+          "rhs_weap_d10tg",
+          "D10-TG",
+          "d10_tank_gun"
+        ],
+        [
+          "rhs_weap_d30",
+          "2A18M (D-30A)",
+          "d30_2a18"
+        ],
+        [
+          "rhs_weap_gau21_1",
+          "GAU-21",
+          "m3m_gau21"
+        ],
+        [
+          "rhs_weap_gbu12",
+          "GBU-12",
+          "gbu12_paveway"
+        ],
+        [
+          "rhs_weap_gbu32",
+          "GBU-32",
+          "gbu32_jdam"
+        ],
+        [
+          "rhs_weap_gi2",
+          "GI-2",
+          "denel_gi2"
+        ],
+        [
+          "rhs_weap_kpvt",
+          "KPVT",
+          "kpvt"
+        ],
+        [
+          "rhs_weap_m134_minigun_1",
+          "M134 Minigun 7.62mm",
+          "m134_minigun"
+        ],
+        [
+          "rhs_weap_m134_mounted",
+          "M134D Minigun 7.62mm",
+          "m134_minigun"
+        ],
+        [
+          "rhs_weap_m240veh",
+          "M240",
+          "m240"
+        ],
+        [
+          "rhs_weap_m284",
+          "Howitzer 155 mm",
+          "m777"
+        ],
+        [
+          "rhs_weap_m70c",
+          "M70 Commando",
+          "m70_60mm_mortar"
+        ],
+        [
+          "rhs_weap_mk82",
+          "Mk 82",
+          "mk82"
+        ],
+        [
+          "rhs_weap_nsvt",
+          "NSVT",
+          "nsv"
+        ],
+        [
+          "rhs_weap_pkt",
+          "PKT",
+          "pkt"
+        ],
+        [
+          "rhs_weap_s13",
+          "S13",
+          "s13"
+        ],
+        [
+          "rhs_weap_s24",
+          "S24",
+          "s24_rocket"
+        ],
+        [
+          "rhs_weap_s25",
+          "S25O",
+          "s25"
+        ],
+        [
+          "rhs_weap_s25l",
+          "S25L",
+          "s25"
+        ],
+        [
+          "rhs_weap_s25ld",
+          "S25LD",
+          "s25"
+        ],
+        [
+          "rhs_weap_s25of",
+          "S25OF",
+          "s25"
+        ],
+        [
+          "rhs_weap_s5",
+          "S5",
+          "s5_rocket"
+        ],
+        [
+          "rhs_weap_s8",
+          "S8",
+          "s8_rocket"
+        ],
+        [
+          "rhs_weap_stinger_Launcher",
+          "FIM-92F Stinger",
+          "fim92_stinger"
+        ],
+        [
+          "rhs_weap_u5ts",
+          "2A20",
+          "u5ts_2a20"
+        ],
+        [
+          "rhs_weap_zt6_Launcher",
+          "ZT-6 Mokopa",
+          "mokopa"
+        ],
+        [
+          "rhsusf_M61A2",
+          "M61A2",
+          "m61_vulcan"
+        ],
+        [
+          "rhsusf_weap_ANALQ144",
+          "LWIRCM",
+          "cbu97_sfw"
+        ],
+        [
+          "rhsusf_weap_LWIRCM",
+          "LWIRCM",
+          "cbu97_sfw"
+        ],
+        [
+          "rhsusf_weap_duke",
+          "DUKE offline",
+          "cbu97_sfw"
+        ],
+        [
+          "rhsusf_weap_laneMarkerSystem",
+          "Lane Marking",
+          "cbu97_sfw"
+        ],
+        [
+          "rksla3_wpn_57mm_HE_rocket",
+          "57mm Rockets",
+          "s5_rocket"
+        ],
+        [
+          "rksla3_wpn_9K38_igla",
+          "9K38 Igla",
+          "igla"
+        ],
+        [
+          "rksla3_wpn_9m113konkurs_atgm",
+          "9M113",
+          "konkurs"
+        ],
+        [
+          "rksla3_wpn_9m133kornet_atgm",
+          "9M133",
+          "kornet"
+        ],
+        [
+          "rksla3_wpn_Brimstone_2",
+          "Brimstone 2",
+          "brimstone"
+        ],
+        [
+          "rksla3_wpn_Brimstone_3",
+          "Brimstone 3",
+          "brimstone"
+        ],
+        [
+          "rksla3_wpn_a_darter",
+          "A-Darter",
+          "a_darter"
+        ],
+        [
+          "rksla3_wpn_aden30",
+          "ADEN 30mm",
+          "aden"
+        ],
+        [
+          "rksla3_wpn_agm114k",
+          "AGM-114K",
+          "agm114_hellfire"
+        ],
+        [
+          "rksla3_wpn_agm114l",
+          "AGM-114L",
+          "agm114_hellfire"
+        ],
+        [
+          "rksla3_wpn_agm114p",
+          "AGM-114P+",
+          "agm114_hellfire"
+        ],
+        [
+          "rksla3_wpn_agm114r9x",
+          "AGM-114R9X",
+          "agm114_hellfire"
+        ],
+        [
+          "rksla3_wpn_agm119mk3",
+          "AGM119 AShM",
+          "m119"
+        ],
+        [
+          "rksla3_wpn_agm179a",
+          "AGM-179A",
+          "agm179_jagm"
+        ],
+        [
+          "rksla3_wpn_agm65e",
+          "AGM-65E Maverick",
+          "agm65_maverick"
+        ],
+        [
+          "rksla3_wpn_agm65f",
+          "AGM-65F Maverick",
+          "agm65_maverick"
+        ],
+        [
+          "rksla3_wpn_agm88",
+          "AGM-88 HARM",
+          "agm88_harm"
+        ],
+        [
+          "rksla3_wpn_aim120b",
+          "AIM-120B",
+          "aim120_amraam"
+        ],
+        [
+          "rksla3_wpn_aim120c",
+          "AIM-120C7",
+          "aim120_amraam"
+        ],
+        [
+          "rksla3_wpn_aim7",
+          "AIM-7",
+          "aim7_sparrow"
+        ],
+        [
+          "rksla3_wpn_aim9m",
+          "AIM-9M",
+          "aim9_sidewinder"
+        ],
+        [
+          "rksla3_wpn_aim_132",
+          "AIM-132",
+          "aim132_asraam"
+        ],
+        [
+          "rksla3_wpn_akd10a",
+          "AKD-10A",
+          "akd10"
+        ],
+        [
+          "rksla3_wpn_alarm",
+          "ALARM ARM",
+          "alarm"
+        ],
+        [
+          "rksla3_wpn_am39",
+          "AM-39 Exocet",
+          "exocet"
+        ],
+        [
+          "rksla3_wpn_apkws_m151",
+          "APKWS Rockets",
+          null
+        ],
+        [
+          "rksla3_wpn_apkws_m229",
+          "APKWS Rockets",
+          null
+        ],
+        [
+          "rksla3_wpn_apkws_m255a1",
+          "APKWS Rockets",
+          "apkws"
+        ],
+        [
+          "rksla3_wpn_apkws_m257",
+          "APKWS Rockets",
+          null
+        ],
+        [
+          "rksla3_wpn_apkws_m264",
+          "APKWS Rockets",
+          "apkws"
+        ],
+        [
+          "rksla3_wpn_apkws_wdu4a",
+          "APKWS Rockets",
+          "apkws"
+        ],
+        [
+          "rksla3_wpn_apkws_wdu5a",
+          "APKWS Rockets",
+          "apkws"
+        ],
+        [
+          "rksla3_wpn_apkws_wtu5001b",
+          "APKWS Rockets",
+          "apkws"
+        ],
+        [
+          "rksla3_wpn_as30l",
+          "AS30L",
+          "as30"
+        ],
+        [
+          "rksla3_wpn_as37martel",
+          "AS.37 Martel ARM",
+          "martel"
+        ],
+        [
+          "rksla3_wpn_aspide",
+          "ASPIDE",
+          "aspide"
+        ],
+        [
+          "rksla3_wpn_ba21",
+          "BA-21",
+          null
+        ],
+        [
+          "rksla3_wpn_bgl1000",
+          "BGL-1000",
+          "bgl"
+        ],
+        [
+          "rksla3_wpn_bgl400",
+          "BGL-400",
+          "bgl"
+        ],
+        [
+          "rksla3_wpn_bgl66",
+          "BGL-66",
+          "bgl"
+        ],
+        [
+          "rksla3_wpn_bk27mauser",
+          "Mauser BK27",
+          "bk27"
+        ],
+        [
+          "rksla3_wpn_bl755",
+          "BL755",
+          "bl755"
+        ],
+        [
+          "rksla3_wpn_brimstone_dm",
+          "Brimstone DM",
+          "brimstone"
+        ],
+        [
+          "rksla3_wpn_brimstone_sm",
+          "Brimstone SM",
+          "brimstone"
+        ],
+        [
+          "rksla3_wpn_cbu100",
+          "CBU100",
+          "cbu100_rockeye"
+        ],
+        [
+          "rksla3_wpn_crv7_m151",
+          "CRV7 Rockets",
+          null
+        ],
+        [
+          "rksla3_wpn_crv7_m229",
+          "CRV7 Rockets",
+          null
+        ],
+        [
+          "rksla3_wpn_crv7_m255a1",
+          "CRV7 Rockets",
+          "crv7"
+        ],
+        [
+          "rksla3_wpn_crv7_m257",
+          "CRV7 Rockets",
+          null
+        ],
+        [
+          "rksla3_wpn_crv7_m264",
+          "CRV7 Rockets",
+          "crv7"
+        ],
+        [
+          "rksla3_wpn_crv7_wdu4a",
+          "CRV7 Rockets",
+          "crv7"
+        ],
+        [
+          "rksla3_wpn_crv7_wdu5a",
+          "CRV7 Rockets",
+          "crv7"
+        ],
+        [
+          "rksla3_wpn_crv7_wtu5001b",
+          "CRV7 Rockets",
+          "crv7"
+        ],
+        [
+          "rksla3_wpn_dagr",
+          "DAGR Missiles",
+          "dagr"
+        ],
+        [
+          "rksla3_wpn_defa30",
+          "DEFA 30mm",
+          "defa_553"
+        ],
+        [
+          "rksla3_wpn_delilah",
+          "Delilah",
+          "delilah"
+        ],
+        [
+          "rksla3_wpn_derbyer",
+          "Derby ER",
+          "derby"
+        ],
+        [
+          "rksla3_wpn_ds16",
+          "Desert Sting 16",
+          "desert_sting"
+        ],
+        [
+          "rksla3_wpn_durandal",
+          "Durandal Concrete Penetrator",
+          "blu107_durandal"
+        ],
+        [
+          "rksla3_wpn_dy90",
+          "DY-90",
+          "ty90"
+        ],
+        [
+          "rksla3_wpn_dy90_sam",
+          "DY90",
+          "ty90"
+        ],
+        [
+          "rksla3_wpn_epw3_2000",
+          "Enhanced PW3",
+          "gbu24_paveway"
+        ],
+        [
+          "rksla3_wpn_fab250m62",
+          "FAB250m62",
+          "fab250"
+        ],
+        [
+          "rksla3_wpn_fab500m62",
+          "FAB500m62",
+          "fab500"
+        ],
+        [
+          "rksla3_wpn_fulger_sam",
+          "FULGER",
+          null
+        ],
+        [
+          "rksla3_wpn_furypgm",
+          "FURY PGM",
+          null
+        ],
+        [
+          "rksla3_wpn_gau22pod",
+          "GAU-22/A Pod",
+          "gau12_equalizer"
+        ],
+        [
+          "rksla3_wpn_gbu32",
+          "GBU-32",
+          "gbu32_jdam"
+        ],
+        [
+          "rksla3_wpn_gbu54",
+          "GBU-54",
+          "gbu38_jdam"
+        ],
+        [
+          "rksla3_wpn_gp19_pod",
+          "GP19 Gunpod",
+          null
+        ],
+        [
+          "rksla3_wpn_griffinb",
+          "AGM-176B",
+          "agm176_griffin"
+        ],
+        [
+          "rksla3_wpn_gsh23",
+          "GSh-23",
+          "gsh23"
+        ],
+        [
+          "rksla3_wpn_harpoonl",
+          "AGM-84L Harpoon",
+          "agm84_harpoon"
+        ],
+        [
+          "rksla3_wpn_hmp250_pod",
+          "HMP250 Gun pod",
+          "fn_hmp250"
+        ],
+        [
+          "rksla3_wpn_hmp400_pod",
+          "HMP400 Gun pod",
+          "fn_hmp400"
+        ],
+        [
+          "rksla3_wpn_irist",
+          "IRIS-T",
+          "iris_t"
+        ],
+        [
+          "rksla3_wpn_k13",
+          "ASPIDE",
+          "aspide"
+        ],
+        [
+          "rksla3_wpn_kab500kr",
+          "KAB500KR",
+          "kab500l"
+        ],
+        [
+          "rksla3_wpn_kab500l",
+          "KAB500KR",
+          "kab500l"
+        ],
+        [
+          "rksla3_wpn_kab500se",
+          "KAB500S-E",
+          "kab500l"
+        ],
+        [
+          "rksla3_wpn_kepd350",
+          "Taurus KEPD 350",
+          "taurus_kepd350"
+        ],
+        [
+          "rksla3_wpn_kh25ml",
+          "Kh-25ML",
+          "kh25"
+        ],
+        [
+          "rksla3_wpn_kh25mp",
+          "Kh-25MP ARM",
+          "kh25"
+        ],
+        [
+          "rksla3_wpn_kh29l",
+          "Kh-29L",
+          "kh29"
+        ],
+        [
+          "rksla3_wpn_kh31P",
+          "Kh-31P ARM",
+          "kh31"
+        ],
+        [
+          "rksla3_wpn_kh31a",
+          "KH-31A AShm",
+          "kh31"
+        ],
+        [
+          "rksla3_wpn_kh59me",
+          "KH-59me",
+          "kh59"
+        ],
+        [
+          "rksla3_wpn_lmm_martlet",
+          "Martlet LMM",
+          "martlet_lmm"
+        ],
+        [
+          "rksla3_wpn_ls6_500",
+          "LS-6 500",
+          "ls_pgb"
+        ],
+        [
+          "rksla3_wpn_lt2",
+          "LT-2",
+          "lt_pgb"
+        ],
+        [
+          "rksla3_wpn_m242Bushmaster",
+          "M242",
+          "m242_bushmaster"
+        ],
+        [
+          "rksla3_wpn_m61vulcan",
+          "M61 Vulcan",
+          "m61_vulcan"
+        ],
+        [
+          "rksla3_wpn_martel_aj168",
+          "AJ68 Martel AShM",
+          "martel"
+        ],
+        [
+          "rksla3_wpn_matra530",
+          "Matra 530D",
+          "r530"
+        ],
+        [
+          "rksla3_wpn_matra550",
+          "Matra 550",
+          "r550_magic"
+        ],
+        [
+          "rksla3_wpn_meteor",
+          "Meteor",
+          "meteor"
+        ],
+        [
+          "rksla3_wpn_mikholit",
+          "Mikholit",
+          null
+        ],
+        [
+          "rksla3_wpn_mk81",
+          "MK81e",
+          "mk81"
+        ],
+        [
+          "rksla3_wpn_mk81_snakeye",
+          "MK81 SnakeEye",
+          "mk81"
+        ],
+        [
+          "rksla3_wpn_mk82",
+          "MK82",
+          "mk82"
+        ],
+        [
+          "rksla3_wpn_mk82_snakeye",
+          "MK82 SnakeEye",
+          null
+        ],
+        [
+          "rksla3_wpn_mk83",
+          "MK83",
+          "mk83"
+        ],
+        [
+          "rksla3_wpn_mk84",
+          "MK84",
+          "mk84"
+        ],
+        [
+          "rksla3_wpn_pab100",
+          "PAB-100",
+          "pab100"
+        ],
+        [
+          "rksla3_wpn_pl10",
+          "PL-10",
+          "pl10"
+        ],
+        [
+          "rksla3_wpn_pl11",
+          "PL-11",
+          "pl11"
+        ],
+        [
+          "rksla3_wpn_pl12",
+          "PL-12",
+          "pl12"
+        ],
+        [
+          "rksla3_wpn_pl15",
+          "PL-15",
+          "pl15"
+        ],
+        [
+          "rksla3_wpn_pl2",
+          "PL-2",
+          "pl2"
+        ],
+        [
+          "rksla3_wpn_pl7",
+          "PL-2",
+          "pl2"
+        ],
+        [
+          "rksla3_wpn_pl8",
+          "PL-8",
+          "pl8"
+        ],
+        [
+          "rksla3_wpn_pl9",
+          "PL-9",
+          "pl9"
+        ],
+        [
+          "rksla3_wpn_popeye",
+          "AGM-142 Raptor TV AGM",
+          "popeye_agm142"
+        ],
+        [
+          "rksla3_wpn_popeyepod",
+          "AN/ASW-55",
+          "popeye_agm142"
+        ],
+        [
+          "rksla3_wpn_practice_14kg",
+          "14kg Practice Bomb",
+          "pab100"
+        ],
+        [
+          "rksla3_wpn_practice_3kg",
+          "3kg Practice Bomb",
+          "pab100"
+        ],
+        [
+          "rksla3_wpn_python3",
+          "Python 3",
+          "python_missile"
+        ],
+        [
+          "rksla3_wpn_python4",
+          "Python 4",
+          "python_missile"
+        ],
+        [
+          "rksla3_wpn_python5",
+          "Python 5",
+          "python_missile"
+        ],
+        [
+          "rksla3_wpn_qjk99_127_1_pod",
+          "QJK99-12.7-1 Gunpod",
+          "qjk99_gun"
+        ],
+        [
+          "rksla3_wpn_r60",
+          "R-60",
+          "r60"
+        ],
+        [
+          "rksla3_wpn_r73",
+          "R-73",
+          "r73"
+        ],
+        [
+          "rksla3_wpn_r77",
+          "R-77",
+          "r77"
+        ],
+        [
+          "rksla3_wpn_rbs15",
+          "RBS-15",
+          "rbs15"
+        ],
+        [
+          "rksla3_wpn_sampt21",
+          "SAMPT21 GP",
+          null
+        ],
+        [
+          "rksla3_wpn_seaeagle",
+          "SeaEagle AShM",
+          "sea_eagle"
+        ],
+        [
+          "rksla3_wpn_seaskua",
+          "SeaSkua",
+          "sea_skua"
+        ],
+        [
+          "rksla3_wpn_seavenom",
+          "Sea Venom AShM",
+          "sea_venom"
+        ],
+        [
+          "rksla3_wpn_slam_er",
+          "SLAM-ER",
+          "agm84_harpoon"
+        ],
+        [
+          "rksla3_wpn_sneb_pod",
+          "SNEB 68mm Rockets",
+          "sneb"
+        ],
+        [
+          "rksla3_wpn_spear3",
+          "Spear3",
+          "spear3"
+        ],
+        [
+          "rksla3_wpn_spike_er",
+          "Spike-ER",
+          "spike"
+        ],
+        [
+          "rksla3_wpn_spike_nlos",
+          "Spike-NLOS",
+          "spike"
+        ],
+        [
+          "rksla3_wpn_stormshadow",
+          "Stormshadow",
+          "storm_shadow"
+        ],
+        [
+          "rksla3_wpn_ty90",
+          "TY-90",
+          "ty90"
+        ],
+        [
+          "rksla3_wpn_uk1000gp",
+          "UK 1000lb GP",
+          "uk_1000lb_gp"
+        ],
+        [
+          "rksla3_wpn_uk500gp",
+          "UK 500lb GP",
+          "uk_500lb_gp"
+        ],
+        [
+          "rksla3_wpn_uk_pw2_1000",
+          "PW2 1000lbs",
+          "gbu10_paveway"
+        ],
+        [
+          "rksla3_wpn_uk_pw2_500",
+          "PW2 500lbs",
+          "gbu10_paveway"
+        ],
+        [
+          "rksla3_wpn_uk_pw4_500",
+          "Paveway IV",
+          "paveway_iv"
+        ],
+        [
+          "rksla3_wpn_us_pw2_gbu10",
+          "GBU-10",
+          "gbu10_paveway"
+        ],
+        [
+          "rksla3_wpn_us_pw2_gbu12",
+          "GBU-12",
+          null
+        ],
+        [
+          "rksla3_wpn_us_pw2_gbu16",
+          "GBU-16",
+          null
+        ],
+        [
+          "rksla3_wpn_us_pw3_gbu24",
+          "GBU-24",
+          "gbu24_paveway"
+        ],
+        [
+          "rksla3_wpn_yj91",
+          "YJ91 ARM",
+          "yj91"
+        ],
+        [
+          "rksla3_wpn_zuni_5",
+          "Zuni 5inch Rockets",
+          "zuni"
+        ],
+        [
+          "vtx_apkws",
+          "APKWS",
+          "apkws"
+        ],
+        [
+          "vtx_chaingun_hedp",
+          "M230 Chaingun",
+          "m230"
+        ],
+        [
+          "vtx_hydra",
+          "M299",
+          "hydra70"
+        ]
+      ]
+    }
   },
-  "carried launchers": {
-   "resolved": 18,
-   "total": 18,
-   "rows": [
-    [
-     "RPG29_Lorad",
-     "RPG-29",
-     "rpg29"
+  "excluded_equipment": {
+    "countermeasure": [
+      [
+        "CMFlareLauncher",
+        "Flares"
+      ],
+      [
+        "FIR_AerobaticSmoke_Engine",
+        "Smoke Generator(for Engine)"
+      ],
+      [
+        "FIR_SUU25",
+        "SUU-25 Flare Dispenser"
+      ],
+      [
+        "FlareLauncher",
+        "Flares"
+      ],
+      [
+        "SmokeLauncher",
+        "Smoke Screen"
+      ],
+      [
+        "fza_AseIRjammer",
+        "IRJAM"
+      ],
+      [
+        "fza_CMChaffLauncher",
+        "Chaff"
+      ],
+      [
+        "fza_CMFlareLauncher",
+        "Flares"
+      ],
+      [
+        "rhs_weap_DIRCM_Lipa",
+        "Lipa DIRCM"
+      ],
+      [
+        "rhs_weap_DIRCM_Vitebsk",
+        "Vitebsk DIRCM"
+      ]
     ],
-    [
-     "RPG_30K",
-     "RPG 30",
-     "rpg30"
+    "recon pod": [
+      [
+        "CMFlareLauncher_ECMPod",
+        "ECM Pod Decoys"
+      ],
+      [
+        "FIR_TARPS",
+        "TARPS"
+      ],
+      [
+        "rksla3_wpn_litening_pod",
+        "Litening Pod"
+      ],
+      [
+        "rksla3_wpn_sniper_xr_pod",
+        "Sniper XR Pod"
+      ]
     ],
-    [
-     "rhs_weap_M136",
-     "M136 (HEAT)",
-     "m136at4"
+    "cockpit switch": [
+      [
+        "ACE_AIR_SAFETY",
+        "SAFE"
+      ],
+      [
+        "fza_cannon_limit",
+        "Burst Limit"
+      ],
+      [
+        "fza_gun_inhibit",
+        "Cannon Inhibit"
+      ],
+      [
+        "fza_hydra_limit",
+        "Salvo Limit"
+      ],
+      [
+        "fza_ma_safe",
+        "MASTER ARM SAFE"
+      ],
+      [
+        "fza_pylon_inhibit",
+        "Pylon Inhibit"
+      ],
+      [
+        "rksla3_wpn_masterarm",
+        "MASTER ARM OFF"
+      ]
     ],
-    [
-     "rhs_weap_M136_hedp",
-     "M136 (HEDP)",
-     "m136at4"
+    "ship launcher cell": [
+      [
+        "FIR_Mk41_VLS_AG",
+        "Mk 41 mod 20 VLS (AG)"
+      ],
+      [
+        "FIR_Mk41_VLS_ESSM",
+        "RIM-162 ESSM"
+      ],
+      [
+        "FIR_Mk41_VLS_SM",
+        "Standard Missile"
+      ]
     ],
-    [
-     "rhs_weap_M136_hp",
-     "M136 (HP)",
-     "m136at4"
+    "leaflet dispenser": [
+      [
+        "FIR_PDU5B",
+        "PDU-5/B"
+      ]
     ],
-    [
-     "rhs_weap_fgm148",
-     "FGM-148 Javelin",
-     "fgm148javelin"
+    "generic label": [
+      [
+        "FIR_RKT_Launcher",
+        "Rocket Launcher"
+      ]
     ],
-    [
-     "rhs_weap_fim92",
-     "FIM-92F",
-     "92f"
-    ],
-    [
-     "rhs_weap_m72a7",
-     "M72A7",
-     "m72a7law"
-    ],
-    [
-     "rhs_weap_m80",
-     "RBR-M80",
-     "m80"
-    ],
-    [
-     "rhs_weap_maaws",
-     "M3 MAAWS",
-     "m3maaws"
-    ],
-    [
-     "rhs_weap_mk40_sraw",
-     "Mk 40 Mod 0 SRAW",
-     "mk40sraw"
-    ],
-    [
-     "rhs_weap_mk41_sraw",
-     "Mk 41 Mod 0 SRAW-MPV",
-     "mk40sraw"
-    ],
-    [
-     "rhs_weap_rpg18",
-     "RPG-18",
-     "rpg18"
-    ],
-    [
-     "rhs_weap_rpg26",
-     "RPG-26",
-     "rpg26"
-    ],
-    [
-     "rhs_weap_rpg7",
-     "RPG-7V2",
-     "rpg7"
-    ],
-    [
-     "rhs_weap_rpg75",
-     "RPG-75",
-     "rpg75"
-    ],
-    [
-     "rhs_weap_rshg2",
-     "RShG-2",
-     "rshg2"
-    ],
-    [
-     "rhs_weap_smaw",
-     "MK153 Mod 0 SMAW (Black)",
-     "mk153smaw"
+    "weapon bay": [
+      [
+        "DISCO_Buccaneer_InternalBombLauncher",
+        "Internal bay - 1,000 lb HE"
+      ]
     ]
-   ]
   },
-  "vehicle armament": {
-   "resolved": 351,
-   "total": 366,
-   "rows": [
-    [
-     "ANZ_Napalmlauncher",
-     "MK77 Napalm",
-     "mk77"
-    ],
-    [
-     "ANZ_WPLauncher",
-     "WP Marker Rockets",
-     null
-    ],
-    [
-     "FIR_9K121",
-     "9K121 Vikhr",
-     "vikhr"
-    ],
-    [
-     "FIR_AAM3",
-     "AAM-3",
-     "aam3"
-    ],
-    [
-     "FIR_AAM3T",
-     "AAM-3 Training",
-     "aam3"
-    ],
-    [
-     "FIR_AAM4",
-     "AAM-4",
-     "aam4"
-    ],
-    [
-     "FIR_AAM4T",
-     "AAM-4 Training",
-     "aam4"
-    ],
-    [
-     "FIR_AAM5",
-     "AAM-5",
-     "aam5"
-    ],
-    [
-     "FIR_AGM114",
-     "AGM-114 Hellfire",
-     "agm114_hellfire"
-    ],
-    [
-     "FIR_AGM123",
-     "AGM-123 Skipper II",
-     "agm123_skipper"
-    ],
-    [
-     "FIR_AGM154",
-     "AGM-154 JSOW",
-     "agm154_jsow"
-    ],
-    [
-     "FIR_AGM158",
-     "AGM-158 JASSM",
-     "agm158_jassm"
-    ],
-    [
-     "FIR_AGM62",
-     "AGM-62 Walleye",
-     "agm62_walleye"
-    ],
-    [
-     "FIR_AGM65",
-     "AGM-65 Maverick",
-     "agm65_maverick"
-    ],
-    [
-     "FIR_AGM84D",
-     "AGM-84D Harpoon",
-     "agm84_harpoon"
-    ],
-    [
-     "FIR_AGM84E",
-     "AGM-84E SLAM",
-     "agm84_harpoon"
-    ],
-    [
-     "FIR_AGM84H",
-     "AGM-84H/K SLAM-ER",
-     "agm84_harpoon"
-    ],
-    [
-     "FIR_AGM88",
-     "AGM-88 HARM",
-     "agm88_harm"
-    ],
-    [
-     "FIR_AIM120",
-     "AIM-120 AMRAAM",
-     "aim120_amraam"
-    ],
-    [
-     "FIR_AIM132",
-     "AIM-132 ASRAAM",
-     "aim132_asraam"
-    ],
-    [
-     "FIR_AIM174",
-     "AIM-174B",
-     "aim174b"
-    ],
-    [
-     "FIR_AIM54",
-     "AIM-54 Phoenix",
-     "aim54_phoenix"
-    ],
-    [
-     "FIR_AIM7",
-     "AIM-7 Sparrow",
-     "aim7_sparrow"
-    ],
-    [
-     "FIR_AIM9D",
-     "AIM-9D Sidewinder",
-     "aim9_sidewinder"
-    ],
-    [
-     "FIR_AIM9H",
-     "AIM-9H Sidewinder",
-     "aim9_sidewinder"
-    ],
-    [
-     "FIR_AIM9L",
-     "AIM-9 Sidewinder",
-     "aim9_sidewinder"
-    ],
-    [
-     "FIR_AIM9P",
-     "AIM-9P Sidewinder",
-     "aim9_sidewinder"
-    ],
-    [
-     "FIR_AIM9X",
-     "AIM-9X Sidewinder",
-     "aim9_sidewinder"
-    ],
-    [
-     "FIR_APKWS_Launcher",
-     "APKWS II",
-     "apkws"
-    ],
-    [
-     "FIR_ASM1",
-     "ASM-1",
-     "asm1_type80"
-    ],
-    [
-     "FIR_ASM2",
-     "ASM-2",
-     "asm2_type93"
-    ],
-    [
-     "FIR_BDU57",
-     "BDU-57 LGTR",
-     "lgtr"
-    ],
-    [
-     "FIR_BLU107",
-     "BLU-107/B Durandal",
-     "blu107_durandal"
-    ],
-    [
-     "FIR_Brimstone",
-     "Brimstone AGM",
-     "brimstone"
-    ],
-    [
-     "FIR_CATM120",
-     "CATM-120",
-     "aim120_amraam"
-    ],
-    [
-     "FIR_CATM54",
-     "CATM-54",
-     "aim54_phoenix"
-    ],
-    [
-     "FIR_CATM7",
-     "CATM-7",
-     "aim7_sparrow"
-    ],
-    [
-     "FIR_CATM9M",
-     "CATM-9M",
-     "aim9_sidewinder"
-    ],
-    [
-     "FIR_CBU100",
-     "Mk-20 Rockeye II",
-     "cbu100_rockeye"
-    ],
-    [
-     "FIR_CBU103",
-     "CBU-103 WCMD",
-     "wcmd"
-    ],
-    [
-     "FIR_CBU104",
-     "CBU-104 Gator WCMD",
-     "cbu89_gator"
-    ],
-    [
-     "FIR_CBU105",
-     "CBU-105 WCMD SFW",
-     "cbu97_sfw"
-    ],
-    [
-     "FIR_CBU78",
-     "CBU-78 Gator",
-     "cbu89_gator"
-    ],
-    [
-     "FIR_CBU87",
-     "CBU-87",
-     "cbu87"
-    ],
-    [
-     "FIR_CBU89",
-     "CBU-89 Gator",
-     "cbu89_gator"
-    ],
-    [
-     "FIR_CBU97",
-     "CBU-97",
-     "cbu97_sfw"
-    ],
-    [
-     "FIR_EGBU12",
-     "EGBU-12 Enhanced PaveWay II",
-     "gbu12_paveway"
-    ],
-    [
-     "FIR_FAB250",
-     "FAB-250",
-     "fab250"
-    ],
-    [
-     "FIR_GAU12",
-     "GAU-12 Equalizer",
-     "gau12_equalizer"
-    ],
-    [
-     "FIR_GAU22",
-     "GAU-22/A Equalizer",
-     "gau12_equalizer"
-    ],
-    [
-     "FIR_GAU8",
-     "GAU-8/A Avenger",
-     "gau8_avenger"
-    ],
-    [
-     "FIR_GBU10",
-     "GBU-10 PaveWay II",
-     "gbu10_paveway"
-    ],
-    [
-     "FIR_GBU12",
-     "GBU-12 PaveWay II",
-     "gbu12_paveway"
-    ],
-    [
-     "FIR_GBU12_PW1",
-     "GBU-12/B PaveWay I",
-     "gbu12_paveway"
-    ],
-    [
-     "FIR_GBU16",
-     "GBU-16 PaveWay II",
-     "gbu16_paveway"
-    ],
-    [
-     "FIR_GBU24",
-     "GBU-24 PaveWay III",
-     "gbu24_paveway"
-    ],
-    [
-     "FIR_GBU31",
-     "GBU-31 JDAM 2000lb",
-     "gbu31_jdam"
-    ],
-    [
-     "FIR_GBU32",
-     "GBU-32 JDAM 1000lb",
-     "gbu32_jdam"
-    ],
-    [
-     "FIR_GBU38",
-     "GBU-38 JDAM 500lb",
-     "gbu38_jdam"
-    ],
-    [
-     "FIR_GBU39",
-     "GBU-39 SDB 250lb",
-     "gbu39_sdb"
-    ],
-    [
-     "FIR_GBU53",
-     "GBU-53 SDB II 250lb",
-     "gbu53_stormbreaker"
-    ],
-    [
-     "FIR_GBU54",
-     "GBU-54 LJDAM 500lb",
-     "gbu38_jdam"
-    ],
-    [
-     "FIR_GBU55",
-     "GBU-55 LJDAM 1000lb",
-     "gbu32_jdam"
-    ],
-    [
-     "FIR_GBU56",
-     "GBU-56 LJDAM 2000lb",
-     "gbu31_jdam"
-    ],
-    [
-     "FIR_GCS1",
-     "GCS-1 500lb",
-     "gcs1"
-    ],
-    [
-     "FIR_GEPOD30",
-     "GAU-13/A Gun pod",
-     "d30_2a18"
-    ],
-    [
-     "FIR_Gsh302",
-     "Gsh-30-2",
-     "gsh302"
-    ],
-    [
-     "FIR_IRIS_T",
-     "IRIS-T",
-     "iris_t"
-    ],
-    [
-     "FIR_KAB250L",
-     "KAB-250L",
-     "kab500l"
-    ],
-    [
-     "FIR_KAB500KR",
-     "KAB-500Kr",
-     "kab500l"
-    ],
-    [
-     "FIR_KAB500L",
-     "KAB-500L",
-     "kab500l"
-    ],
-    [
-     "FIR_KAB500SE",
-     "KAB-500S-E",
-     "kab500l"
-    ],
-    [
-     "FIR_KGGB_Launcher",
-     "KGGB",
-     "kggb"
-    ],
-    [
-     "FIR_Kh25ML",
-     "Kh-25ML",
-     "kh25"
-    ],
-    [
-     "FIR_Kh25MPU",
-     "Kh-25MPU",
-     "kh25"
-    ],
-    [
-     "FIR_Kh25MS",
-     "Kh-25MS",
-     "kh25"
-    ],
-    [
-     "FIR_Kh25MT",
-     "Kh-25MT",
-     "kh25"
-    ],
-    [
-     "FIR_Kh25MTP",
-     "Kh-25MTP",
-     "kh25"
-    ],
-    [
-     "FIR_Kh29D",
-     "Kh-29D",
-     "kh29"
-    ],
-    [
-     "FIR_Kh29L",
-     "Kh-29L",
-     "kh29"
-    ],
-    [
-     "FIR_Kh29T",
-     "Kh-29T",
-     "kh29"
-    ],
-    [
-     "FIR_LZuni_Launcher",
-     "Laser Zuni Launcher",
-     "zuni"
-    ],
-    [
-     "FIR_M39",
-     "M39A2",
-     "m39_atacms"
-    ],
-    [
-     "FIR_M61A2",
-     "M61A2 Vulcan",
-     "m61_vulcan"
-    ],
-    [
-     "FIR_MW1",
-     "MW-1",
-     "mw1"
-    ],
-    [
-     "FIR_Meteor",
-     "Meteor",
-     "meteor"
-    ],
-    [
-     "FIR_Mk12",
-     "Mk 12 Autocannon",
-     "colt_mk12_cannon"
-    ],
-    [
-     "FIR_Mk76",
-     "Mk76 Practice Bomb",
-     "pab100"
-    ],
-    [
-     "FIR_PAVEWAY_IV",
-     "Paveway IV 500lb",
-     "paveway_iv"
-    ],
-    [
-     "FIR_Poniard_Launcher",
-     "Poniard",
-     "logir_poniard"
-    ],
-    [
-     "FIR_R27ER",
-     "R-27ER",
-     "r27"
-    ],
-    [
-     "FIR_R27ET",
-     "R-27ET",
-     "r27"
-    ],
-    [
-     "FIR_R60M",
-     "R-60M",
-     "r60"
-    ],
-    [
-     "FIR_R73",
-     "R-73",
-     "r73"
-    ],
-    [
-     "FIR_R77",
-     "R-77",
-     "r77"
-    ],
-    [
-     "FIR_RBK250",
-     "RBK-250",
-     "rbk250"
-    ],
-    [
-     "FIR_RBK500_SPBE_D",
-     "RBK-500 SPBE-D",
-     "rbk500"
-    ],
-    [
-     "FIR_S13_Launcher",
-     "S-13 Rocket",
-     "s13"
-    ],
-    [
-     "FIR_S25_Launcher",
-     "S-25 Rocket",
-     "s25"
-    ],
-    [
-     "FIR_S8_Launcher",
-     "S-8 Rocket",
-     "s8_rocket"
-    ],
-    [
-     "FIR_Scalpel",
-     "Scalpel LCDPB",
-     "storm_shadow"
-    ],
-    [
-     "FIR_Skyflash",
-     "Skyflash",
-     "skyflash"
-    ],
-    [
-     "FIR_Smokewinder",
-     "Smokewinder",
-     null
-    ],
-    [
-     "FIR_Zuni_Launcher",
-     "Zuni Launcher",
-     "zuni"
-    ],
-    [
-     "FIR_mk82_Snakeye_Launcher",
-     "Mk82",
-     "mk82"
-    ],
-    [
-     "FIR_mk83",
-     "Mk83",
-     "mk83"
-    ],
-    [
-     "FIR_mk84",
-     "Mk84",
-     "mk84"
-    ],
-    [
-     "KAT_CAS_R_80mm_GAS_POD",
-     "Hydra GAS 19x",
-     "hydra70"
-    ],
-    [
-     "LOP_AZP23",
-     "AZP-23 Amur",
-     "azp23"
-    ],
-    [
-     "LOP_D10",
-     "D-10",
-     "d10_tank_gun"
-    ],
-    [
-     "LOP_D81",
-     "D-81",
-     "2a46"
-    ],
-    [
-     "LOP_DT",
-     "DT",
-     "dt_machine_gun"
-    ],
-    [
-     "LOP_PKT",
-     "PKT",
-     "pkt"
-    ],
-    [
-     "LOP_S53",
-     "ZiS S-53",
-     "zis_s53"
-    ],
-    [
-     "PHEN_FSPLUS_AsphyxiantBomb_Unguided_rack",
-     "[Tier 2] Asphyxiant Gas",
-     null
-    ],
-    [
-     "PHEN_FSPLUS_BlisterBomb_Unguided_rack",
-     "Blister Agent",
-     null
-    ],
-    [
-     "PHEN_FSPLUS_NerveBomb_Unguided_rack",
-     "[Tier 3] Nerve Gas",
-     null
-    ],
-    [
-     "PHEN_FSPLUS_NovaBomb_Unguided_rack",
-     "[Tier 5] Nova Gas",
-     null
-    ],
-    [
-     "PHEN_FSPLUS_RiotCSGasBomb_Unguided_rack",
-     "[Tier 1] Riot CS Gas",
-     null
-    ],
-    [
-     "RHS_9M79_1Launcher",
-     "9M79-1",
-     "tochka"
-    ],
-    [
-     "RHS_M2_Abrams_Gunner",
-     "M2 CSAMM",
-     "m2_browning"
-    ],
-    [
-     "RHS_MK19",
-     "Mk. 19",
-     "mk19"
-    ],
-    [
-     "RHS_MKV_M134",
-     "Port M134",
-     "m134_minigun"
-    ],
-    [
-     "RHS_weap_AGM114N_base_Launcher",
-     "AGM-114N Hellfire II",
-     "agm114_hellfire"
-    ],
-    [
-     "RHS_weap_Ags30",
-     "AGS-30",
-     "ags30"
-    ],
-    [
-     "RHS_weap_M119",
-     "M119A2",
-     "m119"
-    ],
-    [
-     "RHS_weap_M242BC",
-     "25mm M242",
-     "m242_bushmaster"
-    ],
-    [
-     "RHS_weap_gau19",
-     "GAU-19/A",
-     "gau19"
-    ],
-    [
-     "RHS_weap_gau8",
-     "GAU-8",
-     "gau8_avenger"
-    ],
-    [
-     "Tornado_AWS_CANNON_W",
-     "BK-27",
-     "bk27"
-    ],
-    [
-     "Tornado_AWS_stormshadow",
-     "Storm Shadow",
-     "storm_shadow"
-    ],
-    [
-     "VTX_HMG_M3M",
-     "GAU-21",
-     "m3m_gau21"
-    ],
-    [
-     "ace_hellfire_launcher",
-     "AGM-114K Hellfire II",
-     "agm114_hellfire"
-    ],
-    [
-     "ace_hellfire_launcher_L",
-     "AGM-114L Hellfire \"Longbow\"",
-     "agm114_hellfire"
-    ],
-    [
-     "ace_hellfire_launcher_N",
-     "AGM-114N Hellfire II",
-     "agm114_hellfire"
-    ],
-    [
-     "disco_nimrod_bomb_launcher",
-     "1000 lb HE bombs",
-     null
-    ],
-    [
-     "disco_nimrod_harpoon_launcher",
-     "AGM-84 Harpoon",
-     "agm84_harpoon"
-    ],
-    [
-     "disco_nimrod_sidewinder_launcher",
-     "AIM-9L Sidewinder",
-     "aim9_sidewinder"
-    ],
-    [
-     "fza_275_m151_wep",
-     "M151 HEDP",
-     "hydra70"
-    ],
-    [
-     "fza_275_m255a1_wep",
-     "M255A1 FLEC",
-     "hydra70"
-    ],
-    [
-     "fza_275_m257_wep",
-     "M257 IL",
-     "hydra70"
-    ],
-    [
-     "fza_275_m261_wep",
-     "M261 MPSM",
-     "hydra70"
-    ],
-    [
-     "fza_275_m278_wep",
-     "M278 IR IL",
-     "hydra70"
-    ],
-    [
-     "fza_agm114fa_wep",
-     "AGM-114FA",
-     "agm114_hellfire"
-    ],
-    [
-     "fza_agm114k2a_wep",
-     "AGM-114K2A",
-     "agm114_hellfire"
-    ],
-    [
-     "fza_agm114k_wep",
-     "AGM-114K",
-     "agm114_hellfire"
-    ],
-    [
-     "fza_agm114l_wep",
-     "AGM-114L",
-     "agm114_hellfire"
-    ],
-    [
-     "fza_agm114n_wep",
-     "AGM-114N",
-     "agm114_hellfire"
-    ],
-    [
-     "fza_m230",
-     "M230-E1",
-     "m230"
-    ],
-    [
-     "missiles_SCALPEL_Tornado_AWS",
-     "AGM-25 SCALPEL",
-     "storm_shadow"
-    ],
-    [
-     "rhs_weap_2a14",
-     "2A14",
-     "zu23_2a14"
-    ],
-    [
-     "rhs_weap_2a26",
-     "2A26",
-     "2a46"
-    ],
-    [
-     "rhs_weap_2a70",
-     "2A70",
-     "2a70"
-    ],
-    [
-     "rhs_weap_2b14",
-     "2B14-1 'Podnos'",
-     "2b14_podnos"
-    ],
-    [
-     "rhs_weap_2k4",
-     "2K4",
-     "drakon_3m7"
-    ],
-    [
-     "rhs_weap_2p130",
-     "2P130-1",
-     "rocket_9m41"
-    ],
-    [
-     "rhs_weap_9k11",
-     "9K11",
-     "malyutka"
-    ],
-    [
-     "rhs_weap_9k133",
-     "9K133",
-     "kornet"
-    ],
-    [
-     "rhs_weap_9m111",
-     "9M111",
-     "fagot"
-    ],
-    [
-     "rhs_weap_9m113",
-     "9M113",
-     "konkurs"
-    ],
-    [
-     "rhs_weap_9m119",
-     "9M111",
-     "fagot"
-    ],
-    [
-     "rhs_weap_AGM114K_base_Launcher",
-     "AGM-114K Hellfire II",
-     "agm114_hellfire"
-    ],
-    [
-     "rhs_weap_AGM114L_Launcher",
-     "AGM-114L Hellfire II",
-     "agm114_hellfire"
-    ],
-    [
-     "rhs_weap_AGM114M_base_Launcher",
-     "AGM-114M Hellfire II",
-     "agm114_hellfire"
-    ],
-    [
-     "rhs_weap_AIM120",
-     "AIM-120",
-     "aim120_amraam"
-    ],
-    [
-     "rhs_weap_AIM120D",
-     "AIM-120D",
-     "aim120_amraam"
-    ],
-    [
-     "rhs_weap_AIM9M",
-     "AIM-9M",
-     "aim9_sidewinder"
-    ],
-    [
-     "rhs_weap_ATAS_launcher",
-     "ATAS",
-     "fim92_stinger"
-    ],
-    [
-     "rhs_weap_DAGR_Launcher",
-     "DAGR",
-     "dagr"
-    ],
-    [
-     "rhs_weap_DSHKM",
-     "DShKM",
-     "dshk"
-    ],
-    [
-     "rhs_weap_FFARLauncher",
-     "Hydra (M151 HE)",
-     "hydra70"
-    ],
-    [
-     "rhs_weap_FFARLauncher_M229",
-     "Hydra (M229 HEPD)",
-     "hydra70"
-    ],
-    [
-     "rhs_weap_FFARLauncher_M257",
-     "Hydra (M257 ILLUM)",
-     "hydra70"
-    ],
-    [
-     "rhs_weap_HellfireLauncher",
-     "AGM-114L Hellfire II",
-     "agm114_hellfire"
-    ],
-    [
-     "rhs_weap_Igla_twice",
-     "9K38 (Djigit)",
-     "igla"
-    ],
-    [
-     "rhs_weap_M197",
-     "M197",
-     "m197"
-    ],
-    [
-     "rhs_weap_M230",
-     "M230",
-     "m230"
-    ],
-    [
-     "rhs_weap_M301",
-     "M301",
-     null
-    ],
-    [
-     "rhs_weap_M3W_A29",
-     "2xM3 HMG",
-     "m2_browning"
-    ],
-    [
-     "rhs_weap_SPG9",
-     "SPG-9",
-     "spg9"
-    ],
-    [
-     "rhs_weap_SidewinderLauncher",
-     "AIM-9X",
-     "aim9_sidewinder"
-    ],
-    [
-     "rhs_weap_TOW_Launcher",
-     "BGM-71 TOW Launcher",
-     "bgm71_tow"
-    ],
-    [
-     "rhs_weap_TOW_Launcher_static",
-     "BGM-71 TOW Launcher",
-     "bgm71_tow"
-    ],
-    [
-     "rhs_weap_agm65",
-     "AGM-65 Maverick",
-     "agm65_maverick"
-    ],
-    [
-     "rhs_weap_azp23",
-     "AZP-23",
-     "azp23"
-    ],
-    [
-     "rhs_weap_cbu100",
-     "CBU-100",
-     "cbu100_rockeye"
-    ],
-    [
-     "rhs_weap_cbu87",
-     "CBU-87",
-     "cbu87"
-    ],
-    [
-     "rhs_weap_cbu89",
-     "CBU-89",
-     "cbu89_gator"
-    ],
-    [
-     "rhs_weap_d10t2s",
-     "D10-T2S",
-     "d10_tank_gun"
-    ],
-    [
-     "rhs_weap_d10t2s_2",
-     "D10-T2S",
-     "d10_tank_gun"
-    ],
-    [
-     "rhs_weap_d10tg",
-     "D10-TG",
-     "d10_tank_gun"
-    ],
-    [
-     "rhs_weap_d30",
-     "2A18M (D-30A)",
-     "d30_2a18"
-    ],
-    [
-     "rhs_weap_gau21_1",
-     "GAU-21",
-     "m3m_gau21"
-    ],
-    [
-     "rhs_weap_gi2",
-     "GI-2",
-     "denel_gi2"
-    ],
-    [
-     "rhs_weap_kpvt",
-     "KPVT",
-     "kpvt"
-    ],
-    [
-     "rhs_weap_m134_minigun_1",
-     "M134 Minigun 7.62mm",
-     "m134_minigun"
-    ],
-    [
-     "rhs_weap_m134_mounted",
-     "M134D Minigun 7.62mm",
-     "m134_minigun"
-    ],
-    [
-     "rhs_weap_m240veh",
-     "M240",
-     "m240"
-    ],
-    [
-     "rhs_weap_m284",
-     "Howitzer 155 mm",
-     "m777"
-    ],
-    [
-     "rhs_weap_m70c",
-     "M70 Commando",
-     "m70_60mm_mortar"
-    ],
-    [
-     "rhs_weap_mk82",
-     "Mk 82",
-     "mk82"
-    ],
-    [
-     "rhs_weap_nsvt",
-     "NSVT",
-     "nsv"
-    ],
-    [
-     "rhs_weap_pkt",
-     "PKT",
-     "pkt"
-    ],
-    [
-     "rhs_weap_s13",
-     "S13",
-     "s13"
-    ],
-    [
-     "rhs_weap_s24",
-     "S24",
-     "s24_rocket"
-    ],
-    [
-     "rhs_weap_s25",
-     "S25O",
-     "s25"
-    ],
-    [
-     "rhs_weap_s25l",
-     "S25L",
-     "s25"
-    ],
-    [
-     "rhs_weap_s25ld",
-     "S25LD",
-     "s25"
-    ],
-    [
-     "rhs_weap_s25of",
-     "S25OF",
-     "s25"
-    ],
-    [
-     "rhs_weap_s5",
-     "S5",
-     "s5_rocket"
-    ],
-    [
-     "rhs_weap_s8",
-     "S8",
-     "s8_rocket"
-    ],
-    [
-     "rhs_weap_stinger_Launcher",
-     "FIM-92F Stinger",
-     "fim92_stinger"
-    ],
-    [
-     "rhs_weap_u5ts",
-     "2A20",
-     "u5ts_2a20"
-    ],
-    [
-     "rhs_weap_zt6_Launcher",
-     "ZT-6 Mokopa",
-     "mokopa"
-    ],
-    [
-     "rhsusf_M61A2",
-     "M61A2",
-     "m61_vulcan"
-    ],
-    [
-     "rhsusf_weap_ANALQ144",
-     "LWIRCM",
-     "cbu97_sfw"
-    ],
-    [
-     "rhsusf_weap_LWIRCM",
-     "LWIRCM",
-     "cbu97_sfw"
-    ],
-    [
-     "rksla3_wpn_57mm_HE_rocket",
-     "57mm Rockets",
-     "s5_rocket"
-    ],
-    [
-     "rksla3_wpn_9K38_igla",
-     "9K38 Igla",
-     "igla"
-    ],
-    [
-     "rksla3_wpn_9m113konkurs_atgm",
-     "9M113",
-     "konkurs"
-    ],
-    [
-     "rksla3_wpn_9m133kornet_atgm",
-     "9M133",
-     "kornet"
-    ],
-    [
-     "rksla3_wpn_Brimstone_2",
-     "Brimstone 2",
-     "brimstone"
-    ],
-    [
-     "rksla3_wpn_Brimstone_3",
-     "Brimstone 3",
-     "brimstone"
-    ],
-    [
-     "rksla3_wpn_a_darter",
-     "A-Darter",
-     "a_darter"
-    ],
-    [
-     "rksla3_wpn_aden30",
-     "ADEN 30mm",
-     "aden"
-    ],
-    [
-     "rksla3_wpn_agm114k",
-     "AGM-114K",
-     "agm114_hellfire"
-    ],
-    [
-     "rksla3_wpn_agm114l",
-     "AGM-114L",
-     "agm114_hellfire"
-    ],
-    [
-     "rksla3_wpn_agm114p",
-     "AGM-114P+",
-     "agm114_hellfire"
-    ],
-    [
-     "rksla3_wpn_agm114r9x",
-     "AGM-114R9X",
-     "agm114_hellfire"
-    ],
-    [
-     "rksla3_wpn_agm119mk3",
-     "AGM119 AShM",
-     "m119"
-    ],
-    [
-     "rksla3_wpn_agm179a",
-     "AGM-179A",
-     "agm179_jagm"
-    ],
-    [
-     "rksla3_wpn_agm65e",
-     "AGM-65E Maverick",
-     "agm65_maverick"
-    ],
-    [
-     "rksla3_wpn_agm65f",
-     "AGM-65F Maverick",
-     "agm65_maverick"
-    ],
-    [
-     "rksla3_wpn_agm88",
-     "AGM-88 HARM",
-     "agm88_harm"
-    ],
-    [
-     "rksla3_wpn_aim120b",
-     "AIM-120B",
-     "aim120_amraam"
-    ],
-    [
-     "rksla3_wpn_aim120c",
-     "AIM-120C7",
-     "aim120_amraam"
-    ],
-    [
-     "rksla3_wpn_aim7",
-     "AIM-7",
-     "aim7_sparrow"
-    ],
-    [
-     "rksla3_wpn_aim9m",
-     "AIM-9M",
-     "aim9_sidewinder"
-    ],
-    [
-     "rksla3_wpn_aim_132",
-     "AIM-132",
-     "aim132_asraam"
-    ],
-    [
-     "rksla3_wpn_akd10a",
-     "AKD-10A",
-     "akd10"
-    ],
-    [
-     "rksla3_wpn_alarm",
-     "ALARM ARM",
-     "alarm"
-    ],
-    [
-     "rksla3_wpn_am39",
-     "AM-39 Exocet",
-     "exocet"
-    ],
-    [
-     "rksla3_wpn_apkws_m151",
-     "APKWS Rockets",
-     "hydra70"
-    ],
-    [
-     "rksla3_wpn_apkws_m229",
-     "APKWS Rockets",
-     "hydra70"
-    ],
-    [
-     "rksla3_wpn_apkws_m255a1",
-     "APKWS Rockets",
-     "apkws"
-    ],
-    [
-     "rksla3_wpn_apkws_m257",
-     "APKWS Rockets",
-     "hydra70"
-    ],
-    [
-     "rksla3_wpn_apkws_m264",
-     "APKWS Rockets",
-     "apkws"
-    ],
-    [
-     "rksla3_wpn_apkws_wdu4a",
-     "APKWS Rockets",
-     "apkws"
-    ],
-    [
-     "rksla3_wpn_apkws_wdu5a",
-     "APKWS Rockets",
-     "apkws"
-    ],
-    [
-     "rksla3_wpn_apkws_wtu5001b",
-     "APKWS Rockets",
-     "apkws"
-    ],
-    [
-     "rksla3_wpn_as30l",
-     "AS30L",
-     "as30"
-    ],
-    [
-     "rksla3_wpn_as37martel",
-     "AS.37 Martel ARM",
-     "martel"
-    ],
-    [
-     "rksla3_wpn_aspide",
-     "ASPIDE",
-     "aspide"
-    ],
-    [
-     "rksla3_wpn_ba21",
-     "BA-21",
-     null
-    ],
-    [
-     "rksla3_wpn_bgl1000",
-     "BGL-1000",
-     "bgl"
-    ],
-    [
-     "rksla3_wpn_bgl400",
-     "BGL-400",
-     "bgl"
-    ],
-    [
-     "rksla3_wpn_bgl66",
-     "BGL-66",
-     "bgl"
-    ],
-    [
-     "rksla3_wpn_bk27mauser",
-     "Mauser BK27",
-     "bk27"
-    ],
-    [
-     "rksla3_wpn_bl755",
-     "BL755",
-     "bl755"
-    ],
-    [
-     "rksla3_wpn_brimstone_dm",
-     "Brimstone DM",
-     "brimstone"
-    ],
-    [
-     "rksla3_wpn_brimstone_sm",
-     "Brimstone SM",
-     "brimstone"
-    ],
-    [
-     "rksla3_wpn_cbu100",
-     "CBU100",
-     "cbu100_rockeye"
-    ],
-    [
-     "rksla3_wpn_crv7_m151",
-     "CRV7 Rockets",
-     "crv7"
-    ],
-    [
-     "rksla3_wpn_crv7_m229",
-     "CRV7 Rockets",
-     "crv7"
-    ],
-    [
-     "rksla3_wpn_crv7_m255a1",
-     "CRV7 Rockets",
-     "crv7"
-    ],
-    [
-     "rksla3_wpn_crv7_m257",
-     "CRV7 Rockets",
-     "crv7"
-    ],
-    [
-     "rksla3_wpn_crv7_m264",
-     "CRV7 Rockets",
-     "crv7"
-    ],
-    [
-     "rksla3_wpn_crv7_wdu4a",
-     "CRV7 Rockets",
-     "crv7"
-    ],
-    [
-     "rksla3_wpn_crv7_wdu5a",
-     "CRV7 Rockets",
-     "crv7"
-    ],
-    [
-     "rksla3_wpn_crv7_wtu5001b",
-     "CRV7 Rockets",
-     "crv7"
-    ],
-    [
-     "rksla3_wpn_dagr",
-     "DAGR Missiles",
-     "dagr"
-    ],
-    [
-     "rksla3_wpn_defa30",
-     "DEFA 30mm",
-     "defa_553"
-    ],
-    [
-     "rksla3_wpn_delilah",
-     "Delilah",
-     "delilah"
-    ],
-    [
-     "rksla3_wpn_derbyer",
-     "Derby ER",
-     "derby"
-    ],
-    [
-     "rksla3_wpn_ds16",
-     "Desert Sting 16",
-     "desert_sting"
-    ],
-    [
-     "rksla3_wpn_durandal",
-     "Durandal Concrete Penetrator",
-     "blu107_durandal"
-    ],
-    [
-     "rksla3_wpn_dy90",
-     "DY-90",
-     "ty90"
-    ],
-    [
-     "rksla3_wpn_dy90_sam",
-     "DY90",
-     "ty90"
-    ],
-    [
-     "rksla3_wpn_epw3_2000",
-     "Enhanced PW3",
-     "gbu24_paveway"
-    ],
-    [
-     "rksla3_wpn_fab250m62",
-     "FAB250m62",
-     "fab250"
-    ],
-    [
-     "rksla3_wpn_fab500m62",
-     "FAB500m62",
-     "fab500"
-    ],
-    [
-     "rksla3_wpn_fulger_sam",
-     "FULGER",
-     null
-    ],
-    [
-     "rksla3_wpn_furypgm",
-     "FURY PGM",
-     null
-    ],
-    [
-     "rksla3_wpn_gau22pod",
-     "GAU-22/A Pod",
-     "gau12_equalizer"
-    ],
-    [
-     "rksla3_wpn_gbu32",
-     "GBU-32",
-     "gbu32_jdam"
-    ],
-    [
-     "rksla3_wpn_gbu54",
-     "GBU-54",
-     "gbu38_jdam"
-    ],
-    [
-     "rksla3_wpn_gp19_pod",
-     "GP19 Gunpod",
-     null
-    ],
-    [
-     "rksla3_wpn_griffinb",
-     "AGM-176B",
-     "agm176_griffin"
-    ],
-    [
-     "rksla3_wpn_gsh23",
-     "GSh-23",
-     "gsh23"
-    ],
-    [
-     "rksla3_wpn_harpoonl",
-     "AGM-84L Harpoon",
-     "agm84_harpoon"
-    ],
-    [
-     "rksla3_wpn_hmp250_pod",
-     "HMP250 Gun pod",
-     "fn_hmp250"
-    ],
-    [
-     "rksla3_wpn_hmp400_pod",
-     "HMP400 Gun pod",
-     "fn_hmp400"
-    ],
-    [
-     "rksla3_wpn_irist",
-     "IRIS-T",
-     "iris_t"
-    ],
-    [
-     "rksla3_wpn_k13",
-     "ASPIDE",
-     "aspide"
-    ],
-    [
-     "rksla3_wpn_kab500kr",
-     "KAB500KR",
-     "kab500l"
-    ],
-    [
-     "rksla3_wpn_kab500l",
-     "KAB500KR",
-     "kab500l"
-    ],
-    [
-     "rksla3_wpn_kab500se",
-     "KAB500S-E",
-     "kab500l"
-    ],
-    [
-     "rksla3_wpn_kepd350",
-     "Taurus KEPD 350",
-     "taurus_kepd350"
-    ],
-    [
-     "rksla3_wpn_kh25ml",
-     "Kh-25ML",
-     "kh25"
-    ],
-    [
-     "rksla3_wpn_kh25mp",
-     "Kh-25MP ARM",
-     "kh25"
-    ],
-    [
-     "rksla3_wpn_kh29l",
-     "Kh-29L",
-     "kh29"
-    ],
-    [
-     "rksla3_wpn_kh31P",
-     "Kh-31P ARM",
-     "kh31"
-    ],
-    [
-     "rksla3_wpn_kh31a",
-     "KH-31A AShm",
-     "kh31"
-    ],
-    [
-     "rksla3_wpn_kh59me",
-     "KH-59me",
-     "kh59"
-    ],
-    [
-     "rksla3_wpn_lmm_martlet",
-     "Martlet LMM",
-     "martlet_lmm"
-    ],
-    [
-     "rksla3_wpn_ls6_500",
-     "LS-6 500",
-     "ls_pgb"
-    ],
-    [
-     "rksla3_wpn_lt2",
-     "LT-2",
-     "lt_pgb"
-    ],
-    [
-     "rksla3_wpn_m242Bushmaster",
-     "M242",
-     "m242_bushmaster"
-    ],
-    [
-     "rksla3_wpn_m61vulcan",
-     "M61 Vulcan",
-     "m61_vulcan"
-    ],
-    [
-     "rksla3_wpn_martel_aj168",
-     "AJ68 Martel AShM",
-     "martel"
-    ],
-    [
-     "rksla3_wpn_matra530",
-     "Matra 530D",
-     "r530"
-    ],
-    [
-     "rksla3_wpn_matra550",
-     "Matra 550",
-     "r550_magic"
-    ],
-    [
-     "rksla3_wpn_meteor",
-     "Meteor",
-     "meteor"
-    ],
-    [
-     "rksla3_wpn_mikholit",
-     "Mikholit",
-     null
-    ],
-    [
-     "rksla3_wpn_mk81",
-     "MK81e",
-     "mk81"
-    ],
-    [
-     "rksla3_wpn_mk81_snakeye",
-     "MK81 SnakeEye",
-     "mk81"
-    ],
-    [
-     "rksla3_wpn_mk82",
-     "MK82",
-     "mk82"
-    ],
-    [
-     "rksla3_wpn_mk82_snakeye",
-     "MK82 SnakeEye",
-     "mk82"
-    ],
-    [
-     "rksla3_wpn_mk83",
-     "MK83",
-     "mk83"
-    ],
-    [
-     "rksla3_wpn_mk84",
-     "MK84",
-     "mk84"
-    ],
-    [
-     "rksla3_wpn_pab100",
-     "PAB-100",
-     "pab100"
-    ],
-    [
-     "rksla3_wpn_pl10",
-     "PL-10",
-     "pl10"
-    ],
-    [
-     "rksla3_wpn_pl11",
-     "PL-11",
-     "pl11"
-    ],
-    [
-     "rksla3_wpn_pl12",
-     "PL-12",
-     "pl12"
-    ],
-    [
-     "rksla3_wpn_pl15",
-     "PL-15",
-     "pl15"
-    ],
-    [
-     "rksla3_wpn_pl2",
-     "PL-2",
-     "pl2"
-    ],
-    [
-     "rksla3_wpn_pl7",
-     "PL-2",
-     "pl2"
-    ],
-    [
-     "rksla3_wpn_pl8",
-     "PL-8",
-     "pl8"
-    ],
-    [
-     "rksla3_wpn_pl9",
-     "PL-9",
-     "pl9"
-    ],
-    [
-     "rksla3_wpn_popeye",
-     "AGM-142 Raptor TV AGM",
-     "popeye_agm142"
-    ],
-    [
-     "rksla3_wpn_popeyepod",
-     "AN/ASW-55",
-     "popeye_agm142"
-    ],
-    [
-     "rksla3_wpn_practice_14kg",
-     "14kg Practice Bomb",
-     "pab100"
-    ],
-    [
-     "rksla3_wpn_practice_3kg",
-     "3kg Practice Bomb",
-     "pab100"
-    ],
-    [
-     "rksla3_wpn_python3",
-     "Python 3",
-     "python_missile"
-    ],
-    [
-     "rksla3_wpn_python4",
-     "Python 4",
-     "python_missile"
-    ],
-    [
-     "rksla3_wpn_python5",
-     "Python 5",
-     "python_missile"
-    ],
-    [
-     "rksla3_wpn_qjk99_127_1_pod",
-     "QJK99-12.7-1 Gunpod",
-     "qjk99_gun"
-    ],
-    [
-     "rksla3_wpn_r60",
-     "R-60",
-     "r60"
-    ],
-    [
-     "rksla3_wpn_r73",
-     "R-73",
-     "r73"
-    ],
-    [
-     "rksla3_wpn_r77",
-     "R-77",
-     "r77"
-    ],
-    [
-     "rksla3_wpn_rbs15",
-     "RBS-15",
-     "rbs15"
-    ],
-    [
-     "rksla3_wpn_sampt21",
-     "SAMPT21 GP",
-     null
-    ],
-    [
-     "rksla3_wpn_seaeagle",
-     "SeaEagle AShM",
-     "sea_eagle"
-    ],
-    [
-     "rksla3_wpn_seaskua",
-     "SeaSkua",
-     "sea_skua"
-    ],
-    [
-     "rksla3_wpn_seavenom",
-     "Sea Venom AShM",
-     "sea_venom"
-    ],
-    [
-     "rksla3_wpn_slam_er",
-     "SLAM-ER",
-     "agm84_harpoon"
-    ],
-    [
-     "rksla3_wpn_sneb_pod",
-     "SNEB 68mm Rockets",
-     "sneb"
-    ],
-    [
-     "rksla3_wpn_spear3",
-     "Spear3",
-     "spear3"
-    ],
-    [
-     "rksla3_wpn_spike_er",
-     "Spike-ER",
-     "spike"
-    ],
-    [
-     "rksla3_wpn_spike_nlos",
-     "Spike-NLOS",
-     "spike"
-    ],
-    [
-     "rksla3_wpn_stormshadow",
-     "Stormshadow",
-     "storm_shadow"
-    ],
-    [
-     "rksla3_wpn_ty90",
-     "TY-90",
-     "ty90"
-    ],
-    [
-     "rksla3_wpn_uk1000gp",
-     "UK 1000lb GP",
-     "uk_1000lb_gp"
-    ],
-    [
-     "rksla3_wpn_uk500gp",
-     "UK 500lb GP",
-     "uk_500lb_gp"
-    ],
-    [
-     "rksla3_wpn_uk_pw2_1000",
-     "PW2 1000lbs",
-     "gbu10_paveway"
-    ],
-    [
-     "rksla3_wpn_uk_pw2_500",
-     "PW2 500lbs",
-     "gbu10_paveway"
-    ],
-    [
-     "rksla3_wpn_uk_pw4_500",
-     "Paveway IV",
-     "paveway_iv"
-    ],
-    [
-     "rksla3_wpn_us_pw2_gbu10",
-     "GBU-10",
-     "gbu10_paveway"
-    ],
-    [
-     "rksla3_wpn_us_pw2_gbu12",
-     "GBU-12",
-     "gbu12_paveway"
-    ],
-    [
-     "rksla3_wpn_us_pw2_gbu16",
-     "GBU-16",
-     "gbu16_paveway"
-    ],
-    [
-     "rksla3_wpn_us_pw3_gbu24",
-     "GBU-24",
-     "gbu24_paveway"
-    ],
-    [
-     "rksla3_wpn_yj91",
-     "YJ91 ARM",
-     "yj91"
-    ],
-    [
-     "rksla3_wpn_zuni_5",
-     "Zuni 5inch Rockets",
-     "zuni"
-    ],
-    [
-     "vtx_apkws",
-     "APKWS",
-     "apkws"
-    ],
-    [
-     "vtx_chaingun_hedp",
-     "M230 Chaingun",
-     "m230"
-    ],
-    [
-     "vtx_hydra",
-     "M299",
-     "hydra70"
-    ]
-   ]
+  "unresolved_reasons": {
+    "DSA_MachinePistol45": "No layer names it: no mapped class, alias or keyword of the query reaches one entry.",
+    "DSA_MachinePistol9mm": "No layer names it: no mapped class, alias or keyword of the query reaches one entry.",
+    "ANZ_WPLauncher": "No layer names it: no mapped class, alias or keyword of the query reaches one entry.",
+    "FIR_CBU104": "The alias layer ties between cbu89_gator, wcmd, and the runtime refuses a tie rather than guessing which store the text means.",
+    "FIR_CBU105": "The alias layer ties between cbu97_sfw, wcmd, and the runtime refuses a tie rather than guessing which store the text means.",
+    "FIR_CMLauncher": "No layer names it: no mapped class, alias or keyword of the query reaches one entry.",
+    "FIR_GBU31": "The alias layer ties between gbu31_jdam, gbu38_jdam, and the runtime refuses a tie rather than guessing which store the text means.",
+    "FIR_GBU32": "The alias layer ties between gbu32_jdam, gbu38_jdam, and the runtime refuses a tie rather than guessing which store the text means.",
+    "FIR_GBU53": "The alias layer ties between gbu39_sdb, gbu53_stormbreaker, and the runtime refuses a tie rather than guessing which store the text means.",
+    "FIR_GBU55": "The alias layer ties between gbu32_jdam, gbu38_jdam, and the runtime refuses a tie rather than guessing which store the text means.",
+    "FIR_GBU56": "The alias layer ties between gbu31_jdam, gbu38_jdam, and the runtime refuses a tie rather than guessing which store the text means.",
+    "FIR_Kh25MPU": "The keyword layer ties between kh25, m242_bushmaster, and the runtime refuses a tie rather than guessing which store the text means.",
+    "FIR_Kh25MS": "The keyword layer ties between kh25, m242_bushmaster, and the runtime refuses a tie rather than guessing which store the text means.",
+    "FIR_Kh25MTP": "The keyword layer ties between kh25, m242_bushmaster, and the runtime refuses a tie rather than guessing which store the text means.",
+    "FIR_Smokewinder": "No layer names it: no mapped class, alias or keyword of the query reaches one entry.",
+    "LOP_AZP23": "The alias layer ties between azp23, zu23_2a14, and the runtime refuses a tie rather than guessing which store the text means.",
+    "PHEN_FSPLUS_AsphyxiantBomb_Unguided_rack": "No layer names it: no mapped class, alias or keyword of the query reaches one entry.",
+    "PHEN_FSPLUS_BlisterBomb_Unguided_rack": "No layer names it: no mapped class, alias or keyword of the query reaches one entry.",
+    "PHEN_FSPLUS_NerveBomb_Unguided_rack": "No layer names it: no mapped class, alias or keyword of the query reaches one entry.",
+    "PHEN_FSPLUS_NovaBomb_Unguided_rack": "No layer names it: no mapped class, alias or keyword of the query reaches one entry.",
+    "PHEN_FSPLUS_RiotCSGasBomb_Unguided_rack": "No layer names it: no mapped class, alias or keyword of the query reaches one entry.",
+    "disco_nimrod_bomb_launcher": "No layer names it: no mapped class, alias or keyword of the query reaches one entry.",
+    "rhs_weap_902a": "No layer names it: no mapped class, alias or keyword of the query reaches one entry.",
+    "rhs_weap_M301": "No layer names it: no mapped class, alias or keyword of the query reaches one entry.",
+    "rhs_weap_afganit_smoke": "No layer names it: no mapped class, alias or keyword of the query reaches one entry.",
+    "rhs_weap_azp23": "The alias layer ties between azp23, zu23_2a14, and the runtime refuses a tie rather than guessing which store the text means.",
+    "rksla3_wpn_apkws_m151": "The alias layer ties between apkws, hydra70, and the runtime refuses a tie rather than guessing which store the text means.",
+    "rksla3_wpn_apkws_m229": "The alias layer ties between apkws, hydra70, and the runtime refuses a tie rather than guessing which store the text means.",
+    "rksla3_wpn_apkws_m257": "The alias layer ties between apkws, hydra70, and the runtime refuses a tie rather than guessing which store the text means.",
+    "rksla3_wpn_ba21": "No layer names it: no mapped class, alias or keyword of the query reaches one entry.",
+    "rksla3_wpn_crv7_m151": "The alias layer ties between crv7, hydra70, and the runtime refuses a tie rather than guessing which store the text means.",
+    "rksla3_wpn_crv7_m229": "The alias layer ties between crv7, hydra70, and the runtime refuses a tie rather than guessing which store the text means.",
+    "rksla3_wpn_crv7_m257": "The alias layer ties between crv7, hydra70, and the runtime refuses a tie rather than guessing which store the text means.",
+    "rksla3_wpn_fulger_sam": "No layer names it: no mapped class, alias or keyword of the query reaches one entry.",
+    "rksla3_wpn_furypgm": "No layer names it: no mapped class, alias or keyword of the query reaches one entry.",
+    "rksla3_wpn_gp19_pod": "No layer names it: no mapped class, alias or keyword of the query reaches one entry.",
+    "rksla3_wpn_mikholit": "No layer names it: no mapped class, alias or keyword of the query reaches one entry.",
+    "rksla3_wpn_mk82_snakeye": "The alias layer ties between mk81, mk82, and the runtime refuses a tie rather than guessing which store the text means.",
+    "rksla3_wpn_sampt21": "No layer names it: no mapped class, alias or keyword of the query reaches one entry.",
+    "rksla3_wpn_us_pw2_gbu12": "The alias layer ties between gbu10_paveway, gbu12_paveway, and the runtime refuses a tie rather than guessing which store the text means.",
+    "rksla3_wpn_us_pw2_gbu16": "The alias layer ties between gbu10_paveway, gbu16_paveway, and the runtime refuses a tie rather than guessing which store the text means."
   }
- },
- "excluded_equipment": {
-  "cockpit switch": [
-   [
-    "ACE_AIR_SAFETY",
-    "SAFE"
-   ],
-   [
-    "fza_cannon_limit",
-    "Burst Limit"
-   ],
-   [
-    "fza_gun_inhibit",
-    "Cannon Inhibit"
-   ],
-   [
-    "fza_hydra_limit",
-    "Salvo Limit"
-   ],
-   [
-    "fza_ma_safe",
-    "MASTER ARM SAFE"
-   ],
-   [
-    "fza_pylon_inhibit",
-    "Pylon Inhibit"
-   ],
-   [
-    "rksla3_wpn_masterarm",
-    "MASTER ARM OFF"
-   ]
-  ],
-  "countermeasure": [
-   [
-    "FIR_AerobaticSmoke_Engine",
-    "Smoke Generator(for Engine)"
-   ],
-   [
-    "FIR_SUU25",
-    "SUU-25 Flare Dispenser"
-   ],
-   [
-    "rhs_weap_DIRCM_Lipa",
-    "Lipa DIRCM"
-   ],
-   [
-    "rhs_weap_DIRCM_Vitebsk",
-    "Vitebsk DIRCM"
-   ]
-  ],
-  "generic label": [
-   [
-    "FIR_RKT_Launcher",
-    "Rocket Launcher"
-   ]
-  ],
-  "leaflet dispenser": [
-   [
-    "FIR_PDU5B",
-    "PDU-5/B"
-   ]
-  ],
-  "recon pod": [
-   [
-    "FIR_TARPS",
-    "TARPS"
-   ],
-   [
-    "rksla3_wpn_litening_pod",
-    "Litening Pod"
-   ],
-   [
-    "rksla3_wpn_sniper_xr_pod",
-    "Sniper XR Pod"
-   ]
-  ],
-  "ship launcher cell": [
-   [
-    "FIR_Mk41_VLS_AG",
-    "Mk 41 mod 20 VLS (AG)"
-   ],
-   [
-    "FIR_Mk41_VLS_ESSM",
-    "RIM-162 ESSM"
-   ],
-   [
-    "FIR_Mk41_VLS_SM",
-    "Standard Missile"
-   ]
-  ],
-  "weapon bay": [
-   [
-    "DISCO_Buccaneer_InternalBombLauncher",
-    "Internal bay - 1,000 lb HE"
-   ]
-  ]
- },
- "unresolved_reasons": {
-  "ANZ_WPLauncher": "the round is the Hydra 70 white-phosphorus warhead (M156 and M259, both published), but the identity carries no designation of it. The only token that would reach the Hydra 70 row is the two-letter 'WP', and as a curated alias it would also capture every unrelated white-phosphorus round in the content (rhs_ammo_152_WP, rhs_mag_WP_2a33, vn_sh_76mm_wp, cup_sh_105_wp and others), so the corpus declines it.",
-  "DSA_MachinePistol45": "the identity names a chambering and a category ('.45 Machine-pistol'), never a published weapon designation, and the small-arms corpus holds real weapons only: neither the classname nor the display names one.",
-  "DSA_MachinePistol9mm": "the identity names a chambering and a category ('9mm Machine-pistol'), never a published weapon designation, and the small-arms corpus holds real weapons only: neither the classname nor the display names one.",
-  "FIR_Smokewinder": "it is not a munition. It is a smoke-generating display pod (SmokeWinder) that mounts on a Sidewinder rail, so it is equipment, and its identity carries no kind phrase: the kind filter names kinds, and 'Smokewinder' is the product's own name, so neither the corpus nor the filter may key on it.",
-  "PHEN_FSPLUS_AsphyxiantBomb_Unguided_rack": "the identity names a chemical filling and a mod tier ('[Tier 2] Asphyxiant Gas'), never a published munition designation. No published munition pairs a Mk 82 body with an asphyxiant agent, so naming it would invent the item.",
-  "PHEN_FSPLUS_BlisterBomb_Unguided_rack": "the identity names a chemical filling ('Blister Agent'), never a published munition designation. No published munition pairs a Mk 82 body with a blister agent, so naming it would invent the item.",
-  "PHEN_FSPLUS_NerveBomb_Unguided_rack": "the identity names a chemical filling and a mod tier ('[Tier 3] Nerve Gas'), never a published munition designation. No published munition pairs a Mk 82 body with a nerve agent, so naming it would invent the item.",
-  "PHEN_FSPLUS_NovaBomb_Unguided_rack": "the identity names a fictional agent and a mod tier ('[Tier 5] Nova Gas'), never a published munition designation. 'Nova gas' has no real-world counterpart, so naming it would invent the item.",
-  "PHEN_FSPLUS_RiotCSGasBomb_Unguided_rack": "the identity names a riot-control agent and a mod tier ('[Tier 1] Riot CS Gas'), never a published munition designation. The published CS munitions are grenades and projectors, not a Mk 82-bodied aircraft bomb, so naming it would pair two things no source pairs.",
-  "disco_nimrod_bomb_launcher": "the identity names a nominal weight and a category ('1000 lb HE bombs'), never a published designation. The store it drops is the British 1,000 lb General-Purpose bomb, which the corpus now holds, but reaching it would need the bare weight '1000lb' to be a designation, and that is exactly what identity_designations refuses: it would also capture every other 1,000 lb-class store (rksla3_wpn_uk_pw2_1000 among them) and resolve them to a bomb they do not name.",
-  "rhs_weap_M301": "the cannon is the XM301, published under that designation only. The classname and the display both drop the X, and no source the corpus holds publishes 'M301', so a sourced alias cannot bridge the two.",
-  "rksla3_wpn_ba21": "no source the corpus holds publishes a 'BA-21' munition. The English Wikipedia title BA-21 is a Soviet armoured car, and the Chinese Blue Arrow 21 has no article in either the English or the Chinese edition.",
-  "rksla3_wpn_fulger_sam": "no source the corpus holds publishes this designation. The mod's own magazine text ('MDBA Fulger') names no maker or document, and no encyclopaedia article exists for a missile of that name.",
-  "rksla3_wpn_furypgm": "no source the corpus holds publishes this designation. 'FURY PGM' appears only in the mod, and its ammunition derives from the GBU-12, which is a different munition.",
-  "rksla3_wpn_gp19_pod": "the pod carries the GAU-19 .50 cal gun, which the corpus holds, but neither the classname nor the display carries the gun's designation: 'GP19' is the pod's own label and no source the corpus holds publishes it.",
-  "rksla3_wpn_mikholit": "no source the corpus holds publishes this designation. The mod defines a four-round box of 10 kg guided submunitions under a name that appears nowhere else.",
-  "rksla3_wpn_sampt21": "no source the corpus holds publishes this designation. The mod labels a 400 kg general-purpose bomb 'SAMPT21 GP'; SAMP/T is a different weapon (a surface-to-air system), and the mod's own ammunition derives from the Mk 82."
- }
 }

@@ -512,15 +512,31 @@ class OpenModdedVehicleTest(unittest.TestCase):
             with self.subTest(game_class=name):
                 self.assertIsNone(resolve(self.table, name))
 
-    def test_the_open_modded_vehicle_class_count_is_one(self) -> None:
-        # The measured modded gap list. A class that leaves one table has to
-        # arrive in another, so the count is the same number in both.
-        self.assertEqual(1, len(VEHICLE_OPEN_CASES))
+    def gap_classes(self) -> dict:
         body = (REPO / "data/coverage/modded_gaps_vehicles.txt").read_text(
             encoding="utf-8"
         )
-        listed = {line.split("\t")[0] for line in body.splitlines() if line[0] != "#"}
-        self.assertEqual({name for name, _d, _c, _r in VEHICLE_OPEN_CASES}, listed)
+        out = {}
+        for line in body.splitlines():
+            if not line or line.startswith("#"):
+                continue
+            fields = line.split("\t")
+            out[fields[0]] = fields[1]
+        return out
+
+    def test_every_class_in_the_gap_list_is_open(self) -> None:
+        # The gap list is the measured worklist. If the matcher can name a
+        # class the list calls open, the list is lying about the engine.
+        for name, display in self.gap_classes().items():
+            with self.subTest(game_class=name):
+                self.assertIsNone(resolve(self.table, name, display))
+
+    def test_every_documented_open_case_is_in_the_gap_list(self) -> None:
+        listed = self.gap_classes()
+        for name, display, _chain, _reason in VEHICLE_OPEN_CASES:
+            with self.subTest(game_class=name):
+                self.assertIn(name, listed)
+                self.assertEqual(display, listed[name])
 
     def test_every_open_class_states_a_one_line_reason(self) -> None:
         for name, _display, _chain, reason in VEHICLE_OPEN_CASES:

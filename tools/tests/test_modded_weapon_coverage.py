@@ -42,7 +42,7 @@ REGISTRY = ROOT / "data" / "munition" / "sources.json"
 EXPECTED = {
     "small arms": (116, 118),
     "carried launchers": (18, 18),
-    "vehicle armament": (351, 366),
+    "vehicle armament": (335, 374),
 }
 
 # Every modded class this work closed, and the row it resolves to. These are
@@ -84,10 +84,10 @@ IDENTITY_ONLY = (
 # Every excluded armament class is equipment, and this is the kind it names.
 EQUIPMENT_KINDS = {
     "cockpit switch": 7,
-    "countermeasure": 4,
+    "countermeasure": 10,
     "generic label": 1,
     "leaflet dispenser": 1,
-    "recon pod": 3,
+    "recon pod": 4,
     "ship launcher cell": 3,
     "weapon bay": 1,
 }
