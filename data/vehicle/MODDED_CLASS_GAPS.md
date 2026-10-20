@@ -307,9 +307,9 @@ answer.
 ## Aircraft
 
 The modded aircraft gaps have their own record,
-`data/aircraft/MODDED_CLASS_GAPS.md`. Forty-two stay open: eleven F/A-181
+`data/aircraft/MODDED_CLASS_GAPS.md`. Forty-two stay open: ten F/A-181
 loadout configurations of an Arma 3 fictional type, eight ArmaFPV Crocus
-drones that no published source designates, and twenty-three that tie at a
+drones that no published source designates, and twenty-four that tie at a
 layer above the family rung. The base game's `drone_base_F` row ("AR-2
 Darter") resolves to the Parrot AR.Drone 2.0 and is locked closed.
 

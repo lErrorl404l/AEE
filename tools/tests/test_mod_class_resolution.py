@@ -56,7 +56,7 @@ entries carry the corpus: `uh1_family`, `uh60_family`, `hh60_family`,
 class that names its own mark now answers at the keyword layer. Forty-two
 modded classes still stay open: ten F/A-181 loadout configurations of an
 Arma 3 fictional type, eight ArmaFPV Crocus drones that no published source
-designates, and twenty-three that tie at a layer above the family rung.
+designates, and twenty-four that tie at a layer above the family rung.
 
 The KamAZ-4310 entry publishes the real truck and binds the Arma 3 Zamak
 classes through the wiki's own statement ("Zamak is simply Kamaz spelt
@@ -1147,7 +1147,7 @@ class OpenModdedAircraftTest(unittest.TestCase):
 
     def test_the_modded_aircraft_gap_count_is_forty_two(self) -> None:
         # Ten F/A-181 loadout configurations, eight Crocus drones, and
-        # twenty-three that tie at a layer above the family rung.
+        # twenty-four that tie at a layer above the family rung.
         self.assertEqual(42, len(AIRCRAFT_OPEN_CASES))
 
     def test_no_mark_row_carries_a_family_designation(self) -> None:
