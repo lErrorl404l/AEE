@@ -2,17 +2,17 @@
   {
     "game_class": "C_Hatchback_01_F",
     "class_token": "Car",
-    "catalogue_id": "honda_civic_6gen_hatchback",
-    "identity_source": "aee_class_table",
-    "identity_evidence": "AEE class token Car; paired with the Honda Civic 6th generation hatchback. The class name does not name the catalogue vehicle, so the link stays class_only.",
+    "catalogue_id": "hyundai_iblue_concept",
+    "identity_source": "armedassault_hatchback_trivia",
+    "identity_evidence": "Armed Assault Wiki, Hatchback, ARMA 3 Trivia (wikitext section 72): \"* The ARMA 3 Hatchback is based on the 2007 model of the \"i-Blue\" concept car designed by Hyundai.\" Citation: https://armedassault.fandom.com/wiki/Hatchback. The page asserts the basis ('is based on ... designed by Hyundai'), which is the strongest form the source offers, but the source is an editor statement and not a manufacturer document. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   },
   {
     "game_class": "C_Hatchback_01_sport_F",
     "class_token": "Car",
-    "catalogue_id": "honda_civic_6gen_hatchback",
-    "identity_source": "aee_class_table",
-    "identity_evidence": "AEE class token Car; same hatchback body as C_Hatchback_01_F. The sport trim has no separate catalogue entry, so the base hatchback is used and the link stays class_only.",
+    "catalogue_id": "hyundai_iblue_concept",
+    "identity_source": "armedassault_hatchback_trivia",
+    "identity_evidence": "Armed Assault Wiki, Hatchback, ARMA 3 Trivia (wikitext section 72): \"* The ARMA 3 Hatchback is based on the 2007 model of the \"i-Blue\" concept car designed by Hyundai.\" Citation: https://armedassault.fandom.com/wiki/Hatchback. The page asserts the basis ('is based on ... designed by Hyundai'), which is the strongest form the source offers, but the source is an editor statement and not a manufacturer document. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   },
   {
@@ -154,17 +154,81 @@
   {
     "game_class": "C_SUV_01_F",
     "class_token": "Car",
-    "catalogue_id": "peugeot_p4",
-    "identity_source": "aee_class_table",
-    "identity_evidence": "AEE class token Car; the class is a sport utility vehicle, paired with the held Peugeot P4 light 4x4 utility. The held catalogue holds no sport utility vehicle, so the pairing is weak and recorded as such.",
+    "catalogue_id": "bmw_x6_concept",
+    "identity_source": "armedassault_suv_trivia",
+    "identity_evidence": "Armed Assault Wiki, SUV, ARMA 3 Trivia (wikitext section 47): \"* ARMA 3's SUV appears to be based on the real-world BMW \"X6\" (specifically the X6's concept car model). Accordingly, the in-universe SUV is manufactured by an Armaverse company called \"FTW\".\" Citation: https://armedassault.fandom.com/wiki/SUV. The page hedges: it says the SUV 'appears to be based on' the BMW X6, specifically the X6's concept car model. The hedge is recorded and not upgraded. The previous binding, the Peugeot P4, is withdrawn because no page read for this research names a Peugeot for the ARMA 3 SUV. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   },
   {
     "game_class": "C_Van_01_transport_F",
     "class_token": "Car",
-    "catalogue_id": "gaz_66",
-    "identity_source": "aee_class_table",
-    "identity_evidence": "AEE class token Car; the class is a light commercial van, paired with the held GAZ-66 light utility truck. The held catalogue holds no van, so the pairing is weak and recorded as such.",
+    "catalogue_id": "mercedes_benz_sprinter",
+    "identity_source": "armedassault_van_trivia",
+    "identity_evidence": "Armed Assault Wiki, Van, ARMA 3 Trivia (wikitext section 18): \"* The Van is based on the \"Sprinter\" series of commercial vehicles manufactured by Germany-based automotive company Mercedes-Benz, a subsidiary of Daimler AG.\" Citation: https://armedassault.fandom.com/wiki/Van. The page asserts the basis ('is based on the 'Sprinter' series ... manufactured by ... Mercedes-Benz') and names the series, not a model mark. It cites the Bohemia Interactive OPREP for IDAP. The previous binding, the GAZ-66, is withdrawn: no page read for this research names a GAZ for the ARMA 3 Van. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "Hatchback_01_base_F",
+    "class_token": "Car",
+    "catalogue_id": "hyundai_iblue_concept",
+    "identity_source": "armedassault_hatchback_trivia",
+    "identity_evidence": "Armed Assault Wiki, Hatchback, ARMA 3 Trivia (wikitext section 72): \"* The ARMA 3 Hatchback is based on the 2007 model of the \"i-Blue\" concept car designed by Hyundai.\" Citation: https://armedassault.fandom.com/wiki/Hatchback. The page asserts the basis ('is based on ... designed by Hyundai'), which is the strongest form the source offers, but the source is an editor statement and not a manufacturer document. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "SUV_01_base_F",
+    "class_token": "Car",
+    "catalogue_id": "bmw_x6_concept",
+    "identity_source": "armedassault_suv_trivia",
+    "identity_evidence": "Armed Assault Wiki, SUV, ARMA 3 Trivia (wikitext section 47): \"* ARMA 3's SUV appears to be based on the real-world BMW \"X6\" (specifically the X6's concept car model). Accordingly, the in-universe SUV is manufactured by an Armaverse company called \"FTW\".\" Citation: https://armedassault.fandom.com/wiki/SUV. The page hedges: it says the SUV 'appears to be based on' the BMW X6, specifically the X6's concept car model. The hedge is recorded and not upgraded. The previous binding, the Peugeot P4, is withdrawn because no page read for this research names a Peugeot for the ARMA 3 SUV. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "C_Van_01_box_F",
+    "class_token": "Car",
+    "catalogue_id": "mercedes_benz_sprinter",
+    "identity_source": "armedassault_van_trivia",
+    "identity_evidence": "Armed Assault Wiki, Van, ARMA 3 Trivia (wikitext section 18): \"* The Van is based on the \"Sprinter\" series of commercial vehicles manufactured by Germany-based automotive company Mercedes-Benz, a subsidiary of Daimler AG.\" Citation: https://armedassault.fandom.com/wiki/Van. The page asserts the basis ('is based on the 'Sprinter' series ... manufactured by ... Mercedes-Benz') and names the series, not a model mark. It cites the Bohemia Interactive OPREP for IDAP. The previous binding, the GAZ-66, is withdrawn: no page read for this research names a GAZ for the ARMA 3 Van. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "C_Van_01_fuel_F",
+    "class_token": "Car",
+    "catalogue_id": "mercedes_benz_sprinter",
+    "identity_source": "armedassault_van_trivia",
+    "identity_evidence": "Armed Assault Wiki, Van, ARMA 3 Trivia (wikitext section 18): \"* The Van is based on the \"Sprinter\" series of commercial vehicles manufactured by Germany-based automotive company Mercedes-Benz, a subsidiary of Daimler AG.\" Citation: https://armedassault.fandom.com/wiki/Van. The page asserts the basis ('is based on the 'Sprinter' series ... manufactured by ... Mercedes-Benz') and names the series, not a model mark. It cites the Bohemia Interactive OPREP for IDAP. The previous binding, the GAZ-66, is withdrawn: no page read for this research names a GAZ for the ARMA 3 Van. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "I_G_Van_01_transport_F",
+    "class_token": "Car",
+    "catalogue_id": "mercedes_benz_sprinter",
+    "identity_source": "armedassault_van_trivia",
+    "identity_evidence": "Armed Assault Wiki, Van, ARMA 3 Trivia (wikitext section 18): \"* The Van is based on the \"Sprinter\" series of commercial vehicles manufactured by Germany-based automotive company Mercedes-Benz, a subsidiary of Daimler AG.\" Citation: https://armedassault.fandom.com/wiki/Van. The page asserts the basis ('is based on the 'Sprinter' series ... manufactured by ... Mercedes-Benz') and names the series, not a model mark. It cites the Bohemia Interactive OPREP for IDAP. The previous binding, the GAZ-66, is withdrawn: no page read for this research names a GAZ for the ARMA 3 Van. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "I_G_Van_01_fuel_F",
+    "class_token": "Car",
+    "catalogue_id": "mercedes_benz_sprinter",
+    "identity_source": "armedassault_van_trivia",
+    "identity_evidence": "Armed Assault Wiki, Van, ARMA 3 Trivia (wikitext section 18): \"* The Van is based on the \"Sprinter\" series of commercial vehicles manufactured by Germany-based automotive company Mercedes-Benz, a subsidiary of Daimler AG.\" Citation: https://armedassault.fandom.com/wiki/Van. The page asserts the basis ('is based on the 'Sprinter' series ... manufactured by ... Mercedes-Benz') and names the series, not a model mark. It cites the Bohemia Interactive OPREP for IDAP. The previous binding, the GAZ-66, is withdrawn: no page read for this research names a GAZ for the ARMA 3 Van. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "Quadbike_01_base_F",
+    "class_token": "Motorcycle",
+    "catalogue_id": "yamaha_grizzly_450",
+    "identity_source": "armedassault_quadbike_trivia",
+    "identity_evidence": "Armed Assault Wiki, Quadbike, ARMA 3 Trivia (wikitext section 46): \"* The ARMA 3 Quadbike appears to be based on the real-life \"Grizzly 450\" ATV manufactured by the Yamaha Corporation.\" Citation: https://armedassault.fandom.com/wiki/Quadbike. The page hedges: it says the Quadbike 'appears to be based on' the Grizzly 450. The hedge is recorded and not upgraded. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "C_Quadbike_01_F",
+    "class_token": "Motorcycle",
+    "catalogue_id": "yamaha_grizzly_450",
+    "identity_source": "armedassault_quadbike_trivia",
+    "identity_evidence": "Armed Assault Wiki, Quadbike, ARMA 3 Trivia (wikitext section 46): \"* The ARMA 3 Quadbike appears to be based on the real-life \"Grizzly 450\" ATV manufactured by the Yamaha Corporation.\" Citation: https://armedassault.fandom.com/wiki/Quadbike. The page hedges: it says the Quadbike 'appears to be based on' the Grizzly 450. The hedge is recorded and not upgraded. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   }
 ]

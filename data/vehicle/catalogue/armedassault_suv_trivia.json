@@ -1,0 +1,27 @@
+{
+  "retrieved": "2026-10-20",
+  "note": "Capture for the BMW X6 concept car, the design the Armed Assault Wiki says the ARMA 3 SUV appears to be based on. The page hedges ('appears to be based on'), so the grade stays claimed with the hedge recorded. The source publishes no mass, dimension, engine or tyre figure, so the entry is identity only and every runtime field resolves to a labelled absent zero.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "bmw_x6_concept",
+      "canonical_name": "BMW X6 concept car",
+      "maker": "BMW",
+      "model": "X6",
+      "variant": "concept car",
+      "variant_id": "bmw_x6_concept",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "Germany",
+      "era": "modern",
+      "aliases": [
+        "bmw x6",
+        "suv",
+        "x6 concept car"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {}
+    }
+  ]
+}

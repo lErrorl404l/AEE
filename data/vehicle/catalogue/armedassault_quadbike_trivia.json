@@ -1,0 +1,27 @@
+{
+  "retrieved": "2026-10-20",
+  "note": "Capture for the Yamaha Grizzly 450 ATV, the vehicle the Armed Assault Wiki says the ARMA 3 Quadbike appears to be based on. The page hedges ('appears to be based on'), so the grade stays claimed with the hedge recorded. The source publishes no mass, dimension, engine or tyre figure, so the entry is identity only and every runtime field resolves to a labelled absent zero.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "yamaha_grizzly_450",
+      "canonical_name": "Yamaha Grizzly 450",
+      "maker": "Yamaha",
+      "model": "Grizzly 450",
+      "variant": "ATV",
+      "variant_id": "yamaha_grizzly_450",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "Japan",
+      "era": "modern",
+      "aliases": [
+        "grizzly 450",
+        "quadbike",
+        "yamaha grizzly 450"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {}
+    }
+  ]
+}
