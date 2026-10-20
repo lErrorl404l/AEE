@@ -350,11 +350,15 @@ class RealCorpusTest(unittest.TestCase):
         self.assertEqual("m113a2", loaded.alias_index["m113a2"])
 
     def test_the_family_designations_are_not_aliases(self) -> None:
-        # A family word reaches every member, so as an alias of one mark it
-        # ties the ladder. "m1240" and "m113" name the family the A1 and A2
-        # marks belong to, and the matcher holds them as keywords only.
+        # A family word reaches every member, so as a mark's alias it ties the
+        # ladder. The family entries own their designations, so the corpus
+        # names them here: a family word is never a mark's alias.
         loaded = vc.load(DATA)
-        for family in ("m1240", "m113", "hemtt", "btr"):
+        family_words = {
+            word for entry in loaded.entries if entry.family for word in entry.keywords
+        }
+        self.assertTrue(family_words)
+        for family in ("m1240", "m113", "hemtt", "btr", *sorted(family_words)):
             with self.subTest(alias=family):
                 self.assertNotIn(family, loaded.alias_index)
 

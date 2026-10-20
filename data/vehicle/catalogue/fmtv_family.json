@@ -1,6 +1,6 @@
 {
   "retrieved": "2026-10-20",
-  "note": "Identity-only capture for the FMTV, the United States Army Family of Medium Tactical Vehicles. The identity evidence is the engine class table: the class name is rhsusf_fmtv_base and the display name is FMTV, which is the family designation itself. The grade is claimed, because the source is the engine class table. That is the form data/vehicle/class_map.json records as aee_class_table: identity evidence only, never a figure. No document citation is invented and no sources.json record is added, because the entry holds no value. No M-number is claimed. The installed content ships the M1078, M1083, M1084 and M1085 members as separate classes with their own display names, and each of those resolves to its own entry, so this entry names the family and no member of it. No manufacturer is asserted either, because the engine text names none. No figure is held: no held source publishes a mass, dimension or engine value for the family, so every runtime field resolves to a labelled absent zero and the entry is not runtime-ready. The entry advertises no match term, and rhsusf_fmtv_base stays open. The measurement gives the reason. The token fmtv as an alias stops 69 vehicle-table classes and moves four, and as a keyword it ties the four M1078A1R and M1084A1R SOV classes, which resolve on that layer, so the layer returns nothing and they stop resolving. A class name joined into fmtvbase is not a published designation and is not used. The bare abbreviation therefore stays out of the canonical name and the model, and the entry names the family in words only. The retired capture-level sources array stays empty.",
+  "note": "Identity-only capture for the FMTV, the United States Army Family of Medium Tactical Vehicles. The identity evidence is the engine class table: the class name is rhsusf_fmtv_base and the display name is FMTV, which is the family designation itself. The grade is claimed, because the source is the engine class table. That is the form data/vehicle/class_map.json records as aee_class_table: identity evidence only, never a figure. No document citation is invented and no sources.json record is added, because the entry holds no value. No M-number is claimed. The installed content ships the M1078, M1083, M1084 and M1085 members as separate classes with their own display names, and each of those resolves to its own entry, so this entry names the family and no member of it. No manufacturer is asserted either, because the engine text names none. No figure is held: no held source publishes a mass, dimension or engine value for the family, so every runtime field resolves to a labelled absent zero and the entry is not runtime-ready. The entry names the family and no mark, so it is marked as a family entry: it carries no alias, no class token and no value, and its keyword holds the family designation FMTV. The family row is generated into its own table, so no rung above the family rung reads it: the token fmtv cannot tie the four M1078A1R and M1084A1R SOV classes on the mark table, and those keep resolving to their own entries. The bare abbreviation is the family's designation and not a mark's, which is the point of the family rung. The retired capture-level sources array stays empty.",
   "sources": [],
   "entries": [
     {
@@ -15,9 +15,12 @@
       "country": "United States",
       "era": "modern",
       "aliases": [],
-      "keywords": [],
+      "keywords": [
+        "fmtv"
+      ],
       "runtime_ready": false,
       "identity_only": true,
+      "family": true,
       "values": {}
     }
   ]

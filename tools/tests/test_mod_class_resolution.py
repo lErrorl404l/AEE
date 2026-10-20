@@ -17,24 +17,32 @@ must resolve to; each inherited one also names the config chain that puts it
 there. Each open class is listed with the reason it stays open, so a later
 change that closes or breaks one shows up here.
 
-The vehicle table closes sixty-nine modded classes: twenty-one by their own
-text (the RHS M1237 RG-33L "Plus" and M1239 SOCOM AUV families, the PHAN
+The vehicle table closes seventy-seven modded classes: twenty-one by their
+own text (the RHS M1237 RG-33L "Plus" and M1239 SOCOM AUV families, the PHAN
 Typhoon truck, the four Tahoe marks, the RHS Object 681, the Jbad Caterpillar
 789D, and the five the counterpart research closed), one more by the
 identity-only entry its text names (the Project OPFOR Nissan pickup), thirty
 by the family-word work of 2026-10-20 (the twelve M113A3 classes, the sixteen
 M1240A1 classes, the HEMTT A4 and the BTR-70 base, each closed because a
-family word left the specific mark's alias set), and seventeen by engine
-ancestry - the seven Arma 3 Offroad re-uses and the ten Project OPFOR KAMAZ
-trucks, whose chain reaches the Zamak that the wiki ties to the KamAZ-4310
-family.
+family word left the specific mark's alias set), eight by the family rung of
+2026-10-20, and seventeen by engine ancestry - the seven Arma 3 Offroad
+re-uses and the ten Project OPFOR KAMAZ trucks, whose chain reaches the Zamak
+that the wiki ties to the KamAZ-4310 family.
+
+The family rung answers a class whose text names a family and no mark. The
+family entry is identity-only and sits in its own table, so the family word is
+never a mark's keyword: that is what closed the two Land Rover base classes,
+the two RG-33 marks and the FMTV base class. It also let the T-72MS and the
+two M1238A1 marks answer on their own terms once `t72` and `rg33` left the
+marks that were claiming them. Five modded classes still tie above the rung:
+the two T-72B3 marks against `t72b`, the two T-90SA marks against `t90s`, and
+the RG-33 4x4 SOCOM base against the configuration word `4x4`. A tie is
+final, so the family rung is never reached for them.
 
 An inherited closure says the class IS that ancestor in the engine. It does
 not say the mod's own paint names a different real vehicle, because where the
-class text names a different article the rung refuses. The FMTV family now has
-an identity-only entry too, but it stays open: every term that would reach
-`rhsusf_fmtv_base` also reaches other classes, so the entry advertises none of
-them and the class is refused rather than trade four classes for one.
+class text names a different article the rung refuses, and the ladder then
+continues to the family rung rather than treating the refusal as an answer.
 `LOP_Nissan_PKM_base` closes on the maker alias, which names no other class.
 The base game's fictional M4 Scorcher also stays open, and it is not a modded
 gap.
@@ -78,7 +86,11 @@ MUNITION_MATCH = (
 # the corpus validator. The family rung is specified by the runtime file and
 # the two Python mirrors must answer the same, so the locks compare them.
 from tools import report_match_coverage as report  # noqa: E402
-from tools.validation import gen_vehicle_data, validate_vehicle_data  # noqa: E402
+from tools.validation import (  # noqa: E402
+    gen_vehicle_data,
+    validate_vehicle_data,
+    vehicle_catalogue,
+)
 
 # The shortest alias or keyword the closest layer accepts, as the runtime does.
 SCAN_MIN = 3
@@ -294,14 +306,9 @@ IDENTITY_ONLY_VEHICLE_CASES: tuple[tuple[str, str, tuple[str, ...], str], ...] =
     ),
 )
 
-# The modded classes that stay open, with the reason. The FMTV family has an
-# identity-only entry, but every term that would reach the class reaches
-# another class too: fmtv as an alias stops 69 classes and moves four, and as
-# a keyword it ties the four SOV classes that resolve on that layer.
-_FMTV_TAIL = ("Truck_01_base_F", "Truck_F", "Car_F", "Car")
-# The T-72 and T-90 marks: the catalogue entry's canonical name derives the
-# family stem as a keyword (identity_designations._type_stems), so the B
-# mark carries "t72b" and "t72" whatever its curated keyword list says.
+# The modded classes that stay open, with the reason. Every one of them ties
+# at a layer above the family rung, and a tie is final: the runtime returns an
+# empty array, so the family rung is never reached.
 _T72_TAIL = ("rhs_a3t72tank_base", "tank_f", "tank")
 _T90_TAIL = (
     "rhs_t90a_tv",
@@ -311,88 +318,92 @@ _T90_TAIL = (
     "tank_f",
     "tank",
 )
-# The RG-33 family: "rg33" is derived from each canonical name's "RG-33"
-# word, so all four entries advertise it.
 _RG33_TAIL = ("rhsusf_RG33_base", "MRAP_01_base_F", "Car_F", "Car")
 
 VEHICLE_OPEN_CASES: tuple[tuple[str, str, tuple[str, ...], str], ...] = (
     (
-        "rhsusf_fmtv_base",
-        "FMTV",
-        _FMTV_TAIL,
-        "the family designation fmtv as an alias stops 69 classes and moves four; as a keyword it ties the four SOV classes, so their layer returns nothing",
-    ),
-    (
         "rhs_t72bd_tv",
         "T-72B3 (obr. 2012g.)",
         _T72_TAIL,
-        "the keyword layer ties on t72b3 against the T-72B obr. 1984g. entry, whose canonical name derives the family keywords t72b and t72; a catalogue edit cannot drop a derived keyword without claiming the family as an alias",
+        "the keyword layer ties on t72b3 against the T-72B obr. 1984g. entry, whose canonical name still derives t72b; the family rung cannot answer a tied query",
     ),
     (
         "rhs_t72be_tv",
         "T-72B3 (obr. 2016g.)",
         ("rhs_t72bd_tv", *_T72_TAIL),
-        "the keyword layer ties on t72b3 against the T-72B obr. 1984g. entry, whose canonical name derives the family keywords t72b and t72; a catalogue edit cannot drop a derived keyword without claiming the family as an alias",
+        "the keyword layer ties on t72b3 against the T-72B obr. 1984g. entry, whose canonical name still derives t72b; the family rung cannot answer a tied query",
     ),
     (
         "rhs_t90saa_tv",
         "T-90SA (obr. 2004g.)",
         _T90_TAIL,
-        "the keyword layer ties on the derived family stem t90s, which both the T-90SA and the T-90SM entries carry from their canonical names",
+        "the keyword layer ties on t90s, which both the T-90SA and the T-90SM entries carry from their canonical names; the family owns t90 but cannot answer a tied query",
     ),
     (
         "rhs_t90sab_tv",
         "T-90SA (obr. 2016g.)",
         _T90_TAIL,
-        "the keyword layer ties on the derived family stem t90s, which both the T-90SA and the T-90SM entries carry from their canonical names",
-    ),
-    (
-        "rhssaf_army_t72s",
-        "T-72MS",
-        ("rhs_t72bd_tv", *_T72_TAIL),
-        "the keyword layer ties on the derived family keyword t72 from the T-72B obr. 1984g. entry against t72m on the T-72MS entry",
-    ),
-    (
-        "LOP_LandRover_base_02",
-        "Land Rover",
-        ("PO_LandRover_base_W", "PO_LandRover_base", "Car_F", "Car"),
-        "the text names the maker Land Rover, not a mark; the marque pair landrover is derived from both canonical names and ties",
-    ),
-    (
-        "LOP_LandRover_mg_base",
-        "Land Rover (M2)",
-        ("PO_LandRover_Base_MG", "PO_LandRover_base", "Car_F", "Car"),
-        "the text names the maker Land Rover, not a mark; the marque pair landrover is derived from both canonical names and ties",
+        "the keyword layer ties on t90s, which both the T-90SA and the T-90SM entries carry from their canonical names; the family owns t90 but cannot answer a tied query",
     ),
     (
         "rhsusf_RG33_base",
         "RG33 4X4 SOCOM",
         ("MRAP_01_base_F", "Car_F", "Car"),
-        "the text names the RG-33 family and a configuration, not one mark; the derived keyword rg33 ties four entries",
+        "the text names a configuration: 4x4 is a keyword of seven catalogue entries, so the keyword layer ties and the family rung is never reached",
+    ),
+)
+
+# The modded classes the family rung and the family-word rule closed on
+# 2026-10-20. A family entry owns its designation, so no mark row carries it:
+# what used to tie now answers, and the family answers where no mark does.
+FAMILY_CLOSED_VEHICLE_CASES: tuple[tuple[str, str, tuple[str, ...], str], ...] = (
+    (
+        "LOP_LandRover_base_02",
+        "Land Rover",
+        ("PO_LandRover_base_W", "PO_LandRover_base", "Car_F", "Car"),
+        "landrover_family",
+    ),
+    (
+        "LOP_LandRover_mg_base",
+        "Land Rover (M2)",
+        ("PO_LandRover_Base_MG", "PO_LandRover_base", "Car_F", "Car"),
+        "landrover_family",
+    ),
+    (
+        "rhssaf_army_t72s",
+        "T-72MS",
+        ("rhs_t72bd_tv", *_T72_TAIL),
+        "t_72ms",
+    ),
+    (
+        "rhsusf_fmtv_base",
+        "FMTV",
+        ("Truck_01_base_F", "Truck_F", "Car_F", "Car"),
+        "fmtv_family",
     ),
     (
         "rhsusf_RG33_CROWS_base",
         "M1238A1 ASV (CROWS/M2)",
         _RG33_TAIL,
-        "the text names the RG-33 family; the derived keyword rg33 ties the four RG-33 entries before the M1238 mark can answer",
+        "bae_systems_rg_33_4x4_socom_m1238",
     ),
     (
         "rhsusf_RG33_CROWSMK19_base",
         "M1238A1 ASV (CROWS/Mk19)",
         ("rhsusf_RG33_CROWS_base", *_RG33_TAIL),
-        "the text names the RG-33 family; the derived keyword rg33 ties the four RG-33 entries before the M1238 mark can answer",
+        "bae_systems_rg_33_4x4_socom_m1238",
     ),
     (
         "rhsusf_rg33_d",
         "RG-33",
         _RG33_TAIL,
-        "the text names the RG-33 family alone, and the family keyword is derived on all four entries, so no single mark can answer",
+        "rg33_family",
     ),
     (
         "rhsusf_rg33_m2_d",
         "RG-33 (M2)",
         ("rhsusf_RG33_CROWS_base", *_RG33_TAIL),
-        "the text names the RG-33 family; the derived keyword rg33 ties the four RG-33 entries before the M1238 mark can answer",
+        "rg33_family",
     ),
 )
 
@@ -567,7 +578,10 @@ def resolve(
         return str(best["id"])
     if chain is not None:
         # Layer 6: inherited. The nearest ancestor the table names answers,
-        # and only for a class whose own text names that entry.
+        # and only for a class whose own text names that entry. An ancestor
+        # the text does not name is not walked past, and it is not an answer
+        # either: the ladder continues to the family rung, as the runtime
+        # does when the inherited row stays empty.
         tokens = {
             fold(token) for token in re.split(r"[ _\-.]+", identity) if fold(token)
         }
@@ -575,7 +589,9 @@ def resolve(
             found = named_ancestor(table, ancestor)
             if found is None:
                 continue
-            return str(found["id"]) if claims(found, tokens) else None
+            if claims(found, tokens):
+                return str(found["id"])
+            break
     # Layer 7: family. A family row names a family and no mark, and exactly
     # one row matching a designation answers.
     hit = [
@@ -590,14 +606,31 @@ class ClosedModdedVehicleTest(unittest.TestCase):
     """Every closed modded vehicle class resolves to the entry that names it."""
 
     table: list[dict[str, object]] = []
+    families: list[dict[str, object]] = []
 
     @classmethod
     def setUpClass(cls) -> None:
         cls.table = rows(VEHICLE_MATCH)
+        cls.families = family_rows(VEHICLE_MATCH)
 
     def test_the_closed_modded_vehicle_class_count_is_fifty_two(self) -> None:
         # Twenty-two by the earlier work, thirty by the family-word work.
         self.assertEqual(52, len(CLOSED_VEHICLE_CASES))
+
+    def test_the_family_work_closed_eight_more(self) -> None:
+        self.assertEqual(8, len(FAMILY_CLOSED_VEHICLE_CASES))
+
+    def test_each_family_closure_resolves_to_its_entry(self) -> None:
+        for name, display, chain, want in FAMILY_CLOSED_VEHICLE_CASES:
+            with self.subTest(game_class=name):
+                self.assertEqual(
+                    want, resolve(self.table, name, display, families=self.families)
+                )
+                # The chain is not the answer: these names come from the text.
+                self.assertEqual(
+                    want,
+                    resolve(self.table, name, display, chain, families=self.families),
+                )
 
     def test_each_closed_modded_vehicle_class_resolves(self) -> None:
         for name, display, want in CLOSED_VEHICLE_CASES:
@@ -669,10 +702,12 @@ class OpenModdedVehicleTest(unittest.TestCase):
     """Every open modded vehicle class stays open, for a stated reason."""
 
     table: list[dict[str, object]] = []
+    families: list[dict[str, object]] = []
 
     @classmethod
     def setUpClass(cls) -> None:
         cls.table = rows(VEHICLE_MATCH)
+        cls.families = family_rows(VEHICLE_MATCH)
 
     def test_a_static_weapon_emplacement_is_never_named_as_a_vehicle(self) -> None:
         for name in VEHICLE_EMPLACEMENT_CASES:
@@ -696,7 +731,9 @@ class OpenModdedVehicleTest(unittest.TestCase):
         # class the list calls open, the list is lying about the engine.
         for name, display in self.gap_classes().items():
             with self.subTest(game_class=name):
-                self.assertIsNone(resolve(self.table, name, display))
+                self.assertIsNone(
+                    resolve(self.table, name, display, families=self.families)
+                )
 
     def test_every_documented_open_case_is_in_the_gap_list(self) -> None:
         listed = self.gap_classes()
@@ -717,8 +754,12 @@ class OpenModdedVehicleTest(unittest.TestCase):
         # article.
         for name, display, chain, _reason in VEHICLE_OPEN_CASES:
             with self.subTest(game_class=name):
-                self.assertIsNone(resolve(self.table, name, display))
-                self.assertIsNone(resolve(self.table, name, display, chain))
+                self.assertIsNone(
+                    resolve(self.table, name, display, families=self.families)
+                )
+                self.assertIsNone(
+                    resolve(self.table, name, display, chain, families=self.families)
+                )
 
 
 class IdentityOnlyVehicleEntryTest(unittest.TestCase):
@@ -810,17 +851,25 @@ class IdentityOnlyVehicleEntryTest(unittest.TestCase):
         )
         self.assertIsNone(re.search(r"m10\d\d", identity))
 
-    def test_the_family_entry_advertises_no_family_term(self) -> None:
-        # The entry names the FMTV family. Until the corpus marks it as a
-        # family entry its row sits in the mark table, and there it must
-        # carry no family word: a family word on a mark row ties the ladder.
-        row = [r for r in self.table if r["id"] == "fmtv_family"]
-        self.assertEqual(1, len(row))
-        self.assertEqual([], row[0]["aliases"])
-        self.assertNotIn("fmtv", row[0]["keywords"])
-        name, display, chain, _want = VEHICLE_OPEN_CASES[0]
-        self.assertIsNone(resolve(self.table, name, display))
-        self.assertIsNone(resolve(self.table, name, display, chain))
+    def test_the_family_entry_sits_in_the_family_table_alone(self) -> None:
+        # A family row names the family and no mark, so it is separated from
+        # the mark table. There it would tie the four SOV classes; here it
+        # answers the base class and touches nothing else.
+        self.assertNotIn("fmtv_family", [r["id"] for r in self.table])
+        family = [r for r in family_rows(VEHICLE_MATCH) if r["id"] == "fmtv_family"]
+        self.assertEqual(1, len(family))
+        self.assertEqual(["fmtv"], family[0]["keywords"])
+        self.assertEqual([], family[0]["aliases"])
+        self.assertEqual([], family[0]["classes"])
+        self.assertEqual(
+            "fmtv_family",
+            resolve(
+                self.table,
+                "rhsusf_fmtv_base",
+                "FMTV",
+                families=family_rows(VEHICLE_MATCH),
+            ),
+        )
 
     def test_each_m_number_class_still_resolves_to_its_own_entry(self) -> None:
         for name, display, want in self.M_NUMBER_CASES:
@@ -1008,6 +1057,21 @@ class FamilyRungTest(unittest.TestCase):
                     text.index('7, "family"] call _result'),
                     text.index(previous),
                 )
+
+    def test_no_mark_row_carries_a_family_designation(self) -> None:
+        # The standing rule: a family word is never an alias or a keyword of
+        # one specific mark. The family entry owns it, and the family rung is
+        # the only layer that reads it.
+        family = family_rows(VEHICLE_MATCH)
+        self.assertTrue(family)
+        words = {word for row in family for word in row["keywords"]}
+        for row in rows(VEHICLE_MATCH):
+            with self.subTest(entry=row["id"]):
+                self.assertFalse(words & (set(row["aliases"]) | set(row["keywords"])))
+
+        loaded = vehicle_catalogue.load(REPO / "data/vehicle")
+        for word in words:
+            self.assertNotIn(word, loaded.alias_index)
 
     def test_the_generator_and_both_mirrors_agree_on_a_family(self) -> None:
         name, display = "rhs_t72bd_tv", "T-72B3 (obr. 2012g.)"

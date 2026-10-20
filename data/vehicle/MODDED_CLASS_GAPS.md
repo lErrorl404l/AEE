@@ -13,20 +13,71 @@ inheritance chain is read from the full scan, so a modded class keeps a base
 game parent, and only a class declared by a modded PBO is scored.
 
 The 2026-10-20 scan of the installed content scores 435 modded vehicle
-classes. The catalogue names 422. Thirteen stay open. The base game scores 77
+classes. The catalogue names 430. Five stay open. The base game scores 77
 of 79.
 
 | Group | Classes | Why the group stays open |
 |---|---|---|
-| Family label over a generic class | 1 | `rhsusf_fmtv_base` names a family, and every term that would reach it also reaches another class. |
-| Family designation that is a prefix of a member mark | 5 | `rhs_t72bd_tv`, `rhs_t72be_tv`, `rhs_t90saa_tv`, `rhs_t90sab_tv` and `rhssaf_army_t72s` tie on a family stem that the generator derives from each canonical name. |
-| Maker name with no mark | 2 | `LOP_LandRover_base_02` and `LOP_LandRover_mg_base` name the maker Land Rover, and no held source names the mark. |
-| Family over four marks | 5 | The five RG-33 classes tie on the derived keyword `rg33`, which all four RG-33 entries carry. |
+| Mark against mark on a type stem | 4 | `rhs_t72bd_tv` and `rhs_t72be_tv` tie at the keyword layer on `t72b3` against `t72b`; `rhs_t90saa_tv` and `rhs_t90sab_tv` tie on `t90s` against the T-90SM. A tie is final, so the family rung is never reached. |
+| Configuration word shared by two entries | 1 | `rhsusf_RG33_base` names `RG33 4X4 SOCOM`, and `4x4` is a keyword of seven catalogue entries. The keyword layer ties and the family rung is not reached. |
 
 Twelve StaticWeapon emplacements are excluded from the denominator by kind. A
 tripod mount, a towed howitzer and a MANPADS post are not vehicles, so they
 are neither named nor counted as a gap. The baseline records the exclusion
 count.
+
+## The family rung of 2026-10-20
+
+A class that names a family and no mark had no rung to answer it. The family
+now has one, at confidence 7, last of all: a family entry is identity-only,
+names the family and no mark, publishes the family designation as its keyword,
+and is generated into its own `_families` table that no higher rung reads.
+The rung answers only when exactly one family row matches, and a tie is
+still a refusal, so a class that ties at a higher layer stays open.
+
+Five family entries carry the corpus: `t72_family`, `rg33_family`,
+`landrover_family`, `fmtv_family` and no T-90 entry. The T-90 family is not
+captured: `t90` is already a curated alias of the T-90 mark, and a family
+entry owning the same word would break the rule that a family designation is
+never a mark's alias. The T-90SA classes would not close even so, because
+they tie on `t90s` at the keyword layer.
+
+A designation a family entry owns is dropped from every mark row. That is the
+same reserved-name rule the generator already applies to a base model, and it
+is what lets the family rung answer at all: while the T-72B mark carried the
+derived keyword `t72`, every query naming the family tied there.
+
+| Classes | Entry that answers | Layer |
+|---|---|---|
+| `LOP_LandRover_base_02`, `LOP_LandRover_mg_base` | `landrover_family` | family |
+| `rhssaf_army_t72s` | `t_72ms` | keyword, after `t72` left the T-72B mark |
+| `rhsusf_fmtv_base` | `fmtv_family` | family |
+| `rhsusf_RG33_CROWS_base`, `rhsusf_RG33_CROWSMK19_base` | `bae_systems_rg_33_4x4_socom_m1238` | keyword, on `m1238`, after `rg33` left the mark rows |
+| `rhsusf_rg33_d`, `rhsusf_rg33_m2_d` | `rg33_family` | family |
+
+Eight classes closed and none stopped resolving. The check compared
+`(class, display) -> entry` for all 1,344 scored classes before and after, so
+the 17 inherited closures and `kamaz_5350_mustang` are unchanged with it.
+
+One class moved. `LOP_T72_base` displays `T-72` and answered the T-72M4CZ,
+because the M4CZ carried `t72` as a curated alias, which is the shape the rule
+forbids. With the alias gone the classname's own glue answers instead:
+`LOP_T72_base` folds to `lopt72base`, which holds `t72b`, the T-72B mark's
+published designation, so the keyword layer names `t_72b_obr_1984g`. The
+correct answer for a class that displays `T-72` is the family, and reaching it
+needs a token-boundary rule in the substring layers. This change does not make
+one: the runtime matcher is the specification, and the brief for this work
+forbids changing the ladder. The class is a Project OPFOR scaffolding base
+that no unit places. The move is recorded here so the next change has the
+evidence.
+
+The T-72B3 classes name the mark `T-72B3`, which the catalogue holds as
+`t_72b3_obr_2012g`. Its text also carries `t72b`, the stem of the T-72B obr.
+1984g. mark, so the two tie and the runtime refuses the query. The RG-33 4x4
+SOCOM base class likewise names a configuration that seven entries advertise
+as `4x4`. Neither is a family word, and neither is a family answer: the T-72B3
+is a mark, and naming the family for it would be a weaker answer than the one
+the catalogue already holds.
 
 ## The family-word work of 2026-10-20
 
@@ -218,15 +269,15 @@ The RHS KamAZ-5350 is unaffected: it does not descend from the Zamak, so no
 chain reaches it, and its own keyword still names it. The lock
 `test_the_rhs_kamaz_5350_still_resolves_to_the_5350` holds that.
 
-## The two identity-only entries
+## The identity-only and family entries
 
-Two classes name a vehicle that no held document publishes a figure for. Each
-has an entry that carries the identity only: `identity_only` is set, `values`
-is empty, the entry is not runtime-ready, and its runtime row is labelled
-zeros. The identity evidence is the engine class table, the form
-`data/vehicle/class_map.json` records as `aee_class_table`, at grade
-`claimed`. No document is cited and no source record is added, because the
-entry holds no value.
+Six entries name a vehicle and publish no figure: the Nissan pickup, and the
+five family entries. Each has an entry that carries the identity only:
+`identity_only` is set, `values` is empty, the entry is not runtime-ready, and
+its runtime row is labelled zeros. The identity evidence is the engine class
+table, the form `data/vehicle/class_map.json` records as `aee_class_table`, at
+grade `claimed`. No document is cited and no source record is added, because
+the entry holds no value.
 
 `LOP_Nissan_PKM_base` is `Nissan (PKM)` and inherits `PO_Pickup_PK_base`, a
 pickup with a crew-served PKM. The entry `nissan_pickup_technical` names the
@@ -240,19 +291,18 @@ answer.
 
 `rhsusf_fmtv_base` is `FMTV` and inherits `Truck_01_base_F`. The entry
 `fmtv_family` names the United States Army Family of Medium Tactical Vehicles,
-claims no M-number and no manufacturer, and holds no figure. It carries no
-match term, so the class stays open. The measurement gives the reason. The
-token `fmtv` as an alias stops 69 vehicle-table classes and moves four. As a
-keyword it ties the four M1078A1R and M1084A1R SOV classes, which resolve on
-that layer, and the runtime returns nothing from a layer with more than one
-candidate, so those four stop resolving. A class name joined as `fmtvbase` is
-not a published designation, so it is not used. The M1078, M1083, M1084 and
-M1085 classes resolve to their own entries, and the locks in
-`tools/tests/test_mod_class_resolution.py` hold both facts.
+claims no M-number and no manufacturer, and holds no figure. It is a family
+entry: it publishes the family designation `fmtv` as its keyword and is read
+by the family rung alone, from its own table, so the four M1078A1R and
+M1084A1R SOV classes keep resolving on the mark table and the base class
+itself now answers the family. The M1078, M1083, M1084 and M1085 classes
+resolve to their own entries.
 
-The layer rule decides this entry: evidence that ties is not evidence. The
-same rule is mirrored in `tools/tests/test_mod_class_resolution.py`, which
-counts a tied layer as no answer.
+The layer rule decides every entry: evidence that ties is not evidence. A
+family entry avoids the tie by living in a table that no mark layer reads, not
+by weakening the rule. The same rule is mirrored in
+`tools/tests/test_mod_class_resolution.py`, which counts a tied layer as no
+answer.
 
 ## Aircraft
 

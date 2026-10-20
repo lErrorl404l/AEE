@@ -511,7 +511,8 @@ class TestProjectionFreshness(unittest.TestCase):
             match = Path(tmp) / "fnc_getVehicleMatch.sqf"
             data = Path(tmp) / "fnc_getVehicleData.sqf"
             rows = gen.load_rows(gen.DEFAULT_DATA)
-            match.write_text(gen.render_match(rows), encoding="utf-8")
+            families = gen.load_family_rows(gen.DEFAULT_DATA)
+            match.write_text(gen.render_match(rows, families), encoding="utf-8")
             data.write_text(gen.render_data(), encoding="utf-8")
             self.assertEqual(gen.check_outputs(gen.DEFAULT_DATA, match, data), 0)
 

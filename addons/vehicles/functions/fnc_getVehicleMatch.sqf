@@ -118,10 +118,10 @@ private _table = [
     ["at105_saxon", "at105_saxon", "wheeled", "", "", "at105saxon", "at105|at105saxo", "wikipedia_saxon", [11660, 0, 0, 0, 0, "", ""]],
     ["atf_dingo", "atf_dingo", "wheeled", "", "", "atfdingo", "", "wikipedia_atf_dingo", [11900, 0, 0, 0, 0, "", ""]],
     ["bae_systems_caiman_xm1220_xm1230_caiman_plus", "bae_systems_caiman_xm1220_xm1230_caiman_plus", "wheeled", "", "", "baesystemscaimanxm1220xm1230caimanplus|m1220|m1230|xm1220|xm1230|caiman", "baesystemscaimanxm1220|systemscaiman|caimanxm1220|xm1230caimanplus|xm1230caiman|caimanplus|baesystemscaiman|baesystemscaimanxm1220xm1230", "globalsecurity_caiman_specs", [13835, 0, 0, 0, 0, "", ""]],
-    ["bae_systems_rg_33_4x4", "bae_systems_rg_33_4x4", "wheeled", "", "", "baesystemsrg334x4", "rg33|4x4|systemsrg33|rg334x4|baesystemsrg33", "armyrecognition_rg33_4x4", [14000, 0, 0, 0, 0, "", ""]],
-    ["bae_systems_rg_33_4x4_socom_m1238", "bae_systems_rg_33_4x4_socom_m1238", "wheeled", "", "", "baesystemsrg334x4socomm1238|m1238|rg33socom", "rg33|4x4|systemsrg33|rg334x4|4x4socom|socomm1238|baesystemsrg334x4socom|rg33soco", "warwheels_rg33_4x4_socom", [14000, 0, 0, 0, 0, "", ""]],
-    ["bae_systems_rg_33l_6x6", "bae_systems_rg_33l_6x6", "wheeled", "", "", "baesystemsrg33l6x6|m1232|m1237|rg33l", "rg33|6x6|systemsrg33l|rg33l6x6|baesystemsrg33l", "armyrecognition_rg33_4x4", [24000, 0, 0, 0, 0, "", ""]],
-    ["bae_systems_rg_33l_socom_armored_utility_vehicle_auv", "bae_systems_rg_33l_socom_armored_utility_vehicle_auv", "wheeled", "", "", "baesystemsrg33lsocomarmoredutilityvehicleauv|m1239|rg33lsocom|socomauv", "rg33l|rg33|systemsrg33l|socomarmored|armoredutility|utilityvehicle|vehicleauv|baesystemsrg33lsocomarmoredutilityvehicle|baesystemsrg33lsocomarmoredutilityvehicleau|rg33lsoco", "bae_rg33l_auv_brochure", [26473, 0, 0, 0, 0, "", ""]],
+    ["bae_systems_rg_33_4x4", "bae_systems_rg_33_4x4", "wheeled", "", "", "baesystemsrg334x4", "4x4|systemsrg33|rg334x4|baesystemsrg33", "armyrecognition_rg33_4x4", [14000, 0, 0, 0, 0, "", ""]],
+    ["bae_systems_rg_33_4x4_socom_m1238", "bae_systems_rg_33_4x4_socom_m1238", "wheeled", "", "", "baesystemsrg334x4socomm1238|m1238|rg33socom", "4x4|systemsrg33|rg334x4|4x4socom|socomm1238|baesystemsrg334x4socom|rg33soco", "warwheels_rg33_4x4_socom", [14000, 0, 0, 0, 0, "", ""]],
+    ["bae_systems_rg_33l_6x6", "bae_systems_rg_33l_6x6", "wheeled", "", "", "baesystemsrg33l6x6|m1232|m1237|rg33l", "6x6|systemsrg33l|rg33l6x6|baesystemsrg33l", "armyrecognition_rg33_4x4", [24000, 0, 0, 0, 0, "", ""]],
+    ["bae_systems_rg_33l_socom_armored_utility_vehicle_auv", "bae_systems_rg_33l_socom_armored_utility_vehicle_auv", "wheeled", "", "", "baesystemsrg33lsocomarmoredutilityvehicleauv|m1239|rg33lsocom|socomauv", "rg33l|systemsrg33l|socomarmored|armoredutility|utilityvehicle|vehicleauv|baesystemsrg33lsocomarmoredutilityvehicle|baesystemsrg33lsocomarmoredutilityvehicleau|rg33lsoco", "bae_rg33l_auv_brochure", [26473, 0, 0, 0, 0, "", ""]],
     ["bionix", "bionix", "tracked", "", "", "bionix|bionixafv", "singapore", "wikipedia_bionix", [23000, 0, 0, 0, 354.207439, "", ""]],
     ["bm2t_stalker", "bm2t_stalker", "tracked", "", "oapctracked02aaf|oapctracked02cannonf", "2tstalker|bm2tstalker|kamysh|stalker|tigris", "bm2t|bm2|2tstalke|bm2tstalke", "", [0, 0, 0, 0, 0, "", ""]],
     ["bm_21_grad", "bm_21_grad", "wheeled", "", "", "bm21grad", "bm21|bm21gra", "wikipedia_bm_21_grad", [13710, 0, 0, 0, 0, "", ""]],
@@ -174,7 +174,6 @@ private _table = [
     ["darpa_crusher_ugcv", "darpa_crusher_ugcv", "wheeled", "", "btugv01olivef|btugv01rcwsolivef|bugv01f|bugv01rcwsf|ieugv01f|ieugv01rcwsf|iugv01f|iugv01rcwsf|ougv01f|ougv01rcwsf|ugv01basef|ugv01rcwsbasef", "crusher|crusherugcv|darpacrusher|saif|stomper", "darpacrusherugcv", "", [0, 0, 0, 0, 0, "", ""]],
     ["eitan", "eitan", "wheeled", "", "", "eitan|eitanafv", "armouredfightingvehicle", "wikipedia_eitan", [50000, 0, 0, 0, 559.274904, "", ""]],
     ["fahd", "fahd", "wheeled", "", "", "fahd|fahdapc", "4x4|egypt", "wikipedia_fahd", [12500, 0, 0, 370, 205.067465, "", ""]],
-    ["fmtv_family", "fmtv_family", "wheeled", "", "", "", "fmtvfamilyfamilyofmediumtacticalvehicles|fmtvfamily|familyfamily|familyof|ofmedium|mediumtactical|tacticalvehicles|familyofmediumtacticalvehicles", "", [0, 0, 0, 0, 0, "", ""]],
     ["freccia", "freccia", "wheeled", "", "", "freccia|vbmfreccia|frecciaifv", "8x8", "wikipedia_freccia", [22000, 0, 0, 0, 0, "", ""]],
     ["fv101_scorpion", "fv101_scorpion", "tracked", "", "", "fv101scorpion", "fv101|fv101scorpio", "wikipedia_fv101_scorpion", [8074, 0, 0, 0, 0, "", ""]],
     ["fv107_scimitar", "fv107_scimitar", "tracked", "", "", "fv107scimitar", "fv107|fv107scimita", "wikipedia_fv107_scimitar", [7800, 0, 0, 0, 0, "", ""]],
@@ -207,7 +206,7 @@ private _table = [
     ["kawasaki_ninja_250r_ex250f", "kawasaki_ninja_250r_ex250f", "wheeled", "", "", "ninja250|ninja250r|ex250|ex250f|gpx250|gpx250r|kawasakininja250r", "motorcycle|ninja|sportbike|kawasakininja250rex250f|250r|kawasakininja|250rex250f|kawasakininja250", "kawasaki_ninja_250r_service_manual", [161, 130.0, 614.4, 155, 27.948831, "manual", "none"]],
     ["komatsu_lav", "komatsu_lav", "wheeled", "", "", "komatsulav|jgsdflav", "japaneselav", "komatsu_lav", [4500, 0, 0, 0, 119.31198, "automatic", ""]],
     ["kraz_255b1", "kraz_255b1", "wheeled", "", "", "kraz255b1", "", "wikipedia_kraz_255", [11950, 0, 0, 0, 0, "", ""]],
-    ["land_rover_wolf_xd_110", "land_rover_wolf_xd_110", "wheeled", "", "", "landroverwolfxd110", "landrover|roverwolf|wolfxd|xd110|landroverwolf", "elite_uk_forces_land_rover_wolf", [1600, 0, 0, 0, 0, "", ""]],
+    ["land_rover_wolf_xd_110", "land_rover_wolf_xd_110", "wheeled", "", "", "landroverwolfxd110", "roverwolf|wolfxd|xd110|landroverwolf", "elite_uk_forces_land_rover_wolf", [1600, 0, 0, 0, 0, "", ""]],
     ["lav25", "lav25", "wheeled", "", "", "lav25", "", "wikipedia_lav25", [12800, 0, 0, 0, 205.0, "", ""]],
     ["lav_6", "lav_6", "wheeled", "", "", "lav6|lav60", "8x8|lav", "wikipedia_lav6", [20638, 0, 0, 0, 335.564942, "", ""]],
     ["leclerc", "leclerc", "tracked", "", "", "leclerc|charleclerc", "", "wikipedia_leclerc", [54500, 0, 0, 500, 1118.549808, "automatic", ""]],
@@ -316,7 +315,7 @@ private _table = [
     ["rooikat", "rooikat", "wheeled", "", "", "rooikat", "8x8", "wikipedia_rooikat", [28000, 0, 0, 0, 413.863429, "", ""]],
     ["rosomak", "rosomak", "wheeled", "", "", "rosomak|ktorosomak", "8x8|patriaamv", "wikipedia_rosomak", [22000, 0, 0, 0, 404.91503, "", ""]],
     ["sd_kfz_251", "sd_kfz_251", "tracked", "", "", "sdkfz251", "", "wikipedia_sd_kfz_251", [7810, 0, 0, 0, 0, "", ""]],
-    ["snatch_land_rover", "snatch_land_rover", "wheeled", "", "", "snatchlandrover", "snatchland|landrover", "wikipedia_snatch_land_rover", [4050, 0, 0, 0, 0, "", ""]],
+    ["snatch_land_rover", "snatch_land_rover", "wheeled", "", "", "snatchlandrover", "snatchland", "wikipedia_snatch_land_rover", [4050, 0, 0, 0, 0, "", ""]],
     ["strv_122", "strv_122", "tracked", "", "", "stridsvagn122|strv122", "leopard2", "wikipedia_strv_122", [62500, 0, 0, 540, 1102.890111, "", ""]],
     ["stryker_m1126_icv", "m1126_stryker_icv", "wheeled", "", "", "stryker|m1126|m1126strykericv|m1126icv", "8x8|icv|m1126stryker|strykericv|m1126strykeric|m1126ic", "wikipedia_stryker", [16470, 0, 0, 0, 260.994955, "", ""]],
     ["t_14_armata", "t_14_armata", "tracked", "", "", "t14armata", "t14|t14armat", "wikipedia_t14_armata", [55000, 0, 0, 0, 0, "", ""]],
@@ -326,8 +325,8 @@ private _table = [
     ["t_62", "t_62", "tracked", "", "", "t62", "", "wikipedia_t_62", [37000, 0, 0, 0, 0, "", ""]],
     ["t_64", "t_64", "tracked", "", "", "t64", "", "t64a_technical_manual_1984", [38500, 0, 0, 500, 521.98991, "", ""]],
     ["t_72b3_obr_2012g", "t_72b3_obr_2012g", "tracked", "", "", "t72b3obr2012g", "t72b3|2012g|t72b3obr|obr2012g", "ru_wikipedia_d0_a2_72_d0_913", [46500, 0, 0, 0, 0, "", ""]],
-    ["t_72b_obr_1984g", "t_72b_obr_1984g", "tracked", "", "", "t72bobr1984g", "t72b|t72|1984g|t72bobr|obr1984g|t72bobr1984", "wikipedia_t_72", [44500, 0, 0, 0, 0, "", ""]],
-    ["t_72m4cz", "t_72m4cz", "tracked", "", "", "t72m4cz|t72", "t72m4", "wikipedia_t_72m4cz", [48000, 0, 0, 0, 746, "", ""]],
+    ["t_72b_obr_1984g", "t_72b_obr_1984g", "tracked", "", "", "t72bobr1984g", "t72b|1984g|t72bobr|obr1984g|t72bobr1984", "wikipedia_t_72", [44500, 0, 0, 0, 0, "", ""]],
+    ["t_72m4cz", "t_72m4cz", "tracked", "", "", "t72m4cz", "t72m4", "wikipedia_t_72m4cz", [48000, 0, 0, 0, 746, "", ""]],
     ["t_72ms", "t_72ms", "tracked", "", "", "t72ms", "t72m", "wikipedia_t_72", [44500, 0, 0, 0, 0, "", ""]],
     ["t_80", "t_80", "tracked", "", "", "t80", "", "ru_wikipedia_d0_a2_80", [42000, 0, 0, 0, 0, "", ""]],
     ["t_80a", "t_80a", "tracked", "", "", "t80a", "", "ru_wikipedia_d0_a2_80_d0_90", [45200, 0, 0, 0, 0, "", ""]],
@@ -372,7 +371,10 @@ private _table = [
 // identity-only and lives in its own table: no layer above can reach it,
 // and the last layer alone reads it. The columns are the ones above.
 private _families = [
-
+    ["fmtv_family", "fmtv_family", "wheeled", "", "", "", "fmtv", "", [0, 0, 0, 0, 0, "", ""]],
+    ["landrover_family", "landrover_family", "wheeled", "", "", "", "landrover", "", [0, 0, 0, 0, 0, "", ""]],
+    ["rg33_family", "rg33_family", "wheeled", "", "", "", "rg33", "", [0, 0, 0, 0, 0, "", ""]],
+    ["t72_family", "t72_family", "tracked", "", "", "", "t72", "", [0, 0, 0, 0, 0, "", ""]]
 ];
 
 // [catalogue_id, variant_id, vehicle_type, confidence, matched_by,

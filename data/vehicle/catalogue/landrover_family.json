@@ -1,0 +1,27 @@
+{
+  "retrieved": "2026-10-20",
+  "note": "Identity-only capture for the Land Rover, the British light utility vehicle family. The entry names the family and no mark: it publishes no figure, carries no alias and claims no member. The identity evidence is the engine class table, which declares the Project OPFOR Land Rover base classes with the display names Land Rover and Land Rover (M2). The grade is claimed, because the source is the engine class table. That is the form data/vehicle/class_map.json records as aee_class_table: identity evidence only, never a figure. No document citation is invented and no sources.json record is created. The keyword holds the family designation the display names carry. The Wolf and the Snatch derive the same stem from their own names, so the family owns it here and a mark entry must not claim it.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "landrover_family",
+      "canonical_name": "Land Rover family",
+      "maker": "Land Rover",
+      "model": "Land Rover",
+      "variant": "family designation, no member claimed",
+      "variant_id": "landrover_family",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "United Kingdom",
+      "era": "modern",
+      "aliases": [],
+      "keywords": [
+        "landrover"
+      ],
+      "runtime_ready": false,
+      "identity_only": true,
+      "family": true,
+      "values": {}
+    }
+  ]
+}

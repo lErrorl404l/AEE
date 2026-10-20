@@ -561,6 +561,7 @@ def build_row(
     mapped_classes: Iterable[str] = (),
     reserved_identities: frozenset[str] = frozenset(),
     shared_words: frozenset[str] = frozenset(),
+    family_words: frozenset[str] = frozenset(),
 ) -> list[object] | None:
     """Return one runtime row, or None when the record has no identity.
 
@@ -580,6 +581,12 @@ def build_row(
     entry. A derived designation equal to one of them is dropped: a sub-mark
     must not advertise the base model's own name, or a query naming the base
     model ties against every sub-mark and the matcher answers nothing.
+
+    ``family_words`` holds the designations a FAMILY entry owns. A mark
+    must never claim one: "t72" names the T-72 family, so as a keyword of
+    the T-72B mark it would tie every query that names the family and no
+    mark could answer. The family entry owns it, and the family rung alone
+    reads it.
     """
     fields = resolve_row(record)
     if fields is None:
@@ -606,7 +613,7 @@ def build_row(
     # and tie every query.
     keyword_keys: list[str] = []
     for key in _normalised_list(entry.get("keywords")):
-        if key in alias_keys or key in _CATEGORY_WORDS:
+        if key in alias_keys or key in _CATEGORY_WORDS or key in family_words:
             continue
         # A curated keyword is held for documentation and many of them are
         # categories ("mrap", "attack", "mainbattletank") or makers. Those
@@ -617,7 +624,7 @@ def build_row(
         keyword_keys.append(key)
     own_identity = _designation_fold(entry.get("canonical_name") or "")
     for key in designations(entry):
-        if key in alias_keys or key in keyword_keys:
+        if key in alias_keys or key in keyword_keys or key in family_words:
             continue
         # A base model owns its own name; a sub-mark may not claim it.
         if key != own_identity and key in reserved_identities:
@@ -721,7 +728,8 @@ def build_rows(
     belongs to its own table, which no rung above the family rung reads.
     """
     table = mappings if mappings is not None else {}
-    records = [record for record in records if not _is_family(record)]
+    all_records = [record for record in records]
+    records = [record for record in all_records if not _is_family(record)]
     # Every entry's own folded canonical name. A derived designation equal
     # to another entry's name is that entry's identity, not this one's.
     identities: set[str] = set()
@@ -744,6 +752,15 @@ def build_rows(
         for key in words:
             tally[key] = tally.get(key, 0) + 1
     shared = frozenset(k for k, n in tally.items() if n > SHARED_WORD_MAX)
+    # The designations a family entry owns belong to the family rung alone.
+    # Counting them over the mark entries too would let a mark claim one and
+    # tie every query that names the family.
+    family_words = frozenset(
+        key
+        for record in all_records
+        if _is_family(record)
+        for key in _normalised_list((_mapping(record) or {}).get("keywords"))
+    )
     rows: list[list[object]] = []
     for record in records:
         entry = _mapping(record)
@@ -751,7 +768,7 @@ def build_rows(
             continue
         cid = entry.get("catalogue_id")
         classes = table.get(cid, ()) if isinstance(cid, str) else ()
-        row = build_row(entry, classes, reserved, shared)
+        row = build_row(entry, classes, reserved, shared, family_words)
         if row is not None:
             rows.append(row)
     rows.sort(key=lambda row: (str(row[COL_CATALOGUE]), str(row[COL_VARIANT])))
@@ -864,9 +881,16 @@ def build_band_row(record: object) -> list[object] | None:
 
 
 def build_band_rows(records: Iterable[object]) -> list[list[object]]:
-    """Build every band row and sort it by catalogue id."""
+    """Build every band row and sort it by catalogue id.
+
+    A family entry emits no band row: it names a family and publishes no
+    property, so it is not a fallback for a class whose live properties are
+    the only evidence left.
+    """
     rows: list[list[object]] = []
     for record in records:
+        if _is_family(record):
+            continue
         row = build_band_row(record)
         if row is not None:
             rows.append(row)
@@ -1038,11 +1062,13 @@ def match_row(
         found = _named_ancestor(rows, ancestor_name)
         if found is None:
             continue
-        # The nearest named ancestor decides. When the class text does not
-        # name its entry, the neighbour is a different thing, not a donor.
+        # The nearest named ancestor decides, and it is not walked past.
+        # When the class text names another article, the rung yields no row
+        # and the ladder continues: it never turns the neighbour into an
+        # answer, and the family rung may still name the class.
         if _claims(found, tokens):
             return result(found, 6, "inherited")
-        return None
+        break
 
     family = [
         row

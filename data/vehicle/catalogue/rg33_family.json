@@ -1,0 +1,27 @@
+{
+  "retrieved": "2026-10-20",
+  "note": "Identity-only capture for the RG-33, the BAE Systems mine-resistant armoured vehicle family. The entry names the family and no mark: it publishes no figure, carries no alias and claims no member. The identity evidence is the engine class table, which declares the RHS RG33, RG33 CROWS and RG33 Mk19 classes with display names that carry the RG-33 designation. The grade is claimed, because the source is the engine class table. That is the form data/vehicle/class_map.json records as aee_class_table: identity evidence only, never a figure. No document citation is invented and no sources.json record is created. The keyword holds the family designation the class names carry. The four RG-33 marks derive the same stem, so it ties every one of them there; the family owns it, and the family rung alone reads it.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "rg33_family",
+      "canonical_name": "RG-33 family",
+      "maker": "BAE Systems",
+      "model": "RG-33",
+      "variant": "family designation, no member claimed",
+      "variant_id": "rg33_family",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "United States",
+      "era": "modern",
+      "aliases": [],
+      "keywords": [
+        "rg33"
+      ],
+      "runtime_ready": false,
+      "identity_only": true,
+      "family": true,
+      "values": {}
+    }
+  ]
+}

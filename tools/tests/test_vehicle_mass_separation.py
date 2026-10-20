@@ -173,8 +173,11 @@ class GeneratedCorpusFreshnessTest(unittest.TestCase):
 
     def test_the_committed_matcher_equals_a_fresh_render(self) -> None:
         rows = corpus_gen.load_rows(DATA)
+        families = corpus_gen.load_family_rows(DATA)
         self.assertEqual(
-            text(MATCH), corpus_gen.render_match(rows), "fnc_getVehicleMatch is stale"
+            text(MATCH),
+            corpus_gen.render_match(rows, families),
+            "fnc_getVehicleMatch is stale",
         )
 
     def test_the_committed_lookup_equals_a_fresh_render(self) -> None:
