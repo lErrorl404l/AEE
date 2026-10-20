@@ -1,0 +1,27 @@
+{
+  "retrieved": "2026-10-20",
+  "note": "Identity-only capture for the HH-60, the Sikorsky rescue helicopter family. The entry names the family and no mark: it publishes no figure, carries no alias and claims no member. The identity evidence is the aircraft catalogue itself: the Sikorsky HH-60G Pave Hawk entry carries the HH-60 designation in its published name, and the HCT game classes display it. The grade is claimed, because the evidence is published identity text and not a held figure. No document citation is invented and no sources.json record is created. The keyword holds the family designation the member name carries. A mark entry must not claim it: the family owns it, and the family rung alone reads it.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "hh60_family",
+      "canonical_name": "HH-60 family",
+      "maker": "Sikorsky",
+      "model": "HH-60",
+      "variant": "family designation, no member claimed",
+      "variant_id": "hh60_family",
+      "vehicle_type": "rotary_wing",
+      "class_token": "",
+      "country": "US",
+      "era": "modern",
+      "aliases": [],
+      "keywords": [
+        "hh60"
+      ],
+      "runtime_ready": false,
+      "identity_only": true,
+      "family": true,
+      "values": {}
+    }
+  ]
+}

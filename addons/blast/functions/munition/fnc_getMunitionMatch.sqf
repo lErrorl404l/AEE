@@ -27,6 +27,11 @@ The ladder, in order:
   4 closest       the best-scoring entry, where a designation carrying a
                   type number counts double because a type number
                   identifies while a plain word only describes
+  5 family        the class text names a family and no mark: exactly one
+                  row of the family table carries a designation of 3
+                  or more characters in the query. A family row is
+                  identity-only and answers only when it is the only
+                  one, so it never takes an answer from a mark
 
 An ambiguous match returns an empty array, and so does an unknown class.
 There is no default: the caller falls back on its own documented estimate
@@ -171,8 +176,8 @@ private _table = [
     ["gbu24_paveway", "bomb", "", "gbu24|pavewayiii|pw3", "gbu24pavewayiii|gbu24|gbu24paveway|pavewayiii|pw3", "wikipedia_gbu_24_paveway_iii", [1050, 0, 910, 457.2, 4390, ""]],
     ["gbu31_jdam", "bomb", "", "gbu31|gbu56", "gbu31jdam|gbu31|gbu56", "wikipedia_joint_direct_attack_munition", [910, 0, 0, 0, 0, ""]],
     ["gbu32_jdam", "bomb", "", "gbu32|gbu55", "gbu32jdam|gbu32|gbu55", "wikipedia_joint_direct_attack_munition", [450, 0, 0, 0, 0, ""]],
-    ["gbu38_jdam", "bomb", "", "gbu38|gbu54|jdam|ljdam", "gbu38jdam|gbu38|gbu54|jdam|ljdam", "wikipedia_joint_direct_attack_munition", [230, 0, 0, 0, 0, ""]],
-    ["gbu39_sdb", "bomb", "", "gbu39|sdb", "gbu39smalldiameterbomb|gbu39|gbu39small|smalldiameter|diameterbomb", "wikipedia_gbu_39_small_diameter_bomb", [129, 93, 0, 0, 1800, ""]],
+    ["gbu38_jdam", "bomb", "", "gbu38|gbu54|ljdam", "gbu38jdam|gbu38|gbu54|ljdam", "wikipedia_joint_direct_attack_munition", [230, 0, 0, 0, 0, ""]],
+    ["gbu39_sdb", "bomb", "", "gbu39", "gbu39smalldiameterbomb|gbu39|gbu39small|smalldiameter|diameterbomb", "wikipedia_gbu_39_small_diameter_bomb", [129, 93, 0, 0, 1800, ""]],
     ["gbu53_stormbreaker", "bomb", "", "gbu53|sdbii|stormbreaker", "gbu53|bstormbreaker|sdbii|stormbreaker", "wikipedia_gbu_53_b_stormbreaker", [93, 48, 0, 150, 1760, ""]],
     ["gcs1", "bomb", "", "gcs1", "gcs1", "", [0, 0, 0, 0, 0, ""]],
     ["gsh23", "cannon", "", "gsh23", "gryazevshipunovgsh23|gsh23", "wikipedia_gryazev_shipunov_gsh_23", [49.2, 0, 0, 23, 1387, ""]],
@@ -271,6 +276,14 @@ private _table = [
     ["zis_s53", "cannon", "", "ziss53", "85mmairdefensegunm193952k|m1939|52k|mmair|airdefense|defensegun|gunm1939|m193952k|ziss53|s53", "wikipedia_zis_s_53", [4500, 0, 0, 85, 7050, ""]],
     ["zu23_2a14", "cannon", "", "2a14|azp23|zu23", "2a14|azp23|zu23", "wikipedia_zu_23_2", [949.822, 0, 0, 23, 4570, ""]],
     ["zuni", "rocket", "", "zuni", "zunirocket|zuni", "wikipedia_zuni_rocket", [36.1, 0, 0, 127, 2000, ""]]
+];
+
+// Family rows. A family entry names a family and no mark, so it is
+// identity-only and lives in its own table: no layer above can reach it,
+// and the last layer alone reads it. The columns are the ones above.
+private _families = [
+    ["jdam_family", "bomb", "", "", "jdam", "", [0, 0, 0, 0, 0, ""]],
+    ["sdb_family", "bomb", "", "", "sdb", "", [0, 0, 0, 0, 0, ""]]
 ];
 
 private _result = {
@@ -384,4 +397,21 @@ private _tie = false;
 if ((_bestRow isNotEqualTo []) && {!_tie} && _bestScore > _runnerUp) exitWith {
     [_bestRow, 4, "closest"] call _result
 };
+
+// Layer 5: family. The class text names a family and no mark. A family row
+// is identity-only, so it carries no class, no alias and no value, and it
+// is read here alone. The scan is the keyword rule, over the declared
+// family designations. Exactly one candidate answers: two families in one
+// query name no single family, and none names nothing.
+_candidates = [];
+{
+    _x params ["_catalogue", "_type", "_classes", "_aliases", "_keywords", "_source", "_values"];
+    private _row = _x;
+    private _hit = false;
+    {
+        if ((count _x) >= 3 && {_query find _x >= 0}) then { _hit = true; };
+    } forEach (_keywords splitString "|");
+    if (_hit) then { _candidates pushBack _row; };
+} forEach _families;
+if ((count _candidates) == 1) exitWith { [_candidates select 0, 7, "family"] call _result };
 []

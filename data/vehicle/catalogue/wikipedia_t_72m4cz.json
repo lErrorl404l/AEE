@@ -1,6 +1,6 @@
 {
   "retrieved": "2026-09-26",
-  "note": "Held tier-5 English Wikipedia compilation for the T-72M4CZ main battle tank, the Czech upgrade of the T-72. The registry marks primary_held false. It publishes the weight, the length, the width, the height, the engine model and rating and the maximum road speed. It publishes no range and no ground clearance, so those fields are absent.",
+  "note": "Held tier-5 English Wikipedia compilation for the T-72M4CZ main battle tank, the Czech upgrade of the T-72. The registry marks primary_held false. It publishes the weight, the length, the width, the height, the engine model and rating and the maximum road speed. It publishes no range and no ground clearance, so those fields are absent. The T-72 designation names the family the M4CZ belongs to and is owned by the family entry, so it is not an alias or a keyword of this mark; the entry is identified by its own M4CZ designation.",
   "sources": [],
   "entries": [
     {
@@ -16,15 +16,12 @@
       "era": "modern",
       "aliases": [
         "t-72m4cz",
-        "t72m4cz",
-        "t-72",
-        "t72"
+        "t72m4cz"
       ],
       "keywords": [
         "mbt",
         "main battle tank",
-        "tracked",
-        "t-72"
+        "tracked"
       ],
       "runtime_ready": false,
       "values": {

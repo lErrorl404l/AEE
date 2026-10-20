@@ -24,6 +24,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 import sys
 import tempfile
 from collections.abc import Mapping, Sequence
@@ -477,6 +478,18 @@ def validate_record(
         _check_runtime_required(record_id, vehicle_type, values, errors)
 
 
+def validate_family_shape(
+    cid: str, entry: Mapping[str, object], errors: list[str]
+) -> None:
+    """Check the shape an entry that names a family must carry.
+
+    The rule is shared with the aircraft and munition validators, so it lives
+    in ``vehicle_catalogue`` and this function keeps the name this module has
+    always exposed.
+    """
+    errors.extend(vehicle_catalogue.family_shape_errors(cid, entry))
+
+
 def validate_catalogue(
     entries: Sequence[object], by_id: dict[str, dict[str, object]]
 ) -> list[str]:
@@ -544,6 +557,12 @@ def validate_catalogue(
 
         for field, raw_entry in values.items():
             validate_value(cid, field, raw_entry, by_id, errors, kind="catalogue")
+
+        family = entry.get("family")
+        if family is not None and not isinstance(family, bool):
+            errors.append(f"catalogue {cid}: family must be true or false")
+        elif family is True:
+            validate_family_shape(cid, entry, errors)
 
         # A catalogue entry always projects. The gate is identity, not
         # completeness: it must resolve at least one runtime field from a held

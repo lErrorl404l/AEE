@@ -24,6 +24,27 @@ in the output and in the baseline under `excluded`:
   `tools/validation/munition_kind.py`.
 
 
+## Family rows
+
+A family entry names a family and no mark. The runtime matcher answers it
+last, at confidence 7, from a separate `_families` table, and only when
+exactly one family row matches. The measurement reads the same two tables
+from the generated file, so a class the family rung answers counts as
+resolved and never appears in a gap list. A family row is not excluded from
+a table: it is an identity the player sees, and it is what the count credits
+when no mark answers.
+
+## The table records
+
+Each table keeps the classes it cannot name in its own record, with the
+reason and the evidence for the reason:
+
+- vehicles: `data/vehicle/MODDED_CLASS_GAPS.md`
+- aircraft: `data/aircraft/MODDED_CLASS_GAPS.md`
+- vehicle armament: `data/coverage/modded_gaps_vehicle_armament.txt`,
+  `data/munition/modded_coverage.json` and the lock
+  `tools/tests/test_modded_weapon_coverage.py`
+
 ## Regenerate
 
 ```bash

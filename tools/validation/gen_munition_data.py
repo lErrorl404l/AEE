@@ -45,6 +45,7 @@ _REPO = Path(__file__).parents[2]
 if str(_REPO) not in sys.path:
     sys.path.insert(0, str(_REPO))
 
+from tools.validation import vehicle_catalogue
 from tools.validation.identity_designations import designations as _designations
 from tools.validation.identity_designations import fold as _fold
 from tools.validation.munition_kind import SCREEN_TERMS
@@ -125,9 +126,7 @@ def row_designations(entries: list[dict]) -> dict[str, list[str]]:
     out = {}
     for cid, keys in derived.items():
         out[cid] = [
-            key
-            for key in keys
-            if key not in shared and whole.get(key, cid) == cid
+            key for key in keys if key not in shared and whole.get(key, cid) == cid
         ]
     return out
 
@@ -153,15 +152,27 @@ def source_of(entry: dict) -> str:
     return ""
 
 
-def rows(entries: list[dict]) -> list[str]:
+def rows(entries: list[dict], family_words: frozenset[str] = frozenset()) -> list[str]:
+    """Render the mark table. A family-owned designation is dropped here.
+
+    A family entry owns its designation, so no mark may carry it: while both
+    the GBU-31 and the GBU-38 published JDAM, every query naming the munition
+    family tied and no mark could answer.
+    """
     keys = row_designations(entries)
     out = []
     for entry in sorted(entries, key=lambda e: e["catalogue_id"]):
         cid = entry["catalogue_id"]
         aliases = "|".join(
-            sorted({_fold(a) for a in (entry.get("aliases") or []) if _fold(a)})
+            sorted(
+                {
+                    _fold(a)
+                    for a in (entry.get("aliases") or [])
+                    if _fold(a) and _fold(a) not in family_words
+                }
+            )
         )
-        keywords = "|".join(keys[cid])
+        keywords = "|".join(k for k in keys[cid] if k not in family_words)
         classes = "|".join(
             sorted({_fold(c) for c in (entry.get("classes") or []) if _fold(c)})
         )
@@ -175,7 +186,33 @@ def rows(entries: list[dict]) -> list[str]:
     return out
 
 
-MATCH_TEMPLATE = '''#include "..\\..\\script_component.hpp"
+def is_family(entry: dict) -> bool:
+    """True when the entry names a family and no mark."""
+    return entry.get("family") is True
+
+
+def family_rows(entries: list[dict]) -> list[str]:
+    """The family table: identity-only rows that name a family and no mark.
+
+    A family row carries no class, no alias, no source and no value. Its
+    designation is the entry's own keyword list and is never derived, so a
+    family cannot pick up a mark's term from a name.
+    """
+    out = []
+    for entry in sorted(entries, key=lambda e: e["catalogue_id"]):
+        keywords = "|".join(
+            sorted({_fold(key) for key in (entry.get("keywords") or []) if _fold(key)})
+        )
+        values = ", ".join(f"{0:g}" for _ in FIELDS)
+        extra = ", ".join('""' for _ in TEXT_FIELDS)
+        out.append(
+            f'    ["{entry["catalogue_id"]}", "{entry.get("munition_type", "")}", '
+            f'"", "", "{keywords}", "", [{values}, {extra}]]'
+        )
+    return out
+
+
+MATCH_TEMPLATE = """#include "..\\..\\script_component.hpp"
 /*
 Munition identity matcher.
 
@@ -204,6 +241,11 @@ The ladder, in order:
   4 closest       the best-scoring entry, where a designation carrying a
                   type number counts double because a type number
                   identifies while a plain word only describes
+  5 family        the class text names a family and no mark: exactly one
+                  row of the family table carries a designation of {scan}
+                  or more characters in the query. A family row is
+                  identity-only and answers only when it is the only
+                  one, so it never takes an answer from a mark
 
 An ambiguous match returns an empty array, and so does an unknown class.
 There is no default: the caller falls back on its own documented estimate
@@ -276,6 +318,13 @@ if (_screened) exitWith {{ [] }};
 
 private _table = [
 {rows}
+];
+
+// Family rows. A family entry names a family and no mark, so it is
+// identity-only and lives in its own table: no layer above can reach it,
+// and the last layer alone reads it. The columns are the ones above.
+private _families = [
+{families}
 ];
 
 private _result = {{
@@ -389,10 +438,27 @@ private _tie = false;
 if ((_bestRow isNotEqualTo []) && {{!_tie}} && _bestScore > _runnerUp) exitWith {{
     [_bestRow, 4, "closest"] call _result
 }};
-[]
-'''
 
-DATA_TEMPLATE = '''#include "..\\..\\script_component.hpp"
+// Layer 5: family. The class text names a family and no mark. A family row
+// is identity-only, so it carries no class, no alias and no value, and it
+// is read here alone. The scan is the keyword rule, over the declared
+// family designations. Exactly one candidate answers: two families in one
+// query name no single family, and none names nothing.
+_candidates = [];
+{{
+    _x params ["_catalogue", "_type", "_classes", "_aliases", "_keywords", "_source", "_values"];
+    private _row = _x;
+    private _hit = false;
+    {{
+        if ((count _x) >= {scan} && {{_query find _x >= 0}}) then {{ _hit = true; }};
+    }} forEach (_keywords splitString "|");
+    if (_hit) then {{ _candidates pushBack _row; }};
+}} forEach _families;
+if ((count _candidates) == 1) exitWith {{ [_candidates select 0, 7, "family"] call _result }};
+[]
+"""
+
+DATA_TEMPLATE = """#include "..\\..\\script_component.hpp"
 /*
 Munition runtime lookup.
 
@@ -421,20 +487,51 @@ if (_className == "") exitWith {{ [] }};
 private _match = [_className] call FUNC(getMunitionMatch);
 if (_match isEqualTo []) exitWith {{ [] }};
 _match select 5
-'''
+"""
+
+
+def family_errors(entries: list[dict]) -> list[str]:
+    """The shape a munition family entry must carry, as every corpus checks it."""
+    errors: list[str] = []
+    for entry in entries:
+        if not is_family(entry):
+            continue
+        cid = str(entry.get("catalogue_id", "<none>"))
+        family = entry.get("family")
+        if not isinstance(family, bool):
+            errors.append(f"catalogue {cid}: family must be true or false")
+            continue
+        errors.extend(vehicle_catalogue.family_shape_errors(cid, entry))
+    return errors
 
 
 def build() -> tuple[str, str]:
     entries = load()
-    body = "\n".join(f"{row}," for row in rows(entries))
+    marks = [entry for entry in entries if not is_family(entry)]
+    families = [entry for entry in entries if is_family(entry)]
+    family_words = frozenset(
+        _fold(word)
+        for entry in families
+        for word in (entry.get("keywords") or [])
+        if _fold(word)
+    )
+    body = "\n".join(f"{row}," for row in rows(marks, family_words))
     body = body.rstrip(",")
+    family_body = "\n".join(f"{row}," for row in family_rows(families))
+    family_body = family_body.rstrip(",")
     screen = "[" + ", ".join(f'"{t}"' for t in SCREEN_TERMS) + "]"
-    match = MATCH_TEMPLATE.format(rows=body, scan=SCAN_MIN, screen=screen)
+    match = MATCH_TEMPLATE.format(
+        rows=body, families=family_body, scan=SCAN_MIN, screen=screen
+    )
     return match, DATA_TEMPLATE.format()
 
 
 def main(argv=None) -> int:
     args = sys.argv[1:] if argv is None else argv
+    errors = family_errors(load())
+    if errors:
+        print("\n".join(errors))
+        return 1
     match, data = build()
     n = len(load())
     if "--check" in args:
@@ -449,13 +546,15 @@ def main(argv=None) -> int:
                 + "), run python3 tools/validation/gen_munition_data.py"
             )
             return 1
-        print(f"munition projection: {n} rows (fresh)")
+        families = sum(1 for entry in load() if is_family(entry))
+        print(f"munition projection: {n - families} rows and {families} family rows (fresh)")
         return 0
     MATCH_OUT.write_text(match, encoding="utf-8")
     DATA_OUT.write_text(data, encoding="utf-8")
+    families = sum(1 for entry in load() if is_family(entry))
     print(
-        f"munition projection: {n} rows -> fnc_getMunitionMatch.sqf and "
-        "fnc_getMunitionData.sqf"
+        f"munition projection: {n - families} rows and {families} family rows -> "
+        "fnc_getMunitionMatch.sqf and fnc_getMunitionData.sqf"
     )
     return 0
 

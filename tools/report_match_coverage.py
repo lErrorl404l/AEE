@@ -140,11 +140,16 @@ KNOWN_UNRESOLVABLE = {
         "does."
     ),
     "aircraft": (
-        "The aircraft ladder refuses a tie the same way. Most of these "
-        "classes carry a family word shared by several catalogue entries "
-        "(the C-130, UH-60, Mi-8 and Su-25 families), so naming one member "
-        "from the family word would answer a different mark. Closing one "
-        "needs the mark's own designation in the class or display text."
+        "The aircraft ladder refuses a tie the same way. Ten of these are "
+        "loadout configurations of an Arma 3 fictional type, and eight are "
+        "ArmaFPV drones no published source designates. The rest tie above "
+        "the family rung: a shared reporting name held as a curated alias of "
+        "two marks (falcon, hornet, merlin, pavehawk, black hawk), a role "
+        "word several entries carry (cas, gunship), the AH-64 marks' shared "
+        "ah64 with ah6 as a substring of every AH-64 query, and the Mi-8MTV-3 "
+        "whose mi8 ties against the Mi-8T and Mi-8AMTSh. Capturing the family "
+        "word would answer a different mark in each case. Closing one needs "
+        "the mark's own designation in the class or display text."
     ),
     "small_arms": (
         "The two DSA machine pistols name a chambering and a category, not a "
@@ -199,54 +204,79 @@ def fold(text: str) -> str:
     return "".join(c for c in text.lower() if c.isascii() and c.isalnum())
 
 
-def rows(path: Path) -> list:
+FAMILY_MARKER = "private _families = ["
+
+
+def _tables(path: Path) -> tuple[str, str]:
+    """Split a matcher file into its mark table text and its family text.
+
+    A family row is identity-only, so the generated matcher keeps it in a
+    separate table that no rung above the family rung reads. The measurement
+    has to split the file the same way, or the family row would enter the
+    mark table and every text layer with it.
+    """
+    text = path.read_text(encoding="utf-8")
+    if FAMILY_MARKER not in text:
+        return text, ""
+    head, _, rest = text.partition(FAMILY_MARKER)
+    family, _, _ = rest.partition("\n];")
+    return head, family
+
+
+def _parse(text: str, armament: bool = False) -> list:
+    """Parse one generated table. Armament rows hold fewer columns."""
+    classes_col, aliases_col, keywords_col = (2, 3, 4) if armament else (4, 5, 6)
     out = []
-    for line in path.read_text(encoding="utf-8").splitlines():
+    for line in text.splitlines():
         s = line.strip()
         if not s.startswith('["'):
             continue
         p = re.findall(r'"([^"]*)"', s)
-        if len(p) <= 6:
+        if len(p) <= keywords_col:
             continue
         out.append(
             {
                 "id": p[0],
-                "classes": [x for x in p[4].split("|") if x],
-                "aliases": [x for x in p[5].split("|") if x],
-                "keywords": [x for x in p[6].split("|") if x],
+                "classes": [x for x in p[classes_col].split("|") if x],
+                "aliases": [x for x in p[aliases_col].split("|") if x],
+                "keywords": [x for x in p[keywords_col].split("|") if x],
             }
         )
     return out
+
+
+def rows(path: Path) -> list:
+    """The mark table of a vehicle or aircraft matcher."""
+    return _parse(_tables(path)[0])
+
+
+def family_rows(path: Path) -> list:
+    """The family table of a vehicle or aircraft matcher."""
+    return _parse(_tables(path)[1])
 
 
 def munition_rows(path: Path) -> list:
     """The munition table: id, type, classes, aliases, keywords."""
-    out = []
-    for line in path.read_text(encoding="utf-8").splitlines():
-        s = line.strip()
-        if not s.startswith('["'):
-            continue
-        p = re.findall(r'"([^"]*)"', s)
-        if len(p) <= 4:
-            continue
-        out.append(
-            {
-                "id": p[0],
-                "classes": [x for x in p[2].split("|") if x],
-                "aliases": [x for x in p[3].split("|") if x],
-                "keywords": [x for x in p[4].split("|") if x],
-            }
-        )
-    return out
+    return _parse(_tables(path)[0], armament=True)
 
 
-def matcher(table: list, ancestry=None, trace=None):
+def munition_family_rows(path: Path) -> list:
+    """The family table of the munition matcher."""
+    return _parse(_tables(path)[1], armament=True)
+
+
+def matcher(table: list, ancestry=None, trace=None, families=None):
     """The runtime ladder: exact class, alias, keyword, closest, then the
-    inherited rung.
+    inherited rung, then the family rung.
 
     `ancestry` is the engine parent chain, a callable that returns a class's
     ancestors nearest first as classnames. Only the vehicle table is given
     one, because only its runtime matcher walks the chain.
+
+    `families` is the family table, read by the last rung alone. A family row
+    names a family and no mark, so it never enters the table above and can
+    never take an answer from a mark. Exactly one family row matching a
+    designation of `SCAN_MIN` or more characters answers; two answer nothing.
 
     `trace`, when given, receives the layer that blocked the match and the
     candidates it tied between. It is instrumentation for the lock capture and
@@ -287,9 +317,7 @@ def matcher(table: list, ancestry=None, trace=None):
         hit = [
             r
             for r in table
-            if any(
-                len(w) >= SCAN_MIN and w in key for w in r["keywords"]
-            )
+            if any(len(w) >= SCAN_MIN and w in key for w in r["keywords"])
         ]
         if len(hit) == 1:
             return hit[0]
@@ -342,7 +370,20 @@ def matcher(table: list, ancestry=None, trace=None):
         # text names the ancestor's entry (see inherited_row).
         if ancestry is not None and cls:
             row, _ancestor = inherited_row(table, cls, tokens, ancestry)
-            return row
+            if row is not None:
+                return row
+        # Last rung: the class text names a family and no mark. The family
+        # table is separate, so no rung above could have answered from it.
+        if families:
+            hit = [
+                r
+                for r in families
+                if any(len(w) >= SCAN_MIN and w in key for w in r["keywords"])
+            ]
+            if len(hit) == 1:
+                return hit[0]
+            if len(hit) > 1 and trace is not None:
+                trace.update(layer="family", candidates=[r["id"] for r in hit])
         return None
 
     return match
@@ -673,8 +714,13 @@ def measure(scanned: list, base: set[str]) -> dict:
         (air, AIRCRAFT, "aircraft", []),
     ):
         table = rows(path)
-        plain = matcher(table)
-        match = matcher(table, ancestors) if label == "vehicles" else plain
+        families = family_rows(path)
+        plain = matcher(table, families=families)
+        match = (
+            matcher(table, ancestors, families=families)
+            if label == "vehicles"
+            else plain
+        )
         tables[slug(label)] = {
             "label": label,
             **score(sel, match, base),
@@ -749,7 +795,12 @@ def measure(scanned: list, base: set[str]) -> dict:
     # the corpus written to name it; the small-arms corpus holds a rifling
     # twist and was never meant to.
     match_m = (
-        matcher(munition_rows(MUNITION_TABLE)) if MUNITION_TABLE.exists() else None
+        matcher(
+            munition_rows(MUNITION_TABLE),
+            families=munition_family_rows(MUNITION_TABLE),
+        )
+        if MUNITION_TABLE.exists()
+        else None
     )
     for label, sel in (
         ("small arms", small),

@@ -21,6 +21,11 @@ layer returns an empty array.
   closest       the longest alias or keyword substring of the query,
                 at least 4 characters, with a strictly lower
                 runner-up score. A tie returns [].                    5
+  family        the class text names a family and no mark: exactly one
+                row of the family table carries a designation of 3 or
+                more characters in the query. A family row is
+                identity-only and answers only when it is the only
+                one, so it never takes an answer from a mark.           7
 
 A row has nine columns:
 
@@ -90,11 +95,11 @@ private _table = [
     ["a6a_intruder", "a6a", "fixed_wing", "", "", "intruder", "grummana6aintruder|a6a|grummana6a|a6aintruder", "", [0, 0, 0, 0]],
     ["a7d_corsair_ii", "a7d", "fixed_wing", "", "", "corsairii|sluf", "ltva7dcorsairii|a7d|ltva7d|a7dcorsair", "", [0, 0, 0, 0]],
     ["aermacchi_mb339", "mb339", "fixed_wing", "", "", "mb339", "aermacchimb339", "", [0, 0, 0, 0]],
-    ["ah1g_cobra", "ah1g", "rotary_wing", "", "", "", "bellah1gcobra|ah1g|ah1|bellah1g|ah1gcobra", "", [0, 0, 0, 0]],
-    ["ah1j_seacobra", "ah1j_seacobra", "rotary_wing", "Helicopter", "", "seacobra", "bellah1jseacobra|ah1j|ah1|bellah1j|ah1jseacobra", "", [0, 0, 0, 0]],
-    ["ah1s_cobra", "ah1s_cobra", "rotary_wing", "Helicopter", "", "cobra", "bellah1scobra|ah1s|ah1|bellah1s|ah1scobra", "", [0, 0, 0, 0]],
-    ["ah1w_super_cobra", "ah1w_super_cobra", "rotary_wing", "Helicopter", "", "supercobra", "bellah1wsupercobra|ah1w|ah1|bellah1w|ah1wsupercobra", "", [0, 0, 0, 0]],
-    ["ah1z_viper", "ah1z_viper", "rotary_wing", "Helicopter", "", "viper", "bellah1zviper|ah1z|ah1|bellah1z|ah1zviper", "", [0, 0, 0, 0]],
+    ["ah1g_cobra", "ah1g", "rotary_wing", "", "", "", "bellah1gcobra|ah1g|bellah1g|ah1gcobra", "", [0, 0, 0, 0]],
+    ["ah1j_seacobra", "ah1j_seacobra", "rotary_wing", "Helicopter", "", "seacobra", "bellah1jseacobra|ah1j|bellah1j|ah1jseacobra", "", [0, 0, 0, 0]],
+    ["ah1s_cobra", "ah1s_cobra", "rotary_wing", "Helicopter", "", "cobra", "bellah1scobra|ah1s|bellah1s|ah1scobra", "", [0, 0, 0, 0]],
+    ["ah1w_super_cobra", "ah1w_super_cobra", "rotary_wing", "Helicopter", "", "supercobra", "bellah1wsupercobra|ah1w|bellah1w|ah1wsupercobra", "", [0, 0, 0, 0]],
+    ["ah1z_viper", "ah1z_viper", "rotary_wing", "Helicopter", "", "viper", "bellah1zviper|ah1z|bellah1z|ah1zviper", "", [0, 0, 0, 0]],
     ["ah64a_apache", "ah64a_apache", "rotary_wing", "Helicopter", "", "apache", "hughesah64aapache|ah64a|ah64|hughesah64a|ah64aapache", "", [0, 0, 0, 0]],
     ["ah64d_apache_longbow", "ah64d", "rotary_wing", "", "", "", "boeingah64dapachelongbow|ah64d|ah64|boeingah64d|ah64dapache|apachelongbow", "", [0, 0, 0, 0]],
     ["ah64e_apache_guardian", "ah64e_apache_guardian", "rotary_wing", "Helicopter", "", "apacheguardian", "boeingah64eapacheguardian|ah64e|ah64|boeingah64e|ah64eapache", "", [0, 0, 0, 0]],
@@ -136,14 +141,14 @@ private _table = [
     ["camcopter_s100", "camcopter_s100", "rotary_wing", "Helicopter", "", "camcopter", "schiebelcamcopters100|s100|schiebelcamcopter|camcopters100", "", [0, 0, 0, 0]],
     ["cessna_172_skyhawk", "172s", "fixed_wing", "Plane", "cplanecivil01f|cplanecivil01racingf|icplanecivil01f", "skyhawk|c172", "civil|cessna172skyhawk|cessna172|172skyhawk", "src_faa_tcds_3a12", [1157, 134225.97696, 0, 0]],
     ["ch46_sea_knight", "ch46_sea_knight", "rotary_wing", "Helicopter", "", "seaknight", "boeingch46seaknight|ch46|boeingch46|ch46sea", "", [0, 0, 0, 0]],
-    ["ch47_chinook", "ch47d", "rotary_wing", "Helicopter", "bhelitransport03f|bhelitransport03blackf|bhelitransport03unarmedf|bhelitransport03unarmedgreenf", "chinook|ch47", "heavy|boeingch47chinook|boeingch47|ch47chinook", "src_tm_1_1520_240_10", [22680, 0, 0, 0]],
-    ["ch47a_chinook", "ch47a_chinook", "rotary_wing", "Helicopter", "", "chinook", "boeingch47achinook|ch47a|ch47|boeingch47a|ch47achinook", "", [0, 0, 0, 0]],
-    ["ch47b_chinook", "ch47b_chinook", "rotary_wing", "Helicopter", "", "chinook", "boeingch47bchinook|ch47b|ch47|boeingch47b|ch47bchinook", "", [0, 0, 0, 0]],
-    ["ch47c_chinook", "ch47c_chinook", "rotary_wing", "Helicopter", "", "chinook", "boeingch47cchinook|ch47c|ch47|boeingch47c|ch47cchinook", "", [0, 0, 0, 0]],
-    ["ch47f_chinook", "ch47f", "rotary_wing", "", "", "", "boeingch47fchinook|ch47f|ch47|boeingch47f|ch47fchinook", "", [0, 0, 0, 0]],
-    ["ch53d_sea_stallion", "ch53d_sea_stallion", "rotary_wing", "Helicopter", "", "seastallion", "sikorskych53dseastallion|ch53d|ch53|sikorskych53d|ch53dsea", "", [0, 0, 0, 0]],
-    ["ch53e_super_stallion", "ch53e_super_stallion", "rotary_wing", "Helicopter", "", "superstallion", "sikorskych53esuperstallion|ch53e|ch53|sikorskych53e|ch53esuper", "", [0, 0, 0, 0]],
-    ["ch53k_king_stallion", "ch53k_king_stallion", "rotary_wing", "Helicopter", "", "kingstallion", "sikorskych53kkingstallion|ch53k|ch53|sikorskych53k|ch53kking", "", [0, 0, 0, 0]],
+    ["ch47_chinook", "ch47d", "rotary_wing", "Helicopter", "bhelitransport03f|bhelitransport03blackf|bhelitransport03unarmedf|bhelitransport03unarmedgreenf", "chinook", "heavy|boeingch47chinook|boeingch47|ch47chinook", "src_tm_1_1520_240_10", [22680, 0, 0, 0]],
+    ["ch47a_chinook", "ch47a_chinook", "rotary_wing", "Helicopter", "", "chinook", "boeingch47achinook|ch47a|boeingch47a|ch47achinook", "", [0, 0, 0, 0]],
+    ["ch47b_chinook", "ch47b_chinook", "rotary_wing", "Helicopter", "", "chinook", "boeingch47bchinook|ch47b|boeingch47b|ch47bchinook", "", [0, 0, 0, 0]],
+    ["ch47c_chinook", "ch47c_chinook", "rotary_wing", "Helicopter", "", "chinook", "boeingch47cchinook|ch47c|boeingch47c|ch47cchinook", "", [0, 0, 0, 0]],
+    ["ch47f_chinook", "ch47f", "rotary_wing", "", "", "", "boeingch47fchinook|ch47f|boeingch47f|ch47fchinook", "", [0, 0, 0, 0]],
+    ["ch53d_sea_stallion", "ch53d_sea_stallion", "rotary_wing", "Helicopter", "", "seastallion", "sikorskych53dseastallion|ch53d|sikorskych53d|ch53dsea", "", [0, 0, 0, 0]],
+    ["ch53e_super_stallion", "ch53e_super_stallion", "rotary_wing", "Helicopter", "", "superstallion", "sikorskych53esuperstallion|ch53e|sikorskych53e|ch53esuper", "", [0, 0, 0, 0]],
+    ["ch53k_king_stallion", "ch53k_king_stallion", "rotary_wing", "Helicopter", "", "kingstallion", "sikorskych53kkingstallion|ch53k|sikorskych53k|ch53kking", "", [0, 0, 0, 0]],
     ["ch5_rainbow", "ch5", "fixed_wing", "UAV", "otuav04casf", "rainbow|ch5", "ucav|cascch5rainbow|cascch5|ch5rainbow", "", [0, 0, 0, 0]],
     ["chengdu_j10a", "j10a", "fixed_wing", "", "", "vigorousdragon", "chengduj10a|j10a|j10", "", [0, 0, 0, 0]],
     ["chengdu_j7_ii", "j7_ii", "fixed_wing", "", "", "fishbed|mig21", "chengduj7ii|j7ii|j7i", "", [0, 0, 0, 0]],
@@ -189,7 +194,7 @@ private _table = [
     ["harrier_gr9", "harrier_gr9", "fixed_wing", "", "", "harrier", "vtol|baesystemsharriergr9|gr9|baesystems|systemsharrier|harriergr9", "", [0, 0, 0, 0]],
     ["hawker_hurricane_mk_i", "hurricane_i", "fixed_wing", "", "", "hurricane", "hawkerhurricanemki|hawkerhurricane|hurricanemk", "", [0, 0, 0, 0]],
     ["hawker_typhoon_mk_ib", "typhoon_ib", "fixed_wing", "", "", "typhoon|tiffy", "hawkertyphoonmkib|hawkertyphoon|typhoonmk", "", [0, 0, 0, 0]],
-    ["hh60g_pave_hawk", "hh60g_pave_hawk", "rotary_wing", "Helicopter", "", "pavehawk", "sikorskyhh60gpavehawk|hh60g|hh60|sikorskyhh60g|hh60gpave", "", [0, 0, 0, 0]],
+    ["hh60g_pave_hawk", "hh60g_pave_hawk", "rotary_wing", "Helicopter", "", "pavehawk", "sikorskyhh60gpavehawk|hh60g|sikorskyhh60g|hh60gpave", "", [0, 0, 0, 0]],
     ["hs681", "hs681", "fixed_wing", "", "", "hs681", "hawkersiddeleyhs681|hawkersiddeley|siddeleyhs681", "", [0, 0, 0, 0]],
     ["hs_nimrod", "hs_nimrod", "fixed_wing", "", "", "nimrod", "hawkersiddeleynimrod|hawkersiddeley|siddeleynimrod", "", [0, 0, 0, 0]],
     ["jas39c_gripen", "jas39c", "fixed_wing", "Plane", "iplanefighter04clusterf|iplanefighter04f", "gripen|jas39", "multirole|saabjas39cgripen|39c|saabjas|jas39c|39cgripen", "src_saab_gripen_c", [14000, 31305555.5645, 0, 0]],
@@ -221,10 +226,10 @@ private _table = [
     ["mi14_haze", "mi14_haze", "rotary_wing", "Helicopter", "", "haze", "milmi14haze|mi14|milmi14|mi14haze", "", [0, 0, 0, 0]],
     ["mi171_hip_h", "mi171_hip_h", "rotary_wing", "Helicopter", "", "hip|mi8amt", "milmi171hiph|mi171|milmi171|mi171hiph|mi8am", "", [0, 0, 0, 0]],
     ["mi17_hip", "mi17_hip", "rotary_wing", "Helicopter", "", "hip|mi8mt", "milmi17hiph|mi17|milmi17|mi17hiph|mi8m", "src_opfor_weg", [7100, 1454114.7504, 0, 356.327293]],
-    ["mi24a_hind_a", "mi24a_hind_a", "rotary_wing", "Helicopter", "", "hind", "milmi24ahinda|mi24a|mi24|milmi24a|mi24ahinda", "", [0, 0, 0, 0]],
-    ["mi24d_hind_d", "mi24d", "rotary_wing", "", "", "", "milmi24dhindd|mi24d|mi24|milmi24d|mi24dhindd", "", [0, 0, 0, 0]],
-    ["mi24p_hind_f", "mi24p", "rotary_wing", "Helicopter", "", "hind", "gunship|milmi24phindf|mi24p|mi24|milmi24p|mi24phindf", "src_opfor_weg", [8500, 1640539.7184, 0, 235.061816]],
-    ["mi24v_hind_e", "mi24v", "rotary_wing", "", "", "", "milmi24vhinde|mi24v|mi24|milmi24v|mi24vhinde", "", [0, 0, 0, 0]],
+    ["mi24a_hind_a", "mi24a_hind_a", "rotary_wing", "Helicopter", "", "hind", "milmi24ahinda|mi24a|milmi24a|mi24ahinda", "", [0, 0, 0, 0]],
+    ["mi24d_hind_d", "mi24d", "rotary_wing", "", "", "", "milmi24dhindd|mi24d|milmi24d|mi24dhindd", "", [0, 0, 0, 0]],
+    ["mi24p_hind_f", "mi24p", "rotary_wing", "Helicopter", "", "hind", "gunship|milmi24phindf|mi24p|milmi24p|mi24phindf", "src_opfor_weg", [8500, 1640539.7184, 0, 235.061816]],
+    ["mi24v_hind_e", "mi24v", "rotary_wing", "", "", "", "milmi24vhinde|mi24v|milmi24v|mi24vhinde", "", [0, 0, 0, 0]],
     ["mi26_halo", "mi26", "rotary_wing", "Helicopter", "ohelitransport04f|ohelitransport04ammof|ohelitransport04ammoblackf|ohelitransport04benchf|ohelitransport04benchblackf|ohelitransport04blackf|ohelitransport04boxf|ohelitransport04boxblackf|ohelitransport04coveredf|ohelitransport04coveredblackf|ohelitransport04fuelf|ohelitransport04fuelblackf|ohelitransport04medevacf|ohelitransport04medevacblackf|ohelitransport04repairf|ohelitransport04repairblackf", "halo|mi26", "heavy|milmi26halo|milmi26|mi26halo", "src_opfor_weg", [12809, 8500978.5408, 0, 804.247719]],
     ["mi28_havoc", "mi28", "rotary_wing", "Helicopter", "heliattack02basef|oheliattack02f|oheliattack02blackf|oheliattack02dynamicloadoutf|oheliattack02dynamicloadoutblackf", "havoc|mi28|kajman", "gunship|milmi28havoc|milmi28|mi28havoc", "src_opfor_weg", [3175, 1640539.7184, 0, 232.352193]],
     ["mi28n_havoc", "mi28n", "rotary_wing", "", "", "", "milmi28nhavoc|mi28n|mi28|milmi28n|mi28nhavoc", "", [0, 0, 0, 0]],
@@ -244,8 +249,8 @@ private _table = [
     ["mig23ml_flogger", "mig23ml", "fixed_wing", "", "", "flogger", "mikoyangurevichmig23mlfloggerg|mig23ml|mig23m|mikoyangurevichmig23ml|mig23mlfloggerg|mig23", "", [0, 0, 0, 0]],
     ["mig25_foxbat", "mig25", "fixed_wing", "", "", "foxbat", "mikoyangurevichmig25foxbat|mig25|mikoyangurevichmig25|mig25foxbat", "", [0, 0, 0, 0]],
     ["mig27_flogger_d", "mig27", "fixed_wing", "", "", "flogger", "mikoyangurevichmig27floggerd|mig27|mikoyangurevichmig27|mig27floggerd", "", [0, 0, 0, 0]],
-    ["mig29a_fulcrum", "mig29a", "fixed_wing", "", "", "fulcrum", "mikoyanmig29afulcrum|mig29a|mig29|mikoyanmig29a|mig29afulcrum", "", [0, 0, 0, 0]],
-    ["mig29s_fulcrum_c", "mig29s", "fixed_wing", "", "", "", "mikoyanmig29sfulcrumc|mig29s|mig29|mikoyanmig29s|mig29sfulcrumc", "", [0, 0, 0, 0]],
+    ["mig29a_fulcrum", "mig29a", "fixed_wing", "", "", "fulcrum", "mikoyanmig29afulcrum|mig29a|mikoyanmig29a|mig29afulcrum", "", [0, 0, 0, 0]],
+    ["mig29s_fulcrum_c", "mig29s", "fixed_wing", "", "", "", "mikoyanmig29sfulcrumc|mig29s|mikoyanmig29s|mig29sfulcrumc", "", [0, 0, 0, 0]],
     ["mig31b_foxhound", "mig31b", "fixed_wing", "", "", "foxhound", "mikoyanmig31bfoxhound|mig31b|mig31|mikoyanmig31b|mig31bfoxhound", "", [0, 0, 0, 0]],
     ["mig31bm_foxhound", "mig31bm", "fixed_wing", "", "", "", "mikoyanmig31bmfoxhound|mig31bm|mig31b|mikoyanmig31bm|mig31bmfoxhound|mig31", "", [0, 0, 0, 0]],
     ["mig35_fulcrum_f", "mig35", "fixed_wing", "", "", "fulcrum", "mikoyanmig35fulcrumf|mig35|mikoyanmig35|mig35fulcrumf", "", [0, 0, 0, 0]],
@@ -291,9 +296,9 @@ private _table = [
     ["su17_fitter_c", "su17", "fixed_wing", "", "", "fitter", "sukhoisu17fitterc|su17|sukhoisu17|su17fitterc", "", [0, 0, 0, 0]],
     ["su22_fitter_f", "su22", "fixed_wing", "", "", "fitter", "sukhoisu22fitterf|su22|sukhoisu22|su22fitterf", "", [0, 0, 0, 0]],
     ["su24_fencer", "su24", "fixed_wing", "", "", "fencer", "sukhoisu24fencer|su24|sukhoisu24|su24fencer", "", [0, 0, 0, 0]],
-    ["su25_frogfoot", "su25", "fixed_wing", "Plane", "", "frogfoot|su25", "cas|sukhoisu25", "src_opfor_weg", [4320, 0, 0, 0]],
-    ["su25sm_frogfoot", "su25sm", "fixed_wing", "", "", "frogfoot|grach", "sukhoisu25smfrogfoot|su25sm|su25s|sukhoisu25sm|su25smfrogfoot|su25", "", [0, 0, 0, 0]],
-    ["su25t_frogfoot", "su25t", "fixed_wing", "", "", "frogfoot", "sukhoisu25tfrogfoot|su25t|su25|sukhoisu25t|su25tfrogfoot", "", [0, 0, 0, 0]],
+    ["su25_frogfoot", "su25", "fixed_wing", "Plane", "", "frogfoot", "cas|sukhoisu25", "src_opfor_weg", [4320, 0, 0, 0]],
+    ["su25sm_frogfoot", "su25sm", "fixed_wing", "", "", "frogfoot|grach", "sukhoisu25smfrogfoot|su25sm|su25s|sukhoisu25sm|su25smfrogfoot", "", [0, 0, 0, 0]],
+    ["su25t_frogfoot", "su25t", "fixed_wing", "", "", "frogfoot", "sukhoisu25tfrogfoot|su25t|sukhoisu25t|su25tfrogfoot", "", [0, 0, 0, 0]],
     ["su27s_flanker_b", "su27s", "fixed_wing", "", "", "", "sukhoisu27sflankerb|su27s|su27|sukhoisu27s|su27sflankerb", "", [0, 0, 0, 0]],
     ["su27sk_flanker_b", "su27sk", "fixed_wing", "", "", "flanker", "sukhoisu27skflankerb|su27sk|su27s|sukhoisu27sk|su27skflankerb|su27", "", [0, 0, 0, 0]],
     ["su30mki_flanker_h", "su30mki", "fixed_wing", "", "", "flanker", "sukhoisu30mkiflankerh|su30mki|su30mk|sukhoisu30mki|su30mkiflankerh|su30", "", [0, 0, 0, 0]],
@@ -306,12 +311,12 @@ private _table = [
     ["th67_creek", "th67_creek", "rotary_wing", "Helicopter", "", "creek", "bellth67creek|th67|bellth67|th67creek", "", [0, 0, 0, 0]],
     ["tu22m_backfire", "tu22m_backfire", "fixed_wing", "", "", "tu22m|backfire", "tupolevtu22m|tu22", "", [0, 0, 0, 0]],
     ["tu95_bear", "tu95_bear", "fixed_wing", "", "", "tu95|bear", "tupolevtu95", "", [0, 0, 0, 0]],
-    ["uh1h_iroquois", "uh1h", "rotary_wing", "", "", "huey|iroquois", "belluh1hiroquois|uh1h|uh1|belluh1h|uh1hiroquois", "", [0, 0, 0, 0]],
-    ["uh1n_twin_huey", "uh1n_twin_huey", "rotary_wing", "Helicopter", "", "twinhuey", "belluh1ntwinhuey|uh1n|uh1|belluh1n|uh1ntwin", "", [0, 0, 0, 0]],
-    ["uh1y_venom", "uh1y_venom", "rotary_wing", "Helicopter", "", "venom", "belluh1yvenom|uh1y|uh1|belluh1y|uh1yvenom", "", [0, 0, 0, 0]],
-    ["uh60a_black_hawk", "uh60a", "rotary_wing", "Helicopter", "bctrghelitransport01sandf|bctrghelitransport01tropicf|bhelitransport01f|bhelitransport01camof|bhelitransport01pylonsf|helitransport01basef|helicopter", "blackhawk|uh60|ghosthawk|ghost|mh80", "sikorskyuh60ablackhawk|uh60a|sikorskyuh60a|uh60ablack", "src_tm_1_1520_237_10", [9185, 0, 0, 210.211504]],
-    ["uh60l_black_hawk", "uh60l_black_hawk", "rotary_wing", "Helicopter", "", "blackhawk", "sikorskyuh60lblackhawk|uh60l|uh60|sikorskyuh60l|uh60lblack", "", [0, 0, 0, 0]],
-    ["uh60m_black_hawk", "uh60m", "rotary_wing", "", "", "", "sikorskyuh60mblackhawk|uh60m|uh60|sikorskyuh60m|uh60mblack", "", [0, 0, 0, 0]],
+    ["uh1h_iroquois", "uh1h", "rotary_wing", "", "", "huey|iroquois", "belluh1hiroquois|uh1h|belluh1h|uh1hiroquois", "", [0, 0, 0, 0]],
+    ["uh1n_twin_huey", "uh1n_twin_huey", "rotary_wing", "Helicopter", "", "twinhuey", "belluh1ntwinhuey|uh1n|belluh1n|uh1ntwin", "", [0, 0, 0, 0]],
+    ["uh1y_venom", "uh1y_venom", "rotary_wing", "Helicopter", "", "venom", "belluh1yvenom|uh1y|belluh1y|uh1yvenom", "", [0, 0, 0, 0]],
+    ["uh60a_black_hawk", "uh60a", "rotary_wing", "Helicopter", "bctrghelitransport01sandf|bctrghelitransport01tropicf|bhelitransport01f|bhelitransport01camof|bhelitransport01pylonsf|helitransport01basef|helicopter", "blackhawk|ghosthawk|ghost|mh80", "sikorskyuh60ablackhawk|uh60a|sikorskyuh60a|uh60ablack", "src_tm_1_1520_237_10", [9185, 0, 0, 210.211504]],
+    ["uh60l_black_hawk", "uh60l_black_hawk", "rotary_wing", "Helicopter", "", "blackhawk", "sikorskyuh60lblackhawk|uh60l|sikorskyuh60l|uh60lblack", "", [0, 0, 0, 0]],
+    ["uh60m_black_hawk", "uh60m", "rotary_wing", "", "", "", "sikorskyuh60mblackhawk|uh60m|sikorskyuh60m|uh60mblack", "", [0, 0, 0, 0]],
     ["uh72a_lakota", "uh72a_lakota", "rotary_wing", "Helicopter", "", "lakota", "eurocopteruh72alakota|uh72a|uh72|eurocopteruh72a|uh72alakota", "", [0, 0, 0, 0]],
     ["v22_osprey", "v22_osprey", "rotary_wing", "", "", "v22|osprey", "bellboeingv22osprey|bellboeing|boeingv22|v22osprey", "", [0, 0, 0, 0]],
     ["w3_sokol", "w3_sokol", "rotary_wing", "Helicopter", "", "sokol", "pzlw3sokol|pzlw3|w3sokol", "", [0, 0, 0, 0]],
@@ -324,6 +329,21 @@ private _table = [
     ["z20_black_eagle", "z20_black_eagle", "rotary_wing", "Helicopter", "", "blackeagle", "harbinz20|z20", "", [0, 0, 0, 0]],
     ["z8_haoyang", "z8_haoyang", "rotary_wing", "Helicopter", "", "haoyang", "harbinz8haoyang|harbinz8|z8haoyang", "", [0, 0, 0, 0]],
     ["z9_haitun", "z9_haitun", "rotary_wing", "Helicopter", "", "haitun", "harbinz9haitun|harbinz9|z9haitun", "", [0, 0, 0, 0]]
+];
+
+// Family rows. A family entry names a family and no mark, so it is
+// identity-only and lives in its own table: no layer above can reach it,
+// and the last layer alone reads it. The columns are the ones above.
+private _families = [
+    ["ah1_family", "ah1_family", "rotary_wing", "", "", "", "ah1", "", [0, 0, 0, 0]],
+    ["ch47_family", "ch47_family", "rotary_wing", "", "", "", "ch47", "", [0, 0, 0, 0]],
+    ["ch53_family", "ch53_family", "rotary_wing", "", "", "", "ch53", "", [0, 0, 0, 0]],
+    ["hh60_family", "hh60_family", "rotary_wing", "", "", "", "hh60", "", [0, 0, 0, 0]],
+    ["mi24_family", "mi24_family", "rotary_wing", "", "", "", "mi24", "", [0, 0, 0, 0]],
+    ["mig29_family", "mig29_family", "fixed_wing", "", "", "", "mig29", "", [0, 0, 0, 0]],
+    ["su25_family", "su25_family", "fixed_wing", "", "", "", "su25", "", [0, 0, 0, 0]],
+    ["uh1_family", "uh1_family", "rotary_wing", "", "", "", "uh1", "", [0, 0, 0, 0]],
+    ["uh60_family", "uh60_family", "rotary_wing", "", "", "", "uh60", "", [0, 0, 0, 0]]
 ];
 
 // [catalogue_id, variant_id, vehicle_type, confidence, matched_by,
@@ -462,4 +482,21 @@ private _tie = false;
 if ((_bestRow isNotEqualTo []) && {!_tie} && _bestScore > _runnerUp) exitWith {
     [_bestRow, 5, "closest"] call _result
 };
+
+// Layer 7: family. The class text names a family and no mark. A family row
+// is identity-only, so it carries no class, no alias and no value, and it
+// is read here alone. The scan is the keyword rule, over the declared
+// family designations. Exactly one candidate answers: two families in one
+// query name no single family, and none names nothing.
+_candidates = [];
+{
+    _x params ["_catalogue", "_variant", "_type", "_token", "_classes", "_aliases", "_keywords", "_source", "_values"];
+    private _row = _x;
+    private _hit = false;
+    {
+        if ((count _x) >= 3 && {_query find _x >= 0}) then { _hit = true; };
+    } forEach (_keywords splitString "|");
+    if (_hit) then { _candidates pushBack _row; };
+} forEach _families;
+if ((count _candidates) == 1) exitWith { [_candidates select 0, 7, "family"] call _result };
 []

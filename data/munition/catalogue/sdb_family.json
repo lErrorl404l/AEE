@@ -1,0 +1,20 @@
+{
+  "retrieved": "2026-10-20",
+  "note": "Identity-only capture for the Small Diameter Bomb, the 250 lb guided bomb family. The entry names the family and no variant: it holds no figure, carries no alias and claims no member. The identity evidence is the engine class table: the installed content displays 'GBU-53 SDB II 250lb' and 'GBU-53/B Stormbreaker' on classes whose own text carries the SDB designation. The grade is claimed, because the evidence is identity text and not a held figure. No document citation is invented. The keyword holds the family designation the display name carries. The GBU-39 and the GBU-53 entries each publish it as a designation, so the family owns it here and a mark entry must not claim it.",
+  "entries": [
+    {
+      "catalogue_id": "sdb_family",
+      "canonical_name": "Small Diameter Bomb family",
+      "munition_type": "bomb",
+      "aliases": [],
+      "keywords": [
+        "sdb"
+      ],
+      "identity_only": true,
+      "runtime_ready": false,
+      "family": true,
+      "values": {},
+      "variant": "family designation, no variant claimed"
+    }
+  ]
+}

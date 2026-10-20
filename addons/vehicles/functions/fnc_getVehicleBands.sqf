@@ -110,7 +110,6 @@ private _table = [
     ["darpa_crusher_ugcv", "wheeled", 0, 0, 0, 0, 0],
     ["eitan", "wheeled", 0, 50000, 8000, 3000, 3000],
     ["fahd", "wheeled", 0, 12500, 6000, 2450, 2250],
-    ["fmtv_family", "wheeled", 0, 0, 0, 0, 0],
     ["freccia", "wheeled", 0, 22000, 8560, 2990, 3180],
     ["fv101_scorpion", "tracked", 1, 8074, 5288, 2134, 2102],
     ["fv107_scimitar", "tracked", 1, 7800, 4900, 2200, 2100],

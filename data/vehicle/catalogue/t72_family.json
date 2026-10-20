@@ -1,0 +1,27 @@
+{
+  "retrieved": "2026-10-20",
+  "note": "Identity-only capture for the T-72, the Soviet main battle tank family. The entry names the family and no mark: it publishes no figure, carries no alias and claims no member. The identity evidence is the engine class table, which declares the RHS T-72B3 and T-72B classes and the RHSSAF T-72MS class with display names that carry the T-72 designation. The grade is claimed, because the source is the engine class table. That is the form data/vehicle/class_map.json records as aee_class_table: identity evidence only, never a figure. No document citation is invented and no sources.json record is created. The keyword holds the family designation the display names carry. A mark entry must not claim it: the family owns it, and the family rung alone reads it.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "t72_family",
+      "canonical_name": "T-72 family",
+      "maker": "Uralvagonzavod",
+      "model": "T-72",
+      "variant": "family designation, no member claimed",
+      "variant_id": "t72_family",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "Soviet Union",
+      "era": "cold-war",
+      "aliases": [],
+      "keywords": [
+        "t72"
+      ],
+      "runtime_ready": false,
+      "identity_only": true,
+      "family": true,
+      "values": {}
+    }
+  ]
+}

@@ -204,8 +204,8 @@
     "install": "/ext/SteamLibrary/steamapps/common/Arma 3",
     "known_unresolvable": {
       "aircraft": {
-        "note": "The aircraft ladder refuses a tie the same way. Most of these classes carry a family word shared by several catalogue entries (the C-130, UH-60, Mi-8 and Su-25 families), so naming one member from the family word would answer a different mark. Closing one needs the mark's own designation in the class or display text.",
-        "unresolved": 85
+        "note": "The aircraft ladder refuses a tie the same way. Ten of these are loadout configurations of an Arma 3 fictional type, and eight are ArmaFPV drones no published source designates. The rest tie above the family rung: a shared reporting name held as a curated alias of two marks (falcon, hornet, merlin, pavehawk, black hawk), a role word several entries carry (cas, gunship), the AH-64 marks' shared ah64 with ah6 as a substring of every AH-64 query, and the Mi-8MTV-3 whose mi8 ties against the Mi-8T and Mi-8AMTSh. Capturing the family word would answer a different mark in each case. Closing one needs the mark's own designation in the class or display text.",
+        "unresolved": 42
       },
       "carried_launchers": {
         "note": "",
@@ -217,11 +217,11 @@
       },
       "vehicle_armament": {
         "note": "A tied munition is refused. The open classes name a body, a seeker or a warhead the catalogue holds for a different store.",
-        "unresolved": 39
+        "unresolved": 36
       },
       "vehicles": {
         "note": "Every class here is named by its own text at a layer the runtime would refuse as a tie, or names no entry at all. A tie is answered as an empty result by the engine, so the measurement reports the class as open even where a weaker layer would have guessed. Closing one needs a term the class's own text carries and no other class does.",
-        "unresolved": 13
+        "unresolved": 1
       }
     },
     "measured_rows": 135427,
@@ -242,11 +242,11 @@
       "inherited": [],
       "label": "aircraft",
       "modded": {
-        "hit": 138,
-        "pct": 61.88,
+        "hit": 181,
+        "pct": 81.17,
         "total": 223
       },
-      "unresolved_modded": 85
+      "unresolved_modded": 42
     },
     "carried_launchers": {
       "base": {
@@ -298,11 +298,11 @@
       "inherited": [],
       "label": "vehicle armament",
       "modded": {
-        "hit": 335,
-        "pct": 89.57,
+        "hit": 338,
+        "pct": 90.37,
         "total": 374
       },
-      "unresolved_modded": 39
+      "unresolved_modded": 36
     },
     "vehicles": {
       "base": {
@@ -590,11 +590,11 @@
       ],
       "label": "vehicles",
       "modded": {
-        "hit": 422,
-        "pct": 97.01,
+        "hit": 434,
+        "pct": 99.77,
         "total": 435
       },
-      "unresolved_modded": 13
+      "unresolved_modded": 1
     }
   }
 }

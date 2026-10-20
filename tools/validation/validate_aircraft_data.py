@@ -678,6 +678,12 @@ def validate_catalogue(
             errors.append(f"catalogue {cid}: values must be an object")
             values = {}
 
+        family = entry.get("family")
+        if family is not None and not isinstance(family, bool):
+            errors.append(f"catalogue {cid}: family must be true or false")
+        elif family is True:
+            errors.extend(vehicle_catalogue.family_shape_errors(cid, entry))
+
         for field, raw_entry in values.items():
             validate_value(
                 cid, field, raw_entry, by_id, errors, kind="catalogue", profile=profile
