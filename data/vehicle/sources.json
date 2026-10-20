@@ -76,6 +76,38 @@
   "note": "Tier-5 English Wikipedia compilation for the Al-Khalid main battle tank. primary_held false. Publishes identity, the 46 t weight, the dimensions, the 6TD-2 diesel, the 1,200 hp rating, the semi-automatic transmission and the road speed. Publishes no ground clearance."
  },
  {
+  "source_id": "armedassault_afv4_gorgon_trivia",
+  "tier": 5,
+  "type": "compilation",
+  "title": "Armed Assault Wiki, AFV-4_Gorgon, ARMA 3 Trivia",
+  "edition": "Armed Assault Wiki (Fandom), community wiki, ARMA 3 Trivia section only, captured 2026-10-20",
+  "identifier": "Armed Assault Wiki article 'AFV-4_Gorgon', ARMA 3 Trivia section",
+  "locator": "Section 48 of the article wikitext, 'Trivia', under the ARMA 3 heading",
+  "retrieved": "2026-10-20",
+  "url": "https://armedassault.fandom.com/wiki/AFV-4_Gorgon",
+  "archive_ref": "ARMA 3 Trivia section held as wikitext at data/vehicle/sources/armedassault_afv4_gorgon_trivia.wiki",
+  "licence": "Fandom wiki text is available under the Creative Commons Attribution-ShareAlike licence. The page is a community compilation, never a primary source.",
+  "primary_held": false,
+  "sha256": "730266786b59c6bbb40e39c18e3ee3bedce1c3a25335a8262b9b032405432362",
+  "note": "Tier-5 community compilation. The held bytes are the ARMA 3 Trivia section only. It states the Gorgon is based on the 8x8 variant of the Pandur II. The section publishes no mass, dimension, engine, tyre or performance figure, so this source carries an identity claim only and no value object cites it."
+ },
+ {
+  "source_id": "armedassault_amv7_marshall_trivia",
+  "tier": 5,
+  "type": "compilation",
+  "title": "Armed Assault Wiki, AMV-7_Marshall, ARMA 3 Trivia",
+  "edition": "Armed Assault Wiki (Fandom), community wiki, ARMA 3 Trivia section only, captured 2026-10-20",
+  "identifier": "Armed Assault Wiki article 'AMV-7_Marshall', ARMA 3 Trivia section",
+  "locator": "Section 44 of the article wikitext, 'Trivia', under the ARMA 3 heading",
+  "retrieved": "2026-10-20",
+  "url": "https://armedassault.fandom.com/wiki/AMV-7_Marshall",
+  "archive_ref": "ARMA 3 Trivia section held as wikitext at data/vehicle/sources/armedassault_amv7_marshall_trivia.wiki",
+  "licence": "Fandom wiki text is available under the Creative Commons Attribution-ShareAlike licence. The page is a community compilation, never a primary source.",
+  "primary_held": false,
+  "sha256": "2ad0d57233e4413e90f70b86fcb7dc7c32d81425cc425d9046769ab06368fa98",
+  "note": "Tier-5 community compilation. The held bytes are the ARMA 3 Trivia section only. It states the Marshall is based on the Patria AMV and, more specifically, on the Badger IFV variant. The section publishes no mass, dimension, engine, tyre or performance figure, so this source carries an identity claim only and no value object cites it."
+ },
+ {
   "source_id": "armedassault_hatchback_trivia",
   "tier": 5,
   "type": "compilation",
@@ -122,6 +154,22 @@
   "primary_held": false,
   "sha256": "9cf6e0466f5feccce590ed2fdfc8fed6db93fefbbd3bfd02ca2937001d522274",
   "note": "Tier-5 community compilation. The held bytes are the ARMA 3 Trivia section only. It states the Ifrit appears to be modelled after the ZiL Karatel. The section publishes no mass, dimension, engine, tyre or performance figure, so this source carries an identity claim only and no value object cites it."
+ },
+ {
+  "source_id": "armedassault_mse3_marid_trivia",
+  "tier": 5,
+  "type": "compilation",
+  "title": "Armed Assault Wiki, MSE-3_Marid, ARMA 3 Trivia",
+  "edition": "Armed Assault Wiki (Fandom), community wiki, ARMA 3 Trivia section only, captured 2026-10-20",
+  "identifier": "Armed Assault Wiki article 'MSE-3_Marid', ARMA 3 Trivia section",
+  "locator": "Section 39 of the article wikitext, 'Trivia', under the ARMA 3 heading",
+  "retrieved": "2026-10-20",
+  "url": "https://armedassault.fandom.com/wiki/MSE-3_Marid",
+  "archive_ref": "ARMA 3 Trivia section held as wikitext at data/vehicle/sources/armedassault_mse3_marid_trivia.wiki",
+  "licence": "Fandom wiki text is available under the Creative Commons Attribution-ShareAlike licence. The page is a community compilation, never a primary source.",
+  "primary_held": false,
+  "sha256": "e277952ac0fbb36a3b9ce99c7256740fe87364f8fbd6f03174e0e65a0814b14e",
+  "note": "Tier-5 community compilation. The held bytes are the ARMA 3 Trivia section only. It states the Marid is based on the 6x6 variant of the Otokar Arma. The section publishes no mass, dimension, engine, tyre or performance figure, so this source carries an identity claim only and no value object cites it."
  },
  {
   "source_id": "armedassault_offroad_trivia",

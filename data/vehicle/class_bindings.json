@@ -122,25 +122,25 @@
   {
     "game_class": "B_APC_Wheeled_01_cannon_F",
     "class_token": "Wheeled_APC",
-    "catalogue_id": "btr_80",
-    "identity_source": "aee_class_table",
-    "identity_evidence": "AEE class token Wheeled_APC; class_map.json binds Wheeled_APC to the BTR-80. The class name does not name the catalogue vehicle, so the link stays class_only.",
+    "catalogue_id": "patria_amv",
+    "identity_source": "armedassault_amv7_marshall_trivia",
+    "identity_evidence": "Armed Assault Wiki, AMV-7_Marshall, ARMA 3 Trivia (wikitext section 44): \"* The Marshall is based on the real-world \"Armored Modular Vehicle\" designed by Patria of Finland. ** More specifically, it is based on the \"Badger\" IFV, a locally manufactured variant of the AMV designed by Denel SOC Ltd of South Africa. The Badger combines the AMV's chassis with that of Denel's \"Modular Combat Turret\" (MCT), though the real Badger uses a 30 mm autocannon as opposed to the Marshall's 40 mm.\" Citation: https://armedassault.fandom.com/wiki/AMV-7_Marshall. The page asserts the basis twice: the Marshall 'is based on the real-world \"Armored Modular Vehicle\" designed by Patria of Finland', and 'more specifically, it is based on the \"Badger\" IFV, a locally manufactured variant of the AMV designed by Denel SOC Ltd of South Africa'. The corpus holds the Patria AMV and not the Badger variant, so the binding names the base vehicle and the evidence names the variant. The Badger variant is recorded as a missing capture in data/vehicle/RESEARCH_GAPS.md. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   },
   {
     "game_class": "I_APC_Wheeled_03_cannon_F",
     "class_token": "Wheeled_APC",
-    "catalogue_id": "btr_80",
-    "identity_source": "aee_class_table",
-    "identity_evidence": "AEE class token Wheeled_APC; the same catalogue vehicle as B_APC_Wheeled_01_cannon_F. The class name does not name the catalogue vehicle, so the link stays class_only.",
+    "catalogue_id": "pandur_ii",
+    "identity_source": "armedassault_afv4_gorgon_trivia",
+    "identity_evidence": "Armed Assault Wiki, AFV-4_Gorgon, ARMA 3 Trivia (wikitext section 48): \"* The Gorgon is based on the real-world 8x8 variant of the \"Pandur II\".\" Citation: https://armedassault.fandom.com/wiki/AFV-4_Gorgon. The page asserts the basis ('is based on the real-world 8x8 variant of the \"Pandur II\"'). The corpus holds the Pandur II 8x8. The previous binding, the BTR-80, is withdrawn: it rested on the Wheeled_APC token alone and no page names a BTR for the Gorgon. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   },
   {
     "game_class": "O_APC_Wheeled_02_rcws_v2_F",
     "class_token": "Wheeled_APC",
-    "catalogue_id": "btr_80",
-    "identity_source": "aee_class_table",
-    "identity_evidence": "AEE class token Wheeled_APC; the same catalogue vehicle as B_APC_Wheeled_01_cannon_F. The class name does not name the catalogue vehicle, so the link stays class_only.",
+    "catalogue_id": "otokar_arma_6x6",
+    "identity_source": "armedassault_mse3_marid_trivia",
+    "identity_evidence": "Armed Assault Wiki, MSE-3_Marid, ARMA 3 Trivia (wikitext section 39): \"* The Marid is based on the real-world 6x6 variant of the \"Arma\", a Turkish-made APC designed by Otokar. The in-game vehicle is in turn parodied as the product of an Armaverse company named \"Otorak\", a deliberate misspelling of the real company's name.\" Citation: https://armedassault.fandom.com/wiki/MSE-3_Marid. The page asserts the basis ('is based on the real-world 6x6 variant of the \"Arma\", a Turkish-made APC designed by Otokar'). The previous binding, the BTR-80, is withdrawn: it rested on the Wheeled_APC token alone and no page names a BTR for the Marid. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   },
   {
@@ -301,6 +301,38 @@
     "catalogue_id": "lgs_fennek_larv",
     "identity_source": "armedassault_strider_trivia",
     "identity_evidence": "Armed Assault Wiki, Strider, ARMA 3 Trivia (wikitext section 39): \"* The Strider is based on the real-world \"LGS Fennek\" LARV.\" Citation: https://armedassault.fandom.com/wiki/Strider. The page asserts the basis ('is based on the real-world \"LGS Fennek\" LARV'). It also states that the in-game classification as an MRAP is incorrect, because the real Fennek is a scout vehicle. The binding records the identity, not the game's category. The previous binding, the Oshkosh M-ATV M1240, is withdrawn: it rested on the MRAP token alone and no page names an M-ATV for the Strider. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "APC_Wheeled_01_base_F",
+    "class_token": "Wheeled_APC",
+    "catalogue_id": "patria_amv",
+    "identity_source": "armedassault_amv7_marshall_trivia",
+    "identity_evidence": "Armed Assault Wiki, AMV-7_Marshall, ARMA 3 Trivia (wikitext section 44): \"* The Marshall is based on the real-world \"Armored Modular Vehicle\" designed by Patria of Finland. ** More specifically, it is based on the \"Badger\" IFV, a locally manufactured variant of the AMV designed by Denel SOC Ltd of South Africa. The Badger combines the AMV's chassis with that of Denel's \"Modular Combat Turret\" (MCT), though the real Badger uses a 30 mm autocannon as opposed to the Marshall's 40 mm.\" Citation: https://armedassault.fandom.com/wiki/AMV-7_Marshall. The page asserts the basis twice: the Marshall 'is based on the real-world \"Armored Modular Vehicle\" designed by Patria of Finland', and 'more specifically, it is based on the \"Badger\" IFV, a locally manufactured variant of the AMV designed by Denel SOC Ltd of South Africa'. The corpus holds the Patria AMV and not the Badger variant, so the binding names the base vehicle and the evidence names the variant. The Badger variant is recorded as a missing capture in data/vehicle/RESEARCH_GAPS.md. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "APC_Wheeled_02_base_F",
+    "class_token": "Wheeled_APC",
+    "catalogue_id": "otokar_arma_6x6",
+    "identity_source": "armedassault_mse3_marid_trivia",
+    "identity_evidence": "Armed Assault Wiki, MSE-3_Marid, ARMA 3 Trivia (wikitext section 39): \"* The Marid is based on the real-world 6x6 variant of the \"Arma\", a Turkish-made APC designed by Otokar. The in-game vehicle is in turn parodied as the product of an Armaverse company named \"Otorak\", a deliberate misspelling of the real company's name.\" Citation: https://armedassault.fandom.com/wiki/MSE-3_Marid. The page asserts the basis ('is based on the real-world 6x6 variant of the \"Arma\", a Turkish-made APC designed by Otokar'). The previous binding, the BTR-80, is withdrawn: it rested on the Wheeled_APC token alone and no page names a BTR for the Marid. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "APC_Wheeled_03_base_F",
+    "class_token": "Wheeled_APC",
+    "catalogue_id": "pandur_ii",
+    "identity_source": "armedassault_afv4_gorgon_trivia",
+    "identity_evidence": "Armed Assault Wiki, AFV-4_Gorgon, ARMA 3 Trivia (wikitext section 48): \"* The Gorgon is based on the real-world 8x8 variant of the \"Pandur II\".\" Citation: https://armedassault.fandom.com/wiki/AFV-4_Gorgon. The page asserts the basis ('is based on the real-world 8x8 variant of the \"Pandur II\"'). The corpus holds the Pandur II 8x8. The previous binding, the BTR-80, is withdrawn: it rested on the Wheeled_APC token alone and no page names a BTR for the Gorgon. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "B_APC_Wheeled_03_cannon_F",
+    "class_token": "Wheeled_APC",
+    "catalogue_id": "pandur_ii",
+    "identity_source": "armedassault_afv4_gorgon_trivia",
+    "identity_evidence": "Armed Assault Wiki, AFV-4_Gorgon, ARMA 3 Trivia (wikitext section 48): \"* The Gorgon is based on the real-world 8x8 variant of the \"Pandur II\".\" Citation: https://armedassault.fandom.com/wiki/AFV-4_Gorgon. The page asserts the basis ('is based on the real-world 8x8 variant of the \"Pandur II\"'). The corpus holds the Pandur II 8x8. The previous binding, the BTR-80, is withdrawn: it rested on the Wheeled_APC token alone and no page names a BTR for the Gorgon. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
   }
 ]

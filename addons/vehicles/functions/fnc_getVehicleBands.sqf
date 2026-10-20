@@ -231,6 +231,7 @@ private _table = [
     ["olifant", "tracked", 1, 58000, 9830, 3378, 2940],
     ["oshkosh_m_atv_m1277", "wheeled", 0, 12500, 6270, 2490, 2700],
     ["oshkosh_mtvr_mk23", "wheeled", 0, 13200, 8000, 2490, 3185],
+    ["otokar_arma_6x6", "wheeled", 0, 0, 0, 0, 0],
     ["pandur_ii", "wheeled", 0, 17300, 7350, 2670, 2080],
     ["patria_amv", "wheeled", 0, 16000, 7900, 2800, 2400],
     ["peugeot_p4", "wheeled", 0, 1750, 4200, 1700, 0],
