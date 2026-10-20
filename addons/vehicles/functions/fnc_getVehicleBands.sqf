@@ -107,6 +107,7 @@ private _table = [
     ["cv90_denmark", "tracked", 1, 23000, 6800, 3200, 2800],
     ["cv90_norway", "tracked", 1, 23000, 6800, 3200, 2800],
     ["dardo", "tracked", 1, 23400, 6700, 3000, 2640],
+    ["darpa_crusher_ugcv", "wheeled", 0, 0, 0, 0, 0],
     ["eitan", "wheeled", 0, 50000, 8000, 3000, 3000],
     ["fahd", "wheeled", 0, 12500, 6000, 2450, 2250],
     ["freccia", "wheeled", 0, 22000, 8560, 2990, 3180],

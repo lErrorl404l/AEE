@@ -396,6 +396,22 @@
   "note": "Tier-5 community compilation. The held bytes are the ARMA 3 Trivia section only. It states the Tempest is based on the KamAZ-63968 Typhoon. The section publishes no mass, dimension, engine, tyre or performance figure, so this source carries an identity claim only and no value object cites it."
  },
  {
+  "source_id": "armedassault_ugv_stomper_trivia",
+  "tier": 5,
+  "type": "compilation",
+  "title": "Armed Assault Wiki, UGV_Stomper, ARMA 3 Trivia",
+  "edition": "Armed Assault Wiki (Fandom), community wiki, ARMA 3 Trivia section only, captured 2026-10-20",
+  "identifier": "Armed Assault Wiki article 'UGV_Stomper', ARMA 3 Trivia section",
+  "locator": "Section 35 of the article wikitext, 'Trivia', under the ARMA 3 heading",
+  "retrieved": "2026-10-20",
+  "url": "https://armedassault.fandom.com/wiki/UGV_Stomper",
+  "archive_ref": "ARMA 3 Trivia section held as wikitext at data/vehicle/sources/armedassault_ugv_stomper_trivia.wiki",
+  "licence": "Fandom wiki text is available under the Creative Commons Attribution-ShareAlike licence. The page is a community compilation, never a primary source.",
+  "primary_held": false,
+  "sha256": "f942fc3b95167cdd59e9c0baedb31e5aed1029fd16e34eb566cbce6ab340b076",
+  "note": "Tier-5 community compilation. The held bytes are the ARMA 3 Trivia section only. It states the Stomper is based on the DARPA Crusher UGCV. The section publishes no mass, dimension, engine, tyre or performance figure, so this source carries an identity claim only and no value object cites it."
+ },
+ {
   "source_id": "armedassault_van_trivia",
   "tier": 5,
   "type": "compilation",

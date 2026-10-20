@@ -159,6 +159,7 @@ private _table = [
     ["cv90_denmark", "cv90_denmark", "tracked", "", "", "cv9035dk|cv90denmark|combatvehicle90denmark", "cv90|combatvehicle|vehicle90|90denmark|cv9035d|cv90denmar|combatvehicle90denmar", "wikipedia_cv90", [23000, 0, 0, 0, 0, "", ""]],
     ["cv90_norway", "cv90_norway", "tracked", "", "", "cv9030n|cv90norway|combatvehicle90norway", "cv90|combatvehicle|vehicle90|90norway|cv9030|cv90norwa|combatvehicle90norwa", "wikipedia_cv90", [23000, 0, 0, 0, 0, "", ""]],
     ["dardo", "dardo", "tracked", "", "", "dardo|dardoifv|vcc80", "", "wikipedia_dardo", [23400, 0, 0, 0, 381.798334, "", ""]],
+    ["darpa_crusher_ugcv", "darpa_crusher_ugcv", "wheeled", "", "", "crusher|crusherugcv|darpacrusher|saif|stomper", "darpacrusherugcv", "", [0, 0, 0, 0, 0, "", ""]],
     ["eitan", "eitan", "wheeled", "", "", "eitan|eitanafv", "armouredfightingvehicle", "wikipedia_eitan", [50000, 0, 0, 0, 559.274904, "", ""]],
     ["fahd", "fahd", "wheeled", "", "", "fahd|fahdapc", "4x4|egypt", "wikipedia_fahd", [12500, 0, 0, 370, 205.067465, "", ""]],
     ["freccia", "freccia", "wheeled", "", "", "freccia|vbmfreccia|frecciaifv", "8x8", "wikipedia_freccia", [22000, 0, 0, 0, 0, "", ""]],
