@@ -594,6 +594,7 @@ class CatalogueEntry:
     values: dict[str, object]
     source_file: str
     profile: Profile = GROUND_PROFILE
+    identity_only: bool = False
 
     def identity_aliases(self) -> tuple[str, ...]:
         """Every token that names this entry: id, variant id and aliases."""
@@ -632,6 +633,7 @@ class CatalogueEntry:
             "aliases": list(self.aliases),
             "keywords": list(self.keywords),
             "runtime_ready": self.runtime_ready,
+            "identity_only": self.identity_only,
             "values": self.values,
             "resolved": {
                 name: field.to_mapping()
@@ -1178,6 +1180,7 @@ def _load_entry(
         values=values,
         source_file=source_file,
         profile=profile,
+        identity_only=record.get("identity_only") is True,
     )
 
 

@@ -155,6 +155,7 @@ the registry only and rejects a capture whose `sources` array is not empty.
 | `aliases` | array | Lowercase match strings. |
 | `keywords` | array | Lowercase match words. |
 | `runtime_ready` | boolean | True when section 10 is satisfied. |
+| `identity_only` | boolean | Optional. True when a held source names the vehicle and publishes no figure. The entry then carries no values, emits a labelled-zero row and is never runtime-ready. Without the flag an entry with no resolved field is a gate error, because a lead is not an entry. |
 | `values` | object | The value objects, keyed by field name. |
 
 Rules:

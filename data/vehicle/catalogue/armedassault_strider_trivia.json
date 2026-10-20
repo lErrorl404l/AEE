@@ -22,6 +22,7 @@
       ],
       "keywords": [],
       "runtime_ready": false,
+      "identity_only": true,
       "values": {}
     }
   ]
