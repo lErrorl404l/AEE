@@ -275,7 +275,7 @@ private _table = [
     ["m936", "m936", "wheeled", "", "", "m936", "5ton|6x6|m939", "tm_9_2320_272_10", [17858, 279.4, 1066.8, 292, 186.424968, "automatic", ""]],
     ["m936a1", "m936a1", "wheeled", "", "", "m936a1", "5ton|6x6|m939a1", "tm_9_2320_272_10", [17322, 355.6, 1219.2, 353, 186.424968, "automatic", ""]],
     ["m936a2", "m936a2", "wheeled", "", "", "m936a2", "5ton|6x6|m939a2", "tm_9_2320_272_10", [16757, 355.6, 1219.2, 353, 178.967969, "automatic", ""]],
-    ["m977_hemtt", "m977_hemtt", "wheeled", "", "", "m977|hemtt|m977hemtt|heavyexpandedmobilitytacticaltruck", "8x8|m977hemt", "tm_9_2320_279_10_1", [17600, 406.4, 1320.8, 609.6, 331.836443, "automatic", ""]],
+    ["m977_hemtt", "m977_hemtt", "wheeled", "", "", "m977|m977hemtt|heavyexpandedmobilitytacticaltruck", "8x8|hemtt|m977hemt", "tm_9_2320_279_10_1", [17600, 406.4, 1320.8, 609.6, 331.836443, "automatic", ""]],
     ["m977a4", "m977a4", "wheeled", "", "", "m977a4", "", "wikipedia_heavy_expanded_mobility_tactical_truck", [19278, 0, 0, 0, 0, "", ""]],
     ["m978a4_hemtt", "m978a4_hemtt", "wheeled", "", "", "m978a4hemtt", "m978a4", "oshkosh_hemtt_a4_fuel_servicing_datasheet", [19119, 0, 0, 0, 0, "", ""]],
     ["m_atv_m1240", "m_atv_m1240", "wheeled", "", "mrap|mrap01basef|mrap01gmgbasef|mrap01hmgbasef", "matv|hunter", "oshkosh|matvm1240|m1240", "tm_9_2355_335_10", [11123, 395.0, 1179.5, 0, 275.908953, "automatic", ""]],
