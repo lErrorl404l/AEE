@@ -223,7 +223,7 @@ private _table = [
     ["m1085a1p2", "m1085a1p2", "wheeled", "", "", "m1085a1p2", "", "globalsecurity_m1085", [9451, 0, 0, 0, 0, "", ""]],
     ["m109a6_paladin", "m109a6_paladin", "tracked", "", "", "m109a6paladin", "m109a6", "inetres_m109", [28849, 0, 0, 0, 0, "", ""]],
     ["m1117_guardian_asv", "m1117_guardian_asv", "wheeled", "", "", "m1117guardianasv", "m1117|m1117guardian|guardianasv|m1117guardianas", "wikipedia_m1117_armored_security_vehicle", [13410, 0, 0, 0, 0, "", ""]],
-    ["m113a2", "m113a2", "tracked", "", "trackedapc", "m113|m113a2", "armoredpersonnelcarrier", "tm_9_2350_261_10", [11353, 0, 0, 434.8, 156.596973, "automatic", "grousers"]],
+    ["m113a2", "m113a2", "tracked", "", "trackedapc", "m113a2", "armoredpersonnelcarrier|m113", "tm_9_2350_261_10", [11353, 0, 0, 434.8, 156.596973, "automatic", "grousers"]],
     ["m113a3", "m113a3", "tracked", "", "", "m113a3", "", "inetres_m113", [12250, 0, 0, 0, 0, "", ""]],
     ["m1151a1", "m1151a1", "wheeled", "", "", "m1151a1", "", "globalsecurity_m1151_specs", [3697, 0, 0, 0, 0, "", ""]],
     ["m1152a1", "m1152a1", "wheeled", "", "", "m1152a1", "", "globalsecurity_m1152", [3221, 0, 0, 0, 0, "", ""]],
