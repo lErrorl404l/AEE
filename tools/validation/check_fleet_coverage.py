@@ -44,7 +44,7 @@ DEFAULT_BINDINGS = ROOT / "data" / "vehicle" / "class_bindings.json"
 DEFAULT_EMITTED = ROOT / "data" / "physics" / "config_bindings.json"
 
 PROBE_TAG = "[P73] FLEET"
-LAYERS = ("exact_class", "alias", "keyword", "inheritance", "closest")
+LAYERS = ("exact_class", "alias", "keyword", "inheritance", "closest", "inherited")
 LINE_RE = re.compile(
     r"^\[P73\] FLEET "
     r"(?P<class>\S+) type=(?P<type>wheeled|tracked) "

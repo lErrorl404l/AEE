@@ -88,9 +88,17 @@ INSTALL_ENV = "AEE_ARMA3_DIR"
 SMALL_ARMS_ROOT = {"riflecore", "pistolcore"}
 CARRIED_LAUNCHER_ROOT = {"launcher_base_f", "launcher_base"}
 VEHICLE_ARMAMENT_ROOT = {
-    "launchercore", "cannoncore", "missilelauncher", "rocketpods",
-    "bombcore", "mgun", "mguncore", "autocannon", "gatlingcore",
-    "bomblauncher", "rocketlauncher",
+    "launchercore",
+    "cannoncore",
+    "missilelauncher",
+    "rocketpods",
+    "bombcore",
+    "mgun",
+    "mguncore",
+    "autocannon",
+    "gatlingcore",
+    "bomblauncher",
+    "rocketlauncher",
 }
 # A mod base class whose own parent is declared in a PBO this scan did not
 # read leaves the chain short. The classname still says what it is, so the
@@ -121,8 +129,15 @@ MUNITION = re.compile(
 SCAN_MIN = 3
 
 # A class is a vehicle when its inheritance chain passes one of these.
-LAND = {"car", "tank", "truck", "motorcycle", "landvehicle", "wheeled_apc_f",
-        "apc_tracked_01_base_f"}
+LAND = {
+    "car",
+    "tank",
+    "truck",
+    "motorcycle",
+    "landvehicle",
+    "wheeled_apc_f",
+    "apc_tracked_01_base_f",
+}
 AIR = {"air", "helicopter", "plane", "uav"}
 # A tripod gun or a mortar inherits LandVehicle without being a vehicle. The
 # fleet inventory excludes it by the same rule, in
@@ -196,20 +211,30 @@ def munition_rows(path: Path) -> list:
     return out
 
 
-def matcher(table: list):
-    """The runtime ladder: exact class, alias, keyword, then closest."""
+def matcher(table: list, ancestry=None):
+    """The runtime ladder: exact class, alias, keyword, closest, then the
+    inherited rung.
 
-    def match(text: str):
+    `ancestry` is the engine parent chain, a callable that returns a class's
+    ancestors nearest first as classnames. Only the vehicle table is given
+    one, because only its runtime matcher walks the chain.
+    """
+
+    def match(cls: str = "", display: str = ""):
+        text = (cls + " " + display).strip()
         key = fold(text)
         if not key:
             return None
+        # The runtime's exact layer reads the CLASS alone; the display only
+        # enters at the alias layer onward.
+        class_key = fold(cls) or key
         # The runtime splits the identity into TOKENS for the alias layer,
         # because a curated alias is a whole designation and must match a
         # whole word of the query: "S-5" folds to "s5", which the folded
         # whole identity never equals. The mirror has to split the same
         # way or it under-reports every short alias.
         tokens = {fold(t) for t in re.split(r"[ _\-.]+", text) if fold(t)}
-        hit = [r for r in table if key in r["classes"]]
+        hit = [r for r in table if class_key in r["classes"]]
         if len(hit) == 1:
             return hit[0]
         hit = [r for r in table if tokens & set(r["aliases"])]
@@ -221,8 +246,7 @@ def matcher(table: list):
             r
             for r in table
             if any(
-                len(w) >= SCAN_MIN and w in key
-                for w in (r["keywords"] + r["aliases"])
+                len(w) >= SCAN_MIN and w in key for w in (r["keywords"] + r["aliases"])
             )
         ]
         if len(hit) == 1:
@@ -248,7 +272,12 @@ def matcher(table: list):
             longest = max((len(w) for w in terms), default=0)
             if score > best_score:
                 runner, best_score, best, best_count, best_name, tie = (
-                    best_score, score, r, count, longest, False
+                    best_score,
+                    score,
+                    r,
+                    count,
+                    longest,
+                    False,
                 )
             elif score == best_score:
                 if count < best_count:
@@ -262,9 +291,110 @@ def matcher(table: list):
                 runner = max(runner, score)
         if best and not tie and best_score > runner:
             return best
+        # Nothing in the class text names an entry. The engine ancestry is
+        # the last evidence there is, and it is used only when the class
+        # text names the ancestor's entry (see inherited_row).
+        if ancestry is not None and cls:
+            row, _ancestor = inherited_row(table, cls, tokens, ancestry)
+            return row
         return None
 
     return match
+
+
+def _named_ancestor(table: list, name: str):
+    """The one entry that maps this ancestor classname, or None.
+
+    The mapped-class test only: a mod may rewrite any ancestor's displayName,
+    so the classname is the evidence and the text is not.
+    """
+    key = fold(name)
+    if not key:
+        return None
+    hit = [r for r in table if key in r["classes"]]
+    return hit[0] if len(hit) == 1 else None
+
+
+def _blob(row: dict) -> str:
+    """The identity text one entry is published under, folded."""
+    return fold(
+        row["id"] + "|" + "|".join(row["aliases"]) + "|" + "|".join(row["keywords"])
+    )
+
+
+def _claims(row: dict, tokens: set) -> bool:
+    """True when a class token names something the entry is identified by.
+
+    This is the retexture test. A class that carries the ancestor's family
+    word, or a maker or a model the ancestor's entry is published under, is
+    the same article in new paint. A class that carries neither describes a
+    DIFFERENT article, so the rung must refuse it however short the chain.
+    """
+    blob = _blob(row)
+    return any(len(t) >= SCAN_MIN and t in blob for t in tokens)
+
+
+def inherited_row(table: list, cls: str, tokens: set, ancestry):
+    """The row the ENGINE ancestry yields, and the ancestor that yielded it.
+
+    A claim about ancestry, never about identity: the nearest ancestor the
+    table names decides, and it answers only where the class's own text names
+    it. A nearer ancestor that the class text does not name blocks a further
+    one, so a generic engine class can never answer for a specific class.
+    """
+    for name in ancestry(cls):
+        row = _named_ancestor(table, name)
+        if row is None:
+            continue
+        if _claims(row, tokens):
+            return row, name
+        return None, name
+    return None, None
+
+
+def ancestry_closures(
+    selected: list, table: list, plain, chained, ancestry, base
+) -> list:
+    """Every class the inherited rung closed, with the chain that closed it.
+
+    A closed class has no identity of its own, so the record states what the
+    answer rests on: the ancestor the table names, the config chain from the
+    class to that ancestor, and the class tokens that name it. The claim is
+    engine ancestry; it is not a claim that the class is that real vehicle.
+    """
+    out = []
+    for r in selected:
+        if plain(r["class"], r["display"]) is not None:
+            continue
+        row = chained(r["class"], r["display"])
+        if row is None:
+            continue
+        tokens = {
+            fold(t)
+            for t in re.split(r"[ _\-.]+", r["class"] + " " + r["display"])
+            if fold(t)
+        }
+        chain, ancestor = [r["class"]], ""
+        for name in ancestry(r["class"]):
+            chain.append(name)
+            if _named_ancestor(table, name) is not None:
+                ancestor = name
+                break
+        out.append(
+            {
+                "group": "base" if r["source"].lower() in base else "modded",
+                "class": r["class"],
+                "display": r["display"],
+                "source": r["source"],
+                "ancestor": ancestor,
+                "chain": chain,
+                "catalogue_id": row["id"],
+                "named": sorted(
+                    t for t in tokens if len(t) >= SCAN_MIN and t in _blob(row)
+                ),
+            }
+        )
+    return out
 
 
 def weapon_table() -> list:
@@ -287,15 +417,16 @@ def weapon_matcher(table: list):
         for a in aliases:
             index.setdefault(a, (wid, len(a)))
 
-    def match(identity: str):
+    def match(identity: str, display: str = ""):
+        text = (identity + " " + display).strip()
         best, best_len = None, 0
-        for token in re.split(r"[_\- .]+", identity.lower()):
+        for token in re.split(r"[_\- .]+", text.lower()):
             hit = index.get(fold(token))
             if hit and hit[1] > best_len:
                 best, best_len = hit[0], hit[1]
         if best:
             return best
-        key = fold(identity)
+        key = fold(text)
         for wid, aliases in table:
             for a in aliases:
                 if len(a) >= 4 and a in key and len(a) > best_len:
@@ -372,7 +503,7 @@ def score(selected: list, match, base: set[str]) -> dict:
     for r in selected:
         group = "base" if r["source"].lower() in base else "modded"
         out[group]["total"] += 1
-        if match(r["class"] + " " + r["display"]):
+        if match(r["class"], r["display"]):
             out[group]["hit"] += 1
         else:
             out["unresolved"].append(
@@ -423,6 +554,19 @@ def measure(scanned: list, base: set[str]) -> dict:
             cur = parent.get(cur)
         return chain
 
+    def chain_orig(cls: str) -> list[str]:
+        """The same chain with the case the config declares, for evidence."""
+        seen, cur, chain = set(), cls, []
+        while cur and cur.lower() not in seen:
+            seen.add(cur.lower())
+            chain.append(cur)
+            cur = parent.get(cur)
+        return chain
+
+    def ancestors(cls: str) -> list[str]:
+        """The class's config ancestors, nearest first."""
+        return chain_orig(cls)[1:]
+
     def kind(chain: list[str]):
         if any(c in AIR for c in chain):
             return "air"
@@ -460,10 +604,17 @@ def measure(scanned: list, base: set[str]) -> dict:
         (ground, VEHICLE, "vehicles", emplacements),
         (air, AIRCRAFT, "aircraft", []),
     ):
-        match = matcher(rows(path))
+        table = rows(path)
+        plain = matcher(table)
+        match = matcher(table, ancestors) if label == "vehicles" else plain
         tables[slug(label)] = {
             "label": label,
             **score(sel, match, base),
+            "inherited": (
+                ancestry_closures(sel, table, plain, match, ancestors, base)
+                if label == "vehicles"
+                else []
+            ),
             "excluded": {STATIC_WEAPON_KIND: len(dropped)} if dropped else {},
         }
 
@@ -601,6 +752,22 @@ def print_evidence(result: dict) -> None:
             print(f"    {len(members):3d}  {kind:<20} e.g. {sample}")
 
 
+def print_inheritance(tables: dict) -> None:
+    """Name every class the inherited rung closed, with the chain behind it.
+
+    The closure is a claim about engine ancestry, so the evidence is the
+    config chain and the ancestor's entry. A reader can check both.
+    """
+    for res in tables.values():
+        closed = res.get("inherited") or []
+        if not closed:
+            continue
+        print(f"  {len(closed)} {res['label']} classes resolved by engine ancestry:")
+        for row in sorted(closed, key=_order):
+            chain = " <- ".join(row["chain"])
+            print(f"    {row['class']} = {row['catalogue_id']}  ({chain})")
+
+
 def print_gaps(tables: dict) -> None:
     """The unnamed display names of every table, most-used first."""
     for res in tables.values():
@@ -697,19 +864,21 @@ def write_baseline(
             # not read them as regression.
             "known_unresolvable": {
                 "vehicle_modded": {
-                    "fictional_display_reuse": 7,
-                    "maker_or_family_only": 12,
+                    "retexture_of_an_unmapped_ancestor": 10,
+                    "different_maker_than_ancestor": 1,
+                    "family_label_over_a_generic_class": 1,
                     "armafpv_drone_no_published_designation": 8,
                     "note": (
-                        "Classes left after twenty-one modded vehicle gaps were "
-                        "closed (416/435 after the counterpart research). Seven "
-                        "are Offroad display re-uses: the class carries no text "
-                        "a source designates, and the composite entry's only key "
-                        "for the fictional name is a category word the runtime "
-                        "drops. Twelve state a maker or a family and no model, "
-                        "ten of them the Project OPFOR KAMAZ retextures. The "
-                        "eight aircraft gaps are ArmaFPV FPV drones. None of "
-                        "them is a failure."
+                        "Seven modded Offroad classes closed by engine ancestry "
+                        "(423/435). Twelve remain. Ten are the Project OPFOR "
+                        "KAMAZ retextures: they descend from the Zamak in "
+                        "config, and no entry maps the Zamak variants, so the "
+                        "nearest mapped ancestor is the engine's Car class. "
+                        "LOP_Nissan_PKM_base names a Nissan over the ancestor's "
+                        "Toyota entry, and rhsusf_fmtv_base names a family over "
+                        "the same Car class. The rung refuses all twelve rather "
+                        "than answer a different vehicle. The eight aircraft "
+                        "gaps are ArmaFPV FPV drones. None is a failure."
                     ),
                 }
             },
@@ -720,6 +889,7 @@ def write_baseline(
                 "base": {**res["base"], "pct": round(pct(res["base"]), 2)},
                 "modded": {**res["modded"], "pct": round(pct(res["modded"]), 2)},
                 "unresolved_modded": len(modded_gaps(res)),
+                "inherited": res.get("inherited", []),
                 "excluded": res.get("excluded", {}),
             }
             for name, res in tables.items()
@@ -779,6 +949,7 @@ def main() -> int:
     tables = result["tables"]
     report(tables)
     print_evidence(result)
+    print_inheritance(tables)
     if args.gaps:
         print_gaps(tables)
     if args.modded:

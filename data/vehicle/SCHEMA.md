@@ -485,6 +485,17 @@ The ladder runs in this order. Each layer carries one confidence.
    score is strictly lower. This mirrors the longest-substring scan in
    the weapon resolver and the nearest-caliber threshold in the caliber
    parser.
+6. `inherited`: the class text names no entry, so the ENGINE ancestry
+   answers. The matcher walks the config parent chain to the nearest
+   ancestor whose classname the table maps, and answers that ancestor's
+   entry when the class's own text names something the entry is
+   identified by. The ancestor is matched by classname and never by
+   text, because any mod may rewrite an ancestor's displayName and only
+   the classname is stable evidence. The nearest mapped ancestor
+   decides: if the class text does not name its entry, the rung returns
+   `[]` and does not walk further. This layer states ancestry, which the
+   config declares, and never identity: a class that describes a
+   different article than its ancestor stays unnamed.
 
 Rules:
 
@@ -492,9 +503,12 @@ Rules:
   weaker layer runs only when the stronger layer yields none.
 - A tie at any layer, meaning two or more candidates tie, returns `[]`.
 - `matched_by` is one of `exact_class`, `alias`, `keyword`,
-  `inheritance`, `closest`.
-- `confidence` is an integer. It is 1 for `exact_class` and 5 for
-  `closest`.
+  `inheritance`, `inherited`, `closest`.
+- `confidence` is an integer. It is 1 for `exact_class` and 6 for
+  `inherited`, which runs after `closest` because a class the text layers
+  already name keeps that answer.
+- The inherited layer is the only one that reads the config tree, and it
+  reads it for ancestry only.
 - A runtime row is emitted for every catalogue entry with a complete
   identity. A missing value does not refuse the row.
 - The matcher reads no config value as a figure. It may call `isKindOf`

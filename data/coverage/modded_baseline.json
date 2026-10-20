@@ -205,9 +205,10 @@
     "known_unresolvable": {
       "vehicle_modded": {
         "armafpv_drone_no_published_designation": 8,
-        "fictional_display_reuse": 7,
-        "maker_or_family_only": 12,
-        "note": "Classes left after twenty-one modded vehicle gaps were closed (416/435 after the counterpart research). Seven are Offroad display re-uses: the class carries no text a source designates, and the composite entry's only key for the fictional name is a category word the runtime drops. Twelve state a maker or a family and no model, ten of them the Project OPFOR KAMAZ retextures. The eight aircraft gaps are ArmaFPV FPV drones. None of them is a failure."
+        "different_maker_than_ancestor": 1,
+        "family_label_over_a_generic_class": 1,
+        "note": "Seven modded Offroad classes closed by engine ancestry (423/435). Twelve remain. Ten are the Project OPFOR KAMAZ retextures: they descend from the Zamak in config, and no entry maps the Zamak variants, so the nearest mapped ancestor is the engine's Car class. LOP_Nissan_PKM_base names a Nissan over the ancestor's Toyota entry, and rhsusf_fmtv_base names a family over the same Car class. The rung refuses all twelve rather than answer a different vehicle. The eight aircraft gaps are ArmaFPV FPV drones. None is a failure.",
+        "retexture_of_an_unmapped_ancestor": 10
       }
     },
     "measured_rows": 135427,
@@ -220,11 +221,12 @@
   "tables": {
     "aircraft": {
       "base": {
-        "hit": 38,
-        "pct": 88.37,
+        "hit": 43,
+        "pct": 100.0,
         "total": 43
       },
       "excluded": {},
+      "inherited": [],
       "label": "aircraft",
       "modded": {
         "hit": 215,
@@ -240,6 +242,7 @@
         "total": 2
       },
       "excluded": {},
+      "inherited": [],
       "label": "carried launchers",
       "modded": {
         "hit": 18,
@@ -255,6 +258,7 @@
         "total": 14
       },
       "excluded": {},
+      "inherited": [],
       "label": "small arms",
       "modded": {
         "hit": 116,
@@ -278,6 +282,7 @@
         "ship launcher cell": 3,
         "weapon bay": 1
       },
+      "inherited": [],
       "label": "vehicle armament",
       "modded": {
         "hit": 356,
@@ -288,20 +293,141 @@
     },
     "vehicles": {
       "base": {
-        "hit": 74,
-        "pct": 93.67,
+        "hit": 78,
+        "pct": 98.73,
         "total": 79
       },
       "excluded": {
         "static weapon emplacements": 12
       },
+      "inherited": [
+        {
+          "ancestor": "Offroad_01_unarmed_base_F",
+          "catalogue_id": "offroad_q7_l200_composite",
+          "chain": [
+            "CBRN_Offroad",
+            "Offroad_01_civil_base_F",
+            "Offroad_01_unarmed_base_F"
+          ],
+          "class": "CBRN_Offroad",
+          "display": "Offroad",
+          "group": "modded",
+          "named": [
+            "offroad"
+          ],
+          "source": "PHAN_CW.pbo"
+        },
+        {
+          "ancestor": "Offroad_01_unarmed_base_F",
+          "catalogue_id": "offroad_q7_l200_composite",
+          "chain": [
+            "LOP_AA_Offroad",
+            "LOP_Offroad_base",
+            "Offroad_01_civil_base_F",
+            "Offroad_01_unarmed_base_F"
+          ],
+          "class": "LOP_AA_Offroad",
+          "display": "ANA Offroad",
+          "group": "modded",
+          "named": [
+            "offroad"
+          ],
+          "source": "po_factions_me.pbo"
+        },
+        {
+          "ancestor": "Offroad_01_unarmed_base_F",
+          "catalogue_id": "offroad_q7_l200_composite",
+          "chain": [
+            "LOP_AA_Offroad_Police",
+            "LOP_Offroad_base",
+            "Offroad_01_civil_base_F",
+            "Offroad_01_unarmed_base_F"
+          ],
+          "class": "LOP_AA_Offroad_Police",
+          "display": "ANP Offroad",
+          "group": "modded",
+          "named": [
+            "offroad"
+          ],
+          "source": "po_factions_me.pbo"
+        },
+        {
+          "ancestor": "Offroad_01_base_F",
+          "catalogue_id": "offroad_q7_l200_composite",
+          "chain": [
+            "LOP_AA_Offroad_M2",
+            "LOP_Offroad_M2_base",
+            "Offroad_01_armed_base_F",
+            "Offroad_01_military_base_F",
+            "Offroad_01_base_F"
+          ],
+          "class": "LOP_AA_Offroad_M2",
+          "display": "ANA Offroad (M2)",
+          "group": "modded",
+          "named": [
+            "offroad"
+          ],
+          "source": "po_factions_me.pbo"
+        },
+        {
+          "ancestor": "Offroad_01_base_F",
+          "catalogue_id": "offroad_q7_l200_composite",
+          "chain": [
+            "LOP_AA_Offroad_M2_Police",
+            "LOP_Offroad_M2_base",
+            "Offroad_01_armed_base_F",
+            "Offroad_01_military_base_F",
+            "Offroad_01_base_F"
+          ],
+          "class": "LOP_AA_Offroad_M2_Police",
+          "display": "ANP Offroad (M2)",
+          "group": "modded",
+          "named": [
+            "offroad"
+          ],
+          "source": "po_factions_me.pbo"
+        },
+        {
+          "ancestor": "Offroad_01_unarmed_base_F",
+          "catalogue_id": "offroad_q7_l200_composite",
+          "chain": [
+            "LOP_Offroad_base",
+            "Offroad_01_civil_base_F",
+            "Offroad_01_unarmed_base_F"
+          ],
+          "class": "LOP_Offroad_base",
+          "display": "Offroad",
+          "group": "modded",
+          "named": [
+            "offroad"
+          ],
+          "source": "po_main.pbo"
+        },
+        {
+          "ancestor": "Offroad_01_base_F",
+          "catalogue_id": "offroad_q7_l200_composite",
+          "chain": [
+            "LOP_Offroad_M2_base",
+            "Offroad_01_armed_base_F",
+            "Offroad_01_military_base_F",
+            "Offroad_01_base_F"
+          ],
+          "class": "LOP_Offroad_M2_base",
+          "display": "Offroad (M2)",
+          "group": "modded",
+          "named": [
+            "offroad"
+          ],
+          "source": "po_main.pbo"
+        }
+      ],
       "label": "vehicles",
       "modded": {
-        "hit": 416,
-        "pct": 95.63,
+        "hit": 423,
+        "pct": 97.24,
         "total": 435
       },
-      "unresolved_modded": 19
+      "unresolved_modded": 12
     }
   }
 }

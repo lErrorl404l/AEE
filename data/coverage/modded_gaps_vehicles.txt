@@ -1,13 +1,8 @@
 # modded match coverage gaps: vehicles
-# 19 unresolved of 435 modded classes (95.6% resolved)
+# 12 unresolved of 435 modded classes (97.2% resolved)
 # class	display	parent	source
-CBRN_Offroad	Offroad	Offroad_01_civil_base_F	PHAN_CW.pbo
 LOP_UKR_KAMAZ_Fuel	KAMAZ (fuel)	LOP_KAMAZ_fuel_base	po_factions_eu.pbo
 LOP_CDF_KAMAZ_Fuel	KAMAZ (fuel)	LOP_KAMAZ_fuel_base	po_factions_fic.pbo
-LOP_AA_Offroad	ANA Offroad	LOP_Offroad_base	po_factions_me.pbo
-LOP_AA_Offroad_M2	ANA Offroad (M2)	LOP_Offroad_M2_base	po_factions_me.pbo
-LOP_AA_Offroad_M2_Police	ANP Offroad (M2)	LOP_Offroad_M2_base	po_factions_me.pbo
-LOP_AA_Offroad_Police	ANP Offroad	LOP_Offroad_base	po_factions_me.pbo
 LOP_IRAN_KAMAZ_Fuel	KAMAZ (fuel)	LOP_KAMAZ_fuel_base	po_factions_me.pbo
 LOP_SYR_KAMAZ_Fuel	KAMAZ (fuel)	LOP_KAMAZ_fuel_base	po_factions_me.pbo
 LOP_KAMAZ_ammo_base	KAMAZ (ammo)	O_Truck_02_Ammo_F	po_main.pbo
@@ -17,6 +12,4 @@ LOP_KAMAZ_med_base	Kamaz Medical	O_Truck_02_medical_F	po_main.pbo
 LOP_KAMAZ_rep_base	KAMAZ (repair)	O_Truck_02_box_F	po_main.pbo
 LOP_KAMAZ_trans_base	KAMAZ (open)	O_Truck_02_transport_F	po_main.pbo
 LOP_Nissan_PKM_base	Nissan (PKM)	PO_Pickup_PK_base	po_main.pbo
-LOP_Offroad_base	Offroad	Offroad_01_civil_base_F	po_main.pbo
-LOP_Offroad_M2_base	Offroad (M2)	Offroad_01_armed_base_F	po_main.pbo
 rhsusf_fmtv_base	FMTV	Truck_01_base_F	rhsusf_c_fmtv.pbo

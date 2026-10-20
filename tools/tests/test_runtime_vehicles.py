@@ -6,7 +6,7 @@ catalogue by tools/validation/gen_vehicle_data.py. Every catalogue entry
 with a complete identity emits a row. A value that is not held is a
 labelled absent zero, not a reason to refuse the record. These tests hold
 the nine-column row contract, the graded resolution, the named
-derivations, the five-layer ladder, the fail-closed result and the
+derivations, the six-layer ladder, the fail-closed result and the
 freshness gate.
 
 The complete records live only in this test file. They hold sentinel values,
@@ -177,7 +177,7 @@ class TestGeneratedMatchFile(unittest.TestCase):
 
 
 class TestMatcherLayers(unittest.TestCase):
-    """The five layers, ordered, each with a strict tie rule."""
+    """The six layers, ordered, each with a strict tie rule."""
 
     def test_the_exact_class_layer_runs_first_with_confidence_one(self):
         self.assertIn('"exact_class"', MATCH)
@@ -200,6 +200,18 @@ class TestMatcherLayers(unittest.TestCase):
         self.assertIn(', 5, "closest"', MATCH)
         self.assertIn("_bestScore > _runnerUp", MATCH)
         self.assertIn(str(gen.SCAN_MIN), MATCH)
+    def test_the_inherited_layer_runs_last_with_confidence_six(self):
+        self.assertIn(', 6, "inherited"', MATCH)
+        self.assertIn("inheritsFrom (configFile", MATCH)
+        self.assertLess(MATCH.index(', 5, "closest"'), MATCH.index(', 6, "inherited"'))
+
+    def test_the_inherited_layer_answers_only_a_class_named_by_the_entry(self):
+        # Ancestry alone must never answer, so the rung carries the retexture
+        # test: a class token has to appear in the entry's own identity text.
+        self.assertIn("_ancestor = inheritsFrom _ancestor", MATCH)
+        self.assertIn("_ancestorHits", MATCH)
+        self.assertIn("_claims", MATCH)
+        self.assertIn("_inheritedRow", MATCH)
 
     def test_a_tie_at_a_layer_returns_empty(self):
         # Every layer that finds more than one candidate returns [].
