@@ -65,8 +65,10 @@ The generated runtime projection is an SQF matcher. The generator
 edited by hand. The header names the generator and states the unit of
 every column.
 
-The matcher runs a five-layer ladder: exact class, alias, keyword,
-inheritance, closest. The result is a flat array with `catalogue_id`,
+The matcher runs a six-layer ladder: exact class, alias, keyword,
+inheritance, closest, inherited. The last layer answers a class the text
+cannot name from the ENGINE ancestry, and only where the class text names
+the ancestor's entry. The result is a flat array with `catalogue_id`,
 `variant_id`, `vehicle_type`, `confidence`, `matched_by`,
 `source_record_id` and `valueRow`. The projection reads no config and no
 registry at runtime. It returns `[]` when the class is unknown, when the
