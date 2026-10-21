@@ -827,9 +827,9 @@
    "maker": "Leupold",
    "country": "US",
    "class_names": [
-    "Mark 8 CQBSS",
     "MK8 CQBSS",
-    "Mark 8"
+    "Mark 8",
+    "Mark 8 CQBSS"
    ],
    "aliases": [
     "mark8cqbss",
@@ -1151,6 +1151,881 @@
      "source": "npz_upo1_page",
      "locator": "The manufacturer states no objective diameter",
      "state": "absent",
+     "grade": "claimed"
+    }
+   }
+  },
+  {
+   "device_id": "aimpoint_micro_t1",
+   "canonical_name": "Aimpoint Micro T-1",
+   "family": "optic",
+   "maker": "Aimpoint",
+   "country": "SE",
+   "class_names": [
+    "Micro T1",
+    "Micro T-1",
+    "SU-278/PVS",
+    "rhsusf_acc_T1_low",
+    "rhsusf_acc_T1_low_fwd",
+    "rhsusf_acc_T1_low_fwd_ak",
+    "CUP_optic_MicroT1_low",
+    "CUP_optic_MicroT1_low_OD",
+    "CUP_optic_MicroT1_low_coyote",
+    "rhsusf_acc_g33_T1",
+    "rhsusf_acc_g33_T1_flip"
+   ],
+   "aliases": [
+    "microt1",
+    "t1"
+   ],
+   "keywords": [
+    "microt1",
+    "aimpointt1"
+   ],
+   "values": {
+    "magnification": {
+     "value": 1,
+     "unit": "ratio",
+     "source": "aimpoint_micro_t1",
+     "locator": "General specifications: 1x, no magnification",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "objective_mm": {
+     "value": 18,
+     "unit": "mm",
+     "source": "aimpoint_micro_t1",
+     "locator": "Optical information: clear aperture 18 mm",
+     "state": "clear aperture",
+     "grade": "claimed"
+    },
+    "weight_kg": {
+     "value": 0.084,
+     "unit": "kg",
+     "source": "aimpoint_micro_t1",
+     "locator": "General specifications: 84 g (3.0 oz), sight only",
+     "state": "sight only",
+     "grade": "claimed"
+    },
+    "active": {
+     "value": "passive",
+     "unit": "enum",
+     "source": "aimpoint_micro_t1",
+     "locator": "General specifications: passive red dot",
+     "state": "as published",
+     "grade": "claimed"
+    }
+   }
+  },
+  {
+   "device_id": "aimpoint_micro_t2",
+   "canonical_name": "Aimpoint Micro T-2",
+   "family": "optic",
+   "maker": "Aimpoint",
+   "country": "SE",
+   "class_names": [
+    "louetta_t2_larue",
+    "louetta_t2_wilcox",
+    "louetta_t2_unity",
+    "louetta_t2_unity_blk",
+    "T2_Hydra",
+    "T2_Unity",
+    "T2_Unity_BLK",
+    "T2_Unity_Combo_DOWN",
+    "T2_Unity_Combo_UP",
+    "T2_Unity_Combo_DOWN_BLK",
+    "T2_Unity_Combo_UP_BLK",
+    "Louetta_acc_g33_T2",
+    "Louetta_acc_g33_T2_flip",
+    "Louetta_wilcox_g33_T2",
+    "Louetta_wilcox_g33_T2_flip"
+   ],
+   "aliases": [
+    "microt2",
+    "t2"
+   ],
+   "keywords": [
+    "microt2",
+    "aimpointt2"
+   ],
+   "values": {
+    "magnification": {
+     "value": 1,
+     "unit": "ratio",
+     "source": "aimpoint_micro_t2",
+     "locator": "General specifications: 1x",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "objective_mm": {
+     "value": 18,
+     "unit": "mm",
+     "source": "aimpoint_micro_t2",
+     "locator": "Optical information: clear aperture 18 mm",
+     "state": "clear aperture",
+     "grade": "claimed"
+    },
+    "weight_kg": {
+     "value": 0,
+     "unit": "kg",
+     "source": "aimpoint_micro_t2",
+     "locator": "The page states 102 g in the table and 94 g on the card; no single figure is entered",
+     "state": "contradiction recorded, absent",
+     "grade": "absent"
+    },
+    "active": {
+     "value": "passive",
+     "unit": "enum",
+     "source": "aimpoint_micro_t2",
+     "locator": "General specifications: passive red dot",
+     "state": "as published",
+     "grade": "claimed"
+    }
+   }
+  },
+  {
+   "device_id": "eotech_xps3",
+   "canonical_name": "EOTech XPS3",
+   "family": "optic",
+   "maker": "EOTech",
+   "country": "US",
+   "class_names": [
+    "HWS XPS3",
+    "XPS3",
+    "louetta_wilcox_g33_xps3",
+    "louetta_wilcox_g33_xps3_b",
+    "louetta_wilcox_g33_xps3_flip",
+    "louetta_wilcox_g33_xps3_flip_b",
+    "rhsusf_acc_g33_xps3",
+    "rhsusf_acc_g33_xps3_flip",
+    "rhsusf_acc_g33_xps3_tan",
+    "rhsusf_acc_g33_xps3_tan_flip"
+   ],
+   "aliases": [
+    "xps3",
+    "eotechxps3"
+   ],
+   "keywords": [
+    "xps3"
+   ],
+   "values": {
+    "magnification": {
+     "value": 1,
+     "unit": "ratio",
+     "source": "eotech_xps3",
+     "locator": "Tech Specs: 1x holographic",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "weight_kg": {
+     "value": 0.255,
+     "unit": "kg",
+     "source": "eotech_xps3",
+     "locator": "Tech Specs: 9.0 oz (255 g)",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "active": {
+     "value": "passive",
+     "unit": "enum",
+     "source": "eotech_xps3",
+     "locator": "Tech Specs: passive holographic reticle",
+     "state": "as published",
+     "grade": "claimed"
+    }
+   }
+  },
+  {
+   "device_id": "eotech_g33",
+   "canonical_name": "EOTech G33 magnifier",
+   "family": "optic",
+   "maker": "EOTech",
+   "country": "US",
+   "class_names": [
+    "G33"
+   ],
+   "aliases": [
+    "g33",
+    "eotechg33"
+   ],
+   "keywords": [
+    "g33"
+   ],
+   "values": {
+    "magnification": {
+     "value": 3,
+     "unit": "ratio",
+     "source": "eotech_g33",
+     "locator": "Page body: 3x fixed",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "weight_kg": {
+     "value": 0.3,
+     "unit": "kg",
+     "source": "eotech_g33",
+     "locator": "Page body: 10.6 oz (300 g) with STS mount; 7.8 oz (221.1 g) without",
+     "state": "with mount",
+     "grade": "claimed"
+    },
+    "exit_pupil_mm": {
+     "value": 7.6,
+     "unit": "mm",
+     "source": "eotech_g33",
+     "locator": "Page body: exit pupil 7.6 mm",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "active": {
+     "value": "passive",
+     "unit": "enum",
+     "source": "eotech_g33",
+     "locator": "Page body: passive magnifier",
+     "state": "as published",
+     "grade": "claimed"
+    }
+   }
+  },
+  {
+   "device_id": "eotech_vudu_1_6x24",
+   "canonical_name": "EOTech Vudu 1-6x24 FFP",
+   "family": "optic",
+   "maker": "EOTech",
+   "country": "US",
+   "class_names": [
+    "Scot_EO_Vudu",
+    "Scot_EO_Vudu_RMR",
+    "Scot_EO_Vudu_RMR_TOP",
+    "Scot_EO_Vudu_RMR_Top_Canted",
+    "Scot_EO_Vudu_T1",
+    "Scot_EO_Vudu_T2",
+    "Vudu",
+    "Vudu 1-6x24"
+   ],
+   "aliases": [
+    "vudu",
+    "eotechvudu"
+   ],
+   "keywords": [
+    "vudu"
+   ],
+   "values": {
+    "magnification": {
+     "value": 6,
+     "unit": "ratio",
+     "source": "eotech_vudu_1_6x24",
+     "locator": "Page body: 1 to 6x; the table holds the top power",
+     "state": "1-6x, top power",
+     "grade": "claimed"
+    },
+    "objective_mm": {
+     "value": 24,
+     "unit": "mm",
+     "source": "eotech_vudu_1_6x24",
+     "locator": "Page body: objective 24 mm",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "weight_kg": {
+     "value": 0.57,
+     "unit": "kg",
+     "source": "eotech_vudu_1_6x24",
+     "locator": "Page body: 20.1 oz (570 g)",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "active": {
+     "value": "passive",
+     "unit": "enum",
+     "source": "eotech_vudu_1_6x24",
+     "locator": "Page body: passive riflescope",
+     "state": "as published",
+     "grade": "claimed"
+    }
+   }
+  },
+  {
+   "device_id": "trijicon_ta01nsn",
+   "canonical_name": "Trijicon ACOG TA01NSN 4x32",
+   "family": "optic",
+   "maker": "Trijicon",
+   "country": "US",
+   "class_names": [
+    "ACOG TA01NSN",
+    "CUP_optic_ACOG_TA01B_Black",
+    "CUP_optic_ACOG_TA01B_Black_3D",
+    "CUP_optic_ACOG_TA01B_RMR_Black",
+    "CUP_optic_ACOG_TA01B_RMR_Black_3D",
+    "CUP_optic_ACOG_TA01NSN_Black",
+    "CUP_optic_ACOG_TA01NSN_RMR_Black",
+    "CUP_optic_ACOG_TA01NSN_RMR_Black_3D",
+    "TA01NSN",
+    "UKSF_TA01_blk"
+   ],
+   "aliases": [
+    "ta01nsn",
+    "acogta01"
+   ],
+   "keywords": [
+    "ta01nsn"
+   ],
+   "values": {
+    "magnification": {
+     "value": 4,
+     "unit": "ratio",
+     "source": "trijicon_ta01nsn",
+     "locator": "Specification table: 4x",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "objective_mm": {
+     "value": 32,
+     "unit": "mm",
+     "source": "trijicon_ta01nsn",
+     "locator": "Specification table: 32 mm",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "fov_deg": {
+     "value": 7,
+     "unit": "deg",
+     "source": "trijicon_ta01nsn",
+     "locator": "Specification table: 7 degrees",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "weight_kg": {
+     "value": 0.44225,
+     "unit": "kg",
+     "source": "trijicon_ta01nsn",
+     "locator": "Specification table: 15.6 oz (442.25 g)",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "exit_pupil_mm": {
+     "value": 8.13,
+     "unit": "mm",
+     "source": "trijicon_ta01nsn",
+     "locator": "Specification table: 0.32 in (8.13 mm)",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "active": {
+     "value": "passive",
+     "unit": "enum",
+     "source": "trijicon_ta01nsn",
+     "locator": "Specification table: tritium-illuminated reticle, passive",
+     "state": "as published",
+     "grade": "claimed"
+    }
+   }
+  },
+  {
+   "device_id": "trijicon_ta31rco",
+   "canonical_name": "Trijicon ACOG TA31RCO 4x32 (M150 RCO)",
+   "family": "optic",
+   "maker": "Trijicon",
+   "country": "US",
+   "class_names": [
+    "AN/PVQ-31A",
+    "CUP_optic_ACOG",
+    "CUP_optic_ACOG_3D",
+    "TA31RCO",
+    "rhsusf_acc_ACOG",
+    "rhsusf_acc_ACOG2",
+    "rhsusf_acc_ACOG2_3d",
+    "rhsusf_acc_ACOG2_USMC",
+    "rhsusf_acc_ACOG2_USMC_3d",
+    "rhsusf_acc_ACOG2_USMC_pip",
+    "rhsusf_acc_ACOG2_pip",
+    "rhsusf_acc_ACOG3",
+    "rhsusf_acc_ACOG3_3d",
+    "rhsusf_acc_ACOG3_USMC",
+    "rhsusf_acc_ACOG3_USMC_3d",
+    "rhsusf_acc_ACOG3_USMC_pip",
+    "rhsusf_acc_ACOG3_pip",
+    "rhsusf_acc_ACOG_3d",
+    "rhsusf_acc_ACOG_RMR",
+    "rhsusf_acc_ACOG_RMR_3d",
+    "rhsusf_acc_ACOG_RMR_pip",
+    "rhsusf_acc_ACOG_USMC",
+    "rhsusf_acc_ACOG_USMC_3d",
+    "rhsusf_acc_ACOG_USMC_pip",
+    "rhsusf_acc_ACOG_anpvs27",
+    "rhsusf_acc_ACOG_d",
+    "rhsusf_acc_ACOG_d_3d",
+    "rhsusf_acc_ACOG_d_pip",
+    "rhsusf_acc_ACOG_pip",
+    "rhsusf_acc_ACOG_sa",
+    "rhsusf_acc_ACOG_sa_3d",
+    "rhsusf_acc_ACOG_sa_pip",
+    "rhsusf_acc_ACOG_wd",
+    "rhsusf_acc_ACOG_wd_3d",
+    "rhsusf_acc_ACOG_wd_pip"
+   ],
+   "aliases": [
+    "ta31rco",
+    "m150rco",
+    "anpvq31"
+   ],
+   "keywords": [
+    "ta31rco",
+    "m150rco"
+   ],
+   "values": {
+    "magnification": {
+     "value": 4,
+     "unit": "ratio",
+     "source": "trijicon_ta31rco",
+     "locator": "Specification table: 4x",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "objective_mm": {
+     "value": 32,
+     "unit": "mm",
+     "source": "trijicon_ta31rco",
+     "locator": "Specification table: 32 mm",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "fov_deg": {
+     "value": 7,
+     "unit": "deg",
+     "source": "trijicon_ta31rco",
+     "locator": "Specification table: 7 degrees",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "weight_kg": {
+     "value": 0.42241,
+     "unit": "kg",
+     "source": "trijicon_ta31rco",
+     "locator": "Specification table: 14.9 oz (422.41 g)",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "exit_pupil_mm": {
+     "value": 8.13,
+     "unit": "mm",
+     "source": "trijicon_ta31rco",
+     "locator": "Specification table: 0.32 in (8.13 mm)",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "active": {
+     "value": "passive",
+     "unit": "enum",
+     "source": "trijicon_ta31rco",
+     "locator": "Specification table: passive reticle",
+     "state": "as published",
+     "grade": "claimed"
+    }
+   }
+  },
+  {
+   "device_id": "trijicon_ta11mgo",
+   "canonical_name": "Trijicon ACOG TA11MGO 3.5x35 (M249)",
+   "family": "optic",
+   "maker": "Trijicon",
+   "country": "US",
+   "class_names": [
+    "rhsusf_acc_ACOG_MDO",
+    "TA11MGO",
+    "SU-260/P"
+   ],
+   "aliases": [
+    "ta11mgo",
+    "mgo"
+   ],
+   "keywords": [
+    "ta11mgo",
+    "su260"
+   ],
+   "values": {
+    "magnification": {
+     "value": 3.5,
+     "unit": "ratio",
+     "source": "trijicon_ta11mgo",
+     "locator": "Specification table: 3.5x",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "objective_mm": {
+     "value": 35,
+     "unit": "mm",
+     "source": "trijicon_ta11mgo",
+     "locator": "Specification table: 35 mm",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "fov_deg": {
+     "value": 5.5,
+     "unit": "deg",
+     "source": "trijicon_ta11mgo",
+     "locator": "Specification table: 5.5 degrees",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "weight_kg": {
+     "value": 0.49895,
+     "unit": "kg",
+     "source": "trijicon_ta11mgo",
+     "locator": "Specification table: 17.6 oz (498.95 g)",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "exit_pupil_mm": {
+     "value": 9.91,
+     "unit": "mm",
+     "source": "trijicon_ta11mgo",
+     "locator": "Specification table: 0.39 in (9.91 mm)",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "active": {
+     "value": "passive",
+     "unit": "enum",
+     "source": "trijicon_ta11mgo",
+     "locator": "Specification table: passive reticle",
+     "state": "as published",
+     "grade": "claimed"
+    }
+   }
+  },
+  {
+   "device_id": "trijicon_mro",
+   "canonical_name": "Trijicon MRO 1x25",
+   "family": "optic",
+   "maker": "Trijicon",
+   "country": "US",
+   "class_names": [
+    "MRO"
+   ],
+   "aliases": [
+    "mro",
+    "trijiconmro"
+   ],
+   "keywords": [
+    "mro"
+   ],
+   "values": {
+    "magnification": {
+     "value": 1,
+     "unit": "ratio",
+     "source": "trijicon_mro",
+     "locator": "Specification table: 1x",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "objective_mm": {
+     "value": 25,
+     "unit": "mm",
+     "source": "trijicon_mro",
+     "locator": "Specification table: 25 mm",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "weight_kg": {
+     "value": 0.13608,
+     "unit": "kg",
+     "source": "trijicon_mro",
+     "locator": "Specification table: 4.8 oz (136.08 g)",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "active": {
+     "value": "passive",
+     "unit": "enum",
+     "source": "trijicon_mro",
+     "locator": "Specification table: passive red dot",
+     "state": "as published",
+     "grade": "claimed"
+    }
+   }
+  },
+  {
+   "device_id": "trijicon_rm05",
+   "canonical_name": "Trijicon RMR RM05",
+   "family": "optic",
+   "maker": "Trijicon",
+   "country": "US",
+   "class_names": [
+    "rhsusf_acc_RM05",
+    "rhsusf_acc_RM05_fwd",
+    "rhsusf_acc_RM05_fwd_ak",
+    "RM05 RMR"
+   ],
+   "aliases": [
+    "rm05",
+    "rmrrm05"
+   ],
+   "keywords": [
+    "rm05"
+   ],
+   "values": {
+    "magnification": {
+     "value": 1,
+     "unit": "ratio",
+     "source": "trijicon_rm05",
+     "locator": "Specification table: 1x",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "weight_kg": {
+     "value": 0.03402,
+     "unit": "kg",
+     "source": "trijicon_rm05",
+     "locator": "Specification table: 1.2 oz (34.02 g)",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "active": {
+     "value": "passive",
+     "unit": "enum",
+     "source": "trijicon_rm05",
+     "locator": "Specification table: fibre optic and tritium, no battery",
+     "state": "as published",
+     "grade": "claimed"
+    }
+   }
+  },
+  {
+   "device_id": "trijicon_reap35",
+   "canonical_name": "Trijicon REAP-IR 35",
+   "family": "optic",
+   "maker": "Trijicon",
+   "country": "US",
+   "class_names": [
+    "a3ti_reapir_pip",
+    "REAP-IR"
+   ],
+   "aliases": [
+    "reapir",
+    "reap35"
+   ],
+   "keywords": [
+    "reapir",
+    "reap35"
+   ],
+   "values": {
+    "magnification": {
+     "value": 1.75,
+     "unit": "ratio",
+     "source": "trijicon_reap35",
+     "locator": "Specification table: 1.75x optical",
+     "state": "1.75x optical, 8x digital",
+     "grade": "claimed"
+    },
+    "objective_mm": {
+     "value": 35,
+     "unit": "mm",
+     "source": "trijicon_reap35",
+     "locator": "Specification table: 35 mm",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "fov_deg": {
+     "value": 12,
+     "unit": "deg",
+     "source": "trijicon_reap35",
+     "locator": "Specification table: 12 degrees horizontal",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "weight_kg": {
+     "value": 0.79889,
+     "unit": "kg",
+     "source": "trijicon_reap35",
+     "locator": "Specification table: 28.18 oz (798.89 g)",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "active": {
+     "value": "active",
+     "unit": "enum",
+     "source": "trijicon_reap35",
+     "locator": "Specification table: thermal sensor, 640x480 vanadium oxide",
+     "state": "uncooled thermal sensor",
+     "grade": "claimed"
+    }
+   }
+  },
+  {
+   "device_id": "vortex_razor_gen3",
+   "canonical_name": "Vortex Razor HD Gen III 1-10x24",
+   "family": "optic",
+   "maker": "Vortex Optics",
+   "country": "US",
+   "class_names": [
+    "Scot_VRTX_RAZR",
+    "Scot_VRTX_RAZR_RMR",
+    "Scot_VRTX_RAZR_RMR_Top",
+    "Scot_VRTX_RAZR_RMR_Top_Canted",
+    "Scot_VRTX_RAZR_T1",
+    "Scot_VRTX_RAZR_T2",
+    "Louetta_vortex"
+   ],
+   "aliases": [
+    "razorhdgeniii",
+    "razorgen3"
+   ],
+   "keywords": [
+    "razorhdgeniii"
+   ],
+   "values": {
+    "magnification": {
+     "value": 10,
+     "unit": "ratio",
+     "source": "vortex_razor_gen3",
+     "locator": "Specification block: 1 to 10x; the table holds the top power",
+     "state": "1-10x, top power",
+     "grade": "claimed"
+    },
+    "objective_mm": {
+     "value": 24,
+     "unit": "mm",
+     "source": "vortex_razor_gen3",
+     "locator": "Specification block: 24 mm",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "weight_kg": {
+     "value": 0.6095,
+     "unit": "kg",
+     "source": "vortex_razor_gen3",
+     "locator": "Specification block: 21.5 oz (609.5 g, derived)",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "active": {
+     "value": "passive",
+     "unit": "enum",
+     "source": "vortex_razor_gen3",
+     "locator": "Specification block: passive riflescope",
+     "state": "as published",
+     "grade": "claimed"
+    }
+   }
+  },
+  {
+   "device_id": "sb_pmii_3_12x50",
+   "canonical_name": "Schmidt & Bender PM II 3-12x50 LP",
+   "family": "optic",
+   "maker": "Schmidt & Bender",
+   "country": "DE",
+   "class_names": [
+    "RKSL_optic_PMII_312",
+    "PM II 3-12x50"
+   ],
+   "aliases": [
+    "pmii312",
+    "312x50"
+   ],
+   "keywords": [
+    "pmii312"
+   ],
+   "values": {
+    "magnification": {
+     "value": 12,
+     "unit": "ratio",
+     "source": "sb_pmii_3_12x50",
+     "locator": "Technische Daten: 3 to 12x; the table holds the top power",
+     "state": "3-12x, top power",
+     "grade": "claimed"
+    },
+    "objective_mm": {
+     "value": 50,
+     "unit": "mm",
+     "source": "sb_pmii_3_12x50",
+     "locator": "Technische Daten: objective inner diameter 50 mm",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "weight_kg": {
+     "value": 0.86,
+     "unit": "kg",
+     "source": "sb_pmii_3_12x50",
+     "locator": "Technische Daten: 860 g",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "exit_pupil_mm": {
+     "value": 4.3,
+     "unit": "mm",
+     "source": "sb_pmii_3_12x50",
+     "locator": "Technische Daten: exit pupil 14.3 to 4.3 mm",
+     "state": "at 12x",
+     "grade": "claimed"
+    },
+    "active": {
+     "value": "passive",
+     "unit": "enum",
+     "source": "sb_pmii_3_12x50",
+     "locator": "Technische Daten: passive riflescope",
+     "state": "as published",
+     "grade": "claimed"
+    }
+   }
+  },
+  {
+   "device_id": "sb_pmii_5_25x56",
+   "canonical_name": "Schmidt & Bender PM II 5-25x56 LP",
+   "family": "optic",
+   "maker": "Schmidt & Bender",
+   "country": "DE",
+   "class_names": [
+    "RKSL_optic_PMII_525",
+    "R3F_SB_PM",
+    "R3F_SB_PM_BLACK",
+    "PM II 5-25x56"
+   ],
+   "aliases": [
+    "pmii525",
+    "525x56"
+   ],
+   "keywords": [
+    "pmii525"
+   ],
+   "values": {
+    "magnification": {
+     "value": 25,
+     "unit": "ratio",
+     "source": "sb_pmii_5_25x56",
+     "locator": "Technische Daten: 5 to 25x; the table holds the top power",
+     "state": "5-25x, top power",
+     "grade": "claimed"
+    },
+    "objective_mm": {
+     "value": 56,
+     "unit": "mm",
+     "source": "sb_pmii_5_25x56",
+     "locator": "Technische Daten: objective inner 56 mm, outer 62 mm",
+     "state": "inner diameter",
+     "grade": "claimed"
+    },
+    "weight_kg": {
+     "value": 1.125,
+     "unit": "kg",
+     "source": "sb_pmii_5_25x56",
+     "locator": "Technische Daten: 1125 g",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "exit_pupil_mm": {
+     "value": 2.3,
+     "unit": "mm",
+     "source": "sb_pmii_5_25x56",
+     "locator": "Technische Daten: exit pupil 11.0 to 2.3 mm",
+     "state": "at 25x",
+     "grade": "claimed"
+    },
+    "active": {
+     "value": "passive",
+     "unit": "enum",
+     "source": "sb_pmii_5_25x56",
+     "locator": "Technische Daten: passive riflescope",
+     "state": "as published",
      "grade": "claimed"
     }
    }

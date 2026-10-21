@@ -142,6 +142,57 @@ kat_Armband_Medic_NVG
 kat_Armband_Red_Cross_NVG
 kat_eyecovers_left
 kat_eyecovers_right
+## optics
+# Arma in-game optic: 44
+ACE_optic_Arco_2D
+ACE_optic_Hamr_2D
+ACE_optic_LRPS_2D
+ACE_optic_LRPS_PIP
+ACE_optic_MRCO_2D
+ACE_optic_SOS_2D
+ACE_optic_SOS_PIP
+R3F_FELIN_FRF2
+R3F_J10_MILDOT
+R3F_J4
+R3F_J8_MILDOT
+R3F_NF
+R3F_NF42
+optic_ACO_grn
+optic_ACO_grn_smg
+optic_AMS_base
+optic_Aco
+optic_Aco_smg
+optic_Arco
+optic_Arco
+optic_DMS
+optic_DMS
+optic_DMS_weathered_Kir_F
+optic_Hamr
+optic_Holosight
+optic_Holosight_smg
+optic_KHS_base
+optic_KHS_old
+optic_LRPS
+optic_LRPS
+optic_MRCO
+optic_MRD
+optic_NVS
+optic_NVS
+optic_Nightstalker
+optic_Nightstalker
+optic_PGO
+optic_SOS
+optic_SOS
+optic_TWS
+optic_Yorris
+optic_tws
+optic_tws_mg
+optic_tws_mg
+# identity failure: 4
+R3F_ZEISS
+rhs_acc_dh520x56
+rhs_acc_dh520x56
+rhsusf_acc_mrds
 ## uniforms
 # abstract base classes: 4
 JCA_U_Base_F
