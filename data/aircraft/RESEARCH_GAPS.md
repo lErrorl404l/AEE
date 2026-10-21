@@ -21,6 +21,33 @@ gaps in table form.
   aircraft. Next source: a vanilla `Air` or `UAV` class that carries a real
   analogue.
 
+## Modded classes with no sourced figure
+
+The modded measurement resolves all 223 aircraft classes, and 16 of them reach
+the `type` grade, which names a kind and carries no figure. They stay open for
+these reasons.
+
+- Eight ArmaFPV Crocus classes (`ARMAFPV_Crocus_AP_Base`,
+  `ARMAFPV_Crocus_AT_Base` and the six `B_`/`I_`/`O_` TI marks) are the mod's
+  own fictional drones. No published source designates a Crocus airframe, so
+  there is no entry to bind and no figure to hold. A made-up entry would be
+  invention.
+- Six RHS classes name the Mi-8MTV-3 (`RHS_Mi8MTV3_vvs`,
+  `RHS_Mi8mtv3_Cargo_vvs`, `RHS_Mi8MTV3_FAB_vvs`, `RHS_Mi8MTV3_UPK23_vvs`,
+  `rhs_mi8mtv3_base`, `rhs_mi8mtv3_heavy_base`). The catalogue holds no entry
+  for the mark. Both held guides publish a Mi-17/Mi-8MT/Mi-8MTV/Mi-17V family
+  record and neither names the MTV-3, so taking that record's weights or engine
+  figures would lend one mark another mark's data. Next source: a document that
+  names the Mi-8MTV-3 itself, such as a Kazan or Russian Helicopters datasheet
+  for the mark, or an export operator's flight manual.
+- `RHS_AH64_base` prints `AH-64` and names no mark. The catalogue holds the
+  AH-64A and the AH-64E, so the class text supports neither. A family row
+  would answer it at the family grade. The measurement would then count the
+  class as sitting on a figure it does not hold. No family row is added.
+- `FIR_ECM_Dummy_1` prints `F-16C Fighting Falcon` and is a decoy, not an
+  airframe. The catalogue holds two F-16C blocks, so the text names neither
+  block, and the shared `falcon` alias also answers the F-16A entry.
+
 ## Wiki identity conflicts
 
 The Armed Assault Wiki disagrees with three existing bindings. Both values are
@@ -49,8 +76,22 @@ two:
   lead. Next source: a held rotorcraft datasheet that states the T800 rating
   and the rotor diameter.
 
-The remaining first-slice leads are `a10a_thunderbolt_ii`, `su25_frogfoot`,
-`l159_alca`, `su57_felon`, `ch47_chinook` and `aw159_wildcat`.
+The remaining first-slice leads are `a10a_thunderbolt_ii`, `l159_alca`,
+`su57_felon`, `ch47_chinook` and `aw159_wildcat`. `su25_frogfoot` left this
+list: the held ODIN Worldwide Equipment Guide 2025 states its empty weight,
+maximum takeoff weight, static thrust and maximum speed, so the entry now
+resolves both runtime-required fields.
+
+The held CH-47D operator's manual `TM 1-1520-240-10` states the maximum gross
+weight (50,000 lb, paragraph 2-1-2), the engine models and the airspeed
+limits, and no empty weight, no shaft horsepower and no rotor diameter, so
+`ch47_chinook` cannot leave this list from a held document. The held OH-58A/C
+operator's manual `TM 55-1520-228-10` likewise states the main rotor diameter
+(35 ft 4 in, figure 2-5), the 3,200 lb maximum gross weight (paragraph 5-18)
+and the T63-A-720 engine, and no shaft horsepower, so `oh58a_kiowa` and
+`oh58c_kiowa` stay leads. Their next source is an engine rating published
+alongside the airframe, such as an FAA type certificate data sheet for the
+civil equivalent or a maker datasheet stating the T63-A-720 rating.
 
 - Modern set: nineteen entries, one runtime-ready (`aw101_merlin`). Next source
   class: a US Army OPFOR/ODIN guide or a manufacturer datasheet that states the
@@ -77,12 +118,18 @@ it names its next source here. The next source is named per group.
   an FAA type certificate data sheet.
 - Soviet and Russian types (`mig17f_fresco`, `mig19s_farmer`, `mig21bis`,
   `mig21f13`, `mig23m_flogger`, `mig23ml_flogger`, `mig25_foxbat`,
-  `mig27_flogger_d`, `mig29a_fulcrum`, `mig35_fulcrum_f`, `su7b_fitter`,
+  `mig27_flogger_d`, `mig35_fulcrum_f`, `su7b_fitter`,
   `su17_fitter_c`, `su22_fitter_f`, `su24_fencer`, `su25sm_frogfoot`,
   `su25t_frogfoot`, `su27sk_flanker_b`, `su30mki_flanker_h`, `su33_flanker_d`,
   `su34_fullback`, `yak130_mitten`, `yak38_forger`, `mig31b_foxhound`). Next
   source: a Russian flight manual or an export operator's handbook, for example
   the Su-27SK flight manual.
+  `mig29a_fulcrum` left this group: the held ODIN Worldwide Equipment Guide
+  2025 states its maximum gross weight, afterburning thrust and maximum speed,
+  so the entry resolves both runtime-required fields. The record prints no
+  empty weight and its "Weight, Maximum Takeoff: 10,900 kg" line contradicts
+  its own maximum gross figure, so the entry takes the gross weight as the
+  operating basis and the disagreement stays on the record.
 - European types (`mirage_iii_e`, `mirage_2000c`, `mirage_f1_cr`,
   `sepecat_jaguar_gr1`, `panavia_tornado_gr4`, `harrier_gr9`, `bae_hawk_t1`,
   `folland_gnat`, `alphajet_e`, `saab_37_viggen`, `saab_35_draken`,
