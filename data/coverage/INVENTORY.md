@@ -143,6 +143,35 @@ product. They are real items of this table, so they are not bucketed; they
 stay type because no published figure exists for them, and the nearest real
 sight (AN/PAS-13) is a different product.
 
+## Vehicle armament: what is sourced and what has no product
+
+The 386 scored classes sit on sourced entries for 366 (94.8 percent). Three
+groups make up the rest:
+
+| Group | Classes | State |
+|---|---|---|
+| Arma in-game armament (Titan, Skyfire, Zephyr, Falchion, Macer, Shrieker, Sahr, Sharur, Tratnyr, DAR, LOM-250G, railgun, the cannon families, GMG, HMG, RCWS) | 26 | bucketed as "Arma in-game armament, no product": real items of the table that no source can name; listed in `excluded_classes.txt` |
+| Bound to an existing sourced entry by class name | 17 | GBU-12, GBU-16, CBU-104, CBU-105, Mk 82 SnakeEye, CRV7 (3), APKWS (3), AZP-23 (2), Kh-25 MTP/MS/MPU, GAU-12 |
+| Still type | 20 | GBU-55 and GBU-56 (LJDAM 1000/2000 lb: no catalogue entry, and a nominal weight is not a mass, so no figure is borrowed from GBU-31/32); the mod-only names M301, 902A, BA-21, FURY, Mikholit, SAMPT21, GP19, FULGER, Smokewinder, CHF/FLR, the PHAN gas bombs and the ANZ WP rockets, which name no product a source documents |
+
+## Aircraft: the type set is not only drones
+
+46 aircraft classes are at type, and they are three different things:
+
+- **ArmaFPV Crocus drones, 9**: `ARMAFPV_Crocus_AT_Base`, `_AP_Base` and the
+  seven `O_/B_/I_Crocus_*_TI` variants. ArmaFPV is a fictional system and
+  no published designation exists.
+- **Loadout and configuration classes of an airframe, 29**: F/A-181 Black
+  Wasp napalm and GBU fits (10), UH-80 Ghost Hawk unarmed/DAP (3), FIR ECM
+  dummies of the F-16C and F/A-18F (2), RHS AH-64D fit variants (6), the
+  Mi-8MTV-3 and Mi-24 fits (6), the SOAR MH-60M and HH-60 (2). A fit is not
+  an airframe; the airframe entry is the one that carries the figures.
+- **Real airframes at type, 8**: `fza_ah64d_b1` (AH-64D Block I),
+  `RHS_Mi24P_CAS_VVS_Base`, `rhs_mi8mtv3_base`, `RHS_Su25SM_CAS_vvs`,
+  `rhs_uh1h_hidf_gunship`, `rhsgref_mi24g_CAS` and the two Ghost Hawk base
+  classes. These are mark collisions in the aircraft corpus, not missing
+  products, and closing them is a matcher-side binding task.
+
 ## The last rung
 
 Every measured matcher ends with the type rung, which answers the kind of
