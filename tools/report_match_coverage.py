@@ -93,6 +93,29 @@ HELMET_ROOT = "helmetbase"
 BACKPACK_ROOT = "bag_base"
 NVG_ROOT = "nvgoggles"
 
+# A rucksack table scores CfgVehicles under Bag_Base, and the engine hangs
+# things there that are not worn loads: a dismantled HMG, a parachute, a
+# radio bag. The vehicle table already excludes a weapon position by name,
+# and these leave their table the same way, each under its own kind.
+WEAPON_BAG_ROOT = "weapon_bag_base"
+PARACHUTE_TERM = re.compile(r"parachute", re.I)
+RADIO_BAG_TERM = re.compile(r"tfar_bag_base|rt-?1523|radiobag|radio_bag", re.I)
+# A support bag carries a weapon's tripod, bipod or tube; it is not worn.
+WEAPON_SUPPORT_TERM = re.compile(
+    r"support_f$|support_high_f$|tripod|bipod|mortar|gunbag|tacticalladder", re.I
+)
+# An abstract class is scaffolding: nobody wears Vest_Camo_Base.
+ABSTRACT_CLASS = re.compile(r"(^|_)base(_[a-z0-9]{1,2})?$", re.I)
+# A gore or damage overlay is a texture with no mass and no slot.
+OVERLAY_CLASS = re.compile(
+    r"^(guts\d*|bulletholes\d*|backgore|damagedchest|blood\w*|wound\w*)$", re.I
+)
+# A mod that declares headwear under Uniform_Base is a content defect, not
+# a uniform: the class names a cap, a hat or a helmet and the uniform slot.
+HEADWEAR_TERM = re.compile(
+    r"baseball|\bcap\b|\bhat\b|boonie|beret|beanie|helmet|headgear", re.I
+)
+
 # The device ladder accepts a designation of this length at the alias layer.
 DEVICE_MIN = 4
 
@@ -1003,6 +1026,50 @@ def _taxonomy(scanned: list, kind: str, roots: set[str], chain) -> list:
     return out
 
 
+def _clothing_scope(rows: list, label: str, chain) -> tuple[list, dict]:
+    """Split one clothing table into scored rows and named exclusions.
+
+    Nothing is dropped in silence: every excluded class is filed under the
+    kind it actually is, and the counts reach the report and the baseline.
+    """
+    kept: list = []
+    excluded: dict[str, list] = defaultdict(list)
+    for r in rows:
+        name = r["class"].lower()
+        text = r["class"] + " " + r["display"]
+        if ABSTRACT_CLASS.search(name):
+            excluded["abstract base classes"].append(r["class"])
+            continue
+        if label != "rucksacks" and OVERLAY_CLASS.match(name):
+            excluded["non-wearable overlays"].append(r["class"])
+            continue
+        if label == "uniforms" and HEADWEAR_TERM.search(text):
+            excluded["misdeclared headwear"].append(r["class"])
+            continue
+        if label == "rucksacks":
+            ancestry = chain(r["class"])
+            if WEAPON_BAG_ROOT in ancestry:
+                excluded["weapon bags"].append(r["class"])
+                continue
+            if WEAPON_SUPPORT_TERM.search(r["class"]) or WEAPON_SUPPORT_TERM.search(
+                r["display"]
+            ):
+                excluded["weapon support bags"].append(r["class"])
+                continue
+            if any(PARACHUTE_TERM.search(a) for a in ancestry):
+                excluded["parachutes"].append(r["class"])
+                continue
+            if (
+                any(RADIO_BAG_TERM.search(a) for a in ancestry)
+                or RADIO_BAG_TERM.search(r["class"])
+                or RADIO_BAG_TERM.search(r["display"])
+            ):
+                excluded["radio bags"].append(r["class"])
+                continue
+        kept.append(r)
+    return kept, dict(excluded)
+
+
 def _optic_rows(scanned: list, thermal_only: bool = False) -> list:
     """The CfgWeapons classes the config states are sights.
 
@@ -1324,7 +1391,9 @@ def measure(scanned: list, base: set[str]) -> dict:
         ("helmets", "helmet", {HELMET_ROOT}, "CfgWeapons", wchain),
         ("rucksacks", "rucksack", {BACKPACK_ROOT}, "CfgVehicles", chain_of),
     ):
-        selected = _taxonomy(scanned, kind, roots, chain)
+        selected, dropped = _clothing_scope(
+            _taxonomy(scanned, kind, roots, chain), label, chain
+        )
         if not selected:
             continue
         match_e = equipment_matcher(
@@ -1338,7 +1407,8 @@ def measure(scanned: list, base: set[str]) -> dict:
         tables[slug(label)] = {
             "label": label,
             **score(selected, match_e, base),
-            "excluded": {},
+            "excluded": {kind: len(v) for kind, v in dropped.items()},
+            "excluded_classes": dropped,
             "decided": _decided(selected, match_e),
             "grades": grades(
                 selected,
@@ -1480,6 +1550,27 @@ def write_gaps(directory: Path, tables: dict) -> None:
         )
 
 
+def write_excluded(directory: Path, tables: dict) -> None:
+    """Write every excluded class by kind: data/coverage/excluded_classes.txt.
+
+    An exclusion that is only a number is a silent raise of coverage, so the
+    classes themselves are written here, grouped by the kind they are.
+    """
+    directory.mkdir(parents=True, exist_ok=True)
+    lines = ["# classes excluded from a table, by the kind they are"]
+    for name, res in tables.items():
+        dropped = res.get("excluded_classes") or {}
+        if not dropped:
+            continue
+        lines.append(f"## {res['label']}")
+        for kind, classes in sorted(dropped.items()):
+            lines.append(f"# {kind}: {len(classes)}")
+            lines.extend(sorted(classes))
+    (directory / "excluded_classes.txt").write_text(
+        "\n".join(lines) + "\n", encoding="utf-8"
+    )
+
+
 def write_baseline(
     path: Path,
     *,
@@ -1605,6 +1696,7 @@ def main() -> int:
         print_modded(tables)
     if args.write_gaps:
         write_gaps(args.write_gaps, tables)
+        write_excluded(args.write_gaps, tables)
     if args.write_baseline:
         write_baseline(
             args.write_baseline,

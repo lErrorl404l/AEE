@@ -54,6 +54,48 @@ categories that are not scored here: the campaign measures the four worn
 or carried slots the operator named. The ladder itself is shared, so a
 category added to the measured set needs one table row and no new mirror.
 
+## Classes that leave a clothing table
+
+Each exclusion is counted by the kind it is, in the baseline `excluded`
+field, and listed by name in `data/coverage/excluded_classes.txt` (3,900
+entries, written by the report so a number is never the only record).
+
+| Table | Bucket | Classes | Why |
+|---|---|---|---|
+| uniforms | abstract base classes | 4 | scaffolding (`Uniform_Base`, `JCA_U_Base_F`) |
+| uniforms | misdeclared headwear | 3,696 | headwear declared in the uniform slot; every class is `NAVSPECWARGRU2_TACDEV_Baseball_*` or `NAVSPECWARGRU2_..._Cap_*` |
+| vests | abstract base classes | 9 | `Vest_Camo_Base`, `Vest_NoCamo_Base` and mod bases |
+| vests | non-wearable overlays | 7 | `guts`, `bulletholes`, `damagedchest`, `backgore` |
+| helmets | abstract base classes | 8 | `HelmetBase` and mod bases |
+| rucksacks | abstract base classes | 14 | `Bag_Base`, `Weapon_Bag_Base`, radio bases |
+| rucksacks | weapon bags | 74 | dismantled HMG/GMG, static launchers |
+| rucksacks | weapon support bags | 29 | folded tripods, bipods, mortar tubes, gun bags |
+| rucksacks | parachutes | 15 | `B_Parachute_*` |
+| rucksacks | radio bags | 45 | TFAR bags, `RT-1523G`, radio bags |
+
+After the exclusions the four tables hold 16,967 uniforms, 544 vests, 216
+helmets and 642 rucksacks. The four rucksack classes still at type are the
+three vanilla Outdoor Packs, which have no published mass, and
+`CFP_Cutters`, a bolt cutter carried in a bag slot rather than a rucksack.
+
+## Sourced optics added for the type set
+
+Two Nightforce products are now corpus entries with captured manufacturer
+pages, so the `rhsusf` NXS classes resolve on a sourced figure instead of
+the type rung:
+
+| Entry | Figures | Source | Classes moved off type |
+|---|---|---|---|
+| `nightforce_nxs_3515x50` | magnification 15x (top power), objective 50 mm, weight 0.850 kg, exit pupil 3.3 mm derived | Nightforce product page, tier 4, sha256 `4c16cd5d…bf104` | 4 |
+| `nightforce_nxs_5522x56` | magnification 22x (top power), objective 56 mm, weight 0.907 kg, exit pupil 2.5 mm derived | Nightforce product page, tier 4, sha256 `d8b2a4df…b0e` | 4 |
+
+The remaining named optics stay at type because no manufacturer figure
+could be held: Leupold renders its specification table client-side, so the
+retrieved bytes hold no weight; Trijicon and SIG return 403/404 to a plain
+fetch; Vortex returns 406; the ELCAN product URL returns 404; and the
+Russian 1P29, OKP-7 and PGO-7V have no manufacturer datasheet reachable. A
+distributor page was not used as a manufacturer figure.
+
 ## The last rung
 
 Every measured matcher ends with the type rung, which answers the kind of

@@ -330,19 +330,21 @@
         "pct": 100.0,
         "total": 86
       },
-      "excluded": {},
-      "figure_graded": 224,
+      "excluded": {
+        "abstract base classes": 8
+      },
+      "figure_graded": 216,
       "figure_pct": 100.0,
       "grades": {
-        "family": 207,
-        "inherited": 17
+        "family": 205,
+        "inherited": 11
       },
       "inherited": [],
       "label": "helmets",
       "modded": {
-        "hit": 138,
+        "hit": 130,
         "pct": 100.0,
-        "total": 138
+        "total": 130
       },
       "reasons": {},
       "unresolved_modded": 0
@@ -381,12 +383,12 @@
         "total": 18
       },
       "excluded": {},
-      "figure_graded": 78,
-      "figure_pct": 34.51,
+      "figure_graded": 86,
+      "figure_pct": 38.05,
       "grades": {
-        "alias": 59,
-        "keyword": 19,
-        "type": 148
+        "alias": 63,
+        "keyword": 23,
+        "type": 140
       },
       "inherited": [],
       "label": "optics",
@@ -400,24 +402,30 @@
     },
     "rucksacks": {
       "base": {
-        "hit": 205,
+        "hit": 119,
         "pct": 100.0,
-        "total": 205
+        "total": 119
       },
-      "excluded": {},
-      "figure_graded": 652,
-      "figure_pct": 79.61,
+      "excluded": {
+        "abstract base classes": 14,
+        "parachutes": 15,
+        "radio bags": 45,
+        "weapon bags": 74,
+        "weapon support bags": 29
+      },
+      "figure_graded": 638,
+      "figure_pct": 99.38,
       "grades": {
-        "family": 486,
+        "family": 472,
         "inherited": 166,
-        "type": 167
+        "type": 4
       },
       "inherited": [],
       "label": "rucksacks",
       "modded": {
-        "hit": 614,
+        "hit": 523,
         "pct": 100.0,
-        "total": 614
+        "total": 523
       },
       "reasons": {},
       "unresolved_modded": 0
@@ -472,24 +480,27 @@
     },
     "uniforms": {
       "base": {
-        "hit": 136,
+        "hit": 135,
         "pct": 100.0,
-        "total": 136
+        "total": 135
       },
-      "excluded": {},
+      "excluded": {
+        "abstract base classes": 4,
+        "misdeclared headwear": 3696
+      },
       "figure_graded": 10869,
-      "figure_pct": 52.59,
+      "figure_pct": 64.06,
       "grades": {
         "family": 10868,
         "inherited": 1,
-        "type": 9798
+        "type": 6098
       },
       "inherited": [],
       "label": "uniforms",
       "modded": {
-        "hit": 20531,
+        "hit": 16832,
         "pct": 100.0,
-        "total": 20531
+        "total": 16832
       },
       "reasons": {},
       "unresolved_modded": 0
@@ -833,24 +844,27 @@
     },
     "vests": {
       "base": {
-        "hit": 49,
+        "hit": 47,
         "pct": 100.0,
-        "total": 49
+        "total": 47
       },
-      "excluded": {},
-      "figure_graded": 511,
-      "figure_pct": 91.25,
+      "excluded": {
+        "abstract base classes": 9,
+        "non-wearable overlays": 7
+      },
+      "figure_graded": 506,
+      "figure_pct": 93.01,
       "grades": {
-        "family": 465,
+        "family": 460,
         "inherited": 46,
-        "type": 49
+        "type": 38
       },
       "inherited": [],
       "label": "vests",
       "modded": {
-        "hit": 511,
+        "hit": 497,
         "pct": 100.0,
-        "total": 511
+        "total": 497
       },
       "reasons": {},
       "unresolved_modded": 0

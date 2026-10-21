@@ -1,3 +1,3 @@
 # modded match coverage gaps: helmets
-# 0 unresolved of 138 modded classes (100.0% resolved)
+# 0 unresolved of 130 modded classes (100.0% resolved)
 # class	display	parent	source
