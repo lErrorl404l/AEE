@@ -910,5 +910,237 @@
     "identity_source": "armedassault_ar2_darter_trivia",
     "identity_evidence": "Armed Assault Wiki, AR-2_Darter, ARMA 3 Trivia (wikitext section 27): \"* The Darter appears to be based on an enlarged version of the \"AR.Drone Version 2.0\" (using the indoor hull) manufactured by Parrot SA of France.\" Citation: https://armedassault.fandom.com/wiki/AR-2_Darter. The page hedges: 'The Darter appears to be based on an enlarged version of the \"AR.Drone Version 2.0\" (using the indoor hull) manufactured by Parrot SA of France.' The hedge is recorded and not upgraded. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
     "grade": "claimed"
+  },
+  {
+    "game_class": "B_Plane_Fighter_01_Napalm_F",
+    "class_token": "Plane",
+    "catalogue_id": "fa18e_super_hornet",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "The display of B_Plane_Fighter_01_Napalm_F is \"FA-181 Black Wasp II - MK77\". This is an Arma 3 Plane class whose name carries the vanilla airframe family B_Plane_Fighter_01, and the concrete family class B_Plane_Fighter_01_F is bound to fa18e_super_hornet in this file, so this loadout fit carries that binding and claims no second airframe. The catalogue holds no entry under the fictional F/A-181 Black Wasp name. Colliding token: the keyword run reads 'a18' inside 'fa181', which ties fa18a_hornet, fa18c_hornet, fa18e_super_hornet and fa18f_super_hornet. The concrete class binding names one entry. Grade claimed: class-table identity evidence, never a value.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "B_Plane_Fighter_01_CASModule_Napalm_F",
+    "class_token": "Plane",
+    "catalogue_id": "fa18e_super_hornet",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "The display of B_Plane_Fighter_01_CASModule_Napalm_F is \"FA-181 Black Wasp II (2x MK77 Napalm)\". This is an Arma 3 Plane class whose name carries the vanilla airframe family B_Plane_Fighter_01, and the concrete family class B_Plane_Fighter_01_F is bound to fa18e_super_hornet in this file, so this loadout fit carries that binding and claims no second airframe. The catalogue holds no entry under the fictional F/A-181 Black Wasp name. Colliding token: the keyword run reads 'a18' inside 'fa181', which ties fa18a_hornet, fa18c_hornet, fa18e_super_hornet and fa18f_super_hornet. 'cas', read from the class name CASModule, also ties a10a_thunderbolt_ii and su25_frogfoot. The concrete class binding names one entry. Grade claimed: class-table identity evidence, never a value.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "B_Plane_Fighter_01_CASModule_MediumBomber_F",
+    "class_token": "Plane",
+    "catalogue_id": "fa18e_super_hornet",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "The display of B_Plane_Fighter_01_CASModule_MediumBomber_F is \"F/A-181 Black Wasp II (4x GBU-12)\". This is an Arma 3 Plane class whose name carries the vanilla airframe family B_Plane_Fighter_01, and the concrete family class B_Plane_Fighter_01_F is bound to fa18e_super_hornet in this file, so this loadout fit carries that binding and claims no second airframe. The catalogue holds no entry under the fictional F/A-181 Black Wasp name. Colliding token: the keyword run reads 'a18' inside 'fa181', which ties fa18a_hornet, fa18c_hornet, fa18e_super_hornet and fa18f_super_hornet. 'cas', read from the class name CASModule, also ties a10a_thunderbolt_ii and su25_frogfoot. The concrete class binding names one entry. Grade claimed: class-table identity evidence, never a value.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "B_Plane_Fighter_01_CASModule_MediumBomber_2_F",
+    "class_token": "Plane",
+    "catalogue_id": "fa18e_super_hornet",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "The display of B_Plane_Fighter_01_CASModule_MediumBomber_2_F is \"F/A-181 Black Wasp II (6x GBU-12)\". This is an Arma 3 Plane class whose name carries the vanilla airframe family B_Plane_Fighter_01, and the concrete family class B_Plane_Fighter_01_F is bound to fa18e_super_hornet in this file, so this loadout fit carries that binding and claims no second airframe. The catalogue holds no entry under the fictional F/A-181 Black Wasp name. Colliding token: the keyword run reads 'a18' inside 'fa181', which ties fa18a_hornet, fa18c_hornet, fa18e_super_hornet and fa18f_super_hornet. 'cas', read from the class name CASModule, also ties a10a_thunderbolt_ii and su25_frogfoot. The concrete class binding names one entry. Grade claimed: class-table identity evidence, never a value.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "B_Plane_Fighter_01_CASModule_HeavyBomber_F",
+    "class_token": "Plane",
+    "catalogue_id": "fa18e_super_hornet",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "The display of B_Plane_Fighter_01_CASModule_HeavyBomber_F is \"F/A-181 Black Wasp II (8x GBU-12)\". This is an Arma 3 Plane class whose name carries the vanilla airframe family B_Plane_Fighter_01, and the concrete family class B_Plane_Fighter_01_F is bound to fa18e_super_hornet in this file, so this loadout fit carries that binding and claims no second airframe. The catalogue holds no entry under the fictional F/A-181 Black Wasp name. Colliding token: the keyword run reads 'a18' inside 'fa181', which ties fa18a_hornet, fa18c_hornet, fa18e_super_hornet and fa18f_super_hornet. 'cas' and 'heavy', read from the class name, also tie a10a_thunderbolt_ii, su25_frogfoot, aw101_merlin, ch47_chinook and mi26_halo. The concrete class binding names one entry. Grade claimed: class-table identity evidence, never a value.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "B_Plane_Fighter_01_CASModule_HeavyBomber_2_F",
+    "class_token": "Plane",
+    "catalogue_id": "fa18e_super_hornet",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "The display of B_Plane_Fighter_01_CASModule_HeavyBomber_2_F is \"F/A-181 Black Wasp II (10x GBU-12)\". This is an Arma 3 Plane class whose name carries the vanilla airframe family B_Plane_Fighter_01, and the concrete family class B_Plane_Fighter_01_F is bound to fa18e_super_hornet in this file, so this loadout fit carries that binding and claims no second airframe. The catalogue holds no entry under the fictional F/A-181 Black Wasp name. Colliding token: the keyword run reads 'a18' inside 'fa181', which ties fa18a_hornet, fa18c_hornet, fa18e_super_hornet and fa18f_super_hornet. 'cas' and 'heavy', read from the class name, also tie a10a_thunderbolt_ii, su25_frogfoot, aw101_merlin, ch47_chinook and mi26_halo. The concrete class binding names one entry. Grade claimed: class-table identity evidence, never a value.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "B_Plane_Fighter_01_CASModule_MediumNapalm_F",
+    "class_token": "Plane",
+    "catalogue_id": "fa18e_super_hornet",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "The display of B_Plane_Fighter_01_CASModule_MediumNapalm_F is \"F/A-181 Black Wasp II (3x MK77 Napalm)\". This is an Arma 3 Plane class whose name carries the vanilla airframe family B_Plane_Fighter_01, and the concrete family class B_Plane_Fighter_01_F is bound to fa18e_super_hornet in this file, so this loadout fit carries that binding and claims no second airframe. The catalogue holds no entry under the fictional F/A-181 Black Wasp name. Colliding token: the keyword run reads 'a18' inside 'fa181', which ties fa18a_hornet, fa18c_hornet, fa18e_super_hornet and fa18f_super_hornet. 'cas', read from the class name CASModule, also ties a10a_thunderbolt_ii and su25_frogfoot. The concrete class binding names one entry. Grade claimed: class-table identity evidence, never a value.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "B_Plane_Fighter_01_CASModule_MediumNapalm_2_F",
+    "class_token": "Plane",
+    "catalogue_id": "fa18e_super_hornet",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "The display of B_Plane_Fighter_01_CASModule_MediumNapalm_2_F is \"F/A-181 Black Wasp II (4x MK77 Napalm)\". This is an Arma 3 Plane class whose name carries the vanilla airframe family B_Plane_Fighter_01, and the concrete family class B_Plane_Fighter_01_F is bound to fa18e_super_hornet in this file, so this loadout fit carries that binding and claims no second airframe. The catalogue holds no entry under the fictional F/A-181 Black Wasp name. Colliding token: the keyword run reads 'a18' inside 'fa181', which ties fa18a_hornet, fa18c_hornet, fa18e_super_hornet and fa18f_super_hornet. 'cas', read from the class name CASModule, also ties a10a_thunderbolt_ii and su25_frogfoot. The concrete class binding names one entry. Grade claimed: class-table identity evidence, never a value.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "B_Plane_Fighter_01_CASModule_HeavyNapalm_F",
+    "class_token": "Plane",
+    "catalogue_id": "fa18e_super_hornet",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "The display of B_Plane_Fighter_01_CASModule_HeavyNapalm_F is \"F/A-181 Black Wasp II (6x MK77 Napalm)\". This is an Arma 3 Plane class whose name carries the vanilla airframe family B_Plane_Fighter_01, and the concrete family class B_Plane_Fighter_01_F is bound to fa18e_super_hornet in this file, so this loadout fit carries that binding and claims no second airframe. The catalogue holds no entry under the fictional F/A-181 Black Wasp name. Colliding token: the keyword run reads 'a18' inside 'fa181', which ties fa18a_hornet, fa18c_hornet, fa18e_super_hornet and fa18f_super_hornet. 'cas' and 'heavy', read from the class name, also tie a10a_thunderbolt_ii, su25_frogfoot, aw101_merlin, ch47_chinook and mi26_halo. The concrete class binding names one entry. Grade claimed: class-table identity evidence, never a value.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "B_Plane_Fighter_01_CASModule_HeavyNapalm_2_F",
+    "class_token": "Plane",
+    "catalogue_id": "fa18e_super_hornet",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "The display of B_Plane_Fighter_01_CASModule_HeavyNapalm_2_F is \"F/A-181 Black Wasp II (8x MK77 Napalm)\". This is an Arma 3 Plane class whose name carries the vanilla airframe family B_Plane_Fighter_01, and the concrete family class B_Plane_Fighter_01_F is bound to fa18e_super_hornet in this file, so this loadout fit carries that binding and claims no second airframe. The catalogue holds no entry under the fictional F/A-181 Black Wasp name. Colliding token: the keyword run reads 'a18' inside 'fa181', which ties fa18a_hornet, fa18c_hornet, fa18e_super_hornet and fa18f_super_hornet. 'cas' and 'heavy', read from the class name, also tie a10a_thunderbolt_ii, su25_frogfoot, aw101_merlin, ch47_chinook and mi26_halo. The concrete class binding names one entry. Grade claimed: class-table identity evidence, never a value.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "B_Heli_Transport_01_unarmed_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "uh60a_black_hawk",
+    "identity_source": "armedassault_uh80_ghost_hawk_trivia",
+    "identity_evidence": "The display of B_Heli_Transport_01_unarmed_F is \"UH-80 Ghost Hawk (Unarmed)\". This is an Arma 3 Helicopter class whose text names the Ghost Hawk the Armed Assault Wiki records as a stealth UH-60 Black Hawk variant, and the corpus publishes 'ghost hawk' as an alias of the Sikorsky UH-60A Black Hawk entry uh60a_black_hawk. Source: Armed Assault Wiki, UH-80_Ghost_Hawk, ARMA 3 Trivia (wikitext section 45), https://armedassault.fandom.com/wiki/UH-80_Ghost_Hawk. Colliding token: the alias layer reads 'ghost' for uh60a_black_hawk and 'hawk' for bae_hawk_t1, so the alias rung ties and the concrete class binding names one entry. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "B_CTRG_Heli_Transport_01_DAP_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "uh60a_black_hawk",
+    "identity_source": "armedassault_uh80_ghost_hawk_trivia",
+    "identity_evidence": "The display of B_CTRG_Heli_Transport_01_DAP_F is \"MH-80 DAP Ghost Hawk\". This is an Arma 3 Helicopter class whose text names the Ghost Hawk the Armed Assault Wiki records as a stealth UH-60 Black Hawk variant, and the corpus publishes 'ghost hawk' as an alias of the Sikorsky UH-60A Black Hawk entry uh60a_black_hawk. Source: Armed Assault Wiki, UH-80_Ghost_Hawk, ARMA 3 Trivia (wikitext section 45), https://armedassault.fandom.com/wiki/UH-80_Ghost_Hawk. Colliding token: the alias layer reads 'ghost' for uh60a_black_hawk and 'hawk' for bae_hawk_t1, so the alias rung ties and the concrete class binding names one entry. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "B_CTRG_Heli_Transport_01_Assault_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "uh60a_black_hawk",
+    "identity_source": "armedassault_uh80_ghost_hawk_trivia",
+    "identity_evidence": "The display of B_CTRG_Heli_Transport_01_Assault_F is \"MH-80 Ghost Hawk\". This is an Arma 3 Helicopter class whose text names the Ghost Hawk the Armed Assault Wiki records as a stealth UH-60 Black Hawk variant, and the corpus publishes 'ghost hawk' as an alias of the Sikorsky UH-60A Black Hawk entry uh60a_black_hawk. Source: Armed Assault Wiki, UH-80_Ghost_Hawk, ARMA 3 Trivia (wikitext section 45), https://armedassault.fandom.com/wiki/UH-80_Ghost_Hawk. Colliding token: the alias layer reads 'ghost' for uh60a_black_hawk and 'hawk' for bae_hawk_t1, so the alias rung ties and the concrete class binding names one entry. The binding is graded claimed because the source is a tier-5 community compilation (data/vehicle/SCHEMA.md sections 3, 7 and 8).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "vtx_H60_base",
+    "class_token": "Helicopter",
+    "catalogue_id": "uh60m_black_hawk",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "The display of vtx_H60_base is \"UH-60M Blackhawk\", which names the Sikorsky UH-60M Black Hawk the catalogue holds as uh60m_black_hawk. This is an Arma 3 Helicopter class of the mod. Colliding token: the alias layer reads 'blackhawk' for both uh60a_black_hawk and uh60l_black_hawk, so the alias rung ties and no mark answers. The concrete class binding names one mark. Grade claimed: class-table identity evidence, never a value.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "vtx_HH60",
+    "class_token": "Helicopter",
+    "catalogue_id": "hh60g_pave_hawk",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "The display of vtx_HH60 is \"HH-60G/M Pavehawk\", which names the Sikorsky HH-60G Pave Hawk the catalogue holds as hh60g_pave_hawk. This is an Arma 3 Helicopter class of the mod. Colliding token: the alias layer reads 'pavehawk' for both hh60g_pave_hawk and mh60g_pave_hawk, so the alias rung ties and no mark answers. The concrete class binding names one mark. Grade claimed: class-table identity evidence, never a value.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "121_soar_hibyrd_slick",
+    "class_token": "Helicopter",
+    "catalogue_id": "mh60m",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "The display of 121_soar_hibyrd_slick is \"[SOAR] Hibyrd's MH-60M\", which names the Sikorsky MH-60M Black Hawk the catalogue holds as mh60m. This is an Arma 3 Helicopter class of the mod. Colliding token: the keyword rung reads 'mh60' inside every MH-60 query, so it ties mh60m, mh60g_pave_hawk, mh60r_seahawk, mh60s_knighthawk and mh6m_mission_enhanced. The concrete class binding names one mark. Grade claimed: class-table identity evidence, never a value.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "RHS_AH64D",
+    "class_token": "Helicopter",
+    "catalogue_id": "ah64d_apache_longbow",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "The display of RHS_AH64D is \"AH-64D\", which names the Boeing AH-64D Apache Longbow the catalogue holds as ah64d_apache_longbow. This is an Arma 3 Helicopter class of the mod. Colliding token: the keyword rung reads 'ah64', which also matches ah64a_apache and ah64e_apache_guardian, and 'ah6' is a substring of every 'ah64' query, so ah6_little_bird joins the tie. The concrete class binding names one mark. Grade claimed: class-table identity evidence, never a value.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "fza_ah64d_b1",
+    "class_token": "Helicopter",
+    "catalogue_id": "ah64d_apache_longbow",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "The display of fza_ah64d_b1 is \"AH-64D BLOCK I\", which names the Boeing AH-64D Apache Longbow the catalogue holds as ah64d_apache_longbow. This is an Arma 3 Helicopter class of the mod. Colliding token: the keyword rung reads 'ah64', which also matches ah64a_apache and ah64e_apache_guardian, and 'ah6' is a substring of every 'ah64' query, so ah6_little_bird joins the tie. The concrete class binding names one mark. Grade claimed: class-table identity evidence, never a value.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "RHS_Su25SM_CAS_vvs",
+    "class_token": "Plane",
+    "catalogue_id": "su25sm_frogfoot",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "The display of RHS_Su25SM_CAS_vvs is \"Su-25 (CAS)\" and the class name carries 'Su25SM', so this Arma 3 Plane class names the Sukhoi Su-25SM Frogfoot the catalogue holds as su25sm_frogfoot. Colliding token: the keyword run reads 'cas', a role word held by a10a_thunderbolt_ii and su25_frogfoot as well, and 'su25' answers su25_frogfoot, so three entries tie. The concrete class binding names one mark. Grade claimed: class-table identity evidence, never a value.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "RHS_Su25SM_CAS_vvsc",
+    "class_token": "Plane",
+    "catalogue_id": "su25sm_frogfoot",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "The display of RHS_Su25SM_CAS_vvsc is \"Su-25 (CAS)\" and the class name carries 'Su25SM', so this Arma 3 Plane class names the Sukhoi Su-25SM Frogfoot the catalogue holds as su25sm_frogfoot. Colliding token: the keyword run reads 'cas', a role word held by a10a_thunderbolt_ii and su25_frogfoot as well, and 'su25' answers su25_frogfoot, so three entries tie. The concrete class binding names one mark. Grade claimed: class-table identity evidence, never a value.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "rhs_uh1h_hidf_gunship",
+    "class_token": "Helicopter",
+    "catalogue_id": "uh1h_iroquois",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "The display of rhs_uh1h_hidf_gunship is \"UH-1H Gunship\", which names the Bell UH-1H Iroquois the catalogue holds as uh1h_iroquois. The trailing word states the role. This is an Arma 3 Helicopter class of the mod. Colliding token: the keyword run reads 'gunship', a role word held by ka50_hokum, mi24p_hind_f and mi28_havoc as well, so four entries tie and no mark answers. The concrete class binding names one mark. Grade claimed: class-table identity evidence, never a value.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "CBRN_Mohawk",
+    "class_token": "Helicopter",
+    "catalogue_id": "aw101_merlin",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "The display of CBRN_Mohawk is \"Merlin\", which names the AgustaWestland AW101 Merlin the catalogue holds as aw101_merlin. The class name carries 'Mohawk', a token the catalogue holds as an alias of the same entry. This is an Arma 3 Helicopter class of the mod. Colliding token: the alias layer reads 'merlin' for both aw101_merlin and aw101_hm2, so the alias rung ties and no mark answers. The concrete class binding names one mark. Grade claimed: class-table identity evidence, never a value.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "FIR_ECM_Dummy_2",
+    "class_token": "Plane",
+    "catalogue_id": "fa18f_super_hornet",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "The display of FIR_ECM_Dummy_2 is \"F/A-18F Super Hornet\", which names the Boeing F/A-18F Super Hornet the catalogue holds as fa18f_super_hornet. It is the only F/A-18F entry, so the display names one mark. This is an Arma 3 Plane class of the mod. Colliding token: the alias layer reads 'hornet' for both fa18a_hornet and fa18c_hornet, so the alias rung ties and no mark answers. The concrete class binding names one mark. Grade claimed: class-table identity evidence, never a value.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "RHS_Mi24P_CAS_VVS_Base",
+    "class_token": "Helicopter",
+    "catalogue_id": "mi24p_hind_f",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "The display of RHS_Mi24P_CAS_VVS_Base is \"Mi-24P (CAS)\", which names the Mil Mi-24P Hind-F the catalogue holds as mi24p_hind_f. The parenthesis states the role. This is an Arma 3 Helicopter class of the mod. Colliding token: the keyword run reads 'cas', a role word held by a10a_thunderbolt_ii and su25_frogfoot as well, so three entries tie and no mark answers. The concrete class binding names one mark. Grade claimed: class-table identity evidence, never a value.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "RHS_AH64D_GS",
+    "class_token": "Helicopter",
+    "catalogue_id": "ah64d_apache_longbow",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "The display of RHS_AH64D_GS is \"AH-64D (Ground-Suppression)\", which names the Boeing AH-64D Apache Longbow the catalogue holds as ah64d_apache_longbow. The parenthesis states the role. This is an Arma 3 Helicopter class of the mod. Colliding token: the keyword rung reads 'ah64', which also matches ah64a_apache and ah64e_apache_guardian, and 'ah6' is a substring of every 'ah64' query, so ah6_little_bird joins the tie. Grade claimed: class-table identity evidence, never a value.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "RHS_AH64D_CS",
+    "class_token": "Helicopter",
+    "catalogue_id": "ah64d_apache_longbow",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "The display of RHS_AH64D_CS is \"AH-64D (Close-Support)\", which names the Boeing AH-64D Apache Longbow the catalogue holds as ah64d_apache_longbow. The parenthesis states the role. This is an Arma 3 Helicopter class of the mod. Colliding token: the keyword rung reads 'ah64', which also matches ah64a_apache and ah64e_apache_guardian, and 'ah6' is a substring of every 'ah64' query, so ah6_little_bird joins the tie. Grade claimed: class-table identity evidence, never a value.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "RHS_AH64D_AA",
+    "class_token": "Helicopter",
+    "catalogue_id": "ah64d_apache_longbow",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "The display of RHS_AH64D_AA is \"AH-64D (AA)\", which names the Boeing AH-64D Apache Longbow the catalogue holds as ah64d_apache_longbow. The parenthesis states the role. This is an Arma 3 Helicopter class of the mod. Colliding token: the keyword rung reads 'ah64', which also matches ah64a_apache and ah64e_apache_guardian, and 'ah6' is a substring of every 'ah64' query, so ah6_little_bird joins the tie. Grade claimed: class-table identity evidence, never a value.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "RHS_AH64DGrey",
+    "class_token": "Helicopter",
+    "catalogue_id": "ah64d_apache_longbow",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "The display of RHS_AH64DGrey is \"AH-64D (OIF Grey)\", which names the Boeing AH-64D Apache Longbow the catalogue holds as ah64d_apache_longbow. The parenthesis states the livery. This is an Arma 3 Helicopter class of the mod. Colliding token: the keyword rung reads 'ah64', which also matches ah64a_apache and ah64e_apache_guardian, and 'ah6' is a substring of every 'ah64' query, so ah6_little_bird joins the tie. Grade claimed: class-table identity evidence, never a value.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "fza_ah64d_b2e",
+    "class_token": "Helicopter",
+    "catalogue_id": "ah64d_apache_longbow",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "fza_ah64d_b2e is an Arma 3 Helicopter class of the mod. Its class name carries the mark token 'ah64d', the same token the sibling fza_ah64d_b1 prints in its display, and the token names the Boeing AH-64D Apache Longbow the catalogue holds as ah64d_apache_longbow. Its own display carries only the mod's 'DEPRECATED' marker, so no derived designation can answer it. Colliding token: the keyword rung reads 'ah64', which also matches ah64a_apache and ah64e_apache_guardian, and 'ah6' is a substring of every 'ah64' query, so ah6_little_bird joins the tie. The concrete class binding names one mark. Grade claimed: class-table identity evidence, never a value.",
+    "grade": "claimed"
   }
 ]

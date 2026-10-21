@@ -24,6 +24,7 @@ from pathlib import Path
 REPO = Path(__file__).parents[2]
 sys.path.insert(0, str(REPO))
 
+from tools.tests import test_mod_class_resolution as modded  # noqa: E402
 from tools.validation import gen_aircraft_roster as g  # noqa: E402
 from tools.validation import vehicle_catalogue as vc  # noqa: E402
 
@@ -78,13 +79,21 @@ class RosterDerivationTest(unittest.TestCase):
         second = json.dumps(g.build_roster(inventory), sort_keys=True)
         self.assertEqual(first, second)
 
-    def test_the_inventory_holds_every_bound_class(self) -> None:
-        # A bound class that the config read missed is a gap, not a silent drop.
+    def test_every_bound_class_is_known_to_a_config_read_or_a_lock(self) -> None:
+        # A bound class no config read saw is a gap, not a silent drop. The
+        # inventory is a read of the BASE install, so a binding a MOD
+        # declares sits outside it by design, and the mod scan has no place
+        # in a bare checkout. Every such class is therefore locked with the
+        # entry it resolves to in test_mod_class_resolution.py, so a class
+        # outside the inventory cannot escape both guards.
         known = {row["class"] for row in _classes(_load(INVENTORY))}
+        locked = {name for name, _, _ in modded.CLOSED_AIRCRAFT_CASES}
         bindings = _load(DATA / "class_bindings.json")
         self.assertIsInstance(bindings, list)
-        for binding in bindings:
-            self.assertIn(binding["game_class"], known)
+        self.assertTrue(bindings)
+        outside = {binding["game_class"] for binding in bindings} - known
+        self.assertTrue(outside)
+        self.assertEqual(set(), outside - locked)
 
 
 class RosterGuardTest(unittest.TestCase):
