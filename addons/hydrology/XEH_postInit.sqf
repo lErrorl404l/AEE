@@ -13,7 +13,7 @@ AEE_MODULE_POST_INIT
 // which the environment tick reached the river chain.  The grid is cached by
 // its key, so the pre-warm below moves that cost into postInit, off the
 // playable timeline, and the first tick finds a cache hit.
-if (missionNamespace getVariable [EGVAR(core,enabled), true]) then {
+if (missionNamespace getVariable [QEGVAR(core,enabled), true]) then {
     private _d8Step = 100;   // metres; must match fnc_calculateRiverWaterLevel
     private _d8Side = (ceil (worldSize / _d8Step)) max 1;
     [[0, 0], _d8Side, _d8Side, _d8Step] call FUNC(routeRunoffD8);
