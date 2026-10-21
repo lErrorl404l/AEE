@@ -29,7 +29,12 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-SRC = ROOT / "data" / "astronomy" / "sources" / "imo_cal2025.txt"
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from tools.validation import source_cache  # noqa: E402
+
+SRC = source_cache.capture_path("astronomy", "imo_cal2025.txt")
 OUT = ROOT / "addons" / "lighting" / "functions" / "astronomy" / "fnc_meteorShowers.sqf"
 
 DEGREE_DOT = "\u25e6"
@@ -182,6 +187,12 @@ def build():
 
 
 def main():
+    if not SRC.is_file():
+        print(
+            "imo_cal2025.txt is not held in {}; the meteor shower check was "
+            "skipped".format(source_cache.cache_root())
+        )
+        return 0
     text = build()
     if "--check" in sys.argv:
         if OUT.exists() and OUT.read_text(encoding="utf-8") == text:

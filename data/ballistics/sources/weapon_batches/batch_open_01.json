@@ -5,13 +5,15 @@
       "source_id": "armalite_2015_catalog",
       "title": "ArmaLite 2015 Catalog (AR-30 & AR-31 rifles)",
       "url": "https://web.archive.org/web/20150918220604id_/http://armalite.com/catalog/2015/2015ArmaliteCatalog.pdf",
-      "sha256": "cdd85f3173126b9b7dfde0b825084731cfacd12fb498c7c50df3c4ef695b64bb"
+      "sha256": "cdd85f3173126b9b7dfde0b825084731cfacd12fb498c7c50df3c4ef695b64bb",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "chiappa_rhino_manual",
       "title": "Chiappa Rhino Instruction Manual (revolver range specifications)",
       "url": "https://web.archive.org/web/20180118064140id_/http://chiappafirearms.com/downloadpdf.php?id=281",
-      "sha256": "bc02033412fda5c3b5640d484a2a7c4fc59b6130044d8f5b5c15ec1f481b9f39"
+      "sha256": "bc02033412fda5c3b5640d484a2a7c4fc59b6130044d8f5b5c15ec1f481b9f39",
+      "capture": "local-cache-only"
     }
   ],
   "weapons": [

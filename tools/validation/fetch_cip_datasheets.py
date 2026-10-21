@@ -23,7 +23,10 @@ from pathlib import Path
 
 DATA = Path(__file__).parents[2] / "data" / "ballistics"
 CIP = DATA / "sources" / "cip" / "cip_tdcc_all_tabs.json"
-SHEETS = DATA / "sources" / "cip" / "datasheets"
+sys.path.insert(0, str(Path(__file__).parents[2]))
+from tools.validation import source_cache  # noqa: E402
+
+SHEETS = source_cache.capture_path("ballistics", "cip/datasheets")
 EXTRACT = DATA / "sources" / "cip" / "cip_datasheet_extract.json"
 DB = DATA / "cartridges.json"
 

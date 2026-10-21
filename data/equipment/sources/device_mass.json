@@ -7,6 +7,7 @@
       "title": "AN/PVS-31A BNVD White Phosphor datasheet",
       "url": "https://www.l3harris.com/sites/default/files/2020-09/cs-ivs-an-pvs-31a-bnvd-datasheet_0.pdf",
       "sha256": "88ce46d84f815354585c0e2a486c64e5b29a5185058ce4611c61809e4e9ac6fa",
+      "capture": "local-cache-only",
       "publisher": "L3Harris Technologies",
       "tier": 4
     },
@@ -15,6 +16,7 @@
       "title": "GPNVG White Phosphor spec sheet",
       "url": "https://www.l3harris.com/sites/default/files/2025-01/cs-ivs-white-phosphor-ground-panoramic-night-vision-gpnvg-spec-sheet.pdf",
       "sha256": "783a87f6a7c06cfbc6b52bab1f8a5e9acfc11f14756b4ca3bf401cdb48207151",
+      "capture": "local-cache-only",
       "publisher": "L3Harris Technologies",
       "tier": 4
     },
@@ -23,6 +25,7 @@
       "title": "Wilcox TDS271 G24 breakaway NVG mount technical data sheet",
       "url": "https://wilcoxind.com/backend/wp-content/uploads/2021/01/Wilcox-TDS271-G24-MOUNT.pdf",
       "sha256": "7918fc343d2a8995bc5bdec5aed00e239738824d19e3d8c874c06bfced90b4d0",
+      "capture": "local-cache-only",
       "publisher": "Wilcox Industries",
       "tier": 4
     },
@@ -31,6 +34,7 @@
       "title": "AN/PVS-14 (F6015) monocular night vision device datasheet",
       "url": "https://440148.fs1.hubspotusercontent-na1.net/hubfs/440148/Website/Data%20Sheets/Night%20Vision/ElbitAmerica_Datasheet_AN-PVS-14%20GENERIC.pdf",
       "sha256": "468267429e44ddf74b6a7f2ab07804c21a03090f0705c530a3b15773d7519fef",
+      "capture": "local-cache-only",
       "publisher": "Elbit Systems of America",
       "tier": 4
     },
@@ -39,6 +43,7 @@
       "title": "AN/PVS-14 M914A White Phosphor datasheet",
       "url": "https://rtkllc.com/content/cs-ivs-an-pvs-14-m914a-datasheet.pdf",
       "sha256": "0b983abaa218c42791cfb2c30468ce6d5fdc62be170093950acac4e8a2b3c5e5",
+      "capture": "local-cache-only",
       "publisher": "L3Harris Technologies",
       "tier": 4
     },
@@ -47,6 +52,7 @@
       "title": "AN/PVS-7D (F5001) bi-ocular night vision device datasheet",
       "url": "https://f.hubspotusercontent40.net/hubfs/440148/Website/Data%20Sheets/Night%20Vision/ElbitAmerica_Datasheet_AN-PVS-7D%20GENERIC.pdf",
       "sha256": "1fa6238d8d944a66f309b7dfd42c125c6a6cdcf22164f65b2d6935b3db77b5b2",
+      "capture": "local-cache-only",
       "publisher": "Elbit Systems of America",
       "tier": 4
     },
@@ -55,6 +61,7 @@
       "title": "AN/AVS-9 (F4949) aviation night vision goggle datasheet",
       "url": "https://440148.fs1.hubspotusercontent-na1.net/hubfs/440148/Website/Data%20Sheets/Night%20Vision/ElbitAmerica_Datasheet_AN-AVS-9%20GENERIC.pdf",
       "sha256": "de4e7e9804f0fbdc31d293d224df448df8d32184987b8e868a487542008b14ea",
+      "capture": "local-cache-only",
       "publisher": "Elbit Systems of America",
       "tier": 4
     },
@@ -63,6 +70,7 @@
       "title": "ENVG-B MDS-F6025 marketing data sheet",
       "url": "https://cdn2.hubspot.net/hubfs/440148/Engagement%20Kits/AAAA%202000/Marketing-Datasheet-System-ENVG-B%20REV%20-.pdf",
       "sha256": "b300d223527a7ebd46fda97f5f9a5c3676846f395c363a4dbde88aee9479c62c",
+      "capture": "local-cache-only",
       "publisher": "Elbit Systems of America (night vision division)",
       "tier": 4
     },
@@ -71,6 +79,7 @@
       "title": "AN/PEQ-15 ATPIAL spec sheet",
       "url": "https://www.l3harris.com/sites/default/files/2021-02/cs-ivs-an-peq-15-advanced-target-pointer-illuminator-aiming-laser-atpial-spec-sheet.pdf",
       "sha256": "1a95223c97cc27483f105c5ef3473cfd956ec6e75f5df6512fb97c5331aa1edd",
+      "capture": "local-cache-only",
       "publisher": "L3Harris Technologies",
       "tier": 4
     },
@@ -79,6 +88,7 @@
       "title": "MAWL-C1 product specifications page",
       "url": "https://www.bemeyers.com/mawl-c1",
       "sha256": "6fc4c4f3df0b47d436037605a9c70410d75ac3fcd9bb929cd8cba4cf2c1b7374",
+      "capture": "local-cache-only",
       "publisher": "B.E. Meyers & Co.",
       "tier": 4
     },
@@ -87,6 +97,7 @@
       "title": "SureFire M600V Scout Light product page",
       "url": "https://www.surefire.com/m600v-scout-light-weaponlight/",
       "sha256": "e9bef847a608db491738ae43a41510b8a50d0c6a2c939145743489468a44b6f5",
+      "capture": "local-cache-only",
       "publisher": "SureFire",
       "tier": 4
     },
@@ -95,6 +106,7 @@
       "title": "SureFire SOCOM556-RC2 suppressor product page",
       "url": "https://www.surefire.com/socom556-rc2/",
       "sha256": "f3df5858b2917fba66220ce37bcf28a66bf83ed4e227ae93ce5e9aa0568b82d2",
+      "capture": "local-cache-only",
       "publisher": "SureFire",
       "tier": 4
     },
@@ -103,6 +115,7 @@
       "title": "AN/PVS-15 (M953) White Phosphor datasheet",
       "url": "https://anvsinc.com/wp-content/uploads/2019/06/AN_PVS-15_M953_WP_L3_WMS_Insight_r4.pdf",
       "sha256": "2eb2ba5385ce71695fb191c55378455c00759161d737048fc3419e39c76b50aa",
+      "capture": "local-cache-only",
       "publisher": "ANVS Inc (night vision integrator)",
       "tier": 4
     },
@@ -111,6 +124,7 @@
       "title": "AN/PVS-31K Super Gain BNVD sell sheet",
       "url": "https://www.l3harris.com/sites/default/files/2021-03/cs-ivs-pvs-31k-super-gain-bnvd-white-phosphor-sell-sheet.pdf",
       "sha256": "9b5cdb5ea657084e10d15ed859d3d4b7f623c67fedc1a563037bec611d303ee1",
+      "capture": "local-cache-only",
       "publisher": "L3Harris Technologies",
       "tier": 4
     },
@@ -119,6 +133,7 @@
       "title": "Next Generation Aiming Laser (NGAL) sell sheet",
       "url": "https://www.l3harris.com/sites/default/files/2021-01/cs-ivs-next-generation-aiming-laser-ngal-sell-sheet.pdf",
       "sha256": "579a1bc0230ddd9444f9a761e2754925dd91f83571bc8f765a33e21b36c85fdb",
+      "capture": "local-cache-only",
       "publisher": "L3Harris Technologies",
       "tier": 4
     },
@@ -127,6 +142,7 @@
       "title": "Small Precision Enhanced Aiming Rangefinder (SPEAR) datasheet",
       "url": "https://www.l3harris.com/sites/default/files/2021-08/cs-ivs-small-precision-enhanced-aiming-rangefinder-spear-datasheet.pdf",
       "sha256": "88b80b45e24d5cf48e7854ac248adcf4d93d645850d36a7c31b91cc88280cb44",
+      "capture": "local-cache-only",
       "publisher": "L3Harris Technologies",
       "tier": 4
     },
@@ -135,6 +151,7 @@
       "title": "AN/PEQ-2A ITPIAL manufacturer datasheet (DefenseReview mirror of Insight Technology PDF)",
       "url": "https://defensereview.com/1_31_2004/Insight%20Technology%20Incorporated%20AN-PEQ-2A%20Infrared%20Target%20Pointer-Illuminator-Aiming%20Laser.pdf",
       "sha256": "508ce82c5578fddee4ef9fdafdd94ffcfe35bec50d29f10be545335ed4525237",
+      "capture": "local-cache-only",
       "publisher": "Insight Technology",
       "tier": 4
     },
@@ -143,6 +160,7 @@
       "title": "AN/PEQ-15A DBAL-A2 product specifications comparison table",
       "url": "https://www.steiner-optics.com/products/anpeq-15a-dbal-a2",
       "sha256": "35af64faf22fbdb8e5280da4b183d17bdb4b614132178c1e8eed52be22bc3e35",
+      "capture": "local-cache-only",
       "publisher": "Steiner (Beretta Holding)",
       "tier": 4
     },
@@ -151,6 +169,7 @@
       "title": "Javelin product card",
       "url": "https://www.lockheedmartin.com/content/dam/lockheed-martin/mfc/pc/javelin/24-11303_TM_Javelin_Product_Card_R1_6.pdf",
       "sha256": "8b81d9026c58edb9537848dec2dd561bdb8642709a5e4b812e11ed5ea3e8d16c",
+      "capture": "local-cache-only",
       "publisher": "Lockheed Martin",
       "tier": 4
     },
@@ -159,6 +178,7 @@
       "title": "ATACR 1-8x24 F1 product page",
       "url": "https://nightforceoptics.com/riflescopes/atacr/atacr-1-8x24-f1",
       "sha256": "7aaf4ce2c2f33dc63a488b5825caeb179562a275d3da8ce1c4de65fb01a26eb0",
+      "capture": "local-cache-only",
       "publisher": "Nightforce Optics",
       "tier": 4
     },
@@ -167,6 +187,7 @@
       "title": "Razor HD Gen III 1-10x24 riflescope product page",
       "url": "https://vortexoptics.com/vortex-razor-hd-gen-iii-1-10x24-riflescope.html",
       "sha256": "95e3b1904af57023cbec36a2750e6a4cee5fb14aa45dc34b2cc996f3fa8da2d2",
+      "capture": "local-cache-only",
       "publisher": "Vortex Optics",
       "tier": 4
     },
@@ -175,6 +196,7 @@
       "title": "Mark 6 3-18x44 M5C2 riflescope product page",
       "url": "https://www.leupold.com/mark-6-3-18x44-m5c2-illum-ffp-tremor-2-riflescope",
       "sha256": "adfbaa60d064f10636dacd47eedec9693444c921b3a8ac24f14a39e5128f306c",
+      "capture": "local-cache-only",
       "publisher": "Leupold & Stevens",
       "tier": 4
     },
@@ -183,6 +205,7 @@
       "title": "SureFire X300U-B product page",
       "url": "https://www.surefire.com/x300u-b/",
       "sha256": "6e2228446bf0ed2f1752e855d71121e6711f52e4cfc89bb54dadbfeec82f0404",
+      "capture": "local-cache-only",
       "publisher": "SureFire",
       "tier": 4
     },
@@ -191,6 +214,7 @@
       "title": "SureFire SOCOM762-RC2 suppressor product page",
       "url": "https://www.surefire.com/socom762-rc2/",
       "sha256": "8c1f0e0f1d127efa9ba6eb3384b3f08e7485b34e9042540804775413b18b2966",
+      "capture": "local-cache-only",
       "publisher": "SureFire",
       "tier": 4
     },
@@ -199,6 +223,7 @@
       "title": "Sandman-S product page",
       "url": "https://www.deadairsilencers.com/sandman-s/",
       "sha256": "ea7f2bd7d62109b69afe9381feedd193bcc3afe88514b8cfd5641695e0c34db2",
+      "capture": "local-cache-only",
       "publisher": "Dead Air Armament",
       "tier": 4
     },
@@ -207,6 +232,7 @@
       "title": "5.56mm QDSS NT4 suppressor product page",
       "url": "https://www.knightarmco.com/16373/shop/signature-reduction/rifle-suppressors/5-56mm/5-56mm-qdss-nt4",
       "sha256": "7dce22180789975402e4bc1a712005c573526b8da7232efd23288e0638316bf5",
+      "capture": "local-cache-only",
       "publisher": "Knight's Armament Company",
       "tier": 4
     },
@@ -215,6 +241,7 @@
       "title": "M110 Suppressor 7.62/.300 product page",
       "url": "https://www.knightarmco.com/13487/shop/signature-reduction/rifle-suppressors/7-62mm/m110-suppressor-7-62-300",
       "sha256": "31c5c2c3a8cf69d6bca1587f4ecfd6c87ff500bec21ebdc44f2fd5848c174201",
+      "capture": "local-cache-only",
       "publisher": "Knight's Armament Company",
       "tier": 4
     },
@@ -225,7 +252,8 @@
       "publisher": "Sightmark",
       "url": "https://sightmark.com/products/wraith-4k-3-24x50",
       "retrieved": "2026-09-22",
-      "sha256": "e85bd440413a5ef01d469722c348709dd081b800f1f3b838b74bbca512e38482"
+      "sha256": "e85bd440413a5ef01d469722c348709dd081b800f1f3b838b74bbca512e38482",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "sightmark_wraithhd",
@@ -234,7 +262,8 @@
       "publisher": "Sightmark",
       "url": "https://sightmark.com/products/wraith-hd-4-32x50",
       "retrieved": "2026-09-22",
-      "sha256": "4d4c1c02353d73e0e615b48c033d59ce4d7c535bc0536cd273cca25b51bffab5"
+      "sha256": "4d4c1c02353d73e0e615b48c033d59ce4d7c535bc0536cd273cca25b51bffab5",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "bushnell_nitro10x42",
@@ -243,7 +272,8 @@
       "publisher": "Bushnell",
       "url": "https://www.bushnell.com/binoculars/nitro/Nitro-10x42-Binoculars/221042M.html",
       "retrieved": "2026-09-22",
-      "sha256": "317e747e60c4c3c32bcfc24c31759b849961c85e2739b978bd176275cd5852a5"
+      "sha256": "317e747e60c4c3c32bcfc24c31759b849961c85e2739b978bd176275cd5852a5",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "rsregulate_akr",
@@ -252,7 +282,8 @@
       "publisher": "RS Regulate",
       "url": "https://rsregulate.com/product/akr/",
       "retrieved": "2026-09-22",
-      "sha256": "347132fee9d53364ca792922218d1d0e3b51b2608ae005553048f5a80e6d7750"
+      "sha256": "347132fee9d53364ca792922218d1d0e3b51b2608ae005553048f5a80e6d7750",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "rsregulate_ak301m",
@@ -261,7 +292,8 @@
       "publisher": "RS Regulate",
       "url": "https://rsregulate.com/product/ak-300/",
       "retrieved": "2026-09-22",
-      "sha256": "ce4f4be35d8f1a8b8d80765c01613cf30c92b17af8d217b70389b42be21f88fc"
+      "sha256": "ce4f4be35d8f1a8b8d80765c01613cf30c92b17af8d217b70389b42be21f88fc",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "holosun_aems",
@@ -270,7 +302,8 @@
       "publisher": "Holosun",
       "url": "https://holosun.com/products/red-dot-sights/aems/aems-core-2.html",
       "retrieved": "2026-09-22",
-      "sha256": "9fea870b9f15a0aacbbba53338c103e37256e340d7494894541aaeee3a0670a8"
+      "sha256": "9fea870b9f15a0aacbbba53338c103e37256e340d7494894541aaeee3a0670a8",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "scalarworks_leap10",
@@ -279,7 +312,8 @@
       "publisher": "Scalarworks",
       "url": "https://scalarworks.com/shop/quick-detach-mounts/leap-10/",
       "retrieved": "2026-09-22",
-      "sha256": "a02146aa712efc44b7289443a6608d2cb67f8e8b6f05eb55460d107c9ef4045e"
+      "sha256": "a02146aa712efc44b7289443a6608d2cb67f8e8b6f05eb55460d107c9ef4045e",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "scalarworks_leap14",
@@ -288,7 +322,8 @@
       "publisher": "Scalarworks",
       "url": "https://scalarworks.com/shop/quick-detach-mounts/leap-14/",
       "retrieved": "2026-09-22",
-      "sha256": "3546c56fa497963499336a906720a6fd861e29e167805b9d1b377c512b956af4"
+      "sha256": "3546c56fa497963499336a906720a6fd861e29e167805b9d1b377c512b956af4",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "scalarworks_leap02",
@@ -297,7 +332,8 @@
       "publisher": "Scalarworks",
       "url": "https://scalarworks.com/shop/quick-detach-mounts/leap-02/",
       "retrieved": "2026-09-22",
-      "sha256": "138469475180258ae3e62456cc6dd56493cf679f35b1710e21c2f953c32a9967"
+      "sha256": "138469475180258ae3e62456cc6dd56493cf679f35b1710e21c2f953c32a9967",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "scalarworks_leap03",
@@ -306,7 +342,8 @@
       "publisher": "Scalarworks",
       "url": "https://scalarworks.com/shop/quick-detach-mounts/leap-03/",
       "retrieved": "2026-09-22",
-      "sha256": "78283d3ffc9dae15dc2d4c0a336458e4d269b8424ac2109b843950b18628794a"
+      "sha256": "78283d3ffc9dae15dc2d4c0a336458e4d269b8424ac2109b843950b18628794a",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "streamlight_protac_rm2",
@@ -315,7 +352,8 @@
       "publisher": "Streamlight",
       "url": "https://www.streamlight.com/products/detail/protac-rail-mount-2",
       "retrieved": "2026-09-22",
-      "sha256": "6c60ec1c03f59357d7e13712a681b1575e50b74f8b0bf27e8e8ea5294ce9fe2f"
+      "sha256": "6c60ec1c03f59357d7e13712a681b1575e50b74f8b0bf27e8e8ea5294ce9fe2f",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "streamlight_protac_hlx",
@@ -324,7 +362,8 @@
       "publisher": "Streamlight",
       "url": "https://www.streamlight.com/products/detail/protac-rail-mount-hl-x",
       "retrieved": "2026-09-22",
-      "sha256": "1fd7e4ab01c48f55da2da98badf509f069f8cbba2998667214fcfb4b17f2e1a9"
+      "sha256": "1fd7e4ab01c48f55da2da98badf509f069f8cbba2998667214fcfb4b17f2e1a9",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "streamlight_protac_20rm",
@@ -333,7 +372,8 @@
       "publisher": "Streamlight",
       "url": "https://www.streamlight.com/products/detail/protac-2-0-rail-mount",
       "retrieved": "2026-09-22",
-      "sha256": "eb8e06bef607ace1a9e8539ba673382ca1b83b747fe3910c30c83282cddf4e3b"
+      "sha256": "eb8e06bef607ace1a9e8539ba673382ca1b83b747fe3910c30c83282cddf4e3b",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "streamlight_tlr1hl",
@@ -342,7 +382,8 @@
       "publisher": "Streamlight",
       "url": "https://www.streamlight.com/products/detail/tlr-1-hl",
       "retrieved": "2026-09-22",
-      "sha256": "baa7b8fef48b97b455aba5936f31c695671c0925f154cd2f143cfb1949998d21"
+      "sha256": "baa7b8fef48b97b455aba5936f31c695671c0925f154cd2f143cfb1949998d21",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "streamlight_tlr7x",
@@ -351,7 +392,8 @@
       "publisher": "Streamlight",
       "url": "https://www.streamlight.com/products/detail/tlr-7-x",
       "retrieved": "2026-09-22",
-      "sha256": "73fc75646a337e7720a7cb28d7d4009d23ae0fc21c4b4c3926771eec321bfc04"
+      "sha256": "73fc75646a337e7720a7cb28d7d4009d23ae0fc21c4b4c3926771eec321bfc04",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "streamlight_protac_virpro",
@@ -360,7 +402,8 @@
       "publisher": "Streamlight",
       "url": "https://www.streamlight.com/products/detail/protac-rail-mount-vir-pro",
       "retrieved": "2026-09-22",
-      "sha256": "714f303d427bb8cb417c33fbe8344a03209f0936ab53609698f245af283e5c2d"
+      "sha256": "714f303d427bb8cb417c33fbe8344a03209f0936ab53609698f245af283e5c2d",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "holosun_507c",
@@ -369,7 +412,8 @@
       "publisher": "Holosun",
       "url": "https://holosun.com/products/hs507c-x3-rd",
       "retrieved": "2026-09-22",
-      "sha256": "33f0dde066ad44a3cb598418632c43aa233eed3acdc2ef6728848687cbc9885f"
+      "sha256": "33f0dde066ad44a3cb598418632c43aa233eed3acdc2ef6728848687cbc9885f",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "holosun_hm3x",
@@ -378,7 +422,8 @@
       "publisher": "Holosun",
       "url": "https://holosun.com/products/hm3x",
       "retrieved": "2026-09-22",
-      "sha256": "dd7340b1dc6bd61d1c20410e90574983ef5ff942ce843d111ff1d4a0d03651bc"
+      "sha256": "dd7340b1dc6bd61d1c20410e90574983ef5ff942ce843d111ff1d4a0d03651bc",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "holosun_hm3xt",
@@ -387,7 +432,8 @@
       "publisher": "Holosun",
       "url": "https://holosun.com/products/hm3xt",
       "retrieved": "2026-09-22",
-      "sha256": "bddfebec74d0e8847d40ac1f26d2af9b140b65a80d80a01d27214abcbc463994"
+      "sha256": "bddfebec74d0e8847d40ac1f26d2af9b140b65a80d80a01d27214abcbc463994",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "holosun_drs_th",
@@ -396,7 +442,8 @@
       "publisher": "Holosun",
       "url": "https://holosun.com/products/drs-th",
       "retrieved": "2026-09-22",
-      "sha256": "97e5a0621e07564b5b2679d75b943190a79993f05a0f83b5f875baec934c0d8a"
+      "sha256": "97e5a0621e07564b5b2679d75b943190a79993f05a0f83b5f875baec934c0d8a",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "holosun_aems_evo",
@@ -405,7 +452,8 @@
       "publisher": "Holosun",
       "url": "https://holosun.com/products/aems-evo-dual",
       "retrieved": "2026-09-22",
-      "sha256": "9fb47869e7152ead40afbf64df78d5909582ed21cdb74952e1703697bb06cdcb"
+      "sha256": "9fb47869e7152ead40afbf64df78d5909582ed21cdb74952e1703697bb06cdcb",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "garmin_foretrex701",
@@ -414,7 +462,8 @@
       "publisher": "Garmin",
       "url": "https://www.garmin.com/en-US/p/583825/",
       "retrieved": "2026-09-22",
-      "sha256": "d2144ae6088b5819e58c9e91a1bc10dabaafc799072f3988fd2d147692081d06"
+      "sha256": "d2144ae6088b5819e58c9e91a1bc10dabaafc799072f3988fd2d147692081d06",
+      "capture": "local-cache-only"
     }
   ],
   "items": [

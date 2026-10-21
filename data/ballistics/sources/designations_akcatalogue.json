@@ -5,115 +5,134 @@
    "source_id": "cip_762x39",
    "title": "C.I.P. TDCC, Table I (rimless cartridges): 7,62 x 39 (C.I.P. datasheet, English)",
    "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-i/7-62-x-39-en.pdf",
-   "sha256": "05b0d184b75dd101fdf37bea790ff3f52b4d47cdc6a85484cf5378d34f97cffd"
+   "sha256": "05b0d184b75dd101fdf37bea790ff3f52b4d47cdc6a85484cf5378d34f97cffd",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "cip_762x54r",
    "title": "C.I.P. TDCC, Table II (rimmed cartridges): 7,62 x 54 R (C.I.P. datasheet, English)",
    "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-ii/7-62-x-54-r-en.pdf",
-   "sha256": "4a9e923b1a7fc10bbc2b9b73fb083874312a024d2ca1f820dadf82bb2977de61"
+   "sha256": "4a9e923b1a7fc10bbc2b9b73fb083874312a024d2ca1f820dadf82bb2977de61",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "cip_9x39",
    "title": "C.I.P. TDCC, Table I (rimless cartridges): 9 x 39 (C.I.P. datasheet, English)",
    "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-i/9-x-39-180314-en1.pdf",
-   "sha256": "7deba1d6414a4f5f8be5e0ed219f913df6c8595cdfe2ae29aef96f7ceca8dc37"
+   "sha256": "7deba1d6414a4f5f8be5e0ed219f913df6c8595cdfe2ae29aef96f7ceca8dc37",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "cip_545x39",
    "title": "C.I.P. TDCC, Table I (rimless cartridges): 5,45 x 39 (C.I.P. datasheet, English)",
    "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-i/5-45-x-39-en.pdf",
-   "sha256": "b1a1a3d86a471ea1f3bca59303cfc9d7a7597ec9a017d6c204387b7dbd92563f"
+   "sha256": "b1a1a3d86a471ea1f3bca59303cfc9d7a7597ec9a017d6c204387b7dbd92563f",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "cip_223rem",
    "title": "C.I.P. TDCC, Table I (rimless cartridges): .223 Remington (C.I.P. datasheet, English)",
    "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-i/223-rem-170406-en.pdf",
-   "sha256": "4818f6b828c82884608fbad61d842eed927e4352a54ed1e28c4c1356320538e2"
+   "sha256": "4818f6b828c82884608fbad61d842eed927e4352a54ed1e28c4c1356320538e2",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "nato_epvat",
    "title": "AEP-97 M-CMOPI, NATO EPVAT small arms ammunition test procedures (rifling of the EPVAT proof barrels)",
    "url": "https://diweb.hq.nato.int/",
-   "sha256": "72a1a153108d161c7fdb52ab26d60510d10765bc9bfbdd546c9d1c88390bbf8b"
+   "sha256": "72a1a153108d161c7fdb52ab26d60510d10765bc9bfbdd546c9d1c88390bbf8b",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ak74_rpk74_manual_1982",
    "title": "Руководство по 5,45-мм автомату Калашникова (АК74, АКС74, АК74Н, АКС74Н) и 5,45-мм ручному пулемёту Калашникова (РПК74, РПКС74, РПК74Н, РПКС74Н), Министерство обороны СССР, Воениздат, 1982 (Приложение 1: баллистические и конструктивные данные)",
    "url": "https://www.ak-info.ru/joomla/index.php/aaka/7-ak74/32-ak74rpk74manual82",
-   "sha256": "8b613b617b12e8f50820c6652701e6bdbec5508b76aab4cf287929a0fc0cb810"
+   "sha256": "8b613b617b12e8f50820c6652701e6bdbec5508b76aab4cf287929a0fc0cb810",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "akm_manual_1968",
    "title": "Руководство по ремонту 7,62-мм модернизированных автоматов Калашникова (АКМ и АКМС), Министерство обороны СССР, Воениздат, 1968 (ak-info.ru library copy)",
    "url": "https://www.ak-info.ru/joomla/index.php/aaka/6-akm/39-akmrepairmanual68",
-   "sha256": "0ae7c20a81de88996a0089a4df558aafbfe2ae3ffc15d3f48718f77ea578cb0c"
+   "sha256": "0ae7c20a81de88996a0089a4df558aafbfe2ae3ffc15d3f48718f77ea578cb0c",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "svd_ru_manual",
    "title": "7.62mm Dragunov Sniper Rifle (SVD), Technical Description and Service Manual (English translation, Table 1 basic ballistic and design characteristics)",
    "url": "https://ia601005.us.archive.org/20/items/manuals.content.like.stevespages/dragunov.pdf",
-   "sha256": "11b1c35bc3ec819411a858dfeec58cf957fca5f765c551e3e99439690ee7c36c"
+   "sha256": "11b1c35bc3ec819411a858dfeec58cf957fca5f765c551e3e99439690ee7c36c",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sadj_vintorez",
    "title": "The Elusive Vintorez 9x39 Sniper Rifle, Small Arms Defense Journal",
    "url": "https://sadefensejournal.com/the-elusive-vintorez-9x39-sniper-rifle/",
-   "sha256": "2d8f02aa054cb896d8e724ddff0a48410688d858a027f0c3699652549e7d9d24"
+   "sha256": "2d8f02aa054cb896d8e724ddff0a48410688d858a027f0c3699652549e7d9d24",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sadj_asval",
    "title": "Keeping Its Place in Russian Battle Space: The AS Val 9x39 Special Purpose Assault Rifle, Small Arms Defense Journal (Lynndon Schooler)",
    "url": "https://sadefensejournal.com/keeping-its-place-in-russian-battle-space-the-as-val-9x39-special-purpose-assault-rifle/",
-   "sha256": "7417a65f4560ed18a265c67a52c79e9f2fed1d04a8f1d49b9eaebf34b520aa58"
+   "sha256": "7417a65f4560ed18a265c67a52c79e9f2fed1d04a8f1d49b9eaebf34b520aa58",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "kk_group_en_rifles",
    "title": "Assault rifles, Kalashnikov Group (official English catalogue)",
    "url": "https://en.kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/avtomaty",
-   "sha256": "ee432645e3c7d3c713e9f0db3d946ce5eadf50b82b791ef5fe3b31bb80e8591a"
+   "sha256": "ee432645e3c7d3c713e9f0db3d946ce5eadf50b82b791ef5fe3b31bb80e8591a",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "kk_group_en_snipers",
    "title": "Sniper rifles, Kalashnikov Group (official English catalogue)",
    "url": "https://en.kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/snayperskie-vintovki",
-   "sha256": "c15c754fdc6d4a15fba6945068aab423ce4ff0c62d2c930e4e1e20f6fd645558"
+   "sha256": "c15c754fdc6d4a15fba6945068aab423ce4ff0c62d2c930e4e1e20f6fd645558",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "kk_group_en_mg",
    "title": "Machine guns, Kalashnikov Group (official English catalogue)",
    "url": "https://en.kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/pulemety",
-   "sha256": "b434a690b756f7050d6b88af4684b8fc6d575d975bc11b30bc73b9d92f252889"
+   "sha256": "b434a690b756f7050d6b88af4684b8fc6d575d975bc11b30bc73b9d92f252889",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "kk_group_en_pistols",
    "title": "Pistols, Kalashnikov Group (official English catalogue)",
    "url": "https://en.kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/pistolety",
-   "sha256": "34a414363b743d8f126bf9e35a7bda7737ef47a31fb0fd10162be13a8b23d247"
+   "sha256": "34a414363b743d8f126bf9e35a7bda7737ef47a31fb0fd10162be13a8b23d247",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "zastava_arms_official",
    "title": "Zastava Arms (Serbia), official site, defence product range",
    "url": "https://www.zastava-arms.rs/en/",
-   "sha256": "8f8a3e799b4c278d1743c43d8048622952e52cee410abf3c7d80b9d45badecc3"
+   "sha256": "8f8a3e799b4c278d1743c43d8048622952e52cee410abf3c7d80b9d45badecc3",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "zastava_arms_rifles",
    "title": "Zastava Arms (Serbia), Assault rifles product page",
    "url": "https://www.zastava-arms.rs/en/assault-rifles/",
-   "sha256": "66ea1db29107325545234db7aac5d82fdff72d9f05157a10c5cfcf3cd0444757"
+   "sha256": "66ea1db29107325545234db7aac5d82fdff72d9f05157a10c5cfcf3cd0444757",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "zastava_arms_m07",
    "title": "Zastava Arms (Serbia), Sniper rifle M07-M product page",
    "url": "https://www.zastava-arms.rs/en/sniper-rifle-m07-m/",
-   "sha256": "57f4b28acaabead03fa9abb71ba022caa8e9b93338f69fb3ff4440e0a2430b09"
+   "sha256": "57f4b28acaabead03fa9abb71ba022caa8e9b93338f69fb3ff4440e0a2430b09",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "arsenal_bg_rifles",
    "title": "Arsenal AD (Bulgaria), assault rifles product range (Internet Archive capture of the 2009 site)",
    "url": "https://web.archive.org/web/20090311031601/http://www.arsenal-bg.com:80/assault.html",
-   "sha256": "64adae7465bb665d60d630027dd526b6af98b13dc2731720ee855862f1ca8cf0"
+   "sha256": "64adae7465bb665d60d630027dd526b6af98b13dc2731720ee855862f1ca8cf0",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "kalashnikov_ak12",

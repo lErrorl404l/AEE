@@ -122,15 +122,18 @@ engine tint stays neutral. The generator also emits the `CfgMarkers` block
 `addons/symbology/config_markers.hpp` and the attribution file
 `addons/symbology/data/markers/ATTRIBUTION.md`.
 
-The catalogue sources are committed under `data/symbology/sources`: the 1092
-source SVGs (`sources/svg/<dir>/<file>.svg`, for provenance) and the 903
-rendered 64 px canvases (`sources/render/<marker>.png`). The render is not
+The catalogue captures are held in the machine-local source cache named by
+`tools/validation/source_cache.py`, not in the repository: the 1092 source
+SVGs (`symbology/svg/<dir>/<file>.svg`, for provenance) and the 903 rendered
+64 px canvases (`symbology/render/<marker>.png`). The repository publishes the
+catalogue and its citations only (see `data/coverage/README.md`). The render is
+not
 reproducible across machines, because librsvg encodes the same pixels into
 different PNG bytes and 166 of the source drawings render `<text>` with a
 `font-family`, so the glyph depends on the installed font. No distribution
 ships librsvg 2.62.4 (the version that cut the shipped `.paa`), and the font
 stack cannot be pinned exactly, so the render OUTPUT is pinned instead of the
-renderer. The committed 64 px canvas is the source of truth for the texture.
+renderer. The held 64 px canvas is the source of truth for the texture.
 
 CI therefore verifies three things:
 

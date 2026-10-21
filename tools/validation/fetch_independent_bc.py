@@ -21,13 +21,20 @@ import hashlib
 import json
 import re
 import subprocess
+import sys
 from pathlib import Path
 
 DATA = Path(__file__).parents[2] / "data" / "ballistics"
 SRC = DATA / "sources"
-XLS = SRC / "apg_litz_g7.xls"
-CSV = SRC / "apg_litz_g7.csv"
-PDF = SRC / "litz_dfrl.pdf"
+if str(Path(__file__).parents[2]) not in sys.path:
+    sys.path.insert(0, str(Path(__file__).parents[2]))
+
+from tools.validation import source_cache  # noqa: E402
+
+HELD = source_cache.capture_path("ballistics", "")
+XLS = HELD / "apg_litz_g7.xls"
+CSV = HELD / "apg_litz_g7.csv"
+PDF = HELD / "litz_dfrl.pdf"
 URL_G7 = "https://frfrogspad.com/20120418-g7bclist.xls"
 URL_DFRL = (
     "https://sentineltactical.com/wp-content/uploads/2019/12/Litz-BC-of-bullets.pdf"
@@ -48,7 +55,7 @@ def parse_g7():
                 "csv",
                 str(XLS),
                 "--outdir",
-                str(SRC),
+                str(HELD),
             ],
             check=True,
             capture_output=True,

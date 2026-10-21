@@ -20,7 +20,8 @@
       "source_id": "stoeger_cougar_manual",
       "title": "Stoeger Cougar pistol owner's manual (Beretta Cougar 8000 series brochure, Beretta Pubblicità C 60351.001, hosted by Stoeger Industries)",
       "url": "https://web.archive.org/web/20170629223432id_/http://www.stoegerindustries.com/sites/default/files/originals/product-manuals/cougar_pistol.pdf",
-      "sha256": "14c0f475b9d5d8ed9beba89554a7b10fb9364ff842e34420292f288dc5ecc329"
+      "sha256": "14c0f475b9d5d8ed9beba89554a7b10fb9364ff842e34420292f288dc5ecc329",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "ruger_lcr_5450",
@@ -56,7 +57,8 @@
       "source_id": "sti_2009_catalog",
       "title": "STI International product catalog 2009 (STI_Catalog_2009.pdf), BARRELS section",
       "url": "https://web.archive.org/web/20090419030926id_/http://stiguns.com/catalog/STI_Catalog_2009.pdf",
-      "sha256": "125408868416cac661b6acbb3335a10247d4bcc60e3e2a05cc7500fbaad9d00e"
+      "sha256": "125408868416cac661b6acbb3335a10247d4bcc60e3e2a05cc7500fbaad9d00e",
+      "capture": "local-cache-only"
     }
   ],
   "weapons": [

@@ -5,13 +5,15 @@
       "source_id": "armscor_m1911_manual",
       "title": "Armscor / Rock Island Armory M1911-A1 Series Pistols Owner's Manual (section 04, Tech Specs)",
       "url": "https://www.armscor.com/hubfs/Armscor_March2020%20Theme/Pdf%20Files/A_-_Manual.pdf",
-      "sha256": "6a18808a8f8cd8d468f0cf920f763ea72d9d8918ffb0892bf24d68da917f90ba"
+      "sha256": "6a18808a8f8cd8d468f0cf920f763ea72d9d8918ffb0892bf24d68da917f90ba",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "armscor_revolver_manual",
       "title": "Armscor / Rock Island Armory M200 / M202 / M206 / M206WG Revolver Owner's Manual (section 04, Tech Specs)",
       "url": "https://www.armscor.com/hubfs/Armscor_March2020%20Theme/Pdf%20Files/I_-_Manual_-_Revolver.pdf",
-      "sha256": "5283fef6fbc31375e26188bd296a1a60f3e17b56f33b226ee73ad338a5a53aac"
+      "sha256": "5283fef6fbc31375e26188bd296a1a60f3e17b56f33b226ee73ad338a5a53aac",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "rossi_rm64_product",

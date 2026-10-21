@@ -54,13 +54,15 @@ Sources: MIL-STD-2525D (10 June 2014, US Government public domain);
 `/tmp/opencode/app6-grammar-reference.md`, `/tmp/opencode/app6-modifiers-reference.md`,
 `/tmp/opencode/app6-catalogue-reference.md`.  Per JSP 945.
 
-## 5. Committed sources and what CI verifies
+## 5. Held sources and what CI verifies
 
-The catalogue sources are committed under `data/symbology/sources`: the 1092
-source SVGs (`svg/<dir>/<file>.svg`) and the 903 rendered 64 px canvases
+The catalogue captures are not redistributed. They are held in the local
+source cache that `tools/validation/source_cache.py` names, normally
+`$HOME/.local/share/aee/source-cache/symbology/`: the 1092 source SVGs
+(`svg/<dir>/<file>.svg`) and the 903 rendered 64 px canvases
 (`render/<marker>.png`). The render is not reproducible across machines, so the
 render output is pinned rather than the renderer. See
-`data/symbology/sources/README.md` and ADR-023.
+`data/symbology/SCHEMA.md` and ADR-023.
 
 CI verifies for the marker set:
 

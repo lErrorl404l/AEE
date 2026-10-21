@@ -5,55 +5,64 @@
    "source_id": "taji_si_2019",
    "title": "Service Inquiry - Death of a Soldier from a Gunshot Wound at Camp Taji, Iraq, 2 January 2017 (Defence Safety Authority, 5 November 2019)",
    "url": "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/844426/20191104-SI_Taji_Redacted-FINAL.pdf",
-   "sha256": "2e546c4525b701166515feb3ac60587aaa174821dd52c7b547ced2d9f69b50f7"
+   "sha256": "2e546c4525b701166515feb3ac60587aaa174821dd52c7b547ced2d9f69b50f7",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "mod_raf_weapons_2013",
    "title": "Royal Air Force Aircraft and Weapons (Ministry of Defence, 2013)",
    "url": "https://web.archive.org/web/20170710150246/https://www.raf.mod.uk/rafcms/mediafiles/E28BE76F_5056_A318_A833EB4C9A735AD8.pdf",
-   "sha256": "f7487223f6bd951a99ca158f1d91235e543983da07c9c7348cf0b30204406f9c"
+   "sha256": "f7487223f6bd951a99ca158f1d91235e543983da07c9c7348cf0b30204406f9c",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "mod_army_vehicles_equipment",
    "title": "British Army: Vehicles and Equipment (Ministry of Defence)",
    "url": "https://web.archive.org/web/20101119164824/http://www.army.mod.uk/documents/general/285986_ARMY_VEHICLESEQUIPMENT_V12.PDF_web.pdf",
-   "sha256": "b81f1f494401952fca67bfe1c30a4f4bd800d66d7b5fca3b922c376681d1f206"
+   "sha256": "b81f1f494401952fca67bfe1c30a4f4bd800d66d7b5fca3b922c376681d1f206",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "mod_thps",
    "title": "Tactical Hearing Protection System (THPS) User Information (Ministry of Defence, army.mod.uk)",
    "url": "https://web.archive.org/web/20171014233713/http://www.army.mod.uk/documents/general/Tactical_hearing.pdf",
-   "sha256": "4825453890bab5785180468f833a263f14ce3cebe9967eeceb1566c6f60bb259"
+   "sha256": "4825453890bab5785180468f833a263f14ce3cebe9967eeceb1566c6f60bb259",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "mod_adc_minutes",
    "title": "Army Dress Committee meeting minutes March 2011 to November 2013 (Ministry of Defence)",
    "url": "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/863716/Army_Dress_Committee_meeting_minutes_March_2011_to_November_2013__Annex_J_.pdf",
-   "sha256": "a48fd28d175dd3c8c5cb3d61c6479e0a8d87f53ab8b1470e37534e7abc7c3eb2"
+   "sha256": "a48fd28d175dd3c8c5cb3d61c6479e0a8d87f53ab8b1470e37534e7abc7c3eb2",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "mod_din_digest_2013",
    "title": "DIN Digest September 2013 (Ministry of Defence)",
    "url": "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/263787/DIN_DIGEST_sept_2013.pdf",
-   "sha256": "3e446580ec96fd4350d562eac3a155ab08909c27ae3998a270ea94bd129c3064"
+   "sha256": "3e446580ec96fd4350d562eac3a155ab08909c27ae3998a270ea94bd129c3064",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "mod_foi_lsw_lmg",
    "title": "FOI2019/08028, Removal of the Light Support Weapon and LMG from service (MOD Defence Equipment and Support, 22 July 2019)",
    "url": "https://assets.publishing.service.gov.uk/media/5d5fb72f40f0b607c23ad84f/20190723_FOI201908028_Removal_of_the_light_support_weapon_and_LMG_from_service_Weapons_for_publishing_O.pdf",
-   "sha256": "b9ad3abb7c75453f139889d7e2039ec9fc2064eebfb69de1400150bd16bc6b56"
+   "sha256": "b9ad3abb7c75453f139889d7e2039ec9fc2064eebfb69de1400150bd16bc6b56",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "desa_benelli_l128a1",
    "title": "Benelli L128A1 Combat Shotgun factsheet (MOD Defence Equipment Sales Authority)",
    "url": "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/1025306/Benelli_FS.pdf",
-   "sha256": "fa1f37d4ea880be1c7479af76b3cbc62d4f5f3344a283ac01a7dcbe7581bbb56"
+   "sha256": "fa1f37d4ea880be1c7479af76b3cbc62d4f5f3344a283ac01a7dcbe7581bbb56",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "desa_minimi_l110a2",
    "title": "Minimi 5.56 L110A2 Light Machine Gun factsheet (MOD Defence Equipment Sales Authority)",
    "url": "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/1025314/Minimi_LMG_FS.pdf",
-   "sha256": "9b1ab618313f5d06862d598b40afc352eff946ad9542a50b4e8ffdf7b5f95ce0"
+   "sha256": "9b1ab618313f5d06862d598b40afc352eff946ad9542a50b4e8ffdf7b5f95ce0",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "mod_army_sa80",
@@ -227,31 +236,36 @@
    "source_id": "glock_armorer",
    "title": "GLOCK Armorer's Manual",
    "url": "https://archive.org/download/gunmanual_Glock_ARmorers_Manual/Glock%20ARmorers%20Manual_text.pdf",
-   "sha256": "3b4366d035057fbc2a8149cb97bf2c23f2f5894a3aa15b799d862897e8d99bb3"
+   "sha256": "3b4366d035057fbc2a8149cb97bf2c23f2f5894a3aa15b799d862897e8d99bb3",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sig_p226_manual",
    "title": "SIG Sauer P226 pistol manual, technical specifications",
    "url": "https://archive.org/download/manuals.content.like.stevespages/sig_p226_djvu.txt",
-   "sha256": "6efe3abf08558f0e5436bac63a6f34f9bf222c284d63271d53028f0c45d5e384"
+   "sha256": "6efe3abf08558f0e5436bac63a6f34f9bf222c284d63271d53028f0c45d5e384",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_mp5_manual",
    "title": "Heckler & Koch MP5 Submachine Gun manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/hk_mp5_djvu.txt",
-   "sha256": "97855893985feb568f6f596a842597678978a3e1c2792dcf40eafa8e0e144e9c"
+   "sha256": "97855893985feb568f6f596a842597678978a3e1c2792dcf40eafa8e0e144e9c",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "tm_9_1005_201_10",
    "title": "TM 9-1005-201-10, Operator's Manual, Machine Gun 5.56mm M249 (US Army)",
    "url": "https://archive.org/download/tm-9-1005-201-10-machine-gun-5.56mm-m-249-1991/TM%209-1005-201-10%20Machine%20Gun%2C%205.56mm%2C%20M249%20%201991_djvu.txt",
-   "sha256": "baaae285e2e3a20129361581169f777d2531a64967ae9f0420aaa775479dfe99"
+   "sha256": "baaae285e2e3a20129361581169f777d2531a64967ae9f0420aaa775479dfe99",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "tm_9_1005_213_10",
    "title": "TM 9-1005-213-10, Operator's Manual, Machine Gun, Caliber .50, Browning, M2 (US Army)",
    "url": "https://archive.org/download/TM9-1005-213-10/TM9-1005-213-10_djvu.txt",
-   "sha256": "120dce90a02074394dc22d80dc1fdd10d3fb5cb13b8a5cb21df496816ad5416b"
+   "sha256": "120dce90a02074394dc22d80dc1fdd10d3fb5cb13b8a5cb21df496816ad5416b",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "paradata_glock",

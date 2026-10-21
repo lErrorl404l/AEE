@@ -31,6 +31,10 @@ from datetime import date
 from pathlib import Path
 
 REPO = Path(__file__).parents[1]
+if str(REPO) not in sys.path:
+    sys.path.insert(0, str(REPO))
+
+from tools.validation import source_cache  # noqa: E402
 UA = "AEE-research/1.0 (vehicle catalogue capture)"
 
 
@@ -291,7 +295,7 @@ def main() -> int:
         return 1
 
     source_id = f"wikipedia_{args.id}"
-    held = data / "sources" / f"{source_id}.html"
+    held = source_cache.cache_dir(args.domain) / f"{source_id}.html"
     held.parent.mkdir(parents=True, exist_ok=True)
     held.write_bytes(raw)
     digest = hashlib.sha256(raw).hexdigest()
@@ -321,7 +325,8 @@ def main() -> int:
         "locator": "Infobox, specifications",
         "retrieved": today,
         "url": f"https://en.wikipedia.org/wiki/{args.article}",
-        "archive_ref": f"English Wikipedia article held as HTML at data/{args.domain}/sources/{source_id}.html",
+        "archive_ref": "English Wikipedia article held as HTML in the local source cache",
+        "capture": "local-cache-only",
         "licence": (
             "Wikipedia text is available under the Creative Commons "
             "Attribution-ShareAlike licence. The article is a secondary "

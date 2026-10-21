@@ -5,223 +5,260 @@
    "source_id": "hk416_td",
    "title": "Heckler & Koch HK416, Cal. 5.56mm x 45, Technical Data (HK416 - 10 in / 14.5 in / 16.5 in / 20 in)",
    "url": "https://s3.amazonaws.com/hk-manuals/files/Military/HK416/HK416_Technical_Data.pdf",
-   "sha256": "6be8e4d917054f1e5b12065026ddee62b70193819040a8c1bac11b1708cfe934"
+   "sha256": "6be8e4d917054f1e5b12065026ddee62b70193819040a8c1bac11b1708cfe934",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk416a5_td",
    "title": "Heckler & Koch HK416 A5, Cal. 5.56mm x 45, Technical Data",
    "url": "https://s3.amazonaws.com/hk-manuals/files/Military/HK416/HK416A5_Technical_Data.pdf",
-   "sha256": "1e59017cbe58751f825e50bc71d279ab60e72fc41976a6082b0f472773a1f14c"
+   "sha256": "1e59017cbe58751f825e50bc71d279ab60e72fc41976a6082b0f472773a1f14c",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk417_td",
    "title": "Heckler & Koch HK417, Cal. 7.62mm x 51, Technical Data (HK417 - 12 in / 16 in / 20 in)",
    "url": "https://s3.amazonaws.com/hk-manuals/files/Military/HK417/HK417_Technical_Data.pdf",
-   "sha256": "93587acdeeeea0f5cb21380652509ed40d0ab73eeeb04a11be88cf64e01b506d"
+   "sha256": "93587acdeeeea0f5cb21380652509ed40d0ab73eeeb04a11be88cf64e01b506d",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk433_brochure",
    "title": "Heckler & Koch HK433 Assault Rifle brochure, Calibre 5.56 mm x 45 NATO (HK433 - 14.5 in)",
    "url": "https://s3.amazonaws.com/hk-manuals/files/Military/HK433/HK433_Brochure.pdf",
-   "sha256": "c47f6022acb5a8b9609e1be246026f53f2f4b483cc6a8e003039eba9e625d221"
+   "sha256": "c47f6022acb5a8b9609e1be246026f53f2f4b483cc6a8e003039eba9e625d221",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk437_handbook",
    "title": "Heckler & Koch HK437 Handbook, Calibre 300 BLK (7.62 mm x 35), status July 2021",
    "url": "https://s3.amazonaws.com/hk-manuals/files/Military/HK433/HK437_Handbook.pdf",
-   "sha256": "e4d9db9fd848775947a9ce2d4d04aa9005e3179c97ab046d9ed5b8602ca199a4"
+   "sha256": "e4d9db9fd848775947a9ce2d4d04aa9005e3179c97ab046d9ed5b8602ca199a4",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk121_td",
    "title": "Heckler & Koch HK121 Universal Machine Gun, Cal. 7.62 mm x 51 NATO, Technical Data (HK121 U / HK121 S)",
    "url": "https://s3.amazonaws.com/hk-manuals/files/Military/HK121/HK121_Technical_Data.pdf",
-   "sha256": "066fef3d6ad75dd3be574470102c8c36c794f36d2d9a37e9f683fa89465a547b"
+   "sha256": "066fef3d6ad75dd3be574470102c8c36c794f36d2d9a37e9f683fa89465a547b",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_g28_td",
    "title": "Heckler & Koch G28 / G28E Designated Marksman Rifle, Cal. 7.62 mm x 51 NATO, Technical Data",
    "url": "https://s3.amazonaws.com/hk-manuals/files/Military/G28/G28E_Technical_Data.pdf",
-   "sha256": "c22ce1f575ada5de44095609005be760c296dbe1bcca4fee782b253f00ce2002"
+   "sha256": "c22ce1f575ada5de44095609005be760c296dbe1bcca4fee782b253f00ce2002",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_mp7_td",
    "title": "Heckler & Koch MP7 A1, Cal. 4.6 mm x 30, Technical Data",
    "url": "https://s3.amazonaws.com/hk-manuals/files/Military/MP7/MP7A1_Technical_Data.pdf",
-   "sha256": "6985bc5df05ba4c850fc316ca85448053ad472dd743fe87a458a26d7a5c824d8"
+   "sha256": "6985bc5df05ba4c850fc316ca85448053ad472dd743fe87a458a26d7a5c824d8",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_mg4_td",
    "title": "Heckler & Koch MG4 E, Cal. 5.56mm x 45, Technical Data",
    "url": "https://s3.amazonaws.com/hk-manuals/files/Military/MG4/HK_MG4E_Technical_Data.pdf",
-   "sha256": "ee6e49113d21369e62de64b62f9ebd6660dcfa6eabe01512a41d64547ad75e3d"
+   "sha256": "ee6e49113d21369e62de64b62f9ebd6660dcfa6eabe01512a41d64547ad75e3d",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_g36_td",
    "title": "Heckler & Koch G36 Assault Rifle, Cal. 5.56 mm x 45, Technical Data (G36 / G36K / G36C)",
    "url": "https://s3.amazonaws.com/hk-manuals/files/Military/G36/G36_Technical_Data.pdf",
-   "sha256": "c5f1b6e3cf3de42588259b088c30ad11704590eaa5e278262af7fe9125f3a9a3"
+   "sha256": "c5f1b6e3cf3de42588259b088c30ad11704590eaa5e278262af7fe9125f3a9a3",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_g36_manual",
    "title": "Heckler & Koch G36E / G36K Instruction Manual (technical data, twist length)",
    "url": "https://s3.amazonaws.com/hk-manuals/files/Military/G36/G36E_Instruction_Manual.pdf",
-   "sha256": "123a73ab0c7bff389559801bc63fe0a9293785dddbbfbf75e45299ab431685f9"
+   "sha256": "123a73ab0c7bff389559801bc63fe0a9293785dddbbfbf75e45299ab431685f9",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_mp5_manual",
    "title": "Heckler & Koch MP5 Submachine Gun Operator's Manual, HKETD-482 (5/89), technical specifications and variant list",
    "url": "https://archive.org/download/manuals.content.like.stevespages/hk_mp5_djvu.txt",
-   "sha256": "97855893985feb568f6f596a842597678978a3e1c2792dcf40eafa8e0e144e9c"
+   "sha256": "97855893985feb568f6f596a842597678978a3e1c2792dcf40eafa8e0e144e9c",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_mp5_a4_manual",
    "title": "Heckler & Koch MP5A4 / MP5A5 Instruction Manual, 2007",
    "url": "https://s3.amazonaws.com/hk-manuals/files/Military/MP5/HK_MP5A4-A5_Instruction_Manual.pdf",
-   "sha256": "5505f7700cbbbd0e01e393afa92b8af3cbb83203d763f03566c78a44d48a5106"
+   "sha256": "5505f7700cbbbd0e01e393afa92b8af3cbb83203d763f03566c78a44d48a5106",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_ump_manual",
    "title": "Heckler & Koch UMP 45 & UMP 40 Submachine Gun (2000) Operator Manual, SPECIFICATIONS (UMP45 / UMP40)",
    "url": "https://archive.org/download/firearms-heckler--koch-ump-45--ump-40-submachine-gun-2000/hecklerkochump45ump40submachinegun2000_djvu.txt",
-   "sha256": "61fcc9d9e508e6eaa8aec23df0dab8aed8b5c4e8a0ba65204d04b839817637b7"
+   "sha256": "61fcc9d9e508e6eaa8aec23df0dab8aed8b5c4e8a0ba65204d04b839817637b7",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_mark23_manual",
    "title": "Heckler & Koch Mark 23 Operator's Manual (.45 ACP; covers Mark 23 and MK23 Mod 0)",
    "url": "https://hk-usa.com/wp-content/uploads/2025/01/Mark-23-Operators-Manual.pdf",
-   "sha256": "130b9cd38388b202ff981d1f8c0cd2c61871139176789f0452af50b9dfd1dd4e"
+   "sha256": "130b9cd38388b202ff981d1f8c0cd2c61871139176789f0452af50b9dfd1dd4e",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_p7m_manual",
    "title": "Heckler & Koch P7M Pistol Technical Manual (covers P7M8 and P7M13)",
    "url": "https://s3.amazonaws.com/hk-manuals/files/Armorer/P7/HK_P7M_Pistol_Technical_Manual.pdf",
-   "sha256": "265f46397392b704648d024a56b94525d845b0360fd53c8261bbefbd325c1552"
+   "sha256": "265f46397392b704648d024a56b94525d845b0360fd53c8261bbefbd325c1552",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_g11_td",
    "title": "Heckler & Koch G11, Cal. 4.73 mm x 33 (caseless DM11), Technical Data",
    "url": "https://s3.amazonaws.com/hk-manuals/files/Military/G11/G11_Technical_Data.pdf",
-   "sha256": "96b6c00037c49c1a1ad5d1825aae493ad997fbb5d6962c46eac396cf89da13bf"
+   "sha256": "96b6c00037c49c1a1ad5d1825aae493ad997fbb5d6962c46eac396cf89da13bf",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_catalog_2018",
    "title": "Heckler & Koch 2018 Combined Catalog (VP9, VP40, VP9SK, P30, HK45, USP, MP5, MP7, G36, HK416, HK417, MR556, MG4)",
    "url": "https://s3.amazonaws.com/hk-manuals/files/Catalogs/Combined/HK_Combined_Catalog_2018.pdf",
-   "sha256": "8860c7b532a27804e34571ec002e78a7f70c695fe3b94fac2bcd2f70011fc306"
+   "sha256": "8860c7b532a27804e34571ec002e78a7f70c695fe3b94fac2bcd2f70011fc306",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_civ_catalog_2018",
    "title": "Heckler & Koch 2018 Civilian Catalog (VP9, VP40, VP9SK, P30 family, HK45 family product specifications)",
    "url": "https://s3.amazonaws.com/hk-manuals/files/Catalogs/Civilian/HK_Civilian_Catalog_2018.pdf",
-   "sha256": "8860c7b532a27804e34571ec002e78a7f70c695fe3b94fac2bcd2f70011fc306"
+   "sha256": "8860c7b532a27804e34571ec002e78a7f70c695fe3b94fac2bcd2f70011fc306",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_g3_manual",
    "title": "Automatic Rifle HK G3, Cal. 7.62mm x 51 NATO, technical manual (Internet Archive scan)",
    "url": "https://ia601500.us.archive.org/28/items/MManuals/HkG3AutomaticRifleCal7.62mmNato_text.pdf",
-   "sha256": "e6e24a62a5b7a9b0711efbf0a8489163dd01c74df3c176b309d1384e8d856a69"
+   "sha256": "e6e24a62a5b7a9b0711efbf0a8489163dd01c74df3c176b309d1384e8d856a69",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_psg1_manual",
    "title": "Heckler & Koch PSG1 Instruction Manual (dimensions: calibre 7.62 mm x 51, polygonal bore, right-hand twist, 4 grooves)",
    "url": "https://s3.amazonaws.com/hk-manuals/files/Military/PSG1/PSG1_Instruction_Manual.pdf",
-   "sha256": "97217a410b23741f7f125e5c2e39af786c4ad2ee7ded1044dd0b1d4d4a0b910f"
+   "sha256": "97217a410b23741f7f125e5c2e39af786c4ad2ee7ded1044dd0b1d4d4a0b910f",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_msg90_manual",
    "title": "Heckler & Koch MSG90 Instruction Manual (dimensions: calibre 7.62 mm x 51)",
    "url": "https://s3.amazonaws.com/hk-manuals/files/Military/MSG90/MSG90_Instruction_Manual.pdf",
-   "sha256": "0ee43560b4298e68b2ada20d794a83430ca9e256c3dadafb6426198c69bb8aa0"
+   "sha256": "0ee43560b4298e68b2ada20d794a83430ca9e256c3dadafb6426198c69bb8aa0",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_xm8_spec",
    "title": "Heckler & Koch XM8 Prototype Technical Data (Caliber 5.56 x 45mm NATO; Rate of Twist 1 in 7 inches)",
    "url": "https://s3.amazonaws.com/hk-manuals/files/Military/XM8/HK_XM8_Specifications.pdf",
-   "sha256": "7309f7bd7f1e46c7cbdfbec4f8d540a40d832a04f661e9c0e714e67fb07d0040"
+   "sha256": "7309f7bd7f1e46c7cbdfbec4f8d540a40d832a04f661e9c0e714e67fb07d0040",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_glm_sheet",
    "title": "Heckler & Koch HK GLM 40 mm x 46 add-on grenade launcher information sheet",
    "url": "https://s3.amazonaws.com/hk-manuals/files/Military/GLM/GLM_Info_Sheet.pdf",
-   "sha256": "94649da930bd127d4b8bc813e44d0a42d9b6795721f0703cdceecdfd87d0a27b"
+   "sha256": "94649da930bd127d4b8bc813e44d0a42d9b6795721f0703cdceecdfd87d0a27b",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sig_classic_8501154",
    "title": "SIG SAUER Classic Pistols Owner's Manual, P/N 8501154 Rev 03 (P220, P224, P225, P226, P227, P229, P239 technical specifications)",
    "url": "https://www.sigsauer.com/media/sigsauer/resources/SIG_ClassicMiniManual_8501154Rev03_LR.pdf",
-   "sha256": "f4ca5f81d26ccbbd89203ea932c28ec447acce7b159cde6f9459c7ff4a19013a"
+   "sha256": "f4ca5f81d26ccbbd89203ea932c28ec447acce7b159cde6f9459c7ff4a19013a",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sig2023_usa",
    "title": "SIG SAUER 2023 Product Catalog, USA / defense import edition (MCX LT, MCX Rattler, MPX, SIG516, SIG716i, CROSS STX, M400 PRO, P320, P365, P226, P229, M17/M18)",
    "url": "https://www.sigsauer.swiss/media/files/2023-SIG-SAUER-Katalog-USA-Import.pdf",
-   "sha256": "d35717f13b02203dfae1132f345a7a525e2ead4b962d8117b22b75b76cf12418"
+   "sha256": "d35717f13b02203dfae1132f345a7a525e2ead4b962d8117b22b75b76cf12418",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sig2023_ch",
    "title": "SIG SAUER 2023 Katalog Schweiz, Eigenprodukte (Stgw90/SG550, PE90, SG551 SB/LB, SG553, SG750 CM, SG751 SAPR, GLG 40, GL5040/5140/75140)",
    "url": "https://www.sigsauer.swiss/media/files/sig-sauer-katalog-2023-ch-eigenprodukte.pdf",
-   "sha256": "5b6c306d22792ced55ccba88e7b191dc41a8d471e3d4bc019a626efe7c546eab"
+   "sha256": "5b6c306d22792ced55ccba88e7b191dc41a8d471e3d4bc019a626efe7c546eab",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sig2011_catalog",
    "title": "2011 SIG SAUER Catalog (SIG516, SIG716, SIG556, SIG522, SIGM400, SSG 3000, P250, P290, P238; master specification tables)",
    "url": "https://archive.org/download/sig-2011-webpdf/SIG%202011%20webpdf.pdf",
-   "sha256": "d3a767a6b82e79fe4ea47128fa46cd55399e928e1db981c4e887f81995c582f5"
+   "sha256": "d3a767a6b82e79fe4ea47128fa46cd55399e928e1db981c4e887f81995c582f5",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sig_ssg3000_manual",
    "title": "SIG SAUER SSG 3000 Owner's Manual: Handling & Safety Instructions (technical specifications)",
    "url": "https://www.sigsauer.com/media/sigsauer/resources/SSG3000.pdf",
-   "sha256": "c7ae9e618712ffe1cf3ffae179c057b0011e3ed05984f1cb3cd9469103407ae6"
+   "sha256": "c7ae9e618712ffe1cf3ffae179c057b0011e3ed05984f1cb3cd9469103407ae6",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sig_cross_magnum_page",
    "title": "SIG SAUER CROSS MAGNUM bolt-action rifle product page (specification table, SKU CROSS-MAG-300WM-24B: CALIBER 300 Win Mag, BARREL LENGTH 24 in [609.6 mm], TWIST RATE 1:9), archived by the Internet Archive",
    "url": "https://web.archive.org/web/20260618085951/https://www.sigsauer.com/cross-magnum.html",
-   "sha256": "6c2db586a484786eb9026c9ebc9c064d39b2a372fd4b61055d367b84f2927799"
+   "sha256": "6c2db586a484786eb9026c9ebc9c064d39b2a372fd4b61055d367b84f2927799",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sig_sg551_manual",
    "title": "SIG Sauer SG 551 Assault Rifle Caliber 5.56 mm (.223) Manual, document 40 425 039",
    "url": "https://www.sigsauer.swiss/media/files/manual-en-sg551-40425039.pdf",
-   "sha256": "310ce88af0db66f8883055986382446021e81f15c75a546a028b80b30871b50a"
+   "sha256": "310ce88af0db66f8883055986382446021e81f15c75a546a028b80b30871b50a",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sig556_manual",
    "title": "SIG 556 Semi-Automatic Rifle 5.56mm NATO (.223 Remington) Operator's Manual (SIG556 OM 12.06)",
    "url": "https://archive.org/download/manuals.content.like.stevespages/sig_sg556.pdf",
-   "sha256": "d62fd12468d99823278ec33db56be79cf6ebe02d0d5e55231f5ecf0d0cee2753"
+   "sha256": "d62fd12468d99823278ec33db56be79cf6ebe02d0d5e55231f5ecf0d0cee2753",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "san_swiss_sg550_552",
    "title": "SAN Swiss Arms AG technical data, SG 550 / SG 551 / SG 551 LB / SG 551 SWAT / SG 552 Commando (reproduced by Gunnery Network)",
    "url": "https://gunnerynetwork.com/sig/550/550-tech.html",
-   "sha256": "0ee43560b4298e68b2ada20d794a83430ca9e256c3dadafb6426198c69bb8aa0"
+   "sha256": "0ee43560b4298e68b2ada20d794a83430ca9e256c3dadafb6426198c69bb8aa0",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "glock_gen4_en",
    "title": "GLOCK 'Safe Action' Gen4 Pistols buyer's guide, GLOCK_Gen4_en.pdf (G17 Gen4 / G22 Gen4 technical data: barrel profile hexagonal right-hand twist, length of twist 250 mm / 9.84 in)",
    "url": "https://web.archive.org/web/20121108142907if_/http://www.glock.com/downloads/GLOCK_Gen4_en.pdf",
-   "sha256": "71acc0e1cc1191a641dd94682442814dba803f875021ad853a89a1889304153f"
+   "sha256": "71acc0e1cc1191a641dd94682442814dba803f875021ad853a89a1889304153f",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "glock_buyers_2007",
    "title": "GLOCK 'Safe Action' Pistols, Buyer's Guide Personal Edition 2007 (GLOCK_en.pdf; full model/chambering table: 9x19, .40, 10mm Auto, .45 G.A.P., .45 Auto, .380, .357)",
    "url": "https://web.archive.org/web/20070103073752if_/http://www.glock.com/downloads/GLOCK_en.pdf",
-   "sha256": "f6312595c72a299e7fe0b34ca320d89b49870cb1ac2f02ed9617ae4047a74e94"
+   "sha256": "f6312595c72a299e7fe0b34ca320d89b49870cb1ac2f02ed9617ae4047a74e94",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "glock_us_2026",
    "title": "GLOCK USA commercial and law-enforcement product catalogue, live product pages with technical data (107 pistol entries: model, generation, chambering, barrel length)",
    "url": "https://us.glock.com/products/law-enforcement",
-   "sha256": "7309f7bd7f1e46c7cbdfbec4f8d540a40d832a04f661e9c0e714e67fb07d0040"
+   "sha256": "7309f7bd7f1e46c7cbdfbec4f8d540a40d832a04f661e9c0e714e67fb07d0040",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "glock_armorer",
    "title": "GLOCK Armorer's Manual (Internet Archive scan)",
    "url": "https://archive.org/download/gunmanual_Glock_ARmorers_Manual/Glock%20ARmorers%20Manual_text.pdf",
-   "sha256": "94649da930bd127d4b8bc813e44d0a42d9b6795721f0703cdceecdfd87d0a27b"
+   "sha256": "94649da930bd127d4b8bc813e44d0a42d9b6795721f0703cdceecdfd87d0a27b",
+   "capture": "local-cache-only"
   }
  ],
  "designations": [

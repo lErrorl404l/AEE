@@ -5,37 +5,43 @@
       "source_id": "hk_mark23_manual",
       "title": "Heckler & Koch Mark 23 Operator's Manual (.45 ACP, covers Mark 23 and MK23 Mod 0)",
       "url": "https://hk-usa.com/wp-content/uploads/2025/01/Mark-23-Operators-Manual.pdf",
-      "sha256": "56072d25aa8ab6c69d1ca641713408bebef0658389fb354f02549fb9805d3f74"
+      "sha256": "56072d25aa8ab6c69d1ca641713408bebef0658389fb354f02549fb9805d3f74",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "hk_catalog_2009",
       "title": "HK Product Catalog 2009 (Heckler & Koch; OCR text edition)",
       "url": "https://archive.org/download/hk-product-catalog-2009/HK%20Product%20Catalog%20-%202009_text.pdf",
-      "sha256": "00c38bfc4fd0e65803752e192d4897532ed06929f7b018153e227765128779cb"
+      "sha256": "00c38bfc4fd0e65803752e192d4897532ed06929f7b018153e227765128779cb",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "hipoint_carbine_manual",
       "title": "Hi-Point Firearms Carbine Instruction Manual (Models 3895/995/4095/4595/1095)",
       "url": "https://www.hi-pointfirearms.com/hi-point-resources/Carbine-Instruction-Manual.pdf",
-      "sha256": "57b2f832a7795d54ae9189e3472a231c8d5633f5e8d56c462122e4ebeb5f1e00"
+      "sha256": "57b2f832a7795d54ae9189e3472a231c8d5633f5e8d56c462122e4ebeb5f1e00",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "svd_tm_or15",
       "title": "TM 8370-50097-OR/15, Sniper Rifle 7.62 x 54R mm Dragunov SVD Operator's Manual (2010)",
       "url": "https://archive.org/download/tm-8370-50097-or-15-sniper-rifle-7.62-x-54-r-mm-dragunov-svd-operators-manual-2010/TM8370-50097-OR-15_Sniper_rifle_7.62_x_54R_mm_Dragunov_SVD_operators_manual_2010.pdf",
-      "sha256": "d50425c9da394c44d7604079a66873c25fb2e79e5947b32ad384ebd133f99fd7"
+      "sha256": "d50425c9da394c44d7604079a66873c25fb2e79e5947b32ad384ebd133f99fd7",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "keltec_cp33_manual",
       "title": "KelTec CP33 Owner's Manual",
       "url": "https://www.keltecweapons.com/wp-content/uploads/2025/12/CP33_MANUAL_COMPLETE.pdf",
-      "sha256": "a7d34d9064be1c24b308e27e94923f2c46db95d7e5ee64872b44a1f366183d28"
+      "sha256": "a7d34d9064be1c24b308e27e94923f2c46db95d7e5ee64872b44a1f366183d28",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "keltec_p17_manual",
       "title": "KelTec P17 Owner's Manual",
       "url": "https://www.keltecweapons.com/wp-content/uploads/2022/01/P17-MANUAL-OPT.pdf",
-      "sha256": "f142331fba277cbe4437dad23c94a2c172bc5da7febe2e04cc667eb40b2f92a9"
+      "sha256": "f142331fba277cbe4437dad23c94a2c172bc5da7febe2e04cc667eb40b2f92a9",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "henry_h6_bigboy",

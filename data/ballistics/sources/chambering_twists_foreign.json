@@ -5,19 +5,22 @@
       "source_id": "firearmsworld_qbz951",
       "title": "95-1枪族 (Type 95-1 gun family), 枪炮世界 [Firearms World]; page transcribed from 《兵器知识》2011年2A期, 马志杰, 国产新型95-1式枪族 (Ordnance Knowledge 2011(2A), Ma Zhijie, 'The New Domestic Type 95-1 Gun Family')",
       "url": "http://pewpewpew.work/china/rifle/qbz95/qbz951.htm",
-      "sha256": "bdbbac70986fa4e8028547fc86e7b1505a9b4e3f1f08119476fd1f0e85834750"
+      "sha256": "bdbbac70986fa4e8028547fc86e7b1505a9b4e3f1f08119476fd1f0e85834750",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "qq_58mm_history",
       "title": "海外谈中国：5.8×42mm军用弹药的历史演变 它到底好在哪里？ (Overseas view of China: the historical evolution of 5.8x42mm military ammunition), Tencent News (news.qq.com)",
       "url": "https://news.qq.com/rain/a/20210201A06OR800",
-      "sha256": "8c1361e12fd4115f76468bcb20088dfbce4555d42ac329d420abaa38165f3f50"
+      "sha256": "8c1361e12fd4115f76468bcb20088dfbce4555d42ac329d420abaa38165f3f50",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "dockery_ptrd41",
       "title": "Dockery Armory, PTRD-41 (Degtyaryov 14.5x114mm anti-tank rifle), technical data sheet, ref. CODE 03-125-941",
       "url": "https://dockeryarmory.com/ptrd-41/",
-      "sha256": "48c6a0ba816b0b3c966401899be69b6a7462a711f75e45db1de8509464a776ad"
+      "sha256": "48c6a0ba816b0b3c966401899be69b6a7462a711f75e45db1de8509464a776ad",
+      "capture": "local-cache-only"
     }
   ],
   "twists": [

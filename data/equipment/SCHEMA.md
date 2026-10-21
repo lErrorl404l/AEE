@@ -1,7 +1,9 @@
 # Equipment source schema
 
-Every research capture writes one JSON file under `sources/`. The build
-reads them all, so a new file joins the build with no code change.
+Every research capture writes one JSON record under `sources/`. The build
+reads them all, so a new file joins the build with no code change. Only JSON
+is tracked there: the captured pages and manuals are held in the local
+source cache that `tools/validation/source_cache.py` names.
 
 ```json
 {
@@ -13,6 +15,7 @@ reads them all, so a new file joins the build with no code change.
       "title": "FAST SF High Cut helmet product page",
       "url": "https://web.archive.org/web/2026/https://ops-core.com/...",
       "sha256": "hex digest of the downloaded bytes",
+      "capture": "local-cache-only",
       "publisher": "Ops-Core (Gentex)",
       "tier": 4
     }
@@ -51,6 +54,10 @@ reads them all, so a new file joins the build with no code change.
 ## Fields
 
 - `source_id`: stable snake_case key. One id per document.
+- `capture`: `local-cache-only` when the record holds bytes. The bytes are
+  in the machine-local source cache and are not redistributed. `sha256`
+  identifies the retrieved bytes; it does not mean they ship with the
+  repository.
 - `tier`: 1 issue standard or specification, 2 military manual or
   technical manual, 3 reference work, 4 manufacturer, 5 compilation.
   A tier 5 source (a compilation, for example Wikipedia) is weaker, but a

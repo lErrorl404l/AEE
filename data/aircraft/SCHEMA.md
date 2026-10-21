@@ -262,3 +262,22 @@ The forbidden sources are these:
 - CUP (APL-SA).
 - Project Hatchet H-60 and BradMick HeliSim (APL-ND).
 - DCS. It is structure only and never a figure.
+
+## Captures are held outside the repository
+
+The repository publishes the extracted data and its citations. It never
+publishes the captured third-party pages, drawings or manuals.
+
+- The bytes a record's `sha256` identifies are held in the machine-local
+  source cache that `tools/validation/source_cache.py` names, normally
+  `$HOME/.local/share/aee/source-cache/<domain>/`. Set `AEE_SOURCE_CACHE` to
+  move the cache.
+- A record that holds bytes carries `"capture": "local-cache-only"`. The
+  value states that the bytes are in the local cache and are not
+  redistributed. `sha256` identifies the retrieved bytes. It does not mean
+  the bytes ship with the repository.
+- Only `.json` may be tracked under a `sources/` directory.
+  `tools/tests/test_source_capture_policy.py` fails, naming the path, when a
+  tracked file has any other extension.
+- A verifier that hashes a capture reads the cache and skips cleanly when
+  the cache is absent, so a clean clone passes.

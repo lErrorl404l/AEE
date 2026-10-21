@@ -10,19 +10,22 @@
    "source_id": "sako85_finnlight",
    "title": "Sako 85 Finnlight - specification sheet (Sako Ltd.)",
    "url": "https://media.sako.global/image/upload/v1683876514/SAKO_85_FINNLIGHT_k9z3uk.pdf",
-   "sha256": "fae1064d2ad8e83b48103957f01fb18a4979d8c0a6a020da9627401a46d3dc79"
+   "sha256": "fae1064d2ad8e83b48103957f01fb18a4979d8c0a6a020da9627401a46d3dc79",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sako85_blackbear",
    "title": "Sako 85 Black Bear - specification sheet (Sako Ltd.)",
    "url": "https://media.sako.global/image/upload/v1683879179/85_Black_Bear_ovmgsa.pdf",
-   "sha256": "23feefc53f936ea04fb10dbd324ab0ff8949eb41750be20996b34bd6f74ebbbd"
+   "sha256": "23feefc53f936ea04fb10dbd324ab0ff8949eb41750be20996b34bd6f74ebbbd",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sako_trg22_manual",
    "title": "Sako TRG 22/42 Owner's Manual (Sako Ltd., document S3511010/5)",
    "url": "https://media.sako.global/image/upload/v1691734322/TGR-2242_owner_s_manual_p8zzps.pdf",
-   "sha256": "b1e694dc3401e5c07413ed98b3a892b8dfe63cc72e63676b74dd2b0b984908bf"
+   "sha256": "b1e694dc3401e5c07413ed98b3a892b8dfe63cc72e63676b74dd2b0b984908bf",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sako_s20_hunter",

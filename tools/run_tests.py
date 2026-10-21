@@ -207,6 +207,9 @@ def main():
         # the gap lists under data/coverage/, and the baseline that the
         # closing work is measured against.
         "tools/tests/test_match_coverage.py",
+        # The capture policy: a sources directory tracks JSON only. The
+        # retrieved bytes are held in the local source cache, not in git.
+        "tools/tests/test_source_capture_policy.py",
         "tools/tests/test_aircraft_roster.py",
         "tools/tests/test_aircraft_systems.py",
         "tools/tests/test_aircraft_systems_lookup.py",

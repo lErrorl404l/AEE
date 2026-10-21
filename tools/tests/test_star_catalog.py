@@ -15,7 +15,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 sys.path.insert(0, str(Path(__file__).parent.parent / "validation"))
 
-from gen_star_catalog import parse_all, V_CUTOFF  # noqa: E402
+from gen_star_catalog import SRC, parse_all, V_CUTOFF  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[2]
 SENSOR = ROOT / "addons" / "lighting" / "functions" / "astronomy"
@@ -25,6 +25,7 @@ def near(a, b, tol):
     return abs(a - b) < tol
 
 
+@unittest.skipUnless(SRC.is_file(), "catalog.dat is not held in the local source cache")
 class TestCatalogData(unittest.TestCase):
     """The generated catalogue is complete, unique, and sorted."""
 

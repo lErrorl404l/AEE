@@ -5,25 +5,29 @@
       "source_id": "gsg5_manual",
       "title": "German Sport Guns GmbH GSG-5 Handling and Safety Instructions (owner's manual)",
       "url": "https://archive.org/download/strategic_intelligence_network/weapons/firearms/manuals/germansportguns_gsg5.pdf",
-      "sha256": "665ada508e7555a1a0d762f479dbfb27300a02b6ffa9bb2c0271998ad4a51297"
+      "sha256": "665ada508e7555a1a0d762f479dbfb27300a02b6ffa9bb2c0271998ad4a51297",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "gsg522_manual",
       "title": "German Sport Guns GmbH GSG-522 Handling and Safety Instructions - USA (owner's manual)",
       "url": "https://archive.org/download/strategic_intelligence_network/weapons/firearms/manuals/germansportguns_gsg522.pdf",
-      "sha256": "b762b227fa283a2030ddb5908a99198482fb6e0bcadcc8046997cae1a262dd6e"
+      "sha256": "b762b227fa283a2030ddb5908a99198482fb6e0bcadcc8046997cae1a262dd6e",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "gsg1911_manual",
       "title": "German Sport Guns GmbH GSG-1911 Handling and Safety Instructions (owner's manual)",
       "url": "https://archive.org/download/strategic_intelligence_network/weapons/firearms/manuals/germansportguns_gsg1911.pdf",
-      "sha256": "1e7d9edb3deabf86a4f2300afa77188dce06dd05e6ef3f1de8fec00a161781e5"
+      "sha256": "1e7d9edb3deabf86a4f2300afa77188dce06dd05e6ef3f1de8fec00a161781e5",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "ati_gsg_stg44_manual",
       "title": "American Tactical Imports / German Sport Guns StG44 .22 LR rifle owner's manual",
       "url": "https://archive.org/download/strategic_intelligence_network/weapons/firearms/manuals/ati-gsg-stg44.pdf",
-      "sha256": "92ec1456bb42f068e91f7798ef467528f21dade3ebb6d04832b845c73da9abc3"
+      "sha256": "92ec1456bb42f068e91f7798ef467528f21dade3ebb6d04832b845c73da9abc3",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "lai_famas",
@@ -39,7 +43,8 @@
       "source_id": "hk417_technical_data",
       "title": "Heckler & Koch HK417 Technical Data, Cal. 7.62 mm x 51 NATO (manufacturer technical data sheet)",
       "url": "https://s3.amazonaws.com/hk-manuals/files/Military/HK417/HK417_Technical_Data.pdf",
-      "sha256": "93587acdeeeea0f5cb21380652509ed40d0ab73eeeb04a11be88cf64e01b506d"
+      "sha256": "93587acdeeeea0f5cb21380652509ed40d0ab73eeeb04a11be88cf64e01b506d",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "gunwerks_magnus",

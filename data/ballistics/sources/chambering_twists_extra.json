@@ -5,49 +5,57 @@
       "source_id": "cip_7_63_mauser",
       "title": "C.I.P. TDCC - 7,63 Mauser (Tab IV, page 11)",
       "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-iv/tabivcal-en-page11.pdf",
-      "sha256": "4e26b0747e4295804cf4ea27c491d209d1e18b20672901d1ec30cc8a36a012f2"
+      "sha256": "4e26b0747e4295804cf4ea27c491d209d1e18b20672901d1ec30cc8a36a012f2",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "cip_7_65_browning",
       "title": "C.I.P. TDCC - 7,65 mm Browning (Tab IV, page 12)",
       "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-iv/tabivcal-en-page12.pdf",
-      "sha256": "15d7a80c0e2f2bf916d4fe499f709cb8190a2db15360211406181552237ade89"
+      "sha256": "15d7a80c0e2f2bf916d4fe499f709cb8190a2db15360211406181552237ade89",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "cip_410",
       "title": "C.I.P. TDCC Tab VII - Cal. 410 (smoothbore shot cartridge)",
       "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vii/410-en-6.pdf",
-      "sha256": "6a20151ccfa54a940eb745a3a95e83249e14e44759b03eb36557d4d2c0c6069f"
+      "sha256": "6a20151ccfa54a940eb745a3a95e83249e14e44759b03eb36557d4d2c0c6069f",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "cip_tabvii_list",
       "title": "C.I.P. TDCC - List of Tab VII, shot cartridges (smoothbore centre fire shotguns)",
       "url": "https://bobp.cip-bobp.org/en/tdcc_public?page=1&cartridge_type_id=7",
-      "sha256": "8d7d8bde35aa9220c556d51b670a23f132c9110bebe284b8724ce8ba0c1a678e"
+      "sha256": "8d7d8bde35aa9220c556d51b670a23f132c9110bebe284b8724ce8ba0c1a678e",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "us_army_tm9_1010_230_10",
       "title": "TM 9-1010-230-10, Operator's Manual, Machine Gun, 40MM, MK 19, MOD 3 (US Army, 30 May 2001)",
       "url": "https://idoc.pub/documents/mk19-pon27265qp40",
-      "sha256": "e3ccb02cf04109f09f453f56e547dde868c428e6cd1bc87fe7b459a7c45cd01f"
+      "sha256": "e3ccb02cf04109f09f453f56e547dde868c428e6cd1bc87fe7b459a7c45cd01f",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "coe_1945_part2",
       "title": "Catalog of Enemy Ordnance Material, Volume II (Japanese Section), Office of the Chief of Ordnance, 1945",
       "url": "https://stephentaylorhistorian.com/wp-content/uploads/2020/02/catalog-of-enemy-ordnance-material-1945-part-2-of-3.pdf",
-      "sha256": "d6396597da2d41b17598af08ddcc351c2056de09158907c684026b0adc5a845d"
+      "sha256": "d6396597da2d41b17598af08ddcc351c2056de09158907c684026b0adc5a845d",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "lmt_m203",
       "title": "LMT Defense - 12 in Classic M203 (NSN 1010-00-179-6447) product datasheet",
       "url": "https://lmtdefense.com/product/12-classic-m203/",
-      "sha256": "48920a71071e1d491cb8c1c28c360d55d1a8111a234c742d06ac7be6dd24e876"
+      "sha256": "48920a71071e1d491cb8c1c28c360d55d1a8111a234c742d06ac7be6dd24e876",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "alexander_arms_beowulf",
       "title": "Alexander Arms - .50 Beowulf 12 in DIY Upper Kit product page",
       "url": "https://www.alexanderarms.com/product/50-beowulf-12-diy-upper-kit/",
-      "sha256": "e49278eea0dff739531cb91d07895aa50478d69fb18c61b4679c8c0d56428fa2"
+      "sha256": "e49278eea0dff739531cb91d07895aa50478d69fb18c61b4679c8c0d56428fa2",
+      "capture": "local-cache-only"
     }
   ],
   "twists": [

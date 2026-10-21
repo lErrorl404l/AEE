@@ -12,12 +12,16 @@ import hashlib
 import json
 import re
 import subprocess
+import sys
 import urllib.request
 from pathlib import Path
 
 DATA = Path(__file__).parents[2] / "data" / "ballistics"
 URL = "https://bergerbullets.com/wp-content/uploads/2026/03/English-Berger-Catalog-2026.pdf"
-PDF = DATA / "sources" / "berger_catalog.pdf"
+sys.path.insert(0, str(Path(__file__).parents[2]))
+from tools.validation import source_cache  # noqa: E402
+
+PDF = source_cache.capture_path("ballistics", "berger_catalog.pdf")
 OUT = DATA / "sources" / "berger_bullets.json"
 
 DIAMETER = {

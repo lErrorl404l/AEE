@@ -5,13 +5,15 @@
       "source_id": "kfg_catalog_5th_2019",
       "title": "Kahr Firearms Group Product Catalog, 5th Edition 2019 (Magnum Research BFR specification tables)",
       "url": "https://www.magnumresearch.com/PDF/KFG-Catalog-5th-Edition-2019.pdf",
-      "sha256": "a3aabac16d6cb50f9a33717103d841f2777cad2eb8eac21e221f2134d80990ea"
+      "sha256": "a3aabac16d6cb50f9a33717103d841f2777cad2eb8eac21e221f2134d80990ea",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "kfg_catalog_12th_2026",
       "title": "Kahr Firearms Group Product Catalog, 12th Edition 2026 (Magnum Research BFR specification tables)",
       "url": "https://www.magnumresearch.com/wp-content/uploads/2026/01/KFG-Catalog-12th-Edition-2026.pdf",
-      "sha256": "c0367ed0056d2d765bb06a55bdb7fd11e6d7a5e9dc99555737379e7ff3036c41"
+      "sha256": "c0367ed0056d2d765bb06a55bdb7fd11e6d7a5e9dc99555737379e7ff3036c41",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "mri_store_desert_eagle_50ae",
@@ -27,7 +29,8 @@
       "source_id": "lmt_mars_h_spec_sheet",
       "title": "LMT Defense MARS-H Spec Sheet (MARS-H 7.62x51 mm system, barrel options)",
       "url": "https://www.lmtdealer.com/wp-content/uploads/2021/03/MARS-H-Spec-Sheet.pdf",
-      "sha256": "10bb7905e9f48cfefd540ed301a90377f5977dd445d9a1fe67bec435eb90c7d4"
+      "sha256": "10bb7905e9f48cfefd540ed301a90377f5977dd445d9a1fe67bec435eb90c7d4",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "lwrci_repr_mkii_762",
@@ -38,19 +41,22 @@
       "source_id": "lwrci_smg45_specsheet",
       "title": "LWRCI SMG-45 specification sheet (RIFLING: 1:16 RH / 6 GROOVES)",
       "url": "https://www.lwrci.com/assets/pdfs/specsheets/smg_specs.pdf",
-      "sha256": "19799e558fd4f302bd7c8e6bfd1201c2ac611f5141546266eb8e07138866e8ca"
+      "sha256": "19799e558fd4f302bd7c8e6bfd1201c2ac611f5141546266eb8e07138866e8ca",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "lwrci_smg45_productpdf",
       "title": "LWRCI SMG-45 product sheet (RIFLING: 1:16 RH / 6 GROOVES)",
       "url": "https://www.lwrci.com/assets/images/Rifles/SMG/SMG45.pdf",
-      "sha256": "b0f8fd682f3a0690d59472f341d35190a9647649040ee78e5ade98d78687e8c1"
+      "sha256": "b0f8fd682f3a0690d59472f341d35190a9647649040ee78e5ade98d78687e8c1",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "mri_baby_eagle_iii_manual",
       "title": "Magnum Research Baby Eagle (Baby Desert Eagle III) Owner's Manual, document BE-III-Series-Manual-0720",
       "url": "https://www.magnumresearch.com/PDF/BE-III-Series-Manual-0720.pdf",
-      "sha256": "4ace17e6c100af5943ab3d50a24ec7f304dbcaf7cbdd88bf674743972c606e32"
+      "sha256": "4ace17e6c100af5943ab3d50a24ec7f304dbcaf7cbdd88bf674743972c606e32",
+      "capture": "local-cache-only"
     }
   ],
   "weapons": [

@@ -136,3 +136,37 @@ a class shows up as a diff rather than a missing artefact.
 table from the scan and compares the result with this file, and it checks
 each gap file against the tool's own output. A stale artefact fails the
 sweep.
+
+## Captured sources are not redistributed
+
+The repository publishes the extracted data and its citations. It never
+publishes the captured third-party pages, drawings, manuals or renders.
+
+- **The record keeps the citation.** Every source record keeps its `url`,
+  `locator`, `retrieved`, `sha256`, `tier` and `licence`.
+- **The record states where the bytes are.** A record that holds bytes
+  carries `"capture": "local-cache-only"`. The value means the bytes that
+  `sha256` identifies are held in the machine-local source cache and are not
+  redistributed. `sha256` identifies the retrieved bytes. It does not mean
+  the bytes ship with the repository.
+- **The cache is outside the working tree.** `tools/validation/source_cache.py`
+  names it: `$AEE_SOURCE_CACHE` when set, else
+  `$XDG_DATA_HOME/aee/source-cache`, else
+  `~/.local/share/aee/source-cache`. It mirrors each domain, so
+  `data/vehicle/sources/achzarit.wiki` is held at
+  `<cache>/vehicle/achzarit.wiki` and `data/symbology/sources/render/x.png` at
+  `<cache>/symbology/render/x.png`.
+- **Only JSON is tracked.** `data/*/sources/` may hold JSON records and
+  nothing else. `tools/tests/test_source_capture_policy.py` fails, naming the
+  path, when a tracked file has another extension. There is no allowlist.
+- **A verifier skips cleanly.** A tool or test that hashes a capture reads
+  the cache and reports a skip when the cache is absent, so a clean clone
+  passes. `fetch_vehicle_sources.py --verify`,
+  `fetch_aircraft_sources.py --verify`,
+  `register_munition_source.py --verify`,
+  `validate_vehicle_data.py`, `validate_aircraft_data.py`,
+  `validate_ballistics_data.py`, `validate_symbology_catalogue.py` and
+  `gen_symbology_catalogue.py --check` follow this rule.
+
+The coverage measurement reads a scan of the installed game, never a capture,
+so the split and the counts are unaffected by this policy.

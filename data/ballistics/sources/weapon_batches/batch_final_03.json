@@ -5,37 +5,43 @@
    "source_id": "kalashnikov_club_svd_twist",
    "title": "Из истории винтовки СВД — про шаг нарезов ствола (Калашников Клуб, АО «Концерн «Калашников»), автор М. Попенкер, 13.07.2018",
    "url": "https://kalashnikov.club/a/iz-istorii-vintovki-svd-pro-shag-narezov-stvola",
-   "sha256": "ec7bac867c6fc7d3f32a1eefbb5b9dd52e864662fab6fbe440bf80cf883a807b"
+   "sha256": "ec7bac867c6fc7d3f32a1eefbb5b9dd52e864662fab6fbe440bf80cf883a807b",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ak74_rpk74_manual_1982",
    "title": "Руководство по 5,45-мм автомату Калашникова (АК74, АКС74, АК74Н, АКС74Н) и 5,45-мм ручному пулемету Калашникова (РПК74, РПКС74, РПК74Н, РПКС74Н). Министерство обороны СССР, Воениздат, 1982 г. (Приложение 1, стр. 186: Баллистические и конструктивные данные)",
    "url": "https://www.ak-info.ru/joomla/index.php/aaka/7-ak74/32-ak74rpk74manual82",
-   "sha256": "f2a15ffc95b671fae1f0716b2f53f2cc5240b52bed04477f8ea45495b4eb71e0"
+   "sha256": "f2a15ffc95b671fae1f0716b2f53f2cc5240b52bed04477f8ea45495b4eb71e0",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "kalashnikov_ak74m",
    "title": "Автомат Калашникова АК74М — Группа компаний «Калашников» (product data page, archived 2022-03-13)",
    "url": "https://web.archive.org/web/20220313154617/https://kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/avtomaty/avtomat-kalashnikova-ak74m",
-   "sha256": "cf8b846df37f69b0c2a96a2a3286b51a34498d6852fe66a92e368e2688db2795"
+   "sha256": "cf8b846df37f69b0c2a96a2a3286b51a34498d6852fe66a92e368e2688db2795",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "kalashnikov_ak105",
    "title": "Автомат Калашникова АК105 — Группа компаний «Калашников» (product data page, archived 2022-03-13)",
    "url": "https://web.archive.org/web/20220313154521/https://kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/avtomaty/avtomat-kalashnikova-ak105",
-   "sha256": "4133098e128a1161f1c6ffe5bf2db6ffb6cec14c2836003bc819a4f55aca7bbe"
+   "sha256": "4133098e128a1161f1c6ffe5bf2db6ffb6cec14c2836003bc819a4f55aca7bbe",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "kalashnikov_ak12",
    "title": "Автомат Калашникова АК-12 — Группа компаний «Калашников» (product data page, archived 2022-03-13)",
    "url": "https://web.archive.org/web/20220313154453/https://kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/avtomaty/avtomat-kalashnikova-ak-12",
-   "sha256": "4f178b1da297d9ff7b78f714e72814e2ed33798e7433c1ffab669623cc743642"
+   "sha256": "4f178b1da297d9ff7b78f714e72814e2ed33798e7433c1ffab669623cc743642",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "kac_sr25_m110_manual",
    "title": "Operator's Manual — Stoner SR-25 7.62mm Mk 11 Mod 0 / SR-M110 SASS Rifle Systems (Knight's Armament / US Armament operator manual; section II Navy Mk 11 Mod 0 equipment description), 124 pp.",
    "url": "http://www.biggerhammer.net/stoner/manuals/m110.pdf",
-   "sha256": "7928d97add7fef269aa8491484243f621b9aa63925805baedf740175222f069b"
+   "sha256": "7928d97add7fef269aa8491484243f621b9aa63925805baedf740175222f069b",
+   "capture": "local-cache-only"
   }
  ],
  "weapons": [

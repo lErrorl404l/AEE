@@ -6,73 +6,85 @@
    "source_id": "wikipedia_rpg29",
    "title": "English Wikipedia article 'RPG-29'",
    "url": "https://en.wikipedia.org/wiki/RPG-29",
-   "sha256": "8754497c8741b7144d0aa349ab691a63cc48f2ead2ba0ea55b02e982eea9e30c"
+   "sha256": "8754497c8741b7144d0aa349ab691a63cc48f2ead2ba0ea55b02e982eea9e30c",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "wikipedia_rpg30",
    "title": "English Wikipedia article 'RPG-30'",
    "url": "https://en.wikipedia.org/wiki/RPG-30",
-   "sha256": "95975c4ae6ab29748a99aac2124847d7ed2ed502cf00ceb45af66786b653ab09"
+   "sha256": "95975c4ae6ab29748a99aac2124847d7ed2ed502cf00ceb45af66786b653ab09",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "wikipedia_rpg26",
    "title": "English Wikipedia article 'RPG-26'",
    "url": "https://en.wikipedia.org/wiki/RPG-26",
-   "sha256": "28827330ee553887f16c96fdbc5fdd7651d062b8927eae2739245c552a07845d"
+   "sha256": "28827330ee553887f16c96fdbc5fdd7651d062b8927eae2739245c552a07845d",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "wikipedia_rpg18",
    "title": "English Wikipedia article 'RPG-18'",
    "url": "https://en.wikipedia.org/wiki/RPG-18",
-   "sha256": "1e72d829850e743b2b3d159c9ab4c2eca47def603189788931f73bcb453a9a59"
+   "sha256": "1e72d829850e743b2b3d159c9ab4c2eca47def603189788931f73bcb453a9a59",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "wikipedia_rpg7",
    "title": "English Wikipedia article 'RPG-7'",
    "url": "https://en.wikipedia.org/wiki/RPG-7",
-   "sha256": "a57c5cee0f1780b0f0fa0f324dd90a0cfe25bb1adda26478e3adfb487921feb9"
+   "sha256": "a57c5cee0f1780b0f0fa0f324dd90a0cfe25bb1adda26478e3adfb487921feb9",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "wikipedia_smaw",
    "title": "English Wikipedia article 'Shoulder-Launched Multipurpose Assault Weapon'",
    "url": "https://en.wikipedia.org/wiki/Shoulder-Launched_Multipurpose_Assault_Weapon",
-   "sha256": "ff9f93f3f780b2b189cdb3ac19a6cf91d6a9ed1db0e09a3a4fd8884e303fe90d"
+   "sha256": "ff9f93f3f780b2b189cdb3ac19a6cf91d6a9ed1db0e09a3a4fd8884e303fe90d",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "wikipedia_carl_gustaf_84",
    "title": "English Wikipedia article 'Carl Gustaf 8.4 cm recoilless rifle'",
    "url": "https://en.wikipedia.org/wiki/Carl_Gustaf_8.4_cm_recoilless_rifle",
-   "sha256": "d2dc310f060dc4c4d171ffce4e76d894d572be87a3fbeac6c0244a42d841870e"
+   "sha256": "d2dc310f060dc4c4d171ffce4e76d894d572be87a3fbeac6c0244a42d841870e",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "wikipedia_at4",
    "title": "English Wikipedia article 'AT4'",
    "url": "https://en.wikipedia.org/wiki/AT4",
-   "sha256": "5bc6fdbe8d6cb72bc753e56acb902769df2c4c87acb9d2493e3f4f5e7cd0d6d3"
+   "sha256": "5bc6fdbe8d6cb72bc753e56acb902769df2c4c87acb9d2493e3f4f5e7cd0d6d3",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "wikipedia_m72_law",
    "title": "English Wikipedia article 'M72 LAW'",
    "url": "https://en.wikipedia.org/wiki/M72_LAW",
-   "sha256": "e63f3bc444df1e8a23b7bfdc7afeb7acd152408cdfde005b2c09281f76753ec0"
+   "sha256": "e63f3bc444df1e8a23b7bfdc7afeb7acd152408cdfde005b2c09281f76753ec0",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "wikipedia_fgm148_javelin",
    "title": "English Wikipedia article 'FGM-148 Javelin'",
    "url": "https://en.wikipedia.org/wiki/FGM-148_Javelin",
-   "sha256": "ef5bc453d6213375b799849b201ce9a054eea44135c264382e635d0a008f1227"
+   "sha256": "ef5bc453d6213375b799849b201ce9a054eea44135c264382e635d0a008f1227",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "wikipedia_predator_sraw",
    "title": "English Wikipedia article 'Predator SRAW'",
    "url": "https://en.wikipedia.org/wiki/Predator_SRAW",
-   "sha256": "364befcdce3051377fa45ef33b2ace6607e74c989a4220d74adf5b1f8c28e52d"
+   "sha256": "364befcdce3051377fa45ef33b2ace6607e74c989a4220d74adf5b1f8c28e52d",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "wikipedia_rpg75",
    "title": "English Wikipedia article 'RPG-75'",
    "url": "https://en.wikipedia.org/wiki/RPG-75",
-   "sha256": "a885db13bb41ab14be46b441e90f811e583b8babb806e36cdc3140d14db15838"
+   "sha256": "a885db13bb41ab14be46b441e90f811e583b8babb806e36cdc3140d14db15838",
+   "capture": "local-cache-only"
   }
  ],
  "weapons": [

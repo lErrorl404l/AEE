@@ -5,25 +5,29 @@
       "source_id": "ai_awm",
       "title": "Accuracy International - AWM (Super Magnum) product page",
       "url": "https://web.archive.org/web/20021113101855id_/http://www.accuracyinternational.com/awm.htm",
-      "sha256": "b80264cb13da3d955880a84769ae7c7ad12ad42dde74b0e0ca0bbbbe7f3d5c0d"
+      "sha256": "b80264cb13da3d955880a84769ae7c7ad12ad42dde74b0e0ca0bbbbe7f3d5c0d",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "armalite_ar10b_catalog",
       "title": "ArmaLite AR-10B product catalogue page",
       "url": "https://web.archive.org/web/20070814004925id_/http://www.armalite.com:80/sales/catalog/rifles/ar10b.htm",
-      "sha256": "2842bc88452f5ba268cda87c3999a725662a24b2b0519429ba0b842c7a4cf215"
+      "sha256": "2842bc88452f5ba268cda87c3999a725662a24b2b0519429ba0b842c7a4cf215",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "armalite_ar180b_catalog",
       "title": "ArmaLite AR-180B product catalogue page",
       "url": "https://web.archive.org/web/20020911100123id_/http://www.armalite.com:80/sales/catalog/rifles/ar180b.htm",
-      "sha256": "e5efe56713cb774b4b5a78fc3d04dd2713feab442ef0b3eaf60343e0d639874e"
+      "sha256": "e5efe56713cb774b4b5a78fc3d04dd2713feab442ef0b3eaf60343e0d639874e",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "armalite_supersass_catalog",
       "title": "ArmaLite AR-10 SuperSASS product catalogue page",
       "url": "https://web.archive.org/web/20060312092515id_/http://www.armalite.com/sales/catalog/rifles/SuperSASS.htm",
-      "sha256": "ac39d12b34e541f82d59e0f0213327ee5aa9845f5852999af1d1680d78019a10"
+      "sha256": "ac39d12b34e541f82d59e0f0213327ee5aa9845f5852999af1d1680d78019a10",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "barrett_mrad",

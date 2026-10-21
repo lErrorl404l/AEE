@@ -39,6 +39,7 @@ if str(_REPO) not in sys.path:
     sys.path.insert(0, str(_REPO))
 
 from tools.validation import vehicle_catalogue  # noqa: E402
+from tools.validation import source_cache  # noqa: E402
 from tools.validation.fetch_vehicle_sources import (  # noqa: E402
     held_filename,
     sha256_file,
@@ -311,10 +312,11 @@ def validate_sources(
 def validate_held_sources(sources: Sequence[object], sources_dir: Path) -> list[str]:
     """Verify the held bytes that are present; absent bytes are not an error.
 
-    The documents are not vendored (they are gitignored, the same rule as the
-    vehicle sources), so a fresh clone holds the register but not the bytes.  A
-    held source whose file is absent is skipped here.  The explicit byte check
-    is the fetch tool's ``--verify`` mode.
+    The documents are held in the machine-local source cache
+    (``tools/validation/source_cache.py``), never in the repository, so a
+    fresh clone holds the register but not the bytes.  A held source whose
+    file is absent is skipped here.  The explicit byte check is the fetch
+    tool's ``--verify`` mode.
     """
     errors: list[str] = []
     for raw in sources:
@@ -1142,7 +1144,9 @@ def run(
         else:
             conflicts.extend(file_conflicts)
 
-    errors.extend(validate_held_sources(sources, data_dir / "sources"))
+    errors.extend(
+        validate_held_sources(sources, source_cache.held_dir("aircraft", data_dir))
+    )
     errors.extend(validate_corpus(sources, records, conflicts, profile))
 
     by_id = validate_sources(sources, [])

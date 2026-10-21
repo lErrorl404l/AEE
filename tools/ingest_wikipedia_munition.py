@@ -46,10 +46,15 @@ from datetime import date
 from pathlib import Path
 
 REPO = Path(__file__).parents[1]
+if str(REPO) not in sys.path:
+    sys.path.insert(0, str(REPO))
+
+from tools.validation import source_cache  # noqa: E402
+
 DATA = REPO / "data" / "munition"
 CATALOGUE = DATA / "catalogue"
 SOURCES = DATA / "sources.json"
-HELD = DATA / "sources"
+HELD = source_cache.cache_dir("munition")
 UA = "AEE-research/1.0 (munition catalogue capture)"
 
 # What a munition IS, in the words the game and the sources both use.

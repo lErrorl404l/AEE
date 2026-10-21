@@ -5,188 +5,219 @@
    "source_id": "tm_9_1005_319_10",
    "title": "TM 9-1005-319-10, Operator's Manual, Rifle 5.56mm M16A2/M16A3/M16A4 and Carbine M4/M4A1",
    "url": "https://cdn.ar15repository.com/wp-content/uploads/20230809205218/OPERATORS-MANUAL-556-MM-M16A2-M16A3-M16A4-M4-and-M4A1-ARMY-TM-9-1005-319-10.October-1998.pdf",
-   "sha256": "aee9f3baabb19b1a25533a202a64140cfa82eb377dc6b5929acbb49f5eb9fc5c"
+   "sha256": "aee9f3baabb19b1a25533a202a64140cfa82eb377dc6b5929acbb49f5eb9fc5c",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "tm_9_1005_306_10",
    "title": "TM 9-1005-306-10, Operator's Manual, 7.62mm M24 Sniper Weapon System",
    "url": "https://usarmorment.com/pdf/sws24.pdf",
-   "sha256": "94df177bd56b9a754b5cecb08510575d5245ff674e5caab66856d0f9e217b5b5"
+   "sha256": "94df177bd56b9a754b5cecb08510575d5245ff674e5caab66856d0f9e217b5b5",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "tm_9_1005_201_10",
    "title": "TM 9-1005-201-10, Operator's Manual, Machine Gun 5.56mm M249",
    "url": "https://archive.org/download/tm-9-1005-201-10-machine-gun-5.56mm-m-249-1991/TM%209-1005-201-10%20Machine%20Gun%2C%205.56mm%2C%20M249%20%201991_djvu.txt",
-   "sha256": "baaae285e2e3a20129361581169f777d2531a64967ae9f0420aaa775479dfe99"
+   "sha256": "baaae285e2e3a20129361581169f777d2531a64967ae9f0420aaa775479dfe99",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "tm_9_1005_223_10",
    "title": "TM 9-1005-223-10, Operator's Manual, Rifle 7.62mm M14 and M14A1",
    "url": "http://www.m14.ca/TM/026378.pdf",
-   "sha256": "d575dedfce300191bbc9d7e96d32ba37da4f66b17afdf7abc674060eb95f95b6"
+   "sha256": "d575dedfce300191bbc9d7e96d32ba37da4f66b17afdf7abc674060eb95f95b6",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "m110_operator",
    "title": "Operator's Manual, 7.62mm Stoner Rifle Mk 11 Mod 0 and SR-M110 SASS",
    "url": "https://www.biggerhammer.net/stoner/manuals/m110.pdf",
-   "sha256": "7928d97add7fef269aa8491484243f621b9aa63925805baedf740175222f069b"
+   "sha256": "7928d97add7fef269aa8491484243f621b9aa63925805baedf740175222f069b",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "tm_05539_in",
    "title": "TM 05539-IN, Organizational and Intermediate Maintenance Manual, Sniper Rifle 7.62mm M40A3 and M40A5",
    "url": "https://archive.org/download/MaintenanceManual/MaintenanceManual_djvu.txt",
-   "sha256": "582e3d80149178b70e713fca1d10aecb51bf0607fae19604306df5e80d0f73f8"
+   "sha256": "582e3d80149178b70e713fca1d10aecb51bf0607fae19604306df5e80d0f73f8",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "barrett_m107a1",
    "title": "Barrett M107A1 Operator's Manual",
    "url": "https://barrett.net/wp-content/uploads/2023/07/M107A1_16693_Op-Manual_8.5x5.5_B-For-Website.pdf",
-   "sha256": "22633173b2e56a333af781d48e267216200bd7ad8fba2f48bdbb1f2a56dde68d"
+   "sha256": "22633173b2e56a333af781d48e267216200bd7ad8fba2f48bdbb1f2a56dde68d",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "cadet_gp_rifle_l98a2",
    "title": "Cadet GP Rifle L98A2 (5.56mm), UK Ministry of Defence, 2021",
    "url": null,
    "sha256": "409a3c32495c1b287720e5e68fadc2b0dc4e17a9ef2da0fa948fc4701b99500d",
+   "capture": "local-cache-only",
    "note": "Held in the local MOD reference library. The L98A2 is the cadet version of the L85A2."
   },
   {
    "source_id": "hk416_technical_data",
    "title": "Heckler & Koch HK416, Cal. 5.56mm x 45, Technical Data",
    "url": "https://s3.amazonaws.com/hk-manuals/files/Military/HK416/HK416_Technical_Data.pdf",
-   "sha256": "6be8e4d917054f1e5b12065026ddee62b70193819040a8c1bac11b1708cfe934"
+   "sha256": "6be8e4d917054f1e5b12065026ddee62b70193819040a8c1bac11b1708cfe934",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk417_technical_data",
    "title": "Heckler & Koch HK417, Technical Data",
    "url": "https://s3.amazonaws.com/hk-manuals/files/Military/HK417/HK417_Technical_Data.pdf",
-   "sha256": "93587acdeeeea0f5cb21380652509ed40d0ab73eeeb04a11be88cf64e01b506d"
+   "sha256": "93587acdeeeea0f5cb21380652509ed40d0ab73eeeb04a11be88cf64e01b506d",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_g36_technical_data",
    "title": "Heckler & Koch G36, Technical Data",
    "url": "https://s3.amazonaws.com/hk-manuals/files/Military/G36/G36_Technical_Data.pdf",
-   "sha256": "c5f1b6e3cf3de42588259b088c30ad11704590eaa5e278262af7fe9125f3a9a3"
+   "sha256": "c5f1b6e3cf3de42588259b088c30ad11704590eaa5e278262af7fe9125f3a9a3",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_g3_manual",
    "title": "Automatic Rifle HK G3, Cal. 7.62mm x 51 NATO, technical manual",
    "url": "https://ia601500.us.archive.org/28/items/MManuals/HkG3AutomaticRifleCal7.62mmNato_text.pdf",
-   "sha256": "2b7c019977c3f6b803e270511863862bad2a84637625cf4a9b6fc2ec1ad1ea8b"
+   "sha256": "2b7c019977c3f6b803e270511863862bad2a84637625cf4a9b6fc2ec1ad1ea8b",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_mp5_manual",
    "title": "Heckler & Koch MP5 Submachine Gun manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/hk_mp5_djvu.txt",
-   "sha256": "97855893985feb568f6f596a842597678978a3e1c2792dcf40eafa8e0e144e9c"
+   "sha256": "97855893985feb568f6f596a842597678978a3e1c2792dcf40eafa8e0e144e9c",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_mg4_technical_data",
    "title": "Heckler & Koch MG4E, Cal. 5.56mm x 45, Technical Data",
    "url": "https://s3.amazonaws.com/hk-manuals/files/Military/MG4/HK_MG4E_Technical_Data.pdf",
-   "sha256": "ee6e49113d21369e62de64b62f9ebd6660dcfa6eabe01512a41d64547ad75e3d"
+   "sha256": "ee6e49113d21369e62de64b62f9ebd6660dcfa6eabe01512a41d64547ad75e3d",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_mp7_technical_data",
    "title": "Heckler & Koch MP7A1, Cal. 4.6mm x 30, Technical Data",
    "url": "https://s3.amazonaws.com/hk-manuals/files/Military/MP7/MP7A1_Technical_Data.pdf",
-   "sha256": "6985bc5df05ba4c850fc316ca85448053ad472dd743fe87a458a26d7a5c824d8"
+   "sha256": "6985bc5df05ba4c850fc316ca85448053ad472dd743fe87a458a26d7a5c824d8",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "steyr_aug_a3_manual",
    "title": "Steyr AUG A3 SA Owner's Manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/steyr_aug_a3_sa_djvu.txt",
-   "sha256": "ac6970ce0d1d73869d96c4e93dcc143049427c7f4c7122210394bd81d838dca9"
+   "sha256": "ac6970ce0d1d73869d96c4e93dcc143049427c7f4c7122210394bd81d838dca9",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sig_sg550_manual",
    "title": "SIG SG 550 / SG 551 assault rifle manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/sig_sg550_551_djvu.txt",
-   "sha256": "fa68d4e7afdea43d6f9d2dcfda147ff5fd3b69d4c187510d97ac666fa8968217"
+   "sha256": "fa68d4e7afdea43d6f9d2dcfda147ff5fd3b69d4c187510d97ac666fa8968217",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sig_p226_manual",
    "title": "SIG Sauer P226 pistol manual, technical specifications",
    "url": "https://archive.org/download/manuals.content.like.stevespages/sig_p226_djvu.txt",
-   "sha256": "6efe3abf08558f0e5436bac63a6f34f9bf222c284d63271d53028f0c45d5e384"
+   "sha256": "6efe3abf08558f0e5436bac63a6f34f9bf222c284d63271d53028f0c45d5e384",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "famas_manual",
    "title": "FAMAS 5.56mm automatic rifle manual (English translation)",
    "url": "https://www.forgottenweapons.com/wp-content/uploads/manuals/FAMAS%20F1%20manual%20English.pdf",
-   "sha256": "ed7f42c5e214ea2f4a50d46268cd02faa1a8d865876ff6abe34649482aa50e4e"
+   "sha256": "ed7f42c5e214ea2f4a50d46268cd02faa1a8d865876ff6abe34649482aa50e4e",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "fn_fal_manual",
    "title": "FN Light Automatic Rifle FAL, user's manual",
    "url": "https://archive.org/download/gunmanual_FN-FAL_Manual/FN-FAL%20Manual_text.pdf",
-   "sha256": "a64c13c7896c41dfb589b5c8ef5e3f7850552ca6f33a34601cc63232f4c24903"
+   "sha256": "a64c13c7896c41dfb589b5c8ef5e3f7850552ca6f33a34601cc63232f4c24903",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "beretta_m9_tm",
    "title": "TM 9-1005-317-23&P, Pistol, Semiautomatic, 9mm, M9",
    "url": "https://www.biggerhammer.net/manuals/m9/M9B.PDF",
-   "sha256": "b3f1fd0e74bfbee2bb74ffa37d0503bb19af5e89155047a1438917bc38155deb"
+   "sha256": "b3f1fd0e74bfbee2bb74ffa37d0503bb19af5e89155047a1438917bc38155deb",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "glock_armorer",
    "title": "GLOCK Armorer's Manual",
    "url": "https://archive.org/download/gunmanual_Glock_ARmorers_Manual/Glock%20ARmorers%20Manual_text.pdf",
-   "sha256": "3b4366d035057fbc2a8149cb97bf2c23f2f5894a3aa15b799d862897e8d99bb3"
+   "sha256": "3b4366d035057fbc2a8149cb97bf2c23f2f5894a3aa15b799d862897e8d99bb3",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "kriss_vector_manual",
    "title": "KRISS Vector Gen II Owner's Manual (SDP, SBR, CRB)",
    "url": "http://store.kriss-usa.com/images/dealer-resources/kriss/KRISS-MANUAL/Gen-Two/KRISS-MANUAL_2017_VECTOR-Gen-2_CRB-SBR-SDP-12.pdf",
-   "sha256": "14b066db76f6eadec59e17582900bfadff90337d21231c3e7f699759adc2677d"
+   "sha256": "14b066db76f6eadec59e17582900bfadff90337d21231c3e7f699759adc2677d",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ai_axmc_datasheet",
    "title": "Accuracy International AXMC datasheet",
    "url": "https://modularrifle.com/wp-content/uploads/2017/02/Accuracy-International-AI-AXMC-Datasheet.pdf",
-   "sha256": "62af29305cb716085e90d33d4041ee4fc1a84d77a0a35c962d06319b6307d2d4"
+   "sha256": "62af29305cb716085e90d33d4041ee4fc1a84d77a0a35c962d06319b6307d2d4",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "m1911_tm",
    "title": "TM 9-1005-211-34, Maintenance Manual, Pistol, Caliber .45, Automatic, M1911A1",
    "url": "https://archive.org/download/M1911A1-Technical-Manual-9-1005-211-34/MAINT45A_djvu.txt",
-   "sha256": "6b84b0d3af0d3f0e2ab124b7d50b71439f544c947a952c826cf1f09e0c198439"
+   "sha256": "6b84b0d3af0d3f0e2ab124b7d50b71439f544c947a952c826cf1f09e0c198439",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "uzi_manual",
    "title": "Uzi submachine gun manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/uzi_djvu.txt",
-   "sha256": "645645e8a17ad34f933cd9b82316459d5f28d1a63a188a3d10b5ec3c4eef7db5"
+   "sha256": "645645e8a17ad34f933cd9b82316459d5f28d1a63a188a3d10b5ec3c4eef7db5",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "kac_catalog",
    "title": "Knight's Armament Company product catalog 2012",
    "url": "https://www.knightarmco.com/wp-content/uploads/2021/05/KAC-2012-COM.pdf",
-   "sha256": "b8ba8c5e73d23d490402bf8fe46db01ff93670086da8d7e207d1399eb2c61d17"
+   "sha256": "b8ba8c5e73d23d490402bf8fe46db01ff93670086da8d7e207d1399eb2c61d17",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "fn_scar_l_technical_data",
    "title": "FN SCAR-L Mk2 technical data sheet",
    "url": "https://fnherstal.com/app/uploads/technical-data-fn-scar-l-mk2-2.pdf",
-   "sha256": "e2c5e7a49d1a6217d23c1d29cbf825af7a5ac8e4455b59350e528eef3c8daffb"
+   "sha256": "e2c5e7a49d1a6217d23c1d29cbf825af7a5ac8e4455b59350e528eef3c8daffb",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "fn_scar_h_technical_data",
    "title": "FN SCAR-H Mk2 technical data sheet",
    "url": "https://fnherstal.com/app/uploads/technical-data-fn-scar-h-mk2-1.pdf",
-   "sha256": "7bab7d16064bc879598c6b50c8d75b6525cde82455dcf2c8f3ee11b60086b359"
+   "sha256": "7bab7d16064bc879598c6b50c8d75b6525cde82455dcf2c8f3ee11b60086b359",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "svd_ru_manual",
    "title": "7.62mm Dragunov Sniper Rifle (SVD), Technical Description and Service Manual",
    "url": "https://ia601005.us.archive.org/20/items/manuals.content.like.stevespages/dragunov.pdf",
-   "sha256": "11b1c35bc3ec819411a858dfeec58cf957fca5f765c551e3e99439690ee7c36c"
+   "sha256": "11b1c35bc3ec819411a858dfeec58cf957fca5f765c551e3e99439690ee7c36c",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "tm_9_1005_224_34",
    "title": "TM 9-1005-224-34, Direct and General Support Maintenance Manual, Machine Gun 7.62mm M60 and Mount M91",
    "url": "https://archive.org/download/tm-9-1005-224-34-7.62-mm-machine-gun-m-60-and-mount-m-91-1959/TM%209-1005-224-34%207.62-MM%20Machine%20Gun%20M60%20And%20Mount%20M91%20%201959_djvu.txt",
-   "sha256": "2f82c32e6ba9587804adb5d3a390b0c5d228183d7dbcb3c382fe03f8a63ae3f7"
+   "sha256": "2f82c32e6ba9587804adb5d3a390b0c5d228183d7dbcb3c382fe03f8a63ae3f7",
+   "capture": "local-cache-only"
   }
  ],
  "weapons": [

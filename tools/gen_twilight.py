@@ -18,7 +18,12 @@ import sys
 from pathlib import Path
 
 REPO = Path(__file__).parents[1]
-HELD = REPO / "data/astronomy/sources/schlyter_radfaq.html"
+if str(REPO) not in sys.path:
+    sys.path.insert(0, str(REPO))
+
+from tools.validation import source_cache  # noqa: E402
+
+HELD = source_cache.capture_path("astronomy", "schlyter_radfaq.html")
 DATA = REPO / "data/astronomy/twilight_illuminance.json"
 OUT = REPO / "addons/core/functions/fnc_twilightIlluminance.sqf"
 ROW = re.compile(r"^\s*(-?\d+\.\d)\s+(-?\d+\.\d\d)\s+([\d.]+)\s*$")
@@ -73,6 +78,12 @@ private _w = ((_a select _i) - _alt) / ((_a select _i) - (_a select (_i + 1)));
 
 def main(argv=None) -> int:
     args = sys.argv[1:] if argv is None else argv
+    if not HELD.is_file():
+        print(
+            "schlyter_radfaq.html is not held in {}; the twilight check was "
+            "skipped".format(source_cache.cache_root())
+        )
+        return 0
     rows = parse()
     data = json.loads(DATA.read_text(encoding="utf-8"))
     data["rows"] = [{"altitude": a, "log10_lux": lg} for a, lg in rows]

@@ -10,13 +10,15 @@
    "source_id": "fn_fnp45_tactical_manual",
    "title": "FNP-45 Owner's Manual (FNH USA / FN Herstal, 2009, Tactical model)",
    "url": "https://web.archive.org/web/20120904073435id_/http://www.fnhusa.com:80/files/8813/4512/7066/2009_FNP_45_Tactical_OM.pdf",
-   "sha256": "21b9d9e51aff8df166cd44d46243fc5b7a4f374ba9bcb8a9f13a0b345aa9ab3c"
+   "sha256": "21b9d9e51aff8df166cd44d46243fc5b7a4f374ba9bcb8a9f13a0b345aa9ab3c",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "fm_23_41_m3",
    "title": "FM 23-41, Submachine Gun, Caliber .45, M3 (US War Department, 1941)",
    "url": "https://archive.org/details/FM_23_41_S_G_C_45_M3_1941",
-   "sha256": "3b012514ec78b35eb3310b650bce44eae94ff3ce54aec31a4ec56eef03644b97"
+   "sha256": "3b012514ec78b35eb3310b650bce44eae94ff3ce54aec31a4ec56eef03644b97",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "gsg_firefly_page",
@@ -27,7 +29,8 @@
    "source_id": "daewoo_ar110c_manual",
    "title": "Daewoo AR110C Semi Auto Rifle Operator's Manual (Daewoo Precision Industries; AR110C is the imported K1A1 designation)",
    "url": "https://archive.org/details/gunmanual_Daewoo_AR110C",
-   "sha256": "d53b371489d5205a24f1508a8c8be1bf976f34c52af2a2802d0ac65615a37bc4"
+   "sha256": "d53b371489d5205a24f1508a8c8be1bf976f34c52af2a2802d0ac65615a37bc4",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "shootingillustrated_anaconda",

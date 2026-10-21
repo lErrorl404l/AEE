@@ -5,601 +5,701 @@
    "source_id": "cip_545x39",
    "title": "C.I.P. TDCC Table I (Rimless cartridges): 5,45 x 39 (country of origin SU); Annex 'Grooves' states u* = 195.00, N = 4",
    "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-i/5-45-x-39-en.pdf",
-   "sha256": "b1a1a3d86a471ea1f3bca59303cfc9d7a7597ec9a017d6c204387b7dbd92563f"
+   "sha256": "b1a1a3d86a471ea1f3bca59303cfc9d7a7597ec9a017d6c204387b7dbd92563f",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "cip_762x39",
    "title": "C.I.P. TDCC Table I (Rimless cartridges): 7,62 x 39 (country of origin SU); Annex 'Grooves' states u = 240.00, N = 4",
    "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-i/7-62-x-39-en.pdf",
-   "sha256": "05b0d184b75dd101fdf37bea790ff3f52b4d47cdc6a85484cf5378d34f97cffd"
+   "sha256": "05b0d184b75dd101fdf37bea790ff3f52b4d47cdc6a85484cf5378d34f97cffd",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "cip_762x54r",
    "title": "C.I.P. TDCC Table II (Rimmed cartridges): 7,62 x 54 R (country of origin SU); Annex 'Grooves' states u = 240.00, N = 4",
    "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-ii/7-62-x-54-r-en.pdf",
-   "sha256": "4a9e923b1a7fc10bbc2b9b73fb083874312a024d2ca1f820dadf82bb2977de61"
+   "sha256": "4a9e923b1a7fc10bbc2b9b73fb083874312a024d2ca1f820dadf82bb2977de61",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "cip_9x39",
    "title": "C.I.P. TDCC Table I (Rimless cartridges): 9 x 39 (country of origin RU); Annex 'Grooves' states u = 240.00, N = 4",
    "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-i/9-x-39-180314-en1.pdf",
-   "sha256": "7deba1d6414a4f5f8be5e0ed219f913df6c8595cdfe2ae29aef96f7ceca8dc37"
+   "sha256": "7deba1d6414a4f5f8be5e0ed219f913df6c8595cdfe2ae29aef96f7ceca8dc37",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ak74_rpk74_manual_1982",
    "title": "Руководство по 5,45-мм автомату Калашникова (АК74, АКС74, АК74Н, АКС74Н) и 5,45-мм ручному пулемету Калашникова (РПК74, РПКС74, РПК74Н, РПКС74Н). Министерство обороны СССР, Воениздат, 1982 г. (Приложение 1, стр. 186: Баллистические и конструктивные данные)",
    "url": "https://www.ak-info.ru/joomla/index.php/aaka/7-ak74/32-ak74rpk74manual82",
-   "sha256": "f2a15ffc95b671fae1f0716b2f53f2cc5240b52bed04477f8ea45495b4eb71e0"
+   "sha256": "f2a15ffc95b671fae1f0716b2f53f2cc5240b52bed04477f8ea45495b4eb71e0",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "rpk74m_tech_2002",
    "title": "Ручной пулемет РПК-74М, журнал \"Техника и вооружение\" 2002 №6 (RPK-74M specification table)",
    "url": "https://military.wikireading.ru/55679",
-   "sha256": "f7070e1270da0352a5c7bbb983c92c1d8a88491224cc0cb5d7dd6e09dfc1b2c8"
+   "sha256": "f7070e1270da0352a5c7bbb983c92c1d8a88491224cc0cb5d7dd6e09dfc1b2c8",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "kalashnikov_club_svd_twist",
    "title": "Из истории винтовки СВД — про шаг нарезов ствола (Калашников Клуб, АО «Концерн «Калашников»), автор М. Попенкер, 13.07.2018",
    "url": "https://kalashnikov.club/a/iz-istorii-vintovki-svd-pro-shag-narezov-stvola",
-   "sha256": "ec7bac867c6fc7d3f32a1eefbb5b9dd52e864662fab6fbe440bf80cf883a807b"
+   "sha256": "ec7bac867c6fc7d3f32a1eefbb5b9dd52e864662fab6fbe440bf80cf883a807b",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "svd_tm_or15",
    "title": "TM 8370-50097-OR/15, Sniper Rifle 7.62 x 54R mm Dragunov SVD Operator's Manual (2010)",
    "url": "https://archive.org/download/tm-8370-50097-or-15-sniper-rifle-7.62-x-54-r-mm-dragunov-svd-operators-manual-2010/TM8370-50097-OR-15_Sniper_rifle_7.62_x_54R_mm_Dragunov_SVD_operators_manual_2010.pdf",
-   "sha256": "d50425c9da394c44d7604079a66873c25fb2e79e5947b32ad384ebd133f99fd7"
+   "sha256": "d50425c9da394c44d7604079a66873c25fb2e79e5947b32ad384ebd133f99fd7",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "svd_ru_manual",
    "title": "7.62mm Dragunov Sniper Rifle (SVD), Technical Description and Service Manual (English translation)",
    "url": "https://ia601005.us.archive.org/20/items/manuals.content.like.stevespages/dragunov.pdf",
-   "sha256": "11b1c35bc3ec819411a858dfeec58cf957fca5f765c551e3e99439690ee7c36c"
+   "sha256": "11b1c35bc3ec819411a858dfeec58cf957fca5f765c551e3e99439690ee7c36c",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ak_info_ak_manual58",
    "title": "7,62-мм Автомат Калашникова (АК). Наставление по стрелковому делу. Воениздат МО СССР, издание 2-е (Ak-info.ru manual page naming AK and AKS)",
    "url": "https://www.ak-info.ru/joomla/index.php/aaka/5-ak/135-akmanual58",
-   "sha256": "dd6d62f44a35631d05c2a047f2ddc129ba13cc871351a59bd5c515f0446cb18f"
+   "sha256": "dd6d62f44a35631d05c2a047f2ddc129ba13cc871351a59bd5c515f0446cb18f",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ak_info_ak47_1949",
    "title": "7,62-мм автомат конструкции Калашникова (АК-47). Краткое руководство службы. Воениздат Министерства ВС СССР, 1949 (Ak-info.ru page)",
    "url": "https://www.ak-info.ru/joomla/index.php/aaka/5-ak/202-ak47about49",
-   "sha256": "81038e5e7c42ba409d98386631bedd5322c385af20c7150d116d32c929edad24"
+   "sha256": "81038e5e7c42ba409d98386631bedd5322c385af20c7150d116d32c929edad24",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ak_info_akm_manual",
    "title": "7,62-мм модернизированный автомат Калашникова (АКМ и АКМС). Наставление по стрелковому делу. Издание 3-е. Воениздат МО СССР (Ak-info.ru page naming AKM and AKMS)",
    "url": "https://www.ak-info.ru/joomla/index.php/aaka/6-akm/38-akmmanualv370zip",
-   "sha256": "739a94514158b3f33e13ff47f2b563cbb3df0b41721636a83f66a7440ace3892"
+   "sha256": "739a94514158b3f33e13ff47f2b563cbb3df0b41721636a83f66a7440ace3892",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ak_info_akm_repair68",
    "title": "7,62-мм модернизированные автоматы Калашникова (АКМ и АКМС). Руководство по ремонту. Министерство обороны СССР, 1968 (Ak-info.ru page)",
    "url": "https://www.ak-info.ru/joomla/index.php/aaka/6-akm/39-akmrepairmanual68",
-   "sha256": "0ae7c20a81de88996a0089a4df558aafbfe2ae3ffc15d3f48718f77ea578cb0c"
+   "sha256": "0ae7c20a81de88996a0089a4df558aafbfe2ae3ffc15d3f48718f77ea578cb0c",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ak_info_nsd87",
    "title": "НСД. Основы стрельбы из стрелкового оружия. АКМ и АКМС. РПК и РПКС. ПК, ПКС, ПКБ и ПКТ. ПМ. Ручные гранаты. Министерство обороны СССР (Ak-info.ru page; names the RPK and PK families)",
    "url": "https://www.ak-info.ru/joomla/index.php/aaka/6-akm/41-akmrpkpkpmnds87zip",
-   "sha256": "9d55ab52da3a08258466e69bdd30d40076b92bd9bf21f90dddb399b2ff35bcce"
+   "sha256": "9d55ab52da3a08258466e69bdd30d40076b92bd9bf21f90dddb399b2ff35bcce",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ak_info_aks74u_manual",
    "title": "Руководство по 5,45-мм Автомату Калашникова Укороченному АКС74У (АКС74УН2). Издание 2-е. Министерство обороны СССР (Ak-info.ru page)",
    "url": "https://www.ak-info.ru/joomla/index.php/aaka/7-ak74/33-aks74umanualzip",
-   "sha256": "82edf40197fa9c5f8577a044e7f85d544d745972f5c3ebb8444a44d25bad7d3e"
+   "sha256": "82edf40197fa9c5f8577a044e7f85d544d745972f5c3ebb8444a44d25bad7d3e",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ak_info_akmn",
    "title": "АКМН. Модификация АКМ. Описание, характеристики, фотографии (Ak-info.ru variant page for the AKM night-sight rifle)",
    "url": "https://www.ak-info.ru/joomla/index.php/aaka/6-akm/70-akmnabout",
-   "sha256": "2be7f0f4117ba6dbc6fe082462e63bd63fe8e0188d5d9c9983eafd74eb5a2a98"
+   "sha256": "2be7f0f4117ba6dbc6fe082462e63bd63fe8e0188d5d9c9983eafd74eb5a2a98",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ak_info_akmn2",
    "title": "АКМН2 (АКМСН2). Модификация АКМ. Описание, характеристики, фотографии (Ak-info.ru variant page)",
    "url": "https://www.ak-info.ru/joomla/index.php/aaka/6-akm/74-akmn2",
-   "sha256": "23d2979531a10988e20cccd8983a44d0b2beac1e5024d64578b3558dddde460d"
+   "sha256": "23d2979531a10988e20cccd8983a44d0b2beac1e5024d64578b3558dddde460d",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ak_info_ak101_103",
    "title": "Автоматы Калашникова АК101, АК103. Руководство по эксплуатации 6П43, 6П45 РЭ. 2003 г. (Ak-info.ru page)",
    "url": "https://www.ak-info.ru/joomla/index.php/aaka/8-ak100/231-re1011032005",
-   "sha256": "44a910951471332ba66ff5fdc55dd89f92a166779471a367e405f051220e56bd"
+   "sha256": "44a910951471332ba66ff5fdc55dd89f92a166779471a367e405f051220e56bd",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ak_info_ak102_104_105",
    "title": "Автоматы Калашникова АК102, АК104, АК105. Руководство по эксплуатации. 6П44, 6П46, 6П47 РЭ. 2003 г. (Ak-info.ru page)",
    "url": "https://www.ak-info.ru/joomla/index.php/aaka/8-ak100/79-ak102-04-05manual03",
-   "sha256": "67227fa36311397c446394846eaa9a216b62e656dafcaea6c3f51c44b0fef25a"
+   "sha256": "67227fa36311397c446394846eaa9a216b62e656dafcaea6c3f51c44b0fef25a",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ak_info_ak104_manual",
    "title": "7,62 мм автомат Калашникова АК104. Руководство по эксплуатации. 6П46 РЭ. 2005 г. (Ak-info.ru page)",
    "url": "https://www.ak-info.ru/joomla/index.php/aaka/8-ak100/233-reak10405",
-   "sha256": "0e09c5d8f29f07352a9e48b18e5194c43f895ac11039d87267456b714a1a8d2b"
+   "sha256": "0e09c5d8f29f07352a9e48b18e5194c43f895ac11039d87267456b714a1a8d2b",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ak_info_ak74m_rpk",
    "title": "Руководство по 5,45-мм автоматам Калашникова АК74, АК74М, АКС74У (и др.) и 5,45-мм ручным пулеметам Калашникова. 2001 г. (Ak-info.ru page naming AK-74M and RPK-74M)",
    "url": "https://www.ak-info.ru/joomla/index.php/aaka/8-ak100/222-re545about",
-   "sha256": "38fbec33a5a533f05a0059fcbd426e138a88aadd4a600350d6793110b28cca78"
+   "sha256": "38fbec33a5a533f05a0059fcbd426e138a88aadd4a600350d6793110b28cca78",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ak_info_ak12tech",
    "title": "5,45 мм автомат Калашникова АК-12 обр. 2016 г. (Тип 1). Техническое описание, характеристики (Ak-info.ru page; TTH block states Число нарезов 4)",
    "url": "https://www.ak-info.ru/joomla/index.php/aaka/32-ak5pokolenie/250-ak12techabout",
-   "sha256": "df3bc2b6898b97533240b06c2f98d5f1697a93777ddbbb6873dce966bf8a37b1"
+   "sha256": "df3bc2b6898b97533240b06c2f98d5f1697a93777ddbbb6873dce966bf8a37b1",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ak_info_ak12k",
    "title": "5,45 мм автомат Калашникова АК-12 укороченный (автомат АК-12К). Описание, характеристики (Ak-info.ru page)",
    "url": "https://www.ak-info.ru/joomla/index.php/aaka/32-ak5pokolenie/285-ak-12k",
-   "sha256": "05c54f32fef8dbabbb9c81f1fe34a9be1536a20f05716ac5bcd8d59dd002f129"
+   "sha256": "05c54f32fef8dbabbb9c81f1fe34a9be1536a20f05716ac5bcd8d59dd002f129",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ak_info_ak12sk",
    "title": "5,45 мм автомат Калашникова АК-12 малогабаритный (автомат АК-12СК). Описание, характеристики (Ak-info.ru page)",
    "url": "https://www.ak-info.ru/joomla/index.php/aaka/32-ak5pokolenie/286-ak-12sk",
-   "sha256": "fbd1274c961b82fe7fa404c7d549728e3f44d490a49ed412ef8464459bc76685"
+   "sha256": "fbd1274c961b82fe7fa404c7d549728e3f44d490a49ed412ef8464459bc76685",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ak_info_ak15k",
    "title": "7,62 мм автомат Калашникова АК-15 укороченный (автомат АК-15К). Описание, характеристики (Ak-info.ru page)",
    "url": "https://www.ak-info.ru/joomla/index.php/aaka/32-ak5pokolenie/287-ak-15c",
-   "sha256": "fc02b4176e245999fed96b840eaf151f834e02fdcfd6217c0934974b7a8029cb"
+   "sha256": "fc02b4176e245999fed96b840eaf151f834e02fdcfd6217c0934974b7a8029cb",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ak_info_ak15sk",
    "title": "7,62 мм автомат Калашникова АК-15 малогабаритный (автомат АК-15СК). Описание, характеристики (Ak-info.ru page)",
    "url": "https://www.ak-info.ru/joomla/index.php/aaka/32-ak5pokolenie/288-ak-15sc",
-   "sha256": "c0372c15e1325a4f445ca4befd37559c8da8962c19f529a8374fd1dc2771ecc5"
+   "sha256": "c0372c15e1325a4f445ca4befd37559c8da8962c19f529a8374fd1dc2771ecc5",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ak_info_ak19",
    "title": "5,56 мм автомат Калашникова АК-19 исполнение 02/03. Описание, характеристики (Ak-info.ru page; TTH block states Калибр 5,56 and Число нарезов 4)",
    "url": "https://www.ak-info.ru/joomla/index.php/aaka/32-ak5pokolenie/276-ak19k23",
-   "sha256": "92c4112cb179072948be06f07db6117c6e0c1047bc4fb477b61f155aaf3d6aab"
+   "sha256": "92c4112cb179072948be06f07db6117c6e0c1047bc4fb477b61f155aaf3d6aab",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ak_info_ak200_manual",
    "title": "5,45 мм автомат Калашникова АК200. Руководство по эксплуатации. 6П34-1 РЭ. (Ak-info.ru page)",
    "url": "https://www.ak-info.ru/joomla/index.php/aaka/32-ak5pokolenie/280-ak200re",
-   "sha256": "db055b4ce7527d2cc2c70828f746333b78681a46cbbe4c5eed94dcd6455a6e4b"
+   "sha256": "db055b4ce7527d2cc2c70828f746333b78681a46cbbe4c5eed94dcd6455a6e4b",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ak_info_hu_akm63",
    "title": "Венгрия. Автомат Калашникова модернизированный (АКМ-63). ТО и ИЭ. Hungarian 7,62 mm-es Korszerusitett Kalasnyikov (Ak-info.ru page hosting the Hungarian AKM-63 manual)",
    "url": "https://www.ak-info.ru/joomla/index.php/aaka/16-akworld/178-akm63manual",
-   "sha256": "e2fdeca8752b26a748230fe71436870692f31861ecbde09292464cb6416470fc"
+   "sha256": "e2fdeca8752b26a748230fe71436870692f31861ecbde09292464cb6416470fc",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ak_info_hu_amd65",
    "title": "Венгрия. Автомат Калашникова AMD-65. ТО и ИЭ. Hungarian 7,62 mm-es AMD-65 gepipisztoly leirasa es kezelesi utasitasa (Ak-info.ru page hosting the Hungarian AMD-65 manual)",
    "url": "https://www.ak-info.ru/joomla/index.php/aaka/16-akworld/179-amd65manual68",
-   "sha256": "ccd262fb61af628517ae68170466ae148278f0a735871a68ccee891e391109e4"
+   "sha256": "ccd262fb61af628517ae68170466ae148278f0a735871a68ccee891e391109e4",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ak_info_ro_pmmd63",
    "title": "Румыния. PM md.63. История создания, характеристики, фотографии (Ak-info.ru page on the Romanian PM md.63)",
    "url": "https://www.ak-info.ru/joomla/index.php/aaka/16-akworld/182-pmmd63",
-   "sha256": "36867769f74f5271cfcc2a8ef8a456bbd52685afce8a1a8564bc0af441520185"
+   "sha256": "36867769f74f5271cfcc2a8ef8a456bbd52685afce8a1a8564bc0af441520185",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ak_info_pl_beryl",
    "title": "Польша. 5.56 mm karabin szturmowy wz. 96 \"BERYL\". Instrukcja obslugi i uzytkowania. Fabryka Broni \"Lucznik\" - Radom. 2009 (Ak-info.ru page hosting the Polish Beryl manual)",
    "url": "https://www.ak-info.ru/joomla/index.php/aaka/16-akworld/221-nsdberyl09",
-   "sha256": "2422a7f2ac8b4ad292f89f84f79483ab962a185576e873fe1c09056d7766ef1d"
+   "sha256": "2422a7f2ac8b4ad292f89f84f79483ab962a185576e873fe1c09056d7766ef1d",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ak_info_yu_m70family",
    "title": "Югославия. Определитель модификаций AP 7,62 mm M70 (Ak-info.ru identification guide to the Yugoslav M70 rifle variants)",
    "url": "https://www.ak-info.ru/joomla/index.php/aaka/16-akworld/241-zastavam70family",
-   "sha256": "627e24dd71c77eb8ba16bcd01d4047aa0cfcd2fecb2d374ed0438fc3a28278b6"
+   "sha256": "627e24dd71c77eb8ba16bcd01d4047aa0cfcd2fecb2d374ed0438fc3a28278b6",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ak_info_yu_up111",
    "title": "Югославия. UP-111. Pravilo pusaka i puskomitraljeza 7,62 mm. Savezni Sekretarijat za narodnu odbranu (Yugoslav army manual, 7.62 mm rifles and light machine guns; Ak-info.ru page)",
    "url": "https://www.ak-info.ru/joomla/index.php/aaka/16-akworld/209-yugonsd83",
-   "sha256": "9d0349f1153b2194cd39c5470d87bedfe8e860f3517407d565d79ac0696df5db"
+   "sha256": "9d0349f1153b2194cd39c5470d87bedfe8e860f3517407d565d79ac0696df5db",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ak_info_yu_tech85",
    "title": "Югославия. Automatske puske i puskomitraljezi 7,62 mm. Radionicko odrzavanje. 1985 (Yugoslav workshop maintenance manual, 7.62 mm rifles and light machine guns; Ak-info.ru page)",
    "url": "https://www.ak-info.ru/joomla/index.php/aaka/16-akworld/210-yugotech85",
-   "sha256": "8b0d1b26647da58bd46ec2d7394c558de1be0ad6aad952acc1872a7b2c3450f9"
+   "sha256": "8b0d1b26647da58bd46ec2d7394c558de1be0ad6aad952acc1872a7b2c3450f9",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ak_info_hr_apm70",
    "title": "Хорватия. Руководство по эксплуатации Automatska Puska AP-M70. Zagreb. 1996 (Croatian AP-M70 assault rifle manual; Ak-info.ru page)",
    "url": "https://www.ak-info.ru/joomla/index.php/aaka/16-akworld/189-crom70mnl",
-   "sha256": "1b62be9851736b180a1fdcb93743ebebf0b6625bea1793293ba27c9f9ac21146"
+   "sha256": "1b62be9851736b180a1fdcb93743ebebf0b6625bea1793293ba27c9f9ac21146",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ak_info_iq_manual",
    "title": "Ирак. Наставление по стрелковому делу автоматов Калашникова. 1997 г. (Iraqi Kalashnikov rifle manual; Ak-info.ru page)",
    "url": "https://www.ak-info.ru/joomla/index.php/aaka/16-akworld/159-iraqiakmanual",
-   "sha256": "059ba50aae88ac45c2f0c53959996e32402cb4e2d69c78f2b70a92bd03087243"
+   "sha256": "059ba50aae88ac45c2f0c53959996e32402cb4e2d69c78f2b70a92bd03087243",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ak_info_sy_manual",
    "title": "Сирийская Арабская Республика. Наставление по стрелковому делу АК. Главное командование Армии и Вооруженных сил (Syrian AK manual; Ak-info.ru page)",
    "url": "https://www.ak-info.ru/joomla/index.php/aaka/16-akworld/175-siria",
-   "sha256": "72db22ebb522024ed09092952e3eb80be3d340ebb3d618b0c1a31556d224546e"
+   "sha256": "72db22ebb522024ed09092952e3eb80be3d340ebb3d618b0c1a31556d224546e",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ak_info_bg_article",
    "title": "Болгария. Тематический выпуск журнала \"Клуб Оружие\", посвященный истории автоматов Калашникова (Bulgarian AK history issue; Ak-info.ru page)",
    "url": "https://www.ak-info.ru/joomla/index.php/aaka/16-akworld/160-bulgarianakxxvek",
-   "sha256": "c7392867c9e611070844a2a7673d64760477d69c0c36a4b200f3c8ddcc8e30b4"
+   "sha256": "c7392867c9e611070844a2a7673d64760477d69c0c36a4b200f3c8ddcc8e30b4",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ak_info_cz_vz58",
    "title": "Чехословакия. CZ mod. 58 (vz.58). Инструкция по эксплуатации / Instruction manual. Ceska Zbrojovka (Ak-info.ru page; the vz.58 is NOT a Kalashnikov derivative)",
    "url": "https://www.ak-info.ru/joomla/index.php/aaka/16-akworld/124-vz58manual",
-   "sha256": "cc9bf40e0e10af37cbf396f6183c362d79272b40b0c82f8ed5af7846d94c7c8d"
+   "sha256": "cc9bf40e0e10af37cbf396f6183c362d79272b40b0c82f8ed5af7846d94c7c8d",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "kalashnikov_ak74m",
    "title": "Автомат Калашникова АК74М — Группа компаний «Калашников» (official product data page, archived 2022-03-13)",
    "url": "https://web.archive.org/web/20220313154617/https://kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/avtomaty/avtomat-kalashnikova-ak74m",
-   "sha256": "cf8b846df37f69b0c2a96a2a3286b51a34498d6852fe66a92e368e2688db2795"
+   "sha256": "cf8b846df37f69b0c2a96a2a3286b51a34498d6852fe66a92e368e2688db2795",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "kalashnikov_ak105",
    "title": "Автомат Калашникова АК105 — Группа компаний «Калашников» (official product data page, archived 2022-03-13)",
    "url": "https://web.archive.org/web/20220313154521/https://kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/avtomaty/avtomat-kalashnikova-ak105",
-   "sha256": "4133098e128a1161f1c6ffe5bf2db6ffb6cec14c2836003bc819a4f55aca7bbe"
+   "sha256": "4133098e128a1161f1c6ffe5bf2db6ffb6cec14c2836003bc819a4f55aca7bbe",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "kalashnikov_ak12",
    "title": "Автомат Калашникова АК-12 — Группа компаний «Калашников» (official product data page, archived 2022-03-13)",
    "url": "https://web.archive.org/web/20220313154453/https://kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/avtomaty/avtomat-kalashnikova-ak-12",
-   "sha256": "4f178b1da297d9ff7b78f714e72814e2ed33798e7433c1ffab669623cc743642"
+   "sha256": "4f178b1da297d9ff7b78f714e72814e2ed33798e7433c1ffab669623cc743642",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "kalashnikov_ak101",
    "title": "Автомат Калашникова АК101 — Группа компаний «Калашников» (official product data page, archived 2022-03-13)",
    "url": "https://web.archive.org/web/2022id_/https://kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/avtomaty/avtomat-kalashnikova-ak101",
-   "sha256": "ba4125d03ffd677dc566cd1f2e5ecad8f9168fcb15dc54e46033ea579af1b696"
+   "sha256": "ba4125d03ffd677dc566cd1f2e5ecad8f9168fcb15dc54e46033ea579af1b696",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "kalashnikov_ak102",
    "title": "Автомат Калашникова АК102 — Группа компаний «Калашников» (official product data page, archived 2022-03-13)",
    "url": "https://web.archive.org/web/2022id_/https://kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/avtomaty/avtomat-kalashnikova-ak102",
-   "sha256": "d239cc3941112cbc95bf8954d63139004024651cc4aacca5d2ff7ed1ad62aaf8"
+   "sha256": "d239cc3941112cbc95bf8954d63139004024651cc4aacca5d2ff7ed1ad62aaf8",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "kalashnikov_ak103",
    "title": "Автомат Калашникова АК103 — Группа компаний «Калашников» (official product data page, archived 2022-03-13)",
    "url": "https://web.archive.org/web/2022id_/https://kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/avtomaty/avtomat-kalashnikova-ak103",
-   "sha256": "4866fbaa785822efdfa8bf991d030489ccfb1cd0b0a5fa04a71d8b10ac16c4b8"
+   "sha256": "4866fbaa785822efdfa8bf991d030489ccfb1cd0b0a5fa04a71d8b10ac16c4b8",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "kalashnikov_ak104",
    "title": "Автомат Калашникова АК104 — Группа компаний «Калашников» (official product data page, archived 2022-03-13)",
    "url": "https://web.archive.org/web/2022id_/https://kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/avtomaty/avtomat-kalashnikova-ak104",
-   "sha256": "d14d696b8738acfce7c589434e9f679d9d021ef9b7d16c332ff6c01a7660c6f0"
+   "sha256": "d14d696b8738acfce7c589434e9f679d9d021ef9b7d16c332ff6c01a7660c6f0",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "kalashnikov_ak15",
    "title": "Автомат Калашникова АК-15 — Группа компаний «Калашников» (official product data page, archived 2022-03-13)",
    "url": "https://web.archive.org/web/2022id_/https://kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/avtomaty/avtomat-kalashnikova-ak-15",
-   "sha256": "85b8983858ffd013a2e35fa8f0dcff2f713984431a7bcd01cbf96508a0ea0e70"
+   "sha256": "85b8983858ffd013a2e35fa8f0dcff2f713984431a7bcd01cbf96508a0ea0e70",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "kalashnikov_ak19",
    "title": "Автомат Калашникова АК-19 — Группа компаний «Калашников» (official product data page, archived 2022-03-13)",
    "url": "https://web.archive.org/web/2022id_/https://kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/avtomaty/avtomat-kalashnikova-ak-19",
-   "sha256": "72472de0ebaf0c5aaf948cdfe203763ea11c6459f80ec3a8f6a7f009f38cb5c3"
+   "sha256": "72472de0ebaf0c5aaf948cdfe203763ea11c6459f80ec3a8f6a7f009f38cb5c3",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "kalashnikov_ak200",
    "title": "Автомат Калашникова АК200 — Группа компаний «Калашников» (official product data page, archived 2022-03-13)",
    "url": "https://web.archive.org/web/2022id_/https://kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/avtomaty/avtomat-kalashnikova-ak200",
-   "sha256": "fca553c9cd2a7e4197a78e6cd67a9b738b752249f61541de12786d32c0a43b9e"
+   "sha256": "fca553c9cd2a7e4197a78e6cd67a9b738b752249f61541de12786d32c0a43b9e",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "kalashnikov_ak201",
    "title": "Автомат Калашникова АК201 — Группа компаний «Калашников» (official product data page, archived 2022-03-13)",
    "url": "https://web.archive.org/web/2022id_/https://kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/avtomaty/avtomat-kalashnikova-ak201",
-   "sha256": "4fd0dd5fe381da63160465ae313ab68df43b426d95dc5aa309a3c9cab392dbc4"
+   "sha256": "4fd0dd5fe381da63160465ae313ab68df43b426d95dc5aa309a3c9cab392dbc4",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "kalashnikov_ak202",
    "title": "Автомат Калашникова АК202 — Группа компаний «Калашников» (official product data page, archived 2022-03-13)",
    "url": "https://web.archive.org/web/2022id_/https://kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/avtomaty/avtomat-kalashnikova-ak202",
-   "sha256": "9f5b13ee7395d5c3bce3c6de6623058724c663998de01010f5fc6c801659d50f"
+   "sha256": "9f5b13ee7395d5c3bce3c6de6623058724c663998de01010f5fc6c801659d50f",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "kalashnikov_ak203",
    "title": "Автомат Калашникова АК203 — Группа компаний «Калашников» (official product data page, archived 2022-03-13)",
    "url": "https://web.archive.org/web/2022id_/https://kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/avtomaty/avtomat-kalashnikova-ak203",
-   "sha256": "4532179219c22ddc856b52679b2ce904b91f7f64bcb31f2908bd5fe94eca6f6e"
+   "sha256": "4532179219c22ddc856b52679b2ce904b91f7f64bcb31f2908bd5fe94eca6f6e",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "kalashnikov_ak204",
    "title": "Автомат Калашникова АК204 — Группа компаний «Калашников» (official product data page, archived 2022-03-13)",
    "url": "https://web.archive.org/web/2022id_/https://kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/avtomaty/avtomat-kalashnikova-ak204",
-   "sha256": "08e683183dd7ec9cd7f0af4472e1dcb6906d83a0b238656013027334b8a7b1ec"
+   "sha256": "08e683183dd7ec9cd7f0af4472e1dcb6906d83a0b238656013027334b8a7b1ec",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "kalashnikov_ak205",
    "title": "Автомат Калашникова АК205 — Группа компаний «Калашников» (official product data page, archived 2022-03-13)",
    "url": "https://web.archive.org/web/2022id_/https://kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/avtomaty/avtomat-kalashnikova-ak205",
-   "sha256": "2f3a8acd8d7f6be6d1ba23f4c162021d9358c784b355af4ccb16ae4f256dff0d"
+   "sha256": "2f3a8acd8d7f6be6d1ba23f4c162021d9358c784b355af4ccb16ae4f256dff0d",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "kalashnikov_ak308",
    "title": "Автомат Калашникова АК-308 — Группа компаний «Калашников» (official product data page, archived 2022-03-13)",
    "url": "https://web.archive.org/web/2022id_/https://kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/avtomaty/avtomat-kalashnikova-ak-308",
-   "sha256": "1b024a49d22b5be65cdf981f709a342e7f205784abd94ded98f5e4b0559f9ec8"
+   "sha256": "1b024a49d22b5be65cdf981f709a342e7f205784abd94ded98f5e4b0559f9ec8",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "kalashnikov_svd",
    "title": "Снайперская винтовка СВД — Группа компаний «Калашников» (official product data page, archived 2022-03-13)",
    "url": "https://web.archive.org/web/2022id_/https://kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/snayperskie-vintovki/snayperskaya-vintovka-svd",
-   "sha256": "2f63da61928d7fbdab075a2b2ecd4f15d6173a6398d4fda4544966da543ce10f"
+   "sha256": "2f63da61928d7fbdab075a2b2ecd4f15d6173a6398d4fda4544966da543ce10f",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "kalashnikov_svds",
    "title": "Снайперская винтовка СВДС — Группа компаний «Калашников» (official product data page, archived 2022-03-13)",
    "url": "https://web.archive.org/web/2022id_/https://kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/snayperskie-vintovki/snayperskaya-vintovka-svds",
-   "sha256": "e2c0db71369ed884212581dc044b1783f641d453bc1a809770679e2518eeb7b7"
+   "sha256": "e2c0db71369ed884212581dc044b1783f641d453bc1a809770679e2518eeb7b7",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "kalashnikov_svdm",
    "title": "Снайперская винтовка СВДМ — Группа компаний «Калашников» (official product data page, archived 2022-03-13)",
    "url": "https://web.archive.org/web/2022id_/https://kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/snayperskie-vintovki/snayperskaya-vintovka-svdm",
-   "sha256": "2554479c1a345a7eb79a4f28ae6447b154de5a7fcdd70153753066387b476f09"
+   "sha256": "2554479c1a345a7eb79a4f28ae6447b154de5a7fcdd70153753066387b476f09",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "mf_ak47_akm",
    "title": "Modern Firearms - AK-47 AKM (archived snapshot of modernfirearms.net / world.guns.ru by Maxim Popenker)",
    "url": "https://web.archive.org/web/20171023060017/http://modernfirearms.net:80/assault/rus/ak-akm-e.html",
-   "sha256": "1c2ae604bc85b00d35ccd73b8bef0fd22d8180df0f8b71a5de30ce3facd35eb0"
+   "sha256": "1c2ae604bc85b00d35ccd73b8bef0fd22d8180df0f8b71a5de30ce3facd35eb0",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "mf_ak74",
    "title": "Modern Firearms - AK-74 (archived snapshot of modernfirearms.net / world.guns.ru by Maxim Popenker)",
    "url": "https://web.archive.org/web/20171015124930/http://modernfirearms.net:80/assault/rus/ak-74-e.html",
-   "sha256": "cb368086cf273b50b995f0bd9d0a8b0a13bf899022b1ddf5ac313b0fe3c867f7"
+   "sha256": "cb368086cf273b50b995f0bd9d0a8b0a13bf899022b1ddf5ac313b0fe3c867f7",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "mf_pkm",
    "title": "Modern Firearms - Kalashnikov PK / PKM (archived snapshot of modernfirearms.net / world.guns.ru by Maxim Popenker)",
    "url": "https://web.archive.org/web/20171022194055/http://modernfirearms.net:80/machine/rus/kalashnikov-pk-pkm-e.html",
-   "sha256": "144995c023e84f326490a834ac82e99406ce92909bcc4c7f7464725d4d681efb"
+   "sha256": "144995c023e84f326490a834ac82e99406ce92909bcc4c7f7464725d4d681efb",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "mf_rpk",
    "title": "Modern Firearms - Kalashnikov RPK (archived snapshot of modernfirearms.net / world.guns.ru by Maxim Popenker)",
    "url": "https://web.archive.org/web/20171010001349/http://modernfirearms.net:80/machine/rus/kalashnikov-rpk-e.html",
-   "sha256": "c06ed27ca7bfcd2f3db11629407af04a1909e3ea6ba218d5e6286db9788ab0f5"
+   "sha256": "c06ed27ca7bfcd2f3db11629407af04a1909e3ea6ba218d5e6286db9788ab0f5",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "mf_rpk74",
    "title": "Modern Firearms - Kalashnikov RPK-74 (archived snapshot of modernfirearms.net / world.guns.ru by Maxim Popenker)",
    "url": "https://web.archive.org/web/20171018115348/http://modernfirearms.net:80/machine/rus/kalashnikov-rpk-74-e.html",
-   "sha256": "ee860d759591662e970f616b0eac6cc4402fea7a910ebb99276b52dd047273e1"
+   "sha256": "ee860d759591662e970f616b0eac6cc4402fea7a910ebb99276b52dd047273e1",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "mf_rpk16",
    "title": "Modern Firearms - RPK-16 (archived snapshot of modernfirearms.net / world.guns.ru by Maxim Popenker)",
    "url": "https://web.archive.org/web/20171022195328/http://modernfirearms.net:80/machine/rus/rpk16-e.html",
-   "sha256": "132a55e03ef6285f9bfaf1a8a521999f3f1eeceb391b9b3a2a722911295ef901"
+   "sha256": "132a55e03ef6285f9bfaf1a8a521999f3f1eeceb391b9b3a2a722911295ef901",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "mf_pecheneg",
    "title": "Modern Firearms - Pecheneg (archived snapshot of modernfirearms.net / world.guns.ru by Maxim Popenker)",
    "url": "https://web.archive.org/web/20171101161643/http://modernfirearms.net:80/machine/rus/pecheneg-e.html",
-   "sha256": "6a9629c8584d3e019e06cc5cfbd2e09e9366eba411ab76652c9db9891dc5e6d4"
+   "sha256": "6a9629c8584d3e019e06cc5cfbd2e09e9366eba411ab76652c9db9891dc5e6d4",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "mf_sks",
    "title": "Modern Firearms - Simonov SKS (archived snapshot of modernfirearms.net / world.guns.ru by Maxim Popenker)",
    "url": "https://web.archive.org/web/20170925133132/http://modernfirearms.net:80/rifle/autoloading-rifles/rus/simonov-sks-e.html",
-   "sha256": "aff74ecaed54e90096dc75ba457392bb6db49503ec71d2e897e53dff89e0154c"
+   "sha256": "aff74ecaed54e90096dc75ba457392bb6db49503ec71d2e897e53dff89e0154c",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "mf_svu",
    "title": "Modern Firearms - СВУ, СВУ-АС (archived snapshot of modernfirearms.net / world.guns.ru by Maxim Popenker)",
    "url": "https://web.archive.org/web/20150424121520/http://world.guns.ru/sniper/sniper-rifles/rus/svu-and-svu-a-r.html",
-   "sha256": "dea3e15a66f798d8f9272aec28386a7921b4284095e61f12341b6d0c7ff550a7"
+   "sha256": "dea3e15a66f798d8f9272aec28386a7921b4284095e61f12341b6d0c7ff550a7",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "mf_ak9",
    "title": "Modern Firearms - AK-9 (archived snapshot of modernfirearms.net / world.guns.ru by Maxim Popenker)",
    "url": "https://web.archive.org/web/20171006154716/http://modernfirearms.net:80/assault/rus/ak-9-e.html",
-   "sha256": "813822cb9ea56f67c2ddd7ed586e0e32ab18a14b69ba32fc2e142b9ccd9a2489"
+   "sha256": "813822cb9ea56f67c2ddd7ed586e0e32ab18a14b69ba32fc2e142b9ccd9a2489",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "mf_ak107",
    "title": "Modern Firearms - AK-107/108 (archived snapshot of modernfirearms.net / world.guns.ru by Maxim Popenker)",
    "url": "https://web.archive.org/web/20171029191118/http://modernfirearms.net:80/assault/rus/ak-10710-e.html",
-   "sha256": "ec6b320bf96b9cc1afdbc4021ee1a200fd916d936e5578158db1b03d437cbf3f"
+   "sha256": "ec6b320bf96b9cc1afdbc4021ee1a200fd916d936e5578158db1b03d437cbf3f",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "mf_beryl",
    "title": "Modern Firearms - Wz.96 Beryl and Mini-Beryl assault rifle (Poland) (archived snapshot of modernfirearms.net / world.guns.ru by Maxim Popenker)",
    "url": "https://web.archive.org/web/20171029185208/http://modernfirearms.net:80/assault/poland/beryl-e.html",
-   "sha256": "313051ffa2be6bac72502bfb7ae8a3cafc5fd199ba8ac59c306edbadd1a10c21"
+   "sha256": "313051ffa2be6bac72502bfb7ae8a3cafc5fd199ba8ac59c306edbadd1a10c21",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "mf_galil",
    "title": "Modern Firearms - Galil (archived snapshot of modernfirearms.net / world.guns.ru by Maxim Popenker)",
    "url": "https://web.archive.org/web/20171012110935/http://modernfirearms.net:80/assault/isr/galil-e.html",
-   "sha256": "12c344b538a60bad37ede34e913ca2c7b351f241ff10cbf8358dbc8edb12eb05"
+   "sha256": "12c344b538a60bad37ede34e913ca2c7b351f241ff10cbf8358dbc8edb12eb05",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "mf_galil_sniper",
    "title": "Modern Firearms - Galil Sniper (archived snapshot of modernfirearms.net / world.guns.ru by Maxim Popenker)",
    "url": "https://web.archive.org/web/20170806134201/http://modernfirearms.net:80/sniper/sniper-rifles/isr/galil-sniper-e.html",
-   "sha256": "696edc01b91fe38945ca558a274ca5c9be295701dfbbf6605f52e8fca54e91d5"
+   "sha256": "696edc01b91fe38945ca558a274ca5c9be295701dfbbf6605f52e8fca54e91d5",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "mf_valmet",
    "title": "Modern Firearms - Valmet Sako Rk.62 / 76 / 95 (archived snapshot of modernfirearms.net / world.guns.ru by Maxim Popenker)",
    "url": "https://web.archive.org/web/20171104184548/http://modernfirearms.net:80/assault/fi/valmet-sako-rk62--76--95-e.html",
-   "sha256": "298c9126294303a12df65cbddb4a9d88a35dd690e9a07d892cb724aa19dbdfdd"
+   "sha256": "298c9126294303a12df65cbddb4a9d88a35dd690e9a07d892cb724aa19dbdfdd",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "mf_qbz95",
    "title": "Modern Firearms - Type 95 / QBZ-95 (archived snapshot of modernfirearms.net / world.guns.ru by Maxim Popenker)",
    "url": "https://web.archive.org/web/20171006154603/http://modernfirearms.net:80/assault/ch/type-95--qbz-95-e.html",
-   "sha256": "0ba21d9d11fea22746711febfa5dcd37ac2e257c4144609b8ebe8ab157a93fe1"
+   "sha256": "0ba21d9d11fea22746711febfa5dcd37ac2e257c4144609b8ebe8ab157a93fe1",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "mf_qbz03",
    "title": "Modern Firearms - Type 03 / QBZ-03 (archived snapshot of modernfirearms.net / world.guns.ru by Maxim Popenker)",
    "url": "https://web.archive.org/web/20170911054457/http://modernfirearms.net:80/assault/ch/type-03--qbz-03-e.html",
-   "sha256": "719c5eedd039945d7dacf4e6eb6d4d6fc15666a128d037d7d7e125a4ec95511a"
+   "sha256": "719c5eedd039945d7dacf4e6eb6d4d6fc15666a128d037d7d7e125a4ec95511a",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "pp_type56",
    "title": "1956年式突击步枪 / Type 56 assault rifle — 枪炮世界 [Firearms World] (Chinese small-arms reference site)",
    "url": "http://pewpewpew.work/china/rifle/1956ar/1956.htm",
-   "sha256": "d8530f07602e3a8fd738d5a9b35ed11629da939a597b4f9adce9469c50d53b67"
+   "sha256": "d8530f07602e3a8fd738d5a9b35ed11629da939a597b4f9adce9469c50d53b67",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "pp_type56_semi",
    "title": "56式半自动步枪 / Type 56 semi-automatic rifle (SKS copy) — 枪炮世界 [Firearms World] (Chinese small-arms reference site)",
    "url": "http://pewpewpew.work/china/rifle/1956sr/1956sr.htm",
-   "sha256": "52a97e205c931ec94f5a3d72399290c84b1c855503a4246d7f3d32ee5315dd7c"
+   "sha256": "52a97e205c931ec94f5a3d72399290c84b1c855503a4246d7f3d32ee5315dd7c",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "pp_type81",
    "title": "81式自动步枪 / Type 81 assault rifle — 枪炮世界 [Firearms World] (Chinese small-arms reference site)",
    "url": "http://pewpewpew.work/china/rifle/1981/81.htm",
-   "sha256": "35dccd50d25b8ce7b9f854140ac45926a338db6ebb279bfea7cf9543b0159132"
+   "sha256": "35dccd50d25b8ce7b9f854140ac45926a338db6ebb279bfea7cf9543b0159132",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "pp_type81_lmg",
    "title": "81式班用轻机枪 / Type 81 squad light machine gun — 枪炮世界 [Firearms World] (Chinese small-arms reference site)",
    "url": "http://pewpewpew.work/china/rifle/1981/81lmg.htm",
-   "sha256": "c4b1d95092f622202a03a0f8813289f76f12b1c78f230772d8972cb45b9d7a59"
+   "sha256": "c4b1d95092f622202a03a0f8813289f76f12b1c78f230772d8972cb45b9d7a59",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "pp_qbz03",
    "title": "03式突击步枪 / QBZ-03 assault rifle — 枪炮世界 [Firearms World] (Chinese small-arms reference site)",
    "url": "http://pewpewpew.work/china/rifle/03/03.htm",
-   "sha256": "36656e62770efeed2242ecd7e4420b2b012aecd3cbd2fa8e3840b16376f3994a"
+   "sha256": "36656e62770efeed2242ecd7e4420b2b012aecd3cbd2fa8e3840b16376f3994a",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "pp_qbz191",
    "title": "QBZ191式自动步枪 / QBZ-191 assault rifle — 枪炮世界 [Firearms World] (Chinese small-arms reference site)",
    "url": "http://pewpewpew.work/china/rifle/qbz19x/qbz191.htm",
-   "sha256": "81b780b3e1fc7d2845d7178d37e7dc5d174b09ae37c4e28741e830aee6a77f28"
+   "sha256": "81b780b3e1fc7d2845d7178d37e7dc5d174b09ae37c4e28741e830aee6a77f28",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "pp_qbu88",
    "title": "QBU88式狙击步枪 / QBU-88 sniper rifle — 枪炮世界 [Firearms World] (Chinese small-arms reference site)",
    "url": "http://pewpewpew.work/china/sr/qbu88/qbu88.htm",
-   "sha256": "f767ccc6cf80c9fbf7f2793b04a25e9170d50e56a0eff5738e2dee527db2cfab"
+   "sha256": "f767ccc6cf80c9fbf7f2793b04a25e9170d50e56a0eff5738e2dee527db2cfab",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "pp_qjy88",
    "title": "QJY88式通用机枪 / QJY-88 general-purpose machine gun — 枪炮世界 [Firearms World] (Chinese small-arms reference site)",
    "url": "http://pewpewpew.work/china/mg/qjy88/qjy88.htm",
-   "sha256": "81e46ae8fd12804efe763a98a20e938ae68fe8fbec41c004d9ccb6a96b363a54"
+   "sha256": "81e46ae8fd12804efe763a98a20e938ae68fe8fbec41c004d9ccb6a96b363a54",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "pp_nkorea",
    "title": "朝鲜AK / North Korean AK copies (Type 58/68/88) — 枪炮世界 [Firearms World] (Chinese small-arms reference site)",
    "url": "http://pewpewpew.work/nkorea/ak/nk.htm",
-   "sha256": "508beb26a4f215322f73d5fac4e791940b5cca0dbb5cfa6a2ffd1b0882d1bf7a"
+   "sha256": "508beb26a4f215322f73d5fac4e791940b5cca0dbb5cfa6a2ffd1b0882d1bf7a",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "firearmsworld_qbz951",
    "title": "95-1枪族 (Type 95-1 gun family), 枪炮世界 [Firearms World]; page transcribed from 《兵器知识》2011年2A期, 马志杰, 国产新型95-1式枪族",
    "url": "http://pewpewpew.work/china/rifle/qbz95/qbz951.htm",
-   "sha256": "bdbbac70986fa4e8028547fc86e7b1505a9b4e3f1f08119476fd1f0e85834750"
+   "sha256": "bdbbac70986fa4e8028547fc86e7b1505a9b4e3f1f08119476fd1f0e85834750",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "qq_58mm_history",
    "title": "海外谈中国：5.8×42mm军用弹药的历史演变 (the historical evolution of 5.8x42mm military ammunition), Tencent News",
    "url": "https://news.qq.com/rain/a/20210201A06OR800",
-   "sha256": "8c1361e12fd4115f76468bcb20088dfbce4555d42ac329d420abaa38165f3f50"
+   "sha256": "8c1361e12fd4115f76468bcb20088dfbce4555d42ac329d420abaa38165f3f50",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "gs_ak47",
    "title": "GlobalSecurity.org - Avtomat Kalashnikov AK-47",
    "url": "https://www.globalsecurity.org/military/world/russia/ak-47.htm",
-   "sha256": "d5eceb9ae8a75ffb7f8b9942293b9e880ee27b4668d65bffa694a54324351162"
+   "sha256": "d5eceb9ae8a75ffb7f8b9942293b9e880ee27b4668d65bffa694a54324351162",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "gs_ak74",
    "title": "GlobalSecurity.org - AK-74",
    "url": "https://www.globalsecurity.org/military/world/russia/ak-74.htm",
-   "sha256": "ee0e554ce02dafac5b956f418fb890a22bc0aa1e3669466150f986ada3828f6c"
+   "sha256": "ee0e554ce02dafac5b956f418fb890a22bc0aa1e3669466150f986ada3828f6c",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "gs_ak100",
    "title": "GlobalSecurity.org - AK-101 Assault Rifle (AK-100 series)",
    "url": "https://www.globalsecurity.org/military/world/russia/ak-100.htm",
-   "sha256": "232c31676d021011f9ddbbe9c0b8c6824adda78877f2e19af12cb69ba22044a0"
+   "sha256": "232c31676d021011f9ddbbe9c0b8c6824adda78877f2e19af12cb69ba22044a0",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "gs_ak12",
    "title": "GlobalSecurity.org - AK-12",
    "url": "https://www.globalsecurity.org/military/world/russia/ak-12.htm",
-   "sha256": "3af163dca3ff87a64e25fa6468d8be3df7698f34bcbf0ff8277a187481e689f2"
+   "sha256": "3af163dca3ff87a64e25fa6468d8be3df7698f34bcbf0ff8277a187481e689f2",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "gs_ak308",
    "title": "GlobalSecurity.org - AK-308",
    "url": "https://www.globalsecurity.org/military/world/russia/ak-308.htm",
-   "sha256": "f83530170281be3216bc6fb4afffc4fb7c3d682b371d2a1d69ba2d475250ec4a"
+   "sha256": "f83530170281be3216bc6fb4afffc4fb7c3d682b371d2a1d69ba2d475250ec4a",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "gs_dragunov",
    "title": "GlobalSecurity.org - Dragunov SVD Sniper Rifle",
    "url": "https://www.globalsecurity.org/military/world/russia/dragunov.htm",
-   "sha256": "4d9ea3e081f5260749283ee3f43ac51de8f818e4c5c404097dff3d3dff9d2e1a"
+   "sha256": "4d9ea3e081f5260749283ee3f43ac51de8f818e4c5c404097dff3d3dff9d2e1a",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "zastava_m21",
    "title": "Zastava Arms - Assault Rifle M21, technical characteristics (archived 2019-10-18)",
    "url": "https://web.archive.org/web/20191018052440/http://www.zastava-arms.rs/en/militaryproduct/assault-rifle-m21",
-   "sha256": "ec0ab64c8aab702055962cf1ab771bba4127ea4c2e4e323ebdf18900b3221c8d"
+   "sha256": "ec0ab64c8aab702055962cf1ab771bba4127ea4c2e4e323ebdf18900b3221c8d",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "zastava_m91",
    "title": "Zastava Arms - Sniper Rifle M91, technical characteristics (archived 2019-10-18)",
    "url": "https://web.archive.org/web/20191018054021/http://www.zastava-arms.rs/en/militaryproduct/sniper-rifle-m91",
-   "sha256": "8e8a01f66680d2d0bc46a05484a932554822857a79b8bf7d0775e09929005f78"
+   "sha256": "8e8a01f66680d2d0bc46a05484a932554822857a79b8bf7d0775e09929005f78",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ia_galil_arm_manual",
    "title": "Galil ARM rifle manual (commercial/import manual, English)",
    "url": "https://archive.org/download/manuals.content.like.stevespages/galil_arm.pdf",
-   "sha256": "16c9c75c6a068664beac699d1180c53b0bc7d17a1d140f9359b2376430ccdf3e"
+   "sha256": "16c9c75c6a068664beac699d1180c53b0bc7d17a1d140f9359b2376430ccdf3e",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ia_valmet_m76_manual",
    "title": "Valmet M76 rifle manual (English)",
    "url": "https://archive.org/download/manuals.content.like.stevespages/valmet_m76.pdf",
-   "sha256": "a1fb3c50f5d45711683f6fb66c20c1324677054c33271f77af478bcc1280a99d"
+   "sha256": "a1fb3c50f5d45711683f6fb66c20c1324677054c33271f77af478bcc1280a99d",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ia_sks_instruction_manual",
    "title": "SKS rifle instruction manual (commercial/import manual, English)",
    "url": "https://archive.org/download/manuals.content.like.stevespages/sks_instruction_manual.pdf",
-   "sha256": "16a4a06de37d93fd2bdd7dbd6fa4ded6d814e1ea66e639c5677772539b8d90fb"
+   "sha256": "16a4a06de37d93fd2bdd7dbd6fa4ded6d814e1ea66e639c5677772539b8d90fb",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ia_romak_3_manual",
    "title": "Romak 3 (7.62x54R marksman rifle) manual (commercial/import manual, English)",
    "url": "https://archive.org/download/manuals.content.like.stevespages/romak_3.pdf",
-   "sha256": "93c3c2453cdac8baac1f79db8372a0a8f0d4589826cb724b46b809a48b376557"
+   "sha256": "93c3c2453cdac8baac1f79db8372a0a8f0d4589826cb724b46b809a48b376557",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ia_norinco_mak90_manual",
    "title": "Norinco MAK-90 semi-automatic rifle manual (commercial/import manual, English)",
    "url": "https://archive.org/download/manuals.content.like.stevespages/norinco_mak_90.pdf",
-   "sha256": "47f79129795bcd29dc28739a92ea3679b3b2b1976cf663f5afed8986cc435496"
+   "sha256": "47f79129795bcd29dc28739a92ea3679b3b2b1976cf663f5afed8986cc435496",
+   "capture": "local-cache-only"
   }
  ],
  "designations": [

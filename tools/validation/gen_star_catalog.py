@@ -22,7 +22,12 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-SRC = ROOT / "data" / "astronomy" / "sources" / "catalog.dat"
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from tools.validation import source_cache  # noqa: E402
+
+SRC = source_cache.capture_path("astronomy", "catalog.dat")
 OUT = (
     ROOT / "addons" / "lighting" / "functions" / "astronomy" / "fnc_starCatalogData.sqf"
 )
@@ -101,6 +106,12 @@ def build():
 
 
 def main():
+    if not SRC.is_file():
+        print(
+            "catalog.dat is not held in {}; the star catalogue check was "
+            "skipped".format(source_cache.cache_root())
+        )
+        return 0
     text = build()
     if "--check" in sys.argv:
         if OUT.exists() and OUT.read_text(encoding="utf-8") == text:

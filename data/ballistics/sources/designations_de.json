@@ -5,325 +5,379 @@
    "source_id": "hk_g36_td",
    "title": "Heckler & Koch G36 Technical Data (Cal. 5.56 mm x 45; G36 / G36K / G36C and AG36 A1)",
    "url": "https://hk-manuals.s3.amazonaws.com/files/Military/G36/G36_Technical_Data.pdf",
-   "sha256": "c5f1b6e3cf3de42588259b088c30ad11704590eaa5e278262af7fe9125f3a9a3"
+   "sha256": "c5f1b6e3cf3de42588259b088c30ad11704590eaa5e278262af7fe9125f3a9a3",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_hk416_td",
    "title": "Heckler & Koch HK416 Technical Data (Cal. 5.56 mm x 45; HK416 models and GLM 40 mm)",
    "url": "https://hk-manuals.s3.amazonaws.com/files/Military/HK416/HK416_Technical_Data.pdf",
-   "sha256": "6be8e4d917054f1e5b12065026ddee62b70193819040a8c1bac11b1708cfe934"
+   "sha256": "6be8e4d917054f1e5b12065026ddee62b70193819040a8c1bac11b1708cfe934",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_hk417_td",
    "title": "Heckler & Koch HK417 Technical Data (Cal. 7.62 mm x 51)",
    "url": "https://hk-manuals.s3.amazonaws.com/files/Military/HK417/HK417_Technical_Data.pdf",
-   "sha256": "93587acdeeeea0f5cb21380652509ed40d0ab73eeeb04a11be88cf64e01b506d"
+   "sha256": "93587acdeeeea0f5cb21380652509ed40d0ab73eeeb04a11be88cf64e01b506d",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_mg4_td",
    "title": "Heckler & Koch MG4E Technical Data (Cal. 5.56 mm x 45)",
    "url": "https://hk-manuals.s3.amazonaws.com/files/Military/MG4/HK_MG4E_Technical_Data.pdf",
-   "sha256": "ee6e49113d21369e62de64b62f9ebd6660dcfa6eabe01512a41d64547ad75e3d"
+   "sha256": "ee6e49113d21369e62de64b62f9ebd6660dcfa6eabe01512a41d64547ad75e3d",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_hk121_td",
    "title": "Heckler & Koch HK121 Technical Data (Cal. 7.62 mm x 51; HK121 I / U / S / EBW)",
    "url": "https://hk-manuals.s3.amazonaws.com/files/Military/HK121/HK121_Technical_Data.pdf",
-   "sha256": "066fef3d6ad75dd3be574470102c8c36c794f36d2d9a37e9f683fa89465a547b"
+   "sha256": "066fef3d6ad75dd3be574470102c8c36c794f36d2d9a37e9f683fa89465a547b",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_mp7_td",
    "title": "Heckler & Koch MP7A1 Technical Data (Cal. 4.6 mm x 30)",
    "url": "https://hk-manuals.s3.amazonaws.com/files/Military/MP7/MP7A1_Technical_Data.pdf",
-   "sha256": "6985bc5df05ba4c850fc316ca85448053ad472dd743fe87a458a26d7a5c824d8"
+   "sha256": "6985bc5df05ba4c850fc316ca85448053ad472dd743fe87a458a26d7a5c824d8",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_g28_td",
    "title": "Heckler & Koch G28E Technical Data (Cal. 7.62 mm x 51; G28 E2 Standard / E3 Patrol)",
    "url": "https://hk-manuals.s3.amazonaws.com/files/Military/G28/G28E_Technical_Data.pdf",
-   "sha256": "c22ce1f575ada5de44095609005be760c296dbe1bcca4fee782b253f00ce2002"
+   "sha256": "c22ce1f575ada5de44095609005be760c296dbe1bcca4fee782b253f00ce2002",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_g11_td",
    "title": "Heckler & Koch G11 Technical Data (Cal. 4.73 mm x 33, caseless)",
    "url": "https://hk-manuals.s3.amazonaws.com/files/Military/G11/G11_Technical_Data.pdf",
-   "sha256": "96b6c00037c49c1a1ad5d1825aae493ad997fbb5d6962c46eac396cf89da13bf"
+   "sha256": "96b6c00037c49c1a1ad5d1825aae493ad997fbb5d6962c46eac396cf89da13bf",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_hk433_brochure",
    "title": "Heckler & Koch HK433 Brochure (Cal. 5.56 mm x 45)",
    "url": "https://hk-manuals.s3.amazonaws.com/files/Military/HK433/HK433_Brochure.pdf",
-   "sha256": "c47f6022acb5a8b9609e1be246026f53f2f4b483cc6a8e003039eba9e625d221"
+   "sha256": "c47f6022acb5a8b9609e1be246026f53f2f4b483cc6a8e003039eba9e625d221",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_hk437_handbook",
    "title": "Heckler & Koch HK437 Handbook (Cal. .300 BLK / 7.62 mm x 35)",
    "url": "https://hk-manuals.s3.amazonaws.com/files/Military/HK433/HK437_Handbook.pdf",
-   "sha256": "e4d9db9fd848775947a9ce2d4d04aa9005e3179c97ab046d9ed5b8602ca199a4"
+   "sha256": "e4d9db9fd848775947a9ce2d4d04aa9005e3179c97ab046d9ed5b8602ca199a4",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_mp5_family",
    "title": "Heckler & Koch MP5 Submachine Gun Family (model and variant descriptions, incl. MP5A2-A5, MP5K, MP5SD, MP5/10, MP5/40)",
    "url": "https://hk-manuals.s3.amazonaws.com/files/Military/MP5/HK_MP5_Submachine_Gun_Family.pdf",
-   "sha256": "3b05a27967e4f4cac9c86c608fba5e48ce4f023ea231faaa48ece5039ef91054"
+   "sha256": "3b05a27967e4f4cac9c86c608fba5e48ce4f023ea231faaa48ece5039ef91054",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_mp5k_om",
    "title": "Heckler & Koch MP5K Operator's Manual (Cal. 9 mm x 19)",
    "url": "https://hk-manuals.s3.amazonaws.com/files/Military/MP5/MP5K_Operators_Manual.pdf",
-   "sha256": "d0e92b8a1dc67a302d5f125a124bf4cf7b5e371c6ca91b60b7bfac601c1f9fa9"
+   "sha256": "d0e92b8a1dc67a302d5f125a124bf4cf7b5e371c6ca91b60b7bfac601c1f9fa9",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_mp5a4a5_manual",
    "title": "Heckler & Koch MP5A4/A5 Instruction Manual (Cal. 9 mm x 19)",
    "url": "https://hk-manuals.s3.amazonaws.com/files/Military/MP5/HK_MP5A4-A5_Instruction_Manual.pdf",
-   "sha256": "5505f7700cbbbd0e01e393afa92b8af3cbb83203d763f03566c78a44d48a5106"
+   "sha256": "5505f7700cbbbd0e01e393afa92b8af3cbb83203d763f03566c78a44d48a5106",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_mp5kpdw_manual",
    "title": "Manual HK MP5 KPDW 2252330 EN/FR (Heckler & Koch)",
    "url": "https://archive.org/download/manual-hk-mp-5-kpdw-2252330-en-fr-08-r-19/Manual%20HK%20MP5%20KPDW%202252330%20EN%20FR%2008R19_text.pdf",
-   "sha256": "2b8099be08cb7d5096b1b91659ee4cfd667f33d6662dc65dbb277a3720c8a0c4"
+   "sha256": "2b8099be08cb7d5096b1b91659ee4cfd667f33d6662dc65dbb277a3720c8a0c4",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_g3_rifle",
    "title": "Automatic Rifle HK G3, Cal. 7.62 mm x 51 NATO, Technical Description (Heckler & Koch G3 manual)",
    "url": "https://hk-manuals.s3.amazonaws.com/files/Military/G3/HK_G3_Rifle.pdf",
-   "sha256": "e6e24a62a5b7a9b0711efbf0a8489163dd01c74df3c176b309d1384e8d856a69"
+   "sha256": "e6e24a62a5b7a9b0711efbf0a8489163dd01c74df3c176b309d1384e8d856a69",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_g3k_parts",
    "title": "Heckler & Koch G3K Spare Parts List (Cal. 7.62 mm x 51 NATO)",
    "url": "https://hk-manuals.s3.amazonaws.com/files/Catalogs/Spare_Parts/G3K.pdf",
-   "sha256": "0d8f96f65b4408d74fac67410214faa01133a8939987d688765350d7da804808"
+   "sha256": "0d8f96f65b4408d74fac67410214faa01133a8939987d688765350d7da804808",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_g3sg1_optics",
    "title": "Sniper Rifles G3 SG1 and HK 33 SG1 (Hensoldt telescopic sight instructions, Heckler & Koch)",
    "url": "https://hk-manuals.s3.amazonaws.com/files/Misc/Optics/Sniper_Rifles_G3_SG1_and_HK_33_SG1.pdf",
-   "sha256": "2e6efe9b08f98b823feafc28ce2c842a628739edf0f2de9acc60ffad9f8ba103"
+   "sha256": "2e6efe9b08f98b823feafc28ce2c842a628739edf0f2de9acc60ffad9f8ba103",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_hk21e_parts",
    "title": "Heckler & Koch HK21E Spare Parts List (Cal. 7.62 mm x 51)",
    "url": "https://hk-manuals.s3.amazonaws.com/files/Armorer/HK21E/HK21E_Parts_List.pdf",
-   "sha256": "d24b137b4912f6a9d40a538c522a765036ef5f529dde286da2a2a1989f23e49e"
+   "sha256": "d24b137b4912f6a9d40a538c522a765036ef5f529dde286da2a2a1989f23e49e",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_hk53_parts",
    "title": "Heckler & Koch HK53 Spare Parts List (Cal. 5.56 mm x 45)",
    "url": "https://hk-manuals.s3.amazonaws.com/files/Catalogs/Spare_Parts/HK53.pdf",
-   "sha256": "8ab9270ab04ac59f189601fb036af86382b94924557a964c6415af6093c05d3c"
+   "sha256": "8ab9270ab04ac59f189601fb036af86382b94924557a964c6415af6093c05d3c",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_hk23e_parts",
    "title": "Heckler & Koch HK23E Spare Parts List (Cal. 5.56 mm x 45)",
    "url": "https://hk-manuals.s3.amazonaws.com/files/Catalogs/Spare_Parts/HK23E.pdf",
-   "sha256": "903046770cd7d4ed89202e2eb6d130745f3d86a62cad0fcfdc58ac4479aa1ec9"
+   "sha256": "903046770cd7d4ed89202e2eb6d130745f3d86a62cad0fcfdc58ac4479aa1ec9",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_hk33_manual",
    "title": "Heckler & Koch HK33/HK53 Instruction Manual (Cal. 5.56 mm x 45)",
    "url": "https://hk-manuals.s3.amazonaws.com/files/Military/HK33_HK53/HK33_HK53_Instruction_Manual.pdf",
-   "sha256": "8366cf46c98fbb3e1f4c6a234c4e8e1b3f357de9900e210e798a0cdb25852714"
+   "sha256": "8366cf46c98fbb3e1f4c6a234c4e8e1b3f357de9900e210e798a0cdb25852714",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_hk11_brief",
    "title": "Heckler & Koch HK11 Light Machine Gun, Brief Description (Cal. 7.62 mm x 51)",
    "url": "https://hk-manuals.s3.amazonaws.com/files/Military/HK11/Brief_Description_of_the_HK11_LMG.pdf",
-   "sha256": "d5b103519ceb203828e9aea35ea5e04a6a8a9ae6295413839ff415f7daacff70"
+   "sha256": "d5b103519ceb203828e9aea35ea5e04a6a8a9ae6295413839ff415f7daacff70",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_psg1_manual",
    "title": "Heckler & Koch PSG1 Instruction Manual (Cal. 7.62 mm x 51)",
    "url": "https://hk-manuals.s3.amazonaws.com/files/Military/PSG1/PSG1_Instruction_Manual.pdf",
-   "sha256": "97217a410b23741f7f125e5c2e39af786c4ad2ee7ded1044dd0b1d4d4a0b910f"
+   "sha256": "97217a410b23741f7f125e5c2e39af786c4ad2ee7ded1044dd0b1d4d4a0b910f",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_msg90_manual",
    "title": "Heckler & Koch MSG90 Instruction Manual (Cal. 7.62 mm x 51)",
    "url": "https://hk-manuals.s3.amazonaws.com/files/Military/MSG90/MSG90_Instruction_Manual.pdf",
-   "sha256": "33ad900ab46efae5c218503a5d3d083dcc4026583c5db2cf3e9b26cffab404c8"
+   "sha256": "33ad900ab46efae5c218503a5d3d083dcc4026583c5db2cf3e9b26cffab404c8",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_p8_om",
    "title": "Heckler & Koch P8 Selfloading Pistol Operator's Manual (Cal. 9 mm x 19)",
    "url": "https://hk-manuals.s3.amazonaws.com/files/Pistol/P8/P8_Instruction_Manual.pdf",
-   "sha256": "defa787dc4f7b97c64f327e22bd415d2fc3eaa7ba6dbea01f0fb7e27996598d7"
+   "sha256": "defa787dc4f7b97c64f327e22bd415d2fc3eaa7ba6dbea01f0fb7e27996598d7",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_p7_om",
    "title": "Heckler & Koch P7 Series Operator's Manual (Cal. 9 mm x 19)",
    "url": "https://hk-manuals.s3.amazonaws.com/files/Pistol/P7/P7_Series_Operators_Manual.pdf",
-   "sha256": "f159d55d466407b5139f1cf6b0acf9567e25cb31c6da294ba01f6dc0dc3779cd"
+   "sha256": "f159d55d466407b5139f1cf6b0acf9567e25cb31c6da294ba01f6dc0dc3779cd",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_p9s_manual",
    "title": "Heckler & Koch P9S Manual (Cal. 9 mm x 19)",
    "url": "https://hk-manuals.s3.amazonaws.com/files/Pistol/P9/HK_P9S_Manual.pdf",
-   "sha256": "a6b511a9065dafd68840d760beab1ffc3638e794f29fb67d788b9eb43b944276"
+   "sha256": "a6b511a9065dafd68840d760beab1ffc3638e794f29fb67d788b9eb43b944276",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_p30_manual",
    "title": "Heckler & Koch P30 / P30L / P30SK Pistol Operator's Manual (Cal. 9 mm x 19) - Internet Archive edition",
    "url": "https://archive.org/download/hk-p30-manual/hk-p30-manual_djvu.txt",
-   "sha256": "b833da144c87ee45be322e2ef0ba14a773f175e5dff483db722f2fbb8ea71ccb"
+   "sha256": "b833da144c87ee45be322e2ef0ba14a773f175e5dff483db722f2fbb8ea71ccb",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_p30_opmanual",
    "title": "Heckler & Koch P30 / P30L / P30SK Pistol Operator's Manual (Cal. 9 mm x 19)",
    "url": "https://hk-manuals.s3.amazonaws.com/files/Pistol/P30/P30-P30L-P30SK_Pistol_Operators_Manual.pdf",
-   "sha256": "0e7b86c7a076c92c30d3ba06c05ec26bfcdddd3d8a3063f065f8be1ff67703da"
+   "sha256": "0e7b86c7a076c92c30d3ba06c05ec26bfcdddd3d8a3063f065f8be1ff67703da",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_p2000_manual",
    "title": "Heckler & Koch P2000 Series Operator's Manual (Cal. 9 mm x 19 / .40 S&W)",
    "url": "https://hk-manuals.s3.amazonaws.com/files/Pistol/P2000/P2000_Series_Operators_Manual.pdf",
-   "sha256": "e3aa0e84c87d42fe7b91c85ed745ad9fb8b0f6d24ee8753e1a9d10993b6064dd"
+   "sha256": "e3aa0e84c87d42fe7b91c85ed745ad9fb8b0f6d24ee8753e1a9d10993b6064dd",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_vp70z_manual",
    "title": "Heckler & Koch VP70Z Instruction Manual (Cal. 9 mm x 19)",
    "url": "https://hk-manuals.s3.amazonaws.com/files/Pistol/VP70Z/VP70Z_Instruction_Manual.pdf",
-   "sha256": "4edb2b741967401472533a133b645a4eb76ed214d7dc594a9fb50dcaf7786888"
+   "sha256": "4edb2b741967401472533a133b645a4eb76ed214d7dc594a9fb50dcaf7786888",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_hk4_manual",
    "title": "Heckler & Koch HK4 Automatic Pistol Manual (.22 LR / .25 ACP / .32 ACP / .380 ACP)",
    "url": "https://hk-manuals.s3.amazonaws.com/files/Pistol/HK4/HK4_Automatic_Pistol.pdf",
-   "sha256": "af279cfac1eff7b86bf91587d715ce1aa2a904449ce1a4ead745617371d0448e"
+   "sha256": "af279cfac1eff7b86bf91587d715ce1aa2a904449ce1a4ead745617371d0448e",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_usp_om",
    "title": "Heckler & Koch USP Operator's Manual (.40 S&W / 9 mm x 19 / .45 ACP)",
    "url": "https://archive.org/download/lots-of-gun-pdfs-firearms-manuals/Gun%20PDFs/hk_uspt.pdf",
-   "sha256": "0be568e8f677cc444a9dea3f5fd08bd8045a326aba0c2e7151e38bec5e046877"
+   "sha256": "0be568e8f677cc444a9dea3f5fd08bd8045a326aba0c2e7151e38bec5e046877",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_uspc_om",
    "title": "Heckler & Koch USP Compact Operator's Manual (.45 ACP / .40 S&W / .357 SIG / 9 mm x 19)",
    "url": "https://archive.org/download/lots-of-gun-pdfs-firearms-manuals/Gun%20PDFs/hk_uspc.pdf",
-   "sha256": "2100577d66251e8feee05a9e4d06a8946cd1c8c49c8a3e5c8bf9b1b559d6004a"
+   "sha256": "2100577d66251e8feee05a9e4d06a8946cd1c8c49c8a3e5c8bf9b1b559d6004a",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_usp_tactical_om",
    "title": "Heckler & Koch USP Tactical, Addition to the USP Operator's Manual",
    "url": "https://hk-manuals.s3.amazonaws.com/files/Pistol/USP/USP_Tactical_Operators_Manual.pdf",
-   "sha256": "efd7d8b5efc4c7b163a6086642569150d949025b2966f5f45cfd79c70c040f2a"
+   "sha256": "efd7d8b5efc4c7b163a6086642569150d949025b2966f5f45cfd79c70c040f2a",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_usp_expert_manual",
    "title": "Heckler & Koch USP Expert Instruction Manual (9 mm x 19 / .40 S&W / .45 ACP)",
    "url": "https://hk-manuals.s3.amazonaws.com/files/Pistol/USP/USP_Expert_Instruction_Manual.pdf",
-   "sha256": "a8806ecab13c4f43a07dd9078a42bf2415263e016d28164bfc7fdbef003187ae"
+   "sha256": "a8806ecab13c4f43a07dd9078a42bf2415263e016d28164bfc7fdbef003187ae",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_usp_match_manual",
    "title": "Heckler & Koch Match USP Instruction Manual (.45 ACP)",
    "url": "https://hk-manuals.s3.amazonaws.com/files/Pistol/USP/Match_USP_Instruction_Manual.pdf",
-   "sha256": "120a381e340ccaf21ab8e981c49bfb457bc9c2c0b687b4d733626adfb99bd5b2"
+   "sha256": "120a381e340ccaf21ab8e981c49bfb457bc9c2c0b687b4d733626adfb99bd5b2",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_mark23_om",
    "title": "Heckler & Koch Mark 23 Operator's Manual (.45 ACP)",
    "url": "https://archive.org/download/lots-of-gun-pdfs-firearms-manuals/Gun%20PDFs/hk_mark23.pdf",
-   "sha256": "53b7e099927746bfe74609b2cd553cbd93f4fce100cf257fff08f8b5fb51d67c"
+   "sha256": "53b7e099927746bfe74609b2cd553cbd93f4fce100cf257fff08f8b5fb51d67c",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_ump_om",
    "title": "Heckler & Koch UMP 45 / UMP 40 Operator's Manual (Cal. .45 ACP / .40 S&W)",
    "url": "https://archive.org/download/lots-of-gun-pdfs-firearms-manuals/Gun%20PDFs/hk_ump40.pdf",
-   "sha256": "61fcc9d9e508e6eaa8aec23df0dab8aed8b5c4e8a0ba65204d04b839817637b7"
+   "sha256": "61fcc9d9e508e6eaa8aec23df0dab8aed8b5c4e8a0ba65204d04b839817637b7",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_usc_om",
    "title": "Heckler & Koch USC Selfloading Carbine Operator's Manual (Cal. .45 ACP)",
    "url": "https://hk-manuals.s3.amazonaws.com/files/Civilian/USC/USC_Carbine_Operators_Manual.pdf",
-   "sha256": "d73a09e900a7938c8e1e3de2576e9308b369955a12166530774d95ec2bd9cda2"
+   "sha256": "d73a09e900a7938c8e1e3de2576e9308b369955a12166530774d95ec2bd9cda2",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_sl8_manual",
    "title": "Heckler & Koch SL8-1 Rifle Operator's Manual (Cal. .223 Remington)",
    "url": "https://archive.org/download/lots-of-gun-pdfs-firearms-manuals/Gun%20PDFs/hk_sl81.pdf",
-   "sha256": "81e87e1290a69340bbb43eaf0ac01545fdfd70005bbf0ccae89225dae6246e80"
+   "sha256": "81e87e1290a69340bbb43eaf0ac01545fdfd70005bbf0ccae89225dae6246e80",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_glm_info",
    "title": "Heckler & Koch GLM Info Sheet (40 mm x 46 add-on grenade launcher)",
    "url": "https://hk-manuals.s3.amazonaws.com/files/Military/GLM/GLM_Info_Sheet.pdf",
-   "sha256": "94649da930bd127d4b8bc813e44d0a42d9b6795721f0703cdceecdfd87d0a27b"
+   "sha256": "94649da930bd127d4b8bc813e44d0a42d9b6795721f0703cdceecdfd87d0a27b",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_40mm_systems",
    "title": "Heckler & Koch 40 mm Systems catalogue (AG36, AG36 A1, GLM, LLG40, GMG E)",
    "url": "https://hk-manuals.s3.amazonaws.com/files/Catalogs/Military/HK_40mm_Systems.pdf",
-   "sha256": "4fa07caaf1fa13f7af146ab4c927b543d773da7dd52b26e20b00dcaea696b733"
+   "sha256": "4fa07caaf1fa13f7af146ab4c927b543d773da7dd52b26e20b00dcaea696b733",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_m320_guide",
    "title": "US Army M320 Grenade Launcher Guide (Heckler & Koch M320)",
    "url": "https://hk-manuals.s3.amazonaws.com/files/Military/GLM/US_Army_M320_Guide.pdf",
-   "sha256": "04a3542e07742710a5278d4fdaac6de269a104ed2f90427fcb90e957cb81377d"
+   "sha256": "04a3542e07742710a5278d4fdaac6de269a104ed2f90427fcb90e957cb81377d",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_catalog_2009",
    "title": "HK Product Catalog 2009 (Heckler & Koch; OCR text edition)",
    "url": "https://archive.org/download/hk-product-catalog-2009/HK%20Product%20Catalog%20-%202009_djvu.txt",
-   "sha256": "d40398e6c52955434a78fc6c2f6ef2a9d6d6a390ea6f1e46ece0f9b0e62c0b30"
+   "sha256": "d40398e6c52955434a78fc6c2f6ef2a9d6d6a390ea6f1e46ece0f9b0e62c0b30",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_catalog_2018",
    "title": "Heckler & Koch Combined Catalog 2018",
    "url": "https://hk-manuals.s3.amazonaws.com/files/Catalogs/Combined/HK_Combined_Catalog_2018.pdf",
-   "sha256": "13dec80e5ebeee058b26d588ab876d5d18ca2fc9b4b89fc02174ed51b8132c46"
+   "sha256": "13dec80e5ebeee058b26d588ab876d5d18ca2fc9b4b89fc02174ed51b8132c46",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_infobrief_heer_2022",
    "title": "InfoBrief Heer: Der universelle Handwaffenlieferant der Deutschen Bundeswehr seit mehr als 60 Jahren (Heckler & Koch, 2022)",
    "url": "https://www.heckler-koch.com/Downloads/Fachpublikationen/DE/2022-02%20InfoBrief%20Heer-Der%20universelle%20Handwaffenlieferant%20der%20Deutschen%20Bundeswehr%20seit%20mehr%20als%2060%20Jahren.pdf",
-   "sha256": "a53b5da02d9e3095fea67ffd94a0ed16e86c5f0a1e2b9f56ae4f938e09be9361"
+   "sha256": "a53b5da02d9e3095fea67ffd94a0ed16e86c5f0a1e2b9f56ae4f938e09be9361",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_g95k_cpm_2018",
    "title": "G95k - Das neue Standard-Sturmgewehr der Spezialkraefte der Bundeswehr (cpm Forum / Heckler & Koch, 2018)",
    "url": "https://www.heckler-koch.com/Downloads/Fachpublikationen/DE/2018-03%20cpm%20Forum-G95k%20Das%20neue%20Standard-Sturmgewehr%20der%20Spezialkr%C3%A4fte%20der%20Bundeswehr.pdf",
-   "sha256": "bd7c5a1609819002b1c8678fa541d00110ce405006210aa59aaed56f4435940f"
+   "sha256": "bd7c5a1609819002b1c8678fa541d00110ce405006210aa59aaed56f4435940f",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_g95a1_wtr_2023",
    "title": "In dritter Generation - Das neue Standardsturmgewehr der Bundeswehr aus dem Hause Heckler & Koch (WTR / Heckler & Koch, 2023)",
    "url": "https://www.heckler-koch.com/Downloads/Fachpublikationen/DE/2023-10%20WTR%20Wirkung%20FKH-In%20dritter%20Generation-Das%20neue%20Standardstrumgewehr%20der%20Bundeswehr.pdf",
-   "sha256": "12912ae0156444c0536b6fe9b326942974b2e48c0c14e8a0a81c81ebdb1219fe"
+   "sha256": "12912ae0156444c0536b6fe9b326942974b2e48c0c14e8a0a81c81ebdb1219fe",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_mp7_page",
    "title": "Heckler & Koch MP7 product page (submachine guns; MP7 A1 and MP7 A2 variants)",
    "url": "https://www.heckler-koch.com/en/Products/Military%20and%20Law%20Enforcement/Submachine%20guns/MP7",
-   "sha256": "24c03e8c3656597b71cd5095e2821ccaed1b8bb999bb39c71ed92b3a99ea7485"
+   "sha256": "24c03e8c3656597b71cd5095e2821ccaed1b8bb999bb39c71ed92b3a99ea7485",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_mg3_om",
    "title": "Machine Gun MG3 Operator's Manual 1992 (Cal. 7.62 mm x 51) - Internet Archive edition",
    "url": "https://archive.org/download/machine-gun-mg-3-operators-manual-1992/Machine%20Gun%20MG3%20Operator%27s%20manual%20%201992_djvu.txt",
-   "sha256": "8823f89f9d40f2cb39d591ae75f14d616ff71d9e9de6a3f6c3c06058982f4b08"
+   "sha256": "8823f89f9d40f2cb39d591ae75f14d616ff71d9e9de6a3f6c3c06058982f4b08",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hk_mg3e_tm",
    "title": "Technical Manual for Machine Gun MG3e (Cal. 7.62 mm x 51) - Internet Archive edition",
    "url": "https://archive.org/download/technical-manual-for-machine-gun-mg-3e/Technical%20Manual%20For%20Machine%20Gun%20MG3e_djvu.txt",
-   "sha256": "bbf12754136a961991a25e853951b64632c81f4233a0125f2f2fac9ae1b8f51b"
+   "sha256": "bbf12754136a961991a25e853951b64632c81f4233a0125f2f2fac9ae1b8f51b",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "tme_30_451",
    "title": "TM-E 30-451 Handbook on German Military Forces (US War Department, March 1945)",
    "url": "https://archive.org/download/tm-e-30-451-handbook-on-german-military-forces-1945/TM-E%2030-451%20Handbook%20On%20German%20Military%20Forces%20%201945_djvu.txt",
-   "sha256": "b4dde2feec48caf4d49bd826f9d475f3fb254d72f1a5f42abf0fc94a23bd4605"
+   "sha256": "b4dde2feec48caf4d49bd826f9d475f3fb254d72f1a5f42abf0fc94a23bd4605",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "coe_1945",
    "title": "Catalog of Enemy Ordnance Materiel (Office of the Chief of Ordnance, US Army, 1945)",
    "url": "https://archive.org/download/CatalogOfEnemyOrdnanceMateriel/CatalogOfEnemyOrdnanceMateriel_djvu.txt",
-   "sha256": "fe5433dbdcfa7935c0eb243d35a656b7c5d1473b05c9587c89affdbe2e394c65"
+   "sha256": "fe5433dbdcfa7935c0eb243d35a656b7c5d1473b05c9587c89affdbe2e394c65",
+   "capture": "local-cache-only"
   }
  ],
  "designations": [

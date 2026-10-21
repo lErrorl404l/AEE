@@ -5,13 +5,15 @@
       "source_id": "mri_de_manual_2023",
       "title": "Magnum Research Desert Eagle Owner's Manual (DE-Manual.pdf), specifications tables",
       "url": "https://www.magnumresearch.com/wp-content/uploads/2023/01/DE-Manual.pdf",
-      "sha256": "3ff8ec8bf47ae654098d79e4499d8b9db3153710aec369c6ff8b7f5352631598"
+      "sha256": "3ff8ec8bf47ae654098d79e4499d8b9db3153710aec369c6ff8b7f5352631598",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "kfg_catalog_12th_2026",
       "title": "Kahr Firearms Group Product Catalog, 12th Edition 2026 (Magnum Research BFR specification tables)",
       "url": "https://www.magnumresearch.com/wp-content/uploads/2026/01/KFG-Catalog-12th-Edition-2026.pdf",
-      "sha256": "c0367ed0056d2d765bb06a55bdb7fd11e6d7a5e9dc99555737379e7ff3036c41"
+      "sha256": "c0367ed0056d2d765bb06a55bdb7fd11e6d7a5e9dc99555737379e7ff3036c41",
+      "capture": "local-cache-only"
     }
   ],
   "weapons": [

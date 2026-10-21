@@ -6,6 +6,7 @@
    "title": "AEP-97 M-CMOPI, EPVAT proof barrel rifling, per calibre annex",
    "url": "https://diweb.hq.nato.int/",
    "sha256": "72a1a153108d161c7fdb52ab26d60510d10765bc9bfbdd546c9d1c88390bbf8b",
+   "capture": "local-cache-only",
    "note": "The rifling tables of the NATO EPVAT proof barrels, one annex per calibre."
   }
  ],

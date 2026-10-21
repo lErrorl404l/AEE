@@ -2,6 +2,7 @@
  "url": "https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf",
  "retrieved": "2026-09-22",
  "sha256": "62142ccb829e17dc871bda89100da321ffdfc529d6ea34d037b2dd5241bbebd4",
+ "capture": "local-cache-only",
  "loads": [
   {
    "cartridge": "17 Mach 2",

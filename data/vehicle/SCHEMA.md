@@ -45,12 +45,35 @@ array. One entry is one held document.
 
 Required fields are `source_id`, `tier`, `type`, `title`, `identifier`
 and `retrieved`. Expected fields are `edition`, `locator`, `published`,
-`url`, `archive_ref`, `licence`, `primary_held`, `sha256` and `note`.
+`url`, `archive_ref`, `licence`, `primary_held`, `sha256`, `capture` and
+`note`.
 
 - `source_id`: stable snake_case key. One id per document.
-- `sha256`: the digest of the held bytes under `data/vehicle/sources/`.
+- `sha256`: the digest of the retrieved bytes. The bytes are held in the
+  local source cache, not in the repository.
+- `capture`: `local-cache-only` when the record holds bytes. The bytes are
+  in the machine-local cache and are not redistributed.
 - `primary_held`: true only when the primary document is held. A
   secondary copy is never marked primary.
+
+## Captures are held outside the repository
+
+The repository publishes the extracted data and its citations. It never
+publishes the captured third-party pages, drawings or manuals.
+
+- The bytes a record's `sha256` identifies are held in the machine-local
+  source cache that `tools/validation/source_cache.py` names, normally
+  `$HOME/.local/share/aee/source-cache/<domain>/`. Set `AEE_SOURCE_CACHE` to
+  move the cache.
+- A record that holds bytes carries `"capture": "local-cache-only"`. The
+  value states that the bytes are in the local cache and are not
+  redistributed. `sha256` identifies the retrieved bytes. It does not mean
+  the bytes ship with the repository.
+- Only `.json` may be tracked under a `sources/` directory.
+  `tools/tests/test_source_capture_policy.py` fails, naming the path, when a
+  tracked file has any other extension.
+- A verifier that hashes a capture reads the cache and skips cleanly when
+  the cache is absent, so a clean clone passes.
 
 ## 3. Source tiers and order
 
