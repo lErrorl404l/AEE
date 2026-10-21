@@ -154,23 +154,43 @@ groups make up the rest:
 | Bound to an existing sourced entry by class name | 17 | GBU-12, GBU-16, CBU-104, CBU-105, Mk 82 SnakeEye, CRV7 (3), APKWS (3), AZP-23 (2), Kh-25 MTP/MS/MPU, GAU-12 |
 | Still type | 20 | GBU-55 and GBU-56 (LJDAM 1000/2000 lb: no catalogue entry, and a nominal weight is not a mass, so no figure is borrowed from GBU-31/32); the mod-only names M301, 902A, BA-21, FURY, Mikholit, SAMPT21, GP19, FULGER, Smokewinder, CHF/FLR, the PHAN gas bombs and the ANZ WP rockets, which name no product a source documents |
 
-## Aircraft: the type set is not only drones
+## Aircraft: the measured outcome of the class bindings
 
-46 aircraft classes are at type, and they are three different things:
+The 266 scored classes sit on sourced entries for 250 (94.0 percent). The
+figure was 221 (83.1 percent). The gain is 29 class bindings in
+`data/aircraft/class_bindings.json`. No figure and no catalogue entry was
+added. Each binding names the entry the class text already claims.
 
-- **ArmaFPV Crocus drones, 9**: `ARMAFPV_Crocus_AT_Base`, `_AP_Base` and the
-  seven `O_/B_/I_Crocus_*_TI` variants. ArmaFPV is a fictional system and
-  no published designation exists.
-- **Loadout and configuration classes of an airframe, 29**: F/A-181 Black
-  Wasp napalm and GBU fits (10), UH-80 Ghost Hawk unarmed/DAP (3), FIR ECM
-  dummies of the F-16C and F/A-18F (2), RHS AH-64D fit variants (6), the
-  Mi-8MTV-3 and Mi-24 fits (6), the SOAR MH-60M and HH-60 (2). A fit is not
-  an airframe; the airframe entry is the one that carries the figures.
-- **Real airframes at type, 8**: `fza_ah64d_b1` (AH-64D Block I),
-  `RHS_Mi24P_CAS_VVS_Base`, `rhs_mi8mtv3_base`, `RHS_Su25SM_CAS_vvs`,
-  `rhs_uh1h_hidf_gunship`, `rhsgref_mi24g_CAS` and the two Ghost Hawk base
-  classes. These are mark collisions in the aircraft corpus, not missing
-  products, and closing them is a matcher-side binding task.
+| Group | Classes | Entry |
+|---|---|---|
+| F/A-181 Black Wasp napalm and GBU loadout fits | 10 | `fa18e_super_hornet`, the entry the family class `B_Plane_Fighter_01_F` already binds |
+| UH-80 and MH-80 Ghost Hawk variants | 3 | `uh60a_black_hawk` |
+| AH-64D marks: `fza_ah64d_b1`, `fza_ah64d_b2e` and the five RHS AH-64D classes | 7 | `ah64d_apache_longbow` |
+| Gunships held by a shared role word | 4 | `mi24p_hind_f` (Mi-24P), `su25sm_frogfoot` (Su-25, 2), `uh1h_iroquois` (UH-1H) |
+| The SOAR MH-60M, the vtx UH-60M base and the HH-60G Pavehawk | 3 | `mh60m`, `uh60m_black_hawk`, `hh60g_pave_hawk` |
+| The AW101 Merlin class and the F/A-18F ECM decoy | 2 | `aw101_merlin`, `fa18f_super_hornet` |
+
+Every binding records the token that held the ladder at a tie: `a18` read
+inside `fa181`, `ah64` beside `ah6`, `cas`, `heavy`, `gunship`, `su25`,
+`mh60`, `blackhawk`, `pavehawk`, `ghost`, `hawk`, `merlin` and `hornet`.
+
+Sixteen aircraft classes stay at type, one reason each:
+
+- **ArmaFPV Crocus drones, 8**: `ARMAFPV_Crocus_AT_Base`,
+  `ARMAFPV_Crocus_AP_Base` and the six `O_/B_/I_Crocus_*_TI` variants.
+  ArmaFPV is a fictional system and no published designation exists. The six
+  sidecar classes `O_/B_/I_Crocus_*` carry no display name, so they never
+  enter the table.
+- **RHS Mi-8MTV-3, 6**: `rhs_mi8mtv3_base`, `rhs_mi8mtv3_heavy_base`,
+  `RHS_Mi8MTV3_vvs`, `RHS_Mi8mtv3_Cargo_vvs`, `RHS_Mi8MTV3_FAB_vvs` and
+  `RHS_Mi8MTV3_UPK23_vvs`. The catalogue holds no Mi-8MTV-3 entry, so the
+  keyword `mi8` ties the Mi-8T, the Mi-17 and the Mi-8AMTSh. Those are
+  different marks, so no binding is written.
+- **`RHS_AH64_base`**: its display prints `AH-64` and names no mark, and the
+  catalogue holds the AH-64A, the AH-64D and the AH-64E.
+- **`FIR_ECM_Dummy_1`**: an ECM decoy whose display prints `F-16C`, where the
+  shared alias `falcon` also answers the F-16A entry and the catalogue holds
+  two F-16C blocks. The display names no single entry.
 
 ## The last rung
 
