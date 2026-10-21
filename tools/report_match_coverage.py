@@ -1447,6 +1447,21 @@ def measure(scanned: list, base: set[str]) -> dict:
         match_e = equipment_matcher(
             eq_table, category, type_entry=category, ancestry=lambda c: chain(c)[1:]
         )
+        # The approved civilian rule runs AFTER matching: a class that
+        # already resolves on a family or a sourced entry is never
+        # bucketed, and only a class already at the type grade can be.
+        if label == "uniforms":
+            civilian = [
+                r
+                for r in selected
+                if match_e(r["class"], r["display"]).get("type")
+                and CIVILIAN_TERM.search(r["class"] + " " + r["display"])
+            ]
+            if civilian:
+                selected = [r for r in selected if r not in civilian]
+                dropped.setdefault("civilian garment", []).extend(
+                    r["class"] for r in civilian
+                )
         reasons = defaultdict(int)
         for r in selected:
             if match_e(r["class"], r["display"]) is not None:
