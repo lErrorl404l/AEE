@@ -131,6 +131,7 @@ private _table = [
     ["honda_civic_6gen_hatchback", "wheeled", 0, 1495, 4180, 1705, 1375],
     ["honda_civic_6gen_sedan", "wheeled", 0, 1540, 4450, 1705, 1390],
     ["hyundai_iblue_concept", "wheeled", 0, 0, 0, 0, 0],
+    ["jackal_mwmik", "wheeled", 0, 6650, 5390, 2000, 1970],
     ["k21_ifv", "tracked", 1, 25600, 6900, 3400, 2600],
     ["k2_black_panther", "tracked", 1, 56000, 10800, 3600, 2400],
     ["k808_white_tiger", "wheeled", 0, 20000, 7200, 2100, 2700],

@@ -83,6 +83,35 @@ tools/docker_test.sh
 The script builds the mod, assembles `@aee`, downloads CBA if needed, runs
 the server, captures the RPT output, and verifies the phase results.
 
+### Headless load gate
+
+`--load` is the fast pre-flight gate. It builds the mod, stages `@aee` and
+`@cba_a3`, boots the server with `-autoInit` on the `load_gate.Stratis`
+mission, and fails on the first thing that should not happen on a load.
+
+```bash
+tools/docker_test.sh --load
+```
+
+The gate fails when:
+
+- the server never reaches `Game started`, or the probe never prints
+  `[LOAD-GATE] DONE`
+- a matcher function did not compile
+- the log holds an `Error`, `Script error`, `Undefined variable` or
+  `Cannot load` line
+- a matcher rung answers weaker than its case expects, or a rung is never
+  exercised
+
+The mission `tests/docker/missions/load_gate.Stratis` only reports what each
+matcher returned. `tests/docker/verify_load.py` owns the verdict, so a corpus
+change never needs an edit to the mission. The container is torn down on every
+path, including a failure inside the gate.
+
+The gate answers a different question from the phase suite. The suite proves
+the physics. The gate proves the mod loads clean and the identity ladders
+still answer.
+
 ## Concurrent and isolated runs
 
 Every run uses a unique Docker compose project, so two runs never capture the
