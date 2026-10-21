@@ -63,6 +63,7 @@ entries, written by the report so a number is never the only record).
 | Table | Bucket | Classes | Why |
 |---|---|---|---|
 | uniforms | abstract base classes | 4 | scaffolding (`Uniform_Base`, `JCA_U_Base_F`) |
+| uniforms | civilian garment | 4,598 | civilian clothing in the uniform slot, bucketed only after matching, so no resolved uniform is touched |
 | uniforms | misdeclared headwear | 3,696 | headwear declared in the uniform slot; every class is `NAVSPECWARGRU2_TACDEV_Baseball_*` or `NAVSPECWARGRU2_..._Cap_*` |
 | vests | abstract base classes | 9 | `Vest_Camo_Base`, `Vest_NoCamo_Base` and mod bases |
 | vests | non-wearable overlays | 7 | `guts`, `bulletholes`, `damagedchest`, `backgore` |
