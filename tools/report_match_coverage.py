@@ -937,6 +937,37 @@ def slug(label: str) -> str:
     return label.replace(" ", "_")
 
 
+def figure_by_half(selected: list, match, base: set[str], marker: str = "") -> dict:
+    """Resolved and figure-bearing classes, split by who declares them.
+
+    The base half is dominated by the game's own inventions, so a combined
+    percentage can hide modded content that sits on no sourced entry. The
+    split is the same one `score()` uses: the PBO that declares the class.
+    """
+    out = {
+        "base": {"resolved": 0, "figured": 0},
+        "modded": {"resolved": 0, "figured": 0},
+    }
+    for r in selected:
+        row = match(r["class"], r["display"])
+        if row is None:
+            continue
+        half = "base" if r["source"].lower() in base else "modded"
+        out[half]["resolved"] += 1
+        typed = (isinstance(row, dict) and row.get("type")) or (
+            isinstance(row, str) and bool(marker) and row == marker
+        )
+        if not typed:
+            out[half]["figured"] += 1
+    for half in out.values():
+        half["pct"] = (
+            round(100.0 * half["figured"] / half["resolved"], 2)
+            if half["resolved"]
+            else 0.0
+        )
+    return out
+
+
 def figure_pct(res: dict) -> float:
     """The share of resolved classes sitting on an entry with a sourced figure.
 
@@ -1285,6 +1316,7 @@ def measure(scanned: list, base: set[str]) -> dict:
                     matcher(t, a, trace=tr, families=f, type_entry=k)
                 ),
             ),
+            "figure": figure_by_half(sel, match, base),
             "inherited": (
                 ancestry_closures(sel, table, plain, match, ancestors, base)
                 if label == "vehicles"
@@ -1419,6 +1451,7 @@ def measure(scanned: list, base: set[str]) -> dict:
             "excluded_classes": dropped_classes,
             "decided": _decided(sel, pick),
             "grades": grades(sel, factory),
+            "figure": figure_by_half(sel, pick, base, kind),
         }
 
     # ── Night vision devices ──────────────────────────────────────────────
@@ -1477,6 +1510,7 @@ def measure(scanned: list, base: set[str]) -> dict:
                     t, trace=tr, type_entry=n, ancestry=lambda c: wchain(c)[1:]
                 ),
             ),
+            "figure": figure_by_half(selected, match_d, base),
             "reasons": dict(reasons),
         }
 
@@ -1533,6 +1567,7 @@ def measure(scanned: list, base: set[str]) -> dict:
             "excluded": {kind: len(v) for kind, v in dropped.items()},
             "excluded_classes": dropped,
             "decided": _decided(selected, match_e),
+            "figure": figure_by_half(selected, match_e, base),
             "grades": grades(
                 selected,
                 lambda tr, c=category, ch=chain: equipment_matcher(
@@ -1567,7 +1602,16 @@ def report(tables: dict) -> None:
             f"modded {modded['hit']}/{modded['total']} ({pct(modded):.1f}%), "
             f"all {both['hit']}/{both['total']} ({pct(both):.1f}%)"
         )
-        print(
+        fig = res.get("figure") or {}
+        if fig:
+            b, m = fig["base"], fig["modded"]
+            print(
+                f"    data coverage: base {b['figured']}/{b['resolved']} ({b['pct']:.1f}%), "
+                f"modded {m['figured']}/{m['resolved']} ({m['pct']:.1f}%), "
+                f"all {figure_pct(res):.1f}%"
+            )
+        else:
+            print(
             f"    data coverage {figure_pct(res):.1f}% "
             f"({res['base']['total'] + res['modded']['total'] - res.get('grades', {}).get('type', 0)}"
             f"/{res['base']['total'] + res['modded']['total']} on a sourced entry)"
@@ -1750,6 +1794,7 @@ def write_baseline(
                 "inherited": res.get("inherited", []),
                 "excluded": res.get("excluded", {}),
                 "grades": res.get("grades", {}),
+                "figure": res.get("figure", {}),
                 "figure_graded": (
                     res["base"]["total"]
                     + res["modded"]["total"]

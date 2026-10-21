@@ -281,6 +281,18 @@
         "total": 43
       },
       "excluded": {},
+      "figure": {
+        "base": {
+          "figured": 43,
+          "pct": 100.0,
+          "resolved": 43
+        },
+        "modded": {
+          "figured": 207,
+          "pct": 92.83,
+          "resolved": 223
+        }
+      },
       "figure_graded": 250,
       "figure_pct": 93.98,
       "grades": {
@@ -307,6 +319,18 @@
         "total": 2
       },
       "excluded": {},
+      "figure": {
+        "base": {
+          "figured": 0,
+          "pct": 0.0,
+          "resolved": 2
+        },
+        "modded": {
+          "figured": 18,
+          "pct": 100.0,
+          "resolved": 18
+        }
+      },
       "figure_graded": 18,
       "figure_pct": 90.0,
       "grades": {
@@ -332,6 +356,18 @@
       },
       "excluded": {
         "abstract base classes": 8
+      },
+      "figure": {
+        "base": {
+          "figured": 86,
+          "pct": 100.0,
+          "resolved": 86
+        },
+        "modded": {
+          "figured": 130,
+          "pct": 100.0,
+          "resolved": 130
+        }
       },
       "figure_graded": 216,
       "figure_pct": 100.0,
@@ -360,6 +396,18 @@
         "engine-integrated goggles": 3,
         "fictional in-game device": 2,
         "non-NVG item in the NVG slot": 26
+      },
+      "figure": {
+        "base": {
+          "figured": 3,
+          "pct": 100.0,
+          "resolved": 3
+        },
+        "modded": {
+          "figured": 209,
+          "pct": 97.66,
+          "resolved": 214
+        }
       },
       "figure_graded": 212,
       "figure_pct": 97.7,
@@ -390,6 +438,18 @@
       "excluded": {
         "Arma in-game optic": 44,
         "identity failure": 4
+      },
+      "figure": {
+        "base": {
+          "figured": 0,
+          "pct": 0.0,
+          "resolved": 0
+        },
+        "modded": {
+          "figured": 108,
+          "pct": 60.67,
+          "resolved": 178
+        }
       },
       "figure_graded": 108,
       "figure_pct": 60.67,
@@ -422,6 +482,18 @@
         "weapon bags": 74,
         "weapon support bags": 29
       },
+      "figure": {
+        "base": {
+          "figured": 116,
+          "pct": 97.48,
+          "resolved": 119
+        },
+        "modded": {
+          "figured": 522,
+          "pct": 99.81,
+          "resolved": 523
+        }
+      },
       "figure_graded": 638,
       "figure_pct": 99.38,
       "grades": {
@@ -446,6 +518,18 @@
         "total": 14
       },
       "excluded": {},
+      "figure": {
+        "base": {
+          "figured": 3,
+          "pct": 21.43,
+          "resolved": 14
+        },
+        "modded": {
+          "figured": 116,
+          "pct": 98.31,
+          "resolved": 118
+        }
+      },
       "figure_graded": 119,
       "figure_pct": 90.15,
       "grades": {
@@ -470,6 +554,18 @@
         "total": 3
       },
       "excluded": {},
+      "figure": {
+        "base": {
+          "figured": 0,
+          "pct": 0.0,
+          "resolved": 3
+        },
+        "modded": {
+          "figured": 2,
+          "pct": 100.0,
+          "resolved": 2
+        }
+      },
       "figure_graded": 2,
       "figure_pct": 40.0,
       "grades": {
@@ -499,6 +595,18 @@
         "fictional garment": 134,
         "misdeclared headwear": 3696,
         "no identity text": 210
+      },
+      "figure": {
+        "base": {
+          "figured": 35,
+          "pct": 44.3,
+          "resolved": 79
+        },
+        "modded": {
+          "figured": 10834,
+          "pct": 90.6,
+          "resolved": 11958
+        }
       },
       "figure_graded": 10869,
       "figure_pct": 90.3,
@@ -533,6 +641,18 @@
         "ship launcher cell": 3,
         "weapon bay": 1
       },
+      "figure": {
+        "base": {
+          "figured": 12,
+          "pct": 100.0,
+          "resolved": 12
+        },
+        "modded": {
+          "figured": 354,
+          "pct": 94.65,
+          "resolved": 374
+        }
+      },
       "figure_graded": 366,
       "figure_pct": 94.82,
       "grades": {
@@ -560,6 +680,18 @@
       },
       "excluded": {
         "static weapon emplacements": 12
+      },
+      "figure": {
+        "base": {
+          "figured": 77,
+          "pct": 97.47,
+          "resolved": 79
+        },
+        "modded": {
+          "figured": 434,
+          "pct": 99.77,
+          "resolved": 435
+        }
       },
       "figure_graded": 511,
       "figure_pct": 99.42,
@@ -865,6 +997,18 @@
       "excluded": {
         "abstract base classes": 9,
         "non-wearable overlays": 7
+      },
+      "figure": {
+        "base": {
+          "figured": 46,
+          "pct": 97.87,
+          "resolved": 47
+        },
+        "modded": {
+          "figured": 460,
+          "pct": 92.56,
+          "resolved": 497
+        }
       },
       "figure_graded": 506,
       "figure_pct": 93.01,
