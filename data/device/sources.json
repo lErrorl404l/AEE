@@ -234,5 +234,35 @@
   "primary_held": false,
   "sha256": "2b2dd6e468bc923ca863ca8f2860276c9ef7940aa5d4197c73c0d53de5b264c9",
   "note": "Designation evidence only: it names the SpecterDR's US service designation SU-230/PVS. No value is taken from it."
+ },
+ {
+  "source_id": "nightforce_nxs_3515x50",
+  "tier": 4,
+  "type": "manufacturer",
+  "title": "Nightforce NXS 3.5-15x50mm riflescope product page",
+  "edition": "",
+  "identifier": "SKU NXS15",
+  "locator": "Specifications tab: Magnification Range, Weight, Eye Relief rows",
+  "published": "",
+  "retrieved": "2026-10-21",
+  "url": "https://www.nightforceoptics.com/riflescopes/nxs/nxs-35-15x50",
+  "sha256": "4c16cd5d7da78ce81687300ac2ea9f926ec76527acce7fda9bdaab59156bf104",
+  "primary_held": true,
+  "note": "Manufacturer product page held; the digest is of the retrieved HTML bytes."
+ },
+ {
+  "source_id": "nightforce_nxs_5522x56",
+  "tier": 4,
+  "type": "manufacturer",
+  "title": "Nightforce NXS 5.5-22x56mm riflescope product page",
+  "edition": "",
+  "identifier": "",
+  "locator": "Specifications tab: Magnification Range, Weight rows",
+  "published": "",
+  "retrieved": "2026-10-21",
+  "url": "https://www.nightforceoptics.com/riflescopes/nxs/nxs-55-22x56",
+  "sha256": "d8b2a4df6eedb4058843e46a69c7958468caffe9995feddebbec4d69e4317b0e",
+  "primary_held": true,
+  "note": "Manufacturer product page held; the digest is of the retrieved HTML bytes."
  }
 ]

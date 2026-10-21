@@ -122,6 +122,8 @@ private _tableAll = [
     ["kestrel_bnvd", "nvg", "kestrelbnvd", "kestrelbnvd", "kestrel", "", ["", 0, 0, 0]],
     ["m145_class", "optic", "m145mgo|c79|mgo", "m145|c79|mgo", "m145mgoandc79|m145mgo|mgoand|andc79", "aee_sensor_device_library", [3.4, 28, 8.5, 0.68, 8.2, "passive"]],
     ["mowgli", "thermal", "1pn97|mowgli", "mowgli|1pn97", "1pn97mowgli2m|mowgli2m|mowgli2", "aee_sensor_device_library", [0.05, 320, 240, 50, "uncooled", 1.5, "lwir"]],
+    ["nightforce_nxs_3515x50", "optic", "nxs3515x50|3515x50", "nxs3515|3515x50", "3515|nightforcenxs3515x50|nightforcenxs|nxs3515x50", "nightforce_nxs_3515x50", [15, 50, 0, 0.85, 3.3, "passive"]],
+    ["nightforce_nxs_5522x56", "optic", "nxs5522x56|5522x56", "nxs5522|5522x56", "5522|nightforcenxs5522x56|nightforcenxs|nxs5522x56", "nightforce_nxs_5522x56", [22, 56, 0, 0.907, 2.5, "passive"]],
     ["pas13_base", "thermal", "anpas13|pas13", "", "pas13", "aee_sensor_device_library", [0.05, 640, 480, 30, "uncooled", 1.134, "lwir"]],
     ["pas13_v1", "thermal", "anpas13ev1|pas13v1", "pas13v1", "pas13gv1|pas13ev1lwts|pas13ev1", "aee_sensor_device_library", [0.05, 320, 240, 30, "uncooled", 0.885, "lwir"]],
     ["pas13_v2", "thermal", "anpas13ev2|pas13v2", "pas13v2", "pas13gv2|pas13ev2mwts|pas13ev2", "aee_sensor_device_library", [0.05, 640, 480, 30, "uncooled", 1.134, "lwir"]],
