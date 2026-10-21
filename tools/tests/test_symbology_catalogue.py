@@ -248,30 +248,38 @@ class TestCatalogueFreshness(unittest.TestCase):
         self.assertEqual(proc.returncode, 0, proc.stdout + proc.stderr)
 
 
-class TestCommittedSources(unittest.TestCase):
-    """Every catalogue source drawing and render is committed in the repository.
+class TestHeldSources(unittest.TestCase):
+    """Every catalogue source drawing and render is held in the local cache.
 
-    The generator --check reproduces each .paa from the committed render.  This
-    proves the sources it reads are present, so a missing source cannot pass.
+    The captures are not redistributed: the repository publishes the catalogue
+    and its citations.  The generator --check reproduces each .paa from the
+    held render, so this proves the bytes it reads are present on the machine
+    that holds them, and skips cleanly where the cache is absent.
     """
 
-    def test_every_entry_has_a_committed_source_svg(self):
+    def test_every_entry_has_a_held_source_svg(self):
         import json
 
+        sys.path.insert(0, str(REPO))
+        from tools.validation import source_cache
+
+        root = source_cache.capture_path("symbology", "svg")
+        if not root.is_dir():
+            self.skipTest(f"source drawings are not held in {root}")
         catalogue = json.loads(CATALOGUE.read_text(encoding="utf-8"))
-        root = REPO / "data" / "symbology" / "sources" / "svg"
         for entry in catalogue["entries"]:
             with self.subTest(file=entry.get("file")):
                 path = root / str(entry["dir"]) / str(entry["file"])
-                self.assertTrue(path.is_file(), f"source SVG not committed: {path}")
+                self.assertTrue(path.is_file(), f"source SVG not held: {path}")
 
-    def test_every_symbol_has_a_committed_render(self):
-        import sys
-
+    def test_every_symbol_has_a_held_render(self):
         sys.path.insert(0, str(REPO))
         from tools import gen_symbology_catalogue as gen
+        from tools.validation import source_cache
 
-        root = REPO / "data" / "symbology" / "sources" / "render"
+        root = source_cache.capture_path("symbology", "render")
+        if not root.is_dir():
+            self.skipTest(f"renders are not held in {root}")
         seen: set[str] = set()
         for entry in gen.symbol_entries():
             name = gen.marker_name(entry, seen)

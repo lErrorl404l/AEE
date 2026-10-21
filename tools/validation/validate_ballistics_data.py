@@ -17,6 +17,9 @@ import sys
 from pathlib import Path
 from urllib.parse import urlparse
 
+sys.path.insert(0, str(Path(__file__).parents[2]))
+from tools.validation import source_cache  # noqa: E402
+
 DATA = Path(__file__).parents[2] / "data" / "ballistics"
 
 GRADES = {
@@ -348,7 +351,9 @@ def main():
         records = load(f"{kind}.json")
         check_records(kind, records, by_id, errors)
         entry_ids |= entry_source_ids(records)
-    check_held_sources(sources, entry_ids, DATA / "sources", errors)
+    check_held_sources(
+        sources, entry_ids, source_cache.held_dir("ballistics", DATA), errors
+    )
     load("conflicts.json")
     check_drag_models(errors)
     gaps_path = DATA / "sources" / "chambering_gaps.json"

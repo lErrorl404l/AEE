@@ -15,12 +15,16 @@ import hashlib
 import json
 import re
 import subprocess
+import sys
 import urllib.request
 from pathlib import Path
 
 DATA = Path(__file__).parents[2] / "data" / "ballistics"
 URL = "https://web.archive.org/web/2020id_/http://www.appliedballisticsllc.com/Downloads/ABLibrary.pdf"
-PDF = DATA / "sources" / "ab_bullet_library.pdf"
+sys.path.insert(0, str(Path(__file__).parents[2]))
+from tools.validation import source_cache  # noqa: E402
+
+PDF = source_cache.capture_path("ballistics", "ab_bullet_library.pdf")
 OUT = DATA / "sources" / "ab_bullet_library.json"
 
 

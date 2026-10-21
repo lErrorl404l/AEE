@@ -2,8 +2,9 @@
 """Hold the vehicle source documents and verify their digests.
 
 The vehicle corpus carries one registry at `data/vehicle/sources.json`. One
-entry names one real document. The held bytes live under
-`data/vehicle/sources/`.
+entry names one real document. The held bytes live in the machine-local
+source cache that `tools/validation/source_cache.py` names, never in the
+repository and never redistributed.
 
 The tool holds one named source or every source, and it verifies the
 registry. A source is held (`primary_held: true`) only when the bytes on
@@ -34,8 +35,12 @@ from urllib.parse import urlparse
 
 REPO = Path(__file__).parents[2]
 DEFAULT_DATA_DIR = REPO / "data" / "vehicle"
+if str(REPO) not in sys.path:
+    sys.path.insert(0, str(REPO))
+
+from tools.validation import source_cache  # noqa: E402
+
 REGISTRY_NAME = "sources.json"
-SOURCES_DIRNAME = "sources"
 USER_AGENT = "Mozilla/5.0"
 
 Fetch = Callable[[str], bytes]
@@ -184,7 +189,7 @@ def main(argv: Sequence[str] | None = None) -> int:
 
     data_dir = Path(args.data_dir)
     registry_path = data_dir / REGISTRY_NAME
-    sources_dir = data_dir / SOURCES_DIRNAME
+    sources_dir = source_cache.held_dir("vehicle", data_dir)
 
     try:
         sources = load_registry(registry_path)

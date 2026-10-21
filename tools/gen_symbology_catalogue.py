@@ -5,24 +5,25 @@ The catalogue (data/symbology/nato_catalogue.json) records every NATO / APP-6
 map symbol image, with its affiliation, battle dimension, function, frame,
 licence, author and source URL.
 
-The catalogue images are COMMITTED under data/symbology/sources:
+The catalogue images are held in the machine-local source cache, named by
+tools/validation/source_cache.py, and never in the repository:
 
-  * sources/svg/<dir>/<file>.svg  -- the 1092 source drawings, exactly as
+  * <cache>/symbology/svg/<dir>/<file>.svg  -- the 1092 source drawings, as
     pulled, for provenance (Wikimedia Commons CC BY-SA 4.0 / CC BY / public
-    domain; see sources/README.md).
-  * sources/render/<marker>.png   -- the 903 rendered 64 px RGBA canvases, the
-    exact input to `hemtt utils paa convert`.
+    domain; see data/symbology/SCHEMA.md).
+  * <cache>/symbology/render/<marker>.png   -- the 903 rendered 64 px RGBA
+    canvases, the exact input to `hemtt utils paa convert`.
 
-Why the renders are committed.  The render is not reproducible across
-machines.  librsvg encodes the same pixels into different PNG bytes, and 166
-of the source drawings carry `<text>` with a `font-family`, so the glyph
-depends on the installed font: the local render resolves `sans-serif` to Noto
-Sans, a bare runner resolves it to DejaVu Sans, and 162 of 903 markers then
-differ.  No distribution ships librsvg 2.62.4 (the version that cut the
-shipped .paa) and the font stack cannot be pinned exactly, so the render
-OUTPUT is pinned instead of the renderer.  The committed 64 px canvas is the
-source of truth for the texture, and CI reproduces each .paa from it byte for
-byte with no renderer dependency.  The SVG -> render step is proved
+Why the renders are held.  The render is not reproducible across machines.
+librsvg encodes the same pixels into different PNG bytes, and 166 of the
+source drawings carry `<text>` with a `font-family`, so the glyph depends on
+the installed font: the local render resolves `sans-serif` to Noto Sans, a
+bare runner resolves it to DejaVu Sans, and 162 of 903 markers then differ.
+No distribution ships librsvg 2.62.4 (the version that cut the shipped .paa)
+and the font stack cannot be pinned exactly, so the render OUTPUT is pinned
+instead of the renderer.  The held 64 px canvas is the source of truth for the
+texture, and a machine that holds the cache reproduces each .paa from it byte
+for byte with no renderer dependency.  The SVG -> render step is proved
 structurally by --verify-svg.
 
 For each catalogue symbol this generator:
@@ -62,11 +63,12 @@ if str(Path(__file__).parent) not in sys.path:
 
 from symbology_categories import marker_category, VARIATION_HIDDEN_SCOPE  # noqa: E402
 from tools import schemas  # noqa: E402
+from tools.validation import source_cache  # noqa: E402
 
 CATALOGUE = ROOT / "data" / "symbology" / "nato_catalogue.json"
 SOURCES = ROOT / "data" / "symbology" / "sources"
-SVG_ROOT = SOURCES / "svg"
-RENDER_ROOT = SOURCES / "render"
+SVG_ROOT = source_cache.capture_path("symbology", "svg")
+RENDER_ROOT = source_cache.capture_path("symbology", "render")
 MARKERS_OUT = ROOT / "addons" / "symbology" / "data" / "markers"
 CONFIG_OUT = ROOT / "addons" / "symbology" / "config_markers.hpp"
 FAMILY_OUT = ROOT / "addons" / "symbology" / "config_family.hpp"
@@ -1039,20 +1041,24 @@ def write_attribution(pairs: list[tuple[str, dict[str, Any]]]) -> None:
 
 
 def check() -> int:
-    """Reproduce each committed .paa from its committed render, byte for byte.
+    """Reproduce each .paa from the held render, byte for byte.
 
-    The committed 64 px render is the pinned texture input, so this needs no
-    renderer and runs in CI.  A stale .paa, a missing render, or a stale
-    config or attribution file fails.
+    The pinned 64 px render is held in the local source cache, so this needs
+    no renderer.  A stale .paa, a missing render, or a stale config or
+    attribution file fails.  A machine that does not hold the cache skips the
+    byte check and still checks the config and attribution files.
     """
     pairs = entries()
     stale: list[str] = []
+    held = RENDER_ROOT.is_dir()
     with tempfile.TemporaryDirectory() as tmp:
         tmp_dir = Path(tmp)
         for name, entry in pairs:
             committed = MARKERS_OUT / f"{name}.paa"
             if not committed.is_file():
                 stale.append(f"{name}.paa is missing")
+                continue
+            if not held:
                 continue
             if not _render_path(name).is_file():
                 stale.append(f"{name}.png render is missing")
@@ -1078,19 +1084,34 @@ def check() -> int:
         for line in stale:
             print(f"  {line}")
         return 1
+    if not held:
+        print(
+            f"symbology catalogue: {len(pairs)} .paa present; the renders are "
+            f"not held in {RENDER_ROOT}, so the byte check was skipped; "
+            f"config and attribution fresh"
+        )
+        return 0
     print(
-        f"symbology catalogue: {len(pairs)} .paa reproduce their committed "
+        f"symbology catalogue: {len(pairs)} .paa reproduce their held "
         f"renders; config and attribution fresh"
     )
     return 0
 
 
 def verify_svg() -> int:
-    """Prove every committed render is the render of its committed source SVG.
+    """Prove every held render is the render of its held source SVG.
 
     The compare is structural, not byte-for-byte, so it holds across the
-    librsvg version and the render font.  See render_mismatch.
+    librsvg version and the render font.  See render_mismatch.  The check is
+    skipped, not failed, on a machine that does not hold the cache.
     """
+    if not SVG_ROOT.is_dir() or not RENDER_ROOT.is_dir():
+        print(
+            f"symbology catalogue: the source drawings and renders are not "
+            f"held in {source_cache.cache_root()}, so the SVG provenance "
+            f"check was skipped"
+        )
+        return 0
     bad: list[str] = []
     with tempfile.TemporaryDirectory() as tmp:
         tmp_dir = Path(tmp)
@@ -1113,10 +1134,7 @@ def verify_svg() -> int:
         for line in bad:
             print(f"  {line}")
         return 1
-    print(
-        f"symbology catalogue: {len(entries())} committed renders match their "
-        f"source SVGs"
-    )
+    print(f"symbology catalogue: {len(entries())} held renders match their source SVGs")
     return 0
 
 

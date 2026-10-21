@@ -56,6 +56,17 @@ def repo_sources_dir(domain: str) -> Path:
     return REPO / "data" / domain / "sources"
 
 
+def held_dir(domain: str, data_dir: Path) -> Path:
+    """Return where a corpus reads its held bytes.
+
+    The shipped corpus reads the cache. A temporary fixture tree keeps its
+    bytes beside its records, so the CLI self-checks stay self-contained.
+    """
+    if data_dir.resolve() == (REPO / "data" / domain).resolve():
+        return cache_dir(domain)
+    return data_dir / "sources"
+
+
 def resolve(domain: str, relative: str | Path) -> Path | None:
     """Return the capture path when the bytes are held, else None.
 

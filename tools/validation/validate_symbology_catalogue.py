@@ -1,11 +1,15 @@
 #!/usr/bin/env python3
-"""Validate data/symbology/nato_catalogue.json and its committed sources.
+"""Validate data/symbology/nato_catalogue.json and its sources.
 
 Rejects a non-symbol catalogue entry, so the article images, war maps and unit
 insignia that the first pull admitted cannot re-enter the catalogue.  Also
 proves every entry carries a source URL and an open licence, that its source
-SVG is committed under data/symbology/sources/svg, and that every symbol entry
-has its committed 64 px render under data/symbology/sources/render.
+SVG is held in the local source cache, and that every symbol entry has its
+held 64 px render there.
+
+The captured drawings and renders are not redistributed: the repository
+publishes the catalogue and its citations.  A machine that does not hold the
+cache skips the byte checks and still validates the catalogue.
 
 Run: python3 tools/validation/validate_symbology_catalogue.py
 """
@@ -17,11 +21,16 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).parents[2]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from tools.validation import source_cache  # noqa: E402
+
 CATALOGUE = ROOT / "data" / "symbology" / "nato_catalogue.json"
 DROPPED = ROOT / "data" / "symbology" / "dropped.json"
 SOURCES = ROOT / "data" / "symbology" / "sources"
-SVG_ROOT = SOURCES / "svg"
-RENDER_ROOT = SOURCES / "render"
+SVG_ROOT = source_cache.capture_path("symbology", "svg")
+RENDER_ROOT = source_cache.capture_path("symbology", "render")
 
 sys.path.insert(0, str(ROOT / "tools"))
 import gen_symbology_catalogue as gen  # noqa: E402
@@ -48,6 +57,8 @@ def main() -> int:
     data = json.loads(CATALOGUE.read_text(encoding="utf-8"))
     entries = data["entries"]
     errors: list[str] = []
+    drawings_held = SVG_ROOT.is_dir()
+    renders_held = RENDER_ROOT.is_dir()
     for e in entries:
         name = e.get("file", "?")
         if e.get("kind", "symbol") not in KIND:
@@ -61,14 +72,17 @@ def main() -> int:
             errors.append(f"{name}: no source url (attribution is required)")
         if e.get("license") not in OPEN_LICENCE:
             errors.append(f"{name}: licence {e.get('license')!r} is not recorded")
+        if not drawings_held:
+            continue
         svg = SVG_ROOT / str(e.get("dir", "")) / str(e.get("file", ""))
         if not svg.is_file():
-            errors.append(f"{name}: source SVG is not committed")
+            errors.append(f"{name}: source SVG is not held in the local cache")
     seen: set[str] = set()
-    for entry in gen.symbol_entries():
-        marker = gen.marker_name(entry, seen)
-        if not (RENDER_ROOT / f"{marker}.png").is_file():
-            errors.append(f"{marker}: committed render is missing")
+    if renders_held:
+        for entry in gen.symbol_entries():
+            marker = gen.marker_name(entry, seen)
+            if not (RENDER_ROOT / f"{marker}.png").is_file():
+                errors.append(f"{marker}: held render is missing")
     if not DROPPED.exists():
         errors.append("dropped.json missing: the drop reasons are not recorded")
     else:
@@ -80,9 +94,14 @@ def main() -> int:
         for line in errors[:40]:
             print(f"  {line}")
         return 1
+    held = (
+        "drawings and renders held"
+        if drawings_held and renders_held
+        else ("captures not held locally, byte checks skipped")
+    )
     print(
         f"validate_symbology_catalogue: PASS ({len(entries)} entries, "
-        f"{len(gen.symbol_entries())} committed renders)"
+        f"{len(gen.symbol_entries())} symbol renders; {held})"
     )
     return 0
 

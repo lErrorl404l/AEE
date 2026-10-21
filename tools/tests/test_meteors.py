@@ -27,11 +27,14 @@ sys.path.insert(0, str(Path(__file__).parent.parent / "validation"))
 from gen_meteor_showers import parse_showers  # noqa: E402
 from sqf_lite import run_sqf  # noqa: E402
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+from tools.validation import source_cache  # noqa: E402
+
 ROOT = Path(__file__).resolve().parents[2]
 SENSOR = ROOT / "addons" / "lighting" / "functions" / "astronomy"
 
 SHOWERS_SRC = SENSOR / "fnc_meteorShowers.sqf"
-IMO_SRC = ROOT / "data" / "astronomy" / "sources" / "imo_cal2025.txt"
+IMO_SRC = source_cache.capture_path("astronomy", "imo_cal2025.txt")
 SIDEREAL = SENSOR / "fnc_siderealTime.sqf"
 RADIANT = SENSOR / "fnc_radiantHorizontal.sqf"
 ACTIVE = SENSOR / "fnc_showerIsActive.sqf"
@@ -53,6 +56,9 @@ def rows():
     return parse_showers(IMO_SRC.read_text(encoding="utf-8"))
 
 
+@unittest.skipUnless(
+    IMO_SRC.is_file(), "imo_cal2025.txt is not held in the local source cache"
+)
 class TestMeteorShowersData(unittest.TestCase):
     """The generated IMO Table 5 data is complete and traceable."""
 

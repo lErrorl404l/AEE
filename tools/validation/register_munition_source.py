@@ -7,7 +7,8 @@ encyclopaedia article or a reference page states the designation in body
 text and states no infobox figure. Those sources are published all the
 same, and the corpus still has to name the item they name.
 
-This tool fetches one URL, holds its bytes under data/munition/sources/,
+This tool fetches one URL, holds its bytes in the machine-local source cache
+(tools/validation/source_cache.py, domain "munition"),
 registers them in data/munition/sources.json with their SHA-256, and writes
 an IDENTITY-ONLY catalogue entry. The entry names the munition and holds no
 figure at all, which states what the source gives and is never an estimate.
@@ -15,7 +16,8 @@ A designation the source does not state is never written: the aliases on the
 command line are the designations that source publishes.
 
 --verify re-hashes every held source against the registry, so a corpus can
-never cite bytes it no longer holds.
+never cite bytes it no longer holds. A machine that does not hold the cache
+reports the absent bytes and passes, because the repository never ships them.
 
 Run:
   python3 tools/validation/register_munition_source.py --url URL --id ID \\
@@ -36,9 +38,14 @@ from datetime import date
 from pathlib import Path
 
 _REPO = Path(__file__).parents[2]
+if str(_REPO) not in sys.path:
+    sys.path.insert(0, str(_REPO))
+
+from tools.validation import source_cache  # noqa: E402
+
 _DATA = _REPO / "data" / "munition"
 _CATALOGUE = _DATA / "catalogue"
-_HELD = _DATA / "sources"
+_HELD = source_cache.cache_dir("munition")
 _REGISTRY = _DATA / "sources.json"
 _UA = "AEE-research/1.0 (munition catalogue capture)"
 
@@ -149,8 +156,19 @@ def register(
 
 
 def verify() -> int:
-    """Re-hash every held munition source against the registry."""
+    """Re-hash every held munition source against the registry.
+
+    The bytes live in the local cache and are not redistributed. When the
+    cache is absent the byte check cannot run, and a clean clone must not
+    fail for it: the run reports the absent store and passes.
+    """
     registry = json.loads(_REGISTRY.read_text(encoding="utf-8"))
+    if not _HELD.is_dir():
+        print(
+            f"munition sources: {len(registry)} registered; the bytes are not "
+            f"held in {source_cache.cache_root()}, byte check skipped"
+        )
+        return 0
     bad = 0
     for source in registry:
         path = _HELD / f"{source['source_id']}{_suffix(source['url'])}"
