@@ -22,7 +22,12 @@ Run:  python3 tools/validation/gen_weapon_leads.py
 import csv
 import json
 import re
+import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).parent))
+import chambering  # noqa: E402  - shared canonical form
+
 
 DATA = Path(__file__).parents[2] / "data" / "ballistics"
 CORPUS = Path("/home/matt/Development/AceBallisticsExtention/data/real_weapons.tsv")
@@ -47,37 +52,9 @@ WEAK_WORDS = (
 )
 TOLERANCE = 0.02
 
-# A corpus chambering name that is another name for a cartridge we hold.
-# 7.92 mm Mauser is our 8x57 IS, 7.62x35 mm is the C.I.P. name for the
-# .300 AAC Blackout. The mapping only sharpens the lead, it never enters
-# a value.
-CHAMBERING_SYNONYMS = {
-    "7.92x57": "8x57",
-    "7.62x35": "300",
-}
-
 
 def normalise(text):
     return re.sub(r"[^a-z0-9]+", "", (text or "").lower())
-
-
-def calibre_key(text):
-    """The calibre core, so wording differences do not break the match.
-
-    A gauge is kept apart from a bore diameter, so 12 gauge never
-    collides with 12.7 mm. A bare cartridge id is never parsed: the id
-    "12_7_x_108" would otherwise collapse to the key "12".
-    """
-    text = (text or "").lower().replace("\u00d7", "x").replace(",", ".")
-    text = re.sub(r"\bmm\b", " ", text)
-    gauge = re.search(r"(\d+(?:\.\d+)?)\s*(?:gauge|ga)\b", text)
-    if gauge:
-        return f"{gauge.group(1)}gauge"
-    pair = re.search(r"(\d+(?:\.\d+)?)\s*x\s*(\d+(?:\.\d+)?)", text)
-    if pair:
-        return f"{pair.group(1)}x{pair.group(2)}"
-    number = re.search(r"(\d{2,3}(?:\.\d+)?)", text)
-    return number.group(1) if number else normalise(text)
 
 
 def citation_tier(citation):
@@ -101,15 +78,15 @@ def identity(row):
 
 def main():
     cartridges = json.loads((DATA / "cartridges.json").read_text(encoding="utf-8"))
-    standard, standard_id = {}, {}
-    for rec in cartridges:
-        entry = rec["values"].get("standard_twist_m")
-        if not entry:
-            continue
-        for name in rec.get("names", []):
-            key = calibre_key(name)
-            standard.setdefault(key, entry["value"])
-            standard_id.setdefault(key, rec["cartridge_id"])
+    # The join is the shared chambering key, never a calibre core. A core
+    # such as "45" collides .45 ACP with the .45-70 family, and the first
+    # record in corpus order then answers for the pistol: the lead claimed
+    # a difference that was the register's own rifle twist. chambering.py
+    # is the one source for the key, so a lead and the weapon catalogue
+    # cannot disagree about which cartridge a chambering names.
+    index = chambering.build_index(cartridges)
+    aliases = chambering.load_aliases()
+    by_id = {rec["cartridge_id"]: rec for rec in cartridges}
 
     # A weapon that now holds a twist is verified, and leaves the worklist.
     verified_ids = set()
@@ -144,9 +121,18 @@ def main():
             counts["weak_citation"] += 1
             continue
         weapon_id, names = identity(row)
-        key = calibre_key(row.get("cartridge", ""))
-        key = CHAMBERING_SYNONYMS.get(key, key)
-        held = standard.get(key)
+        cartridge_id, candidates = chambering.resolve(
+            row.get("cartridge", ""), index, aliases
+        )
+        # Two register records that claim one key name no single cartridge,
+        # so the lead carries neither: a coin toss is not a standard.
+        held_entry = (
+            by_id[cartridge_id]["values"].get("standard_twist_m")
+            if not candidates and cartridge_id in by_id
+            else None
+        )
+        held = held_entry["value"] if held_entry else None
+
         if held is None:
             verdict = "no_standard"
             counts["no_standard"] += 1
@@ -176,8 +162,8 @@ def main():
                 "names": names,
                 "manufacturer": row.get("manufacturer", ""),
                 "cartridge": row.get("cartridge", ""),
-                "calibre_key": key,
-                "cartridge_id": standard_id.get(key, ""),
+                "candidate_count": len(candidates),
+                "cartridge_id": cartridge_id,
                 "twist_m": twist_m,
                 "standard_twist_m": held,
                 "verdict": verdict,
