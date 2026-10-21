@@ -80,13 +80,17 @@ private _temp = _soakAmbient + (_prevTemp - _soakAmbient) * exp (-_dt / _tau);
 
 // ─── Shot heat ─────────────────────────────────────────────────────────
 // Propellant heat adds to the rounds remaining in the weapon.  Scale by
-// round energy: E = 0.5*m*v^2, and the powder mass tracks muzzle energy,
-// so a sensible proxy is (v / 905)^2 * 0.06 degC per shot (5.56 NATO
-// baseline ~0.06 degC/shot at 905 m/s; a 9mm at 400 m/s heats ~0.012
-// degC/shot).  The caller passes the round's energy in J.
+// round energy: E = 0.5*m*v^2.
+// AEE_AMMO_HEAT_PER_SHOT_DEFAULT is a DECLARED DEFAULT, not a measurement:
+// no published per-shot ammunition temperature rise was found, so the value
+// is labelled rather than cited.  What the shipped default yields at the two
+// anchors that bracket small-arms energy, as arithmetic on the default and
+// not as published figures:
+//   5.56 NATO, 4.0 g at 905 m/s = 1638 J -> 0.164 degC per shot
+//   9x19,      8.0 g at 400 m/s =  640 J -> 0.064 degC per shot
 if (_shotEnergyJ > 0) then {
-    private _heatPerShot = missionNamespace getVariable [QGVAR(ammoHeatPerShotJ), 0.0001];
-    if !(_heatPerShot isEqualType 0) then { _heatPerShot = 0.0001; };
+    private _heatPerShot = missionNamespace getVariable [QGVAR(ammoHeatPerShotJ), AEE_AMMO_HEAT_PER_SHOT_DEFAULT];
+    if !(_heatPerShot isEqualType 0) then { _heatPerShot = AEE_AMMO_HEAT_PER_SHOT_DEFAULT; };
     _temp = _temp + (_shotEnergyJ * _heatPerShot);
 };
 

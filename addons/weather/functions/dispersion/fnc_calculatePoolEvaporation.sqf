@@ -21,8 +21,10 @@ the Schmidt number (air-vapour).  M*P/(R*Ts) is the saturation
 concentration (kg/m3, or g/m3 with M in g/mol); k converts it to a flux.
 
 The returned value is in kg/m2/s, the per-tick unit the engine consumes.
-The default Schmidt number 0.7 is a MODELLING CHOICE for gases in air
-(most vapours fall in 0.6 to 1.0); it is exposed so a caller can set it.
+The default Schmidt number 0.7 is a MODELLING CHOICE for gases in air: no
+published table of molecular Schmidt numbers for vapours in air was reachable
+when this was written, so 0.7 is a stated placeholder in the 0.6 to 1.0 band
+and it is exposed so a caller can pass a measured value.
 
 Pure: no missionNamespace, no GVAR or EGVAR, no engine command.
 

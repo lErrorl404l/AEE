@@ -9,6 +9,10 @@
 // two settings tune the model.
 AEE_SETTING_SLIDER(ammoTempTimeConstant,"AEE Ballistics","Ammo Temperature",30,3600,600,0);
 
+// The default is a literal because the settings taxonomy and documentation
+// generators parse this file as text and cannot resolve a macro.  It must
+// equal AEE_AMMO_HEAT_PER_SHOT_DEFAULT in script_component.hpp;
+// tools/tests/test_value_markers.py fails when the two drift apart.
 AEE_SETTING_SLIDER(ammoHeatPerShotJ,"AEE Ballistics","Ammo Temperature",0,0.001,0.0001,4);
 
 // ── Missile seeker (issue #131) ───────────────────────────────────────────

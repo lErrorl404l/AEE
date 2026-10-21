@@ -294,6 +294,9 @@ def main():
         "tools/tests/test_symbology_live.py",
         "tools/tests/test_symbology_catalogue.py",
         "tools/tests/test_marker_derivation.py",
+        # The value-marker locks: a labelled constant keeps its label, and the
+        # aircraft corpus row is proved to precede the declared fallback.
+        "tools/tests/test_value_markers.py",
         "tools/tests/test_cba_settings.py",
         "tools/tests/test_settings_migration.py",
         # Dormant suites registered by the conformance sweep (ADR-031). Each was
