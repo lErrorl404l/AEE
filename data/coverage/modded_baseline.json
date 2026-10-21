@@ -351,27 +351,32 @@
     },
     "night_vision_devices": {
       "base": {
-        "hit": 6,
+        "hit": 3,
         "pct": 100.0,
-        "total": 6
+        "total": 3
       },
-      "excluded": {},
-      "figure_graded": 234,
-      "figure_pct": 71.56,
+      "excluded": {
+        "NVG mounts": 79,
+        "engine-integrated goggles": 3,
+        "fictional in-game device": 2,
+        "non-NVG item in the NVG slot": 26
+      },
+      "figure_graded": 212,
+      "figure_pct": 97.7,
       "grades": {
-        "alias": 123,
+        "alias": 105,
         "closest": 8,
         "exact_class": 9,
         "inherited": 3,
-        "keyword": 91,
-        "type": 93
+        "keyword": 87,
+        "type": 5
       },
       "inherited": [],
       "label": "night vision devices",
       "modded": {
-        "hit": 321,
+        "hit": 214,
         "pct": 100.0,
-        "total": 321
+        "total": 214
       },
       "reasons": {},
       "unresolved_modded": 0

@@ -110,6 +110,22 @@ ABSTRACT_CLASS = re.compile(r"(^|_)base(_[a-z0-9]{1,2})?$", re.I)
 OVERLAY_CLASS = re.compile(
     r"^(guts\d*|bulletholes\d*|backgore|damagedchest|blood\w*|wound\w*)$", re.I
 )
+# Civilian clothing declared in the uniform slot is not a uniform, and an
+# Arma-invented garment (the guerrilla and alien outfits) names no product.
+CIVILIAN_TERM = re.compile(
+    r"civilian|commoner|poloshirt|flannel|rugby|pashtun|t-?shirt|jeans|hoodie"
+    r"|shorts|clothes|trousers|apparel|getup|\bgarb\b|civil ?cloth",
+    re.I,
+)
+FICTIONAL_GARMENT_TERM = re.compile(r"guerilla|alien", re.I)
+# CfgWeapons >> NVGoggles holds more than night vision: Arma hangs the
+# helmet mount, the gas mask and the armband there. None is a device.
+NVG_MOUNT_TERM = re.compile(r"l4g|_g24|_g19|g24 down|g24 up|rhino", re.I)
+NON_NVG_SLOT_TERM = re.compile(
+    r"gas_?mask|masck|protective mask|armband|eyecover|eye_?cover", re.I
+)
+ENGINE_NVG_TERM = re.compile(r"^integrated_nvg", re.I)
+FICTIONAL_DEVICE_TERM = re.compile(r"spook|zombie", re.I)
 # A mod that declares headwear under Uniform_Base is a content defect, not
 # a uniform: the class names a cap, a hat or a helmet and the uniform slot.
 HEADWEAR_TERM = re.compile(
@@ -1070,6 +1086,36 @@ def _clothing_scope(rows: list, label: str, chain) -> tuple[list, dict]:
     return kept, dict(excluded)
 
 
+def _device_scope(rows: list, label: str) -> tuple[list, dict]:
+    """Split a device table into scored rows and named exclusions.
+
+    The NVG slot holds mounts, gas masks, armbands and eye covers, and the
+    base game holds engine-internal goggles. None is a device, and each
+    leaves under the kind it is so the denominator is devices only.
+    """
+    kept: list = []
+    excluded: dict[str, list] = defaultdict(list)
+    for r in rows:
+        text = r["class"] + " " + r["display"]
+        if label != "night vision devices":
+            kept.append(r)
+            continue
+        if ENGINE_NVG_TERM.search(r["class"]):
+            excluded["engine-integrated goggles"].append(r["class"])
+            continue
+        if NON_NVG_SLOT_TERM.search(text):
+            excluded["non-NVG item in the NVG slot"].append(r["class"])
+            continue
+        if NVG_MOUNT_TERM.search(text):
+            excluded["NVG mounts"].append(r["class"])
+            continue
+        if FICTIONAL_DEVICE_TERM.search(text):
+            excluded["fictional in-game device"].append(r["class"])
+            continue
+        kept.append(r)
+    return kept, dict(excluded)
+
+
 def _optic_rows(scanned: list, thermal_only: bool = False) -> list:
     """The CfgWeapons classes the config states are sights.
 
@@ -1354,6 +1400,7 @@ def measure(scanned: list, base: set[str]) -> dict:
         ("thermal optics", "thermal", "thermal optic", _optic_rows(scanned, True)),
         ("optics", "optic", "optic", _optic_rows(scanned, False)),
     ):
+        selected, dropped = _device_scope(selected, label)
         if not selected:
             continue
         dtable = device_rows(DEVICE, family)
@@ -1367,7 +1414,8 @@ def measure(scanned: list, base: set[str]) -> dict:
         tables[slug(label)] = {
             "label": label,
             **score(selected, match_d, base),
-            "excluded": {},
+            "excluded": {kind: len(v) for kind, v in dropped.items()},
+            "excluded_classes": dropped,
             "decided": _decided(selected, match_d),
             "grades": grades(
                 selected,
