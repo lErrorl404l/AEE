@@ -116,6 +116,32 @@ not: the held bytes (355,785 bytes, sha256 `a6cfc3a2…`) contain the whole
 specifications block server-rendered, and the figures above are read from
 it. The earlier statement was wrong.
 
+## Classes that leave the night vision table
+
+`CfgWeapons >> NVGoggles` is the engine's night-vision slot, and mods hang
+more than night vision on it. Each group leaves the table under the kind it
+is, and every class is listed in `data/coverage/excluded_classes.txt`:
+
+| Bucket | Classes | Why |
+|---|---|---|
+| NVG mounts | 79 | Wilcox L4 G24 / L4 G19 / L4 GPNVG and Rhino mounts: the shoe the device clips to, not a device |
+| non-NVG item in the NVG slot | 26 | M40 gas masks (20), KAT armbands (4), KAT eye covers (2) |
+| engine-integrated goggles | 3 | `Integrated_NVG_*`: engine internals with no product |
+| fictional in-game device | 2 | "Spook vision" and "Zombie Eyes" |
+
+The table holds 217 devices after the exclusions and 5 remain at type: the
+DSA retextures, `CUP_NVG_HMNVS`, `EF_LPNVG`, the two RHS 6M2 variants and
+`rhsusf_ihadss_scope`, for which no reachable manufacturer datasheet states
+the figures the NVG row needs. Data coverage is 97.7 percent.
+
+## Thermal optics
+
+The three classes at type are Arma 3's own `optic_tws`, `optic_tws_mg` and
+`optic_Nightstalker`: fictional in-game sights with no manufacturer
+product. They are real items of this table, so they are not bucketed; they
+stay type because no published figure exists for them, and the nearest real
+sight (AN/PAS-13) is a different product.
+
 ## The last rung
 
 Every measured matcher ends with the type rung, which answers the kind of
