@@ -276,7 +276,7 @@
     "published": "",
     "retrieved": "2026-10-21",
     "url": "https://www.leupold.com/mark-8-cqbss-11-8x24-m5b1-illum-ffp-h-27d-riflescope",
-    "sha256": "83639a2cecb4200024c0feb9b6ba08872c9bca55c0bb7c18fbd4c8d8ddcfbc77",
+    "sha256": "a6cfc3a2851f4ea2b3d2a7ece628665459cfb5670152c19f4c1530f261b15e33",
     "primary_held": true,
     "note": "Held bytes are the manufacturer page; the specifications block is server-rendered and present in the held copy. Capture redacted of a third-party Google Maps API key present in the vendor page; the digest is of the redacted bytes."
   },
@@ -366,7 +366,7 @@
     "published": "",
     "retrieved": "2026-10-21",
     "url": "https://www.aimpoint.com/products/micro-t-1-2-moa-red-dot-reflex-sight-without-mount/",
-    "sha256": "a37bdb7ac9ce15af53343ac763d2f07fd14749bd1a80d68d2b74a25b999799b0",
+    "sha256": "37ec3b6911d2ca34246ddceeb875546722c4cea91f2acbd1dde14c236333e93b",
     "primary_held": true,
     "note": "Held from the manufacturer host with chrome impersonation. Capture redacted of a third-party Google Maps API key present in the vendor page; the digest is of the redacted bytes."
   },
@@ -381,7 +381,7 @@
     "published": "",
     "retrieved": "2026-10-21",
     "url": "https://www.aimpoint.com/products/micro-t-2-2-moa-red-dot-reflex-sight-without-mount/",
-    "sha256": "4f963fea6072fe18200ea9fb478e5aa3c9c7c9cff483ab5b57366e480cbaa127",
+    "sha256": "37cda4b557caf05e016fc64c8a3e55c47f59b481f3680fdf5d04be9692cf883b",
     "primary_held": true,
     "note": "The page contradicts itself: the specifications table states 102 g (3.6 oz), the headline card 94 g. Both are recorded and neither is entered as the figure. Capture redacted of a third-party Google Maps API key present in the vendor page; the digest is of the redacted bytes."
   },
@@ -396,7 +396,7 @@
     "published": "",
     "retrieved": "2026-10-21",
     "url": "https://www.eotechinc.com/products/eotech-hws-xps3",
-    "sha256": "a153e8f0cbf830ec13f1714dce7680d3c085e8cc472244c540b3195fffbecfd7",
+    "sha256": "190116421bcce9e72a5e99e7a01a2005b2d3eef36f96a043aeb83bd528b6a906",
     "primary_held": true,
     "note": "Held from the manufacturer host. Capture redacted of a third-party Google Maps API key present in the vendor page; the digest is of the redacted bytes."
   },
@@ -411,7 +411,7 @@
     "published": "",
     "retrieved": "2026-10-21",
     "url": "https://www.eotechinc.com/products/eotech-magnifier-g33",
-    "sha256": "c8e4aca43f5ce7a3ac27f0d1971f7960a79bb276a02ca60a708b7018f2ee8632",
+    "sha256": "d5f9f633878eb32d652de1f6745c914fa96a1c825639b31ab8fdd4f029a0afcc",
     "primary_held": true,
     "note": "Held from the manufacturer host. Every class that names the G33 also names a sight (G33 + XPS3, G33 + T1), so those bind to the sight and this entry binds no class. Capture redacted of a third-party Google Maps API key present in the vendor page; the digest is of the redacted bytes."
   },
@@ -426,7 +426,7 @@
     "published": "",
     "retrieved": "2026-10-21",
     "url": "https://www.eotechinc.com/products/eotech-vudu-1-6x24-ffp",
-    "sha256": "5563cf79de4b3a116d72a6ebc0761af965592d45dc3b45db5f2d54e556bbd1e3",
+    "sha256": "4656e3906ceccb1075ff3809a37ba9a2bdc1ef8f6ce9bc4990d580a65ebaff97",
     "primary_held": true,
     "note": "Held from the manufacturer host. The mod class text gives no magnification, so the binding is at family level. Capture redacted of a third-party Google Maps API key present in the vendor page; the digest is of the redacted bytes."
   },
@@ -564,5 +564,50 @@
     "sha256": "445c558319765f59c7f4a7e691942f83e1cad241f307b613a7409167b2fe88e6",
     "primary_held": true,
     "note": "Held from the manufacturer host. The R3F pair names no magnification, so their binding is a judgement recorded in the entry."
+  },
+  {
+    "source_id": "nightforce_atacr_sheet",
+    "tier": 4,
+    "type": "manufacturer",
+    "title": "Nightforce ATACR T5 sales sheet",
+    "edition": "",
+    "identifier": "",
+    "locator": "Specification table, row Weight, per product column",
+    "published": "",
+    "retrieved": "2026-10-21",
+    "url": "https://cdn.nightforceoptics.com/content/files/downloads/0323_NF_ATACR_T5-Sales-Sheet_July_FINAL.pdf",
+    "sha256": "7a29c5f3384a20d4af49415af23038c7fb425c4eaab8c4f8b8752c7f3e19b6e4",
+    "primary_held": true,
+    "note": "The manufacturer's own PDF, served from its CDN (cdn.nightforceoptics.com) because the HTML host sits behind a Cloudflare Turnstile. The digest is of the held PDF bytes."
+  },
+  {
+    "source_id": "nightforce_nxs_sheet",
+    "tier": 4,
+    "type": "manufacturer",
+    "title": "Nightforce NXS family sales sheet",
+    "edition": "",
+    "identifier": "",
+    "locator": "Specification table, row Weight, per product column",
+    "published": "",
+    "retrieved": "2026-10-21",
+    "url": "https://cdn.nightforceoptics.com/content/files/downloads/0120_NF_NXS_Family_Sales_Sheet.pdf",
+    "sha256": "0e12160bc9766a56c6385849115407bf3de848be2a3f4948dc50e5080d6aef05",
+    "primary_held": true,
+    "note": "The manufacturer's own PDF, served from its CDN (cdn.nightforceoptics.com) because the HTML host sits behind a Cloudflare Turnstile. The digest is of the held PDF bytes."
+  },
+  {
+    "source_id": "nightforce_2026_catalogue",
+    "tier": 4,
+    "type": "manufacturer",
+    "title": "Nightforce 2026 product catalogue",
+    "edition": "",
+    "identifier": "",
+    "locator": "Product pages, specification table, row Weight",
+    "published": "",
+    "retrieved": "2026-10-21",
+    "url": "https://cdn.nightforceoptics.com/content/files/downloads/NF-2026-Product-Catalog-DIGITAL.pdf",
+    "sha256": "a1547e8bebb58216295753a2e565eef46416794cc039b3a3ad0a416fd95718bc",
+    "primary_held": true,
+    "note": "The manufacturer's own PDF, served from its CDN (cdn.nightforceoptics.com) because the HTML host sits behind a Cloudflare Turnstile. The digest is of the held PDF bytes."
   }
 ]

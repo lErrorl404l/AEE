@@ -266,6 +266,36 @@ PK-AS, 1P63, OKP-7, NIT-A, PGO-7V, 1PN34, DH 5-20x56, 1P76, T1/RM05/MRDS,
 G33/XPS3, SMAW and MAAWS sights, MG42 AA sight, L2A2 SUIT, AN/PVS-2, Zeiss
 and Schmidt & Bender entries from R3F, XM157 prototype.
 
+## Third sourcing pass: Nightforce, Gorka and the pattern correction
+
+**Nightforce.** Twelve products are now corpus entries with the maker's own
+PDF held from `cdn.nightforceoptics.com` (the HTML host is behind a
+Cloudflare Turnstile; the CDN is not): ATACR 1-8x24 595 g, 4-16x42 850 g,
+4-16x50 944 g, 4-20x50 998 g, 5-25x56 F1 1066 g, 5-25x56 F2 1108 g,
+7-35x56 1113 g; NXS 2.5-10x42 581 g, 3.5-15x50 850 g, 5.5-22x50 879 g,
+5.5-22x56 907 g, 8-32x56 964 g. The NXS 3.5-15x50 and 5.5-22x56 entries
+replace the two earlier HTML-sourced ones, with the same figures and better
+provenance; their five classes stay bound. The `Scot_NForce_Atcr*` classes
+name the family only ("ATACR F1") while the family spans 595 to 1113 g, so
+none is bound to a specific model.
+
+**Gorka.** Splav's product page states the mass in its customer Q&A: "Вес
+костюма 60 размера на рост 182- 2134 гр." — 2.134 kg for size 60 at height
+182, whole suit. The row is entered with that size basis in the item state
+and the locator; the `gorka` family now answers 14 classes.
+
+**Pattern correction.** Flora, M93 and M10 are camouflage patterns, not
+garments. They are not rebound and carry no mass; the rule is recorded in
+`data/equipment/SCHEMA.md`. Where a class names a cut (M88, BDU) the cut's
+family answers; where it names only the pattern it stays at type with that
+reason.
+
+**Left at type, with reasons.** Crye G2/G3/G4 (the maker publishes no
+mass; the one third-party figure has no size basis), M88, VKPO, 6Sh122 and
+pilot coveralls (retail or fabric figures only, no size basis), Leupold
+Mark 4 / M8541 (off the catalogue), ELCAN M145 (archives 429), Trijicon
+AccuPower (no SKU), BelOMO PK-AS (no dealer spec table).
+
 ## The last rung
 
 Every measured matcher ends with the type rung, which answers the kind of

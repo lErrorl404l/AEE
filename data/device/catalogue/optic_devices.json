@@ -699,128 +699,6 @@
    }
   },
   {
-   "device_id": "nightforce_nxs_3515x50",
-   "canonical_name": "Nightforce NXS 3.5-15x50",
-   "family": "optic",
-   "maker": "Nightforce",
-   "country": "US",
-   "class_names": [
-    "NXS 3.5-15x50",
-    "3.5-15x50"
-   ],
-   "aliases": [
-    "nxs3515",
-    "3515x50"
-   ],
-   "keywords": [
-    "nxs3515",
-    "3515"
-   ],
-   "values": {
-    "magnification": {
-     "value": 15,
-     "unit": "ratio",
-     "source": "nightforce_nxs_3515x50",
-     "locator": "Specifications tab, Magnification Range row (3.5-15x); the table holds the top power",
-     "state": "3.5-15x, top power",
-     "grade": "claimed"
-    },
-    "objective_mm": {
-     "value": 50,
-     "unit": "mm",
-     "source": "nightforce_nxs_3515x50",
-     "locator": "Product title and Magnification Range row (3.5-15x50mm)",
-     "state": "as published",
-     "grade": "claimed"
-    },
-    "weight_kg": {
-     "value": 0.85,
-     "unit": "kg",
-     "source": "nightforce_nxs_3515x50",
-     "locator": "Specifications tab, Weight row (30.0 oz/850 g)",
-     "state": "as published, bare scope",
-     "grade": "claimed"
-    },
-    "exit_pupil_mm": {
-     "value": 3.3,
-     "unit": "mm",
-     "source": "nightforce_nxs_3515x50",
-     "locator": "Derived: objective 50 mm / top power 15",
-     "state": "derived at top power",
-     "grade": "derived"
-    },
-    "active": {
-     "value": "passive",
-     "unit": "enum",
-     "source": "nightforce_nxs_3515x50",
-     "locator": "Specifications tab: no active illumination of the image",
-     "state": "as published",
-     "grade": "claimed"
-    }
-   }
-  },
-  {
-   "device_id": "nightforce_nxs_5522x56",
-   "canonical_name": "Nightforce NXS 5.5-22x56",
-   "family": "optic",
-   "maker": "Nightforce",
-   "country": "US",
-   "class_names": [
-    "NXS 5.5-22x56",
-    "5.5-22x56"
-   ],
-   "aliases": [
-    "nxs5522",
-    "5522x56"
-   ],
-   "keywords": [
-    "nxs5522",
-    "5522"
-   ],
-   "values": {
-    "magnification": {
-     "value": 22,
-     "unit": "ratio",
-     "source": "nightforce_nxs_5522x56",
-     "locator": "Specifications tab, Magnification Range row (5.5-22x); the table holds the top power",
-     "state": "5.5-22x, top power",
-     "grade": "claimed"
-    },
-    "objective_mm": {
-     "value": 56,
-     "unit": "mm",
-     "source": "nightforce_nxs_5522x56",
-     "locator": "Product title and Magnification Range row (5.5-22x56mm)",
-     "state": "as published",
-     "grade": "claimed"
-    },
-    "weight_kg": {
-     "value": 0.907,
-     "unit": "kg",
-     "source": "nightforce_nxs_5522x56",
-     "locator": "Specifications tab, Weight row (32.0 oz/907 g)",
-     "state": "as published, bare scope",
-     "grade": "claimed"
-    },
-    "exit_pupil_mm": {
-     "value": 2.5,
-     "unit": "mm",
-     "source": "nightforce_nxs_5522x56",
-     "locator": "Derived: objective 56 mm / top power 22",
-     "state": "derived at top power",
-     "grade": "derived"
-    },
-    "active": {
-     "value": "passive",
-     "unit": "enum",
-     "source": "nightforce_nxs_5522x56",
-     "locator": "Specifications tab: no active illumination of the image",
-     "state": "as published",
-     "grade": "claimed"
-    }
-   }
-  },
-  {
    "device_id": "leupold_mark8_cqbss",
    "canonical_name": "Leupold Mark 8 CQBSS 1.1-8x24",
    "family": "optic",
@@ -2025,6 +1903,589 @@
      "unit": "enum",
      "source": "sb_pmii_5_25x56",
      "locator": "Technische Daten: passive riflescope",
+     "state": "as published",
+     "grade": "claimed"
+    }
+   }
+  },
+  {
+   "device_id": "atacr_1_8x24",
+   "canonical_name": "Nightforce ATACR 1-8x24 F1",
+   "family": "optic",
+   "maker": "Nightforce",
+   "country": "US",
+   "class_names": [],
+   "aliases": [
+    "atacr18x24"
+   ],
+   "keywords": [
+    "atacr18x24"
+   ],
+   "values": {
+    "magnification": {
+     "value": 8,
+     "unit": "ratio",
+     "source": "nightforce_atacr_sheet",
+     "locator": "Specification table: magnification column; the table holds the top power",
+     "state": "top power",
+     "grade": "claimed"
+    },
+    "objective_mm": {
+     "value": 24,
+     "unit": "mm",
+     "source": "nightforce_atacr_sheet",
+     "locator": "Product designation in the same document",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "weight_kg": {
+     "value": 0.595,
+     "unit": "kg",
+     "source": "nightforce_atacr_sheet",
+     "locator": "Specification table, row Weight",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "active": {
+     "value": "passive",
+     "unit": "enum",
+     "source": "nightforce_atacr_sheet",
+     "locator": "Specification table: passive riflescope",
+     "state": "as published",
+     "grade": "claimed"
+    }
+   }
+  },
+  {
+   "device_id": "atacr_4_16x42",
+   "canonical_name": "Nightforce ATACR 4-16x42 F1",
+   "family": "optic",
+   "maker": "Nightforce",
+   "country": "US",
+   "class_names": [],
+   "aliases": [
+    "atacr416x42"
+   ],
+   "keywords": [
+    "atacr416x42"
+   ],
+   "values": {
+    "magnification": {
+     "value": 16,
+     "unit": "ratio",
+     "source": "nightforce_atacr_sheet",
+     "locator": "Specification table: magnification column; the table holds the top power",
+     "state": "top power",
+     "grade": "claimed"
+    },
+    "objective_mm": {
+     "value": 42,
+     "unit": "mm",
+     "source": "nightforce_atacr_sheet",
+     "locator": "Product designation in the same document",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "weight_kg": {
+     "value": 0.85,
+     "unit": "kg",
+     "source": "nightforce_atacr_sheet",
+     "locator": "Specification table, row Weight",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "active": {
+     "value": "passive",
+     "unit": "enum",
+     "source": "nightforce_atacr_sheet",
+     "locator": "Specification table: passive riflescope",
+     "state": "as published",
+     "grade": "claimed"
+    }
+   }
+  },
+  {
+   "device_id": "atacr_4_16x50",
+   "canonical_name": "Nightforce ATACR 4-16x50 F2",
+   "family": "optic",
+   "maker": "Nightforce",
+   "country": "US",
+   "class_names": [],
+   "aliases": [
+    "atacr416x50"
+   ],
+   "keywords": [
+    "atacr416x50"
+   ],
+   "values": {
+    "magnification": {
+     "value": 16,
+     "unit": "ratio",
+     "source": "nightforce_atacr_sheet",
+     "locator": "Specification table: magnification column; the table holds the top power",
+     "state": "top power",
+     "grade": "claimed"
+    },
+    "objective_mm": {
+     "value": 50,
+     "unit": "mm",
+     "source": "nightforce_atacr_sheet",
+     "locator": "Product designation in the same document",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "weight_kg": {
+     "value": 0.944,
+     "unit": "kg",
+     "source": "nightforce_atacr_sheet",
+     "locator": "Specification table, row Weight",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "active": {
+     "value": "passive",
+     "unit": "enum",
+     "source": "nightforce_atacr_sheet",
+     "locator": "Specification table: passive riflescope",
+     "state": "as published",
+     "grade": "claimed"
+    }
+   }
+  },
+  {
+   "device_id": "atacr_4_20x50",
+   "canonical_name": "Nightforce ATACR 4-20x50 F1",
+   "family": "optic",
+   "maker": "Nightforce",
+   "country": "US",
+   "class_names": [],
+   "aliases": [
+    "atacr420x50"
+   ],
+   "keywords": [
+    "atacr420x50"
+   ],
+   "values": {
+    "magnification": {
+     "value": 20,
+     "unit": "ratio",
+     "source": "nightforce_atacr_sheet",
+     "locator": "Specification table: magnification column; the table holds the top power",
+     "state": "top power",
+     "grade": "claimed"
+    },
+    "objective_mm": {
+     "value": 50,
+     "unit": "mm",
+     "source": "nightforce_atacr_sheet",
+     "locator": "Product designation in the same document",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "weight_kg": {
+     "value": 0.998,
+     "unit": "kg",
+     "source": "nightforce_atacr_sheet",
+     "locator": "Specification table, row Weight",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "active": {
+     "value": "passive",
+     "unit": "enum",
+     "source": "nightforce_atacr_sheet",
+     "locator": "Specification table: passive riflescope",
+     "state": "as published",
+     "grade": "claimed"
+    }
+   }
+  },
+  {
+   "device_id": "atacr_5_25x56_f1",
+   "canonical_name": "Nightforce ATACR 5-25x56 F1",
+   "family": "optic",
+   "maker": "Nightforce",
+   "country": "US",
+   "class_names": [],
+   "aliases": [
+    "atacr525x56f1"
+   ],
+   "keywords": [
+    "atacr525x56f1"
+   ],
+   "values": {
+    "magnification": {
+     "value": 25,
+     "unit": "ratio",
+     "source": "nightforce_2026_catalogue",
+     "locator": "Specification table: magnification column; the table holds the top power",
+     "state": "top power",
+     "grade": "claimed"
+    },
+    "objective_mm": {
+     "value": 56,
+     "unit": "mm",
+     "source": "nightforce_2026_catalogue",
+     "locator": "Product designation in the same document",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "weight_kg": {
+     "value": 1.066,
+     "unit": "kg",
+     "source": "nightforce_2026_catalogue",
+     "locator": "Specification table, row Weight",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "active": {
+     "value": "passive",
+     "unit": "enum",
+     "source": "nightforce_2026_catalogue",
+     "locator": "Specification table: passive riflescope",
+     "state": "as published",
+     "grade": "claimed"
+    }
+   }
+  },
+  {
+   "device_id": "atacr_5_25x56_f2",
+   "canonical_name": "Nightforce ATACR 5-25x56 F2",
+   "family": "optic",
+   "maker": "Nightforce",
+   "country": "US",
+   "class_names": [],
+   "aliases": [
+    "atacr525x56f2"
+   ],
+   "keywords": [
+    "atacr525x56f2"
+   ],
+   "values": {
+    "magnification": {
+     "value": 25,
+     "unit": "ratio",
+     "source": "nightforce_2026_catalogue",
+     "locator": "Specification table: magnification column; the table holds the top power",
+     "state": "top power",
+     "grade": "claimed"
+    },
+    "objective_mm": {
+     "value": 56,
+     "unit": "mm",
+     "source": "nightforce_2026_catalogue",
+     "locator": "Product designation in the same document",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "weight_kg": {
+     "value": 1.108,
+     "unit": "kg",
+     "source": "nightforce_2026_catalogue",
+     "locator": "Specification table, row Weight",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "active": {
+     "value": "passive",
+     "unit": "enum",
+     "source": "nightforce_2026_catalogue",
+     "locator": "Specification table: passive riflescope",
+     "state": "as published",
+     "grade": "claimed"
+    }
+   }
+  },
+  {
+   "device_id": "atacr_7_35x56",
+   "canonical_name": "Nightforce ATACR 7-35x56 F1/F2",
+   "family": "optic",
+   "maker": "Nightforce",
+   "country": "US",
+   "class_names": [],
+   "aliases": [
+    "atacr735x56"
+   ],
+   "keywords": [
+    "atacr735x56"
+   ],
+   "values": {
+    "magnification": {
+     "value": 35,
+     "unit": "ratio",
+     "source": "nightforce_2026_catalogue",
+     "locator": "Specification table: magnification column; the table holds the top power",
+     "state": "top power",
+     "grade": "claimed"
+    },
+    "objective_mm": {
+     "value": 56,
+     "unit": "mm",
+     "source": "nightforce_2026_catalogue",
+     "locator": "Product designation in the same document",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "weight_kg": {
+     "value": 1.113,
+     "unit": "kg",
+     "source": "nightforce_2026_catalogue",
+     "locator": "Specification table, row Weight",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "active": {
+     "value": "passive",
+     "unit": "enum",
+     "source": "nightforce_2026_catalogue",
+     "locator": "Specification table: passive riflescope",
+     "state": "as published",
+     "grade": "claimed"
+    }
+   }
+  },
+  {
+   "device_id": "nxs_2_5_10x42",
+   "canonical_name": "Nightforce NXS 2.5-10x42",
+   "family": "optic",
+   "maker": "Nightforce",
+   "country": "US",
+   "class_names": [],
+   "aliases": [
+    "nxs2510x42"
+   ],
+   "keywords": [
+    "nxs2510x42"
+   ],
+   "values": {
+    "magnification": {
+     "value": 10,
+     "unit": "ratio",
+     "source": "nightforce_nxs_sheet",
+     "locator": "Specification table: magnification column; the table holds the top power",
+     "state": "top power",
+     "grade": "claimed"
+    },
+    "objective_mm": {
+     "value": 42,
+     "unit": "mm",
+     "source": "nightforce_nxs_sheet",
+     "locator": "Product designation in the same document",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "weight_kg": {
+     "value": 0.581,
+     "unit": "kg",
+     "source": "nightforce_nxs_sheet",
+     "locator": "Specification table, row Weight",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "active": {
+     "value": "passive",
+     "unit": "enum",
+     "source": "nightforce_nxs_sheet",
+     "locator": "Specification table: passive riflescope",
+     "state": "as published",
+     "grade": "claimed"
+    }
+   }
+  },
+  {
+   "device_id": "nxs_3_5_15x50",
+   "canonical_name": "Nightforce NXS 3.5-15x50",
+   "family": "optic",
+   "maker": "Nightforce",
+   "country": "US",
+   "class_names": [
+    "rhsusf_acc_nxs_3515x50_base",
+    "rhsusf_acc_nxs_3515x50f1_base",
+    "rhsusf_acc_nxs_3515x50f1_md",
+    "rhsusf_acc_nxs_3515x50f1_h58"
+   ],
+   "aliases": [
+    "nxs3515x50"
+   ],
+   "keywords": [
+    "nxs3515x50"
+   ],
+   "values": {
+    "magnification": {
+     "value": 15,
+     "unit": "ratio",
+     "source": "nightforce_nxs_sheet",
+     "locator": "Specification table: magnification column; the table holds the top power",
+     "state": "top power",
+     "grade": "claimed"
+    },
+    "objective_mm": {
+     "value": 50,
+     "unit": "mm",
+     "source": "nightforce_nxs_sheet",
+     "locator": "Product designation in the same document",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "weight_kg": {
+     "value": 0.85,
+     "unit": "kg",
+     "source": "nightforce_nxs_sheet",
+     "locator": "Specification table, row Weight",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "active": {
+     "value": "passive",
+     "unit": "enum",
+     "source": "nightforce_nxs_sheet",
+     "locator": "Specification table: passive riflescope",
+     "state": "as published",
+     "grade": "claimed"
+    }
+   }
+  },
+  {
+   "device_id": "nxs_5_5_22x50",
+   "canonical_name": "Nightforce NXS 5.5-22x50",
+   "family": "optic",
+   "maker": "Nightforce",
+   "country": "US",
+   "class_names": [],
+   "aliases": [
+    "nxs5522x50"
+   ],
+   "keywords": [
+    "nxs5522x50"
+   ],
+   "values": {
+    "magnification": {
+     "value": 22,
+     "unit": "ratio",
+     "source": "nightforce_nxs_sheet",
+     "locator": "Specification table: magnification column; the table holds the top power",
+     "state": "top power",
+     "grade": "claimed"
+    },
+    "objective_mm": {
+     "value": 50,
+     "unit": "mm",
+     "source": "nightforce_nxs_sheet",
+     "locator": "Product designation in the same document",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "weight_kg": {
+     "value": 0.879,
+     "unit": "kg",
+     "source": "nightforce_nxs_sheet",
+     "locator": "Specification table, row Weight",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "active": {
+     "value": "passive",
+     "unit": "enum",
+     "source": "nightforce_nxs_sheet",
+     "locator": "Specification table: passive riflescope",
+     "state": "as published",
+     "grade": "claimed"
+    }
+   }
+  },
+  {
+   "device_id": "nxs_5_5_22x56",
+   "canonical_name": "Nightforce NXS 5.5-22x56",
+   "family": "optic",
+   "maker": "Nightforce",
+   "country": "US",
+   "class_names": [
+    "rhsusf_acc_nxs_5522x56_base"
+   ],
+   "aliases": [
+    "nxs5522x56"
+   ],
+   "keywords": [
+    "nxs5522x56"
+   ],
+   "values": {
+    "magnification": {
+     "value": 22,
+     "unit": "ratio",
+     "source": "nightforce_nxs_sheet",
+     "locator": "Specification table: magnification column; the table holds the top power",
+     "state": "top power",
+     "grade": "claimed"
+    },
+    "objective_mm": {
+     "value": 56,
+     "unit": "mm",
+     "source": "nightforce_nxs_sheet",
+     "locator": "Product designation in the same document",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "weight_kg": {
+     "value": 0.907,
+     "unit": "kg",
+     "source": "nightforce_nxs_sheet",
+     "locator": "Specification table, row Weight",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "active": {
+     "value": "passive",
+     "unit": "enum",
+     "source": "nightforce_nxs_sheet",
+     "locator": "Specification table: passive riflescope",
+     "state": "as published",
+     "grade": "claimed"
+    }
+   }
+  },
+  {
+   "device_id": "nxs_8_32x56",
+   "canonical_name": "Nightforce NXS 8-32x56",
+   "family": "optic",
+   "maker": "Nightforce",
+   "country": "US",
+   "class_names": [],
+   "aliases": [
+    "nxs832x56"
+   ],
+   "keywords": [
+    "nxs832x56"
+   ],
+   "values": {
+    "magnification": {
+     "value": 32,
+     "unit": "ratio",
+     "source": "nightforce_nxs_sheet",
+     "locator": "Specification table: magnification column; the table holds the top power",
+     "state": "top power",
+     "grade": "claimed"
+    },
+    "objective_mm": {
+     "value": 56,
+     "unit": "mm",
+     "source": "nightforce_nxs_sheet",
+     "locator": "Product designation in the same document",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "weight_kg": {
+     "value": 0.964,
+     "unit": "kg",
+     "source": "nightforce_nxs_sheet",
+     "locator": "Specification table, row Weight",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "active": {
+     "value": "passive",
+     "unit": "enum",
+     "source": "nightforce_nxs_sheet",
+     "locator": "Specification table: passive riflescope",
      "state": "as published",
      "grade": "claimed"
     }
