@@ -17,7 +17,9 @@
       "aliases": [
         "snatch land rover"
       ],
-      "keywords": [],
+      "keywords": [
+        "snatch"
+      ],
       "runtime_ready": false,
       "values": {
         "operating_weight_kg": {

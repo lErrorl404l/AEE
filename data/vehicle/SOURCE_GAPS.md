@@ -9,11 +9,11 @@ labelled absent zero. This file lists the resolved provenance of each
 row and the next source class for each absent field. A missing field
 is a labelled zero, not a refusal.
 
-- Catalogue entries: 269
-- Emitted runtime rows: 269
+- Catalogue entries: 270
+- Emitted runtime rows: 270
 - Runtime-ready entries: 1
-- Entries with an absent runtime field: 268
-- Absent fields: 1250
+- Entries with an absent runtime field: 269
+- Absent fields: 1254
 
 ## 2s19_msta_s - 2S19 Msta-S (tracked)
 
@@ -2428,6 +2428,30 @@ is a labelled zero, not a refusal.
 | `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
 | `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
 | `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## jackal_mwmik - Jackal MWMIK (wheeled)
+
+- Capture: `data/vehicle/catalogue/wikipedia_jackal_vehicle.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 6650 | `wikipedia_jackal_vehicle` | Infobox, weight: 6,650 kg | operating weight as published; source tier-5 compilation |
+| `tyre_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `tyre_diameter_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | claimed | 380 | `wikipedia_jackal_vehicle` | Design and development, raised to a maximum 380 mm ground clearance | maximum ground clearance on the height-adjustable air suspension, not a static ride height; source tier-5 compilation |
+| `net_power_kw` | derived | 137.954476 | `wikipedia_jackal_vehicle` | Infobox, engine_power: 185 bhp | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
+| `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
 | `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
 | `grousers_state` | the vehicle manual track section or a track OEM datasheet |
 

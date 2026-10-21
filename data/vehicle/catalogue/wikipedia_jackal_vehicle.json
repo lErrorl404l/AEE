@@ -1,0 +1,93 @@
+{
+  "retrieved": "2026-10-21",
+  "note": "Capture for the Jackal MWMIK from its English Wikipedia article. Every value is grade claimed: the source is a tier-5 compilation and the article is a secondary document. Fields the article does not state are absent, not derived. Tyre size and transmission model are absent: the article gives neither.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "jackal_mwmik",
+      "canonical_name": "Jackal MWMIK",
+      "maker": "Supacat",
+      "model": "Jackal",
+      "variant": "MWMIK (HMT 400)",
+      "variant_id": "jackal_mwmik",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "United Kingdom",
+      "era": "modern",
+      "aliases": [
+        "jackal mwmik"
+      ],
+      "keywords": [
+        "jackal",
+        "mwmik"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 6650,
+          "unit": "kg",
+          "source": "wikipedia_jackal_vehicle",
+          "locator": "Infobox, weight: 6,650 kg",
+          "state": "operating weight as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 5390,
+          "unit": "mm",
+          "source": "wikipedia_jackal_vehicle",
+          "locator": "Infobox, length: 5.39 m",
+          "state": "overall length as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2000,
+          "unit": "mm",
+          "source": "wikipedia_jackal_vehicle",
+          "locator": "Infobox, width: 2.00 m",
+          "state": "overall width as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 1970,
+          "unit": "mm",
+          "source": "wikipedia_jackal_vehicle",
+          "locator": "Infobox, height: 1.97 m, not including the weapon system",
+          "state": "height as published, to the roof and without the weapon system; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 130,
+          "unit": "km/h",
+          "source": "wikipedia_jackal_vehicle",
+          "locator": "Infobox, speed: 130 km/h",
+          "state": "maximum road speed as published; the body figure for the same value carries an uncited warning, so the infobox row is the locator; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "ground_clearance_mm": {
+          "value": 380,
+          "unit": "mm",
+          "source": "wikipedia_jackal_vehicle",
+          "locator": "Design and development, raised to a maximum 380 mm ground clearance",
+          "state": "maximum ground clearance on the height-adjustable air suspension, not a static ride height; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "5.9 litre Cummins ISBe Euro3 six-cylinder diesel",
+          "unit": "text",
+          "source": "wikipedia_jackal_vehicle",
+          "locator": "Infobox, engine: 5.9 litre Cummins ISBe Euro3 six-cylinder diesel",
+          "state": "engine make and model as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "published_power_hp": {
+          "value": 185,
+          "unit": "hp",
+          "source": "wikipedia_jackal_vehicle",
+          "locator": "Infobox, engine_power: 185 bhp",
+          "state": "engine power as published, brake horsepower; net power derives from this at grade derived; source tier-5 compilation",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

@@ -2858,6 +2858,24 @@
   "note": "Tranche-3 research source. Tier-5 compilation; values are grade claimed."
  },
  {
+  "source_id": "wikipedia_jackal_vehicle",
+  "tier": 5,
+  "type": "compilation",
+  "title": "Jackal (vehicle)",
+  "edition": "English Wikipedia, article source snapshot held as wikitext, retrieved 2026-10-21",
+  "identifier": "English Wikipedia article 'Jackal (vehicle)'",
+  "locator": "Infobox rows: designer, length, width, height, weight, speed, engine, engine_power, armour and crew; Design and development: 380 mm maximum ground clearance",
+  "published": null,
+  "retrieved": "2026-10-21",
+  "url": "https://en.wikipedia.org/wiki/Jackal_(vehicle)",
+  "archive_ref": "Article wikitext held in the machine-local source cache as wikipedia_jackal_vehicle.wiki",
+  "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
+  "primary_held": false,
+  "sha256": "1280b8415a86784f3b3072eed1be1cfd163c70de8ef60e8bbc2dc71c1d81b39d",
+  "capture": "local-cache-only",
+  "note": "Tier-5 English Wikipedia compilation for the Jackal MWMIK. Publishes the designer Supacat, the 6,650 kg weight, the 5.39 m length, the 2.00 m width, the 1.97 m height without the weapon system, the 130 km/h speed, the 5.9 litre Cummins ISBe engine at 185 bhp, the crew of three and a 380 mm maximum ground clearance. Publishes no tyre size and no transmission model: the infobox transmission row is blank and the body names Allison as the supplier only."
+ },
+ {
   "source_id": "wikipedia_land_rover_wolf",
   "tier": 5,
   "type": "compilation",
