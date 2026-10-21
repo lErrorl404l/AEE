@@ -5,7 +5,8 @@
    "source_id": "tikka_manual_v53",
    "title": "Tikka T1x/T3x Instruction Manual (Sako Ltd., document S34065180 v5.3), section 'Technical specification - General technical specifications'",
    "url": "https://media.sako.global/image/upload/v1691658741/Tikka_T1x_T3x_Instruction_Manual_v5.3_cjggnu.pdf",
-   "sha256": "23071369c091412ecf0586b3ce2ae5b0f8b2472a4f49e46de6dd2e5fba3be285"
+   "sha256": "23071369c091412ecf0586b3ce2ae5b0f8b2472a4f49e46de6dd2e5fba3be285",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sako_t3x_upr",

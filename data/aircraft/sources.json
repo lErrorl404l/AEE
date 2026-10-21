@@ -27,6 +27,7 @@
   "licence": "Fandom wiki text is available under the Creative Commons Attribution-ShareAlike licence. The page is a community compilation, never a primary source.",
   "primary_held": false,
   "sha256": "f3846f3d2a63ccc4954136fa142faa02a5811c5b34528d58d1d121f6d0f49cd7",
+  "capture": "local-cache-only",
   "note": "Tier-5 community compilation. The held bytes are the ARMA 3 Trivia section only. It states the Buzzard is a slightly modified L-159 ALCA. The section publishes no mass, dimension, engine, tyre or performance figure, so this source carries an identity claim only and no value object cites it."
  },
  {
@@ -43,6 +44,7 @@
   "licence": "Fandom wiki text is available under the Creative Commons Attribution-ShareAlike licence. The page is a community compilation, never a primary source.",
   "primary_held": false,
   "sha256": "42990b6556342eccbe32c418593bd7c2a75cc79da5f6d6e63f856981d688f112",
+  "capture": "local-cache-only",
   "note": "Tier-5 community compilation. The held bytes are the ARMA 3 Trivia section only. It states the Wipeout is directly based on the A-10 Thunderbolt II. The section publishes no mass, dimension, engine, tyre or performance figure, so this source carries an identity claim only and no value object cites it."
  },
  {
@@ -59,6 +61,7 @@
   "licence": "Fandom wiki text is available under the Creative Commons Attribution-ShareAlike licence. The page is a community compilation, never a primary source.",
   "primary_held": false,
   "sha256": "a17913af1bc62e5393b5fc210f896aca1ac3ab86f9a4875ac009c06212209ae9",
+  "capture": "local-cache-only",
   "note": "Tier-5 community compilation. The held bytes are the ARMA 3 Trivia section only. It states the Blackfoot derives from the RAH-66 Comanche. The section publishes no mass, dimension, engine, tyre or performance figure, so this source carries an identity claim only and no value object cites it."
  },
  {
@@ -75,6 +78,7 @@
   "licence": "Fandom wiki text is available under the Creative Commons Attribution-ShareAlike licence. The page is a community compilation, never a primary source.",
   "primary_held": false,
   "sha256": "aa8309efdbdd52161f827141e4f28852e8728c4784ad730e04b60caab2367e8d",
+  "capture": "local-cache-only",
   "note": "Tier-5 community compilation. The held bytes are the ARMA 3 Trivia section only. It states the Pawnee airframe is based on the MD-500D and its role resembles the AH-6J Little Bird. The section publishes no mass, dimension, engine, tyre or performance figure, so this source carries an identity claim only and no value object cites it."
  },
  {
@@ -91,6 +95,7 @@
   "licence": "Fandom wiki text is available under the Creative Commons Attribution-ShareAlike licence. The page is a community compilation, never a primary source.",
   "primary_held": false,
   "sha256": "31b8954ea6de674ea3469b17fdf7e749997eb9bbdc77e0dd8580e71ff2cb1b96",
+  "capture": "local-cache-only",
   "note": "Tier-5 community compilation. The held bytes are the ARMA 3 Trivia section only. It states the Darter appears to be based on an enlarged Parrot AR.Drone 2.0. The section publishes no mass, dimension, engine, tyre or performance figure, so this source carries an identity claim only and no value object cites it."
  },
  {
@@ -107,6 +112,7 @@
   "licence": "Fandom wiki text is available under the Creative Commons Attribution-ShareAlike licence. The page is a community compilation, never a primary source.",
   "primary_held": false,
   "sha256": "fe8b450c429d47fdd49519d6e66496832e8a3495efbb2caaa6a0df41abb43774",
+  "capture": "local-cache-only",
   "note": "Tier-5 community compilation. The held bytes are the ARMA 3 Trivia section only. It states the Mohawk is based on the AgustaWestland AW101 Merlin. The section publishes no mass, dimension, engine, tyre or performance figure, so this source carries an identity claim only and no value object cites it."
  },
  {
@@ -123,6 +129,7 @@
   "licence": "Fandom wiki text is available under the Creative Commons Attribution-ShareAlike licence. The page is a community compilation, never a primary source.",
   "primary_held": false,
   "sha256": "6f368c06b88fd92688cc426d2aaa1946e58663223cab28ec739b8d45f4f8c93f",
+  "capture": "local-cache-only",
   "note": "Tier-5 community compilation. The held bytes are the ARMA 3 Trivia section only. It states the M900 airframe is based on the McDonnell Douglas MD-500D. The section publishes no mass, dimension, engine, tyre or performance figure, so this source carries an identity claim only and no value object cites it."
  },
  {
@@ -139,6 +146,7 @@
   "licence": "Fandom wiki text is available under the Creative Commons Attribution-ShareAlike licence. The page is a community compilation, never a primary source.",
   "primary_held": false,
   "sha256": "d2f9f71123b89f3f78983d48112f3755fdec7f5aa73046a6e5030741acaa05af",
+  "capture": "local-cache-only",
   "note": "Tier-5 community compilation. The held bytes are the ARMA 3 Trivia section only. It states the Hummingbird airframe is based on the MD-500D and its role resembles the MH-6 Little Bird. The section publishes no mass, dimension, engine, tyre or performance figure, so this source carries an identity claim only and no value object cites it."
  },
  {
@@ -155,6 +163,7 @@
   "licence": "Fandom wiki text is available under the Creative Commons Attribution-ShareAlike licence. The page is a community compilation, never a primary source.",
   "primary_held": false,
   "sha256": "b7d8abf0dbc5065358b1d574dd3cd9d86757cfa2b556a33970f69c05fc71fbb5",
+  "capture": "local-cache-only",
   "note": "Tier-5 community compilation. The held bytes are the ARMA 3 Trivia section only. It states the Kajman draws on the Mi-28, Ka-50, Ka-52 and Mi-24. The section publishes no mass, dimension, engine, tyre or performance figure, so this source carries an identity claim only and no value object cites it."
  },
  {
@@ -171,6 +180,7 @@
   "licence": "Fandom wiki text is available under the Creative Commons Attribution-ShareAlike licence. The page is a community compilation, never a primary source.",
   "primary_held": false,
   "sha256": "9e3f096780251733123590d2f0ddc0fec0a3bb1f4ee824cfa121a8e9e63e2a1b",
+  "capture": "local-cache-only",
   "note": "Tier-5 community compilation. The held bytes are the ARMA 3 Trivia section only. It states the Greyhawk airframe layout is inspired by the MQ-9 Reaper. The section publishes no mass, dimension, engine, tyre or performance figure, so this source carries an identity claim only and no value object cites it."
  },
  {
@@ -187,6 +197,7 @@
   "licence": "Fandom wiki text is available under the Creative Commons Attribution-ShareAlike licence. The page is a community compilation, never a primary source.",
   "primary_held": false,
   "sha256": "72a4710e6c1e46d1dbec738d286db8ffdc7b2f4941558316fe855f4f2d3a45a6",
+  "capture": "local-cache-only",
   "note": "Tier-5 community compilation. The held bytes are the ARMA 3 Trivia section only. It states the Orca is based on the Kamov Ka-60 Kasatka. The section publishes no mass, dimension, engine, tyre or performance figure, so this source carries an identity claim only and no value object cites it."
  },
  {
@@ -203,6 +214,7 @@
   "licence": "Fandom wiki text is available under the Creative Commons Attribution-ShareAlike licence. The page is a community compilation, never a primary source.",
   "primary_held": false,
   "sha256": "fd9e4f0ba103b3170284e0e28da9d4d1508fb5a0c533d8094f71567b38c7ac37",
+  "capture": "local-cache-only",
   "note": "Tier-5 community compilation. The held bytes are the ARMA 3 Trivia section only. It states the Neophron is based on the Yak-130, specifically the single-seat Yak-131 variant. The section publishes no mass, dimension, engine, tyre or performance figure, so this source carries an identity claim only and no value object cites it."
  },
  {
@@ -219,6 +231,7 @@
   "licence": "Fandom wiki text is available under the Creative Commons Attribution-ShareAlike licence. The page is a community compilation, never a primary source.",
   "primary_held": false,
   "sha256": "b3b93804fc34855de0acec88f933bc9cd7a87bd8864e397b14f7fdcf017d918a",
+  "capture": "local-cache-only",
   "note": "Tier-5 community compilation. The held bytes are the ARMA 3 Trivia section only. It states the Ghost Hawk is ARMA 3's take on the stealth variant of the UH-60 Black Hawk. The section publishes no mass, dimension, engine, tyre or performance figure, so this source carries an identity claim only and no value object cites it."
  },
  {
@@ -276,7 +289,8 @@
   "licence": "Cessna Aircraft Company pilot's operating handbook and FAA approved airplane flight manual. Held locally, not vendored.",
   "primary_held": true,
   "note": "Pilot's operating handbook for the Cessna 172S. It names the fuel capacity, the fuel type, the V-speeds and the weight and balance limits.",
-  "sha256": "44de21742fa55d402f25b9397b1b17fc064e43325fc90e24cbcd5e2abc4fbede"
+  "sha256": "44de21742fa55d402f25b9397b1b17fc064e43325fc90e24cbcd5e2abc4fbede",
+  "capture": "local-cache-only"
  },
  {
   "source_id": "src_czmod_mi2",
@@ -305,7 +319,8 @@
   "licence": "EASA published type certificate data sheet. Held locally, not vendored.",
   "primary_held": true,
   "note": "Type certificate data sheet for the EH101-500 and EH101-510, the AW101 Merlin. It names the weights, rotor geometry, engine model and operating limits.",
-  "sha256": "a9b2b0236e71a958594abe9a6765751c0691576050ff899a88db220688a888e5"
+  "sha256": "a9b2b0236e71a958594abe9a6765751c0691576050ff899a88db220688a888e5",
+  "capture": "local-cache-only"
  },
  {
   "source_id": "src_fa18_blog",
@@ -334,7 +349,8 @@
   "licence": "US Navy flight manual, public domain; held locally, not vendored.",
   "primary_held": true,
   "note": "F/A-18E/F NATOPS.",
-  "sha256": "1c38118f1f39f51f22f07f795679ac1c8d890e20fcdb5f4d74c1ca166d02e3ad"
+  "sha256": "1c38118f1f39f51f22f07f795679ac1c8d890e20fcdb5f4d74c1ca166d02e3ad",
+  "capture": "local-cache-only"
  },
  {
   "source_id": "src_faa_md500_rfm",
@@ -349,7 +365,8 @@
   "licence": "US Government work, public domain; held locally, not vendored.",
   "primary_held": true,
   "note": "MD 369 rotorcraft flight manual.",
-  "sha256": "708e1e84f4c1c4200b22a88e429500520a0ed76b7f09caa40bcaa420ddb114f2"
+  "sha256": "708e1e84f4c1c4200b22a88e429500520a0ed76b7f09caa40bcaa420ddb114f2",
+  "capture": "local-cache-only"
  },
  {
   "source_id": "src_faa_tcds_3a12",
@@ -364,7 +381,8 @@
   "licence": "US Government work, public domain; held locally, not vendored.",
   "primary_held": true,
   "note": "FAA type certificate data sheet.",
-  "sha256": "2b2b71a57c4484713c41c1a3cb2df00e3eb45ad18cb779f14b22bcab9b575036"
+  "sha256": "2b2b71a57c4484713c41c1a3cb2df00e3eb45ad18cb779f14b22bcab9b575036",
+  "capture": "local-cache-only"
  },
  {
   "source_id": "src_flugzeuginfo_gripen",
@@ -505,7 +523,8 @@
   "licence": "Manufacturer brochure; facts cited, held locally, not vendored.",
   "primary_held": true,
   "note": "Leonardo product brochure for the AW101 Merlin.",
-  "sha256": "48cda917b06d9be4a60fc06ff120dd138808945555865b3abb0055038dec0cc3"
+  "sha256": "48cda917b06d9be4a60fc06ff120dd138808945555865b3abb0055038dec0cc3",
+  "capture": "local-cache-only"
  },
  {
   "source_id": "src_md500e_2023",
@@ -520,7 +539,8 @@
   "licence": "Manufacturer datasheet; facts cited, held locally, not vendored.",
   "primary_held": true,
   "note": "MD Helicopters product specification.",
-  "sha256": "854b1b851864ce00b775720907b145c777451fe3bf8c304f510f571a002a9e1e"
+  "sha256": "854b1b851864ce00b775720907b145c777451fe3bf8c304f510f571a002a9e1e",
+  "capture": "local-cache-only"
  },
  {
   "source_id": "src_md530f_2023",
@@ -535,7 +555,8 @@
   "licence": "Manufacturer datasheet; facts cited, held locally, not vendored.",
   "primary_held": true,
   "note": "MD Helicopters product specification.",
-  "sha256": "978fa5a1bef7ae068eb6a8e7c63013fa6a1f8d45a007107ff8bfc2db221f172f"
+  "sha256": "978fa5a1bef7ae068eb6a8e7c63013fa6a1f8d45a007107ff8bfc2db221f172f",
+  "capture": "local-cache-only"
  },
  {
   "source_id": "src_milavia_l159",
@@ -578,7 +599,8 @@
   "licence": "US Government work, public domain. NASA Technical Reports Server. Held locally, not vendored.",
   "primary_held": true,
   "note": "NASA study of the operational parameters that change helicopter fuel consumption. A public-domain reference for the fuel consumption fields.",
-  "sha256": "65582af74bcf18affc1349bc8ba93f20a890d9fe4b047740417d1f78068da0c2"
+  "sha256": "65582af74bcf18affc1349bc8ba93f20a890d9fe4b047740417d1f78068da0c2",
+  "capture": "local-cache-only"
  },
  {
   "source_id": "src_odin_weg_2025",
@@ -593,7 +615,8 @@
   "licence": "US Army ODIN, public domain; held locally, not vendored.",
   "primary_held": true,
   "note": "US Army ODIN guide: Su-57 record.",
-  "sha256": "c4ceaadfef9bdbfc2d95370467a02368cf330374256d3e57998156583df73832"
+  "sha256": "c4ceaadfef9bdbfc2d95370467a02368cf330374256d3e57998156583df73832",
+  "capture": "local-cache-only"
  },
  {
   "source_id": "src_opfor_weg",
@@ -608,7 +631,8 @@
   "licence": "US Army TRADOC G2, public domain; held locally, not vendored.",
   "primary_held": true,
   "note": "US Army OPFOR guide: Su-25, Mi-2, Mi-28, Mi-26.",
-  "sha256": "ab384a7858f0866708ea0b668f3b5954b21ecfff3d80617d10dcda3111dc914c"
+  "sha256": "ab384a7858f0866708ea0b668f3b5954b21ecfff3d80617d10dcda3111dc914c",
+  "capture": "local-cache-only"
  },
  {
   "source_id": "src_rah66_case",
@@ -623,7 +647,8 @@
   "licence": "US Government report, public domain; held locally, not vendored.",
   "primary_held": true,
   "note": "DTIC Comanche case history.",
-  "sha256": "8066a7cbbd1756d4cbccb21cb384504a05ec8c3f01ea098daea3dac5c819d3d0"
+  "sha256": "8066a7cbbd1756d4cbccb21cb384504a05ec8c3f01ea098daea3dac5c819d3d0",
+  "capture": "local-cache-only"
  },
  {
   "source_id": "src_saab_gripen_c",
@@ -638,7 +663,8 @@
   "licence": "Manufacturer factsheet; facts cited, held locally, not vendored.",
   "primary_held": true,
   "note": "Saab factsheet.",
-  "sha256": "3f6dd8ec68044ccd5bd9cbaedd93962533fa51bf7194ef544de5c9b31beba612"
+  "sha256": "3f6dd8ec68044ccd5bd9cbaedd93962533fa51bf7194ef544de5c9b31beba612",
+  "capture": "local-cache-only"
  },
  {
   "source_id": "src_tm_1_1520_237_10",
@@ -653,7 +679,8 @@
   "licence": "US Army manual, public domain; held locally, not vendored.",
   "primary_held": true,
   "note": "UH-60A operator's manual.",
-  "sha256": "cdb8b7d101cb8c90a9e5dccc83fafe0e1dbc5c101269511446dfba8a9b5d97e3"
+  "sha256": "cdb8b7d101cb8c90a9e5dccc83fafe0e1dbc5c101269511446dfba8a9b5d97e3",
+  "capture": "local-cache-only"
  },
  {
   "source_id": "src_tm_1_1520_240_10",
@@ -668,7 +695,8 @@
   "licence": "US Government work, public domain; held locally, not vendored.",
   "primary_held": true,
   "note": "CH-47D operator's manual.",
-  "sha256": "645986e6a1a1b39bfed4d0a680a0d5e07fce3e7435591f643e774b2b131971d9"
+  "sha256": "645986e6a1a1b39bfed4d0a680a0d5e07fce3e7435591f643e774b2b131971d9",
+  "capture": "local-cache-only"
  },
  {
   "source_id": "src_tm_55_1520_210_10",
@@ -683,7 +711,8 @@
   "licence": "US Government work, public domain. Distribution statement A. Held locally, not vendored.",
   "primary_held": true,
   "note": "US Army operator's manual for the UH-1H/V. A public-domain source for the fuel capacity, the engine limits and the V-speeds.",
-  "sha256": "e0d79453f7d6d26cafdb25f2154aafeecf7582045c3650d067ceccf70f6ae51f"
+  "sha256": "e0d79453f7d6d26cafdb25f2154aafeecf7582045c3650d067ceccf70f6ae51f",
+  "capture": "local-cache-only"
  },
  {
   "source_id": "src_tm_55_1520_228_10",
@@ -698,7 +727,8 @@
   "licence": "US Government work, public domain. Distribution statement A. Held locally, not vendored.",
   "primary_held": true,
   "note": "US Army operator's manual for the OH-58 A/C. A public-domain source for the fuel capacity, the engine limits and the V-speeds.",
-  "sha256": "d3ae2202eca722a3ee5b3089931e29e15e75c520ab03aa433ce20974b782e679"
+  "sha256": "d3ae2202eca722a3ee5b3089931e29e15e75c520ab03aa433ce20974b782e679",
+  "capture": "local-cache-only"
  },
  {
   "source_id": "src_to_1a10a1",
@@ -713,7 +743,8 @@
   "licence": "US Government work, public domain; held locally, not vendored.",
   "primary_held": true,
   "note": "A-10A flight manual.",
-  "sha256": "a3b3208339629ac1a7bae4058b5f8102ad9e6a9adfe999bf8e52305813461de4"
+  "sha256": "a3b3208339629ac1a7bae4058b5f8102ad9e6a9adfe999bf8e52305813461de4",
+  "capture": "local-cache-only"
  },
  {
   "source_id": "wikipedia_a29_super_tucano",
@@ -729,6 +760,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article HTML, not a primary document.",
   "primary_held": false,
   "sha256": "d169b85bbb142504c32687eea256ca8879ab46d4f1f3e9ef290831e4e59ef73f",
+  "capture": "local-cache-only",
   "note": "Captured to close a catalogue gap found by scanning the installed game content."
  },
  {
@@ -745,6 +777,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article HTML, not a primary document.",
   "primary_held": false,
   "sha256": "7a1e0f04392d36a7fa93767b207aab21e5ef9a60d027650b5699045fa6ad20ad",
+  "capture": "local-cache-only",
   "note": "Captured to close a catalogue gap found by scanning the installed game content."
  },
  {
@@ -761,6 +794,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article HTML, not a primary document.",
   "primary_held": false,
   "sha256": "70fcff98ff848bc2e44d5654ebd03f3aecde3301d45587f24f1dc2343bf0c958",
+  "capture": "local-cache-only",
   "note": "Captured to close a catalogue gap found by scanning the installed game content."
  },
  {
@@ -777,6 +811,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article HTML, not a primary document.",
   "primary_held": false,
   "sha256": "c9c2b144cf58e4bcae6ad6487f127720f5d0fce42941fe7f8b19b8a42b7e2cb9",
+  "capture": "local-cache-only",
   "note": "Captured to close a catalogue gap found by scanning the installed game content."
  },
  {
@@ -793,6 +828,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article HTML, not a primary document.",
   "primary_held": false,
   "sha256": "f2a885c58a76b911759a48b6c612930ad96010b54aba3acea349c9adf107a7a3",
+  "capture": "local-cache-only",
   "note": "Captured to close a catalogue gap found by scanning the installed game content."
  },
  {
@@ -809,6 +845,7 @@
   "licence": "Wikipedia text under CC BY-SA. Secondary compilation; the held bytes are the article HTML, not a primary document.",
   "primary_held": false,
   "sha256": "6a824f3440099101f1e4dc7b9307da7495b7b9f6ae5d36c2744a3f251e856db7",
+  "capture": "local-cache-only",
   "note": "Identity evidence only; no value is taken from it."
  },
  {
@@ -825,6 +862,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article HTML, not a primary document.",
   "primary_held": false,
   "sha256": "3dc833bcb84d70303ff0301e5c34e4dc5d4e37bc36a438b09117301b4faf6480",
+  "capture": "local-cache-only",
   "note": "Captured to close a catalogue gap found by scanning the installed game content."
  },
  {
@@ -841,6 +879,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article HTML, not a primary document.",
   "primary_held": false,
   "sha256": "f3ecca70d092ecbb577b2ce6114dc0facca4d37ae780b46f1cd8c496652098f4",
+  "capture": "local-cache-only",
   "note": "Captured to close a catalogue gap found by scanning the installed game content."
  },
  {
@@ -856,7 +895,8 @@
   "licence": "Wikipedia text under CC BY-SA. Secondary compilation; the held bytes are the article HTML, not a primary document.",
   "primary_held": false,
   "note": "Designation evidence only: which domestic Mi-8 designation names which export Mi-17/Mi-171 mark. No physical value is taken from it.",
-  "sha256": "556ff26c33431fdaa16f6c3d0af17b53aeb549dc76d7ea0964c9364b9dad0346"
+  "sha256": "556ff26c33431fdaa16f6c3d0af17b53aeb549dc76d7ea0964c9364b9dad0346",
+  "capture": "local-cache-only"
  },
  {
   "source_id": "wikipedia_o3a_skymaster",
@@ -872,6 +912,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article HTML, not a primary document.",
   "primary_held": false,
   "sha256": "6693eba6aa0a24c017a6bd8625fd09bf05a4432ef719153d8da74f31f9a09943",
+  "capture": "local-cache-only",
   "note": "Captured to close a catalogue gap found by scanning the installed game content."
  },
  {
@@ -888,6 +929,7 @@
   "licence": "Wikipedia text under CC BY-SA. Secondary compilation; the held bytes are the article HTML, not a primary document.",
   "primary_held": false,
   "sha256": "c78a7001f00bc28d49cabf39a1c935b5bc08bbf8735f000bdc777f34ba30357c",
+  "capture": "local-cache-only",
   "note": "Identity evidence only; no value is taken from it."
  },
  {
@@ -904,6 +946,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article HTML, not a primary document.",
   "primary_held": false,
   "sha256": "515f0bd5de5829ee64219ca49c2153bc40f1c402d23bd13c144eeb7c03f5bb60",
+  "capture": "local-cache-only",
   "note": "Captured to close a catalogue gap found by scanning the installed game content."
  },
  {
@@ -920,6 +963,7 @@
   "licence": "Wikipedia text under CC BY-SA. Secondary compilation; the held bytes are the article HTML, not a primary document.",
   "primary_held": false,
   "sha256": "f4b38f114403c306b265a1e2b51d3753a9e9e64dbf7d3a7a3d59a8ed99584263",
+  "capture": "local-cache-only",
   "note": "Designation evidence only: the Su-57's prototypes were the T-50 series of the PAK FA programme. No value is taken from it."
  },
  {
@@ -936,6 +980,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article HTML, not a primary document.",
   "primary_held": false,
   "sha256": "7963463ef2f49359cc0f88b7af1f014462f9b987086fa95b0a0b608f8aee26b5",
+  "capture": "local-cache-only",
   "note": "Captured to close a catalogue gap found by scanning the installed game content."
  },
  {
@@ -952,6 +997,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article HTML, not a primary document.",
   "primary_held": false,
   "sha256": "03295e4584f4fb65fba0bba0f2d7f4659f5f42fb50f15eae736962fce30f7015",
+  "capture": "local-cache-only",
   "note": "Captured to close a catalogue gap found by scanning the installed game content."
  },
  {
@@ -967,7 +1013,8 @@
   "licence": "Wikipedia text under CC BY-SA. Secondary compilation; the held bytes are the article HTML, not a primary document.",
   "primary_held": false,
   "note": "Designation evidence only: it names the MH-60M as the special-operations mark of the UH-60M. No physical value is taken from it.",
-  "sha256": "4e529ed44d6ce14c4df68d5984d2a99a3e29256f5bd30dcce8ad6d97a71ddd1e"
+  "sha256": "4e529ed44d6ce14c4df68d5984d2a99a3e29256f5bd30dcce8ad6d97a71ddd1e",
+  "capture": "local-cache-only"
  },
  {
   "source_id": "wikipedia_v22_osprey",
@@ -983,6 +1030,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article HTML, not a primary document.",
   "primary_held": false,
   "sha256": "5f9703dc41f365f479535a424340a4fc5b709dab0bdca61888813e8c057e8d99",
+  "capture": "local-cache-only",
   "note": "Captured to close a catalogue gap found by scanning the installed game content."
  },
  {
@@ -999,6 +1047,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article HTML, not a primary document.",
   "primary_held": false,
   "sha256": "ed400c9580690c6edf9c2c08de743c46a0494fb92440f4ac0ff45f8e41691f56",
+  "capture": "local-cache-only",
   "note": "Captured to close a catalogue gap found by scanning the installed game content."
  }
 ]

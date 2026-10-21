@@ -5,37 +5,43 @@
    "source_id": "tm43_0001_27",
    "title": "TM 43-0001-27, Army Ammunition Data Sheets: Small Caliber Ammunition, FSC 1305 (April 1994, Change 2 December 1996)",
    "url": "https://archive.org/download/tm-43-0001-27-small-caliber-ammunition/TM%2043-0001-27%2C%20Small%20Caliber%20Ammunition_djvu.txt",
-   "sha256": "3aa46bf6835838dff73ba24298a83807cdc88aacb64f57e8ae386aca78a107e1"
+   "sha256": "3aa46bf6835838dff73ba24298a83807cdc88aacb64f57e8ae386aca78a107e1",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "vihtavuori_2026",
    "title": "Vihtavuori Reloading Guide 2026 (English)",
    "url": "https://vihtavuori.com/wp-content/uploads/2026/04/Vihtavuori_Reloading_Guide_2026_ENG_web.pdf",
-   "sha256": "07b3f33cf5686b4f6b47665e95ddfa1413af1806666e9786bf01d6ab66f931af"
+   "sha256": "07b3f33cf5686b4f6b47665e95ddfa1413af1806666e9786bf01d6ab66f931af",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "alliant_2020",
    "title": "Alliant Powder Reloader's Guide 2020 (catalog AP392)",
    "url": "https://www.alliantpowder.com/resources/catalog/AP392_2020_AlliantPowderCatalog_SinglePages.pdf",
-   "sha256": "152f2a76a0c5fa80bec2365f0f61fe71b32eee236fbcd651eff5ca0dc4c983f6"
+   "sha256": "152f2a76a0c5fa80bec2365f0f61fe71b32eee236fbcd651eff5ca0dc4c983f6",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "epa_m855a1_lcea",
    "title": "Life-Cycle Environmental Assessment (LCEA) for Cartridge 5.56mm Ball, M855A1 (US EPA / US Army ARDEC, 2010)",
    "url": "https://www.epa.gov/system/files/documents/2025-05/2010-final-lcea-5-56mm-m855a1.pdf",
-   "sha256": "1934ab242ba2c43f981c7b0aef9d97f70dd0892ae991472c29bd8081ec864c7a"
+   "sha256": "1934ab242ba2c43f981c7b0aef9d97f70dd0892ae991472c29bd8081ec864c7a",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "yugoimport_127x108_api",
    "title": "Yugoimport 12.7 x 108 mm API cartridge data sheet",
    "url": "https://www.yugoimport.com/sites/default/files/documents/2023-12/12.7%20x%20108%20mm%2C%20API.pdf",
-   "sha256": "82f1f617124dd7b2cc44152c8d08046ce2b05470f3486ed83fafce61586e9b9c"
+   "sha256": "82f1f617124dd7b2cc44152c8d08046ce2b05470f3486ed83fafce61586e9b9c",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "yugoimport_127x108_ap",
    "title": "Yugoimport 12.7 x 108 mm AP (Armor Piercing) cartridge data sheet",
    "url": "https://www.yugoimport.com/sites/default/files/documents/2022-10/12.7%20x%20108%20mm%2C%20AP%20eng..pdf",
-   "sha256": "a7aedd3f361143417888a922b4bf2ad896a818c78e1c4ef0fa6ad1c76a4347d2"
+   "sha256": "a7aedd3f361143417888a922b4bf2ad896a818c78e1c4ef0fa6ad1c76a4347d2",
+   "capture": "local-cache-only"
   }
  ],
  "charges": [

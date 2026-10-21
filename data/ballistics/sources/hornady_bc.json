@@ -2,6 +2,7 @@
  "url": "https://www.hornady.com/bc?age=confirmed",
  "retrieved": "2026-09-22",
  "sha256": "8b2bcea65d819d155930456d22878f47a3a19b664104dadcd8988a80c09ac86d",
+ "capture": "local-cache-only",
  "bullets": [
   {
    "published_name": "22 Cal 73 gr. ELD Match",

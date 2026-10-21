@@ -10,13 +10,15 @@
    "source_id": "sig_classic_pistol_manual_8501154",
    "title": "SIG SAUER Classic Pistols Owner's Manual: Handling & Safety Instructions, P/N 8501154 Rev 03 (P220, P224, P225, P226, P227, P229, P239 technical specifications)",
    "url": "https://www.sigsauer.com/media/sigsauer/resources/SIG_ClassicMiniManual_8501154Rev03_LR.pdf",
-   "sha256": "f4ca5f81d26ccbbd89203ea932c28ec447acce7b159cde6f9459c7ff4a19013a"
+   "sha256": "f4ca5f81d26ccbbd89203ea932c28ec447acce7b159cde6f9459c7ff4a19013a",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sig_sg551_manual_40425039",
    "title": "SIG Sauer SG 551 Assault Rifle Caliber 5.56 mm (.223) Manual, document 40 425 039",
    "url": "https://www.sigsauer.swiss/media/files/manual-en-sg551-40425039.pdf",
-   "sha256": "310ce88af0db66f8883055986382446021e81f15c75a546a028b80b30871b50a"
+   "sha256": "310ce88af0db66f8883055986382446021e81f15c75a546a028b80b30871b50a",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "san_swiss_arms_sg550_552_techdata",
@@ -27,43 +29,50 @@
    "source_id": "sig556_operator_manual",
    "title": "SIG 556 Semi-Automatic Rifle 5.56mm NATO (.223 Remington) Operator's Manual (SIG556 OM 12.06), Internet Archive copy",
    "url": "https://archive.org/download/manuals.content.like.stevespages/sig_sg556.pdf",
-   "sha256": "d62fd12468d99823278ec33db56be79cf6ebe02d0d5e55231f5ecf0d0cee2753"
+   "sha256": "d62fd12468d99823278ec33db56be79cf6ebe02d0d5e55231f5ecf0d0cee2753",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sig_ssg3000_manual",
    "title": "SIG SAUER SSG 3000 Owner's Manual: Handling & Safety Instructions (technical specifications)",
    "url": "https://www.sigsauer.com/media/sigsauer/resources/SSG3000.pdf",
-   "sha256": "c7ae9e618712ffe1cf3ffae179c057b0011e3ed05984f1cb3cd9469103407ae6"
+   "sha256": "c7ae9e618712ffe1cf3ffae179c057b0011e3ed05984f1cb3cd9469103407ae6",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "silencerco_maxim50_manual",
    "title": "SilencerCo Maxim 50 Instruction Manual (specifications, moderated .50 calibre muzzleloader)",
    "url": "https://cdn.amplifi.pattern.com/0780fa16-4d13-47ad-8582-d710b91fba2c",
-   "sha256": "b4664affb301946524ba11c125d35a8b01393ff3d83872619230b187323c0d93"
+   "sha256": "b4664affb301946524ba11c125d35a8b01393ff3d83872619230b187323c0d93",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sw_specsheet_model442_150544",
    "title": "Smith & Wesson Model 442 Airweight specification sheet, SKU 150544",
    "url": "https://smith-wesson.canto.com/direct/document/c8lkgnoj1d5b13eptb7l52706k/UWeJ1d3QgQ-0rEgBBUZvSEoumEg/original?content-type=application%2Fpdf&name=150544_sw_m442_specsheet.pdf",
-   "sha256": "2d0dd6a940de3c6d55400bd6b657b60d279e01a242f01c9f5c8772e035814dbe"
+   "sha256": "2d0dd6a940de3c6d55400bd6b657b60d279e01a242f01c9f5c8772e035814dbe",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sw_specsheet_model642_250th_14925",
    "title": "Smith & Wesson Model 642 America 250th Limited Edition specification sheet, SKU 14925",
    "url": "https://smith-wesson.canto.com/direct/document/j1nv39ebnt13fd0di1oe7v0l53/clPPiCB8YJb6YSSRVvidrgx4uU8/original?content-type=application%2Fpdf&name=14925_sw_m642_250th_specsheet.pdf",
-   "sha256": "b08f5ee9ffa96a010b7286540f6f37356cac584b5a2e557d311a85b3b6b6f226"
+   "sha256": "b08f5ee9ffa96a010b7286540f6f37356cac584b5a2e557d311a85b3b6b6f226",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sw_specsheet_model629_engraved_14784",
    "title": "Smith & Wesson Model 629 Engraved specification sheet, 6.5 inch barrel, SKU 14784",
    "url": "https://smith-wesson.canto.com/direct/document/pt5amguhkh6s37l26hlh73dn7p/Lj_ni9TD2tqp9eZ5G8RJhrpLLRM/original?content-type=application%2Fpdf&name=14784_sw_m629_Engraved_specsheet.pdf",
-   "sha256": "43ef454c7a3d377e4995feab4aa2ccc088255d6c738dd92c87f7ae9fed0ba057"
+   "sha256": "43ef454c7a3d377e4995feab4aa2ccc088255d6c738dd92c87f7ae9fed0ba057",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sw_specsheet_mp45_m2_law_enforcement_12637",
    "title": "Smith & Wesson M&P 45 M2.0 Law Enforcement specification sheet, SKU 12637",
    "url": "https://smith-wesson.canto.com/direct/document/n4quqrcvcl4172vcpecq3tqr3v/O9mnJCifrM1ARupURYuhnQi9xDg/original?content-type=application%2Fpdf&name=12637_mp45_2pt0_LE_specsheet.pdf",
-   "sha256": "ea25d6a246217d9ac3ba0aedf046ef5eca05d742c92a894c678c78b32a6a77a7"
+   "sha256": "ea25d6a246217d9ac3ba0aedf046ef5eca05d742c92a894c678c78b32a6a77a7",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sw_1911_government_oem_barrel_275500000",

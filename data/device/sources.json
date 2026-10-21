@@ -39,6 +39,7 @@
     "licence": "Held for reference. Secondary source, not a maker specification.",
     "primary_held": false,
     "sha256": "08149b3887ccd5db8dae72d12486a18e04822c3ae818b58694b05676d33c3ad7",
+    "capture": "local-cache-only",
     "note": "Identity evidence: it names the AN/PSQ-36 as the L3 Fusion Goggle System, an I2 and thermal fused binocular."
   },
   {
@@ -107,6 +108,7 @@
     "licence": "Weblog article held for reference only.",
     "primary_held": false,
     "sha256": "8eeda5537989a0c159438c115c562cd711d3a9eb9d7d85fc102030a0f51afc38",
+    "capture": "local-cache-only",
     "note": "IDENTITY evidence only, and weak: a serving soldier's first-person account. It establishes that 'Kestrel BNVD' names a dual-tube white phosphor goggle in US Army service. It names no maker, no model number and no measured figure, so NO value is taken from it."
   },
   {
@@ -123,6 +125,7 @@
     "licence": "Manufacturer page held for reference. Not a government specification.",
     "primary_held": false,
     "sha256": "756afec7daa7ec914286039d80390ca58839be353c3c6843ec18c8586c0658a3",
+    "capture": "local-cache-only",
     "note": "Identity evidence: the BNVD-1531 is its own product, drawing on the AN/PVS-15 and AN/PVS-31 rather than being either of them."
   },
   {
@@ -217,6 +220,7 @@
     "licence": "Held for reference. Secondary source, not a maker specification.",
     "primary_held": false,
     "sha256": "c294606547fe878e905e8311f8198a2b1ec35c40dc886456b3921486e9623b88",
+    "capture": "local-cache-only",
     "note": "Identity evidence only, and a dealer listing rather than the maker: it establishes that the BNVD-FUSED is its own product drawing on the AN/PVS-31A and the AN/PSQ-36."
   },
   {
@@ -233,6 +237,7 @@
     "licence": "Wikipedia text under CC BY-SA. Secondary compilation; the held bytes are the article HTML, not a primary document.",
     "primary_held": false,
     "sha256": "2b2dd6e468bc923ca863ca8f2860276c9ef7940aa5d4197c73c0d53de5b264c9",
+    "capture": "local-cache-only",
     "note": "Designation evidence only: it names the SpecterDR's US service designation SU-230/PVS. No value is taken from it."
   },
   {
@@ -247,6 +252,7 @@
     "retrieved": "2026-10-21",
     "url": "https://www.nightforceoptics.com/riflescopes/nxs/nxs-35-15x50",
     "sha256": "4c16cd5d7da78ce81687300ac2ea9f926ec76527acce7fda9bdaab59156bf104",
+    "capture": "local-cache-only",
     "primary_held": true,
     "note": "Manufacturer product page held; the digest is of the retrieved HTML bytes."
   },
@@ -262,6 +268,7 @@
     "retrieved": "2026-10-21",
     "url": "https://www.nightforceoptics.com/riflescopes/nxs/nxs-55-22x56",
     "sha256": "d8b2a4df6eedb4058843e46a69c7958468caffe9995feddebbec4d69e4317b0e",
+    "capture": "local-cache-only",
     "primary_held": true,
     "note": "Manufacturer product page held; the digest is of the retrieved HTML bytes."
   },
@@ -277,6 +284,7 @@
     "retrieved": "2026-10-21",
     "url": "https://www.leupold.com/mark-8-cqbss-11-8x24-m5b1-illum-ffp-h-27d-riflescope",
     "sha256": "a6cfc3a2851f4ea2b3d2a7ece628665459cfb5670152c19f4c1530f261b15e33",
+    "capture": "local-cache-only",
     "primary_held": true,
     "note": "Held bytes are the manufacturer page; the specifications block is server-rendered and present in the held copy. Capture redacted of a third-party Google Maps API key present in the vendor page; the digest is of the redacted bytes."
   },
@@ -292,6 +300,7 @@
     "retrieved": "2026-10-21",
     "url": "https://www.sigsauer.com/tango6t-1-6x24-mm.html",
     "sha256": "b54da90073008cb447accee71901eee614c1525eb3ba4e31b9734b5541e3e0fa",
+    "capture": "local-cache-only",
     "primary_held": true,
     "note": "Held from the manufacturer host with a safari impersonation and a Google referer; the chrome route returns 403. The page states no objective, field-of-view or eye-relief figure."
   },
@@ -307,6 +316,7 @@
     "retrieved": "2026-10-21",
     "url": "https://vortexoptics.com/vortex-razor-hd-gen-ii-1-6x24-riflescope.html",
     "sha256": "38261bfe51bc17c7c55949c95daf95558c59f0c1c50713549581f7c5278e1205",
+    "capture": "local-cache-only",
     "primary_held": true,
     "note": "Held from the manufacturer host. Focal plane is second; parallax is fixed at 100 yd."
   },
@@ -322,6 +332,7 @@
     "retrieved": "2026-10-21",
     "url": "https://www.rtx.com/raytheon/what-we-do/elcan/elcan-specter-sights",
     "sha256": "26818fd766f99e7b820d57feb5b3ba7557c2546b0bd84656c99eb631fb254ab7",
+    "capture": "local-cache-only",
     "primary_held": true,
     "note": "A Raytheon ELCAN datasheet held from a crawler mirror of the raytteon.com document; the live rtx.com page holds no numbers. Manufacturer-grade, not first-host bytes."
   },
@@ -337,6 +348,7 @@
     "retrieved": "2026-10-21",
     "url": "https://npzoptics.ru/catalog/dnevnye_pricely/upo-1/",
     "sha256": "034ec99e13dca5f3338900708499a02cc2a3441ec0c8ab712b208f520ac7805b",
+    "capture": "local-cache-only",
     "primary_held": true,
     "note": "Held from the manufacturer host. The page covers UPO-1 and UPO-1-1, the civil variants of the optic the game class 1P29 models; the military 1P29 page is gone."
   },
@@ -352,6 +364,7 @@
     "retrieved": "2026-10-21",
     "url": "https://npzoptics.ru/files/УПО-1.pdf",
     "sha256": "d432b520d53dcbbd21cbf144f213ac152c0394a9334ca5312fc9b3f9ef972d43",
+    "capture": "local-cache-only",
     "primary_held": true,
     "note": "Held from the manufacturer host. Covers UPO-1 and UPO-1-1."
   },
@@ -367,6 +380,7 @@
     "retrieved": "2026-10-21",
     "url": "https://www.aimpoint.com/products/micro-t-1-2-moa-red-dot-reflex-sight-without-mount/",
     "sha256": "37ec3b6911d2ca34246ddceeb875546722c4cea91f2acbd1dde14c236333e93b",
+    "capture": "local-cache-only",
     "primary_held": true,
     "note": "Held from the manufacturer host with chrome impersonation. Capture redacted of a third-party Google Maps API key present in the vendor page; the digest is of the redacted bytes."
   },
@@ -382,6 +396,7 @@
     "retrieved": "2026-10-21",
     "url": "https://www.aimpoint.com/products/micro-t-2-2-moa-red-dot-reflex-sight-without-mount/",
     "sha256": "37cda4b557caf05e016fc64c8a3e55c47f59b481f3680fdf5d04be9692cf883b",
+    "capture": "local-cache-only",
     "primary_held": true,
     "note": "The page contradicts itself: the specifications table states 102 g (3.6 oz), the headline card 94 g. Both are recorded and neither is entered as the figure. Capture redacted of a third-party Google Maps API key present in the vendor page; the digest is of the redacted bytes."
   },
@@ -397,6 +412,7 @@
     "retrieved": "2026-10-21",
     "url": "https://www.eotechinc.com/products/eotech-hws-xps3",
     "sha256": "190116421bcce9e72a5e99e7a01a2005b2d3eef36f96a043aeb83bd528b6a906",
+    "capture": "local-cache-only",
     "primary_held": true,
     "note": "Held from the manufacturer host. Capture redacted of a third-party Google Maps API key present in the vendor page; the digest is of the redacted bytes."
   },
@@ -412,6 +428,7 @@
     "retrieved": "2026-10-21",
     "url": "https://www.eotechinc.com/products/eotech-magnifier-g33",
     "sha256": "d5f9f633878eb32d652de1f6745c914fa96a1c825639b31ab8fdd4f029a0afcc",
+    "capture": "local-cache-only",
     "primary_held": true,
     "note": "Held from the manufacturer host. Every class that names the G33 also names a sight (G33 + XPS3, G33 + T1), so those bind to the sight and this entry binds no class. Capture redacted of a third-party Google Maps API key present in the vendor page; the digest is of the redacted bytes."
   },
@@ -427,6 +444,7 @@
     "retrieved": "2026-10-21",
     "url": "https://www.eotechinc.com/products/eotech-vudu-1-6x24-ffp",
     "sha256": "4656e3906ceccb1075ff3809a37ba9a2bdc1ef8f6ce9bc4990d580a65ebaff97",
+    "capture": "local-cache-only",
     "primary_held": true,
     "note": "Held from the manufacturer host. The mod class text gives no magnification, so the binding is at family level. Capture redacted of a third-party Google Maps API key present in the vendor page; the digest is of the redacted bytes."
   },
@@ -442,6 +460,7 @@
     "retrieved": "2026-10-21",
     "url": "https://www.trijicon.com/products/details/ta01nsn",
     "sha256": "f9874789a314866dfcc76a2ae44ecaf7ae981fd3394cd75d86cef43d7398fd08",
+    "capture": "local-cache-only",
     "primary_held": true,
     "note": "Held from the manufacturer host."
   },
@@ -457,6 +476,7 @@
     "retrieved": "2026-10-21",
     "url": "https://www.trijicon.com/products/details/ta31rco-a4cp",
     "sha256": "cdb5498c40e9a009e2670d44ec9fb8ea9e4c6aafce4f8e14313ba170b663f85e",
+    "capture": "local-cache-only",
     "primary_held": true,
     "note": "Held from the manufacturer host. The rhsusf AN/PVQ-31A subfamily is a TA31 variant, bound here with that note."
   },
@@ -472,6 +492,7 @@
     "retrieved": "2026-10-21",
     "url": "https://www.trijicon.com/products/details/ta11mgo-m249",
     "sha256": "54cbc06aa974141541d0cf30de2c4581e9d0417ae7478d35f7b8c227b439527b",
+    "capture": "local-cache-only",
     "primary_held": true,
     "note": "Held from the manufacturer host. The class display reads SU-260/P (MDO); the page calls the product a Machine Gun Optic and never prints that designation, so the designation is unverified while the figures are the MGO family's."
   },
@@ -487,6 +508,7 @@
     "retrieved": "2026-10-21",
     "url": "https://www.trijicon.com/products/details/mro-c-2200301",
     "sha256": "cb837675c4bfda52cfab1b73f0a99811cebb727f1e064f22bddc46cf5635a473",
+    "capture": "local-cache-only",
     "primary_held": true,
     "note": "Held from the manufacturer host. No AEE class names the MRO, so the entry binds none."
   },
@@ -502,6 +524,7 @@
     "retrieved": "2026-10-21",
     "url": "https://www.trijicon.com/products/details/rm05",
     "sha256": "68cac5f446c0c15bdfca2dd14477f618b3f204945d7d2f10decf1d6a3a468e67",
+    "capture": "local-cache-only",
     "primary_held": true,
     "note": "Held from the manufacturer host. RM05 is a Trijicon RMR model number; Aimpoint's index holds no RM05."
   },
@@ -517,6 +540,7 @@
     "retrieved": "2026-10-21",
     "url": "https://www.trijicon.com/products/details/reap-35-4",
     "sha256": "325d325ac21aa3bb346d14306096341a560c273bf01c3441035408fc65e0ff54",
+    "capture": "local-cache-only",
     "primary_held": true,
     "note": "Held from the manufacturer host. The class suffix reads 20; Trijicon's line holds 24, 35 and 60 mm REAP-IR pages and no 20 mm page, so the 35 mm figures are the nearest documented model and not the class's own model."
   },
@@ -532,6 +556,7 @@
     "retrieved": "2026-10-21",
     "url": "https://vortexoptics.com/vortex-razor-hd-gen-iii-1-10x24-riflescope.html",
     "sha256": "7bb698c45aa53c8ccf5f1b482131c1f553d6897f1252d302ef76b39d4627e8b1",
+    "capture": "local-cache-only",
     "primary_held": true,
     "note": "Held from the manufacturer host."
   },
@@ -547,6 +572,7 @@
     "retrieved": "2026-10-21",
     "url": "https://www.schmidtundbender.de/3-12x50-PM-II-LP-P4FL-1cm-cw-DT-ST",
     "sha256": "56f052fe86e529a1592b5b34186048a044d6f46a66458a3948457c3cafaba34d",
+    "capture": "local-cache-only",
     "primary_held": true,
     "note": "Held from the manufacturer host."
   },
@@ -562,6 +588,7 @@
     "retrieved": "2026-10-21",
     "url": "https://www.schmidtundbender.de/5-25x56-PM-II-LP-P4FL-1cm-cw-DT-ST",
     "sha256": "445c558319765f59c7f4a7e691942f83e1cad241f307b613a7409167b2fe88e6",
+    "capture": "local-cache-only",
     "primary_held": true,
     "note": "Held from the manufacturer host. The R3F pair names no magnification, so their binding is a judgement recorded in the entry."
   },
@@ -577,6 +604,7 @@
     "retrieved": "2026-10-21",
     "url": "https://cdn.nightforceoptics.com/content/files/downloads/0323_NF_ATACR_T5-Sales-Sheet_July_FINAL.pdf",
     "sha256": "7a29c5f3384a20d4af49415af23038c7fb425c4eaab8c4f8b8752c7f3e19b6e4",
+    "capture": "local-cache-only",
     "primary_held": true,
     "note": "The manufacturer's own PDF, served from its CDN (cdn.nightforceoptics.com) because the HTML host sits behind a Cloudflare Turnstile. The digest is of the held PDF bytes."
   },
@@ -592,6 +620,7 @@
     "retrieved": "2026-10-21",
     "url": "https://cdn.nightforceoptics.com/content/files/downloads/0120_NF_NXS_Family_Sales_Sheet.pdf",
     "sha256": "0e12160bc9766a56c6385849115407bf3de848be2a3f4948dc50e5080d6aef05",
+    "capture": "local-cache-only",
     "primary_held": true,
     "note": "The manufacturer's own PDF, served from its CDN (cdn.nightforceoptics.com) because the HTML host sits behind a Cloudflare Turnstile. The digest is of the held PDF bytes."
   },
@@ -607,6 +636,7 @@
     "retrieved": "2026-10-21",
     "url": "https://cdn.nightforceoptics.com/content/files/downloads/NF-2026-Product-Catalog-DIGITAL.pdf",
     "sha256": "a1547e8bebb58216295753a2e565eef46416794cc039b3a3ad0a416fd95718bc",
+    "capture": "local-cache-only",
     "primary_held": true,
     "note": "The manufacturer's own PDF, served from its CDN (cdn.nightforceoptics.com) because the HTML host sits behind a Cloudflare Turnstile. The digest is of the held PDF bytes."
   }

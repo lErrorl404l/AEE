@@ -5,25 +5,29 @@
    "source_id": "tm_9_1005_319_10",
    "title": "TM 9-1005-319-10, Operator's Manual, Rifle 5.56mm M16A2/M16A3/M16A4 and Carbine M4/M4A1 (US Army, October 1998)",
    "url": "https://cdn.ar15repository.com/wp-content/uploads/20230809205218/OPERATORS-MANUAL-556-MM-M16A2-M16A3-M16A4-M4-and-M4A1-ARMY-TM-9-1005-319-10.October-1998.pdf",
-   "sha256": "aee9f3baabb19b1a25533a202a64140cfa82eb377dc6b5929acbb49f5eb9fc5c"
+   "sha256": "aee9f3baabb19b1a25533a202a64140cfa82eb377dc6b5929acbb49f5eb9fc5c",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "tm_9_1005_223_10",
    "title": "TM 9-1005-223-10, Operator's Manual, Rifle 7.62mm M14 and M14A1 (US Army)",
    "url": "http://www.m14.ca/TM/026378.pdf",
-   "sha256": "d575dedfce300191bbc9d7e96d32ba37da4f66b17afdf7abc674060eb95f95b6"
+   "sha256": "d575dedfce300191bbc9d7e96d32ba37da4f66b17afdf7abc674060eb95f95b6",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "tm_9_1005_201_10",
    "title": "TM 9-1005-201-10, Operator's Manual, Machine Gun 5.56mm M249 (US Army, 1991)",
    "url": "https://archive.org/download/tm-9-1005-201-10-machine-gun-5.56mm-m-249-1991/TM%209-1005-201-10%20Machine%20Gun%2C%205.56mm%2C%20M249%20%201991_djvu.txt",
-   "sha256": "baaae285e2e3a20129361581169f777d2531a64967ae9f0420aaa775479dfe99"
+   "sha256": "baaae285e2e3a20129361581169f777d2531a64967ae9f0420aaa775479dfe99",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "m110_operator",
    "title": "Operator's Manual, 7.62mm Stoner Rifle Mk 11 Mod 0 and SR-M110 SASS (Knight's Armament Company)",
    "url": "https://www.biggerhammer.net/stoner/manuals/m110.pdf",
-   "sha256": "7928d97add7fef269aa8491484243f621b9aa63925805baedf740175222f069b"
+   "sha256": "7928d97add7fef269aa8491484243f621b9aa63925805baedf740175222f069b",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "kac_catalog",
@@ -41,7 +45,8 @@
    "source_id": "barrett_m107a1",
    "title": "Barrett M107A1 Operator's Manual",
    "url": "https://barrett.net/wp-content/uploads/2023/07/M107A1_16693_Op-Manual_8.5x5.5_B-For-Website.pdf",
-   "sha256": "22633173b2e56a333af781d48e267216200bd7ad8fba2f48bdbb1f2a56dde68d"
+   "sha256": "22633173b2e56a333af781d48e267216200bd7ad8fba2f48bdbb1f2a56dde68d",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "tm_9_1005_224_34",
@@ -53,67 +58,78 @@
    "source_id": "fn_fal_manual",
    "title": "FN Light Automatic Rifle FAL, user's manual (Fabrique Nationale)",
    "url": "https://archive.org/download/gunmanual_FN-FAL_Manual/FN-FAL%20Manual_text.pdf",
-   "sha256": "a64c13c7896c41dfb589b5c8ef5e3f7850552ca6f33a34601cc63232f4c24903"
+   "sha256": "a64c13c7896c41dfb589b5c8ef5e3f7850552ca6f33a34601cc63232f4c24903",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ruger_home",
    "title": "Sturm, Ruger & Co. product catalogue (ruger.com)",
    "url": "https://ruger.com/",
-   "sha256": "e4f77e4a75b122e8ab0f58bf4d07d25c39a2669e14d220de6be0f5abfafffd00"
+   "sha256": "e4f77e4a75b122e8ab0f58bf4d07d25c39a2669e14d220de6be0f5abfafffd00",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "colt_home",
    "title": "Colt's Manufacturing Company product catalogue (colt.com)",
    "url": "https://www.colt.com/",
-   "sha256": "e6f09a3ab009e32751a20505b0b7ab8f7e6089bf192c9494adca888b2f7cd59d"
+   "sha256": "e6f09a3ab009e32751a20505b0b7ab8f7e6089bf192c9494adca888b2f7cd59d",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sa_home",
    "title": "Springfield Armory product catalogue (springfield-armory.com)",
    "url": "https://www.springfield-armory.com/",
-   "sha256": "5efd729ff2225c6bf242114fe5f201040760b9c2266250103e1a82e373b1438f"
+   "sha256": "5efd729ff2225c6bf242114fe5f201040760b9c2266250103e1a82e373b1438f",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "fn_home",
    "title": "FN America product catalogue (fnamerica.com)",
    "url": "https://fnamerica.com/",
-   "sha256": "79c04739810846441a1bb5d09b2cf4696bec6b67b76e462e06f0699ba41dc2a1"
+   "sha256": "79c04739810846441a1bb5d09b2cf4696bec6b67b76e462e06f0699ba41dc2a1",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sw_home",
    "title": "Smith & Wesson product catalogue (smith-wesson.com)",
    "url": "https://www.smith-wesson.com/",
-   "sha256": "09fdcea70fe7ce874dfd79b16b4bcbb49bce2aede5f00522867bcc8249c287ec"
+   "sha256": "09fdcea70fe7ce874dfd79b16b4bcbb49bce2aede5f00522867bcc8249c287ec",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "noveske_home",
    "title": "Noveske Rifleworks product catalogue (noveske.com)",
    "url": "https://noveske.com/",
-   "sha256": "3f6528d3b6fd0030a4699f466a7f6ee71e58008bee043a02198c43cb5fbdf970"
+   "sha256": "3f6528d3b6fd0030a4699f466a7f6ee71e58008bee043a02198c43cb5fbdf970",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "lmt_home",
    "title": "LMT Defense product catalogue (lmtdefense.com)",
    "url": "https://lmtdefense.com/",
-   "sha256": "d9e209c0020e8d58d53f8e826e4f6eebcf3fe16887ed79ef49d3219285304dba"
+   "sha256": "d9e209c0020e8d58d53f8e826e4f6eebcf3fe16887ed79ef49d3219285304dba",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "kac_home",
    "title": "Knight's Armament Company product catalogue (knightarmco.com)",
    "url": "https://www.knightarmco.com/",
-   "sha256": "4e8fa16326307d56a74aa88dd473504637689ee83545e0d57b21bf771a1076b1"
+   "sha256": "4e8fa16326307d56a74aa88dd473504637689ee83545e0d57b21bf771a1076b1",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "bcm_home",
    "title": "Bravo Company USA product catalogue (bravocompanyusa.com)",
    "url": "https://bravocompanyusa.com/",
-   "sha256": "572b73ef9b56105c00900389c0b10de05b517696684d24edc8c8059e369f31c7"
+   "sha256": "572b73ef9b56105c00900389c0b10de05b517696684d24edc8c8059e369f31c7",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "kimber_home",
    "title": "Kimber America product catalogue (kimberamerica.com)",
    "url": "https://www.kimberamerica.com/",
-   "sha256": "7baa1eda38498b6fb9507a6f7b245e577f8ab472679b14f01bf78194e517919e"
+   "sha256": "7baa1eda38498b6fb9507a6f7b245e577f8ab472679b14f01bf78194e517919e",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "armalite_home",
@@ -137,631 +153,736 @@
    "source_id": "fn_scar_l_mk2",
    "title": "FN SCAR-L Mk2 technical data sheet (FN Herstal)",
    "url": "https://fnherstal.com/app/uploads/technical-data-fn-scar-l-mk2-2.pdf",
-   "sha256": "e2c5e7a49d1a6217d23c1d29cbf825af7a5ac8e4455b59350e528eef3c8daffb"
+   "sha256": "e2c5e7a49d1a6217d23c1d29cbf825af7a5ac8e4455b59350e528eef3c8daffb",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "fn_scar_h_mk2",
    "title": "FN SCAR-H Mk2 technical data sheet (FN Herstal)",
    "url": "https://fnherstal.com/app/uploads/technical-data-fn-scar-h-mk2-1.pdf",
-   "sha256": "7bab7d16064bc879598c6b50c8d75b6525cde82455dcf2c8f3ee11b60086b359"
+   "sha256": "7bab7d16064bc879598c6b50c8d75b6525cde82455dcf2c8f3ee11b60086b359",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ruger_wrangler",
    "title": "Ruger Wrangler models and specifications page (Sturm, Ruger & Co.)",
    "url": "https://ruger.com/products/wrangler/models.html",
-   "sha256": "62ee3d544ba595acb95cbbedeb74c5a3f525c72b9ffa0ec732e566a42997b0dc"
+   "sha256": "62ee3d544ba595acb95cbbedeb74c5a3f525c72b9ffa0ec732e566a42997b0dc",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ruger_sr1911standard",
    "title": "Ruger SR1911 models and specifications page (Sturm, Ruger & Co.)",
    "url": "https://ruger.com/products/sr1911Standard/models.html",
-   "sha256": "4fffbe6ebc1cbbceeb5fda383ecc7da615e1afbcc031d44935c2d94d9ea333a8"
+   "sha256": "4fffbe6ebc1cbbceeb5fda383ecc7da615e1afbcc031d44935c2d94d9ea333a8",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ruger_sp101",
    "title": "Ruger SP101 models and specifications page (Sturm, Ruger & Co.)",
    "url": "https://ruger.com/products/sp101/models.html",
-   "sha256": "da071a0a501cfc3d498e3b6dfd2fe5a53ca7061cfad74f5a789efecc49d300be"
+   "sha256": "da071a0a501cfc3d498e3b6dfd2fe5a53ca7061cfad74f5a789efecc49d300be",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ruger_security9",
    "title": "Ruger Security-9 models and specifications page (Sturm, Ruger & Co.)",
    "url": "https://ruger.com/products/security9/models.html",
-   "sha256": "5e40691bbdc99ebf815567d6db1d368dde38f4709992ab02cc39d97b6dd35278"
+   "sha256": "5e40691bbdc99ebf815567d6db1d368dde38f4709992ab02cc39d97b6dd35278",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ruger_redhawk",
    "title": "Ruger Redhawk models and specifications page (Sturm, Ruger & Co.)",
    "url": "https://ruger.com/products/redhawk/models.html",
-   "sha256": "0609c92f24712fd3abfa6d49cd21b5e8686db7cdcfadcd3030dcf3f2442ffaa7"
+   "sha256": "0609c92f24712fd3abfa6d49cd21b5e8686db7cdcfadcd3030dcf3f2442ffaa7",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ruger_precisionrimfire",
    "title": "Ruger Ruger Precision Rimfire models and specifications page (Sturm, Ruger & Co.)",
    "url": "https://ruger.com/products/precisionRimfire/models.html",
-   "sha256": "e427766191703d1349c372a0295e17ba00341fb9ef3ae2a3e1f458f0e150bde4"
+   "sha256": "e427766191703d1349c372a0295e17ba00341fb9ef3ae2a3e1f458f0e150bde4",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ruger_precisionrifle",
    "title": "Ruger Ruger Precision Rifle models and specifications page (Sturm, Ruger & Co.)",
    "url": "https://ruger.com/products/precisionRifle/models.html",
-   "sha256": "8c8cabf5890e3ce89265012cc80b1afdefbfe21f22097a559ee42d36501f4ca8"
+   "sha256": "8c8cabf5890e3ce89265012cc80b1afdefbfe21f22097a559ee42d36501f4ca8",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ruger_pccharger",
    "title": "Ruger PC Charger models and specifications page (Sturm, Ruger & Co.)",
    "url": "https://ruger.com/products/pcCharger/models.html",
-   "sha256": "83acd54d09267c90f321074edb8c618d91fbbd58f98b32bb938a09375acb0a6e"
+   "sha256": "83acd54d09267c90f321074edb8c618d91fbbd58f98b32bb938a09375acb0a6e",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ruger_pccarbine",
    "title": "Ruger PC Carbine models and specifications page (Sturm, Ruger & Co.)",
    "url": "https://ruger.com/products/pcCarbine/models.html",
-   "sha256": "5573e3adf69aaa1438b095bda976d3625dc79f794f637a3394d036f18507820b"
+   "sha256": "5573e3adf69aaa1438b095bda976d3625dc79f794f637a3394d036f18507820b",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ruger_no1",
    "title": "Ruger No.1 models and specifications page (Sturm, Ruger & Co.)",
    "url": "https://ruger.com/products/no1/models.html",
-   "sha256": "e1f10669b73dd1e71e4352152b0a1f9828e9af05e93099264a267d99d3f445f9"
+   "sha256": "e1f10669b73dd1e71e4352152b0a1f9828e9af05e93099264a267d99d3f445f9",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ruger_newmodelsuperblackhawkstandard",
    "title": "Ruger New Model Super Blackhawk models and specifications page (Sturm, Ruger & Co.)",
    "url": "https://ruger.com/products/newModelSuperBlackhawkStandard/models.html",
-   "sha256": "38779da884df95b646f8aa4a5dcc82ec0ba24d0f2e9423fabc9c116fcdf6de1b"
+   "sha256": "38779da884df95b646f8aa4a5dcc82ec0ba24d0f2e9423fabc9c116fcdf6de1b",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ruger_newmodelsinglesixsingleten",
    "title": "Ruger New Model Single-Six models and specifications page (Sturm, Ruger & Co.)",
    "url": "https://ruger.com/products/newModelSingleSixSingleTen/models.html",
-   "sha256": "b4fb3e2fb7cb765a4098bfb4c9621c83892765fa2b5a91aba898c0bf4a830f6a"
+   "sha256": "b4fb3e2fb7cb765a4098bfb4c9621c83892765fa2b5a91aba898c0bf4a830f6a",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ruger_newmodelblackhawkblued",
    "title": "Ruger New Model Blackhawk models and specifications page (Sturm, Ruger & Co.)",
    "url": "https://ruger.com/products/newModelBlackhawkBlued/models.html",
-   "sha256": "d595bf90cbba564dc0ec2619335f5d558f01a4ad2ef0b35871bad21db292ace4"
+   "sha256": "d595bf90cbba564dc0ec2619335f5d558f01a4ad2ef0b35871bad21db292ace4",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ruger_minithirty",
    "title": "Ruger Mini-14 models and specifications page (Sturm, Ruger & Co.)",
    "url": "https://ruger.com/products/miniThirty/models.html",
-   "sha256": "a7dfedcf7c3f7ab952568e69f69ee0b4e5d2f52923e60c1a38a8d1320c43ebcb"
+   "sha256": "a7dfedcf7c3f7ab952568e69f69ee0b4e5d2f52923e60c1a38a8d1320c43ebcb",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ruger_mini14tacticalrifle",
    "title": "Ruger Mini-14 models and specifications page (Sturm, Ruger & Co.)",
    "url": "https://ruger.com/products/mini14TacticalRifle/models.html",
-   "sha256": "4dbe1a93bb49c7d38b63736ca650c1703ae34edec704c7e5a28df45ee2b4ecb3"
+   "sha256": "4dbe1a93bb49c7d38b63736ca650c1703ae34edec704c7e5a28df45ee2b4ecb3",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ruger_mini14ranchrifle",
    "title": "Ruger Mini-14 models and specifications page (Sturm, Ruger & Co.)",
    "url": "https://ruger.com/products/mini14RanchRifle/models.html",
-   "sha256": "074a72059a80039a78ebd373dc1348e81ba8b23993a17c730370adc8ae8776f6"
+   "sha256": "074a72059a80039a78ebd373dc1348e81ba8b23993a17c730370adc8ae8776f6",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ruger_markivtarget",
    "title": "Ruger Mark IV models and specifications page (Sturm, Ruger & Co.)",
    "url": "https://ruger.com/products/markIVTarget/models.html",
-   "sha256": "5a81b2df4461f6a306c040eeecf36ba1bae9f62ad070a45ae663cdfcd65131ee"
+   "sha256": "5a81b2df4461f6a306c040eeecf36ba1bae9f62ad070a45ae663cdfcd65131ee",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ruger_markivstandard",
    "title": "Ruger Mark IV models and specifications page (Sturm, Ruger & Co.)",
    "url": "https://ruger.com/products/markIVStandard/models.html",
-   "sha256": "0a80c81a0555f61225435f7bbd9200cbaafcb73f5037e971edd8435bfa75fbb2"
+   "sha256": "0a80c81a0555f61225435f7bbd9200cbaafcb73f5037e971edd8435bfa75fbb2",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ruger_lcpmax",
    "title": "Ruger LCP MAX models and specifications page (Sturm, Ruger & Co.)",
    "url": "https://ruger.com/products/lcpMax/models.html",
-   "sha256": "93ee5ddf02eb9e30592bdde3749ffad39068397e4d0b36b0dc8aa54137387d8a"
+   "sha256": "93ee5ddf02eb9e30592bdde3749ffad39068397e4d0b36b0dc8aa54137387d8a",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ruger_lcpii",
    "title": "Ruger LCP II models and specifications page (Sturm, Ruger & Co.)",
    "url": "https://ruger.com/products/lcpII/models.html",
-   "sha256": "785c89c8cf6e5ac853d595b2211c227822b94ccc4501eb24c06eacf6f86a6bd1"
+   "sha256": "785c89c8cf6e5ac853d595b2211c227822b94ccc4501eb24c06eacf6f86a6bd1",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ruger_lcp",
    "title": "Ruger LCP models and specifications page (Sturm, Ruger & Co.)",
    "url": "https://ruger.com/products/lcp/models.html",
-   "sha256": "82d46c6d232fcfa7decfb123388173f0cb41fcca0b486e2ffe3cad4bf4fefa43"
+   "sha256": "82d46c6d232fcfa7decfb123388173f0cb41fcca0b486e2ffe3cad4bf4fefa43",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ruger_gp100",
    "title": "Ruger GP100 models and specifications page (Sturm, Ruger & Co.)",
    "url": "https://ruger.com/products/gp100/models.html",
-   "sha256": "74fae4dd133fd7cc4dad31f64a5977e4fe731805b91070891c540eec072406ff"
+   "sha256": "74fae4dd133fd7cc4dad31f64a5977e4fe731805b91070891c540eec072406ff",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ruger_americanriflepredatorgenii",
    "title": "Ruger Ruger American Rifle Generation II models and specifications page (Sturm, Ruger & Co.)",
    "url": "https://ruger.com/products/americanRiflePredatorGenII/models.html",
-   "sha256": "147b0e09d7c1b8239afef00dff9a3abfcecd77d330338a7b97897ce4d41151cf"
+   "sha256": "147b0e09d7c1b8239afef00dff9a3abfcecd77d330338a7b97897ce4d41151cf",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ruger_americanrifleranchgenii",
    "title": "Ruger Ruger American Rifle Generation II models and specifications page (Sturm, Ruger & Co.)",
    "url": "https://ruger.com/products/americanRifleRanchGenII/models.html",
-   "sha256": "65d908d64484641de9228930d4b2d1945e17e9cc30ad26644ca5f57435b44a66"
+   "sha256": "65d908d64484641de9228930d4b2d1945e17e9cc30ad26644ca5f57435b44a66",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ruger_americanriflegenii",
    "title": "Ruger Ruger American Rifle Generation II models and specifications page (Sturm, Ruger & Co.)",
    "url": "https://ruger.com/products/americanRifleGenII/models.html",
-   "sha256": "c9fe8e305002cfeb219bbc816cdff02c3cac8b7a00d278338cd78e4efc261ff0"
+   "sha256": "c9fe8e305002cfeb219bbc816cdff02c3cac8b7a00d278338cd78e4efc261ff0",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ruger_hawkeyestandard",
    "title": "Ruger Hawkeye models and specifications page (Sturm, Ruger & Co.)",
    "url": "https://ruger.com/products/HawkeyeStandard/models.html",
-   "sha256": "68f7a310c9a78279f1de16fcc84cabc6cd407a75087723efa6d74347ee4a59a8"
+   "sha256": "68f7a310c9a78279f1de16fcc84cabc6cd407a75087723efa6d74347ee4a59a8",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ruger_1022standard",
    "title": "Ruger 10/22 models and specifications page (Sturm, Ruger & Co.)",
    "url": "https://ruger.com/products/1022Standard/models.html",
-   "sha256": "e604abb7ca19a38ece205cd7de8d568053fde7ec3accf7ee13248e108aa51b14"
+   "sha256": "e604abb7ca19a38ece205cd7de8d568053fde7ec3accf7ee13248e108aa51b14",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ruger_1022competition",
    "title": "Ruger 10/22 models and specifications page (Sturm, Ruger & Co.)",
    "url": "https://ruger.com/products/1022Competition/models.html",
-   "sha256": "a752c8ee6f31ba3bc73e9e5fff1a845f23da4b9ce555adbf11774fe331a93b94"
+   "sha256": "a752c8ee6f31ba3bc73e9e5fff1a845f23da4b9ce555adbf11774fe331a93b94",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "ruger_22charger",
    "title": "Ruger 22 Charger models and specifications page (Sturm, Ruger & Co.)",
    "url": "https://ruger.com/products/22Charger/models.html",
-   "sha256": "968b6617e438c64a9aab9794afa6d1c380860d1fbbb5d5525f61ec10f5e99a1a"
+   "sha256": "968b6617e438c64a9aab9794afa6d1c380860d1fbbb5d5525f61ec10f5e99a1a",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "colt_cm7",
    "title": "Colt CM7 product page (Colt's Manufacturing Company)",
    "url": "https://www.colt.com/detail-page/cm7/",
-   "sha256": "64d778ebb84bea4d7f21f1db8e91533dd017087e451e9849862da7d43f8f866d"
+   "sha256": "64d778ebb84bea4d7f21f1db8e91533dd017087e451e9849862da7d43f8f866d",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "colt_cmk",
    "title": "Colt CMK product page (Colt's Manufacturing Company)",
    "url": "https://www.colt.com/detail-page/cmk/",
-   "sha256": "200ef461b97fd83c17f33d6e3e1f05d8211db59325992d7693955d2dac69def0"
+   "sha256": "200ef461b97fd83c17f33d6e3e1f05d8211db59325992d7693955d2dac69def0",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "colt_enhanced_patrol_rifle_ii",
    "title": "Colt Enhanced Patrol Rifle II product page (Colt's Manufacturing Company)",
    "url": "https://www.colt.com/detail-page/enhanced-patrol-rifle-ii/",
-   "sha256": "c101988c2b20d126ba4584e0e195f0d5fea69cd20db49a3ea9241b8bafd99f30"
+   "sha256": "c101988c2b20d126ba4584e0e195f0d5fea69cd20db49a3ea9241b8bafd99f30",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "colt_infantry_automatic_rifle",
    "title": "Colt Infantry Automatic Rifle product page (Colt's Manufacturing Company)",
    "url": "https://www.colt.com/detail-page/infantry-automatic-rifle/",
-   "sha256": "cebcc6de03308031f28bc136b3b1b477451d6044ceca465696167d21807c6f26"
+   "sha256": "cebcc6de03308031f28bc136b3b1b477451d6044ceca465696167d21807c6f26",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "colt_m16",
    "title": "Colt M16 product page (Colt's Manufacturing Company)",
    "url": "https://www.colt.com/detail-page/m16/",
-   "sha256": "4acf5440bbc39e86f6c685be08e4b59970a7ac70e585b15e2ff5a44852c89bc9"
+   "sha256": "4acf5440bbc39e86f6c685be08e4b59970a7ac70e585b15e2ff5a44852c89bc9",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "colt_m4_carbine",
    "title": "Colt M4 Carbine product page (Colt's Manufacturing Company)",
    "url": "https://www.colt.com/detail-page/m4-carbine/",
-   "sha256": "a2d851c2ffea0d6236ceddfc90c5a82a54024543daf62242cb6e3d007f1f42d0"
+   "sha256": "a2d851c2ffea0d6236ceddfc90c5a82a54024543daf62242cb6e3d007f1f42d0",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "colt_m5_carbine_2",
    "title": "Colt M5 Carbine product page (Colt's Manufacturing Company)",
    "url": "https://www.colt.com/detail-page/m5-carbine-2/",
-   "sha256": "b4dec886f6a6d4355d740ac26df109ce503eb47cdb3d14e937647ac58c7c5497"
+   "sha256": "b4dec886f6a6d4355d740ac26df109ce503eb47cdb3d14e937647ac58c7c5497",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "colt_sub_machine_guns",
    "title": "Colt Sub-Machine Guns product page (Colt's Manufacturing Company)",
    "url": "https://www.colt.com/detail-page/sub-machine-guns/",
-   "sha256": "45ec187c70afdc3ed28cbed4166a56a732ba648a0a48c270f75739c475991935"
+   "sha256": "45ec187c70afdc3ed28cbed4166a56a732ba648a0a48c270f75739c475991935",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sa_m1a_standard_issue_308",
    "title": "Springfield Armory M1A Standard Issue .308 Rifle product page",
    "url": "https://www.springfield-armory.com/m1a-series-rifles/m1a-standard-issue-rifles/m1a-standard-issue-308-rifle/",
-   "sha256": "f89624de9137df57a5bd8b7a4eaf08cc37b699c32cf514adff72608afd071a00"
+   "sha256": "f89624de9137df57a5bd8b7a4eaf08cc37b699c32cf514adff72608afd071a00",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sa_m1a_loaded_308_rifle",
    "title": "Springfield Armory M1A Loaded .308 Rifle product page",
    "url": "https://www.springfield-armory.com/m1a-series-rifles/m1a-loaded-rifles/m1a-loaded-308-rifle/",
-   "sha256": "a9022eb757693e5fd9567ad708d151a621c0ec9b22ec9a90034c0112f5621982"
+   "sha256": "a9022eb757693e5fd9567ad708d151a621c0ec9b22ec9a90034c0112f5621982",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sa_m1a_national_match_308",
    "title": "Springfield Armory M1A National Match .308 Rifle product page",
    "url": "https://www.springfield-armory.com/m1a-series-rifles/m1a-national-match-rifles/m1a-national-match-308-rifle/",
-   "sha256": "f76933410ad2fad97420c817902552b7e5ee2b76ea482f1e64e854b9f2668e46"
+   "sha256": "f76933410ad2fad97420c817902552b7e5ee2b76ea482f1e64e854b9f2668e46",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sa_m1a_socom_16_308",
    "title": "Springfield Armory M1A SOCOM 16 .308 Rifle product page",
    "url": "https://www.springfield-armory.com/m1a-series-rifles/m1a-socom-16-rifles/m1a-socom-16-308-rifle/",
-   "sha256": "4fc859d44b2302ab8a73251846e60dcc580e414437bd7907851a6bfdedcd3922"
+   "sha256": "4fc859d44b2302ab8a73251846e60dcc580e414437bd7907851a6bfdedcd3922",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sa_m1a_scout_squad_308",
    "title": "Springfield Armory M1A Scout Squad .308 Rifle product page",
    "url": "https://www.springfield-armory.com/m1a-series-rifles/m1a-scout-squad-rifles/m1a-scout-squad-308-rifle/",
-   "sha256": "9c4ea2b3c1453989e6974898b8c96bbae8e861dfecaec036b156df607cc5e9c4"
+   "sha256": "9c4ea2b3c1453989e6974898b8c96bbae8e861dfecaec036b156df607cc5e9c4",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sa_m1a_tanker_308",
    "title": "Springfield Armory M1A Tanker .308 Rifle product page",
    "url": "https://www.springfield-armory.com/m1a-series-rifles/m1a-socom-16-rifles/m1a-tanker-308-rifle/",
-   "sha256": "5dbbf06d5dd2376712b0c9d5dc99782ac485b3daf01e4346448384278718e79c"
+   "sha256": "5dbbf06d5dd2376712b0c9d5dc99782ac485b3daf01e4346448384278718e79c",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sa_m1a_m21_308",
    "title": "Springfield Armory M1A M21 .308 Rifle product page",
    "url": "https://www.springfield-armory.com/m1a-series-rifles/m1a-m21-long-range-match-dougles-rifles/m1a-m21-308-rifle/",
-   "sha256": "80646cfac17cce0c4f1c71b81580ee9c256a02e244f32247f62196286d886eb5"
+   "sha256": "80646cfac17cce0c4f1c71b81580ee9c256a02e244f32247f62196286d886eb5",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sa_saint_556_m_lok_ar_15_rifle",
    "title": "Springfield Armory SAINT 5.56 M-Lok AR-15 Rifle product page",
    "url": "https://www.springfield-armory.com/saint-series/saint-ar-15-rifles/saint-556-m-lok-ar-15-rifle/",
-   "sha256": "7a1827aceaf9135182bb6be4286ccfe421bccdaf6efee5ed86d552935fc3c556"
+   "sha256": "7a1827aceaf9135182bb6be4286ccfe421bccdaf6efee5ed86d552935fc3c556",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sa_saint_edge_556_ar_15_rifle",
    "title": "Springfield Armory SAINT Edge 5.56 AR-15 Rifle product page",
    "url": "https://www.springfield-armory.com/ar-series/saint-edge-ar-15-rifles/saint-edge-556-ar-15-rifle/",
-   "sha256": "cfe496f404ebe35f0d11691f4fe3e59146ad77949c5f4a3bee3725ccafc1a597"
+   "sha256": "cfe496f404ebe35f0d11691f4fe3e59146ad77949c5f4a3bee3725ccafc1a597",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sa_saint_victor_5_56_ar_15_rifle",
    "title": "Springfield Armory SAINT Victor 5.56 AR-15 Rifle product page",
    "url": "https://www.springfield-armory.com/ar-series/saint-victor-ar-15-rifles/saint-victor-5-56-ar-15-rifle-california-compliant-firstline/",
-   "sha256": "1f9c3943ca42648ad8b2ef8ec61a4bfb1f6658e4f7e4ded299714ddeb27dafd2"
+   "sha256": "1f9c3943ca42648ad8b2ef8ec61a4bfb1f6658e4f7e4ded299714ddeb27dafd2",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sa_hellion_5_56_rifle",
    "title": "Springfield Armory Hellion 5.56 Rifle product page",
    "url": "https://www.springfield-armory.com/hellion-5-56-rifle-3-fl/",
-   "sha256": "48d405b7ef8314ff232b73f5cef06d262ae557117bdaab4d2effcaeb119e4559"
+   "sha256": "48d405b7ef8314ff232b73f5cef06d262ae557117bdaab4d2effcaeb119e4559",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sa_xd_4_service_model_9mm",
    "title": "Springfield Armory XD 4 inch 9mm Handgun product page",
    "url": "https://www.springfield-armory.com/xd-4-service-model-9mm-low-capacity-3/",
-   "sha256": "9b976428bb022197d26482604c5a9993fafe9eed07b6d1b466f55584284b8dd9"
+   "sha256": "9b976428bb022197d26482604c5a9993fafe9eed07b6d1b466f55584284b8dd9",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sa_xd_m_elite_4_5_9mm",
    "title": "Springfield Armory XD-M Elite 4.5 inch 9mm Handgun product page",
    "url": "https://www.springfield-armory.com/xd-m-elite-4-5-9mm-handgun-3-7/",
-   "sha256": "7679457bc91dae84e827e82d16cb0867245ecea8216d984b9b93af8a1934114b"
+   "sha256": "7679457bc91dae84e827e82d16cb0867245ecea8216d984b9b93af8a1934114b",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sa_xd_s_mod_2_33_single_stack_9mm",
    "title": "Springfield Armory XD-S Mod.2 3.3 inch Single Stack 9mm Handgun product page",
    "url": "https://www.springfield-armory.com/xd-series-handguns/xd-s-mod-2-handguns/xd-s-mod-2-33-single-stack-9mm-handgun-tritium-sight/",
-   "sha256": "0880ea39aa8256971d525b9533d1407ce630218b6871c03c3867c487e3ab4115"
+   "sha256": "0880ea39aa8256971d525b9533d1407ce630218b6871c03c3867c487e3ab4115",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sa_xd_e_33_single_stack_9mm",
    "title": "Springfield Armory XD-E 3.3 inch Single Stack 9mm Handgun product page",
    "url": "https://www.springfield-armory.com/xd-series-handguns/xd-e-handguns/xd-e-33-single-stack-9mm-handgun/",
-   "sha256": "d8938a3eea35f31b90b98c30dc3f19f15480a136de3bbc0bf63e57be55334dc7"
+   "sha256": "d8938a3eea35f31b90b98c30dc3f19f15480a136de3bbc0bf63e57be55334dc7",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sa_hellcat_3_micro_compact_9mm",
    "title": "Springfield Armory Hellcat 3 inch Micro-Compact 9mm Handgun product page",
    "url": "https://www.springfield-armory.com/hellcat-3-micro-compact-9mm-3/",
-   "sha256": "01ff2247164f0feb9958022ee3d71c37ee2d5c38d24b82e5871675ef260a7968"
+   "sha256": "01ff2247164f0feb9958022ee3d71c37ee2d5c38d24b82e5871675ef260a7968",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sa_hellcat_pro_osp_9mm",
    "title": "Springfield Armory Hellcat Pro OSP 9mm Handgun product page",
    "url": "https://www.springfield-armory.com/hellcat-pro-osp-9mm-handgun-10/",
-   "sha256": "4e09e04755dd15b5f20ed7663b80844fcf999377213258933404232711f91f04"
+   "sha256": "4e09e04755dd15b5f20ed7663b80844fcf999377213258933404232711f91f04",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sa_1911_mil_spec_45_acp",
    "title": "Springfield Armory Mil-Spec .45 ACP product page",
    "url": "https://www.springfield-armory.com/1911-series-handguns/1911-mil-spec-handguns/1911-mil-spec-45-acp-handgun/",
-   "sha256": "7c5cc62549a06dff77aac2c0c761e9548a86f7b5c930d0b3f62c7a2b3044dd86"
+   "sha256": "7c5cc62549a06dff77aac2c0c761e9548a86f7b5c930d0b3f62c7a2b3044dd86",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sa_1911_ronin_45_acp",
    "title": "Springfield Armory 1911 Ronin .45 ACP product page",
    "url": "https://www.springfield-armory.com/1911-series-handguns/1911-ronin-handguns/1911-ronin-45-acp-handgun/",
-   "sha256": "1e7a9df2df65afe5142b4cffd6786e37b1a2301960ffefd23fe3449916f97fa4"
+   "sha256": "1e7a9df2df65afe5142b4cffd6786e37b1a2301960ffefd23fe3449916f97fa4",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sa_1911_emissary_45_acp",
    "title": "Springfield Armory 1911 Emissary .45 ACP product page",
    "url": "https://www.springfield-armory.com/1911-emissary-45-acp-handgun-firstline/",
-   "sha256": "7dff89757aeebaeb55b65bf14020b05d771e31f4f49ef389bba56c4bfa6e588a"
+   "sha256": "7dff89757aeebaeb55b65bf14020b05d771e31f4f49ef389bba56c4bfa6e588a",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sa_1911_trp_45_acp",
    "title": "Springfield Armory 1911 TRP .45 ACP product page",
    "url": "https://www.springfield-armory.com/1911-series-handguns/1911-trp-2023-handguns/1911-trp-45-acp-handgun/",
-   "sha256": "89a8c2b79816b8793acb017bc0327297f80e4dcf1c127d099f6801a0ae65ea55"
+   "sha256": "89a8c2b79816b8793acb017bc0327297f80e4dcf1c127d099f6801a0ae65ea55",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sa_1911_operator_45_acp",
    "title": "Springfield Armory 1911 Operator .45 ACP product page",
    "url": "https://www.springfield-armory.com/1911-series-handguns/1911-operator-handguns/1911-operator-45-acp-handgun/",
-   "sha256": "33b6ee8254725a14534c0d8ccbb54d4909ed2096ffd4d594747454ce4bfc797b"
+   "sha256": "33b6ee8254725a14534c0d8ccbb54d4909ed2096ffd4d594747454ce4bfc797b",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sa_1911_professional_45_acp",
    "title": "Springfield Armory 1911 Professional .45 ACP product page",
    "url": "https://www.springfield-armory.com/1911-series-handguns/custom-handguns/1911-professional-45-acp-handgun/",
-   "sha256": "4105cd4c353d0a430cf474736d7a375f56a7ce6af9454b9bdf0aa5f026724f4e"
+   "sha256": "4105cd4c353d0a430cf474736d7a375f56a7ce6af9454b9bdf0aa5f026724f4e",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sa_1911_garrison_45_acp",
    "title": "Springfield Armory 1911 Garrison .45 ACP product page",
    "url": "https://www.springfield-armory.com/1911-series-handguns/1911-garrison-handguns/1911-garrison-45-acp-handgun/",
-   "sha256": "c433b7ca697931f497d21ac0311db7660130ba49d0359cc0dd06ccc5e543bb4f"
+   "sha256": "c433b7ca697931f497d21ac0311db7660130ba49d0359cc0dd06ccc5e543bb4f",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sa_1911_ronin_9mm",
    "title": "Springfield Armory 1911 Ronin 9mm product page",
    "url": "https://www.springfield-armory.com/1911-series-handguns/1911-ronin-handguns/1911-ronin-9mm-handgun/",
-   "sha256": "564a5338e05ad16c43ce65ef70788cd9ed9d0fd1a321b352021ef9c4a089de21"
+   "sha256": "564a5338e05ad16c43ce65ef70788cd9ed9d0fd1a321b352021ef9c4a089de21",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "fn_fn_scar_16s",
    "title": "FN America FN SCAR 16S product page",
    "url": "https://fnamerica.com/products/discontinued-products/fn-scar-16s-mulitcam/",
-   "sha256": "522d6a8686b626dacedb03816cbf3b07f7e07a0213e02ef93941fcd6ba1cd7b2"
+   "sha256": "522d6a8686b626dacedb03816cbf3b07f7e07a0213e02ef93941fcd6ba1cd7b2",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "fn_fn_scar_17s",
    "title": "FN America FN SCAR 17S product page",
    "url": "https://fnamerica.com/products/discontinued-products/fn-scar-17s-nrch-multicam/",
-   "sha256": "a3d9e68838189334d142ba4e50af5d1c3ec64b599a572554c5cc6b59a410ecbe"
+   "sha256": "a3d9e68838189334d142ba4e50af5d1c3ec64b599a572554c5cc6b59a410ecbe",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "fn_fn_scar_20s",
    "title": "FN America FN SCAR 20S product page",
    "url": "https://fnamerica.com/products/discontinued-products/fn-scar-20s-nrch-multicam/",
-   "sha256": "e28e370cb6971006b6547a120373261ecb7c16786fdc5df93ad693f91cbf5d1b"
+   "sha256": "e28e370cb6971006b6547a120373261ecb7c16786fdc5df93ad693f91cbf5d1b",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "fn_fn_m249s",
    "title": "FN America FN M249S product page",
    "url": "https://fnamerica.com/products/fn-m249s-series/fn-m249s-para-fde/",
-   "sha256": "a39f9aa1445e516f4a0bd4f1c9d07486e167242e73efcabc3ce90fc50478fbd8"
+   "sha256": "a39f9aa1445e516f4a0bd4f1c9d07486e167242e73efcabc3ce90fc50478fbd8",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "fn_fn_m249_saw",
    "title": "FN America FN M249 SAW product page",
    "url": "https://fnamerica.com/products/machine-guns/fn-m249-saw/",
-   "sha256": "7f264841f19ba9b3cfe1e08463f4b87980084ff34081f75b2327e0f1dbceafae"
+   "sha256": "7f264841f19ba9b3cfe1e08463f4b87980084ff34081f75b2327e0f1dbceafae",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "fn_fn_m2hb_qcb",
    "title": "FN America FN M2HB-QCB product page",
    "url": "https://fnamerica.com/products/machine-guns/fn-m2hb-qcb/",
-   "sha256": "47c87c769241974558fef99d9edb3520bccc6b2fa63be2ff87fa95cf5385349c"
+   "sha256": "47c87c769241974558fef99d9edb3520bccc6b2fa63be2ff87fa95cf5385349c",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "fn_fnx_45",
    "title": "FN America FN FNX-45 product page",
    "url": "https://fnamerica.com/products/discontinued-products/fnx-45-tactical-fdeblk/",
-   "sha256": "8ce72fada80a8c6875a4b252bc8f88fb62831186b8ecd9f5628dfc0973da096a"
+   "sha256": "8ce72fada80a8c6875a4b252bc8f88fb62831186b8ecd9f5628dfc0973da096a",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "fn_fn_fnp",
    "title": "FN America FN FNP-45 product page",
    "url": "https://fnamerica.com/products//fn-fnp/",
-   "sha256": "78f95d973071ce8f934b2856f1caa77549a0ed264161e3be5a1ef7c38b3074e7"
+   "sha256": "78f95d973071ce8f934b2856f1caa77549a0ed264161e3be5a1ef7c38b3074e7",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "fn_fns_9",
    "title": "FN America FN FNS-9 product page",
    "url": "https://fnamerica.com/products/discontinued-products/fns-9-compact-fdeblk/",
-   "sha256": "5e64a4fc487a9f570d7979c100810111ee788730d4a05dda3ccc18a1124aa7b9"
+   "sha256": "5e64a4fc487a9f570d7979c100810111ee788730d4a05dda3ccc18a1124aa7b9",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "fn_fns_40",
    "title": "FN America FN FNS-40 product page",
    "url": "https://fnamerica.com/products/discontinued-pistols/fns-40-compact/",
-   "sha256": "d0d057422631adffd8aaab585f079cbe52b38d7023046f64da0f3fa0b2b56fe7"
+   "sha256": "d0d057422631adffd8aaab585f079cbe52b38d7023046f64da0f3fa0b2b56fe7",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "fn_fn_509",
    "title": "FN America FN 509 product page",
    "url": "https://fnamerica.com/products/law-enforcement/fn-509-training-pistol/",
-   "sha256": "2c8df57f3e4b96511c678df9ef3c331b2bb41d7f04aa6ddddb31375444394f50"
+   "sha256": "2c8df57f3e4b96511c678df9ef3c331b2bb41d7f04aa6ddddb31375444394f50",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "fn_fn_510_mrd",
    "title": "FN America FN 510 MRD product page",
    "url": "https://fnamerica.com/products/pistols/fn-510-mrd/",
-   "sha256": "558ef1016fa3db0420d971af502f98676a7f6414f5a6f0df1dbc4fdf47851dcf"
+   "sha256": "558ef1016fa3db0420d971af502f98676a7f6414f5a6f0df1dbc4fdf47851dcf",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "fn_fn_502_mrd",
    "title": "FN America FN 502 MRD product page",
    "url": "https://fnamerica.com/products/pistols/fn-502-mrd/",
-   "sha256": "91e632171b2c25ff81a15fff768ab6005894c55f0bedd7d9c93c7aeb845966fc"
+   "sha256": "91e632171b2c25ff81a15fff768ab6005894c55f0bedd7d9c93c7aeb845966fc",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "fn_fn_five_seven",
    "title": "FN America FN Five-seveN product page",
    "url": "https://fnamerica.com/products/pistols/fn-five-seven-mrd/",
-   "sha256": "b369bc56aee2b9d2e7f45d57bb38d8912a14f23c1e0f0de80de4507fc9ca19bc"
+   "sha256": "b369bc56aee2b9d2e7f45d57bb38d8912a14f23c1e0f0de80de4507fc9ca19bc",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "fn_fn_ps90",
    "title": "FN America FN PS90 product page",
    "url": "https://fnamerica.com/products/law-enforcement/fn-ps90-50-rd/",
-   "sha256": "30bd11e66dd0c451c04d3f455f6c2eac742925f239481ad1fe37f1b28abadb4c"
+   "sha256": "30bd11e66dd0c451c04d3f455f6c2eac742925f239481ad1fe37f1b28abadb4c",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "fn_fn_p90",
    "title": "FN America FN P90 product page",
    "url": "https://fnamerica.com/products/rifles/fn-p90/",
-   "sha256": "f5cb6fb25f5f2b8ab073f277ae76f04b3eebbd23b6af90d3ef91e4967fbc4fe0"
+   "sha256": "f5cb6fb25f5f2b8ab073f277ae76f04b3eebbd23b6af90d3ef91e4967fbc4fe0",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "fn_fn_15_m4_upper_assembly",
    "title": "FN America FN 15 M4 Upper Assembly product page",
    "url": "https://fnamerica.com/products/accessories/fn-15-m4-upper-assembly/",
-   "sha256": "f0984ec82bf82f89d04941d742af3652e06c03596ba5d952d1d1ffcb42da574c"
+   "sha256": "f0984ec82bf82f89d04941d742af3652e06c03596ba5d952d1d1ffcb42da574c",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "fn_fn_15_m16_upper_assembly",
    "title": "FN America FN 15 M16 Upper Assembly product page",
    "url": "https://fnamerica.com/products/accessories/fn-15-m16-upper-assembly/",
-   "sha256": "416eeab5e5dda4ef8fc5d7fe987b36a3242eedb9f246b8fcbc83dd710f35d371"
+   "sha256": "416eeab5e5dda4ef8fc5d7fe987b36a3242eedb9f246b8fcbc83dd710f35d371",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "fn_fn_spr_a1a",
    "title": "FN America FN SPR A1a product page",
    "url": "https://fnamerica.com/products/discontinued-products/fn-spr-a1a/",
-   "sha256": "2a0a87ca4d1ff0b45ed2ddf58761c1eace9534bd96bce87735dc0b2df12a0ef2"
+   "sha256": "2a0a87ca4d1ff0b45ed2ddf58761c1eace9534bd96bce87735dc0b2df12a0ef2",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "fn_fn_spr_a5m",
    "title": "FN America FN SPR A5M product page",
    "url": "https://fnamerica.com/products/discontinued-products/fn-spr-a5m/",
-   "sha256": "959b869c539e80b0ed7560d30093a45cd11de554d8173c5abe5b2ddb218e9697"
+   "sha256": "959b869c539e80b0ed7560d30093a45cd11de554d8173c5abe5b2ddb218e9697",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sw_m_p_15_sport_ii",
    "title": "Smith & Wesson M&P15 product page",
    "url": "https://www.smith-wesson.com/product/m-p-15-sport-ii",
-   "sha256": "26bbbc8838312ce59c0e93fb2c5d61481901efa6d3445b4a56a115ccbd44cf4f"
+   "sha256": "26bbbc8838312ce59c0e93fb2c5d61481901efa6d3445b4a56a115ccbd44cf4f",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sw_m_p_15_22_sport",
    "title": "Smith & Wesson M&P15-22 product page",
    "url": "https://www.smith-wesson.com/product/m-p-15-22-sport",
-   "sha256": "eaa7edc232d82b95f83153f3ff73e450ff04be247be5f4e527c67696548ffe64"
+   "sha256": "eaa7edc232d82b95f83153f3ff73e450ff04be247be5f4e527c67696548ffe64",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sw_m_p_10_6_5_creedmoor",
    "title": "Smith & Wesson M&P10 6.5 Creedmoor product page",
    "url": "https://www.smith-wesson.com/product/m-p-10-6.5-creedmoor",
-   "sha256": "5119e84952d6967713e6503ff267b060d9298d6ff9042242a6149b8dc88eafb8"
+   "sha256": "5119e84952d6967713e6503ff267b060d9298d6ff9042242a6149b8dc88eafb8",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sw_m_p_9_shield_plus",
    "title": "Smith & Wesson M&P Shield Plus product page",
    "url": "https://www.smith-wesson.com/product/m-p-9-shield-plus",
-   "sha256": "d9a1e49a9c8da5d07f3d87a2ee2a874bd69117554109bf863846a10d31f0374b"
+   "sha256": "d9a1e49a9c8da5d07f3d87a2ee2a874bd69117554109bf863846a10d31f0374b",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sw_m_p_9_m2_0",
    "title": "Smith & Wesson M&P9 M2.0 product page",
    "url": "https://www.smith-wesson.com/product/m-p-9-m2.0",
-   "sha256": "3a150fc25d9f5c955262704d3de8c1a8bf69b46dfc332ac47854a50a238970ea"
+   "sha256": "3a150fc25d9f5c955262704d3de8c1a8bf69b46dfc332ac47854a50a238970ea",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sw_m_p_40_m2_0",
    "title": "Smith & Wesson M&P40 M2.0 product page",
    "url": "https://www.smith-wesson.com/product/m-p-40-m2.0-10-rds",
-   "sha256": "13950c0b7b4468b4dd655d984cc750e73bf6e07101cc5e40b1faaa9dd5720505"
+   "sha256": "13950c0b7b4468b4dd655d984cc750e73bf6e07101cc5e40b1faaa9dd5720505",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sw_m_p_45_m2_0",
    "title": "Smith & Wesson M&P45 M2.0 product page",
    "url": "https://www.smith-wesson.com/product/m-p-45-m2.0",
-   "sha256": "fc8baa398b6cb7a037d40f2e99bbc3cbc2b7ce0be0afa17913e8bd8e54e6fcc3"
+   "sha256": "fc8baa398b6cb7a037d40f2e99bbc3cbc2b7ce0be0afa17913e8bd8e54e6fcc3",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sw_sd9",
    "title": "Smith & Wesson S&W SD9 2.0 product page",
    "url": "https://www.smith-wesson.com/product/s-w-sd9-2-0-2-tone-od-green",
-   "sha256": "29bfc709cd49fcb444e40ba74c6d213f8a37a3fbf0cd00d07469e53325bb5107"
+   "sha256": "29bfc709cd49fcb444e40ba74c6d213f8a37a3fbf0cd00d07469e53325bb5107",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sw_sd40",
    "title": "Smith & Wesson S&W SD40 2.0 product page",
    "url": "https://www.smith-wesson.com/product/discontinued-s-w-sd40-ve-low-capacity",
-   "sha256": "56e2d07fd5d449f2f803c723aef8db197460083775878502d79bd199c22d4eab"
+   "sha256": "56e2d07fd5d449f2f803c723aef8db197460083775878502d79bd199c22d4eab",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sw_model_617_mountain_gun",
    "title": "Smith & Wesson S&W Model 617 Mountain Gun product page",
    "url": "https://www.smith-wesson.com/product/model-617-mountain-gun",
-   "sha256": "04011b4cd0298efc3921ce59b7bc779689c1897be459ac7949569364e9a7829c"
+   "sha256": "04011b4cd0298efc3921ce59b7bc779689c1897be459ac7949569364e9a7829c",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "nov_16_gen_4_recon_upper",
    "title": "Noveske Noveske N4 product page (Noveske Rifleworks)",
    "url": "https://noveske.com/products/16-gen-4-recon-upper",
-   "sha256": "f00af4d5d320b74f65388442f74138eaead1e87173b143548f87faed9aa84bfc"
+   "sha256": "f00af4d5d320b74f65388442f74138eaead1e87173b143548f87faed9aa84bfc",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "nov_n6_micro_switchblock_leonidas_12_5_3",
    "title": "Noveske Noveske N6 product page (Noveske Rifleworks)",
    "url": "https://noveske.com/products/n6-micro-switchblock-leonidas-12-5-3",
-   "sha256": "cdbf2547cb6d94cc983fe2acd7d70b90874e45508a14543c49abf9f7d03448a9"
+   "sha256": "cdbf2547cb6d94cc983fe2acd7d70b90874e45508a14543c49abf9f7d03448a9",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "nov_7_94_gen_4_diplomat_pistol",
    "title": "Noveske Noveske Diplomat product page (Noveske Rifleworks)",
    "url": "https://noveske.com/products/7-94-gen-4-diplomat-pistol",
-   "sha256": "27d297b0c624d840368244f26de9d360b2228ed23fad5a716340d215cd0dbf40"
+   "sha256": "27d297b0c624d840368244f26de9d360b2228ed23fad5a716340d215cd0dbf40",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "nov_ghetto_blaster_engraved_mil_spec_port_do",
    "title": "Noveske Noveske Ghetto Blaster product page (Noveske Rifleworks)",
    "url": "https://noveske.com/products/ghetto-blaster-engraved-mil-spec-port-door.html",
-   "sha256": "7b8354fcecdc82f74567cf6d5b132b3e0dcb8114983bf374efc607c874ecc569"
+   "sha256": "7b8354fcecdc82f74567cf6d5b132b3e0dcb8114983bf374efc607c874ecc569",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "nov_chainsaw_rifle",
    "title": "Noveske Noveske Chainsaw product page (Noveske Rifleworks)",
    "url": "https://noveske.com/products/chainsaw-rifle",
-   "sha256": "5ca5999c5050473c9821394687affec0fe75894ca9d513266eb26cf502f03755"
+   "sha256": "5ca5999c5050473c9821394687affec0fe75894ca9d513266eb26cf502f03755",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "nov_n4_wide_ramp_rodeo_8_300blk_braceless_pi",
    "title": "Noveske Noveske 300 BLK product page (Noveske Rifleworks)",
    "url": "https://noveske.com/products/n4-wide-ramp-rodeo-8-300blk-braceless-pistol.html",
-   "sha256": "760c8ff4fc2f5a99e75c2276aad325a75e524510727f3dab3db2d459c5ecc6d6"
+   "sha256": "760c8ff4fc2f5a99e75c2276aad325a75e524510727f3dab3db2d459c5ecc6d6",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "nov_10_5_gen_4_shorty_pistol",
    "title": "Noveske Noveske N4 PDW product page (Noveske Rifleworks)",
    "url": "https://noveske.com/products/10-5-gen-4-shorty-pistol",
-   "sha256": "26bb4792143b5b7f5cc871c89c57bbe8961798327e17ecd4c9d77e092d1a5bfc"
+   "sha256": "26bb4792143b5b7f5cc871c89c57bbe8961798327e17ecd4c9d77e092d1a5bfc",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "nov_13_7_gen_4_infidel_upper",
    "title": "Noveske N4 Infidel product page (Noveske Rifleworks)",
    "url": "https://noveske.com/products/13-7-gen-4-infidel-upper",
-   "sha256": "0bd8ac19bb5c7fed2ae88ada4d03cda0007f9dbd3b9424eb1e9a821e39592c1e"
+   "sha256": "0bd8ac19bb5c7fed2ae88ada4d03cda0007f9dbd3b9424eb1e9a821e39592c1e",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "nov_18_gen_4_spr_rifle",
    "title": "Noveske N4 SPR product page (Noveske Rifleworks)",
    "url": "https://noveske.com/products/18-gen-4-spr-rifle",
-   "sha256": "91ad93df1e991d507f45029e382de8cfc89b24dd8f2b0e13d31b8ac8b5be0faa"
+   "sha256": "91ad93df1e991d507f45029e382de8cfc89b24dd8f2b0e13d31b8ac8b5be0faa",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "nov_n9_cry_baby_8_125_sbr_html",
    "title": "Noveske N9 Cry Baby product page (Noveske Rifleworks)",
    "url": "https://noveske.com/products/n9-cry-baby-8-125-sbr.html",
-   "sha256": "981cdcad060673bae7a91ea5cb8d85567fff550276d915e536300e4f54386d12"
+   "sha256": "981cdcad060673bae7a91ea5cb8d85567fff550276d915e536300e4f54386d12",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "nov_12_5_gen_4_carry_handle_crusader_upper",
    "title": "Noveske Noveske Gen 4 product page (Noveske Rifleworks)",
    "url": "https://noveske.com/products/12-5-gen-4-carry-handle-crusader-upper",
-   "sha256": "c1a5f4468cde84240a226407b328d208b7dc1d9bba2ce281264ce3a430a28752"
+   "sha256": "c1a5f4468cde84240a226407b328d208b7dc1d9bba2ce281264ce3a430a28752",
+   "capture": "local-cache-only"
   }
  ],
  "designations": [

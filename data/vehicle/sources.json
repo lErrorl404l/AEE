@@ -30,6 +30,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "582eb711b60caa9b7e31f856f83e423ddfe3c4022ed5fc936a5a906c36eec909",
+  "capture": "local-cache-only",
   "note": "Tier-5 English Wikipedia compilation for the Achzarit armoured personnel carrier. primary_held false. Publishes identity, the 44 t weight, the dimensions, the engine, the 650 hp rating, the automatic transmission and the speed. Publishes no ground clearance and gives the height only as a greater-than estimate."
  },
  {
@@ -56,6 +57,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "1dd72ca48c27c43e70d2e72cce57e23d38baacf8165cfced557b82f845ecce5e",
+  "capture": "local-cache-only",
   "note": "Tier-5 English Wikipedia compilation for the AHS Krab self-propelled howitzer. primary_held false. Publishes identity, the 48 t mass, the dimensions, the engine, the 1,000 hp rating, the automatic transmission and the road speed. Publishes no ground clearance."
  },
  {
@@ -73,6 +75,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "f4200f75a35924d5292141a826ce0adc7231bb01fadb51ba2d90c19911b85d04",
+  "capture": "local-cache-only",
   "note": "Tier-5 English Wikipedia compilation for the Al-Khalid main battle tank. primary_held false. Publishes identity, the 46 t weight, the dimensions, the 6TD-2 diesel, the 1,200 hp rating, the semi-automatic transmission and the road speed. Publishes no ground clearance."
  },
  {
@@ -89,6 +92,7 @@
   "licence": "Fandom wiki text is available under the Creative Commons Attribution-ShareAlike licence. The page is a community compilation, never a primary source.",
   "primary_held": false,
   "sha256": "730266786b59c6bbb40e39c18e3ee3bedce1c3a25335a8262b9b032405432362",
+  "capture": "local-cache-only",
   "note": "Tier-5 community compilation. The held bytes are the ARMA 3 Trivia section only. It states the Gorgon is based on the 8x8 variant of the Pandur II. The section publishes no mass, dimension, engine, tyre or performance figure, so this source carries an identity claim only and no value object cites it."
  },
  {
@@ -105,6 +109,7 @@
   "licence": "Fandom wiki text is available under the Creative Commons Attribution-ShareAlike licence. The page is a community compilation, never a primary source.",
   "primary_held": false,
   "sha256": "2ad0d57233e4413e90f70b86fcb7dc7c32d81425cc425d9046769ab06368fa98",
+  "capture": "local-cache-only",
   "note": "Tier-5 community compilation. The held bytes are the ARMA 3 Trivia section only. It states the Marshall is based on the Patria AMV and, more specifically, on the Badger IFV variant. The section publishes no mass, dimension, engine, tyre or performance figure, so this source carries an identity claim only and no value object cites it."
  },
  {
@@ -121,6 +126,7 @@
   "licence": "Fandom wiki text is available under the Creative Commons Attribution-ShareAlike licence. The page is a community compilation, never a primary source.",
   "primary_held": false,
   "sha256": "1fbbb12e468eaaf515c4dfee326468c3dbadbbcd16e40b6daf7a86625bea5b81",
+  "capture": "local-cache-only",
   "note": "Tier-5 community compilation. The held bytes are the ARMA 3 Trivia section only. It states the Kamysh chassis appears to be loosely based on the BM-2T Stalker and its turret modelled after the Samson RCWS-30. The section publishes no mass, dimension, engine, tyre or performance figure, so this source carries an identity claim only and no value object cites it."
  },
  {
@@ -137,6 +143,7 @@
   "licence": "Fandom wiki text is available under the Creative Commons Attribution-ShareAlike licence. The page is a community compilation, never a primary source.",
   "primary_held": false,
   "sha256": "6856e647da561268a540622a73457565d9b2a75af8e4698264713a3b32d6b275",
+  "capture": "local-cache-only",
   "note": "Tier-5 community compilation. The held bytes are the ARMA 3 Trivia section only. It states the Bobcat is based on the Namer APC, specifically the Achzaka ARV prototype. The section publishes no mass, dimension, engine, tyre or performance figure, so this source carries an identity claim only and no value object cites it."
  },
  {
@@ -153,6 +160,7 @@
   "licence": "Fandom wiki text is available under the Creative Commons Attribution-ShareAlike licence. The page is a community compilation, never a primary source.",
   "primary_held": false,
   "sha256": "760eed99f4ef6f173ce1f989d67263f49d8f6f7d94721a4fe638bec489118613",
+  "capture": "local-cache-only",
   "note": "Tier-5 community compilation. The held bytes are the ARMA 3 Trivia section only. It states the Mora is based on the FV510 Warrior. The section publishes no mass, dimension, engine, tyre or performance figure, so this source carries an identity claim only and no value object cites it."
  },
  {
@@ -169,6 +177,7 @@
   "licence": "Fandom wiki text is available under the Creative Commons Attribution-ShareAlike licence. The page is a community compilation, never a primary source.",
   "primary_held": false,
   "sha256": "4d9449f1d994d7d3457f872ac8b13d54392d22189991b68e174c9176ea051c33",
+  "capture": "local-cache-only",
   "note": "Tier-5 community compilation. The held bytes are the ARMA 3 Trivia section only. It states the ARMA 3 Hatchback is based on the 2007 Hyundai \"i-Blue\" concept car. The section publishes no mass, dimension, engine, tyre or performance figure, so this source carries an identity claim only and no value object cites it."
  },
  {
@@ -185,6 +194,7 @@
   "licence": "Fandom wiki text is available under the Creative Commons Attribution-ShareAlike licence. The page is a community compilation, never a primary source.",
   "primary_held": false,
   "sha256": "9089952816f242e95af7c8d037ce7d519b4646ed3609be5e6ddd35663d8acc4f",
+  "capture": "local-cache-only",
   "note": "Tier-5 community compilation. The held bytes are the ARMA 3 Trivia section only. It states the HEMTT is based on the Oshkosh M977. The section publishes no mass, dimension, engine, tyre or performance figure, so this source carries an identity claim only and no value object cites it."
  },
  {
@@ -201,6 +211,7 @@
   "licence": "Fandom wiki text is available under the Creative Commons Attribution-ShareAlike licence. The page is a community compilation, never a primary source.",
   "primary_held": false,
   "sha256": "69c88acbf521019b172bf23d44a5d589d54cc726e0c86c8d11a05dfd23d5a02c",
+  "capture": "local-cache-only",
   "note": "Tier-5 community compilation. The held bytes are the ARMA 3 Trivia section only. It states the Hunter is directly based on the Oshkosh M-ATV MRAP. The section publishes no mass, dimension, engine, tyre or performance figure, so this source carries an identity claim only and no value object cites it."
  },
  {
@@ -217,6 +228,7 @@
   "licence": "Fandom wiki text is available under the Creative Commons Attribution-ShareAlike licence. The page is a community compilation, never a primary source.",
   "primary_held": false,
   "sha256": "9cf6e0466f5feccce590ed2fdfc8fed6db93fefbbd3bfd02ca2937001d522274",
+  "capture": "local-cache-only",
   "note": "Tier-5 community compilation. The held bytes are the ARMA 3 Trivia section only. It states the Ifrit appears to be modelled after the ZiL Karatel. The section publishes no mass, dimension, engine, tyre or performance figure, so this source carries an identity claim only and no value object cites it."
  },
  {
@@ -233,6 +245,7 @@
   "licence": "Fandom wiki text is available under the Creative Commons Attribution-ShareAlike licence. The page is a community compilation, never a primary source.",
   "primary_held": false,
   "sha256": "58437036a963301dd22cb16153cf6bb05c9e27ed8f3b7e3ddab1642929fb7223",
+  "capture": "local-cache-only",
   "note": "Tier-5 community compilation. The held bytes are the ARMA 3 Trivia section only. It states the Cheetah chassis is modelled after the Namer APC and its turret after the Marksman system. The section publishes no mass, dimension, engine, tyre or performance figure, so this source carries an identity claim only and no value object cites it."
  },
  {
@@ -249,6 +262,7 @@
   "licence": "Fandom wiki text is available under the Creative Commons Attribution-ShareAlike licence. The page is a community compilation, never a primary source.",
   "primary_held": false,
   "sha256": "8670af43a7350a5923d0874f4d34a81eee53c9a31e489f0abdc0882f82749873",
+  "capture": "local-cache-only",
   "note": "Tier-5 community compilation. The held bytes are the ARMA 3 Trivia section only. It states the Panther is based on the IMI Namer APC. The section publishes no mass, dimension, engine, tyre or performance figure, so this source carries an identity claim only and no value object cites it."
  },
  {
@@ -265,6 +279,7 @@
   "licence": "Fandom wiki text is available under the Creative Commons Attribution-ShareAlike licence. The page is a community compilation, never a primary source.",
   "primary_held": false,
   "sha256": "6e529e29dfc58d535691f01d9b39d79c95ab692c8a7b62b10f40514a20673956",
+  "capture": "local-cache-only",
   "note": "Tier-5 community compilation. The held bytes are the ARMA 3 Trivia section only. It states the Slammer is based on the Merkava Mark IV MBT. The section publishes no mass, dimension, engine, tyre or performance figure, so this source carries an identity claim only and no value object cites it."
  },
  {
@@ -281,6 +296,7 @@
   "licence": "Fandom wiki text is available under the Creative Commons Attribution-ShareAlike licence. The page is a community compilation, never a primary source.",
   "primary_held": false,
   "sha256": "227f7ea82c91849434ba10b1aaf2dc66548e39a133c157f29120db14c6f4b168",
+  "capture": "local-cache-only",
   "note": "Tier-5 community compilation. The held bytes are the ARMA 3 Trivia section only. It states the Sandstorm launcher pod is modelled after the M270 MLRS and its chassis based on the Merkava Mark IV. The section publishes no mass, dimension, engine, tyre or performance figure, so this source carries an identity claim only and no value object cites it."
  },
  {
@@ -297,6 +313,7 @@
   "licence": "Fandom wiki text is available under the Creative Commons Attribution-ShareAlike licence. The page is a community compilation, never a primary source.",
   "primary_held": false,
   "sha256": "34254b0ef9acd2ff3152346d7e906e559714313089b077c8476bc2a9ac94ac2e",
+  "capture": "local-cache-only",
   "note": "Tier-5 community compilation. The held bytes are the ARMA 3 Trivia section only. It states the Kuma is based on the Leopard 2 and specifically on the Rheinmetall Revolution upgrade package. The section publishes no mass, dimension, engine, tyre or performance figure, so this source carries an identity claim only and no value object cites it."
  },
  {
@@ -313,6 +330,7 @@
   "licence": "Fandom wiki text is available under the Creative Commons Attribution-ShareAlike licence. The page is a community compilation, never a primary source.",
   "primary_held": false,
   "sha256": "e277952ac0fbb36a3b9ce99c7256740fe87364f8fbd6f03174e0e65a0814b14e",
+  "capture": "local-cache-only",
   "note": "Tier-5 community compilation. The held bytes are the ARMA 3 Trivia section only. It states the Marid is based on the 6x6 variant of the Otokar Arma. The section publishes no mass, dimension, engine, tyre or performance figure, so this source carries an identity claim only and no value object cites it."
  },
  {
@@ -329,6 +347,7 @@
   "licence": "Fandom wiki text is available under the Creative Commons Attribution-ShareAlike licence. The page is a community compilation, never a primary source.",
   "primary_held": false,
   "sha256": "6859ce94470bfe8b5f171cb1dc5240e3d414e2f611e07ecbcd991b2b63ca7854",
+  "capture": "local-cache-only",
   "note": "Tier-5 community compilation. The held bytes are the ARMA 3 Trivia section only, because the page covers three games and the earlier titles state a different basis. The section states the ARMA 3 Offroad appears to be an amalgamation that takes the front of the Audi Q7 pickup concept and a rear that resembles the Mitsubishi L200. It cites AutoGuide 2011 for the Q7 pickup. It states no manufacturer, no model and no dimension, so this source carries an identity claim only. The Toyota Hilux statement on the same page belongs to the Armed Assault section, not to ARMA 3."
  },
  {
@@ -345,6 +364,7 @@
   "licence": "Fandom wiki text is available under the Creative Commons Attribution-ShareAlike licence. The page is a community compilation, never a primary source.",
   "primary_held": false,
   "sha256": "e7430cfa7bec4b1bb83ce3ce1abeab2ad09005f5245b00153e537a77c0a1e9c7",
+  "capture": "local-cache-only",
   "note": "Tier-5 community compilation. The held bytes are the ARMA 3 Trivia section only. It states the ARMA 3 Quadbike appears to be based on the Yamaha Grizzly 450 ATV. The section publishes no mass, dimension, engine, tyre or performance figure, so this source carries an identity claim only and no value object cites it."
  },
  {
@@ -361,6 +381,7 @@
   "licence": "Fandom wiki text is available under the Creative Commons Attribution-ShareAlike licence. The page is a community compilation, never a primary source.",
   "primary_held": false,
   "sha256": "b39699b8328195dc98f4c1eca27dc9066277a02bb7b71aa18f2556cc7b4fde16",
+  "capture": "local-cache-only",
   "note": "Tier-5 community compilation. The held bytes are the ARMA 3 Trivia section only. It states the Strider is based on the LGS Fennek LARV. The section publishes no mass, dimension, engine, tyre or performance figure, so this source carries an identity claim only and no value object cites it."
  },
  {
@@ -377,6 +398,7 @@
   "licence": "Fandom wiki text is available under the Creative Commons Attribution-ShareAlike licence. The page is a community compilation, never a primary source.",
   "primary_held": false,
   "sha256": "bd0a1acc132e7cf649c88a903a622b603c38bd2002c35d9dc194d51da4f41dd8",
+  "capture": "local-cache-only",
   "note": "Tier-5 community compilation. The held bytes are the ARMA 3 Trivia section only. It states the ARMA 3 SUV appears to be based on the BMW X6 concept car. The section publishes no mass, dimension, engine, tyre or performance figure, so this source carries an identity claim only and no value object cites it."
  },
  {
@@ -393,6 +415,7 @@
   "licence": "Fandom wiki text is available under the Creative Commons Attribution-ShareAlike licence. The page is a community compilation, never a primary source.",
   "primary_held": false,
   "sha256": "7cce54b9e58498a32bd3c9b4c29d3bb7bfac382cc1172a32b8c145e511a11084",
+  "capture": "local-cache-only",
   "note": "Tier-5 community compilation. The held bytes are the ARMA 3 Trivia section only. It states the Tempest is based on the KamAZ-63968 Typhoon. The section publishes no mass, dimension, engine, tyre or performance figure, so this source carries an identity claim only and no value object cites it."
  },
  {
@@ -409,6 +432,7 @@
   "licence": "Fandom wiki text is available under the Creative Commons Attribution-ShareAlike licence. The page is a community compilation, never a primary source.",
   "primary_held": false,
   "sha256": "f942fc3b95167cdd59e9c0baedb31e5aed1029fd16e34eb566cbce6ab340b076",
+  "capture": "local-cache-only",
   "note": "Tier-5 community compilation. The held bytes are the ARMA 3 Trivia section only. It states the Stomper is based on the DARPA Crusher UGCV. The section publishes no mass, dimension, engine, tyre or performance figure, so this source carries an identity claim only and no value object cites it."
  },
  {
@@ -425,6 +449,7 @@
   "licence": "Fandom wiki text is available under the Creative Commons Attribution-ShareAlike licence. The page is a community compilation, never a primary source.",
   "primary_held": false,
   "sha256": "769cd27e1c89b14bfa3487dbc42ce3543ef1013724cfe03640e8845d3a562092",
+  "capture": "local-cache-only",
   "note": "Tier-5 community compilation. The held bytes are the ARMA 3 Trivia section only. It states the Van is based on the Mercedes-Benz \"Sprinter\" series. The section publishes no mass, dimension, engine, tyre or performance figure, so this source carries an identity claim only and no value object cites it."
  },
  {
@@ -441,6 +466,7 @@
   "licence": "Fandom wiki text is available under the Creative Commons Attribution-ShareAlike licence. The page is a community compilation, never a primary source.",
   "primary_held": false,
   "sha256": "c303fd89a1413587b4118ad7c4607c291051102372701d56671a1974ea144ffa",
+  "capture": "local-cache-only",
   "note": "Tier-5 community compilation. The held bytes are the ARMA 3 Trivia section only. It states the Zamak is based on the KamAZ-4310 truck family. The section publishes no mass, dimension, engine, tyre or performance figure, so this source carries an identity claim only and no value object cites it."
  },
  {
@@ -457,6 +483,7 @@
   "licence": "Fandom wiki text is available under the Creative Commons Attribution-ShareAlike licence. The page is a community compilation, never a primary source.",
   "primary_held": false,
   "sha256": "c47c226803a722a5ce6d297d1f09f3acc406848ed98e52f15fe45399b4c743d1",
+  "capture": "local-cache-only",
   "note": "Tier-5 community compilation. The held bytes are the ARMA 3 Trivia section only. It states the Tigris chassis is likely based on the BM-2T Stalker and its turret modelled after the Marksman system. The section publishes no mass, dimension, engine, tyre or performance figure, so this source carries an identity claim only and no value object cites it."
  },
  {
@@ -558,7 +585,8 @@
   "licence": "ARTEC GmbH manufacturer product datasheet published freely. The held bytes are the ARTEC PDF.",
   "primary_held": true,
   "note": "Held tier-4 maker datasheet for the Boxer Armoured Personnel Carrier. It publishes the maximum gross vehicle weight, the engine type and capacity, the maximum road speed, the range, the turning radius and the overall length, width, height and ground clearance. It publishes no kerb or operating weight, no tyre size, no transmission class and no grouser statement, so the entry is not runtime-ready.",
-  "sha256": "16dbe0f4ebe9ca442785814dfc96395f83610bd0e4d0efda9afa914d0d984674"
+  "sha256": "16dbe0f4ebe9ca442785814dfc96395f83610bd0e4d0efda9afa914d0d984674",
+  "capture": "local-cache-only"
  },
  {
   "source_id": "autodata24_toyota_hilux",
@@ -628,6 +656,7 @@
   "licence": "BMC public product page, held for research; the page is the maker publication",
   "primary_held": true,
   "sha256": "3157b1b818a9eab55c064952309f6156c9715666a945468582f754f71428aa8a",
+  "capture": "local-cache-only",
   "note": "Held tier-4 BMC maker technical specifications page for the KIRPI 4X4. It publishes the engine brand and type, the cylinder count, the swept volume, the maximum power and torque, the Allison automatic transmission and its gear count, the ZF two-speed transfer case, the tyre size code, the axle brand, the performance figures, the dimensions and the gross vehicle weight. The document holds one tab per KIRPI variant; the KIRPI 4X4 tab supplies the values. The held bytes are on disk under data/vehicle/sources/ and their digest matches this entry."
  },
  {
@@ -661,6 +690,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "cf8e311282c4f83000a78b853039840c37e807744279c148d26144e9a529bb2d",
+  "capture": "local-cache-only",
   "note": "Tier-5 English Wikipedia compilation for the BMW R75 military motorcycle. primary_held false. Publishes identity, the dry weight, the engine displacement and the power rating. Publishes no dimensions, no road speed and no ground clearance."
  },
  {
@@ -678,6 +708,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "b7300acc6874f3aa3d6779c9208dfa2d8a4efd14999106bfae0190ab9b365910",
+  "capture": "local-cache-only",
   "note": "Tier-5 English Wikipedia compilation for the Boragh armoured personnel carrier. primary_held false. Publishes identity, the 13 t weight, the dimensions, the V-8 diesel, the 330 hp rating and the road speed. Publishes no ground clearance."
  },
  {
@@ -695,6 +726,7 @@
   "licence": "Soviet technical manual, English translation, held as a public Internet Archive scan. The held scan carries no distribution statement. The held bytes are the Internet Archive copy, not an issuing-authority copy.",
   "primary_held": true,
   "sha256": "b334b0cd06040591d8be38b8c3bddedfdb14efda97e1bfc8f8302fc2d64cdcaa",
+  "capture": "local-cache-only",
   "note": "Held tier-2 technical manual, English translation, for the BRDM-2. The manual publishes the identity (four-wheel amphibious armoured vehicle), the combat (total) weight, the overall and chassis dimensions, the ground clearance, the maximum road speed and range, the maximum engine power as horse power with no net basis, the engine swept volume, the mechanical transmission with its four forward ratios and reverse, the final drive ratio and the tyre size code with its regulated inflation range. Tyre width and tyre diameter are derived from the size code by the named formula. The held copy is on disk and its digest matches this entry."
  },
  {
@@ -711,6 +743,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "728495b9b862618902fa184d6d2c8eb8d8bb44b8157eac64c6ade22b5c6c1f52",
+  "capture": "local-cache-only",
   "note": "Held tier-5 English Wikipedia compilation for the BSA M20 British military motorcycle. The registry marks primary_held false because the article is a secondary compilation. It carries the engine displacement, the power rating, the dry weight and the transmission class. It states no length, width, height or road speed. Every value from this source is grade claimed."
  },
  {
@@ -728,7 +761,8 @@
   "licence": "National technical manual held as a public mirror. The held bytes are the military-references.com scan, not an issuing-authority copy.",
   "primary_held": true,
   "note": "Held tier-2 operation manual for the BTR-4 (BTR-4E export designation). Section 3 publishes the 8x8 wheel arrangement, the full mass with anti-bullet and with additional protection, the crew and troop counts, the overall length, the hull width, the height, the wheelbase, the track, the road clearance, the road and water speeds, the turning radius, the fuel consumption, the road range, the climb and side-slope limits, the trench and step limits and the water-crossing limits. Section 3.9.1 names the 3TD-3A engine with its bench-test power and torque, section 3.10.2 the hydromechanical automatic gearbox with five forward ratios and section 3.15.1 the 12.00R20 or 365/80R20 tyres with the adjustable pressure. It publishes no net power with a stated basis. The held copy is on disk under data/vehicle/sources/ and its digest matches the registry entry.",
-  "sha256": "a9990db61e9a6d4fd75bfce4fdda2cd92269a884b2b9c53013a521dbbba7f508"
+  "sha256": "a9990db61e9a6d4fd75bfce4fdda2cd92269a884b2b9c53013a521dbbba7f508",
+  "capture": "local-cache-only"
  },
  {
   "source_id": "btr_70",
@@ -761,6 +795,7 @@
   "licence": "Russian Federation Ministry of Defence technical manual, held as a public Internet Archive scan. It carries no open-government licence. The held bytes are the Internet Archive copy, not an issuing-authority copy.",
   "primary_held": true,
   "sha256": "ec1a5819ceb0fa05c9647bdd0abadf8e71bdc3d7dca3d041431b9e9b18599cb7",
+  "capture": "local-cache-only",
   "note": "Held tier-2 technical description and service manual for the BTR-80, second edition, part 1. The manual publishes the identity (four-axle, eight-wheel, all-wheel-drive, enclosed, amphibious armoured personnel carrier), the full (combat) mass, the overall and chassis dimensions, the ground clearance, the maximum road speed and range, the guaranteed engine power as horse power with no net basis, the swept volume, the engine model number and the manual gearbox and transfer case in the controls description. It publishes no tyre size code, no tyre pressure and no transmission-ratio table in part 1, so those fields are absent. Part 2 of the same manual carries the running gear and transmission detail. The held copy is on disk and its digest matches this entry."
  },
  {
@@ -778,6 +813,7 @@
   "licence": "UK MOD Army Equipment Support Publication. Every page is marked UK RESTRICTED and the cover states conditions of release for the recipient Government. The held copy is a secondary scan from a public mirror, not an issuing-authority release.",
   "primary_held": true,
   "sha256": "bc5d7120cf862dacdcc9bb76a5e922c7f661e25c2cf35139b59e623f5e1851be",
+  "capture": "local-cache-only",
   "note": "Held tier-2 AESP for the Challenger 1 (Challenger) tank automotive system. The document page header reads 2350-P-100-201 and the mirror file name reads 230-P-100-201; the entry records both. It publishes the combat loaded weight, the gun-forward overall length, the overall width, the height to the commander's sight hood, the nominal ground clearance, the shallow fording depth, the nominal maximum road speed, the maximum gradient as 58 percent (30 degrees), the track width, the number of links per track, the engine model and gross rating, the automatic gearbox class and the four forward gear count. It publishes no track pitch, no net power with a stated basis and no explicit grouser statement, so the entry is not runtime-ready. The document names the vehicle Challenger; the catalogue records it as the Challenger 1 because the publication is the June 1983 Challenger automotive AESP and it is not the Challenger 2."
  },
  {
@@ -865,6 +901,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "38c4d55776ce03a38de52241aee30ba37139fbcaea2950b4d42089f06b655127",
+  "capture": "local-cache-only",
   "note": "Tier-5 English Wikipedia compilation for the GAZ-66 truck. primary_held false. Publishes identity, the 3,440 kg weight, the dimensions, the ground clearance, the fording depth, the manual transmission and the governed speed. Publishes no engine model and no power rating."
  },
  {
@@ -881,6 +918,7 @@
   "licence": "Manufacturer product datasheet published freely by General Dynamics Land Systems. The held copy is the GDLS PDF.",
   "primary_held": true,
   "sha256": "062787f0824801f070b202cca18d94d6a2c59a14b34628655cea595fa680359f",
+  "capture": "local-cache-only",
   "note": "Held tier-4 maker datasheet for the Cougar 4x4 MRAP. No freely downloadable US Army operator manual for the Cougar or the RG-31 is available, because the RG31-series TM 9-2355-315-10 is login-gated, so this maker datasheet is the held document and every value is grade claimed. It publishes identity, overall dimensions, the curb and combat weights, the payload, ground clearance, the Caterpillar C7 rating of 330 hp, the Allison 3500 SP automatic transmission and the tyre size code 395/85 R20. The datasheet prints no company name; the held document is the maker product datasheet on the maker site."
  },
  {
@@ -897,6 +935,7 @@
   "licence": "Manufacturer product datasheet published freely by General Dynamics Land Systems. The held copy is the GDLS PDF.",
   "primary_held": true,
   "sha256": "c621502f1a6a5d0f702e89b9ab12748088d7b1c2759fa32910717511bb749c00",
+  "capture": "local-cache-only",
   "note": "Held tier-4 maker datasheet for the RG-31 Mk5 MRAP. It publishes the gross vehicle weight, unburdened mass and payload, the overall length, width and height, the ground clearance, the top speed, the range, the turning radius, the fording depth, the Cummins QSB engine rating of 300 hp, the Allison 3000 SP transmission and the Michelin 395/85R20 tyre fitment. The datasheet prints a grade of 60 percent rather than degrees and classifies the mine-blast and ballistic figures. The held copy is on disk under data/vehicle/sources/ and its digest matches the registry entry."
  },
  {
@@ -914,7 +953,8 @@
   "licence": "Manufacturer product datasheet published freely by General Dynamics Land Systems. The held copy is the GDLS PDF.",
   "primary_held": true,
   "note": "Held tier-4 General Dynamics Land Systems datasheet for the Stryker combat vehicles. It publishes the 350 HP Caterpillar 3126 diesel engine, the eight-wheel run-flat and central tyre inflation system, the 62.5 mph governed top speed, the 330 mi cruising range, the 78 in trench crossing and the 23 in vertical climb, plus combat and shipping height, width and length for the Infantry Carrier Vehicle and the other nine variants. It publishes no weight, no tyre size and no transmission class. The held copy is on disk under data/vehicle/sources/ and its digest matches the registry entry.",
-  "sha256": "d4a9d66fdde213c2c2239ddf80b472eca0c0be0512fca9f53fd8582ec90c4f5e"
+  "sha256": "d4a9d66fdde213c2c2239ddf80b472eca0c0be0512fca9f53fd8582ec90c4f5e",
+  "capture": "local-cache-only"
  },
  {
   "source_id": "globalsecurity_caiman_specs",
@@ -944,6 +984,7 @@
   "licence": "Tier-5 compilation. The held bytes are the page HTML, not a primary document.",
   "primary_held": false,
   "sha256": "ee417a0103039f6402082e392cda7349b1d1357773583218ed647164d0e8e238",
+  "capture": "local-cache-only",
   "note": "Designation evidence only: it names the A1/A2 marks of the Cougar. No physical value is taken from it."
  },
  {
@@ -1030,6 +1071,7 @@
   "licence": "Tier-5 compilation. The held bytes are the page HTML, not a primary document.",
   "primary_held": false,
   "sha256": "44bae9051427486c79be4c5f306d20a7439801a89bee29bac18cfa77c236bc9d",
+  "capture": "local-cache-only",
   "note": "Designation evidence only: it names the Caiman's formal US Army designations. No physical value is taken from it."
  },
  {
@@ -1047,7 +1089,8 @@
   "licence": "Brazilian Army instruction manual held as a public Internet Archive scan. The held bytes are the Internet Archive scan, not an issuing-authority copy.",
   "primary_held": true,
   "note": "Held tier-2 instruction manual that carries the VBTP-MR Guarani characteristics list. Section 2.5.1 publishes the vehicle weight of 17.5 t, the 600 km range and the protection levels. It publishes no overall dimensions, no engine rating, no transmission type and no ground clearance. The held copy is on disk under data/vehicle/sources/ and its digest matches the registry entry.",
-  "sha256": "d5db88521157c14de1ae7a83eb0d851a166f91a354aa1b89614bd4c540755058"
+  "sha256": "d5db88521157c14de1ae7a83eb0d851a166f91a354aa1b89614bd4c540755058",
+  "capture": "local-cache-only"
  },
  {
   "source_id": "guarani_eb70_mt_11406",
@@ -1064,7 +1107,8 @@
   "licence": "Brazilian Army technical manual held as a public Internet Archive scan. The held bytes are the Internet Archive scan, not an issuing-authority copy.",
   "primary_held": true,
   "note": "Held tier-2 technical manual for the VBTP-MR Guarani. Chapter XIV publishes the maximum vehicle weight of 17,500 kg for the safe water crossing without the flotation kit and the maximum road speed of 95 km/h, and its load table publishes the payload bands by weapon station. It publishes no overall dimensions, no engine rating, no transmission type and no ground clearance in the held text. The held copy is on disk under data/vehicle/sources/ and its digest matches the registry entry.",
-  "sha256": "b51653bc61a7573f211d13149985fe698bedb346a6342d9124302d33f6e19337"
+  "sha256": "b51653bc61a7573f211d13149985fe698bedb346a6342d9124302d33f6e19337",
+  "capture": "local-cache-only"
  },
  {
   "source_id": "harley_wla",
@@ -1081,6 +1125,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "62a78066a506f3de53a60c4bacd79b1239f4adda15e80d16ef6fdc5e3a5b338b",
+  "capture": "local-cache-only",
   "note": "Tier-5 English Wikipedia compilation for the Harley-Davidson WLA military motorcycle. primary_held false. Publishes identity, the dry weight, the length and width, the engine displacement, the power rating, the three-speed transmission, the tyre size code and the road speed. Publishes no ground clearance and no height."
  },
  {
@@ -1098,6 +1143,7 @@
   "licence": "US War Department technical manual held as a public Internet Archive scan. The item carries a Public Domain Mark. The held bytes are the Internet Archive scan of the printed manual, not an issuing-authority copy.",
   "primary_held": true,
   "sha256": "752db7337496272b3680e2ce519990d9cc2e6dc99185f853d1994b18d7215da5",
+  "capture": "local-cache-only",
   "note": "Held tier-2 technical manual for the Harley-Davidson WLA solo motorcycle. It publishes identity, the overall length and width, the wheelbase, the tyre size code, the wheel size, the weight of the vehicle without rider or armament, the ground clearance at the skid plate, the engine type and the maximum allowable speed. It publishes no overall height. The held copy is on disk under data/vehicle/sources/ and its digest matches the registry entry."
  },
  {
@@ -1115,6 +1161,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "0d18bc4fdf1d8e90c15f3576548417de926fe7b6552ec35652961626bbe07ef3",
+  "capture": "local-cache-only",
   "note": "Tier-5 English Wikipedia compilation for the Honda CB750 motorcycle. primary_held false. Publishes identity, the dry and wet weights, the dimensions, the wheelbase, the engine displacement, the power rating, the manual transmission and the chain final drive. Publishes no ground clearance."
  },
  {
@@ -1132,6 +1179,7 @@
   "licence": "Manufacturer service manual held as a public Internet Archive scan. Honda Motor Co., Ltd., Service Publication Office. The held bytes are the Internet Archive scan of the 1999 first edition, not an issuing-authority copy.",
   "primary_held": true,
   "sha256": "31afe30bc1d1064482c8c510b6264fbcf884afd862306bd57815ab14b409bec3",
+  "capture": "local-cache-only",
   "note": "Held tier-2 factory service manual for the 6th generation Honda Civic. It publishes identity, overall dimensions, wheelbase, track, ground clearance, seating, per-variant gross vehicle weight ratings, engine and transmission families and their gear ratios. It publishes no curb weight, no operating weight, no payload, no engine rated power, no engine torque and no tyre size or pressure (it directs the reader to the tyre information label). The held copy is on disk under data/vehicle/sources/ and its digest matches the registry entry."
  },
  {
@@ -1205,6 +1253,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "ecec52c029318b94528203e94e6d8384b4daf713a9673fb0885e15cb7bb2b7b5",
+  "capture": "local-cache-only",
   "note": "Tier-5 English Wikipedia compilation for the K21 infantry fighting vehicle. primary_held false. Publishes identity, the 25.6 t weight, the dimensions, the engine, the 750 hp rating and the road speed. Publishes no ground clearance and no transmission type."
  },
  {
@@ -1222,6 +1271,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "88fd19eee63e532b23f1e3651f2c44c4dd6be3e0760b928189d46cb638a2fed1",
+  "capture": "local-cache-only",
   "note": "Tier-5 English Wikipedia compilation for the K808 White Tiger wheeled armoured personnel carrier. primary_held false. Publishes identity, the 20 t weight, the dimensions, the engine, the 420 hp rating and the road speed. Publishes no ground clearance and no transmission type."
  },
  {
@@ -1239,6 +1289,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "68f031fd715f4869d8e69075172ccab97eaa7dc18b947bc38e6a0587321bab8e",
+  "capture": "local-cache-only",
   "note": "Tier-5 English Wikipedia compilation for the Karrar main battle tank. primary_held false. Publishes identity, the 51 t weight, the total length and dimensions, the diesel engine and the speed. Publishes no engine power and no ground clearance."
  },
  {
@@ -1255,6 +1306,7 @@
   "licence": "Kawasaki manufacturer service manual held as a public Internet Archive scan. The held bytes are the Internet Archive scan of the printed supplement, not an issuing-authority copy.",
   "primary_held": true,
   "sha256": "2efe4a03845722baa91d696a8a6a6cb22f127b70098bc2096a5513823d517862",
+  "capture": "local-cache-only",
   "note": "Held tier-2 motorcycle service manual supplement for the Kawasaki EX250-F (Ninja 250R / GPX250R). It publishes identity, overall dimensions, wheelbase, road clearance, dry weight, curb weight by axle, the engine type and displacement, the maximum power and torque ratings, the manual six-speed transmission, the chain final drive and the front and rear tyre size codes. It publishes no net power with a stated basis, no single total curb weight (the curb weight is printed by axle) and no operating weight. The held copy is on disk under data/vehicle/sources/ and its digest matches the registry entry."
  },
  {
@@ -1269,6 +1321,7 @@
   "licence": "KNDS public product page, held for research; the page is the maker publication",
   "primary_held": true,
   "sha256": "0342109a2b5d443ad7400e989f13c0ae6185e04e96b8470042a681642ef06047",
+  "capture": "local-cache-only",
   "note": "Held tier-4 KNDS maker product page for the LEOPARD 2 A6. Its specifications table publishes the length with the turret at 12 o'clock, the width, the height to the turret roof, the weight, the engine performance, the maximum speed and the range. The page body names the A6M configuration, so the weight, width, height and range describe the A6M and not the base A6. The held bytes are on disk under data/vehicle/sources/ and their digest matches this entry."
  },
  {
@@ -1286,6 +1339,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "3a5d5eba80f098f8da5bc26103e13fe4f20ab7d55e6cb7685f62abe3f4e48b7a",
+  "capture": "local-cache-only",
   "note": "Tier-5 English Wikipedia compilation for the Komatsu LAV. primary_held false. Publishes identity, the 4,500 kg weight, the dimensions, the engine, the 160 hp rating, the automatic transmission and the road speed. Publishes no ground clearance."
  },
  {
@@ -1303,6 +1357,7 @@
   "licence": "Nexter-Group manufacturer sales brochure. The brochure states that all data and information presented in the document is the property of Nexter-Group and that the document is disclosed for information purposes only. The held bytes come from the warwheels.net mirror, not from Nexter.",
   "primary_held": true,
   "sha256": "1e3457e08f498a136ce687e8751883eadd6bcdd648c1ff9e5c001beecc457e3e",
+  "capture": "local-cache-only",
   "note": "Held tier-4 Nexter sales brochure for the VBCI 8x8 armoured vehicle family. It publishes identity, the empty weight, the payload, the chassis length, width and height as upper bounds, the usable interior volume, the carrying capacity, the diesel engine rating of 600 HP, the automatic gearbox (7+2), the running gear arrangement, the central tyre inflation system and run-flat device, the road speed and range, the step, trench and fording figures, the protection levels and the armament options. It publishes no ground clearance, no tyre size code or tyre width or tyre diameter, no net power with a stated basis, no exact overall dimension (the dimensions are stated only as upper bounds), no track fields and no grouser statement, so the entry is not runtime-ready."
  },
  {
@@ -1334,7 +1389,8 @@
   "licence": "Patria manufacturer sales brochure. The held bytes come from the warwheels.net document mirror, not from Patria.",
   "primary_held": true,
   "note": "Held tier-4 Patria brochure for the Armoured Modular Vehicle 8x8. It publishes the length for the standard and longer hull, the height over hull, the width, the track width, the 17,000 to 27,000 kg weight range, the power output of 405 kW, the torque output of 2,090 N m, the automatic transmission with 7 + 1 gears and the all-wheel drive. It names no engine model, publishes no kerb or operating weight as a single figure and states the maximum speed only as greater than 100 km/h. The held copy is on disk under data/vehicle/sources/ and its digest matches the registry entry.",
-  "sha256": "2db3cda92c28e7b52ec3767e8807c686b9cac797b384f78346e391b1576c123d"
+  "sha256": "2db3cda92c28e7b52ec3767e8807c686b9cac797b384f78346e391b1576c123d",
+  "capture": "local-cache-only"
  },
  {
   "source_id": "peugeot_p4",
@@ -1350,6 +1406,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "4cdaf05f7a620827f8359810d1eba0264f10698b6e5b02f5f4b2b6e7840d3854",
+  "capture": "local-cache-only",
   "note": "Held tier-5 English Wikipedia compilation for the Peugeot P4 French light utility vehicle. The registry marks primary_held false because the article is a secondary compilation. It carries the overall length, the width, the kerb weight, the engine family and displacement, the power rating and the road-speed range. It states no height and no ground clearance. Every value from this source is grade claimed."
  },
  {
@@ -1366,6 +1423,7 @@
   "licence": "Manufacturer product page published freely by PT Pindad (Persero). The held copy is the Pindad HTML page.",
   "primary_held": true,
   "sha256": "d82698eee39388ceb18d6d7ecc37b4dc75ee7a33fd1a94304efdd4fb1d890cbd",
+  "capture": "local-cache-only",
   "note": "Held tier-4 maker product page for the Anoa 6x6 armoured personnel carrier. The specification table publishes the 6x6 configuration, the maximum speed, the cruising range, the combat weight, the personnel capacity, the overall dimensions, the power, the torque and the automatic transmission. It names no engine model, no ground clearance and no gear count. The held bytes on disk are the Pindad page and their digest matches this entry."
  },
  {
@@ -1383,6 +1441,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "5e1067271b0b6edba6a1715145f26ad220bd10426fc24b2bc09839e2af3b4045",
+  "capture": "local-cache-only",
   "note": "Tier-5 English Wikipedia compilation for the Puma armoured engineering vehicle. primary_held false. Publishes identity, the 50 t weight, the dimensions, the engine, the 900 hp rating and the cross-country speed. Publishes no ground clearance and no road speed."
  },
  {
@@ -1555,6 +1614,7 @@
   "licence": "Manufacturer product brochure published freely by ST Engineering. The held copy is the ST Engineering PDF.",
   "primary_held": true,
   "sha256": "3e9080b40da9136e4031c13727e879bea17e995db6da2c05a7f1cc2b429ff075",
+  "capture": "local-cache-only",
   "note": "Held tier-4 maker brochure for the TERREX 8x8 family. It publishes, per variant column, the overall dimensions, the gross vehicle weight, the payload, the engine, the power output, the gearbox and gear count, the maximum speed, the road range, the approach and departure angles, the gradient, the side slope, the vertical obstacle, the trench crossing and the fording depth. The held bytes on disk are the ST Engineering PDF and their digest matches this entry."
  },
  {
@@ -1572,7 +1632,8 @@
   "licence": "Soviet Ministry of Defence technical manual held as a public mirror. The held bytes are the military-references.com scan, not an issuing-authority copy.",
   "primary_held": true,
   "note": "Held tier-2 technical description and operation manual for the T-64A. Section 1.2 publishes the combat weight, the crew, the power-to-weight ratio, the length with the gun forward and rearward, the hull length, the width over the removable skirts and over the tracks, the height to the turret roof, the ground clearance, the average and maximum road speeds, the fuel range, the maximum climb gradient, the trench and step limits and the fording depth without preparation and with the underwater driving kit. It publishes no track shoe width, no track pitch and no net power with a stated basis in the held pages. The held copy is on disk under data/vehicle/sources/ and its digest matches the registry entry.",
-  "sha256": "aa6044dcd528fd69a4c48677def8b1854999df1717e9180c0ec86cb0c276a03f"
+  "sha256": "aa6044dcd528fd69a4c48677def8b1854999df1717e9180c0ec86cb0c276a03f",
+  "capture": "local-cache-only"
  },
  {
   "source_id": "tatra_defence_pandur_ii_datasheet",
@@ -1589,7 +1650,8 @@
   "licence": "Tatra Defence Vehicle a.s. manufacturer product sheet. The held bytes are the TDV PDF.",
   "primary_held": true,
   "note": "Held tier-4 Tatra Defence Vehicle product sheet for the Pandur II 8x8. It publishes the 8x8 chassis, a cruising range of 700 km, a speed of 110 km/h, a crew capacity of 14, STANAG 4569 ballistic level 4 and mine level 3, the six cylinder inline Cummins ISLe diesel and the fully automatic ZF transmission. It publishes no dimensions and no weight. The held copy is on disk under data/vehicle/sources/ and its digest matches the registry entry.",
-  "sha256": "816e6a93c188587aab86ab3ba68ad6e45ae000090f948909aae01aa5c24129c0"
+  "sha256": "816e6a93c188587aab86ab3ba68ad6e45ae000090f948909aae01aa5c24129c0",
+  "capture": "local-cache-only"
  },
  {
   "source_id": "thales_bushmaster_troop_carrier_datasheet",
@@ -1606,7 +1668,8 @@
   "licence": "Thales Australia manufacturer sales brochure, copyright Thales Australia Limited. The held bytes come from the warwheels.net document mirror, not from Thales Australia.",
   "primary_held": true,
   "note": "Held tier-4 Thales Australia brochure for the Bushmaster troop carrier. It publishes the kerb mass and gross vehicle mass, the overall length, width and height, the track, the wheelbase, the approach, departure and ramp-over angles, the ground clearance under the hull, the 4x4 configuration, the Caterpillar 3126E 7.2 litre engine rated at 224 kW / 300 hp and 1,166 N m, the ZF 6HP502 six-speed transmission, the Michelin 395/85 R20 tyre fitment, the fording depth, the governed speed and the maximum road range. It publishes no payload, no net power basis and no transmission-type word. The held copy is on disk under data/vehicle/sources/ and its digest matches the registry entry.",
-  "sha256": "524d7b69404990e3737564b0c24e68c76295a85c53a47126791bfc1551efabf8"
+  "sha256": "524d7b69404990e3737564b0c24e68c76295a85c53a47126791bfc1551efabf8",
+  "capture": "local-cache-only"
  },
  {
   "source_id": "thyssen_henschel_marder_1a3",
@@ -1623,6 +1686,7 @@
   "licence": "Thyssen Henschel manufacturer sales brochure, held as a public archive scan by the Vietnam Center and Sam Johnson Vietnam Archive. The held scan carries no distribution statement. The held bytes are the archive copy, not an issuing-authority copy.",
   "primary_held": true,
   "sha256": "f9e22f37f2792aefcc594ddfb3c3abdd8f21ec0059eb5d9f794d4fc0898ac068",
+  "capture": "local-cache-only",
   "note": "Held tier-4 Thyssen Henschel manufacturer brochure for the Marder 1A3 infantry combat vehicle. It publishes identity, the combat weight of 28.6 metric tons, the MTU MB 833 Ea 500 six-cylinder turbocharged diesel rated at 440 kW (590 hp), the Renk HSWL 194 hydro-mechanical shift transmission with four forward and two reverse gears, the maximum road speed of 75 km/h, the crew of ten, the 20 mm Rh 202 cannon and 7.62 mm MG3 armament and the Diehl tracks with rubber-supported pins and provision for snow grips. It publishes no overall length, width or height, no ground clearance, no track shoe width or track pitch, no net power with a stated basis, no tyre field and no explicit grouser statement, so the tracked entry is not runtime-ready."
  },
  {
@@ -1640,6 +1704,7 @@
   "licence": "US Army technical manual, Headquarters Department of the Army and the Air Force. The cover carries DISTRIBUTION STATEMENT A: approved for public release, distribution unlimited. The held bytes come from the liberatedmanuals.com mirror, not from the issuing authority.",
   "primary_held": true,
   "sha256": "7407b35b7a876a87c7af9a549a173121b8220ab218e8d4a29c074e849e616ed4",
+  "capture": "local-cache-only",
   "note": "Held tier-2 operator manual for the M939/A1/A2 5-ton 6x6 series. It publishes identity, dimensions, chassis dimensions, the empty weight and payload, the Cummins engine ratings as brake horsepower, the automatic transmission range count, the tyre size code, the tyre pressures, the maximum safe operating speeds and the fording depth. It publishes no named curb weight, no operating weight, no net power with a stated basis, no engine torque, no engine displacement and no transmission model designation, and it names no manufacturer. The held copy is on disk under data/vehicle/sources/ and its digest matches the registry entry."
  },
  {
@@ -1657,6 +1722,7 @@
   "licence": "US Army operator technical manual, Headquarters, Department of the Army. The cover carries APPROVED FOR PUBLIC RELEASE; DISTRIBUTION IS UNLIMITED. The held bytes come from the midwestmilitaryequipment.com mirror, not from the issuing authority.",
   "primary_held": true,
   "sha256": "ad5442b9b0d65ba8934161d0e5a07bee693e48e17b16f8e5c87fbcecbb3b4176",
+  "capture": "local-cache-only",
   "note": "Held tier-2 operator manual for the M977 series 8x8 HEMTT. It publishes identity, overall length, width and height, wheelbase, ground clearance, the M977 curb weight with and without winch, the gross vehicle weight rating and gross combination weight rating, the engine make, model, type and swept volume, two brake-horsepower and two torque ratings, the automatic transmission with four forward ranges, the tyre size code, the front and rear tyre pressures and maximum safe operating speeds, the cruising range at GCWR, the maximum ford depth and the approach and departure angles. It publishes no net power with a stated basis, no named operating weight, no payload rating, no tyre width or tyre diameter as figures (only a size code), no track fields and no grouser statement, and it names no vehicle manufacturer."
  },
  {
@@ -1674,6 +1740,7 @@
   "licence": "US Army operator technical manual, Headquarters, Departments of the Army, the Navy and the Air Force. The cover carries APPROVED FOR PUBLIC RELEASE; DISTRIBUTION IS UNLIMITED. The held bytes come from the liberatedmanuals.com mirror, not from the issuing authority.",
   "primary_held": true,
   "sha256": "2a2f590ff8b0f81b4570191d9b4ef0271e2771da62b3dfb53a8d77971675a1fe",
+  "capture": "local-cache-only",
   "note": "Held tier-2 operator manual for the M998 series HMMWV. It publishes identity, overall dimensions, ground clearance, the curb weight per variant, the gross vehicle weight, the 6.2 L and 6.5 L engine ratings as brake horsepower, the 3L80 and 4L80-E automatic transmissions, the maximum operating speeds, the fording depth and the tyre size codes. It names no manufacturer. It publishes no net power with a stated basis, no payload and no tyre pressure. The held copy is in the staging bundle and its digest matches this fragment."
  },
  {
@@ -1692,6 +1759,7 @@
   "licence": "US Army technical manual, 1982 draft equipment publication. The held copy is a Google Books digitisation of a university library copy, served by the military-references.com mirror. The held scan carries no distribution statement on the cover or on the equipment data pages.",
   "primary_held": true,
   "sha256": "ac4932b72d4eee5e7730506064de226678f1e322668e4767b3feb23926d0bc56",
+  "capture": "local-cache-only",
   "note": "Held tier-2 operator manual for the M2 Infantry Fighting Vehicle and the M3 Cavalry Fighting Vehicle (Bradley). It publishes the combat loaded weight, the engine model and displacement, a gross horsepower rating with no net basis, an automatic hydromechanical transmission, the track type, the track shoe count, the track pitch and an unlabelled track shoe width figure, the maximum road speed, the cruising range and the fording depth. It publishes no overall length, width or height and no ground clearance. It names no vehicle manufacturer. The held copy is on disk under data/vehicle/sources/ and its digest matches the registry entry."
  },
  {
@@ -1710,6 +1778,7 @@
   "licence": "US Army draft technical manual, April 1981. The held copy carries no distribution statement. The held bytes are a secondary OCR copy from a public mirror, not an issuing-authority release.",
   "primary_held": true,
   "sha256": "4ea1767781f5ab23c6b4877198ad8268fb6e0ff565f72fb0c527f7da5250ea4f",
+  "capture": "local-cache-only",
   "note": "Held tier-2 operator manual for the M1 (General Abrams), 105-mm gun, full-tracked. It publishes the identity, the turbine engine model, the automatic transmission model, the maximum speed, the range, the gradient and side-slope limits, the fording depth, the combat-loaded weight as 60 tons, the overall dimensions and the ground clearance. It publishes no engine horsepower rating, no track shoe width, no track pitch and no grouser statement. The held bytes on disk match this digest."
  },
  {
@@ -1727,6 +1796,7 @@
   "licence": "US Army technical manual. The cover carries DISTRIBUTION STATEMENT A: approved for public release, distribution unlimited. The held bytes come from the liberatedmanuals.com mirror, not from the issuing authority.",
   "primary_held": true,
   "sha256": "1b835e07eee998d7348fbee3ecabc603419f25ce8c6f7ba76b9397cd0b9aa974",
+  "capture": "local-cache-only",
   "note": "Held tier-2 operator manual for the M113A2 family of vehicles. It publishes identity, dimensions, ground clearance, the gross weight with full load, the 210 hp engine rating with no net basis, the fording depth, the track shoe count and the track shoe types. It does not publish operating weight, net power, track shoe width or track pitch. The held copy is on disk under data/vehicle/sources/ and its digest matches the registry entry."
  },
  {
@@ -1744,6 +1814,7 @@
   "licence": "US Army technical manual, Headquarters Departments of the Army and Air Force. The cover carries DISTRIBUTION STATEMENT C and an export-restricted technical-data warning. The held copy is the public Florida DMS mirror, not an issuing-authority release.",
   "primary_held": true,
   "sha256": "d43e34e34fa419a65637004ef116358f78dbdfa89defcb1e325d4c3ace4d2217",
+  "capture": "local-cache-only",
   "note": "Held tier-2 operator manual for the International MaxxPro M1224 and M1224A1. It publishes the curb weight and gross vehicle weight per model, the ground clearance by component, the angle of approach and departure, the ford depth, the turning radius, the top speed, the engine make, model, displacement, peak torque and maximum brake horsepower, the Allison transmission model and forward gear count, the wheel and axle quantity and the tyre size and pressure. It publishes no overall length, width or height and no net power rating. The held copy is on disk under data/vehicle/sources/ and its digest matches the registry entry."
  },
  {
@@ -1761,6 +1832,7 @@
   "licence": "US Army technical manual. The cover carries DISTRIBUTION STATEMENT C: distribution authorized to US Government agencies and their contractors, proprietary information. It also carries an Oshkosh Corporation copyright release statement for the July 2012 COTS manual. The held copy is the public Florida DMS mirror.",
   "primary_held": true,
   "sha256": "3b8b09ac1be2c069571be70628ad98f0d2e3dc35db79fec36ce56fdad1aaabec",
+  "capture": "local-cache-only",
   "note": "Held tier-2 operator manual for the Oshkosh M-ATV M1240. It publishes identity, curb weight and gross weight, the Caterpillar C-7 rating of 370 hp as a maximum, the Allison 3500 SP automatic transmission and the tyre size code 395/85R20. It does not publish operating weight, net power, tyre width, tyre diameter or ground clearance. The held copy is on disk under data/vehicle/sources/ and its digest matches the registry entry."
  },
  {
@@ -1778,6 +1850,7 @@
   "licence": "US War Department technical manual held as a public Internet Archive scan. The item carries a Creative Commons Public Domain Mark 1.0. The held bytes are the Internet Archive scan of the printed manual, not an issuing-authority copy.",
   "primary_held": true,
   "sha256": "f5364212a01a24939529f1c6ce6b683932c3a63d4b7b6b6cd295de182f02522e",
+  "capture": "local-cache-only",
   "note": "Held tier-2 technical manual for the Willys-Overland MB and the Ford GPW, 1/4 ton 4x4 trucks. It publishes the weight with fuel and water, the gross loaded weight, the ground clearance, the tyre size code and the approach and departure angles. The dimension rows are degraded in the copy and their values are not transcribed; the stronger published weight, clearance and angle figures replace the tier-5 compilation values. The held copy is on disk under data/vehicle/sources/ and its digest matches the registry entry."
  },
  {
@@ -1795,6 +1868,7 @@
   "licence": "Toyota Motor Corporation factory repair manual held as a public Internet Archive scan. The held bytes are the Internet Archive scan, not an issuing-authority copy.",
   "primary_held": true,
   "sha256": "f622d18869bfbebe8b45768a350c75b727b99dff668f4e4b9650bf9ff8b381ee",
+  "capture": "local-cache-only",
   "note": "Held tier-2 Toyota factory repair manual covering the 70 series. The frame-dimension drawings publish the 70 series wheelbase, and the front-axle tyre table publishes the 70 series tyre size code and the normal-road tyre pressure. The manual is a chassis and body repair manual and does not publish the overall length, width or height, the vehicle weight or the engine rating. The held bytes on disk are the Internet Archive scan and their digest matches this entry."
  },
  {
@@ -1811,6 +1885,7 @@
   "licence": "Toyota Motor Corporation factory service manual. The held copy is an Internet Archive upload. The pages carry the truck-manuals.net watermark. The held bytes are the Internet Archive copy, not an issuing-authority copy.",
   "primary_held": true,
   "sha256": "6e0252d2f889725b7968fc0d957ebe577ee8f88cc76d57f570deeaa7dc438207",
+  "capture": "local-cache-only",
   "note": "Held tier-2 factory service manual for the 1996 Toyota T100. It publishes the tyre size codes and the W59 manual transmission option. This capture is a lead. It publishes no vehicle operating weight, no vehicle overall dimension table, no ground clearance and no rated engine output. The held copy is in the staging bundle and its digest matches this fragment."
  },
  {
@@ -1828,6 +1903,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "ae6350ba7e958ecc52bcefc626c257b826b2c3676d2ee88bb9cca79742efa847",
+  "capture": "local-cache-only",
   "note": "Tier-5 English Wikipedia compilation for the Type 96 wheeled armoured personnel carrier. primary_held false. Publishes identity, the 14.6 t weight, the dimensions, the engine, the 360 hp rating and the road speed. Publishes no ground clearance and no transmission type."
  },
  {
@@ -1845,6 +1921,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "3bf47af630d4150095a5b71314a87e4031dca43e0169f81856871620fea56d36",
+  "capture": "local-cache-only",
   "note": "Tier-5 English Wikipedia compilation for the Type 96 main battle tank. primary_held false. Publishes identity, the 41 t Type 96 weight, the dimensions, the 12V150ZLC diesel, the 730 hp rating and the road speed. Publishes no ground clearance."
  },
  {
@@ -1862,6 +1939,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "67f5d8419cc04a53bcac64d05ac290b5c213f1967caed77965a7d983ac6bf972",
+  "capture": "local-cache-only",
   "note": "Tier-5 English Wikipedia compilation for the Type 99 main battle tank. primary_held false. Publishes identity, the Type 99A 55 t weight, the hull dimensions, the 150HB diesel, the 1,500 hp rating and the road speed. Publishes no ground clearance. The same infobox gives 51 t for the Type 98; the variants are not averaged."
  },
  {
@@ -1879,6 +1957,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "cde24546bcce4a6135aad8025232a9c35683b26fb565d6903808c00c51cdfe71",
+  "capture": "local-cache-only",
   "note": "Tier-5 English Wikipedia compilation for the UAZ-469 light utility vehicle. primary_held false. Publishes identity, the 1,700 kg weight, the dimensions, the wheelbase, the ground clearance, the UMZ engine and the manual transmission. Publishes no power rating and no road speed."
  },
  {
@@ -1896,6 +1975,7 @@
   "licence": "National military driver's handbook held as a public Internet Archive scan. Ministerstvo národní obrany, Naše vojsko, 1976. The held bytes are the Internet Archive scan of the printed handbook, not an issuing-authority copy.",
   "primary_held": true,
   "sha256": "a62785cfb5381188431c3b1ce145f7ef15c844a9bbd7fb47a2ee77b3cc2abe03",
+  "capture": "local-cache-only",
   "note": "Held tier-2 operator handbook for the UAZ-469. It publishes the gross weight, the overall dimensions, the wheelbase, the engine model, its swept volume, its maximum power and torque, the manual gearbox and its gear count, the tyre size code, the fording depth and the road range. It publishes no ground clearance datum in the held pages and no named curb weight. The held bytes on disk are the Internet Archive scan and their digest matches this entry."
  },
  {
@@ -1913,6 +1993,7 @@
   "licence": "Ural truck service manual, 1992, seventh edition. The held bytes come from the trucksfreemanuals.com mirror, not from the issuing authority.",
   "primary_held": true,
   "sha256": "5b8cca8a9ee584d3fa8fac2ad759db4a6cd2a48d1abd35a3edafb359d25f12d9",
+  "capture": "local-cache-only",
   "note": "Held tier-2 service manual for the Ural-4320-02 and its modifications. The SPECIFICATIONS tables publish the payload, the mass of the fully equipped truck, the truck total mass, the maximum travelling speed, the minimum turning radius, the fording depth, the engine model and swept volume, the gross rated output and torque, the manual gearbox and its gear count, the final-drive ratio, the tyre size code and the tyre pressure. The manual is the 1992 seventh edition and covers the -02 family. The held bytes on disk are the mirror PDF and their digest matches this entry."
  },
  {
@@ -1957,6 +2038,7 @@
   "licence": "Tier-5 compilation. The held bytes are the page HTML, not a primary document.",
   "primary_held": false,
   "sha256": "e33538b4a0cbe811418b1aef2da39d8d7cea60b9eef73a6b4f89a2984d56a3a0",
+  "capture": "local-cache-only",
   "note": "Designation evidence only: it names which US Army M-number belongs to which RG-33L mark. No physical value is taken from it."
  },
  {
@@ -2057,6 +2139,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article HTML, not a primary document.",
   "primary_held": false,
   "sha256": "ec4a98c5c2e6ab6cbe49aec103949cb7aa63e80c45d45fd27fe60e4457774b3e",
+  "capture": "local-cache-only",
   "note": "Captured to close a catalogue gap found by scanning the installed game content."
  },
  {
@@ -2074,6 +2157,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "3550b70df7bdf5955afb26b113e5d338ddd253b761a5d5bb461c0e392805754c",
+  "capture": "local-cache-only",
   "note": "Tier-5 English Wikipedia compilation for the Al-Fahd armoured fighting vehicle. primary_held false. Publishes identity, the 16.3 t operating empty weight, the dimensions, the variable ground clearance, the Deutz 12-cylinder engine with a 550 hp rating for the AF-40-8-2, the road speed and the range. The article carries an unreliable-source flag on the maker."
  },
  {
@@ -2091,6 +2175,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "a18d40f7e82a3b8282f26aad8f7c93ddcd4c8e977248a2a0df562bf9c2fb52ce",
+  "capture": "local-cache-only",
   "note": "Held tier-5 English Wikipedia compilation for the Altay main battle tank. The registry marks primary_held false. It publishes the weight, the hull and gun-forward lengths, the width, the height, the engine rating, the transmission gear count, the road and cross-country speeds and the range. It publishes no ground clearance, so that field is absent."
  },
  {
@@ -2108,6 +2193,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "83c7adfbb55e0a8ac9b3338136dc4ad49859f77b36b8213efaa473e696d429de",
+  "capture": "local-cache-only",
   "note": "Tier-5 English Wikipedia compilation for the Pindad Anoa armoured personnel carrier. primary_held false. Publishes identity, the 12.5 tonne weight with 14.5 tons combat, the dimensions, the 40 cm ground clearance, the Renault MIDR 062045 diesel, the ZF S6HP502 automatic transmission, the road speed and the range."
  },
  {
@@ -2124,6 +2210,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "aab2ba3c427171e906734e4200e2f00d3ff3635d668a301eab9665dca6f9df48",
+  "capture": "local-cache-only",
   "note": "Held tier-5 English Wikipedia compilation for the C1 Ariete. The registry marks primary_held false because the article is a secondary compilation. It publishes the mass, the overall length, width and height, the ground clearance, the engine model and swept volume, the engine rating of 1,270 hp with no net basis, the forward gear count, the maximum road speed and the road range. It publishes no track shoe width, no track pitch and no grouser statement, so the entry is not runtime-ready."
  },
  {
@@ -2141,6 +2228,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "d5db6aa131b185e3d31002fbd67dec04867dc7266d889f8e418c65242461becc",
+  "capture": "local-cache-only",
   "note": "Tier-5 English Wikipedia compilation for the Arjun Mk1 main battle tank. primary_held false. Publishes identity, the Mk1 weight, dimensions and ground clearance, the MTU MB 838 Ka-501 engine rating, the Renk four forward gearbox, the road speed and the range. The article publishes Mk1 and Mk1A columns; the Mk1 column is recorded."
  },
  {
@@ -2157,6 +2245,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "c052ab7c7735cdfd25ccf02817c7433038b06158cc18eb4dbe852387693f6936",
+  "capture": "local-cache-only",
   "note": "Held tier-5 English Wikipedia compilation for the ASCOD. The registry marks primary_held false because the article is a secondary compilation. The entry is the Spanish Pizarro variant. It publishes the Pizarro weight, the overall length, width and height, the engine named only as a diesel, the engine rating of 600 hp for Pizarro phase 1 and the road speed. It publishes no ground clearance, no operational range, no track shoe width, no track pitch and no grouser statement, so the entry is not runtime-ready."
  },
  {
@@ -2174,6 +2263,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "f58ccf77ad97678ac31a515f91436ce26acdaa6ad11d7d00dbe41c244c49fd3c",
+  "capture": "local-cache-only",
   "note": "Held tier-5 English Wikipedia compilation for the ASLAV reconnaissance vehicle. The registry marks primary_held false. It publishes the weight, the length, the width, the height, the engine model, the engine rating, the transmission, the maximum road speed and the range. It publishes no ground clearance, so that field is absent."
  },
  {
@@ -2191,6 +2281,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "cbdaf00ae0ad4bd34bed638c993a447106af3357a9e823b3930a28875cd0a623",
+  "capture": "local-cache-only",
   "note": "Tier-5 English Wikipedia compilation for the Avibras Astros II multiple rocket launcher. primary_held false. Publishes identity, the 10,000 kg weight with 27,000 kg for the MK6, the dimensions, the Mercedes OM422 diesel, the 280 hp rating, the speed and the range. Publishes no ground clearance."
  },
  {
@@ -2222,6 +2313,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "69b965e4b3ee2835846e546886920502b3c77188bf4eab32952c40e9e13e7e0d",
+  "capture": "local-cache-only",
   "note": "Tier-5 English Wikipedia compilation for the ST Kinetics Bionix infantry fighting vehicle. primary_held false. Publishes identity, the 23 t combat weight, the dimensions, the Detroit Diesel 6V 92TA engine, the 475 hp rating with 550 hp turbo-charged, the road speed and the range. Publishes no ground clearance."
  },
  {
@@ -2253,6 +2345,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "dd9b8b7254a8e45f5bc8cd590f001c66207c479f11391658a395e43d44b9fbe9",
+  "capture": "local-cache-only",
   "note": "Held tier-5 English Wikipedia compilation for the BMC Kirpi mine-resistant ambush protected vehicle. The registry marks primary_held false. It publishes the mass and a separate weight figure, the short and long lengths, the width, the height, the ground clearance, the engine model and rating, the transmission and the range. It publishes no maximum road speed, so that field is absent."
  },
  {
@@ -2312,6 +2405,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "c34f6cf31acd40790a066e8178d6479de8a41c27ba94e536e028e4f96d017bfb",
+  "capture": "local-cache-only",
   "note": "Tier-5 English Wikipedia compilation for the BMP-2 infantry fighting vehicle. primary_held false. Publishes identity, the 14.3 t weight, the dimensions, the UTD-20/3 diesel, the road speed and the range. Publishes no ground clearance and no power rating."
  },
  {
@@ -2357,6 +2451,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "2aae22ff464757334922e79df3c15da812c1b9ef7a884937932086f84a0c8922",
+  "capture": "local-cache-only",
   "note": "Tier-5 English Wikipedia compilation for the BTR-4 armoured personnel carrier. primary_held false. Publishes identity, the 17.5+3 t weight, the dimensions, the 3TD or DEUTZ EURO III engine with a 489 hp or 598 hp rating, the road speed and the range. Publishes no ground clearance and no transmission type."
  },
  {
@@ -2402,6 +2497,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "5f506af61893744f8ca9f876e2557823dd2d783baaac69d4927d4c14ec44dabe",
+  "capture": "local-cache-only",
   "note": "Held tier-5 English Wikipedia compilation for the Bushmaster protected mobility vehicle. The registry marks primary_held false. It publishes the kerb weight and the gross vehicle mass, the length, the width, the height, the engine model, the engine rating and torque, the transmission, the governed speed and the range. Its clearance row carries overhang and angles, not a ground clearance, so that field is absent."
  },
  {
@@ -2433,6 +2529,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "a8bcc790bb815cfe9563675def862fb999d6ace9244f720a51713a927d610e3f",
+  "capture": "local-cache-only",
   "note": "Held tier-5 English Wikipedia compilation for the B1 Centauro. The registry marks primary_held false because the article is a secondary compilation. It publishes the Centauro 1 mass, length, width and height, the engine model and rating of 520 hp with no net basis, the hydropneumatic automatic transmission gear counts, the wheel arrangement, the maximum road speed and the road range. It publishes no ground clearance, no tyre size, no torque and no grouser statement, so the entry is not runtime-ready."
  },
  {
@@ -2449,6 +2546,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article HTML, not a primary document.",
   "primary_held": false,
   "sha256": "e39d29bda3c2c6549689e2fc2267edff46920ebee1f162fb21f0ed2fbe0b5f50",
+  "capture": "local-cache-only",
   "note": "Held tier-5 English Wikipedia compilation for the Challenger 2. The registry marks primary_held false because the article is a secondary compilation. It carries the base mass, the gun-forward length, the width, the height, the ground clearance, the engine model and swept volume, the engine rating as a published range, the transmission gear count, the maximum road speed and the road range. The held tier-2 AESP 230-P-100-201 (1983) covers the Challenger 1 only, so it does not support this entry. Every value from this source is grade claimed."
  },
  {
@@ -2465,6 +2563,7 @@
   "licence": "Wikipedia text under CC BY-SA. Secondary compilation; the held bytes are the article HTML, not a primary document.",
   "primary_held": false,
   "sha256": "5277169e8eeb9bb649defd17bf1702496cc9a5077439c84bcc7b57616cb4e36a",
+  "capture": "local-cache-only",
   "note": "Captured to close a catalogue gap found by scanning the installed game content. The GENERATION matters: the figure is the GMT900's, not another generation's."
  },
  {
@@ -2481,6 +2580,7 @@
   "licence": "Wikipedia text under CC BY-SA. Secondary compilation; the held bytes are the article HTML, not a primary document.",
   "primary_held": false,
   "sha256": "53028b83c89d6af6847848a876761de36d078e5cd819266f25dd42f4bae918aa",
+  "capture": "local-cache-only",
   "note": "Captured to close a catalogue gap found by scanning the installed game content. The GENERATION matters: the three extents are the GMT900's (2007-2014 model years, third generation). The infobox publishes no curb weight for that generation, so the operating weight stays a labelled zero; the GMT900 Suburban's figure is not carried across to the short-wheelbase Tahoe."
  },
  {
@@ -2511,6 +2611,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "83e3638e10336242fd8931f5cac766d36fa007cef1219c3fa37cf498220371b0",
+  "capture": "local-cache-only",
   "note": "Held tier-5 English Wikipedia compilation for the Combat Vehicle 90 family. The registry marks primary_held false because the article is a secondary compilation. The infobox carries family figures. It publishes the mass as a range of 23 to 38 tonnes, the overall length, width and height, the maximum road speed and the on-road and off-road ranges. It publishes no single-mark mass, no engine rating, no ground clearance, no track shoe width, no track pitch and no grouser statement, so the entry is not runtime-ready."
  },
  {
@@ -2527,6 +2628,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "39e518816c688c4fe6120aa5276ca091ecedf7dce5ddfebe9e3246beb989907f",
+  "capture": "local-cache-only",
   "note": "Held tier-5 English Wikipedia compilation for the Dardo IFV. The registry marks primary_held false because the article is a secondary compilation. It publishes the weight, the overall length, width and height, the engine model, the engine rating of 512 hp with no net basis, the maximum road speed and the road range. It publishes no ground clearance, no track shoe width, no track pitch and no grouser statement, so the entry is not runtime-ready."
  },
  {
@@ -2544,6 +2646,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "9edd507942a2a767214b0f4c621102ca4429372898a4284e27d724cde00d5178",
+  "capture": "local-cache-only",
   "note": "Held tier-5 English Wikipedia compilation for the Eitan armoured fighting vehicle. The registry marks primary_held false. It publishes the weight, the length, the width, the height, the engine model and rating, the transmission, the maximum road speed and the range. It publishes no ground clearance, so that field is absent."
  },
  {
@@ -2561,6 +2664,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "9f06832d8b9408ac04169a80ff89d2acf29d2d035713b307ff9a9997968360e9",
+  "capture": "local-cache-only",
   "note": "Tier-5 English Wikipedia compilation for the Kader Fahd armoured personnel carrier. primary_held false. Publishes identity, the 10.9 to 12.5 ton weight range, the dimensions, the 37 cm ground clearance, the Mercedes-Benz OM 366 LA diesel, the 275 hp rating, the road speed and the range."
  },
  {
@@ -2591,6 +2695,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "adcef2bc223b6438c687fb4a5151116d9f24cb6a3d5948a22fbeab43552d10a3",
+  "capture": "local-cache-only",
   "note": "Held tier-5 English Wikipedia compilation for the VBM Freccia. The registry marks primary_held false because the article is a secondary compilation. The infobox carries identity only, and the first-phase table carries the IFV column figures. It publishes the empty mass, the payload, the maximum gross vehicle weight, the overall length and width and the height with the turret, and describes an 8x8 vehicle. It publishes no ground clearance, no engine rating, no tyre size, no transmission, no torque and no grouser statement, so the entry is not runtime-ready."
  },
  {
@@ -2635,6 +2740,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article HTML, not a primary document.",
   "primary_held": false,
   "sha256": "c3b4ed9f2130a6311b3a6cef7afc5621119cfe6f2d92d5ff3a920552da6acefc",
+  "capture": "local-cache-only",
   "note": "Held tier-5 English Wikipedia compilation for the FV510 Warrior. The registry marks primary_held false because the article is a secondary compilation. It carries the mass, the overall length, width and height, the engine model, the engine rating of 550 hp with no net basis, the maximum road speed and the operational range. It states no ground clearance, no track shoe width, no track pitch, no transmission class and no grouser statement. Every value from this source is grade claimed."
  },
  {
@@ -2652,6 +2758,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "2a864a8b959b2c3622290a609c0684b0a04215a6edb7d7fb4fd0a7fa604e8ea1",
+  "capture": "local-cache-only",
   "note": "Tier-5 English Wikipedia compilation for the Iveco VBTP-MR Guarani 6x6 amphibious armoured personnel carrier. primary_held false. Publishes identity, the 16.7 t weight, the length, width and height, the Iveco Cursor 9 diesel engine, the road speed and the range. Publishes no ground clearance."
  },
  {
@@ -2683,6 +2790,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "79d7b62e18b8ccbe1d11a2d77ed639cafd03556068bea684aabaa392e11f0ec0",
+  "capture": "local-cache-only",
   "note": "Tier-5 English Wikipedia compilation for the Honda CG125 motorcycle. primary_held false. Publishes identity, the wet and dry weights, the dimensions, the wheelbase, the 124 cc single-cylinder engine, the 10.5 hp power and 9.5 N m torque ratings and the manual transmission. Publishes no ground clearance and no road speed for the base model."
  },
  {
@@ -2700,6 +2808,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "d9ba607d906e7f6211c47c6414bda002f5f36707736ba6981698692417acb0b4",
+  "capture": "local-cache-only",
   "note": "Held tier-5 English Wikipedia compilation for the K2 Black Panther. The registry marks primary_held false because the article is a secondary compilation. It publishes the curb and combat weights, the overall and chassis lengths, the width, the highest and lowest heights, the maximum road speed and the range. It publishes no ground clearance, so that field is absent."
  },
  {
@@ -2717,6 +2826,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "ef47b04737dab18cfbb30e3062dedb097def7d94379dedb946f99fe50f543b9c",
+  "capture": "local-cache-only",
   "note": "Held tier-5 English Wikipedia compilation for the K9 Thunder self-propelled howitzer. The registry marks primary_held false. It publishes the K9 and K9A1 combat mass, the overall and hull lengths, the width, the height, the ground clearance, the engine rating, the transmission gear count, the maximum road speed and the range."
  },
  {
@@ -2775,6 +2885,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article HTML, not a primary document.",
   "primary_held": false,
   "sha256": "4e408809746a3aaa5c6ae5956719d73a2ae99c1addf208681205afea30099627",
+  "capture": "local-cache-only",
   "note": "Captured to close a catalogue gap found by scanning the installed game content."
  },
  {
@@ -2791,6 +2902,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "d74f8be02e9e9f4c269dcdc4525bf98f6d9504cc7d74c32a7d486788d81feff7",
+  "capture": "local-cache-only",
   "note": "Held tier-5 English Wikipedia compilation for the LAV 6.0. The registry marks primary_held false because the article is a secondary compilation. It publishes the basic mass and the add-on armour mass as separate rows, the overall length, width and height, the engine model, the engine rating of 450 hp with no net basis, the on-road and off-road speeds and ranges. It publishes no ground clearance, no tyre size, no transmission, no torque and no grouser statement, so the entry is not runtime-ready."
  },
  {
@@ -2807,6 +2919,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article HTML, not a primary document.",
   "primary_held": false,
   "sha256": "f903e756b2033dbd0807719bd3a7d6609cfc684e6ca6dddee98a51fce70ad495",
+  "capture": "local-cache-only",
   "note": "Held tier-5 English Wikipedia compilation for the Leclerc. The registry marks primary_held false because the article is a secondary compilation. It carries the Series 1 mass with the Series 2 and Series XXI masses as separate configurations, the overall length, width and height, the ground clearance, the fording and wading depths, the engine model and rating, the automatic transmission, the maximum road speed and the road range. It states no track shoe width, no track pitch and no grouser statement. Every value from this source is grade claimed."
  },
  {
@@ -2837,6 +2950,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article HTML, not a primary document.",
   "primary_held": false,
   "sha256": "f93bd616f1a7a45c9ba513e1801733e11b8429d5b7ebf8c639d789122c6aaa00",
+  "capture": "local-cache-only",
   "note": "Held tier-5 English Wikipedia compilation for the Leopard 2A6. The registry marks primary_held false because the article is a secondary compilation. It carries the 2A6 mass, length, width and height with the 2A4, 2A5 and 2A7V figures as separate rows, the ground clearance, the fording and wading depths, the engine model and rating, the maximum road speed and the road range. It states no track shoe width, no track pitch, no transmission class and no grouser statement. Every value from this source is grade claimed."
  },
  {
@@ -2979,6 +3093,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article HTML, not a primary document.",
   "primary_held": false,
   "sha256": "32781e34428c306dff29c0e42368d4090a0989ad971e0eb7e26934bd24239f38",
+  "capture": "local-cache-only",
   "note": "Captured to close a catalogue gap found by scanning the installed game content."
  },
  {
@@ -3010,6 +3125,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "cb8c990847b4999265694ae5542eb41220369ebd4fcbb0523e43804d2f818eee",
+  "capture": "local-cache-only",
   "note": "Tier-5 English Wikipedia compilation for the International MaxxPro mine-resistant ambush protected vehicle. primary_held false. Publishes identity, the 21 t weight, the dimensions, the 14 inch ground clearance, the Navistar MaxxForce D9.3I6 engine, the 330 hp rating with 375 hp in the Plus and Dash variants and the Allison 5-speed automatic transmission. Publishes no speed and no range."
  },
  {
@@ -3027,6 +3143,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "e1f44062369b87fb737e922b614662a36bbade0f5b9b9479c1cd2344d82027ac",
+  "capture": "local-cache-only",
   "note": "Held tier-5 English Wikipedia compilation for the Merkava main battle tank. The registry marks primary_held false. It publishes the mass, the length with and without the gun barrel, the width excluding skirts, the height to the turret roof, the ground clearance, the engine rating, the transmission, the road and cross-country speeds and the range. The infobox figures are those of the current Mark, so the entry names the Mk 4."
  },
  {
@@ -3044,6 +3161,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "f6ad41815ca44189fc4ca4227fa75a35fe86feaece727fe801cf4ebeea0fc6a2",
+  "capture": "local-cache-only",
   "note": "Held tier-5 English Wikipedia compilation for the Mowag Piranha armoured fighting vehicle. The registry marks primary_held false. It publishes the length range, the width range, the height range, the engine, the engine rating, the automatic transmission, the road and water speeds and the range. It publishes no mass and no ground clearance, so those fields are absent."
  },
  {
@@ -3089,6 +3207,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "a70990b0f732b0efcca01ab5b85761ee5b249b025111891b7714d83ac8ce136c",
+  "capture": "local-cache-only",
   "note": "Held tier-5 English Wikipedia compilation for the Namer armoured personnel carrier. The registry marks primary_held false. It publishes the weight, the engine rating, the maximum road speed and the range. It publishes no overall dimensions and no ground clearance, so those fields are absent."
  },
  {
@@ -3106,6 +3225,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "2a2761a7bd971f80fe168a5a28b46f5af60921680b7413570c0874957bf4ae08",
+  "capture": "local-cache-only",
   "note": "Tier-5 English Wikipedia compilation for the Olifant main battle tank. primary_held false. Publishes identity, the 57 long ton weight, the hull and gun-forward lengths, the width with and without side plates, the height, the ground clearance, the Continental AV1790 diesel, the 1,040 hp Mk.2 rating, the automatic gearbox and the speed. Publishes no maker and no range."
  },
  {
@@ -3137,6 +3257,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "88b82cb11e3eb1a3128768056b754697ae23cbcde3e5581ea7c27a4b3a1191d5",
+  "capture": "local-cache-only",
   "note": "Held tier-5 English Wikipedia compilation for the Pandur II armoured vehicle. The registry marks primary_held false. It publishes the minimum, additional and amphibious weight states, the length, the width, the height, the engine model and rating, the transmission, the road and water speeds, the range and the payload. It publishes no ground clearance, so that field is absent."
  },
  {
@@ -3154,6 +3275,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "2ecb59ec1903318870d5d3a91ac90cf00d32f26e555d47872070d55b700be57d",
+  "capture": "local-cache-only",
   "note": "Held tier-5 English Wikipedia compilation for the Patria AMV armoured modular vehicle. The registry marks primary_held false. It publishes the weight range, the length, the width, the height, the engine models, the engine power options, the land and water speeds and the range. It publishes no ground clearance, so that field is absent."
  },
  {
@@ -3171,6 +3293,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "889816212972348b57bf9b6a75a7fb94a8727a3b37410b6bda444b6d7994da89",
+  "capture": "local-cache-only",
   "note": "Held tier-5 English Wikipedia compilation for the Mowag Piranha V armoured fighting vehicle. The registry marks primary_held false. It publishes the length, the width, the height, the engine models, the engine power options, the transmission options, the maximum road speed and the range. It publishes no mass and no ground clearance, so those fields are absent."
  },
  {
@@ -3187,6 +3310,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "2a54bbcf2740d5df70288889c4f82c1873d443d1b9e877fdf551dd6f45d649d2",
+  "capture": "local-cache-only",
   "note": "Held tier-5 English Wikipedia compilation for the PT-91 Twardy. The registry marks primary_held false because the article is a secondary compilation. It publishes the mass, the length with the barrel forward, the width, the height, the ground clearance, the engine model, the engine rating of 850 hp with no net basis, the manual transmission, the maximum road speed and the range. It publishes no track shoe width, no track pitch and no grouser statement, so the entry is not runtime-ready."
  },
  {
@@ -3232,6 +3356,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "0e1b00a99353de2a637aa578074267bfddcdd959364d3ed55a5483f6fdcc78ac",
+  "capture": "local-cache-only",
   "note": "Tier-5 English Wikipedia compilation for the Ratel infantry fighting vehicle. primary_held false. Publishes identity, the 18.5 t weight for the Ratel-20 and Ratel-60, the hull length, the dimensions, the 0.34 m ground clearance, the Büssing D 3256 BTXF diesel, the 205 kW rating, the road speed and the range."
  },
  {
@@ -3249,6 +3374,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "5ea9d5e8d62fda0e11ce8c1d6d164a528c5c2f24f61967360fe3a616d92199fc",
+  "capture": "local-cache-only",
   "note": "Tier-5 English Wikipedia compilation for the RG-31 Nyala mine-resistant ambush protected vehicle. primary_held false. Publishes identity, the 7.28 t weight, the dimensions, the Daimler-Benz OM 352A diesel, the 123 hp rating, the road speed and the range. Publishes no maker, no ground clearance and no transmission type."
  },
  {
@@ -3280,6 +3406,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "5309bacddfd8c57aa7d9bc5335c1b38b1c0cbae9416e49fa1e45cc6467a57c17",
+  "capture": "local-cache-only",
   "note": "Tier-5 English Wikipedia compilation for the Rooikat 8x8 armoured fighting vehicle. primary_held false. Publishes identity, the 28 t weight, the dimensions, the 414 kW engine rating, the road speed and the range. Publishes no maker, no ground clearance and no transmission type."
  },
  {
@@ -3296,6 +3423,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "994c3404fbffe01a308f2a6cda57612d23ea3795044393dab6b03a103de49bda",
+  "capture": "local-cache-only",
   "note": "Held tier-5 English Wikipedia compilation for the KTO Rosomak. The registry marks primary_held false because the article is a secondary compilation. It publishes the weight, the overall length, width and height, the engine family, the engine rating of 405 kW (543 hp) with the DC 13 option as a separate row, the 8x8 arrangement, the maximum road speed and the road range. It publishes no ground clearance, no tyre size, no transmission, no torque and no grouser statement, so the entry is not runtime-ready."
  },
  {
@@ -3354,6 +3482,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "0b91d0d5c547a8d6076e20e7655198eef680ba1047f46da5581350c49fe056ca",
+  "capture": "local-cache-only",
   "note": "Held tier-5 English Wikipedia compilation for the Stridsvagn 122. The registry marks primary_held false because the article is a secondary compilation. It publishes the mass, the gun-forward length, the width, the height, the ground clearance, the engine model, the engine rating as 1,500 PS (1,479 hp) with no net basis, the transmission model, the maximum road speed and the internal-fuel range. It publishes no track shoe width, no track pitch and no grouser statement, so the entry is not runtime-ready."
  },
  {
@@ -3370,6 +3499,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article HTML, not a primary document.",
   "primary_held": false,
   "sha256": "abe7c0a5a3356d3fd14e9ca65987e2888893734ece90b448ca195ac782f7e38c",
+  "capture": "local-cache-only",
   "note": "Held tier-5 English Wikipedia compilation for the M1126 Stryker ICV. The registry marks primary_held false because the article is a secondary compilation. It carries the ICV mass, the overall length, width and height, the engine model, the engine rating of 350 hp with no net basis, the maximum road speed and the operational range. It states no ground clearance figure, no tyre size, no transmission class and no grouser statement. Every value from this source is grade claimed."
  },
  {
@@ -3457,6 +3587,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "1e3f1d3b7d481f2df30b0dd14cfafbee0a226aff99cce6b2e509d3af0dd3a783",
+  "capture": "local-cache-only",
   "note": "Tier-5 English Wikipedia compilation for the T-64 main battle tank. primary_held false. Publishes identity, the 38 t weight, the gun-forward length, the dimensions, the 5TDF 13.6 litre diesel, the 700 hp rating, the speed and the range. Publishes no ground clearance and no transmission type."
  },
  {
@@ -3502,6 +3633,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "f5faa8af46259c4cbf01fbea4c7876053e28813c9ae50932b9b839158a706a45",
+  "capture": "local-cache-only",
   "note": "Held tier-5 English Wikipedia compilation for the T-72M4CZ main battle tank, the Czech upgrade of the T-72. The registry marks primary_held false. It publishes the weight, the length, the width, the height, the engine model and rating and the maximum road speed. It publishes no range and no ground clearance, so those fields are absent."
  },
  {
@@ -3547,6 +3679,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "e16794b35eea45a0a75bbf03c275af7f70fd56926acdf37eae550cb5600593d5",
+  "capture": "local-cache-only",
   "note": "Tier-5 English Wikipedia compilation for the T-90 main battle tank. primary_held false. Publishes identity, the T-90 weight of 46 t with 46.5 t for the T-90A and 48 t for the T-90SM, the dimensions, the V-84MS diesel, the 840 hp rating, the speed and the range."
  },
  {
@@ -3564,6 +3697,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "ea311c7d7e199b5eca964b66bf471ca760df1ed3c492f59f658bb7fa988b5151",
+  "capture": "local-cache-only",
   "note": "Tier-5 English Wikipedia compilation for the ST Kinetics Terrex infantry carrier vehicle. primary_held false. Publishes identity, the 24 t weight, the dimensions, the Caterpillar C9 diesel, the 400 hp rating, the road speed and the range. Publishes no ground clearance."
  },
  {
@@ -3609,6 +3743,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "0c0de8b270d89b13a2ce3e45d070c82a7c9dbb968f76d855ff2f1b45bb686dac",
+  "capture": "local-cache-only",
   "note": "Tier-5 English Wikipedia compilation for the Toyota Land Cruiser J70 utility vehicle. primary_held false. Publishes identity, the short-wheelbase length with the long-wheelbase entry, the width, the height, the wheelbase and the manual transmission. Publishes no weight and no ground clearance."
  },
  {
@@ -3640,6 +3775,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "dcd3c03b731d2fb276d726f571ca0e6a4d43d2a89912c8e77e443f62600bcd65",
+  "capture": "local-cache-only",
   "note": "Held tier-5 English Wikipedia compilation for the Type 10 main battle tank. The registry marks primary_held false. It publishes the full, standard and basic loadout weights, the length, the width, the height, the engine model and rating, the transmission type, the maximum road speed and the range. It publishes no ground clearance, so that field is absent."
  },
  {
@@ -3657,6 +3793,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "1bf3280971ed4a045e3249c3a89bcef7981a21514ce5cb28178085ec544e881a",
+  "capture": "local-cache-only",
   "note": "Held tier-5 English Wikipedia compilation for the Type 16 manoeuvre combat vehicle. The registry marks primary_held false. It publishes the weight, the length, the width, the height, the engine model and rating, the wheel arrangement, the maximum road speed and the range. It publishes no ground clearance, so that field is absent."
  },
  {
@@ -3674,6 +3811,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "a6977abdcac1124ee286755338eb782ea1229e3f013031200ab695dc838f0b49",
+  "capture": "local-cache-only",
   "note": "Held tier-5 English Wikipedia compilation for the Mitsubishi Type 89 infantry fighting vehicle. The registry marks primary_held false. It publishes the mass, the length, the width, the height, the engine model and rating, the suspension, the maximum road speed and the range. It publishes no ground clearance, so that field is absent."
  },
  {
@@ -3705,6 +3843,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "642874000122550922fa1fce152bce382a7c653707e8852db0cb9c3f59408ce8",
+  "capture": "local-cache-only",
   "note": "Tier-5 English Wikipedia compilation for the Ural-4320 general purpose truck. primary_held false. Publishes identity, the GVWR, the dimensions, the YaMZ-236M2 or YaMZ-238M2 diesel, the five-speed manual transmission and the top speed. Publishes no kerb or operating weight and no ground clearance."
  },
  {
@@ -3764,6 +3903,7 @@
   "licence": "US Army technical manual held as a public Internet Archive scan. The item carries a Creative Commons Public Domain Mark 1.0. The held bytes are the Internet Archive scan of the printed manual, not an issuing-authority copy.",
   "primary_held": true,
   "sha256": "9944b4cf2956b403f2a7c95b7c000f60bd3af9e245c81a9533d6dd9320acc209",
+  "capture": "local-cache-only",
   "note": "Held tier-2 technical manual for the Willys M38, 1/4 ton 4x4 utility truck. It publishes identity, the overall length, width and height, the wheelbase, the ground clearance, the net urban weight and the gross highway weight, the payload, the tyre size code, the engine model, the transmission, the maximum allowable speed, the loaded cruising range and the approach and departure angles. The held copy is on disk under data/vehicle/sources/ and its digest matches the registry entry."
  },
  {
@@ -3781,6 +3921,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "0d0712e70f746b6cd4b636f5a71efd1d2446718e8d5d652df7a7fc28b947c877",
+  "capture": "local-cache-only",
   "note": "Tier-5 English Wikipedia compilation for the Willys MB light utility vehicle. primary_held false. Publishes identity, the curb weight, the dimensions, the ground clearance, the Go Devil engine, the gross power rating, the manual transmission and the road speed."
  },
  {
@@ -3798,6 +3939,7 @@
   "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
   "primary_held": false,
   "sha256": "030bafd1da63efe13ed524da10b268c0a0396fbf81cbe6b1eee23ba02f273b2b",
+  "capture": "local-cache-only",
   "note": "Tier-5 English Wikipedia compilation for the ZBD-04 infantry fighting vehicle. primary_held false. Publishes identity, the 20 t ZBD-04 weight, the dimensions, the 6V150 diesel, the 440 kW engine figure and the road speed. Publishes no ground clearance and names no manufacturer."
  }
 ]

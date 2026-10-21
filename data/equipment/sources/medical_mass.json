@@ -7,6 +7,7 @@
    "title": "Improved First Aid Kit (IFAK) product page",
    "url": "https://www.chb-tech.com/solutionsmarkets/medical-disease-hygiene-treatment-supplies/improved-first-aid-kit-ifak/",
    "sha256": "c29482d7329da9beef53576654091d639457cad779bf7ea9451155e13595a36d",
+   "capture": "local-cache-only",
    "publisher": "CHB Infrastructure, Technology and Marketing Group LLC",
    "tier": 4
   },
@@ -15,6 +16,7 @@
    "title": "Operator BLS IFAK product page",
    "url": "https://www.narescue.com/operator-bls-ifak.html",
    "sha256": "22f4329518cb9d48e1da32df0a4d3bf869c8a30a21ac1f6970a4d68f9204f5b7",
+   "capture": "local-cache-only",
    "publisher": "North American Rescue",
    "tier": 4
   },
@@ -23,6 +25,7 @@
    "title": "S.T.O.R.M. Operator IFAK product page",
    "url": "https://www.narescue.com/s-t-o-r-m-operator-ifak.html",
    "sha256": "a96b8e70195f2c9364786988e9aea8a8934ee397050f85137a0a467d87895aa8",
+   "capture": "local-cache-only",
    "publisher": "North American Rescue",
    "tier": 4
   },
@@ -31,6 +34,7 @@
    "title": "USCG IFAK product page",
    "url": "https://www.narescue.com/uscg-ifak.html",
    "sha256": "71e3ef314327c35c38506cf1964b70ccb55536e099603feaa480ddcb06bb29ca",
+   "capture": "local-cache-only",
    "publisher": "North American Rescue",
    "tier": 4
   },
@@ -39,6 +43,7 @@
    "title": "EFAK Expeditionary First Aid Kit product page",
    "url": "https://www.narescue.com/efak-expeditionary-first-aid-kit.html",
    "sha256": "6b255a916488873e8484a9aeadd75fa97f110a3f88954259b9a75578212b9f08",
+   "capture": "local-cache-only",
    "publisher": "North American Rescue",
    "tier": 4
   },
@@ -47,6 +52,7 @@
    "title": "Micro Individual First Aid kit product page",
    "url": "https://www.narescue.com/kit-micro-individual-first-aid.html",
    "sha256": "9192c59cade4f32deb044485604ec33346ba3c1dbd1431e1ada651cce38f87ca",
+   "capture": "local-cache-only",
    "publisher": "North American Rescue",
    "tier": 4
   },
@@ -55,6 +61,7 @@
    "title": "Compact Officer Response Emergency Core kit product page",
    "url": "https://www.narescue.com/kit-compact-officer-response-emergency-core.html",
    "sha256": "a6145e1753885e512d3f639c94a0d44797b0b3975007804afb93555ec5bcd6f4",
+   "capture": "local-cache-only",
    "publisher": "North American Rescue",
    "tier": 4
   },
@@ -63,6 +70,7 @@
    "title": "NAR-5 medical kit product page",
    "url": "https://www.narescue.com/kit-nar5.html",
    "sha256": "16ced2a1dfeca604b3cc428de6e306eb43f986d2621edf7c11a98904ce4413a4",
+   "capture": "local-cache-only",
    "publisher": "North American Rescue",
    "tier": 4
   },
@@ -71,6 +79,7 @@
    "title": "USMC Combat Life Saving Kit product page",
    "url": "https://www.narescue.com/usmc-combat-life-saving-kit-coy.html",
    "sha256": "19c58277b96a2628f696aa6919ee6ef3bb8afa305055fd5db90f2bd5b6bcd349",
+   "capture": "local-cache-only",
    "publisher": "North American Rescue",
    "tier": 4
   },
@@ -79,6 +88,7 @@
    "title": "USCG Boat Response Kit product page",
    "url": "https://www.narescue.com/kit-uscg-boat-response-kit.html",
    "sha256": "73ce01dc0844af631eb7d806683cb686b48317911c19e13deb5fb4f9c26b97cb",
+   "capture": "local-cache-only",
    "publisher": "North American Rescue",
    "tier": 4
   },
@@ -87,6 +97,7 @@
    "title": "Naval Gun Response Kit product page",
    "url": "https://www.narescue.com/kit-naval-gun-response.html",
    "sha256": "18d2d66fade4bd9e62dadaa740d5a43d0298351aa1a596b0927f699f6a925234",
+   "capture": "local-cache-only",
    "publisher": "North American Rescue",
    "tier": 4
   },
@@ -95,6 +106,7 @@
    "title": "USMC Combat Lifesaver Resupply kit product page",
    "url": "https://www.narescue.com/kit-usmc-combat-lifesaver-resupply.html",
    "sha256": "5519986d143047d15d4824003cd4138b42ca8a885d63f733bfdcfef8ccf4d73e",
+   "capture": "local-cache-only",
    "publisher": "North American Rescue",
    "tier": 4
   },
@@ -103,6 +115,7 @@
    "title": "NAR-4 Aid Bag product page",
    "url": "https://www.narescue.com/nar-4-aid-bag.html",
    "sha256": "06559ede326aeaa4152337e891acba0bf5804f141cce01de548054fc3ea39fc9",
+   "capture": "local-cache-only",
    "publisher": "North American Rescue",
    "tier": 4
   },
@@ -111,6 +124,7 @@
    "title": "Rapid Response Bag (law enforcement edition, bag only) product page",
    "url": "https://www.narescue.com/rapid-response-bag-only-law-enforcement-edition-black.html",
    "sha256": "7ea3f83f6f5e79bbb1b5c2665b5d038f13fc1c918395be581e520da1ee884bcd",
+   "capture": "local-cache-only",
    "publisher": "North American Rescue",
    "tier": 4
   },
@@ -119,6 +133,7 @@
    "title": "Squad Kit bag (bag only) product page",
    "url": "https://www.narescue.com/squad-kit-bag-only.html",
    "sha256": "4b8d988caed47876335112dae216cc201186068e7077422f334d0650fa70dca3",
+   "capture": "local-cache-only",
    "publisher": "North American Rescue",
    "tier": 4
   },
@@ -127,6 +142,7 @@
    "title": "Medic Trauma Sheet Bag (CCRK) product page",
    "url": "https://www.narescue.com/medic-trauma-sheet-bag-ccrk.html",
    "sha256": "bde3f79c2b3a91e625b642aed9d19a79bddc8dd5ab3a538e76e90e58c816e841",
+   "capture": "local-cache-only",
    "publisher": "North American Rescue",
    "tier": 4
   },
@@ -135,6 +151,7 @@
    "title": "Nasopharyngeal Airway with lubricant product page",
    "url": "https://www.narescue.com/all-products/airway/nasopharyngeal-airway-with-lubricant.html",
    "sha256": "f14e2bdf3483bd794ea0abb8c18131961d465a793fc1def1e24e8b971d15be91",
+   "capture": "local-cache-only",
    "publisher": "North American Rescue",
    "tier": 4
   },
@@ -143,6 +160,7 @@
    "title": "Tactical CricKit product page",
    "url": "https://www.narescue.com/tactical-crickit.html",
    "sha256": "bdf63cec9e76c826c5768db8748d9489431717a8e8f9229540b582b701c4b5c1",
+   "capture": "local-cache-only",
    "publisher": "North American Rescue",
    "tier": 4
   },
@@ -151,6 +169,7 @@
    "title": "BAC-Pack bougie-aided cricothyroidotomy pack product page",
    "url": "https://www.narescue.com/military-products/march/bac-pack-bougie-aided-cricothyroidotomy-pack.html",
    "sha256": "26224284e1f82fd209e5299e45f104b16e5a10b9363749d1378af8be37b2435d",
+   "capture": "local-cache-only",
    "publisher": "North American Rescue",
    "tier": 4
   },
@@ -159,6 +178,7 @@
    "title": "HyFin Chest Seal product page",
    "url": "https://www.narescue.com/hyfin-chest-seal.html",
    "sha256": "ff2cce2a5688d7faef3acdc1895972116c9f7de261d7bf38c82841473ceb38d8",
+   "capture": "local-cache-only",
    "publisher": "North American Rescue",
    "tier": 4
   },
@@ -167,6 +187,7 @@
    "title": "Cyclone Pocket BVM product page",
    "url": "https://www.narescue.com/cyclone-pocket-bvm.html",
    "sha256": "c9957f2a289cdc8f83be36c4a65a436b80d1370fde2159279e2cc49e73e8d2e7",
+   "capture": "local-cache-only",
    "publisher": "North American Rescue",
    "tier": 4
   },
@@ -175,6 +196,7 @@
    "title": "Ambu SPUR II BVM product page",
    "url": "https://www.narescue.com/all-products/airway/ambu-spur-ii-bvm.html",
    "sha256": "39cc37b7c4be8d7f8d6b5adde45ef5a3217089287ba287428a12b98be8af5c2e",
+   "capture": "local-cache-only",
    "publisher": "North American Rescue",
    "tier": 4
   },
@@ -183,6 +205,7 @@
    "title": "Ambu Mark III resuscitator product page",
    "url": "https://www.narescue.com/all-products/airway/ambu-rdic-military-mark-iii-resuscitator.html",
    "sha256": "a85ba47335f679d0c6add2a3dac63e8ab50465aacd31e3af1cb0f4e03d365f53",
+   "capture": "local-cache-only",
    "publisher": "North American Rescue",
    "tier": 4
   },
@@ -191,6 +214,7 @@
    "title": "NAR Tactical Suction Device product page",
    "url": "https://www.narescue.com/nar-tactical-suction-device.html",
    "sha256": "3c9c31c0a33dbfd8b11963564367e8f2064f1c139b977fc1828d0f4e99705625",
+   "capture": "local-cache-only",
    "publisher": "North American Rescue",
    "tier": 4
   },
@@ -199,6 +223,7 @@
    "title": "SPEAR Simplified Pneumothorax Emergency Air Release product page",
    "url": "https://www.narescue.com/spear-simplified-pneumothorax-emergency-air-release.html",
    "sha256": "dd05985b30b0ac4f97594259012a769008b65884c7439ad4ab2acde1d9b4958a",
+   "capture": "local-cache-only",
    "publisher": "North American Rescue",
    "tier": 4
   },
@@ -207,6 +232,7 @@
    "title": "ChitoGauze 4 in x 4 yd hemostatic bandage product page",
    "url": "https://www.narescue.com/hemostatic-bandage-chitogauze-4-x-4yd.html",
    "sha256": "48a1a71bcc114561cbf68a8b3eaf1e59232a008b3ebb30bd02346b5b4fe80be2",
+   "capture": "local-cache-only",
    "publisher": "North American Rescue",
    "tier": 4
   },
@@ -215,6 +241,7 @@
    "title": "Celox Rapid hemostatic dressing product page",
    "url": "https://www.narescue.com/hemostatic-dressing-celox-rapid.html",
    "sha256": "e52aa57b395bda3384306d9aee9d82545113ae8872daafeec01eafaeac4683eb",
+   "capture": "local-cache-only",
    "publisher": "North American Rescue",
    "tier": 4
   },
@@ -223,6 +250,7 @@
    "title": "Celox-A hemostatic agent product page",
    "url": "https://www.narescue.com/celox-a-hemostatic-agent.html",
    "sha256": "6e837d115fe991caf143b08ed5f8ba34d2ed031339d9141d83ef49c77045f477",
+   "capture": "local-cache-only",
    "publisher": "North American Rescue",
    "tier": 4
   },
@@ -231,6 +259,7 @@
    "title": "Combat Gauze Z-Fold hemostatic dressing product page",
    "url": "https://www.narescue.com/all-products/massive-hemorrhage/combat-gauze-z-fold-hemostatic.html",
    "sha256": "005ea0fecaa36fa8fde16c26974b8be0d8a0965f0f522bfca8c7e34961cc7705",
+   "capture": "local-cache-only",
    "publisher": "North American Rescue",
    "tier": 4
   },
@@ -239,6 +268,7 @@
    "title": "BurnTec dressing product page",
    "url": "https://www.narescue.com/burntec-dressing.html",
    "sha256": "69b04e5dbce6c3991a26f532d9df02ce6cfb790262c97a2e492ab955ce08bc9c",
+   "capture": "local-cache-only",
    "publisher": "North American Rescue",
    "tier": 4
   },
@@ -247,6 +277,7 @@
    "title": "BurnTec facial mask dressing product page",
    "url": "https://www.narescue.com/burntec-dressing-facial-mask.html",
    "sha256": "80f78bb198a343c7ef02bc7ad796d30d52a4cfdbd4843fa01c6e3d38b2e0d9eb",
+   "capture": "local-cache-only",
    "publisher": "North American Rescue",
    "tier": 4
   },
@@ -255,6 +286,7 @@
    "title": "BurnTec minor burn dressing kit product page",
    "url": "https://www.narescue.com/kit-dressing-burntec-minor-burn.html",
    "sha256": "5a18bbe4678c928d2e6764ab5a0448bf8055471f054470077b296df7a1a9bb42",
+   "capture": "local-cache-only",
    "publisher": "North American Rescue",
    "tier": 4
   },
@@ -263,6 +295,7 @@
    "title": "Dry sterile burn dressing cravat XL product page",
    "url": "https://www.narescue.com/all-products/treatment-support/burn-dressings/dry-sterile-burn-dressing-cravat-xl.html",
    "sha256": "bd14206ee540f7b9bb7ce6040253b5c2158f645110ff2bef0f10c7c29ce25535",
+   "capture": "local-cache-only",
    "publisher": "North American Rescue",
    "tier": 4
   },
@@ -271,6 +304,7 @@
    "title": "Fox eye shield (pack of 12) product page",
    "url": "https://www.narescue.com/kit-eye-shield-fox-pk-of-12.html",
    "sha256": "2e02c3a78d98fe3b1f83322ac74ae1c1ccc5b3d40b1654463ab60dbf228ba29e",
+   "capture": "local-cache-only",
    "publisher": "North American Rescue",
    "tier": 4
   },
@@ -279,6 +313,7 @@
    "title": "Polycarbonate eye shield (PES) product page",
    "url": "https://www.narescue.com/polycarbonate-eye-shield-pes.html",
    "sha256": "7df28d5bd9ebf2f40e6edcdc9c61aa3651f33c3963b4f9641b436df4b46d3e4c",
+   "capture": "local-cache-only",
    "publisher": "North American Rescue",
    "tier": 4
   },
@@ -287,6 +322,7 @@
    "title": "ACE cervical collar product page",
    "url": "https://www.narescue.com/ace-cervical-collar.html",
    "sha256": "ebc4059972e986781914544a290c1af25bac7de9f247044aeb4c82a85ae790fb",
+   "capture": "local-cache-only",
    "publisher": "North American Rescue",
    "tier": 4
   },
@@ -295,6 +331,7 @@
    "title": "NAR Hypothermia Prevention and Management Kit (HPMK) product page",
    "url": "https://www.narescue.com/nar-hypothermia-prevention-and-management-kit-hpmk.html",
    "sha256": "8fc833fc19efb2331b522b6ab9629ec984d08acaa804581b937329405f05b3de",
+   "capture": "local-cache-only",
    "publisher": "North American Rescue",
    "tier": 4
   },
@@ -303,6 +340,7 @@
    "title": "Responder glove kits (pack of 25) product page",
    "url": "https://www.narescue.com/outdoor-adventure-products/responder-glove-kits-pack-of-25.html",
    "sha256": "d54548b9981848f036009bdd2d3548270c603eebd29c662ee99548d86823a4a5",
+   "capture": "local-cache-only",
    "publisher": "North American Rescue",
    "tier": 4
   },
@@ -311,6 +349,7 @@
    "title": "Junctional Emergency Treatment Tool (JETT) product page",
    "url": "https://www.narescue.com/junctional-emergency-treatment-tool-jett.html",
    "sha256": "e0cbcb01bbb017f47cde8772a52459f5de0887cb8a061c4be2d3e790e72fa61f",
+   "capture": "local-cache-only",
    "publisher": "North American Rescue",
    "tier": 4
   },
@@ -319,6 +358,7 @@
    "title": "Abdominal Aortic and Junctional Tourniquet (AAJT-S) product page",
    "url": "https://www.narescue.com/abdominal-aortic-and-junctional-tourniquet-stablized-aajt-s.html",
    "sha256": "cf97dfee9db4ab573e9d7c11179f67062e640807e569ca58b9f9279f54ea8358",
+   "capture": "local-cache-only",
    "publisher": "North American Rescue",
    "tier": 4
   },
@@ -327,6 +367,7 @@
    "title": "Emergency Evacuation Litter (EEL) product page",
    "url": "https://www.narescue.com/emergency-evacuation-litter-eel.html",
    "sha256": "d0847ff0f6e82741a3a5c7e1618e5b19c415b3b84aea6cfce0386982aefc1187",
+   "capture": "local-cache-only",
    "publisher": "North American Rescue",
    "tier": 4
   },
@@ -335,6 +376,7 @@
    "title": "Triangular bandage (OD green) product page",
    "url": "https://www.narescue.com/kit-triangular-bandage-odg.html",
    "sha256": "24133caa1abb2413295f3c9eba7fa70a08bd785c02953d0fbb798e4e65feb811",
+   "capture": "local-cache-only",
    "publisher": "North American Rescue",
    "tier": 4
   },
@@ -343,6 +385,7 @@
    "title": "Warrior Aid and Litter Kit (WALK) product page",
    "url": "https://www.narescue.com/warrior-aid-and-litter-kit-walk.html",
    "sha256": "f99319b526bf6a269bc40615d4582fe227856f181eec3d9612fc8941548f6c4a",
+   "capture": "local-cache-only",
    "publisher": "North American Rescue",
    "tier": 4
   },
@@ -351,6 +394,7 @@
    "title": "NAR Trauma Shears product page",
    "url": "https://www.narescue.com/nar-trauma-shears.html",
    "sha256": "4b6b132948583b50160b0509552647196fed8e059a7ae14688fe30f3a6e89806",
+   "capture": "local-cache-only",
    "publisher": "North American Rescue",
    "tier": 4
   },
@@ -359,6 +403,7 @@
    "title": "NAR Saline Lock Kit product page",
    "url": "https://www.narescue.com/nar-saline-lock-kit.html",
    "sha256": "c5ee4304c2e66fe0fdf59e8aa89a155839a08a5ad4a20003b44b2853580cc8a7",
+   "capture": "local-cache-only",
    "publisher": "North American Rescue",
    "tier": 4
   },
@@ -367,6 +412,7 @@
    "title": "OLAES Modular Bandage product page",
    "url": "https://www.tacmedsolutions.com/products/olaes-modular-bandage",
    "sha256": "8d9a80f5ca86b1245f54833d86e4e716f2ae245e5608c033019f4309e4efe93b",
+   "capture": "local-cache-only",
    "publisher": "TacMed Solutions",
    "tier": 4
   },
@@ -375,6 +421,7 @@
    "title": "Slishman Traction Splint, Gen 1 product page",
    "url": "https://www.tacmedsolutions.com/products/slishman-traction-splint",
    "sha256": "14c646e91d28b9514511193b1afd8473d6c15eeeb70625d2c65d865da21d3927",
+   "capture": "local-cache-only",
    "publisher": "TacMed Solutions",
    "tier": 4
   },
@@ -383,6 +430,7 @@
    "title": "Sked Basic Rescue System product page",
    "url": "https://skedco.com/product/sked-basic-rescue-system/",
    "sha256": "f7131347622ea10bcbaa39eb73a388a5694eb22b38be124a6b574d500f9fe0ba",
+   "capture": "local-cache-only",
    "publisher": "Skedco",
    "tier": 4
   },
@@ -391,6 +439,7 @@
    "title": "SAM Splint product page",
    "url": "https://sammedical.com/products/sam-splint",
    "sha256": "843a76965497ce88b6a413e2faeed74e931049aa7ee66947c5b39a29bb0148f1",
+   "capture": "local-cache-only",
    "publisher": "SAM Medical",
    "tier": 4
   },
@@ -399,6 +448,7 @@
    "title": "PerSys Medical Israeli Emergency Bandage 4 in 2-pack product page",
    "url": "https://warehousesoverstock.com/persys-medical-first-aid-israeli-emergency-bandage-4-2-pack/",
    "sha256": "4a4353e4bc16bc75098a33c3279d8912deda3d740c40f099a6dee42463f6bb63",
+   "capture": "local-cache-only",
    "publisher": "Warehouse Overstock (distributor)",
    "tier": 4
   }

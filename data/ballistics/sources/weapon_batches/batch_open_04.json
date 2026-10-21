@@ -5,7 +5,8 @@
       "source_id": "kac_mk11_manual",
       "title": "Knight's Armament Company Military Operator's Manual - Stoner SR-25 7.62mm Mark 11 Mod 0 Type Rifle Systems (KAC P/N 98169, NSN 1005-01-475-7980) and Rifle 7.62mm U.S. Army Stoner Rifle (SR)-M110 (KAC P/N 24123), KAC Part Number MAN-00011, June 2000 (Revised Jan 07)",
       "url": "https://web.archive.org/web/20101123224526/http://knightarmco.com/manuals/m110.pdf",
-      "sha256": "7928d97add7fef269aa8491484243f621b9aa63925805baedf740175222f069b"
+      "sha256": "7928d97add7fef269aa8491484243f621b9aa63925805baedf740175222f069b",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "sar_lm308mws_2015",
@@ -21,7 +22,8 @@
       "source_id": "mri_mountain_eagle_manual",
       "title": "Mountain Eagle Centerfire Rifle Owner's Manual - Magnum Research, Inc. (Technical Data / Twist Rate table)",
       "url": "https://www.magnumresearch.com/PDF/Mountain-Eagle-Manual-0110.pdf",
-      "sha256": "ceec9a13180739281bb0c775d4e267ff77d36e557d2032be8d372d03ffeb9146"
+      "sha256": "ceec9a13180739281bb0c775d4e267ff77d36e557d2032be8d372d03ffeb9146",
+      "capture": "local-cache-only"
     }
   ],
   "weapons": [

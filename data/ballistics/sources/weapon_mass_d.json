@@ -7,6 +7,7 @@
    "title": "STEYR AUG A1, Specifications (manufacturer product page)",
    "url": "https://www.steyr-arms.com/en/military-law-enforcement/assault-rifles/aug-a1/",
    "sha256": "04e5297c5ac2c37968724bcca83840759b713dfe11fd4a3e25734153124fa16f",
+   "capture": "local-cache-only",
    "publisher": "Steyr Arms GmbH",
    "tier": 4
   },
@@ -15,6 +16,7 @@
    "title": "STEYR AUG A3 / A3 SF / A3 9mm, Specifications (manufacturer product page)",
    "url": "https://www.steyr-arms.com/en/military-law-enforcement/assault-rifles/aug-a3/",
    "sha256": "a689631e934c7f6bd7ab791ed5777c4302f29d2103b2ce9f9ff0f333c02fca52",
+   "capture": "local-cache-only",
    "publisher": "Steyr Arms GmbH",
    "tier": 4
   },
@@ -23,6 +25,7 @@
    "title": "STEYR HS .50 M1, Specifications (manufacturer product page)",
    "url": "https://www.steyr-arms.com/en/military-law-enforcement/sniper-and-marksman-rifles/hs-50-m1/",
    "sha256": "0421c8fdf0842903ba4ce3fea15aa89e9c05ba6ed3fe6afb4f7ef557e6279d89",
+   "capture": "local-cache-only",
    "publisher": "Steyr Arms GmbH",
    "tier": 4
   },
@@ -31,6 +34,7 @@
    "title": "STEYR SSG 08, Specifications (manufacturer product page)",
    "url": "https://www.steyr-arms.com/en/military-law-enforcement/sniper-and-marksman-rifles/ssg-08/",
    "sha256": "8c51dfec57afc61f42a5ae736ce25cf5968ac40180a8012612c5d483a14d70d1",
+   "capture": "local-cache-only",
    "publisher": "Steyr Arms GmbH",
    "tier": 4
   },
@@ -39,6 +43,7 @@
    "title": "FN MAG technical data sheet",
    "url": "https://fnherstal.com/app/uploads/technical-data-fn-mag-1.pdf",
    "sha256": "7421cc9800784087a05ed05a8db6a85fbd2720f467e38e1f8e54a57bec4ce02e",
+   "capture": "local-cache-only",
    "publisher": "FN Herstal",
    "tier": 4
   },
@@ -47,6 +52,7 @@
    "title": "FN P90 technical data sheet",
    "url": "https://fnherstal.com/app/uploads/technical-data-fn-p90_0.pdf",
    "sha256": "30434c6fb48256bca427183cbd2129a3b9a4cc0b199f5f8bf617a4e83ecddb60",
+   "capture": "local-cache-only",
    "publisher": "FN Herstal",
    "tier": 4
   },
@@ -55,6 +61,7 @@
    "title": "Heckler & Koch VP9 product page (Internet Archive capture)",
    "url": "https://web.archive.org/web/20150315134759/http://hk-usa.com/hk-models/vp9/",
    "sha256": "11f60533d0a342e6b9e4a97ff3ce3138694233d08c6ab10b2c8f17e37afac0ac",
+   "capture": "local-cache-only",
    "publisher": "Heckler & Koch",
    "tier": 4
   },
@@ -63,6 +70,7 @@
    "title": "Heckler & Koch VP9 Tactical product page (Internet Archive capture)",
    "url": "https://web.archive.org/web/20160811181332/http://hk-usa.com/hk-models/vp9-tactical/",
    "sha256": "304b2fe36e48382d472f008e618eeb0a59e8b53173363554beec88eea636fa68",
+   "capture": "local-cache-only",
    "publisher": "Heckler & Koch",
    "tier": 4
   },
@@ -71,6 +79,7 @@
    "title": "Heckler & Koch VP9SK product page (Internet Archive capture)",
    "url": "https://web.archive.org/web/20170320131157/http://hk-usa.com/hk-models/vp9-sk/",
    "sha256": "1dfd456e078c6347477789e7a96f7fb7e98404a6462c3fd97ed24e1e90f6da66",
+   "capture": "local-cache-only",
    "publisher": "Heckler & Koch",
    "tier": 4
   },
@@ -79,6 +88,7 @@
    "title": "Heckler & Koch VP40 product page (Internet Archive capture)",
    "url": "https://web.archive.org/web/20150816063043/http://hk-usa.com/hk-models/vp40/",
    "sha256": "a30191c24a2caffb997a5b29bd30b35c652fe695be55fa0c6653859d178e952d",
+   "capture": "local-cache-only",
    "publisher": "Heckler & Koch",
    "tier": 4
   },
@@ -87,6 +97,7 @@
    "title": "Heckler & Koch HK45 Tactical product page (Internet Archive capture)",
    "url": "https://web.archive.org/web/20151122130012/http://hk-usa.com/hk-models/hk45-tactical/",
    "sha256": "0c652f36dcf55a2ea35155ff5ef3d2f328edc4c27ff5c8fccd7303680de767f8",
+   "capture": "local-cache-only",
    "publisher": "Heckler & Koch",
    "tier": 4
   },
@@ -95,6 +106,7 @@
    "title": "Heckler & Koch USP product page (Internet Archive capture)",
    "url": "https://web.archive.org/web/20160313073727/http://hk-usa.com/hk-models/usp/",
    "sha256": "901a3ad1e8521db08b6bf430e41b6a464adfc730cf45038d8420e8955ae93d34",
+   "capture": "local-cache-only",
    "publisher": "Heckler & Koch",
    "tier": 4
   },
@@ -103,6 +115,7 @@
    "title": "Heckler & Koch P30SK product page (Internet Archive capture)",
    "url": "https://web.archive.org/web/20150414232157/http://hk-usa.com/hk-models/p30sk/",
    "sha256": "4623686427d93f9cafb90a955a32ae91ab88c3d4e7c873c576c8757f5ca0d125",
+   "capture": "local-cache-only",
    "publisher": "Heckler & Koch",
    "tier": 4
   },
@@ -111,6 +124,7 @@
    "title": "Heckler & Koch MG4 product page (Internet Archive capture)",
    "url": "https://web.archive.org/web/20210420215904/https://hk-usa.com/hk-models/mg4/",
    "sha256": "da6a9bb9a15d2905162887057caa638140d6d2671b03ad0946b25675f2a75831",
+   "capture": "local-cache-only",
    "publisher": "Heckler & Koch",
    "tier": 4
   },
@@ -119,6 +133,7 @@
    "title": "Heckler & Koch MG5 product page (Internet Archive capture)",
    "url": "https://web.archive.org/web/20210420231742/https://hk-usa.com/hk-models/mg5/",
    "sha256": "cad416eaf073e0aa035f17cd179690f7ea9b713d2bc054116b33f86630347f64",
+   "capture": "local-cache-only",
    "publisher": "Heckler & Koch",
    "tier": 4
   },
@@ -127,6 +142,7 @@
    "title": "Heckler & Koch MP5SD product page (Internet Archive capture)",
    "url": "https://web.archive.org/web/20160814213811/http://hk-usa.com/hk-models/mp5-sd/",
    "sha256": "cf7730958b68a9528d1406a0d5e88b2ddc8b0c06b5cb77dc662e1baf8892d7f6",
+   "capture": "local-cache-only",
    "publisher": "Heckler & Koch",
    "tier": 4
   },
@@ -135,6 +151,7 @@
    "title": "Kalashnikov Concern product page (avtomat-kalashnikova-ak101), Internet Archive capture 2022",
    "url": "https://web.archive.org/web/20220313154521/https://kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/avtomaty/avtomat-kalashnikova-ak101",
    "sha256": "59fe6a46b2afc746b6d975a81f790cf789e351c9dd7481f2dbb0cdf1b6241580",
+   "capture": "local-cache-only",
    "publisher": "Kalashnikov Concern",
    "tier": 4
   },
@@ -143,6 +160,7 @@
    "title": "Kalashnikov Concern product page (avtomat-kalashnikova-ak102), Internet Archive capture 2022",
    "url": "https://web.archive.org/web/20220313154521/https://kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/avtomaty/avtomat-kalashnikova-ak102",
    "sha256": "a9b8a154f5aa1b0fbd8ec92b66e57a9dcbd078035e6ff15004defcd6e709ebd7",
+   "capture": "local-cache-only",
    "publisher": "Kalashnikov Concern",
    "tier": 4
   },
@@ -151,6 +169,7 @@
    "title": "Kalashnikov Concern product page (avtomat-kalashnikova-ak103), Internet Archive capture 2022",
    "url": "https://web.archive.org/web/20220313154521/https://kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/avtomaty/avtomat-kalashnikova-ak103",
    "sha256": "777a36e878d1c422451c5d747769c980bdc383e26f92e4bb61049de5f0b31120",
+   "capture": "local-cache-only",
    "publisher": "Kalashnikov Concern",
    "tier": 4
   },
@@ -159,6 +178,7 @@
    "title": "Kalashnikov Concern product page (avtomat-kalashnikova-ak104), Internet Archive capture 2022",
    "url": "https://web.archive.org/web/20220313154521/https://kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/avtomaty/avtomat-kalashnikova-ak104",
    "sha256": "753c57e329e38c2df257838c0f8d6a4f7c3440ce98216839219df6efeb3da2bf",
+   "capture": "local-cache-only",
    "publisher": "Kalashnikov Concern",
    "tier": 4
   },
@@ -167,6 +187,7 @@
    "title": "Kalashnikov Concern product page (avtomat-kalashnikova-ak-15), Internet Archive capture 2022",
    "url": "https://web.archive.org/web/20220313154521/https://kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/avtomaty/avtomat-kalashnikova-ak-15",
    "sha256": "866748d0e2a4dd5038e94c764891e87c46d1eb4d715cffdcebf1bbec6a408485",
+   "capture": "local-cache-only",
    "publisher": "Kalashnikov Concern",
    "tier": 4
   },
@@ -175,6 +196,7 @@
    "title": "Kalashnikov Concern product page (avtomat-kalashnikova-ak-19), Internet Archive capture 2022",
    "url": "https://web.archive.org/web/20220313154521/https://kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/avtomaty/avtomat-kalashnikova-ak-19",
    "sha256": "bf5d1fc772ca2a0cc1d3e037932b6c2f1a3d35460c96b3f2126ce358f532996c",
+   "capture": "local-cache-only",
    "publisher": "Kalashnikov Concern",
    "tier": 4
   },
@@ -183,6 +205,7 @@
    "title": "Kalashnikov Concern product page (avtomat-kalashnikova-ak200), Internet Archive capture 2022",
    "url": "https://web.archive.org/web/20220313154521/https://kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/avtomaty/avtomat-kalashnikova-ak200",
    "sha256": "e70353ba41fca84fd4b82a0ddaa0f6542635f4d0e0d9b8050b31106c5721e541",
+   "capture": "local-cache-only",
    "publisher": "Kalashnikov Concern",
    "tier": 4
   },
@@ -191,6 +214,7 @@
    "title": "Kalashnikov Concern product page (avtomat-kalashnikova-ak201), Internet Archive capture 2022",
    "url": "https://web.archive.org/web/20220313154521/https://kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/avtomaty/avtomat-kalashnikova-ak201",
    "sha256": "5f0fb0e657f02e9d2715abe3da71712215cdf41952df5a038a438213077bde57",
+   "capture": "local-cache-only",
    "publisher": "Kalashnikov Concern",
    "tier": 4
   },
@@ -199,6 +223,7 @@
    "title": "Kalashnikov Concern product page (avtomat-kalashnikova-ak202), Internet Archive capture 2022",
    "url": "https://web.archive.org/web/20220313154521/https://kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/avtomaty/avtomat-kalashnikova-ak202",
    "sha256": "ef369ae9aa10ea1a659c63691e9a36e6870f9106a7dd9424d40b5ef7725fbaae",
+   "capture": "local-cache-only",
    "publisher": "Kalashnikov Concern",
    "tier": 4
   },
@@ -207,6 +232,7 @@
    "title": "Kalashnikov Concern product page (avtomat-kalashnikova-ak203), Internet Archive capture 2022",
    "url": "https://web.archive.org/web/20220313154521/https://kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/avtomaty/avtomat-kalashnikova-ak203",
    "sha256": "e1db15a2a02a3c78458157a78f55fc3e3fc3810aa6aec55e603463917c91dab6",
+   "capture": "local-cache-only",
    "publisher": "Kalashnikov Concern",
    "tier": 4
   },
@@ -215,6 +241,7 @@
    "title": "Kalashnikov Concern product page (avtomat-kalashnikova-ak204), Internet Archive capture 2022",
    "url": "https://web.archive.org/web/20220313154521/https://kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/avtomaty/avtomat-kalashnikova-ak204",
    "sha256": "86f4a1e27da7a3a31b184a6cd78fcf63d1b6f60911d8adc686e1f8ce9ffb61ac",
+   "capture": "local-cache-only",
    "publisher": "Kalashnikov Concern",
    "tier": 4
   },
@@ -223,6 +250,7 @@
    "title": "Kalashnikov Concern product page (avtomat-kalashnikova-ak205), Internet Archive capture 2022",
    "url": "https://web.archive.org/web/20220313154521/https://kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/avtomaty/avtomat-kalashnikova-ak205",
    "sha256": "ce64292193910bc643d76cc08313e54f74d0634009982deb471b570c1f0eeed5",
+   "capture": "local-cache-only",
    "publisher": "Kalashnikov Concern",
    "tier": 4
   },
@@ -231,6 +259,7 @@
    "title": "Kalashnikov Concern product page (avtomat-kalashnikova-ak-308), Internet Archive capture 2022",
    "url": "https://web.archive.org/web/20220313154521/https://kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/avtomaty/avtomat-kalashnikova-ak-308",
    "sha256": "fd872daf7d0ad2d3a128e18d04e6e4d760f2468a2df88e2c3b867cdd0119129a",
+   "capture": "local-cache-only",
    "publisher": "Kalashnikov Concern",
    "tier": 4
   },
@@ -239,6 +268,7 @@
    "title": "Kalashnikov Concern product page (snayperskaya-vintovka-svdm), Internet Archive capture 2022",
    "url": "https://web.archive.org/web/20220313154521/https://kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/snayperskie-vintovki/snayperskaya-vintovka-svdm",
    "sha256": "5925a9b2f62009ba54624b765789bfe28bc7dbc605429bec98bf7835d4c88773",
+   "capture": "local-cache-only",
    "publisher": "Kalashnikov Concern",
    "tier": 4
   },
@@ -247,6 +277,7 @@
    "title": "Kalashnikov Concern product page (plk), Internet Archive capture 2022",
    "url": "https://web.archive.org/web/20220313154521/https://kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/pistolety/plk",
    "sha256": "aca21202e58d7e23c0b9213fdf5410980d572d3f5488d002edcb7a9c782c6c44",
+   "capture": "local-cache-only",
    "publisher": "Kalashnikov Concern",
    "tier": 4
   },
@@ -255,6 +286,7 @@
    "title": "Kalashnikov Concern product page (pistolet-pulemet-pp-19-vityaz), Internet Archive capture 2022",
    "url": "https://web.archive.org/web/20220313154521/https://kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/pistolety-pulemyety/pistolet-pulemet-pp-19-vityaz",
    "sha256": "619fb271ec2bf84b26e45cb93c2a1e6e73fd38b921946122e50a36975c14260a",
+   "capture": "local-cache-only",
    "publisher": "Kalashnikov Concern",
    "tier": 4
   },
@@ -263,6 +295,7 @@
    "title": "IWI product page (ace/ace), Internet Archive capture",
    "url": "https://web.archive.org/web/20171118193240/http://iwi.net/ace/ace/",
    "sha256": "cbc663019014e4283ef5aba758fb54cab83757cb8eb4ed13c538278e13e1e108",
+   "capture": "local-cache-only",
    "publisher": "Israel Weapon Industries",
    "tier": 4
   },
@@ -271,6 +304,7 @@
    "title": "IWI product page (ace/ace-21), Internet Archive capture",
    "url": "https://web.archive.org/web/20171122213450/http://iwi.net/ace/ace-21/",
    "sha256": "8dd620d047d944bea18de51d91e50e3b2736db00aa649cd1517b3392a87bb7d0",
+   "capture": "local-cache-only",
    "publisher": "Israel Weapon Industries",
    "tier": 4
   },
@@ -279,6 +313,7 @@
    "title": "IWI product page (ace/ace-22), Internet Archive capture",
    "url": "https://web.archive.org/web/20171124093828/http://iwi.net/ace/ace-22/",
    "sha256": "a4d49d43bdd05c5f662be0ada66dd942fd2d5a7166a340397578c33b576788ca",
+   "capture": "local-cache-only",
    "publisher": "Israel Weapon Industries",
    "tier": 4
   },
@@ -287,6 +322,7 @@
    "title": "IWI product page (ace/ace-23), Internet Archive capture",
    "url": "https://web.archive.org/web/20171124090451/http://iwi.net/ace/ace-23/",
    "sha256": "73a041f52f9aef0820bc5c661d08031c8413ba27e5190ef6ab9f34e325640405",
+   "capture": "local-cache-only",
    "publisher": "Israel Weapon Industries",
    "tier": 4
   },
@@ -295,6 +331,7 @@
    "title": "IWI product page (ace/ace-31), Internet Archive capture",
    "url": "https://web.archive.org/web/20171124090502/http://iwi.net/ace/ace-31/",
    "sha256": "335bfceb77fa0da517906b9a58afb319a7bd1151c2e6401f4e47dff6e3c86249",
+   "capture": "local-cache-only",
    "publisher": "Israel Weapon Industries",
    "tier": 4
   },
@@ -303,6 +340,7 @@
    "title": "IWI product page (ace/ace-32), Internet Archive capture",
    "url": "https://web.archive.org/web/20171124100000/http://iwi.net/ace/ace-32/",
    "sha256": "e4e589e9c7580333176c0b6ca78f69c447e3c44d2465e33ee1cfc57f36ec2f69",
+   "capture": "local-cache-only",
    "publisher": "Israel Weapon Industries",
    "tier": 4
   },
@@ -311,6 +349,7 @@
    "title": "IWI product page (ace/ace-52), Internet Archive capture",
    "url": "https://web.archive.org/web/20171124100001/http://iwi.net/ace/ace-52/",
    "sha256": "3f8801d6b85138b9f04468481917460b5138d81c7cd1ad50519feea613feb18f",
+   "capture": "local-cache-only",
    "publisher": "Israel Weapon Industries",
    "tier": 4
   },
@@ -319,6 +358,7 @@
    "title": "IWI product page (iwi-tavor-rifle/tavor-tar-flattop), Internet Archive capture",
    "url": "https://web.archive.org/web/20190822190003/https://iwi.net/iwi-tavor-rifle/tavor-tar-flattop/",
    "sha256": "48f42a70a5d26b3ed6165b125bc0739c2df22e6e66904cdadebba180545f6a7b",
+   "capture": "local-cache-only",
    "publisher": "Israel Weapon Industries",
    "tier": 4
   },
@@ -327,6 +367,7 @@
    "title": "IWI product page (iwi-tavor-rifle/tavor-ctar-flattop), Internet Archive capture",
    "url": "https://web.archive.org/web/20190822175750/https://iwi.net/iwi-tavor-rifle/tavor-ctar-flattop/",
    "sha256": "7f2d213575d31525cfcd5320ac104244edea0b95e1483e5dfa2ec4c216426efd",
+   "capture": "local-cache-only",
    "publisher": "Israel Weapon Industries",
    "tier": 4
   },
@@ -335,6 +376,7 @@
    "title": "IWI product page (iwi-tavor-rifle/tavor-7), Internet Archive capture",
    "url": "https://web.archive.org/web/20190818020001/https://iwi.net/iwi-tavor-rifle/tavor-7/",
    "sha256": "41d1ed2ef99f65fda5e93693f4f249852794eda44caed49d44de0aa3cd5fb543",
+   "capture": "local-cache-only",
    "publisher": "Israel Weapon Industries",
    "tier": 4
   },
@@ -343,6 +385,7 @@
    "title": "IWI product page (iwi-negev-machine-gun/negev), Internet Archive capture",
    "url": "https://web.archive.org/web/20190822175305/https://iwi.net/iwi-negev-machine-gun/negev/",
    "sha256": "c40b6e60acfbaa5fb6c2a85259866cb4e7f441584bd45f5fd72a0722e0eed251",
+   "capture": "local-cache-only",
    "publisher": "Israel Weapon Industries",
    "tier": 4
   },
@@ -351,6 +394,7 @@
    "title": "IWI product page (iwi-negev-machine-gun/negev-sf), Internet Archive capture",
    "url": "https://web.archive.org/web/20190822175400/https://iwi.net/iwi-negev-machine-gun/negev-sf/",
    "sha256": "5ef493caa837956024a8d6e270c096790fc5aefaa29dd04cf62bc557b803948c",
+   "capture": "local-cache-only",
    "publisher": "Israel Weapon Industries",
    "tier": 4
   },
@@ -359,6 +403,7 @@
    "title": "IWI product page (iwi-negev-machine-gun/negev-ng-7), Internet Archive capture",
    "url": "https://web.archive.org/web/20190822175450/https://iwi.net/iwi-negev-machine-gun/negev-ng-7/",
    "sha256": "5d8f2715cf063d8b11eb342c705a66c4a899ae5cf776ea04378490628f1423e1",
+   "capture": "local-cache-only",
    "publisher": "Israel Weapon Industries",
    "tier": 4
   },
@@ -367,6 +412,7 @@
    "title": "IWI product page (product/uzi-pro-smg), Internet Archive capture",
    "url": "https://web.archive.org/web/20161013155444/http://iwi.net/product/uzi-pro-smg/",
    "sha256": "f462124207fc89de84a7dbe1bb3ce55fe770bd9a4cd90f76c64fa3dc7d7a2d38",
+   "capture": "local-cache-only",
    "publisher": "Israel Weapon Industries",
    "tier": 4
   },
@@ -375,6 +421,7 @@
    "title": "IWI product page (masada), Internet Archive capture",
    "url": "https://web.archive.org/web/20171104153312/http://iwi.net/masada/",
    "sha256": "199f16cf1d65d4da21f3271ba1ba6a54698e19852ad0cc1120c3a1ac9d879715",
+   "capture": "local-cache-only",
    "publisher": "Israel Weapon Industries",
    "tier": 4
   },
@@ -383,6 +430,7 @@
    "title": "IWI product page (carmel), Internet Archive capture",
    "url": "https://web.archive.org/web/20191118044245/https://iwi.net/carmel/",
    "sha256": "907fd31b2f1c53d6ff3f8d0a69e4a0c8e44c602b399b2b253da80589942919bb",
+   "capture": "local-cache-only",
    "publisher": "Israel Weapon Industries",
    "tier": 4
   },
@@ -391,6 +439,7 @@
    "title": "IWI product page (iwi-jericho-pistol/jericho-fs), Internet Archive capture",
    "url": "https://web.archive.org/web/20190822185846/https://iwi.net/iwi-jericho-pistol/jericho-fs/",
    "sha256": "7f87fcef6272e2db43314b524b44f1d1382ac682ed08b23465a0ae3ac2048141",
+   "capture": "local-cache-only",
    "publisher": "Israel Weapon Industries",
    "tier": 4
   },
@@ -399,6 +448,7 @@
    "title": "Wikipedia article: Steyr AUG (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/Steyr_AUG",
    "sha256": "4bbbf90db0371a3f21cfff6f14d0d1487be5e833eac7ea946f985c947edd3ac1",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -407,6 +457,7 @@
    "title": "Wikipedia article: Steyr Scout (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/Steyr_Scout",
    "sha256": "9c4b60b6dc829af5222291e8c6a04b24c86ae90f5702f6304d5c71ea15c8d9ad",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -415,6 +466,7 @@
    "title": "Wikipedia article: Steyr SSG 04 (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/Steyr_SSG_04",
    "sha256": "3ffebae32775d015eba54009cd4571c8df00381f2ab90da4791c103457b2c8ac",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -423,6 +475,7 @@
    "title": "Wikipedia article: Steyr SSG 69 (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/Steyr_SSG_69",
    "sha256": "90762ea67939390541f2e5bc630591a7d955596363682c37d86557fd495da097",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -431,6 +484,7 @@
    "title": "Wikipedia article: Steyr M1912 pistol (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/Steyr_M1912_pistol",
    "sha256": "14237500a423af6cac339939635bc9b4038366cdf69d8faea63f130e773bb924",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -439,6 +493,7 @@
    "title": "Wikipedia article: Mannlicher M1886 (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/Mannlicher_M1886",
    "sha256": "b7f3319a3aef16a69a54f78ea29b269138218d70ecf84cbc48dfc8a605be6290",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -447,6 +502,7 @@
    "title": "Wikipedia article: Mannlicher M1888 (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/Mannlicher_M1888",
    "sha256": "3f770cf2ea1e052ec86fc45d0ebc321e9f09cb697375cfaddf94fa6ab1f8d48b",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -455,6 +511,7 @@
    "title": "Wikipedia article: Mannlicher M1895 (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/Mannlicher_M1895",
    "sha256": "2cac56b5ec5a9a37b194f857d0236124bcb0986cee7e0d626b0ade6f35b66181",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -463,6 +520,7 @@
    "title": "Wikipedia article: Steyr MPi 69 (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/Steyr_MPi_69",
    "sha256": "3329fd6070209be16367edd213ecf3568e2284487c10093fba5672f9ce7d21b2",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -471,6 +529,7 @@
    "title": "Wikipedia article: AKM (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/AKM",
    "sha256": "99876b6065baeeba97ef0027ca91db85180b42b98ee332f4d3c3e0250079986b",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -479,6 +538,7 @@
    "title": "Wikipedia article: Steyr TMP (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/Steyr_TMP",
    "sha256": "f96ec33fc9631e4a7bfbb5036efef6c04b5e4dac25ec85cb74e19ac908a06b6b",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -487,6 +547,7 @@
    "title": "Wikipedia article: IWI Negev (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/IWI_Negev",
    "sha256": "9af25b60170598750e3738b218c9b141cb9e284d7e9871e9cc07d12858b4350f",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -495,6 +556,7 @@
    "title": "Wikipedia article: IWI Tavor X95 (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/IWI_Tavor_X95",
    "sha256": "390c633c3fc088e13ea23f9f3c3e5342ac1124f775e4ab99ccfc2fd3a68b13df",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -503,6 +565,7 @@
    "title": "Wikipedia article: IWI Galil (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/IWI_Galil",
    "sha256": "a4f69b55945dbef87f2293b6f6ef273cb697a79e84704c5d8ae329360d4c3018",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -511,6 +574,7 @@
    "title": "Wikipedia article: Uzi (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/Uzi",
    "sha256": "d04ecc99ce2e70ac7112af18b7c3f26d90e80ebdc11168016672b8888fd65f03",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -519,6 +583,7 @@
    "title": "Wikipedia article: IWI Masada (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/IWI_Masada",
    "sha256": "7c454311e37efdf36c27b858f2b86027b9093c213a159040d33f70e2c3ad2245",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -527,6 +592,7 @@
    "title": "Wikipedia article: AK-107 (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/AK-107",
    "sha256": "27e9553512f447bb65ee7bf439b2898f23478d2677e2889213f6dcc69f450bed",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -535,6 +601,7 @@
    "title": "Wikipedia article: AK-47 (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/AK-47",
    "sha256": "d29eead09fd29de7dbe98b40222103b10e98d51ad5ba5efbe62097d136acf785",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -543,6 +610,7 @@
    "title": "Wikipedia article: AK-74 (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/AK-74",
    "sha256": "18e813d207b7c13b34c0c6616c99a501afd50543ced59b5e09bfbeeef601cc99",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -551,6 +619,7 @@
    "title": "Wikipedia article: AK-9 (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/AK-9",
    "sha256": "415d340fb5688797afd495aaf5343c04bd87cb5548f7a8ce76718f42043884dc",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -559,6 +628,7 @@
    "title": "Wikipedia article: PP-19 Bizon (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/PP-19_Bizon",
    "sha256": "ab2acdd3faf8967ecfd343320df17937b34c05c7edafd23d4e1bdee5b9eecabb",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -567,6 +637,7 @@
    "title": "Wikipedia article: SVD (rifle) (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/SVD_(rifle)",
    "sha256": "7f6f152584da04f9711ff80671213af8c500117ccb10c22d51ef4d5e4ecbda00",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -575,6 +646,7 @@
    "title": "Wikipedia article: Dragunov SVU (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/Dragunov_SVU",
    "sha256": "dfa95e59526dc490b344b94c2fe9169ab718bf6dbb74af9adf451495bf5d4301",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -583,6 +655,7 @@
    "title": "Wikipedia article: RPK (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/RPK",
    "sha256": "e38e2a2bb0e05ab2b1c79cd8541c8a8f668c8ce58845fe0153e0d35adabe24ce",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -591,6 +664,7 @@
    "title": "Wikipedia article: RPK-74 (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/RPK-74",
    "sha256": "37ade0f3ad8045a4d264b3959bdc1534ebfb4e04471dd233ab4fb42fb2ea56ac",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -599,6 +673,7 @@
    "title": "Wikipedia article: FN F2000 (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/FN_F2000",
    "sha256": "22dd1306d3aeb7bdf3a305d28fbccff912d865a795eaafa5d2e287b49da42e98",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -607,6 +682,7 @@
    "title": "Wikipedia article: FN FNC (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/FN_FNC",
    "sha256": "b065cdf42012ad0e1468becd14dd743e1040a8ff929d133b9465ca1a4db54377",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -615,6 +691,7 @@
    "title": "Wikipedia article: FN CAL (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/FN_CAL",
    "sha256": "e949013e01efde68ba7fd421fa632efdd12f8d7719a0038a34168af96b97c0f2",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -623,6 +700,7 @@
    "title": "Wikipedia article: FN Model 1949 (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/FN_Model_1949",
    "sha256": "4eb395b100468fa01a894d03a3e835a1649403f5e32894843b4cce641419f220",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -631,6 +709,7 @@
    "title": "Wikipedia article: FN M1900 (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/FN_M1900",
    "sha256": "1036eaec18443fd6bfe6b107890079a9f16c58d78cf598b20f7ba77f2e9d5fa4",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -639,6 +718,7 @@
    "title": "Wikipedia article: Browning Hi-Power (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/Browning_Hi-Power",
    "sha256": "d1298995a8ce1e62e008db29a7358043d2c15ba7942a2c9c21206fce61bca880",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -647,6 +727,7 @@
    "title": "Wikipedia article: M1918 Browning automatic rifle (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/M1918_Browning_automatic_rifle",
    "sha256": "91a99f88e57eed13f1fa01c49b4743d88e3f87f7b5991aa84b5e96d2ba24e7af",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -655,6 +736,7 @@
    "title": "Wikipedia article: FN FNP (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/FN_FNP",
    "sha256": "f3f4c8b5e22f21154e44461a79c6b0541c00fb674e84e68aa908430135a8f820",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -663,6 +745,7 @@
    "title": "Wikipedia article: FN FNS (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/FN_FNS",
    "sha256": "67e5c77a3076d7bcd81c447ddca9193277f2882ff3735bc7d00009420b228c6d",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -671,6 +754,7 @@
    "title": "Wikipedia article: FN FNX (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/FN_FNX",
    "sha256": "e1c0efbf756a655f5f5218daa96d644a84c7da89f3eac13d567e1ee72bca9620",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -679,6 +763,7 @@
    "title": "Wikipedia article: FN 502 (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/FN_502",
    "sha256": "8897df800a498c598f295bdda152ba6539c02d3b094e99a66337b16db2856c2a",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -687,6 +772,7 @@
    "title": "Wikipedia article: FN 503 (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/FN_503",
    "sha256": "ec84a3e21db66920cfeae4e92f045e831d7f16a4713792e270d5ad94ccda4f49",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -695,6 +781,7 @@
    "title": "Wikipedia article: FN 509 (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/FN_509",
    "sha256": "3cdd8695dcf3a8a7723de007d6d674acae7a5f529967831d943909ddf2f9f15e",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -703,6 +790,7 @@
    "title": "Wikipedia article: FN 510 (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/FN_510",
    "sha256": "df6ad09e4c7ef5471769cf5a2553a193bf67155575d696a681f71df30e9d42d2",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -711,6 +799,7 @@
    "title": "Wikipedia article: FN Ballista (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/FN_Ballista",
    "sha256": "2e3a643cef2dd56c3721cf6e2725ed6242547b99721d872dec5e3454769a9e27",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -719,6 +808,7 @@
    "title": "Wikipedia article: FN SLP (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/FN_SLP",
    "sha256": "65cec48389dfb9aa7b292f6506f524e0c5e62d49e23a2ee6e27ae21457a0a86d",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -727,6 +817,7 @@
    "title": "Wikipedia article: FN TPS (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/FN_TPS",
    "sha256": "140af7f4b1c50e01da082c7f78b89fee513be649da25b35c4c648b265d47a145",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -735,6 +826,7 @@
    "title": "Wikipedia article: FN SCAR (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/FN_SCAR",
    "sha256": "9ba6d0a77d7deee96aad443d5716f6f4f52a1adb815fdb8e353e49798892ff61",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -743,6 +835,7 @@
    "title": "Wikipedia article: Heckler & Koch G36 (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/Heckler_&_Koch_G36",
    "sha256": "c54f5a89bdd54afb241f007d5a2ea601899f1f7f3365df1d39bb8388330b1c7f",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -751,6 +844,7 @@
    "title": "Wikipedia article: Heckler & Koch P7 (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/Heckler_&_Koch_P7",
    "sha256": "98a31b545193cb8edec570ea1c71187f3d540c3caedaaed2b39e4bd7797dc644",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -759,6 +853,7 @@
    "title": "Wikipedia article: Heckler & Koch HK33 (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/Heckler_&_Koch_HK33",
    "sha256": "04f4034b17cc9b2d40cf4e6597019b113711fc8dabcf40b6f6eb8cf64fb799f9",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -767,6 +862,7 @@
    "title": "Wikipedia article: Walther WA 2000 (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/Walther_WA_2000",
    "sha256": "5d2e1f01e7d83c31cb74248794078ab47ea5fb5377f9a542d918a88ab2a2d34c",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -775,6 +871,7 @@
    "title": "Wikipedia article: Colt Anaconda (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/Colt_Anaconda",
    "sha256": "ed3671fc2cc01ba05a0d43f43f71616ae0e23312916c5aa5d862e89b8c9a75f8",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -783,6 +880,7 @@
    "title": "Wikipedia article: Colt CM901 (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/Colt_CM901",
    "sha256": "42932047a6e8b3eb9402d94f8b8cf55f641f7a3fcf410ee691466d75ef5d0cde",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -791,6 +889,7 @@
    "title": "Wikipedia article: Colt Delta Elite (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/Colt_Delta_Elite",
    "sha256": "2053c540af4ac85f9a1d33eba9eb5a10f483101226d5b279dfa77b196eddf768",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -799,6 +898,7 @@
    "title": "Wikipedia article: Colt Detective Special (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/Colt_Detective_Special",
    "sha256": "9e438808a9293975ed19466bcc9d9a78b1ded004046c021a1fdee98ed32a26c2",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -807,6 +907,7 @@
    "title": "Wikipedia article: Colt IAR6940 (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/Colt_IAR6940",
    "sha256": "2bb49516168a0b11667c2ab830e713456583fb635644bcd84942c50653157048",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -815,6 +916,7 @@
    "title": "Wikipedia article: M4 carbine (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/M4_carbine",
    "sha256": "aa95bde3a1a197070c859f95542cd9f0dcd98d70b4ab9f92463016d867c3e8f7",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -823,6 +925,7 @@
    "title": "Wikipedia article: Colt Mustang (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/Colt_Mustang",
    "sha256": "bce80517d85ceb86843915d4c8ea1ea6592c0bdea9752936aaf2545061eebbd9",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -831,6 +934,7 @@
    "title": "Wikipedia article: Colt Python (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/Colt_Python",
    "sha256": "6c37bc4c80afe491e8c6454f4264672825d205297877887f599506f0c0c98dac",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -839,6 +943,7 @@
    "title": "Wikipedia article: Colt Single Action Army (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/Colt_Single_Action_Army",
    "sha256": "65c767def71e1e0681680f83bc1c6e42e41f1df9333878adb15d949f3cbd5c4d",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -847,6 +952,7 @@
    "title": "Wikipedia article: Colt 9mm SMG (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/Colt_9mm_SMG",
    "sha256": "d442e3c852948dae39f11e5e8d77f08018f84ac976f97a82342df403b963f996",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -855,6 +961,7 @@
    "title": "Wikipedia article: ArmaLite AR-15 (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/ArmaLite_AR-15",
    "sha256": "63a82916d0a26a8f7807486a72a9b358e28e8db9b18e3e98d9d3336af8a2780d",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -863,6 +970,7 @@
    "title": "Wikipedia article: ArmaLite AR-18 (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/ArmaLite_AR-18",
    "sha256": "9b16da0557680490ab35bdf553967b68fe2bede9f128a3e6282089f3373e4e52",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -871,6 +979,7 @@
    "title": "Wikipedia article: ArmaLite AR-30 (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/ArmaLite_AR-30",
    "sha256": "34f3b79e0165ff8caf935d6e49119af5a054654959a388ff9802a7df1168f53e",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -879,6 +988,7 @@
    "title": "Wikipedia article: ArmaLite AR-50 (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/ArmaLite_AR-50",
    "sha256": "0a4855b0e502801df27259067263f7ad9f5753e3d5651ef8ef303847d6631e9c",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -887,6 +997,7 @@
    "title": "Wikipedia article: ArmaLite AR-7 (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/ArmaLite_AR-7",
    "sha256": "a9e288ee74e4547c601d5e6ff6cd266c4bdba5b332a8be7afa057c7923da9b4c",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -895,6 +1006,7 @@
    "title": "Wikipedia article: Type 56 assault rifle (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/Type_56_assault_rifle",
    "sha256": "0b91e7c9a2123206571f6294f8ce93fe790b4936a688e01ae270fbe3f0ce8c78",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -903,6 +1015,7 @@
    "title": "Wikipedia article: Type 81 assault rifle (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/Type_81_assault_rifle",
    "sha256": "e64b0f96631476f9dd563bd8dab763c9903acad34566876397c2ff2872f4d511",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -911,6 +1024,7 @@
    "title": "Wikipedia article: QBZ-95 (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/QBZ-95",
    "sha256": "c2dcc255396a74c1ae63e9f6cfb327422dac804c8f84dd0af37128e90851f1c1",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -919,6 +1033,7 @@
    "title": "Wikipedia article: QBZ-03 (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/QBZ-03",
    "sha256": "1e8bac089f7461d8fa74e12a4fd14150ed5fe7b97a7f0291b452d706569ac847",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -927,6 +1042,7 @@
    "title": "Wikipedia article: QBZ-191 (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/QBZ-191",
    "sha256": "52ca8d3a8eaf65aa915db660f136e4f2de1c04b021604bcc41346323de9d2718",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -935,6 +1051,7 @@
    "title": "Wikipedia article: QJY-88 (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/QJY-88",
    "sha256": "df41495e433e29183477245b2fb0343763fe3ecf2b762efd31be269958454da8",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -943,6 +1060,7 @@
    "title": "Wikipedia article: QSZ-92 (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/QSZ-92",
    "sha256": "b11e9adfa149a1e9944f4f1103bc5ca06231bf14522bd7d5f8869e21a5f8d845",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -951,6 +1069,7 @@
    "title": "Wikipedia article: Type 54 pistol (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/Type_54_pistol",
    "sha256": "fa31e7e2bd099fb3cbdb6292a370a89532193bb785d9a66873f1f65d5e540319",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -959,6 +1078,7 @@
    "title": "Wikipedia article: Type 77 pistol (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/Type_77_pistol",
    "sha256": "8ad9c120d0b2b82b26652edb159fc3838122a6b848da25f399498ae2677d99c0",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -967,6 +1087,7 @@
    "title": "Wikipedia article: Type 79 submachine gun (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/Type_79_submachine_gun",
    "sha256": "9c64c1ce3e7deb3b9d3ea942c107b62a3b629fa4a7414fa3c6eb3f0804feb59c",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -975,6 +1096,7 @@
    "title": "Wikipedia article: Type 80 machine gun (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/Type_80_machine_gun",
    "sha256": "00ce146104e88bf61c5126df098880c84764aeaa290212896991c175202e7d72",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -983,6 +1105,7 @@
    "title": "Wikipedia article: Type 85 submachine gun (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/Type_85_submachine_gun",
    "sha256": "8995723e58f7de3617ea1db0628eaf80957400f4b9bf25d5be0d17d05ac72b62",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -991,6 +1114,7 @@
    "title": "Wikipedia article: Norinco CQ (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/Norinco_CQ",
    "sha256": "0cd16dd7bc3699dbc8689436dc9705d926cf75853270c8b5f773bf2af852db38",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -999,6 +1123,7 @@
    "title": "Wikipedia article: CS/LR4 (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/CS/LR4",
    "sha256": "0aae3047d79703127e2f457d6a80a49fe8b5db7105b415e77e0b8fd254d85c28",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   },
@@ -1007,6 +1132,7 @@
    "title": "Wikipedia article: Kimber Custom (infobox specifications)",
    "url": "https://en.wikipedia.org/wiki/Kimber_Custom",
    "sha256": "7b54c28fd0036156f20a8e7ee3c8c785481bf2d48bdb205020408d5d37d5c6cb",
+   "capture": "local-cache-only",
    "publisher": "Wikipedia",
    "tier": 5
   }

@@ -7,6 +7,7 @@
       "title": "Advanced Combat Helmet (Wikipedia article)",
       "url": "https://en.wikipedia.org/wiki/Advanced_Combat_Helmet",
       "sha256": "3d3309f905d99d471c72c5be93836266b6472d87e44c9c0639576fbee6659c56",
+      "capture": "local-cache-only",
       "publisher": "Wikipedia (Wikimedia Foundation)",
       "tier": 3
     },
@@ -15,6 +16,7 @@
       "title": "Enhanced Combat Helmet (United States) (Wikipedia article)",
       "url": "https://en.wikipedia.org/wiki/Enhanced_Combat_Helmet_(United_States)",
       "sha256": "9778cb7b04ef26976cc6c5a24631ac77136c782cf8fbc14bdb5b4d3d1b46d26b",
+      "capture": "local-cache-only",
       "publisher": "Wikipedia (Wikimedia Foundation)",
       "tier": 3
     },
@@ -23,6 +25,7 @@
       "title": "Modular Integrated Communications Helmet (Wikipedia article)",
       "url": "https://en.wikipedia.org/wiki/Modular_Integrated_Communications_Helmet",
       "sha256": "85b81e9b91b78de85c269e0d7d53cbafd92f157b80bc57287903620d76faa108",
+      "capture": "local-cache-only",
       "publisher": "Wikipedia (Wikimedia Foundation)",
       "tier": 3
     },
@@ -31,6 +34,7 @@
       "title": "Personnel Armor System for Ground Troops (Wikipedia article)",
       "url": "https://en.wikipedia.org/wiki/Personnel_Armor_System_for_Ground_Troops",
       "sha256": "a57ab3dce84a4ffd8f3f48acc76da2423073e7117873f544d86195da96cb0adb",
+      "capture": "local-cache-only",
       "publisher": "Wikipedia (Wikimedia Foundation)",
       "tier": 3
     },
@@ -39,6 +43,7 @@
       "title": "Altyn (helmet) (Wikipedia article)",
       "url": "https://en.wikipedia.org/wiki/Altyn_(helmet)",
       "sha256": "50e6435a6fdafdc309e175c932cb2eede9f10daa538ec43719282fc4c9bc8236",
+      "capture": "local-cache-only",
       "publisher": "Wikipedia (Wikimedia Foundation)",
       "tier": 3
     },
@@ -47,6 +52,7 @@
       "title": "SSh-68 (Wikipedia article)",
       "url": "https://en.wikipedia.org/wiki/SSh-68",
       "sha256": "52aeddcb5f85d799cdff00af184dbbdc0590279c1579622b0b9c55a7d7b9e0f5",
+      "capture": "local-cache-only",
       "publisher": "Wikipedia (Wikimedia Foundation)",
       "tier": 3
     },
@@ -55,6 +61,7 @@
       "title": "SSh-40 (Wikipedia article)",
       "url": "https://en.wikipedia.org/wiki/SSh-40",
       "sha256": "6ac6240169d3eed7d0e9a9e80de7ad1db8872e460cf194b00cd3b0aaa927c0fa",
+      "capture": "local-cache-only",
       "publisher": "Wikipedia (Wikimedia Foundation)",
       "tier": 3
     },
@@ -63,6 +70,7 @@
       "title": "Stahlhelm (Wikipedia article)",
       "url": "https://en.wikipedia.org/wiki/Stahlhelm",
       "sha256": "f585a69e3dcdb50cc638fb7c3776eeba53a299fb243053bd385cdacf4cffc2b4",
+      "capture": "local-cache-only",
       "publisher": "Wikipedia (Wikimedia Foundation)",
       "tier": 3
     },
@@ -71,6 +79,7 @@
       "title": "Brodie helmet (Wikipedia article)",
       "url": "https://en.wikipedia.org/wiki/Brodie_helmet",
       "sha256": "ff82ecb5a2de863adc2657aa6a11e2427d491528e4de5203c8e9fbab8c2dc002",
+      "capture": "local-cache-only",
       "publisher": "Wikipedia (Wikimedia Foundation)",
       "tier": 3
     },
@@ -79,6 +88,7 @@
       "title": "Gefechtshelm M92 (Wikipedia article)",
       "url": "https://en.wikipedia.org/wiki/Gefechtshelm_M92",
       "sha256": "851010eba07685ef87829849452ac162fda5e4b89591e405e7db889d54b99bcc",
+      "capture": "local-cache-only",
       "publisher": "Wikipedia (Wikimedia Foundation)",
       "tier": 3
     },
@@ -87,6 +97,7 @@
       "title": "Future Assault Shell Technology helmet (Wikipedia article)",
       "url": "https://en.wikipedia.org/wiki/Future_Assault_Shell_Technology_helmet",
       "sha256": "591aaed8d3bb330cbc6f44603d789279c2b75dccfbbc9b82956de5796abbe7b9",
+      "capture": "local-cache-only",
       "publisher": "Wikipedia (Wikimedia Foundation)",
       "tier": 3
     },
@@ -95,6 +106,7 @@
       "title": "Integrated Head Protection System (Wikipedia article)",
       "url": "https://en.wikipedia.org/wiki/Integrated_Head_Protection_System",
       "sha256": "a0be5ac5daa2cf4c28fba5ae3d47f394833fc0ac75eeb8b0b2841e43d8efa294",
+      "capture": "local-cache-only",
       "publisher": "Wikipedia (Wikimedia Foundation)",
       "tier": 3
     },
@@ -103,6 +115,7 @@
       "title": "Lightweight Helmet (Wikipedia article)",
       "url": "https://en.wikipedia.org/wiki/Lightweight_Helmet",
       "sha256": "7d655375e17140f9a6d25d87e57e3c6d2ce725605977f629d4f431b0c3efd9af",
+      "capture": "local-cache-only",
       "publisher": "Wikipedia (Wikimedia Foundation)",
       "tier": 3
     },
@@ -111,6 +124,7 @@
       "title": "6B47 helmet (Wikipedia article)",
       "url": "https://en.wikipedia.org/wiki/6B47_helmet",
       "sha256": "976074308e445317d89b86f9e11fe363e7a95a508ef308ddd3a128415435325f",
+      "capture": "local-cache-only",
       "publisher": "Wikipedia (Wikimedia Foundation)",
       "tier": 3
     },
@@ -119,6 +133,7 @@
       "title": "6B6 helmet (Wikipedia article)",
       "url": "https://en.wikipedia.org/wiki/6B6_helmet",
       "sha256": "3dbb2f06b5a5e48adc69c2c39ce4ed86adae7c01173a5ce5d4a443f2196600e5",
+      "capture": "local-cache-only",
       "publisher": "Wikipedia (Wikimedia Foundation)",
       "tier": 3
     },
@@ -127,6 +142,7 @@
       "title": "Kolpak-20 helmet (Wikipedia article)",
       "url": "https://en.wikipedia.org/wiki/Kolpak-20_helmet",
       "sha256": "47ccf5f30b9b28a969c977ce4cdf07655e9c884b26cced26b27efd950634d4e0",
+      "capture": "local-cache-only",
       "publisher": "Wikipedia (Wikimedia Foundation)",
       "tier": 3
     },
@@ -135,6 +151,7 @@
       "title": "Zabralo ballistic vests (Wikipedia article)",
       "url": "https://en.wikipedia.org/wiki/Zabralo_ballistic_vests",
       "sha256": "f29bff86945122e2f397fb174a0bf9fa267847f93c1e9beff13aaa40a23477e3",
+      "capture": "local-cache-only",
       "publisher": "Wikipedia (Wikimedia Foundation)",
       "tier": 3
     },
@@ -143,6 +160,7 @@
       "title": "Interceptor multi-threat body armor system (Wikipedia article)",
       "url": "https://en.wikipedia.org/wiki/Interceptor_multi-threat_body_armor_system",
       "sha256": "c3b3c0df3537ee66055a65fda6957885b5385ede1c99970c34d4000988f51d7a",
+      "capture": "local-cache-only",
       "publisher": "Wikipedia (Wikimedia Foundation)",
       "tier": 3
     },
@@ -151,6 +169,7 @@
       "title": "Improved Outer Tactical Vest (Wikipedia article)",
       "url": "https://en.wikipedia.org/wiki/Improved_Outer_Tactical_Vest",
       "sha256": "a55cf54aea06c601214cea67457a62d9f270d76e1f8841162a3b1e8273a2d6d0",
+      "capture": "local-cache-only",
       "publisher": "Wikipedia (Wikimedia Foundation)",
       "tier": 3
     },
@@ -159,6 +178,7 @@
       "title": "Soldier Plate Carrier System (Wikipedia article)",
       "url": "https://en.wikipedia.org/wiki/Soldier_Plate_Carrier_System",
       "sha256": "a43c7057866fb079dd5c16bda83dec30e8143edceff48f39985fe1e06b95db15",
+      "capture": "local-cache-only",
       "publisher": "Wikipedia (Wikimedia Foundation)",
       "tier": 3
     },
@@ -167,6 +187,7 @@
       "title": "Ranger Body Armor (Wikipedia article)",
       "url": "https://en.wikipedia.org/wiki/Ranger_Body_Armor",
       "sha256": "7c7f72aeb925fda722cea53de2525d75a3fe8315482df15817496f23514e489c",
+      "capture": "local-cache-only",
       "publisher": "Wikipedia (Wikimedia Foundation)",
       "tier": 3
     },
@@ -175,6 +196,7 @@
       "title": "6B23 ballistic vest (Wikipedia article)",
       "url": "https://en.wikipedia.org/wiki/6B23",
       "sha256": "218d9d66544b03f26da2609cf5a14cf796360075eb52422cceded87b4fb35567",
+      "capture": "local-cache-only",
       "publisher": "Wikipedia (Wikimedia Foundation)",
       "tier": 3
     },
@@ -183,6 +205,7 @@
       "title": "6B2 (Wikipedia article)",
       "url": "https://en.wikipedia.org/wiki/6B2",
       "sha256": "349ee457605a540a8ed1d09df5af857778e21ac4e2f0a726f3022ae84551f28a",
+      "capture": "local-cache-only",
       "publisher": "Wikipedia (Wikimedia Foundation)",
       "tier": 3
     },
@@ -191,6 +214,7 @@
       "title": "6B3 (Wikipedia article)",
       "url": "https://en.wikipedia.org/wiki/6B3",
       "sha256": "c18c87a264e9ad14ca8f2b06c568e031a946fd9a4eb2b02776cfe6ff9e157537",
+      "capture": "local-cache-only",
       "publisher": "Wikipedia (Wikimedia Foundation)",
       "tier": 3
     },
@@ -199,6 +223,7 @@
       "title": "6B5 (Wikipedia article)",
       "url": "https://en.wikipedia.org/wiki/6B5",
       "sha256": "2e8da7df578a66100faa5882445321a3abda7547ef6805f16a0c13fd9087b960",
+      "capture": "local-cache-only",
       "publisher": "Wikipedia (Wikimedia Foundation)",
       "tier": 3
     },
@@ -207,6 +232,7 @@
       "title": "6B45 (Wikipedia article)",
       "url": "https://en.wikipedia.org/wiki/6B45",
       "sha256": "c9bd473b6c9e5dce80708a8b16d687ca2a9bb7f9752fbe46c68e28f4250f3cbf",
+      "capture": "local-cache-only",
       "publisher": "Wikipedia (Wikimedia Foundation)",
       "tier": 3
     },
@@ -215,6 +241,7 @@
       "title": "Modular Body Armor Vest (Wikipedia article)",
       "url": "https://en.wikipedia.org/wiki/Modular_Body_Armor_Vest",
       "sha256": "ebf54d101c3a0ec518ea3d305083fb63f54bdc51fdea9d45665288ce110a6611",
+      "capture": "local-cache-only",
       "publisher": "Wikipedia (Wikimedia Foundation)",
       "tier": 3
     },
@@ -223,6 +250,7 @@
       "title": "Modular Scalable Vest (Wikipedia article)",
       "url": "https://en.wikipedia.org/wiki/Modular_Scalable_Vest",
       "sha256": "76ffc789b0b28196a96a4e70d7b8318a238b5279fd2aba346f6e0475887fb474",
+      "capture": "local-cache-only",
       "publisher": "Wikipedia (Wikimedia Foundation)",
       "tier": 3
     },
@@ -231,6 +259,7 @@
       "title": "Small Arms Protective Insert (Wikipedia article)",
       "url": "https://en.wikipedia.org/wiki/Small_Arms_Protective_Insert",
       "sha256": "b92a578c4c574786896928f07bacfebe53c3a697bd68238abec35d4e71a8dfcd",
+      "capture": "local-cache-only",
       "publisher": "Wikipedia (Wikimedia Foundation)",
       "tier": 3
     },
@@ -239,6 +268,7 @@
       "title": "MOLLE (Wikipedia article)",
       "url": "https://en.wikipedia.org/wiki/MOLLE",
       "sha256": "fb27ea9e24e7656dd6daad2c2fbdc7f0f5944faef7e8029d50b2b6960d638eac",
+      "capture": "local-cache-only",
       "publisher": "Wikipedia (Wikimedia Foundation)",
       "tier": 3
     },
@@ -247,6 +277,7 @@
       "title": "Improved Load Bearing Equipment (Wikipedia article)",
       "url": "https://en.wikipedia.org/wiki/Improved_Load_Bearing_Equipment",
       "sha256": "9742c8fbe20173fb5fb2f34b3534c2c210d3482c803e0c824ed06add23cb426e",
+      "capture": "local-cache-only",
       "publisher": "Wikipedia (Wikimedia Foundation)",
       "tier": 3
     },
@@ -255,6 +286,7 @@
       "title": "All-purpose Lightweight Individual Carrying Equipment (Wikipedia article)",
       "url": "https://en.wikipedia.org/wiki/All-purpose_Lightweight_Individual_Carrying_Equipment",
       "sha256": "d60697d5721788e8210df02a8e6e7552b64b85ceff11e2f942d084c6d753e372",
+      "capture": "local-cache-only",
       "publisher": "Wikipedia (Wikimedia Foundation)",
       "tier": 3
     },
@@ -263,6 +295,7 @@
       "title": "TM 10-8415-236-10, Operator's Manual, Extended Cold Weather Clothing System Generation III (ECWCS)",
       "url": "https://www.liberatedmanuals.com/TM-10-8415-236-10.pdf",
       "sha256": "10600fd211865972d4ddc03cd80efe3f0524eeca046ce324e0592f7e27d4048b",
+      "capture": "local-cache-only",
       "publisher": "Department of the Army (mirror: liberatedmanuals.com)",
       "tier": 2
     },
@@ -271,6 +304,7 @@
       "title": "Agilite product catalogue feed (products.json)",
       "url": "https://agilitegear.com/products.json?limit=250",
       "sha256": "81b018d742286cb6a451c7adb5b51cade56405e202c14fe39c3705bf9c5e2cc4",
+      "capture": "local-cache-only",
       "publisher": "Agilite Gear",
       "tier": 4
     },
@@ -279,6 +313,7 @@
       "title": "Ferro Concepts product catalogue feed (products.json)",
       "url": "https://ferroconcepts.com/products.json?limit=250",
       "sha256": "c269e6bba89cce8361e2828a28f445247ea129278d95ba3b0b458dd3f1429e8f",
+      "capture": "local-cache-only",
       "publisher": "Ferro Concepts",
       "tier": 4
     },
@@ -287,6 +322,7 @@
       "title": "Savotta product catalogue feed (products.json)",
       "url": "https://www.savotta.fi/products.json?limit=250",
       "sha256": "893d69d053aefc2650fc69b164aee8a9eb8d26eb68b0f1449734bd1d9bea8d6e",
+      "capture": "local-cache-only",
       "publisher": "Savotta",
       "tier": 4
     },
@@ -295,6 +331,7 @@
       "title": "Kifaru product catalogue feed (products.json)",
       "url": "https://kifaru.net/products.json?limit=250",
       "sha256": "82ad848ff71d177403bee3e4e07bbbe2a61b0736d88bfff0adafee3c9e994353",
+      "capture": "local-cache-only",
       "publisher": "Kifaru International",
       "tier": 4
     },
@@ -303,6 +340,7 @@
       "title": "Eberlestock product catalogue feed (products.json)",
       "url": "https://eberlestock.com/products.json?limit=250",
       "sha256": "75c52a860ab7bdc77c35c714c5909c00ced6da8597f1223bdc3b8d83a78f35d3",
+      "capture": "local-cache-only",
       "publisher": "Eberlestock",
       "tier": 4
     },
@@ -311,6 +349,7 @@
       "title": "Varusteleka product catalogue feed page 1 (products.json)",
       "url": "https://varusteleka.com/products.json?limit=250",
       "sha256": "39f986a1b29f229ce4312e44e4a6d8276164e910bc91ab2c8a675ae8c505a12f",
+      "capture": "local-cache-only",
       "publisher": "Varusteleka",
       "tier": 4
     },
@@ -319,6 +358,7 @@
       "title": "Varusteleka product catalogue feed page 2 (products.json)",
       "url": "https://varusteleka.com/products.json?limit=250&page=2",
       "sha256": "483337955d2dbdce74c52e6babb721b2a2e0e59d99d62e2d980741be2c7e6cac",
+      "capture": "local-cache-only",
       "publisher": "Varusteleka",
       "tier": 4
     },
@@ -327,6 +367,7 @@
       "title": "Varusteleka product catalogue feed page 3 (products.json)",
       "url": "https://varusteleka.com/products.json?limit=250&page=3",
       "sha256": "7d5096ad0c618d1ad056436c383b0fc44a39e88da20b701d617e3c3fb67fc195",
+      "capture": "local-cache-only",
       "publisher": "Varusteleka",
       "tier": 4
     },
@@ -335,6 +376,7 @@
       "title": "Varusteleka product catalogue feed page 4 (products.json)",
       "url": "https://varusteleka.com/products.json?limit=250&page=4",
       "sha256": "238e3dcb9e65a01f448a0df3f1d82f5d866f570eb2d5afe843a1ea2b3db396c2",
+      "capture": "local-cache-only",
       "publisher": "Varusteleka",
       "tier": 4
     },
@@ -343,6 +385,7 @@
       "title": "HAIX Combat GTX Black product page",
       "url": "https://www.haix.co.uk/haix-combat-gtx-black",
       "sha256": "b14206f6966125dd0922adc182d6726a1dffc4a17bf49e767331ecedb9038d0e",
+      "capture": "local-cache-only",
       "publisher": "HAIX",
       "tier": 4
     },
@@ -351,6 +394,7 @@
       "title": "HAIX Ranger GSG9-X product page",
       "url": "https://www.haix.co.uk/haix-ranger-gsg9-x",
       "sha256": "dc08f96d9e3d839e6e6384481b59d036dc7b22dd7cd24e36b2112ba1664a944f",
+      "capture": "local-cache-only",
       "publisher": "HAIX",
       "tier": 4
     },
@@ -359,6 +403,7 @@
       "title": "HAIX Black Eagle Tactical 2.0 GTX Mid Black product page",
       "url": "https://www.haix.co.uk/haix-black-eagle-tactical-2.0-gtx-mid-black",
       "sha256": "66c38ae5cf89d326b490b12306a6aace6011f2da9b26b47f2b22f90fb865d072",
+      "capture": "local-cache-only",
       "publisher": "HAIX",
       "tier": 4
     },
@@ -367,6 +412,7 @@
       "title": "HAIX Nepal Pro product page",
       "url": "https://www.haix.co.uk/haix-nepal-pro",
       "sha256": "19820b5c85b48fe16eb0abc4730d0d4f12f8b5542c93f80f553b0d3f42d369f5",
+      "capture": "local-cache-only",
       "publisher": "HAIX",
       "tier": 4
     },
@@ -375,6 +421,7 @@
       "title": "HAIX Xventure GTX Coyote product page",
       "url": "https://www.haix.co.uk/haix-xventure-gtx-coyote",
       "sha256": "9ad6be1866b802e1e66764ce438bac1ed44e1499de17becc4801c83e00a2ec2b",
+      "capture": "local-cache-only",
       "publisher": "HAIX",
       "tier": 4
     },
@@ -383,6 +430,7 @@
       "title": "HAIX Airpower C1 product page",
       "url": "https://www.haix.co.uk/haix-airpower-c1/100501.6.5",
       "sha256": "86029959b8c637cd0b7c68b42e736c90e554ab22c0e8f52c5db7c0a1e82b898a",
+      "capture": "local-cache-only",
       "publisher": "HAIX",
       "tier": 4
     }

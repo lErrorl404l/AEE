@@ -6,82 +6,95 @@
    "title": "TM 9-1005-317-23&P, Pistol, Semiautomatic, 9mm, M9 (US Army)",
    "url": "https://www.biggerhammer.net/manuals/m9/M9B.PDF",
    "sha256": "b3f1fd0e74bfbee2bb74ffa37d0503bb19af5e89155047a1438917bc38155deb",
+   "capture": "local-cache-only",
    "note": "Rifling RH, 6 grooves, pitch 250 mm."
   },
   {
    "source_id": "fn_fal_manual",
    "title": "FN Light Automatic Rifle FAL, user's manual",
    "url": "https://archive.org/download/gunmanual_FN-FAL_Manual/FN-FAL%20Manual_text.pdf",
-   "sha256": "a64c13c7896c41dfb589b5c8ef5e3f7850552ca6f33a34601cc63232f4c24903"
+   "sha256": "a64c13c7896c41dfb589b5c8ef5e3f7850552ca6f33a34601cc63232f4c24903",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "fn_scar_l_datasheet",
    "title": "FN SCAR-L Mk2 technical data sheet (FN Herstal)",
    "url": "https://fnherstal.com/app/uploads/technical-data-fn-scar-l-mk2-2.pdf",
-   "sha256": "e2c5e7a49d1a6217d23c1d29cbf825af7a5ac8e4455b59350e528eef3c8daffb"
+   "sha256": "e2c5e7a49d1a6217d23c1d29cbf825af7a5ac8e4455b59350e528eef3c8daffb",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "fn_scar_h_datasheet",
    "title": "FN SCAR-H Mk2 technical data sheet (FN Herstal)",
    "url": "https://fnherstal.com/app/uploads/technical-data-fn-scar-h-mk2-1.pdf",
-   "sha256": "7bab7d16064bc879598c6b50c8d75b6525cde82455dcf2c8f3ee11b60086b359"
+   "sha256": "7bab7d16064bc879598c6b50c8d75b6525cde82455dcf2c8f3ee11b60086b359",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "uzi_manual",
    "title": "Uzi submachine gun manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/uzi_djvu.txt",
-   "sha256": "645645e8a17ad34f933cd9b82316459d5f28d1a63a188a3d10b5ec3c4eef7db5"
+   "sha256": "645645e8a17ad34f933cd9b82316459d5f28d1a63a188a3d10b5ec3c4eef7db5",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "nato_epvat",
    "title": "AEP-97 M-CMOPI, EPVAT proof barrel rifling, per calibre annex (NATO)",
    "url": "https://diweb.hq.nato.int/",
    "sha256": "72a1a153108d161c7fdb52ab26d60510d10765bc9bfbdd546c9d1c88390bbf8b",
+   "capture": "local-cache-only",
    "note": "9x19 250 mm/6; 5.56x45 177.8 mm/6; 7.62x51 304.8 mm/4; 12.7x99 381 mm/8."
   },
   {
    "source_id": "m249_tm",
    "title": "TM 9-1005-201-10, Operator's Manual, Machine Gun 5.56mm M249",
    "url": "https://archive.org/download/tm-9-1005-201-10-machine-gun-5.56mm-m-249-1991/TM%209-1005-201-10%20Machine%20Gun%2C%205.56mm%2C%20M249%20%201991_djvu.txt",
-   "sha256": "baaae285e2e3a20129361581169f777d2531a64967ae9f0420aaa775479dfe99"
+   "sha256": "baaae285e2e3a20129361581169f777d2531a64967ae9f0420aaa775479dfe99",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "beretta_defense_catalogue",
    "title": "Beretta Defense Technologies catalogue (Beretta Defense)",
    "url": "https://www.berettadefense.com/wp-content/uploads/2022/03/catalogo_bdt.pdf",
    "sha256": "7e298136dbf4ab650f4fd70d08c4720e434a5ff8a4f0d8747bfbc3a42d643178",
+   "capture": "local-cache-only",
    "note": "ARX160 barrel: RH 6 grooves, pitch 7 in (178 mm)."
   },
   {
    "source_id": "bt_firearms_catalogue_2026",
    "title": "B&T Catalogue Firearms 2026 EN (Brugger & Thomet AG)",
    "url": "https://bt-ag.ch/wp-content/uploads/catalog/B&T_Catalogue_Firearms_2026_EN.pdf",
-   "sha256": "bc633d145791870f30a4207d1920ec69ead90ab3e14bff914e0e5460252c96c8"
+   "sha256": "bc633d145791870f30a4207d1920ec69ead90ab3e14bff914e0e5460252c96c8",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hs_produkt_catalogue_2025",
    "title": "HS Produkt catalogue 2025 (HS Produkt d.o.o.)",
    "url": "https://downloads.hs-produkt.com/catalogue/HS_CATALOGUE_2025.pdf",
-   "sha256": "b5ceb5020e1de9d71877d1f961fb6a0224792f116eb08a9ec5e5023cd4faa43c"
+   "sha256": "b5ceb5020e1de9d71877d1f961fb6a0224792f116eb08a9ec5e5023cd4faa43c",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sarsilmaz_catalogue",
    "title": "Sarsilmaz general catalogue (Sarsilmaz Silah Sanayi A.S.)",
    "url": "https://sarsilmaz.com/public/uploads/1760393477en.pdf",
    "sha256": "7af3de08b40f6efc901ee79cfca4aa0c26207e882a202b4588ff5a432d43745a",
+   "capture": "local-cache-only",
    "note": "Machine-gun table: twist rate 1/12 in, 4 grooves, twisted to the right."
   },
   {
    "source_id": "sig_sauer_ag_catalogue_2023",
    "title": "SIG Sauer AG (Switzerland) catalogue 2023, Swiss-made products",
    "url": "https://www.sigsauer.swiss/media/files/sig-sauer-katalog-2023-ch-eigenprodukte.pdf",
-   "sha256": "5b6c306d22792ced55ccba88e7b191dc41a8d471e3d4bc019a626efe7c546eab"
+   "sha256": "5b6c306d22792ced55ccba88e7b191dc41a8d471e3d4bc019a626efe7c546eab",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "beretta_92_manual",
    "title": "Beretta Model 92 series pistol manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/beretta_92_djvu.txt",
    "sha256": "087bdbd5862e9bd1a2ab67a3350ea484deaf3bf4bad302d05964198da44f6a25",
+   "capture": "local-cache-only",
    "note": "Rifling RH 6 grooves; 9mm pitch 250 mm, .40 S&W pitch 400 mm."
   },
   {
@@ -89,6 +102,7 @@
    "title": "Beretta 92FS pistol manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/beretta_92fs_djvu.txt",
    "sha256": "888ba9b07cffd0d655a24a2778cb68ecce5b1b3801d6a2beddeb6e6c2cae72f2",
+   "capture": "local-cache-only",
    "note": "Rifling 6 grooves right hand, pitch 250 mm."
   },
   {
@@ -96,19 +110,22 @@
    "title": "Beretta 92A1 pistol manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/beretta_92a1_djvu.txt",
    "sha256": "600bac7aad23e1e0720ea7232449c8ae4387f67403c1639b28d02d9b51e79b30",
+   "capture": "local-cache-only",
    "note": "Rifling RH 6 grooves, pitch 250 mm."
   },
   {
    "source_id": "beretta_96d_manual",
    "title": "Beretta 96D pistol manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/beretta_96d_djvu.txt",
-   "sha256": "2db1865ab5219173b848b46f4cbf0a2c0211ebb11ef0bedc4f6b4217d9cda8af"
+   "sha256": "2db1865ab5219173b848b46f4cbf0a2c0211ebb11ef0bedc4f6b4217d9cda8af",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "beretta_8000_manual",
    "title": "Beretta 8000/8040/8045 Cougar pistol manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/beretta_8000_djvu.txt",
    "sha256": "0a18734511d388d0d2b49e4e1bfdd264ec5508612eb8194ad5ef2e0a827b88e8",
+   "capture": "local-cache-only",
    "note": "RH 6 grooves. 9x19 250 mm; .40 S&W 400 mm; .45 ACP/.357 SIG 406 mm."
   },
   {
@@ -116,6 +133,7 @@
    "title": "Beretta Px4 Storm pistol manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/beretta_px4_djvu.txt",
    "sha256": "a9db3b3407fd6b343ceb361a77dd40c69fb4911969fa4492b5c138ea97d3a556",
+   "capture": "local-cache-only",
    "note": "RH 6 grooves; 9mm pitch 250 mm (table)."
   },
   {
@@ -123,6 +141,7 @@
    "title": "Beretta Cx4 Storm carbine manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/beretta_cx4_djvu.txt",
    "sha256": "25da34a69366578c578036b4e64883c322f3a283a261612c8488019280abc6b2",
+   "capture": "local-cache-only",
    "note": "RH 6 grooves; 9mm pitch 250 mm."
   },
   {
@@ -130,6 +149,7 @@
    "title": "Beretta 21A Bobcat pistol manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/beretta_21_djvu.txt",
    "sha256": "6311a2d346819a1f1174e90b5089978463a045cac63fbec79f6d3f256967cdff",
+   "capture": "local-cache-only",
    "note": ".22 LR one turn in 14 in; .25 Auto 6 grooves RH, one turn in 10 in."
   },
   {
@@ -137,6 +157,7 @@
    "title": "Beretta 3032 Tomcat pistol manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/beretta_3032_djvu.txt",
    "sha256": "79444dd13d8705050383934a6b70c496369d8ae7c866d78bced00e9af4d9dc97",
+   "capture": "local-cache-only",
    "note": "Rifling 6 grooves RH, one turn in 10 in."
   },
   {
@@ -144,6 +165,7 @@
    "title": "Beretta 87 target pistol manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/beretta_87_djvu.txt",
    "sha256": "360f5ea363848bd2df4fe4483d4d1a997e30c6395ff7ca977927248c2e069a99",
+   "capture": "local-cache-only",
    "note": "RH 6 grooves, pitch 350 mm (13.8 in)."
   },
   {
@@ -151,6 +173,7 @@
    "title": "Beretta AR70 rifle manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/beretta_ar70_djvu.txt",
    "sha256": "a142250e3e719f371daf6c001a9fe4dc79b3593d168691bf76f860b48871795e",
+   "capture": "local-cache-only",
    "note": "Rifling RH 4 grooves (or 6), 1 turn in 12 in."
   },
   {
@@ -158,6 +181,7 @@
    "title": "Browning Hi-Power 9mm/.40 pistol manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/browning_hi-power_9-40_djvu.txt",
    "sha256": "b4689d34b87e9a7b75919a1359be79b69f1fc83efbd6ba876dedf3c6024b31bf",
+   "capture": "local-cache-only",
    "note": "6 grooves. 9mm RH 1 in 10 in; .40 LH 1 in 16 in."
   },
   {
@@ -165,19 +189,22 @@
    "title": "FN Herstal Five-seveN pistol manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/fn_herstal_five-seven_pistol_djvu.txt",
    "sha256": "ba921cef333490c3630fd5eb75da5bc4fd24b2e0d7e1f009ba4b763739dc2672",
+   "capture": "local-cache-only",
    "note": "Twist and direction: 9.1 in (231 mm), right-hand."
   },
   {
    "source_id": "fn_bar_manual",
    "title": "Browning BAR automatic rifle manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/browning_bar_1_djvu.txt",
-   "sha256": "e6ba5b99cd0499538257205655a297cff0431d2fd00797aa3716221b09f1ccc8"
+   "sha256": "e6ba5b99cd0499538257205655a297cff0431d2fd00797aa3716221b09f1ccc8",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "galil_arm_manual",
    "title": "Galil ARM assault rifle manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/galil_arm_djvu.txt",
    "sha256": "f1c46b8035b9ecd65b2fa283921456899968907cf3a686ee06485b5c0e8d92b9",
+   "capture": "local-cache-only",
    "note": "RH 6 grooves, 1 turn in 12 in or 1:7 in for SS109."
   },
   {
@@ -185,6 +212,7 @@
    "title": "Tavor assault rifle armorer's manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/tavor_assault_rifle_armorer_manual_djvu.txt",
    "sha256": "9191edee79ba13f7e87ce6c2f09d183442f8011ae3c9bee4c26c346f306ecb03",
+   "capture": "local-cache-only",
    "note": "Rifling 1:7 in, right hand."
   },
   {
@@ -192,19 +220,22 @@
    "title": "Uzi .45 ACP submachine gun manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/uzi_45_djvu.txt",
    "sha256": "9f2643bbad13a8d4f5d48e4d50fe97d6407f7136300480639343f95d41fbfb3f",
+   "capture": "local-cache-only",
    "note": "Rifling LH 6 grooves, 1 turn in 406 mm (16 in)."
   },
   {
    "source_id": "uzi_semiauto_manual",
    "title": "Uzi semiautomatic pistol manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/uzi_semiautomatic-pistol_djvu.txt",
-   "sha256": "f511d6ccb9fcef9fa722dea15db0ca6d8ac9b043eabc27468b368741457fcb4b"
+   "sha256": "f511d6ccb9fcef9fa722dea15db0ca6d8ac9b043eabc27468b368741457fcb4b",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "desert_eagle_manual",
    "title": "Magnum Research Desert Eagle pistol manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/magnum_research_desert_eagle.manual_djvu.txt",
    "sha256": "6dcb3a250762f8d5951f53be66b808267bf86bfbc269aa79ca2dc18f08300e71",
+   "capture": "local-cache-only",
    "note": "Polygonal rifling RH. .357 Mag 1 turn in 14 in; .44 Mag 1 turn in 18 in (457 mm)."
   },
   {
@@ -212,6 +243,7 @@
    "title": "SIG Sauer P220 pistol manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/sig_p220_djvu.txt",
    "sha256": "707a9c479efe7cb8800a7c59c2a9251ee8aba0a01cc41b08ae315fe21eefaae1",
+   "capture": "local-cache-only",
    "note": "Rifling lead 250 mm."
   },
   {
@@ -219,6 +251,7 @@
    "title": "SIG Sauer P226 pistol manual, technical specifications",
    "url": "https://archive.org/download/manuals.content.like.stevespages/sig_p226_djvu.txt",
    "sha256": "6efe3abf08558f0e5436bac63a6f34f9bf222c284d63271d53028f0c45d5e384",
+   "capture": "local-cache-only",
    "note": "Rifling lead 250 mm (9mm)."
   },
   {
@@ -226,6 +259,7 @@
    "title": "SIG Sauer P228 pistol manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/sig_p228_djvu.txt",
    "sha256": "18786ef7ef60c7dd80b7f955bed361a399eb9631991113a93d0d49265f419a6b",
+   "capture": "local-cache-only",
    "note": "Rifling lead 250 mm."
   },
   {
@@ -233,6 +267,7 @@
    "title": "SIG Sauer P229 pistol manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/sig_p229_djvu.txt",
    "sha256": "af4392dc6c568a0e4b7016e4e0fb5b027f2dfad30184a6fc5fb395fb0045e961",
+   "capture": "local-cache-only",
    "note": "Rifling lead 250 mm (9mm)."
   },
   {
@@ -240,19 +275,22 @@
    "title": "SIG Sauer P232 pistol manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/sig_p232_djvu.txt",
    "sha256": "dec3bbc3451e02f52465f86ab672a7b1f2f105dc355f479c77a164f0fa14d8bb",
+   "capture": "local-cache-only",
    "note": "Rifling lead 250 mm."
   },
   {
    "source_id": "sauer_ssg3000_manual",
    "title": "Sauer SSG 3000 rifle manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/sauer_ssg3000_djvu.txt",
-   "sha256": "cd2ecf82c83ccc944362f67db1ab57a2dc11631af082e7d36364e966bf38e5db"
+   "sha256": "cd2ecf82c83ccc944362f67db1ab57a2dc11631af082e7d36364e966bf38e5db",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "steyr_aug_a3_manual",
    "title": "Steyr AUG A3 SA owner's manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/steyr_aug_a3_sa_djvu.txt",
    "sha256": "ac6970ce0d1d73869d96c4e93dcc143049427c7f4c7122210394bd81d838dca9",
+   "capture": "local-cache-only",
    "note": "Barrel 6 grooves, 1 turn right in 9 in (228.6 mm)."
   },
   {
@@ -260,6 +298,7 @@
    "title": "Steyr SPP pistol manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/steyr_spp_djvu.txt",
    "sha256": "7d548532c064cbecdbefb3f53c1a6e0f8259cf8a59300dc5cb7825c594bafe5c",
+   "capture": "local-cache-only",
    "note": "Length of twist 250 mm (9.8 in)."
   },
   {
@@ -267,6 +306,7 @@
    "title": "Steyr SSG 08 rifle manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/steyr_ssg-08_djvu.txt",
    "sha256": "0c0c1a5721090ee8f1a9cd56aac25826c892bdf0f5008927cddaa17620dfe7d7",
+   "capture": "local-cache-only",
    "note": "4 grooves. .243 Win 254 mm; .308 Win 304.8 mm; .300 Win Mag 254 mm."
   },
   {
@@ -274,273 +314,318 @@
    "title": "Steyr M-A1 pistol manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/steyr_m-a1_djvu.txt",
    "sha256": "6932b3e85abd66d6412dc07a463d8b7f45699fe5f53c466d886028ffb3763b44",
+   "capture": "local-cache-only",
    "note": "6 lands and grooves, right hand twist (no pitch stated)."
   },
   {
    "source_id": "steyr_s40a1_manual",
    "title": "Steyr S40-A1 pistol manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/steyr_s40-a1_djvu.txt",
-   "sha256": "8ff8673d1ebaef0288cab246cc36c9708a9bc218926ea28bc65bb50847400ef6"
+   "sha256": "8ff8673d1ebaef0288cab246cc36c9708a9bc218926ea28bc65bb50847400ef6",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "steyr_ssg04_manual",
    "title": "Steyr SSG 04 rifle manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/steyr_ssg-04_djvu.txt",
-   "sha256": "93ed15f4b0625e9c657cf46bb8f008abc9d02f6bb44077a26fa462a6c03096af"
+   "sha256": "93ed15f4b0625e9c657cf46bb8f008abc9d02f6bb44077a26fa462a6c03096af",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "steyr_scout_manual",
    "title": "Steyr Scout rifle manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/steyr_scout_djvu.txt",
-   "sha256": "c39743198c3d1a60489ad7247e0b243022a66a60f4e84002f2de4bd07d6d521a"
+   "sha256": "c39743198c3d1a60489ad7247e0b243022a66a60f4e84002f2de4bd07d6d521a",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "steyr_gb_manual",
    "title": "Steyr GB pistol manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/steyr_gb_djvu.txt",
-   "sha256": "e96fff946d3ed8de3dd538f8c9b6720ca17ef675c69012ded4b4e3fd06dd4390"
+   "sha256": "e96fff946d3ed8de3dd538f8c9b6720ca17ef675c69012ded4b4e3fd06dd4390",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "steyr_tmp_manual",
    "title": "Steyr TMP machine pistol manual (German)",
    "url": "https://archive.org/download/manuals.content.like.stevespages/steyr_tmp_german_djvu.txt",
-   "sha256": "07d8a9a3494a56d2df5fe8cfd7f7bddea4f6328a4ad389f11c107de7fb9a89c5"
+   "sha256": "07d8a9a3494a56d2df5fe8cfd7f7bddea4f6328a4ad389f11c107de7fb9a89c5",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "walther_p38_manual",
    "title": "Walther P38 pistol manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/walther_p38_djvu.txt",
-   "sha256": "3016f382c3f72bc1a6aecc0dd012d1721eb9376d6a3534f7b7a4888175458438"
+   "sha256": "3016f382c3f72bc1a6aecc0dd012d1721eb9376d6a3534f7b7a4888175458438",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "walther_p5_manual",
    "title": "Walther P5 pistol manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/walther_p5_djvu.txt",
-   "sha256": "0da5a6ae002c0bc554ff851a2fc98a39c37d0baaeea84ca0bf8849d8442df1cd"
+   "sha256": "0da5a6ae002c0bc554ff851a2fc98a39c37d0baaeea84ca0bf8849d8442df1cd",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "walther_p88_manual",
    "title": "Walther P88 pistol manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/walther_p88_djvu.txt",
-   "sha256": "0770793d4ffa057e18f550e7c9b8cec0f764723137c1b1a6a647e1ecaaafb84a"
+   "sha256": "0770793d4ffa057e18f550e7c9b8cec0f764723137c1b1a6a647e1ecaaafb84a",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "walther_p99_manual",
    "title": "Walther P99 pistol manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/walther_p99_djvu.txt",
-   "sha256": "46ed07bdc154e674e2eea4375d946800c913a4fb4eae67c704457861be46ad55"
+   "sha256": "46ed07bdc154e674e2eea4375d946800c913a4fb4eae67c704457861be46ad55",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "walther_p22_manual",
    "title": "Walther P22 pistol manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/walther_p22_djvu.txt",
-   "sha256": "a830db9fac53d0cb823deab30a24b521b62895202737a847c2bf581c9bc05d4a"
+   "sha256": "a830db9fac53d0cb823deab30a24b521b62895202737a847c2bf581c9bc05d4a",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "walther_pk380_manual",
    "title": "Walther PK380 pistol manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/walther_pk380_djvu.txt",
-   "sha256": "695eff8b384805b3a4c7f95c1174f80b7b38b25953387052ed545e528329c52d"
+   "sha256": "695eff8b384805b3a4c7f95c1174f80b7b38b25953387052ed545e528329c52d",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "walther_pp_ppk_manual",
    "title": "Walther PP / PPK pistol manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/walther_pp-ppk_djvu.txt",
-   "sha256": "3b79ad76699f318e4436469c9f99fbd71b1a058d88ecda4fd7467b257c54a525"
+   "sha256": "3b79ad76699f318e4436469c9f99fbd71b1a058d88ecda4fd7467b257c54a525",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "walther_ppk_ppks_manual",
    "title": "Walther PPK / PPK/S pistol manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/walther_ppk_ppks_djvu.txt",
-   "sha256": "9ea69a3ab8dc096a2a1590bdffbe6f4d88ce0a924e39858f22f7be0b6b3c79a6"
+   "sha256": "9ea69a3ab8dc096a2a1590bdffbe6f4d88ce0a924e39858f22f7be0b6b3c79a6",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "walther_pps_manual",
    "title": "Walther PPS pistol manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/walther_pps_djvu.txt",
-   "sha256": "eca39b8328d9c508588bb86938ddce1f241956b4db767ac1cf7fcf90c1918ecd"
+   "sha256": "eca39b8328d9c508588bb86938ddce1f241956b4db767ac1cf7fcf90c1918ecd",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "benelli_m1_manual",
    "title": "Benelli M1 shotgun manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/benelli_m1_djvu.txt",
-   "sha256": "5f28c6c22163d6300abee63d7634a49cc4ca75204e0410e3ba848c64b5b54343"
+   "sha256": "5f28c6c22163d6300abee63d7634a49cc4ca75204e0410e3ba848c64b5b54343",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "benelli_m2_manual",
    "title": "Benelli M2 shotgun manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/benelli_m2_djvu.txt",
-   "sha256": "4c1c5bb7d12feb1652c4d265a745cb2c304702a96f7e2ea77de8a8319e1f04cc"
+   "sha256": "4c1c5bb7d12feb1652c4d265a745cb2c304702a96f7e2ea77de8a8319e1f04cc",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "benelli_m3_manual",
    "title": "Benelli M3 shotgun manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/benelli_m3_djvu.txt",
-   "sha256": "ef5e998330726012512615531d5c4c94bdbdb8c6f0a3acd630a03fb5eb1d5a4e"
+   "sha256": "ef5e998330726012512615531d5c4c94bdbdb8c6f0a3acd630a03fb5eb1d5a4e",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "benelli_m4_manual",
    "title": "Benelli M4 shotgun manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/benelli_m4_djvu.txt",
-   "sha256": "285fd7d26d346711a5d3b73b531cd9022734ceabf7ffa605a6b9ffe1837e0cd8"
+   "sha256": "285fd7d26d346711a5d3b73b531cd9022734ceabf7ffa605a6b9ffe1837e0cd8",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "benelli_nova_manual",
    "title": "Benelli Nova shotgun manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/benelli_nova_djvu.txt",
-   "sha256": "c8be297d1a5ef19a441699a705d6f8f894da5d9ccc928961d1ac2a6af9d9efb2"
+   "sha256": "c8be297d1a5ef19a441699a705d6f8f894da5d9ccc928961d1ac2a6af9d9efb2",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "benelli_montefeltro_manual",
    "title": "Benelli Montefeltro shotgun manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/benelli_montefeltro_djvu.txt",
-   "sha256": "306ad2cc9253be256e861d49d7fa1ae1cc7ccee509ee4f8808ff8fb8ad05027d"
+   "sha256": "306ad2cc9253be256e861d49d7fa1ae1cc7ccee509ee4f8808ff8fb8ad05027d",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "benelli_r1_manual",
    "title": "Benelli R1 rifle manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/benelli_r1_djvu.txt",
-   "sha256": "59e32bb510783b83897981d56b1fe27a5bd893fc6ff1ebda3b121d9fa279d48a"
+   "sha256": "59e32bb510783b83897981d56b1fe27a5bd893fc6ff1ebda3b121d9fa279d48a",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "benelli_raffaello_manual",
    "title": "Benelli Raffaello shotgun manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/benelli_raffaello_djvu.txt",
-   "sha256": "981d07f6a0bde66f764a8bdfe4ebaeeaf6c24752174083abc75637f2422789b2"
+   "sha256": "981d07f6a0bde66f764a8bdfe4ebaeeaf6c24752174083abc75637f2422789b2",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "benelli_sbe_manual",
    "title": "Benelli Super Black Eagle shotgun manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/benelli_sbe_djvu.txt",
-   "sha256": "088053e96f3ca6230272d878e8df573d5fd53a1fb9faf93bf7f20df3461df9c6"
+   "sha256": "088053e96f3ca6230272d878e8df573d5fd53a1fb9faf93bf7f20df3461df9c6",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "benelli_sbe_ii_manual",
    "title": "Benelli Super Black Eagle II shotgun manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/benelli_sbe_ii_djvu.txt",
-   "sha256": "20203e4c189a05da4031d70c32d338552aeb0e4d99285dd67a2fb66cd93a2fa7"
+   "sha256": "20203e4c189a05da4031d70c32d338552aeb0e4d99285dd67a2fb66cd93a2fa7",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "benelli_b76_manual",
    "title": "Benelli B76 pistol manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/benelli_b76_djvu.txt",
-   "sha256": "a844c866316e36f47082f3eac76739ec278be7138cb823d7214ad35b74c796d7"
+   "sha256": "a844c866316e36f47082f3eac76739ec278be7138cb823d7214ad35b74c796d7",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "benelli_super90_manual",
    "title": "Benelli Super 90 shotgun manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/benelli_super90_djvu.txt",
-   "sha256": "e3e7c09197d2c827bd935afcb7e97d573ba21dea5bd6558a14425b5e17d5b784"
+   "sha256": "e3e7c09197d2c827bd935afcb7e97d573ba21dea5bd6558a14425b5e17d5b784",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "taurus_pt24_7_manual",
    "title": "Taurus PT24/7 OSS pistol manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/taurus_pt24-7_oss_djvu.txt",
    "sha256": "d441c4872d8d508c732a3dc9c9316e5e02068c36912a55dad36434cdc981233f",
+   "capture": "local-cache-only",
    "note": "6 grooves right hand; twist of rifling 9.8 in (250 mm)."
   },
   {
    "source_id": "taurus_polymer_manual",
    "title": "Taurus polymer pistol manual (PT809/840/845, Millennium)",
    "url": "https://archive.org/download/manuals.content.like.stevespages/taurus_polymer_pistols_djvu.txt",
-   "sha256": "614d87edb83781e57c85c586a92c66fee96440f1f7cd092e2e55a2428015e41a"
+   "sha256": "614d87edb83781e57c85c586a92c66fee96440f1f7cd092e2e55a2428015e41a",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "taurus_revolver_manual",
    "title": "Taurus revolver manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/taurus_revolver_djvu.txt",
-   "sha256": "5879f0314f2f55f8a65a9997fed0c56beb6bae3b3ab7890bce7b979cf743efd7"
+   "sha256": "5879f0314f2f55f8a65a9997fed0c56beb6bae3b3ab7890bce7b979cf743efd7",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "taurus_pt1911_manual",
    "title": "Taurus PT1911 pistol manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/taurus_pt1911_djvu.txt",
-   "sha256": "54ac79c7ae6f2a0021f9e4db1e655884f3b8f66c2f77e3354f7c4eedb7bf0360"
+   "sha256": "54ac79c7ae6f2a0021f9e4db1e655884f3b8f66c2f77e3354f7c4eedb7bf0360",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "taurus_pt22_manual",
    "title": "Taurus PT22 pistol manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/taurus_pt22_djvu.txt",
-   "sha256": "9c495e4fd6fa7083a3f7ee991e9d3566be8ff9f62a7259c4e9034e51daf993cd"
+   "sha256": "9c495e4fd6fa7083a3f7ee991e9d3566be8ff9f62a7259c4e9034e51daf993cd",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "taurus_rifle_manual",
    "title": "Taurus rifle manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/taurus_rifle_djvu.txt",
-   "sha256": "e37bc44d1960a079b4a250dfe9dd3e0b2600cc63c7c9a84b334bc05215224aac"
+   "sha256": "e37bc44d1960a079b4a250dfe9dd3e0b2600cc63c7c9a84b334bc05215224aac",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sako_85_manual",
    "title": "Sako 85 rifle manual, rate-of-twist table",
    "url": "https://archive.org/download/manuals.content.like.stevespages/sako_85_djvu.txt",
-   "sha256": "b978f357e763e4357bba7a3054554fdb86faa2290a0e222df23108dc1a3c5c08"
+   "sha256": "b978f357e763e4357bba7a3054554fdb86faa2290a0e222df23108dc1a3c5c08",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sako_quad_manual",
    "title": "Sako Quad rifle manual, rate-of-twist table",
    "url": "https://archive.org/download/manuals.content.like.stevespages/sako_quad_djvu.txt",
-   "sha256": "d9cbc27f67eae54a381d65f97e0121244d0a260032196827a8114a71d86284f4"
+   "sha256": "d9cbc27f67eae54a381d65f97e0121244d0a260032196827a8114a71d86284f4",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sako_trg_manual",
    "title": "Sako TRG-22/42 sharpshooting system manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/sako_trg_djvu.txt",
    "sha256": "56a7934dad87a8101b32c75af6a1c2643d16a6efe431a130f83380debce9ae83",
+   "capture": "local-cache-only",
    "note": "TRG-22 .308 280 mm/4 grooves; TRG-42 .300 WM 280 mm, .338 LM 305 mm, 4 grooves."
   },
   {
    "source_id": "tikka_t3_manual",
    "title": "Tikka T3 rifle manual, rate-of-twist table",
    "url": "https://archive.org/download/manuals.content.like.stevespages/tikka_t3_rh_djvu.txt",
-   "sha256": "78df3799fee5cfe6c5f211b5faf91a4af83b8a79095a972be350aa7d6f8e7fea"
+   "sha256": "78df3799fee5cfe6c5f211b5faf91a4af83b8a79095a972be350aa7d6f8e7fea",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "tikka_558_658_manual",
    "title": "Tikka M558/M658 rifle manual, rate-of-twist table",
    "url": "https://archive.org/download/manuals.content.like.stevespages/tikka558_658_djvu.txt",
-   "sha256": "d8cadd5dc4df1de6030cdcebab2e64870c58dbed9945b57a722429b98f3ae059"
+   "sha256": "d8cadd5dc4df1de6030cdcebab2e64870c58dbed9945b57a722429b98f3ae059",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sphinx_2000_manual",
    "title": "Sphinx AT2000 pistol manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/sphinx_2000_djvu.txt",
-   "sha256": "6e849c937aa425cc530dae11bc6a9ca8a95cd833e8804ba1a655d4f4830d4d69"
+   "sha256": "6e849c937aa425cc530dae11bc6a9ca8a95cd833e8804ba1a655d4f4830d4d69",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sphinx_3000_manual",
    "title": "Sphinx 3000 pistol manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/sphinx_3000_djvu.txt",
-   "sha256": "46cd9bcaa87658d112bb089151d106c2a4236240048c441e4fb8a4a3226760cb"
+   "sha256": "46cd9bcaa87658d112bb089151d106c2a4236240048c441e4fb8a4a3226760cb",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "springfield_xd_manual",
    "title": "Springfield Armory XD pistol manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/springfieldarmory_xd_djvu.txt",
-   "sha256": "c66df6d93273401b00bb5b016a1ceed0ee1319470e3ef3fb49ccc2f1e187801b"
+   "sha256": "c66df6d93273401b00bb5b016a1ceed0ee1319470e3ef3fb49ccc2f1e187801b",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "springfield_xdm_manual",
    "title": "Springfield Armory XD(M) pistol manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/springfield_xdm_djvu.txt",
-   "sha256": "e9725cc37c7f1c34805e52a069ed7caab37adc701f60c4aea3e0a39368839c2d"
+   "sha256": "e9725cc37c7f1c34805e52a069ed7caab37adc701f60c4aea3e0a39368839c2d",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "hs_2000_manual",
    "title": "HS 2000 pistol manual (HS Produkt)",
    "url": "https://archive.org/download/manuals.content.like.stevespages/hs_2000_djvu.txt",
-   "sha256": "5dbcb5ee3d94e6e008a2ecafd9c0ac7e7640fa286825eae06af581750d0bb9fb"
+   "sha256": "5dbcb5ee3d94e6e008a2ecafd9c0ac7e7640fa286825eae06af581750d0bb9fb",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sarsilmaz_sar_k2_manual",
    "title": "Sarsilmaz SAR K2 pistol manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/sarsilmaz_sar-k2_djvu.txt",
-   "sha256": "95b39bcd61a0ce35c87f642bbba5e5232d27a303c546bdc0e970560a6cd1d938"
+   "sha256": "95b39bcd61a0ce35c87f642bbba5e5232d27a303c546bdc0e970560a6cd1d938",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "sig_sg550_manual",
    "title": "SIG SG 550 / SG 551 assault rifle manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/sig_sg550_551_djvu.txt",
    "sha256": "fa68d4e7afdea43d6f9d2dcfda147ff5fd3b69d4c187510d97ac666fa8968217",
+   "capture": "local-cache-only",
    "note": "6 grooves, 1 turn in 10 in (254 mm)."
   },
   {

@@ -7,6 +7,7 @@
    "title": "Maker manual or catalogue: charlesdaly ms1911a1",
    "url": "https://archive.org/download/manuals.content.like.stevespages/charlesdaly_ms1911a1_djvu.txt",
    "sha256": "367195d15021fbd417ef97de92e2eef86cfa03da9c3cffdd5467c2413a9e41c3",
+   "capture": "local-cache-only",
    "note": "OCR text layer of the archived manual."
   },
   {
@@ -14,6 +15,7 @@
    "title": "Maker manual or catalogue: steyr aug a3 sa",
    "url": "https://archive.org/download/manuals.content.like.stevespages/steyr_aug_a3_sa_djvu.txt",
    "sha256": "ac6970ce0d1d73869d96c4e93dcc143049427c7f4c7122210394bd81d838dca9",
+   "capture": "local-cache-only",
    "note": "OCR text layer of the archived manual."
   },
   {
@@ -21,6 +23,7 @@
    "title": "Maker manual or catalogue: barrett m107a1",
    "url": "https://archive.org/download/manuals.content.like.stevespages/barrett_m107a1_djvu.txt",
    "sha256": "35f049d950731f2681d844edbcd0280d052e9bee4bc91c4dd78d2ae0ddd32e4f",
+   "capture": "local-cache-only",
    "note": "OCR text layer of the archived manual."
   },
   {
@@ -28,6 +31,7 @@
    "title": "Maker manual or catalogue: bushmaster 308",
    "url": "https://archive.org/download/manuals.content.like.stevespages/bushmaster_308_djvu.txt",
    "sha256": "048abaefe4e216e7e4d44d898f462fb95ef50ac9e4a7cce84fcb1234f8bf43a8",
+   "capture": "local-cache-only",
    "note": "OCR text layer of the archived manual."
   },
   {
@@ -35,6 +39,7 @@
    "title": "Maker manual or catalogue: kimber compact",
    "url": "https://archive.org/download/manuals.content.like.stevespages/kimber_compact_djvu.txt",
    "sha256": "de21e7aa761592865e35a9ecf8b438662bafee6ec252e476ce5a6cb345cdde42",
+   "capture": "local-cache-only",
    "note": "OCR text layer of the archived manual."
   },
   {
@@ -42,6 +47,7 @@
    "title": "Maker manual or catalogue: centerpoint 1x25mm 3-dot crossbow sight",
    "url": "https://archive.org/download/manuals.content.like.stevespages/centerpoint_1x25mm_3-dot_crossbow_sight_djvu.txt",
    "sha256": "d9152c77ea7c6fa50aec6542d1773057709e20a00bdc8c3326001705be428789",
+   "capture": "local-cache-only",
    "note": "OCR text layer of the archived manual."
   },
   {
@@ -49,6 +55,7 @@
    "title": "Maker manual or catalogue: germansportguns gsg5",
    "url": "https://archive.org/download/manuals.content.like.stevespages/germansportguns_gsg5_djvu.txt",
    "sha256": "c7142dfdd829053217bc73f6fa6285bba4b64ab5b11fa3ada0b718ef4f6432e6",
+   "capture": "local-cache-only",
    "note": "OCR text layer of the archived manual."
   },
   {
@@ -56,6 +63,7 @@
    "title": "Maker manual or catalogue: hk 416",
    "url": "https://archive.org/download/manuals.content.like.stevespages/hk_416_djvu.txt",
    "sha256": "0fd5de2de31315e1f9a74a9ba1e4a4c7a7b5eeae67c06dafd27dbc59eb9230a6",
+   "capture": "local-cache-only",
    "note": "OCR text layer of the archived manual."
   },
   {
@@ -63,6 +71,7 @@
    "title": "Maker manual or catalogue: century l1a1 rifle",
    "url": "https://archive.org/download/manuals.content.like.stevespages/century_l1a1_rifle_djvu.txt",
    "sha256": "a81a1f10e16ff15ce55ba3ffe0d403560aa5c6dae9510d80f3b4abe4fe5daf88",
+   "capture": "local-cache-only",
    "note": "OCR text layer of the archived manual."
   },
   {
@@ -70,6 +79,7 @@
    "title": "Maker manual or catalogue: calico m110",
    "url": "https://archive.org/download/manuals.content.like.stevespages/calico_m110_djvu.txt",
    "sha256": "b12de07ec2ae2842de902ca52d30102e62ba48026aea967bf652fe8375a7bf7c",
+   "capture": "local-cache-only",
    "note": "OCR text layer of the archived manual."
   },
   {
@@ -77,6 +87,7 @@
    "title": "Maker manual or catalogue: m16a1ops",
    "url": "https://archive.org/download/manuals.content.like.stevespages/m16a1ops_djvu.txt",
    "sha256": "69130925c732cccd5b46be9b521dc5e2d26a8783ecbc62ba2d68712765a634eb",
+   "capture": "local-cache-only",
    "note": "OCR text layer of the archived manual."
   },
   {
@@ -84,6 +95,7 @@
    "title": "Maker manual or catalogue: colt m16a2",
    "url": "https://archive.org/download/manuals.content.like.stevespages/colt_m16a2_djvu.txt",
    "sha256": "ee80c44077ce6821d9f051678419f03720fbf95b00f9f46f345da8950dc9a59f",
+   "capture": "local-cache-only",
    "note": "OCR text layer of the archived manual."
   },
   {
@@ -91,6 +103,7 @@
    "title": "Maker manual or catalogue: barrett m468 manual",
    "url": "https://archive.org/download/manuals.content.like.stevespages/barrett_m468_manual_djvu.txt",
    "sha256": "e31119989ba9d04733c51cab3be528bc59b1df324563838eeadf7105c4e29dc8",
+   "capture": "local-cache-only",
    "note": "OCR text layer of the archived manual."
   },
   {
@@ -98,6 +111,7 @@
    "title": "Maker manual or catalogue: eaa mp153",
    "url": "https://archive.org/download/manuals.content.like.stevespages/eaa_mp153_djvu.txt",
    "sha256": "327ec394e1512ed5ea024812626bb7c4a16f234516f9609744e64502f9bdfad3",
+   "capture": "local-cache-only",
    "note": "OCR text layer of the archived manual."
   },
   {
@@ -105,6 +119,7 @@
    "title": "Maker manual or catalogue: sig p220",
    "url": "https://archive.org/download/manuals.content.like.stevespages/sig_p220_djvu.txt",
    "sha256": "707a9c479efe7cb8800a7c59c2a9251ee8aba0a01cc41b08ae315fe21eefaae1",
+   "capture": "local-cache-only",
    "note": "OCR text layer of the archived manual."
   },
   {
@@ -112,6 +127,7 @@
    "title": "Maker manual or catalogue: sig p226",
    "url": "https://archive.org/download/manuals.content.like.stevespages/sig_p226_djvu.txt",
    "sha256": "6efe3abf08558f0e5436bac63a6f34f9bf222c284d63271d53028f0c45d5e384",
+   "capture": "local-cache-only",
    "note": "OCR text layer of the archived manual."
   },
   {
@@ -119,6 +135,7 @@
    "title": "Maker manual or catalogue: sig p229",
    "url": "https://archive.org/download/manuals.content.like.stevespages/sig_p229_djvu.txt",
    "sha256": "af4392dc6c568a0e4b7016e4e0fb5b027f2dfad30184a6fc5fb395fb0045e961",
+   "capture": "local-cache-only",
    "note": "OCR text layer of the archived manual."
   },
   {
@@ -126,6 +143,7 @@
    "title": "Maker manual or catalogue: sako quad",
    "url": "https://archive.org/download/manuals.content.like.stevespages/sako_quad_djvu.txt",
    "sha256": "d9cbc27f67eae54a381d65f97e0121244d0a260032196827a8114a71d86284f4",
+   "capture": "local-cache-only",
    "note": "OCR text layer of the archived manual."
   },
   {
@@ -133,6 +151,7 @@
    "title": "Maker manual or catalogue: sig sg552",
    "url": "https://archive.org/download/manuals.content.like.stevespages/sig_sg552_djvu.txt",
    "sha256": "3cb4e965648b99f17b364ad88b48c9f16f365410c83f40c7f7d74df169a0089d",
+   "capture": "local-cache-only",
    "note": "OCR text layer of the archived manual."
   },
   {
@@ -140,6 +159,7 @@
    "title": "Maker manual or catalogue: steyr hs50",
    "url": "https://archive.org/download/manuals.content.like.stevespages/steyr_hs50_djvu.txt",
    "sha256": "9b4f6a502d6dec3dfe8110dddfdf5246dd3fb824c74c5150a32c8c5a0853e5fe",
+   "capture": "local-cache-only",
    "note": "OCR text layer of the archived manual."
   },
   {
@@ -147,6 +167,7 @@
    "title": "Maker manual or catalogue: mannlicher classic pro-hunter",
    "url": "https://archive.org/download/manuals.content.like.stevespages/mannlicher_classic_pro-hunter_djvu.txt",
    "sha256": "e02a78a6d18d8ecd763d2061853e18bd3246854318cf8446b58801977ee21545",
+   "capture": "local-cache-only",
    "note": "OCR text layer of the archived manual."
   },
   {
@@ -154,6 +175,7 @@
    "title": "Maker manual or catalogue: steyr scout",
    "url": "https://archive.org/download/manuals.content.like.stevespages/steyr_scout_djvu.txt",
    "sha256": "c39743198c3d1a60489ad7247e0b243022a66a60f4e84002f2de4bd07d6d521a",
+   "capture": "local-cache-only",
    "note": "OCR text layer of the archived manual."
   },
   {
@@ -161,6 +183,7 @@
    "title": "Maker manual or catalogue: steyr ssg-04",
    "url": "https://archive.org/download/manuals.content.like.stevespages/steyr_ssg-04_djvu.txt",
    "sha256": "93ed15f4b0625e9c657cf46bb8f008abc9d02f6bb44077a26fa462a6c03096af",
+   "capture": "local-cache-only",
    "note": "OCR text layer of the archived manual."
   },
   {
@@ -168,6 +191,7 @@
    "title": "Maker manual or catalogue: steyr ssg-08",
    "url": "https://archive.org/download/manuals.content.like.stevespages/steyr_ssg-08_djvu.txt",
    "sha256": "0c0c1a5721090ee8f1a9cd56aac25826c892bdf0f5008927cddaa17620dfe7d7",
+   "capture": "local-cache-only",
    "note": "OCR text layer of the archived manual."
   },
   {
@@ -175,6 +199,7 @@
    "title": "Maker manual or catalogue: vector ak47",
    "url": "https://archive.org/download/manuals.content.like.stevespages/vector_ak47_djvu.txt",
    "sha256": "939ebeb3816e57d45685057eeedc79bcbf4bdb19c46144a369785fa38e435864",
+   "capture": "local-cache-only",
    "note": "OCR text layer of the archived manual."
   }
  ],

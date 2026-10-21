@@ -20,13 +20,15 @@
       "source_id": "kac_2012_mil_catalog",
       "title": "Knight's Armament Company 2012 Military Catalog",
       "url": "https://www.knightarmco.com/wp-content/uploads/2021/05/KAC-2012-MIL.pdf",
-      "sha256": "c8d9a63313d2034f3bfd2e7ab46536967f8327445dd08f2649b379b641ce9c02"
+      "sha256": "c8d9a63313d2034f3bfd2e7ab46536967f8327445dd08f2649b379b641ce9c02",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "kac_2018_catalog",
       "title": "Knight's Armament Company 2018 Catalog",
       "url": "https://www.knightarmco.com/wp-content/uploads/2021/05/KAC-2018-Catalog.pdf",
-      "sha256": "d23bea57cd39a5d51e27c9217acc1e79c3531a81c6ae46dc6bdc98390a4cb00e"
+      "sha256": "d23bea57cd39a5d51e27c9217acc1e79c3531a81c6ae46dc6bdc98390a4cb00e",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "lmt_defender_h",
@@ -47,13 +49,15 @@
       "source_id": "kriss_vector_g3_manual",
       "title": "KRISS Vector Gen 3 Owner's Manual (centerfire SDP/SBR/CRB)",
       "url": "https://kriss.canto.com/direct/document/8coub6olqh48lf048ii4n6i94r/qYPfpVdDEcQWVdTuGaWOBLdYxMU/original?content-type=application%2Fpdf&name=Gen3+Semi_21.pdf",
-      "sha256": "f0aa449180592c72fa120ffacdca24e51e1fb50e570baa1a7d811537a3c77b6f"
+      "sha256": "f0aa449180592c72fa120ffacdca24e51e1fb50e570baa1a7d811537a3c77b6f",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "kriss_vector_22_manual",
       "title": "KRISS Vector 22 Owner's Manual",
       "url": "https://kriss.canto.com/direct/document/4o6cc7tat11kh75e541s8g8p3f/iN6t17ekhmiw8vFKapdfufsA298/original?content-type=application%2Fpdf&name=KRISS+MANUAL_VECTOR+22.pdf",
-      "sha256": "e94616570249fe0fee8ac779d8e11817e840a658e55ef625e11180455bfdba42"
+      "sha256": "e94616570249fe0fee8ac779d8e11817e840a658e55ef625e11180455bfdba42",
+      "capture": "local-cache-only"
     }
   ],
   "weapons": [

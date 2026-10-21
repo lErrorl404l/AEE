@@ -2,6 +2,7 @@
  "url": "https://saami.org/technical-information/ansi-saami-standards/",
  "retrieved": "2026-09-22",
  "sha256": "100ec8ccff95952e5414d931456beb655aaf4fc350ea8e8088a21157464f58b6",
+ "capture": "local-cache-only",
  "standard": "SAAMI Z299.3 / Z299.4",
  "cartridges": [
   {

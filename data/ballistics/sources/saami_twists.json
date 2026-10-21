@@ -5,25 +5,29 @@
    "source_id": "saami_z299_2",
    "title": "ANSI/SAAMI Z299.2-2019 Voluntary Industry Performance Standards for Pressure and Velocity of Shotshell Ammunition for the Use of Commercial Manufacturers (approved 2025-09-23)",
    "url": "https://saami.org/wp-content/uploads/2025/09/ANSI-SAAMI-Z299.2-Shotshell-2019-Approved-2025-09-23.pdf",
-   "sha256": "79cf4e153ffa630c8d2e10a1fa5d336bae6d413b57901d77b43e8eb9f6dcf148"
+   "sha256": "79cf4e153ffa630c8d2e10a1fa5d336bae6d413b57901d77b43e8eb9f6dcf148",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "saami_z299_3",
    "title": "ANSI/SAAMI Z299.3-2022 Voluntary Industry Performance Standards for Pressure and Velocity of Centerfire Pistol and Revolver Ammunition for the Use of Commercial Manufacturers (approved 12-13-2022)",
    "url": "https://saami.org/wp-content/uploads/2025/05/SAAMI-Z299.3-2022-Centerfire-Pistol-Revolver-Approved-12-13-2022.pdf",
-   "sha256": "e2dad5c77ab57636dcdaa3379150703f4b72420e523f455dba0ff1f8e5d0ca34"
+   "sha256": "e2dad5c77ab57636dcdaa3379150703f4b72420e523f455dba0ff1f8e5d0ca34",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "saami_z299_4",
    "title": "ANSI/SAAMI Z299.4-2025 Voluntary Industry Performance Standards for Pressure and Velocity of Centerfire Rifle Ammunition for the Use of Commercial Manufacturers (approved 2025-02-10, posted 2026-04-27)",
    "url": "https://saami.org/wp-content/uploads/2026/04/SAAMI-Z299.4-CFR-2025-Centerfire-Rifle-Approved-2-10-2025-2026-04-27.pdf",
-   "sha256": "8d73431ebc9336a77f930eedaf1113c63326b14d3c1b1a820b03d2d804d16492"
+   "sha256": "8d73431ebc9336a77f930eedaf1113c63326b14d3c1b1a820b03d2d804d16492",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "saami_z299_1",
    "title": "ANSI/SAAMI Z299.1-2026 Voluntary Industry Performance Standards for Pressure and Velocity of Rimfire Sporting Ammunition for the Use of Commercial Manufacturers (approved 2026-05-08); included because .22 LR is registered here, not in Z299.2/.3/.4",
    "url": "https://saami.org/wp-content/uploads/2026/05/SAAMI-Z299.1-R2026-Rimfire-FINAL-Approved-2026-05-08.pdf",
-   "sha256": "98bdb0d9fb6fb28297c85df3c53b4ae8a120653f6055aa1ba782bf52bdb8da6d"
+   "sha256": "98bdb0d9fb6fb28297c85df3c53b4ae8a120653f6055aa1ba782bf52bdb8da6d",
+   "capture": "local-cache-only"
   }
  ],
  "twists": [

@@ -6,49 +6,57 @@
    "source_id": "wikipedia_skorpion_vz61",
    "title": "English Wikipedia article 'Skorpion vz. 61'",
    "url": "https://en.wikipedia.org/wiki/%C5%A0korpion",
-   "sha256": "3f693ac1b2fa62bf530818be03c42daddf59fae609b7d1dc71e8968bf9781c28"
+   "sha256": "3f693ac1b2fa62bf530818be03c42daddf59fae609b7d1dc71e8968bf9781c28",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "wikipedia_sr1_vektor",
    "title": "English Wikipedia article 'SR-1 Vektor'",
    "url": "https://en.wikipedia.org/wiki/SR-1_Vektor",
-   "sha256": "cd45497bb42e86ec0bf10ce6641b75d288840d5836978089bb345ae5838cbca2"
+   "sha256": "cd45497bb42e86ec0bf10ce6641b75d288840d5836978089bb345ae5838cbca2",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "wikipedia_dsr1",
    "title": "English Wikipedia article 'DSR-1'",
    "url": "https://en.wikipedia.org/wiki/DSR-1",
-   "sha256": "602ccc38c43e1582e8c91f172e1e331fc754bd3496694e1a0357085493c53eb2"
+   "sha256": "602ccc38c43e1582e8c91f172e1e331fc754bd3496694e1a0357085493c53eb2",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "wikipedia_type94_nambu",
    "title": "English Wikipedia article 'Type 94 Nambu pistol'",
    "url": "https://en.wikipedia.org/wiki/Type_94_Nambu_pistol",
-   "sha256": "e003d20e4a6fdb7840c55c11dc6e32b1a14e83ad63495207ab9396fadb33d730"
+   "sha256": "e003d20e4a6fdb7840c55c11dc6e32b1a14e83ad63495207ab9396fadb33d730",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "wikipedia_m134_minigun",
    "title": "English Wikipedia article 'M134 Minigun'",
    "url": "https://en.wikipedia.org/wiki/M134_Minigun",
-   "sha256": "c36318632b6d2ec9ecb9a75c40c5709213cb9dfad9ac5eca6b1dedf24aeb3cd6"
+   "sha256": "c36318632b6d2ec9ecb9a75c40c5709213cb9dfad9ac5eca6b1dedf24aeb3cd6",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "wikipedia_vhs2",
    "title": "English Wikipedia article 'VHS-2'",
    "url": "https://en.wikipedia.org/wiki/VHS-2",
-   "sha256": "36d5b90b3a862fab34c02f70d1110bb08f2303ca627c49dc1e041a2ecec86f29"
+   "sha256": "36d5b90b3a862fab34c02f70d1110bb08f2303ca627c49dc1e041a2ecec86f29",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "smallarmsreview_gyurza",
    "title": "Small Arms Review, 'Gyurza' (SR-1 Vektor), by Lynndon Schooler",
    "url": "https://smallarmsreview.com/?p=42183",
-   "sha256": "e242aaaea2f704949b969ab7a9db04e935ec420776f43bd2cd000cd6529ab566"
+   "sha256": "e242aaaea2f704949b969ab7a9db04e935ec420776f43bd2cd000cd6529ab566",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "wikipedia_beretta_m9",
    "title": "English Wikipedia article 'Beretta M9'",
    "url": "https://en.wikipedia.org/wiki/Beretta_M9",
-   "sha256": "fceb64740df59afac031cd07b346701f692154bf8144785956f70b73cfcd17e0"
+   "sha256": "fceb64740df59afac031cd07b346701f692154bf8144785956f70b73cfcd17e0",
+   "capture": "local-cache-only"
   }
  ],
  "weapons": [

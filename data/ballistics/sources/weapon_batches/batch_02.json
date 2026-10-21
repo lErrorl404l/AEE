@@ -5,7 +5,8 @@
       "source_id": "beretta_px4_storm_manual",
       "title": "Beretta Px4 Storm Instruction Manual (C62009 003), specifications and technical data",
       "url": "https://web.archive.org/web/20221223071659id_/https://www.beretta.com/content/dam/beretta/manuals/pistols/px4-storm/Px4_Storm_C62009_003_EN_az_PDF___cover_(3).pdf",
-      "sha256": "7e46cc25215dec2bbb5eaef06a7b0af2343ee2856fcdb868e3ee5e609ffcfccf"
+      "sha256": "7e46cc25215dec2bbb5eaef06a7b0af2343ee2856fcdb868e3ee5e609ffcfccf",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "cz_usa_455_american",
@@ -41,31 +42,36 @@
       "source_id": "bushmaster_m17s_catalog",
       "title": "Bushmaster M17S Bullpup Rifle catalogue page (2002), specification table",
       "url": "https://web.archive.org/web/20020418060012id_/http://www.bushmaster.com:80/shopping/m17s/default.asp",
-      "sha256": "0de9a789392638acdeeae52716946cde2c374a2156a78ea4f71a1c7bb0837ef4"
+      "sha256": "0de9a789392638acdeeae52716946cde2c374a2156a78ea4f71a1c7bb0837ef4",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "bushmaster_450_product",
       "title": "Bushmaster 450 Bushmaster 20\" product page, specification list",
       "url": "https://web.archive.org/web/20230129102158id_/https://www.bushmaster.com/450-bushmaster-20-/",
-      "sha256": "db3a7b496cdf1e7646b456ed57c21191df9b5948f33056cff5f36bd09c218705"
+      "sha256": "db3a7b496cdf1e7646b456ed57c21191df9b5948f33056cff5f36bd09c218705",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "bushmaster_450_barrel",
       "title": "Bushmaster 20\" .450 BUSHMASTER Barrel product page",
       "url": "https://web.archive.org/web/20240625130709id_/https://www.bushmaster.com/shop/barrels/bushmaster-20-450-bushmaster-barrel/",
-      "sha256": "48d61730bee1ef84d369a3b324e06138e83da19ccfe983c83ae1c010b978031d"
+      "sha256": "48d61730bee1ef84d369a3b324e06138e83da19ccfe983c83ae1c010b978031d",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "cadex_cdx40_shdw",
       "title": "Cadex Defence CDX-40 SHDW product page, 375 CT specification",
       "url": "https://web.archive.org/web/20241214032418id_/https://www.cadexdefence.com/product/147-cdx-40-shdw/",
-      "sha256": "e2a58cbc2959317dc80fd9777e07e41620cf4559d008d349b320f3c029f262b8"
+      "sha256": "e2a58cbc2959317dc80fd9777e07e41620cf4559d008d349b320f3c029f262b8",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "cadex_cdx_lite_series",
       "title": "Cadex Defence CDX-Lite Series product page, model/caliber/barrel/twist table",
       "url": "https://web.archive.org/web/20251206084805id_/https://www.cadexdefence.com/products/cadex-precision-rifles/cdx-lite-series/",
-      "sha256": "cc8adbc2345c52b38f8cc6df3e952431a0d25e321e17c087390a8761a0507e34"
+      "sha256": "cc8adbc2345c52b38f8cc6df3e952431a0d25e321e17c087390a8761a0507e34",
+      "capture": "local-cache-only"
     }
   ],
   "weapons": [

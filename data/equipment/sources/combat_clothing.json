@@ -23,6 +23,7 @@
       "title": "Helikon-Tex Ghillie Suit product page",
       "url": "https://helikon-tex.com/en/ghillie-suiten.html",
       "sha256": "b792294ec950c9bfda31b8886082108b075afd6f8a3bc00d29c14f9d28b80af8",
+      "capture": "local-cache-only",
       "publisher": "Helikon-Tex",
       "tier": 4
     },
@@ -31,6 +32,7 @@
       "title": "Helikon-Tex Leaf Ghillie Set product page",
       "url": "https://helikon-tex.com/en/leaf-ghillie-seten.html",
       "sha256": "b46539b9dffd4306fab819305c75571fb5b8b674f5e798840043414bdaf4b4b1",
+      "capture": "local-cache-only",
       "publisher": "Helikon-Tex",
       "tier": 4
     },
@@ -39,6 +41,7 @@
       "title": "Helikon-Tex MCDU Combat Shirt product page",
       "url": "https://helikon-tex.com/en/mcdu-combat-shirt-nyco-ripstopen.html",
       "sha256": "4db0cd8bd1bb288b027c54e0464f4c7bdc51e5a381002bd445b69e99773ee30b",
+      "capture": "local-cache-only",
       "publisher": "Helikon-Tex",
       "tier": 4
     },
@@ -47,6 +50,7 @@
       "title": "Helikon-Tex MCDU Pants product page",
       "url": "https://helikon-tex.com/en/mcdu-pants-nyco-ripstopen.html",
       "sha256": "59ce0cf201070b223686c5cf7a4caeec7e266be95fff7bac8eb5c2d1a0cbe60c",
+      "capture": "local-cache-only",
       "publisher": "Helikon-Tex",
       "tier": 4
     },
@@ -55,6 +59,7 @@
       "title": "MASKPOL Multi-Threat Body Armour System KWM-02 product page (Internet Archive snapshot)",
       "url": "https://web.archive.org/web/2026/https://www.maskpol.com.pl/en/products/multi-threat-body-armour-system-kwm-02",
       "sha256": "f49ec58905fa895e30a44802d3cd8e5638d1f5f0691c72c2ed5ca986e439b7a4",
+      "capture": "local-cache-only",
       "publisher": "MASKPOL S.A.",
       "tier": 4
     },

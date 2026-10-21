@@ -7,6 +7,7 @@
    "title": "BIZON Submachine Guns",
    "url": "http://club.guns.ru/eng/bizon.html",
    "sha256": "73fbd920c7c23ebd560bc270a5aefdc2b2276a77d881eb121f8d3ae11f4edcc9",
+   "capture": "local-cache-only",
    "publisher": "Guns.ru (club.guns.ru), Russian small arms reference",
    "tier": 3
   },
@@ -15,6 +16,7 @@
    "title": "Girsan | MC 14 BLACK \u2014 product specification page",
    "url": "https://girsan.com/products/mc-14-black/8-14-85",
    "sha256": "cea74d16c15db85f37bceecc65e8ebbaaf25b71aa58e8c92fad22002bf7782ad",
+   "capture": "local-cache-only",
    "publisher": "Girsan (manufacturer), Giresun, Turkiye",
    "tier": 4
   },
@@ -23,6 +25,7 @@
    "title": "Girsan | MC 1911 S BLACK \u2014 .45 ACP product specification page",
    "url": "https://girsan.com/products/mc-1911-s-black/3-7-41",
    "sha256": "49d9e3f076ef03ae8c62a64166011a104a9b41cb75d4f18313f3dac59d36c529",
+   "capture": "local-cache-only",
    "publisher": "Girsan (manufacturer), Giresun, Turkiye",
    "tier": 4
   },
@@ -31,6 +34,7 @@
    "title": "M380 Semi-Automatic Pistol Operating Instructions (Micro Desert Eagle)",
    "url": "https://www.magnumresearch.com/PDF/M380-Manual-0419.pdf",
    "sha256": "197209fef097320bad96bdd742af4bb69ce9049fe2287cca91442c165dbdaaaf",
+   "capture": "local-cache-only",
    "publisher": "Magnum Research, Inc.",
    "tier": 4
   },
@@ -39,6 +43,7 @@
    "title": "Tikka T3x UPR product page (spec data: Rate of Twist)",
    "url": "https://www.tikka.us/rifles/tikka-t3x/t3x-upr",
    "sha256": "7b7b1fc778f06ecb49b08455dd5d53d9bb2c809da0f30cd283ddabad3b4a4ce9",
+   "capture": "local-cache-only",
    "publisher": "Tikka (Sako Ltd / Beretta Holding)",
    "tier": 4
   }

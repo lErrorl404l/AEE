@@ -2,6 +2,7 @@
  "url": "https://sierrabullets.com/bullets/shop-all/",
  "retrieved": "2026-09-22",
  "sha256": "7615ce523fc0eb8c071e30a88b8892a2b8009a882bfc0eaeb5ac2ee6adcb089d",
+ "capture": "local-cache-only",
  "bullets": [
   {
    "description": "20 Cal 32 gr Tipped VarmintKing (TVK)",

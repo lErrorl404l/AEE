@@ -95,7 +95,8 @@
    "source_id": "glock_armorer",
    "title": "GLOCK Armorer's Manual",
    "url": "https://archive.org/download/gunmanual_Glock_ARmorers_Manual/Glock%20ARmorers%20Manual_text.pdf",
-   "sha256": "6bfae847e94a74d3c466690f98078c571dfd5560c6ba961786007c7e71705dd9"
+   "sha256": "6bfae847e94a74d3c466690f98078c571dfd5560c6ba961786007c7e71705dd9",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "springfield_m1a_loaded_308",
@@ -191,19 +192,22 @@
    "source_id": "us_hist_fm235",
    "title": "FM 23-5, Basic Field Manual: U.S. Rifle, Caliber .30, M1 (US War Department, 1940)",
    "url": "https://archive.org/details/FM23-51940",
-   "sha256": "121b28639585e0cf97a6242567d2b8a779123ea2db4dc273bb69f811d62bcf00"
+   "sha256": "121b28639585e0cf97a6242567d2b8a779123ea2db4dc273bb69f811d62bcf00",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "us_hist_fm2310",
    "title": "FM 23-10, Basic Field Manual: U.S. Rifle, Caliber .30, M1903 (US War Department, 1943)",
    "url": "https://archive.org/details/FM23-101943",
-   "sha256": "fcde033c31fdc1abf5171a8205b9d47084c31de0f1108b78ed1234d7cfc494a1"
+   "sha256": "fcde033c31fdc1abf5171a8205b9d47084c31de0f1108b78ed1234d7cfc494a1",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "us_hist_fm236",
    "title": "FM 23-6, Basic Field Manual: U.S. Rifle, Caliber .30, M1917 (Enfield) (US War Department, 1942)",
    "url": "https://archive.org/details/Fm2-36",
-   "sha256": "e026b985cdbca19bf8456e52e1ce362bdc85b7e42faf5c32dd29c85b668c89c4"
+   "sha256": "e026b985cdbca19bf8456e52e1ce362bdc85b7e42faf5c32dd29c85b668c89c4",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "us_hist_tm91276",
@@ -215,7 +219,8 @@
    "source_id": "us_hist_fm2315",
    "title": "FM 23-15, Basic Field Manual, Browning Automatic Rifle, Caliber .30, M1918A2, with Bipod (US War Department, 1940)",
    "url": "https://archive.org/details/Fm23-15",
-   "sha256": "37786194b791eb4e9c0921ff9bab5ed6d000d30f7beba83a5483caa17b35f6bd"
+   "sha256": "37786194b791eb4e9c0921ff9bab5ed6d000d30f7beba83a5483caa17b35f6bd",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "us_hist_fm2320",
@@ -227,85 +232,99 @@
    "source_id": "us_hist_fm2355",
    "title": "FM 23-55, Browning Machine Guns, Caliber .30, M1917A1, M1919A4, and M1919A6 (US War Department, 1945)",
    "url": "https://archive.org/details/FM23-55",
-   "sha256": "eccef51582819ac9a9ffe8b00463cf1849cf40173e7e641bc2fe79e93e533c36"
+   "sha256": "eccef51582819ac9a9ffe8b00463cf1849cf40173e7e641bc2fe79e93e533c36",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "us_hist_tm21210",
    "title": "TM 9-1005-212-10, Machine Gun, Caliber .30, Browning M1919A4 and M1919A6 (US Army, 1969)",
    "url": "https://archive.org/details/tm-9-1005-212-10-machine-gun-caliber-.-30-browning-m-1919-a-4-m-1919-a-6-1969",
-   "sha256": "4c660a55596b68a478700df8fcc7f9cc1051d2bd2fd03091a2a0b1dce1fc0153"
+   "sha256": "4c660a55596b68a478700df8fcc7f9cc1051d2bd2fd03091a2a0b1dce1fc0153",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "us_hist_fm2336",
    "title": "FM 23-36, Revolver, Colt, Caliber .45, M1917 and Revolver, Smith and Wesson, Caliber .45, M1917 (US War Department, 1941)",
    "url": "https://archive.org/details/FM23-36",
-   "sha256": "36077776b501e130626b366ea5ec1cb865fe3613165784865a192b816ca51641"
+   "sha256": "36077776b501e130626b366ea5ec1cb865fe3613165784865a192b816ca51641",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "us_hist_fm2340",
    "title": "FM 23-40, Basic Field Manual, Thompson Submachine Gun, Caliber .45, M1928A1 (US War Department, 1931)",
    "url": "https://archive.org/details/FM_23_40_B_F_M_T_S_G_C_45_M1928A1_1931",
-   "sha256": "447352e2ba35c2a4745138353fbc791e4a37798034ac93e719ad72fc601ced18"
+   "sha256": "447352e2ba35c2a4745138353fbc791e4a37798034ac93e719ad72fc601ced18",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "us_hist_reising",
    "title": "H & R Reising 50, 55, & 60 Submachine Gun (operator reference, Internet Archive item)",
    "url": "https://archive.org/details/firearms-h--r-reising-50-55--60-submachine-gun",
-   "sha256": "9baf31c4c575857fc9e5f523d4b6446a815c6f7beaf89d062617622aec950d4f"
+   "sha256": "9baf31c4c575857fc9e5f523d4b6446a815c6f7beaf89d062617622aec950d4f",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "us_hist_johnson",
    "title": "Military Handbook of the Johnson Semi-Automatic Rifle (Johnson Automatics Trust, 1938)",
    "url": "https://archive.org/details/militaryhandbook00john",
-   "sha256": "edbe3e4c9f1270de6376fb85d11641b72444bffd3e4bcb607a64d64ac7c065e1"
+   "sha256": "edbe3e4c9f1270de6376fb85d11641b72444bffd3e4bcb607a64d64ac7c065e1",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "us_hist_tm2012",
    "title": "TM 9-2012, Operation and Organizational Maintenance, Cal. .30 Machine Gun M37 Tank (US Army, 1954)",
    "url": "https://archive.org/details/TM9-2012",
-   "sha256": "34062e1cf69285187c344a7e0b02747fb5c49c17f130da4059eb47b99e435138"
+   "sha256": "34062e1cf69285187c344a7e0b02747fb5c49c17f130da4059eb47b99e435138",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "us_hist_cat1944_v3",
    "title": "Catalog of Standard Ordnance Items, Volume 3 (Office of the Chief of Ordnance, US Army, 1 March 1944)",
    "url": "https://archive.org/details/CatalogOfStandardOrdnanceItemsVolume3",
-   "sha256": "9b7e6d4c5e26752d67dc9f38af24646cb40ccca07f4504941085f3ef57f0f506"
+   "sha256": "9b7e6d4c5e26752d67dc9f38af24646cb40ccca07f4504941085f3ef57f0f506",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "us_mod_tm24910",
    "title": "TM 9-1005-249-10, Operator's Manual for Rifle 5.56mm M16 and M16A1 (US Army)",
    "url": "https://archive.org/details/milmanual-tm-9-1005-249-10---operators-manual-for-m16-m16a1",
-   "sha256": "252826a3aea361f58892bc199496aaac4e761d53e518891e89885d35ae5cae38"
+   "sha256": "252826a3aea361f58892bc199496aaac4e761d53e518891e89885d35ae5cae38",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "us_mod_tm31310",
    "title": "TM 9-1005-313-10, Machine Gun, 7.62MM, M240, M240B, M240C, M240D, M240E1, M240G, M240H, and M240N (US Army, 2002)",
    "url": "https://archive.org/details/tm-9-1005-313-10-machine-gun-7.62-mm-m-240-m-240-b-m-240-c-m-240-d-m-240-e-1-m-2",
-   "sha256": "5e3aa4fb83948995ecae33d9a065d94fd2f29a2520738b43307763e8dc107ca3"
+   "sha256": "5e3aa4fb83948995ecae33d9a065d94fd2f29a2520738b43307763e8dc107ca3",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "us_mod_tm22320",
    "title": "TM 9-1005-223-20, Rifles, 7.62mm, M14 and M14A1 (US Army, 1967)",
    "url": "https://archive.org/details/TM9-1005-223-20",
-   "sha256": "5ec2f8897df9b6045cdc35e9946b23873bda411811dd6ee98f1c78a10782d774"
+   "sha256": "5ec2f8897df9b6045cdc35e9946b23873bda411811dd6ee98f1c78a10782d774",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "us_sup_tm20510",
    "title": "TM 9-1010-205-10, 40mm Grenade Launcher M79 (US Army, 1985)",
    "url": "https://archive.org/details/tm-9-1010-205-10-40mm-grenade-launcher-m-79-1985_202408",
-   "sha256": "826db06724a8dcfd115e3510046567a2c190c4348a4a0f1cf6d9d2c916fe89f6"
+   "sha256": "826db06724a8dcfd115e3510046567a2c190c4348a4a0f1cf6d9d2c916fe89f6",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "us_mod_dtic_mk46",
    "title": "DTIC ADA394810, MK46 MOD0 (LMG) (US Navy / DTIC, 2001)",
    "url": "https://archive.org/details/DTIC_ADA394810",
-   "sha256": "7c4c9dd5509a67ecf98bf822e3b0938c9c50a03c6de6dc20f0e54a1fbacfc528"
+   "sha256": "7c4c9dd5509a67ecf98bf822e3b0938c9c50a03c6de6dc20f0e54a1fbacfc528",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "us_mod_m231",
    "title": "Submachine Gun, 5.56-mm: Port, Firing, M231 manuals (Internet Archive collection)",
    "url": "https://archive.org/details/m231-fpw-manuals",
-   "sha256": "66c3b5c08d324f87506f2ff8773b94ee4ccf57d996ed4df08d580179dfb44384"
+   "sha256": "66c3b5c08d324f87506f2ff8773b94ee4ccf57d996ed4df08d580179dfb44384",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "us_pist_sig_m17",

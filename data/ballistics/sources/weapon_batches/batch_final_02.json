@@ -5,19 +5,22 @@
       "source_id": "cip_46x30_tdcc",
       "title": "C.I.P. TDCC Tab I, 4,6 x 30 (4.6×30 mm) cartridge datasheet, English (proof barrel and grooves dimensions)",
       "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-i/4-6x30-suhl-eng-250317.pdf",
-      "sha256": "8f66867363c70a960cc62cf3c5223a678d42f1094c37e2211c5c29ec19b72229"
+      "sha256": "8f66867363c70a960cc62cf3c5223a678d42f1094c37e2211c5c29ec19b72229",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "gunsweek_colt_competition_1911",
       "title": "Colt Competition Pistol: the match-ready 1911 (GUNSweek.com)",
       "url": "https://www.gunsweek.com/en/pistols/articles/colt-competition-pistol-match-ready-1911",
-      "sha256": "64f8133ccdd5036a2980f7503f855cd1c4649f212035d753e0cf1dcb8eeeab55"
+      "sha256": "64f8133ccdd5036a2980f7503f855cd1c4649f212035d753e0cf1dcb8eeeab55",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "fusion_1911_defender_barrel",
       "title": "Fusion Firearms 1911 Defender Barrel Selector - Ultra Match Grade (barrel maker page for the 3\" Defender-size 1911 barrel)",
       "url": "https://fusionfirearms.com/1911-defender-barrel-selector-ultra-match-grade-1",
-      "sha256": "be4329ae9d781a14859e938dfa53759ea1c8b0ab44c75a8b83e766de3f5c13b0"
+      "sha256": "be4329ae9d781a14859e938dfa53759ea1c8b0ab44c75a8b83e766de3f5c13b0",
+      "capture": "local-cache-only"
     }
   ],
   "weapons": [

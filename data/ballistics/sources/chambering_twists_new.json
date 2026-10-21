@@ -6,6 +6,7 @@
    "title": "Dockery Armory, PTRD-41 (Degtyaryov 14.5x114mm anti-tank rifle), technical data sheet, ref. CODE 03-125-941",
    "url": "https://dockeryarmory.com/ptrd-41/",
    "sha256": "b7f5754fc67415c157d740666d2367bd0870cabbdbddb6d7eb7225abd16c6fc2",
+   "capture": "local-cache-only",
    "publisher": "Dockery Armory",
    "tier": 3
   },

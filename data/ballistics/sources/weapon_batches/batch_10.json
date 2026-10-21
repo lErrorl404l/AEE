@@ -15,7 +15,8 @@
       "source_id": "para_gi_expert_manual",
       "title": "Para Ordnance - Para 1911 GI Expert pistol operator's manual (specifications section)",
       "url": "https://web.archive.org/web/20090704034237id_/http://www.paraord.com/new/downloads/manual_GI.pdf",
-      "sha256": "977d295c01c6984ddd0543a57029c8980d2e2fa617d30a2b45cea1c5f2630c70"
+      "sha256": "977d295c01c6984ddd0543a57029c8980d2e2fa617d30a2b45cea1c5f2630c70",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "proof_elevation_mtr",
@@ -26,7 +27,8 @@
       "source_id": "q_fix_minifix_manual",
       "title": "Q LLC - THE FIX & mini FIX owner's manual (specifications table)",
       "url": "https://liveqordie.com/media/wysiwyg/manuals/tech-data/FIX%20&%20MINI%20FIX%20MANUAL.pdf",
-      "sha256": "83dab01b6b90a4b76e40b459e04cd2340c632d69985845d7b9d58f8d8983d769"
+      "sha256": "83dab01b6b90a4b76e40b459e04cd2340c632d69985845d7b9d58f8d8983d769",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "remington_m2010",
@@ -42,13 +44,15 @@
       "source_id": "armscor_1911_manual",
       "title": "Armscor / Rock Island Armory - 1911 A1 / A2 pistol owner's manual (technical specifications)",
       "url": "https://www.armscor.com/hubfs/Armscor_March2020%20Theme/Pdf%20Files/A_-_Manual.pdf",
-      "sha256": "6a18808a8f8cd8d468f0cf920f763ea72d9d8918ffb0892bf24d68da917f90ba"
+      "sha256": "6a18808a8f8cd8d468f0cf920f763ea72d9d8918ffb0892bf24d68da917f90ba",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "armscor_revolver_manual",
       "title": "Armscor / Rock Island Armory - revolver owner's manual (M200 / M206 series specifications)",
       "url": "https://www.armscor.com/hubfs/Armscor_March2020%20Theme/Pdf%20Files/I_-_Manual_-_Revolver.pdf",
-      "sha256": "5283fef6fbc31375e26188bd296a1a60f3e17b56f33b226ee73ad338a5a53aac"
+      "sha256": "5283fef6fbc31375e26188bd296a1a60f3e17b56f33b226ee73ad338a5a53aac",
+      "capture": "local-cache-only"
     }
   ],
   "weapons": [

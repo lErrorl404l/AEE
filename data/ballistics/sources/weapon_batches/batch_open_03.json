@@ -5,13 +5,15 @@
       "source_id": "hk_mp7a1_manual",
       "title": "H&K MP7A1 Operator's Manual (Internet Archive scan, item gunmanual_Hk_Mp7A1, OCR text)",
       "url": "https://archive.org/download/gunmanual_Hk_Mp7A1/Hk%20Mp7A1_djvu.txt",
-      "sha256": "0536fda27962279a234cc5b174f1ddd5e10ad89df3e31d1cd90496c1d538485a"
+      "sha256": "0536fda27962279a234cc5b174f1ddd5e10ad89df3e31d1cd90496c1d538485a",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "hk_ump_manual",
       "title": "Heckler & Koch UMP 45 & UMP 40 Submachine Gun (2000) Operator Manual (Internet Archive scan, OCR text)",
       "url": "https://archive.org/download/firearms-heckler--koch-ump-45--ump-40-submachine-gun-2000/hecklerkochump45ump40submachinegun2000_djvu.txt",
-      "sha256": "55ed88c0e506a0b9c378e7e623d5e52b5559d9a0dc96f223775c6d2d9677d03b"
+      "sha256": "55ed88c0e506a0b9c378e7e623d5e52b5559d9a0dc96f223775c6d2d9677d03b",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "jp_lrp07_dmr",
@@ -22,7 +24,8 @@
       "source_id": "jp_scr11_order_form",
       "title": "JP Enterprises SCR-11 Order Form (archived manufacturer PDF, 2011)",
       "url": "https://web.archive.org/web/20110519014625/http://jprifles.com/document_pdfs/SCR11%20Order%20Form_250.pdf",
-      "sha256": "41eb77ef8865022935b3281e40478c33d3d8a4d8da379f4822efc3c99d509a6d"
+      "sha256": "41eb77ef8865022935b3281e40478c33d3d8a4d8da379f4822efc3c99d509a6d",
+      "capture": "local-cache-only"
     }
   ],
   "weapons": [

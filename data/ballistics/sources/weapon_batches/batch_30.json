@@ -6,25 +6,29 @@
    "source_id": "wikipedia_cz807",
    "title": "English Wikipedia article 'CZ 807'",
    "url": "https://en.wikipedia.org/wiki/CZ_807",
-   "sha256": "c31a967343ebfc9caa7187a3bb171d3bad57866affb1793647735e75d9d4c411"
+   "sha256": "c31a967343ebfc9caa7187a3bb171d3bad57866affb1793647735e75d9d4c411",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "wikipedia_zastava_m21",
    "title": "English Wikipedia article 'Zastava M21'",
    "url": "https://en.wikipedia.org/wiki/Zastava_M21",
-   "sha256": "21e35f5ca41cf68d466da8a7621fab217b0a3ffdd07f5b24fd9910d8450933f5"
+   "sha256": "21e35f5ca41cf68d466da8a7621fab217b0a3ffdd07f5b24fd9910d8450933f5",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "wikipedia_zastava_m84",
    "title": "English Wikipedia article 'Zastava M84'",
    "url": "https://en.wikipedia.org/wiki/Zastava_M84",
-   "sha256": "4f1aee75a61c9f7b780598f6b0b8fb51d0d93354f84927e252f34d94cfb16344"
+   "sha256": "4f1aee75a61c9f7b780598f6b0b8fb51d0d93354f84927e252f34d94cfb16344",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "wikipedia_pm63",
    "title": "English Wikipedia article 'PM-63'",
    "url": "https://en.wikipedia.org/wiki/PM-63",
-   "sha256": "f1aab0fb2b5cbec307b33163cd1f4daa9e8ded38473d7856458f2d73df48e585"
+   "sha256": "f1aab0fb2b5cbec307b33163cd1f4daa9e8ded38473d7856458f2d73df48e585",
+   "capture": "local-cache-only"
   }
  ],
  "weapons": [

@@ -5,7 +5,8 @@
       "source_id": "win_catalog_1965",
       "title": "Winchester-Western Firearms Catalog 1965 (Winchester Repeating Arms / Western Cartridge Co.)",
       "url": "https://archive.org/details/winchester-western-firearms-catalog-1965",
-      "sha256": "309718d821040b19a378f85f754b03511b435cc3334da0e33e93fede5632c61e"
+      "sha256": "309718d821040b19a378f85f754b03511b435cc3334da0e33e93fede5632c61e",
+      "capture": "local-cache-only"
     },
     {
       "source_id": "rfc_model69_twist",
@@ -16,7 +17,8 @@
       "source_id": "rpk74m_tech_2002",
       "title": "Ручной пулемет РПК-74М, журнал \"Техника и вооружение\" 2002 №6 (RPK-74M specification table)",
       "url": "https://military.wikireading.ru/55679",
-      "sha256": "f7070e1270da0352a5c7bbb983c92c1d8a88491224cc0cb5d7dd6e09dfc1b2c8"
+      "sha256": "f7070e1270da0352a5c7bbb983c92c1d8a88491224cc0cb5d7dd6e09dfc1b2c8",
+      "capture": "local-cache-only"
     }
   ],
   "weapons": [

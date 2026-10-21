@@ -2,6 +2,7 @@
  "url": "https://frfrogspad.com/20120418-g7bclist.xls",
  "retrieved": "2026-09-22",
  "sha256": "d23878aec0ce880d19b09ffcfdb7211d3166b9a05716e465a367d190f397f703",
+ "capture": "local-cache-only",
  "bullets": [
   {
    "manufacturer": "APG G7",

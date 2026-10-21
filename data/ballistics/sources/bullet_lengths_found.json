@@ -5,13 +5,15 @@
    "source_id": "nosler_catalog",
    "title": "Nosler 2026 Product Guide, bullet specifications (OAL column)",
    "url": "https://www.nosler.com/media/binaryanvil/media_library/2026-Catalog-Layout_Web.pdf",
-   "sha256": "50bdc768a8e53b5253f9a396aa786d70be54b8a7d95797b80d65f14e0c91eecc"
+   "sha256": "50bdc768a8e53b5253f9a396aa786d70be54b8a7d95797b80d65f14e0c91eecc",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "berger_chart",
    "title": "Berger Bullets, Bullet Reference Charts (OAL column)",
    "url": "https://bergerbullets.com/information/lines-and-designs/bullet-reference-charts/",
-   "sha256": "ce83b87f87571a7800c56b54df57cb4c41bdbd48258e51f78769c94da9b4af5b"
+   "sha256": "ce83b87f87571a7800c56b54df57cb4c41bdbd48258e51f78769c94da9b4af5b",
+   "capture": "local-cache-only"
   }
  ],
  "bullets": [

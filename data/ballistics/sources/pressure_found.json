@@ -5,271 +5,316 @@
    "source_id": "saami_z299_2",
    "title": "ANSI/SAAMI Z299.2-2019, Voluntary Industry Performance Standards for Pressure and Velocity of Shotshell Ammunition for the Use of Commercial Manufacturers",
    "url": "https://saami.org/wp-content/uploads/2025/09/ANSI-SAAMI-Z299.2-Shotshell-2019-Approved-2025-09-23.pdf",
-   "sha256": "79cf4e153ffa630c8d2e10a1fa5d336bae6d413b57901d77b43e8eb9f6dcf148"
+   "sha256": "79cf4e153ffa630c8d2e10a1fa5d336bae6d413b57901d77b43e8eb9f6dcf148",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "cip_10tk-17051-en",
    "title": "CIP TDCC Tab VIII, alarm cartridge datasheet, 10tk-17051-en",
    "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-viii/10tk-17051-en.pdf",
-   "sha256": "a7c8ead40c5667335a7ba3233f53b184e2fc50c3dd55272d702770247199d804"
+   "sha256": "a7c8ead40c5667335a7ba3233f53b184e2fc50c3dd55272d702770247199d804",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "cip_12-32-blanc-en",
    "title": "CIP TDCC Tab VIII, alarm cartridge datasheet, 12-32-blanc-en",
    "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-viii/12-32-blanc-en.pdf",
-   "sha256": "9b3fa30437b6b09da378d8786971795e8e98eb2600bc29acca97b3c1ac60c434"
+   "sha256": "9b3fa30437b6b09da378d8786971795e8e98eb2600bc29acca97b3c1ac60c434",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "cip_12-55-en",
    "title": "CIP TDCC Tab VII, shot cartridge datasheet, 12-55-en",
    "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vii/12-55-en.pdf",
-   "sha256": "59da485bc7b069dbd8b75cfbce4c68b1a7219c2679c30f069c929c340551424c"
+   "sha256": "59da485bc7b069dbd8b75cfbce4c68b1a7219c2679c30f069c929c340551424c",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "cip_357-magnum-en",
    "title": "CIP TDCC Tab IV, pistol and revolver cartridge datasheet, 357-magnum-en",
    "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-iv/357-magnum-en.pdf",
-   "sha256": "be82ccac39fb343cd1b5370b46545e0982aa783fc778ea0d27c086af63f0876b"
+   "sha256": "be82ccac39fb343cd1b5370b46545e0982aa783fc778ea0d27c086af63f0876b",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "cip_410-en-1",
    "title": "CIP TDCC Tab VII, shot cartridge datasheet, 410-en-1",
    "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vii/410-en-1.pdf",
-   "sha256": "6a20151ccfa54a940eb745a3a95e83249e14e44759b03eb36557d4d2c0c6069f"
+   "sha256": "6a20151ccfa54a940eb745a3a95e83249e14e44759b03eb36557d4d2c0c6069f",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "cip_410-en-2",
    "title": "CIP TDCC Tab VII, shot cartridge datasheet, 410-en-2",
    "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vii/410-en-2.pdf",
-   "sha256": "6a20151ccfa54a940eb745a3a95e83249e14e44759b03eb36557d4d2c0c6069f"
+   "sha256": "6a20151ccfa54a940eb745a3a95e83249e14e44759b03eb36557d4d2c0c6069f",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "cip_410-en-3",
    "title": "CIP TDCC Tab VII, shot cartridge datasheet, 410-en-3",
    "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vii/410-en-3.pdf",
-   "sha256": "6a20151ccfa54a940eb745a3a95e83249e14e44759b03eb36557d4d2c0c6069f"
+   "sha256": "6a20151ccfa54a940eb745a3a95e83249e14e44759b03eb36557d4d2c0c6069f",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "cip_410-en-4",
    "title": "CIP TDCC Tab VII, shot cartridge datasheet, 410-en-4",
    "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vii/410-en-4.pdf",
-   "sha256": "6a20151ccfa54a940eb745a3a95e83249e14e44759b03eb36557d4d2c0c6069f"
+   "sha256": "6a20151ccfa54a940eb745a3a95e83249e14e44759b03eb36557d4d2c0c6069f",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "cip_410-en-5",
    "title": "CIP TDCC Tab VII, shot cartridge datasheet, 410-en-5",
    "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vii/410-en-5.pdf",
-   "sha256": "6a20151ccfa54a940eb745a3a95e83249e14e44759b03eb36557d4d2c0c6069f"
+   "sha256": "6a20151ccfa54a940eb745a3a95e83249e14e44759b03eb36557d4d2c0c6069f",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "cip_410-en-6",
    "title": "CIP TDCC Tab VII, shot cartridge datasheet, 410-en-6",
    "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vii/410-en-6.pdf",
-   "sha256": "6a20151ccfa54a940eb745a3a95e83249e14e44759b03eb36557d4d2c0c6069f"
+   "sha256": "6a20151ccfa54a940eb745a3a95e83249e14e44759b03eb36557d4d2c0c6069f",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "cip_44-rem-mag-200922-en",
    "title": "CIP TDCC Tab IV, pistol and revolver cartridge datasheet, 44-rem-mag-200922-en",
    "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-iv/44-rem-mag-200922-en.pdf",
-   "sha256": "c8a1e41834079cbe7e8a5d33ddab92ea4c47d008b0f7df4a556ed8a2f97dd5ca"
+   "sha256": "c8a1e41834079cbe7e8a5d33ddab92ea4c47d008b0f7df4a556ed8a2f97dd5ca",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "cip_6-mm-centrale-falco-en",
    "title": "CIP TDCC Tab VII, central fire shot cartridge datasheet, 6-mm-centrale-falco-en",
    "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vii/6-mm-centrale-falco-en.pdf",
-   "sha256": "947588dc12711fe8fd4481c5b9735956448d6e33f28281f700aa7f453ca5e101"
+   "sha256": "947588dc12711fe8fd4481c5b9735956448d6e33f28281f700aa7f453ca5e101",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "cip_tabiical-en-page103",
    "title": "CIP TDCC Tab II, rimmed cartridge datasheet, tabiical-en-page103",
    "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-ii/tabiical-en-page103.pdf",
-   "sha256": "e109d2856f6993c321948860311e10180759d650b35bca8b81a1b05c64aab967"
+   "sha256": "e109d2856f6993c321948860311e10180759d650b35bca8b81a1b05c64aab967",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "cip_tabivcal-en-page58",
    "title": "CIP TDCC Tab IV, pistol and revolver cartridge datasheet, tabivcal-en-page58",
    "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-iv/tabivcal-en-page58.pdf",
-   "sha256": "80893f449129aff734270e2cbe4d06cedcac083b71d827461351e1b7fdbc2d49"
+   "sha256": "80893f449129aff734270e2cbe4d06cedcac083b71d827461351e1b7fdbc2d49",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "cip_tabivcal-en-page74",
    "title": "CIP TDCC Tab IV, pistol and revolver cartridge datasheet, tabivcal-en-page74",
    "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-iv/tabivcal-en-page74.pdf",
-   "sha256": "f1e55a0e35feaf12cb2fe19edeccd879a7276d49f72c682a4df874799a0f3d28"
+   "sha256": "f1e55a0e35feaf12cb2fe19edeccd879a7276d49f72c682a4df874799a0f3d28",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "cip_tabivcal-en-page79",
    "title": "CIP TDCC Tab IV, pistol and revolver cartridge datasheet, tabivcal-en-page79",
    "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-iv/tabivcal-en-page79.pdf",
-   "sha256": "bafd95da4a239c5d13c3fdb05ba4ace49cedb6ffcc953c9aa8aa9ad9a5012bef"
+   "sha256": "bafd95da4a239c5d13c3fdb05ba4ace49cedb6ffcc953c9aa8aa9ad9a5012bef",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "cip_tabivcal-en-page82",
    "title": "CIP TDCC Tab IV, pistol and revolver cartridge datasheet, tabivcal-en-page82",
    "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-iv/tabivcal-en-page82.pdf",
-   "sha256": "6348b18e67e3be39dbc6280c0ee64eae7ab2c236b70d89a53a5e5d4eed63b7a8"
+   "sha256": "6348b18e67e3be39dbc6280c0ee64eae7ab2c236b70d89a53a5e5d4eed63b7a8",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "cip_tabvical-en-page1",
    "title": "CIP TDCC Tab VI, industrial cartridge datasheet, tabvical-en-page1",
    "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vi/tabvical-en-page1.pdf",
-   "sha256": "15cfc5d11b808cfe37c50501f3fa13198c48bd5fcebc22818a6116b02c97f09e"
+   "sha256": "15cfc5d11b808cfe37c50501f3fa13198c48bd5fcebc22818a6116b02c97f09e",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "cip_tabvical-en-page10",
    "title": "CIP TDCC Tab VI, industrial cartridge datasheet, tabvical-en-page10",
    "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vi/tabvical-en-page10.pdf",
-   "sha256": "5f9c7a7101aa500d9b6bfac09accbab34bd2336d911f7f17c3527a00b90f19bb"
+   "sha256": "5f9c7a7101aa500d9b6bfac09accbab34bd2336d911f7f17c3527a00b90f19bb",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "cip_tabvical-en-page11",
    "title": "CIP TDCC Tab VI, industrial cartridge datasheet, tabvical-en-page11",
    "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vi/tabvical-en-page11.pdf",
-   "sha256": "6af5a7817d3420d462ce7708747fb97033976b69f019231d0c338b68449a89d0"
+   "sha256": "6af5a7817d3420d462ce7708747fb97033976b69f019231d0c338b68449a89d0",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "cip_tabvical-en-page12",
    "title": "CIP TDCC Tab VI, industrial cartridge datasheet, tabvical-en-page12",
    "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vi/tabvical-en-page12.pdf",
-   "sha256": "daa5efc63500c5339ad0685588d17874c988836c85429e80e6b3b3735b834760"
+   "sha256": "daa5efc63500c5339ad0685588d17874c988836c85429e80e6b3b3735b834760",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "cip_tabvical-en-page15",
    "title": "CIP TDCC Tab VI, industrial cartridge datasheet, tabvical-en-page15",
    "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vi/tabvical-en-page15.pdf",
-   "sha256": "1f96e4e3a0c8bc95fe20822dce6fce1ea81f072ff2388f8aa3d411b8cafc991d"
+   "sha256": "1f96e4e3a0c8bc95fe20822dce6fce1ea81f072ff2388f8aa3d411b8cafc991d",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "cip_tabvical-en-page16",
    "title": "CIP TDCC Tab VI, industrial cartridge datasheet, tabvical-en-page16",
    "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vi/tabvical-en-page16.pdf",
-   "sha256": "e954bada52960540eb2860eb41014e569bfe4a519c60b17eb02dc21bb69568e1"
+   "sha256": "e954bada52960540eb2860eb41014e569bfe4a519c60b17eb02dc21bb69568e1",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "cip_tabvical-en-page17",
    "title": "CIP TDCC Tab VI, industrial cartridge datasheet, tabvical-en-page17",
    "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vi/tabvical-en-page17.pdf",
-   "sha256": "8cba4f292b35261b1233075171a4efe6cdfa7a687a8aa6807e242ab291717c90"
+   "sha256": "8cba4f292b35261b1233075171a4efe6cdfa7a687a8aa6807e242ab291717c90",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "cip_tabvical-en-page4",
    "title": "CIP TDCC Tab VI, industrial cartridge datasheet, tabvical-en-page4",
    "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vi/tabvical-en-page4.pdf",
-   "sha256": "fb5cd444b0feec2c0b24d10a7339751f500b773faf263efc4e26e3b84838451b"
+   "sha256": "fb5cd444b0feec2c0b24d10a7339751f500b773faf263efc4e26e3b84838451b",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "cip_tabvical-en-page5",
    "title": "CIP TDCC Tab VI, industrial cartridge datasheet, tabvical-en-page5",
    "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vi/tabvical-en-page5.pdf",
-   "sha256": "a804e31d267a69258487043eb18b6bed3785779dc1ec5986cd10e04b1fde2f75"
+   "sha256": "a804e31d267a69258487043eb18b6bed3785779dc1ec5986cd10e04b1fde2f75",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "cip_tabvical-en-page6",
    "title": "CIP TDCC Tab VI, industrial cartridge datasheet, tabvical-en-page6",
    "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vi/tabvical-en-page6.pdf",
-   "sha256": "0b4e1b71937312b103a88e439c71cfe6b43b8aefe09c8133f37a26623ba72186"
+   "sha256": "0b4e1b71937312b103a88e439c71cfe6b43b8aefe09c8133f37a26623ba72186",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "cip_tabvical-en-page7",
    "title": "CIP TDCC Tab VI, industrial cartridge datasheet, tabvical-en-page7",
    "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vi/tabvical-en-page7.pdf",
-   "sha256": "921fe8d0c27ca2b0904ccb93f6db1d4c8388d06ac844b7b707777826fb95c922"
+   "sha256": "921fe8d0c27ca2b0904ccb93f6db1d4c8388d06ac844b7b707777826fb95c922",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "cip_tabvical-en-page8",
    "title": "CIP TDCC Tab VI, industrial cartridge datasheet, tabvical-en-page8",
    "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vi/tabvical-en-page8.pdf",
-   "sha256": "94f849c3ecc7c05e61d659edd319920bc1b7e322b50570711f717384c927f962"
+   "sha256": "94f849c3ecc7c05e61d659edd319920bc1b7e322b50570711f717384c927f962",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "cip_tabvical-en-page9",
    "title": "CIP TDCC Tab VI, industrial cartridge datasheet, tabvical-en-page9",
    "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vi/tabvical-en-page9.pdf",
-   "sha256": "fc1a5b55f6a3ed33dbfc58c93c91810c484f47f178377072695bca8d9f6b3ea0"
+   "sha256": "fc1a5b55f6a3ed33dbfc58c93c91810c484f47f178377072695bca8d9f6b3ea0",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "cip_tabvii-20-en",
    "title": "CIP TDCC Tab VII, shot cartridge datasheet, tabvii-20-en",
    "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vii/tabvii-20-en.pdf",
-   "sha256": "f7670b55732fc03c209247f7b845490e60b4b6761386fa84d441dd0539b1687e"
+   "sha256": "f7670b55732fc03c209247f7b845490e60b4b6761386fa84d441dd0539b1687e",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "cip_tabvii-28-eng-2",
    "title": "CIP TDCC Tab VII, shot cartridge datasheet, tabvii-28-eng-2",
    "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vii/tabvii-28-eng-2.pdf",
-   "sha256": "6a2ccbe076e05dcf6d47860533c44e4bd5f9528b98ef2782983e465e11f8aec5"
+   "sha256": "6a2ccbe076e05dcf6d47860533c44e4bd5f9528b98ef2782983e465e11f8aec5",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "cip_tabviical-en-page1",
    "title": "CIP TDCC Tab VII, shot cartridge datasheet, tabviical-en-page1",
    "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vii/tabviical-en-page1.pdf",
-   "sha256": "b8b05f3a3a03bbe9be90b612b1f12c2abd0a1166a5915c4931358c332d98105a"
+   "sha256": "b8b05f3a3a03bbe9be90b612b1f12c2abd0a1166a5915c4931358c332d98105a",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "cip_tabviical-en-page10",
    "title": "CIP TDCC Tab VII, shot cartridge datasheet, tabviical-en-page10",
    "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vii/tabviical-en-page10.pdf",
-   "sha256": "a386370a6eee8db6eaf458d14af06b565290bf6bc385ba644ebd908033cceb7e"
+   "sha256": "a386370a6eee8db6eaf458d14af06b565290bf6bc385ba644ebd908033cceb7e",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "cip_tabviical-en-page11",
    "title": "CIP TDCC Tab VII, shot cartridge datasheet, tabviical-en-page11",
    "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vii/tabviical-en-page11.pdf",
-   "sha256": "d60181335c504f958d32c256b4f202d0dc5e0703c1f214bee19cfd8646441742"
+   "sha256": "d60181335c504f958d32c256b4f202d0dc5e0703c1f214bee19cfd8646441742",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "cip_tabviical-en-page13",
    "title": "CIP TDCC Tab VII, shot cartridge datasheet, tabviical-en-page13",
    "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vii/tabviical-en-page13.pdf",
-   "sha256": "64449a883dd3b06984edde6af151f3d15016f35700a5d9cc6fc19633eaf76f4b"
+   "sha256": "64449a883dd3b06984edde6af151f3d15016f35700a5d9cc6fc19633eaf76f4b",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "cip_tabviical-en-page14",
    "title": "CIP TDCC Tab VII, shot cartridge datasheet, tabviical-en-page14",
    "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vii/tabviical-en-page14.pdf",
-   "sha256": "58fbf1e471d95f014bd02852b882555dc73d31cd8f23922a35098167bc2010d6"
+   "sha256": "58fbf1e471d95f014bd02852b882555dc73d31cd8f23922a35098167bc2010d6",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "cip_tabviical-en-page15",
    "title": "CIP TDCC Tab VII, shot cartridge datasheet, tabviical-en-page15",
    "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vii/tabviical-en-page15.pdf",
-   "sha256": "abd5c1d62e485cd356fb7e64b96adef9d2ed9afe104f96cda2405b9e351d01ee"
+   "sha256": "abd5c1d62e485cd356fb7e64b96adef9d2ed9afe104f96cda2405b9e351d01ee",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "cip_tabviical-en-page16",
    "title": "CIP TDCC Tab VII, shot cartridge datasheet, tabviical-en-page16",
    "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vii/tabviical-en-page16.pdf",
-   "sha256": "1d6cc4ce76f65d2bc3b2c85241337cebc92126888a7e7495d31df47f5be5bd9d"
+   "sha256": "1d6cc4ce76f65d2bc3b2c85241337cebc92126888a7e7495d31df47f5be5bd9d",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "cip_tabviical-en-page2",
    "title": "CIP TDCC Tab VII, shot cartridge datasheet, tabviical-en-page2",
    "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vii/tabviical-en-page2.pdf",
-   "sha256": "f1458004c449e3889b5dfe75771535b6806487d649a5e078ea2d35e8b90d0768"
+   "sha256": "f1458004c449e3889b5dfe75771535b6806487d649a5e078ea2d35e8b90d0768",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "cip_tabviical-en-page3",
    "title": "CIP TDCC Tab VII, shot cartridge datasheet, tabviical-en-page3",
    "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vii/tabviical-en-page3.pdf",
-   "sha256": "ad0daf8c64711ec5aed514982fbe6346ce5fe5ceb5b3b73c42500868de7aea5d"
+   "sha256": "ad0daf8c64711ec5aed514982fbe6346ce5fe5ceb5b3b73c42500868de7aea5d",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "cip_tabviical-en-page5",
    "title": "CIP TDCC Tab VII, shot cartridge datasheet, tabviical-en-page5",
    "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vii/tabviical-en-page5.pdf",
-   "sha256": "68254f5458be91d8ba3782b5c0f545205c0bfaa97df58c9382f9729b76ac6713"
+   "sha256": "68254f5458be91d8ba3782b5c0f545205c0bfaa97df58c9382f9729b76ac6713",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "cip_tabviical-en-page6",
    "title": "CIP TDCC Tab VII, shot cartridge datasheet, tabviical-en-page6",
    "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vii/tabviical-en-page6.pdf",
-   "sha256": "b9a479353610f34a143bb665d4ce725b9277d68967b9135659b4fdca2427caa2"
+   "sha256": "b9a479353610f34a143bb665d4ce725b9277d68967b9135659b4fdca2427caa2",
+   "capture": "local-cache-only"
   },
   {
    "source_id": "cip_tabviical-en-page8",
    "title": "CIP TDCC Tab VII, shot cartridge datasheet, tabviical-en-page8",
    "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vii/tabviical-en-page8.pdf",
-   "sha256": "686033263b9fa61d2b1fbfd82a942579ed1c2a2b6add113635c2a1bbe573654e"
+   "sha256": "686033263b9fa61d2b1fbfd82a942579ed1c2a2b6add113635c2a1bbe573654e",
+   "capture": "local-cache-only"
   }
  ],
  "cartridges": [
