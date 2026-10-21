@@ -309,6 +309,38 @@ class TestBaselineArtefact(unittest.TestCase):
                     table["modded"]["total"] - table["modded"]["hit"],
                 )
 
+    def test_data_coverage_is_split_base_and_modded(self):
+        """A combined figure can hide modded content with no sourced entry.
+
+        Every table records both halves, each half's resolved count equals
+        the resolution split, and the halves sum to the combined figure.
+        """
+        for name, table in self.payload["tables"].items():
+            with self.subTest(table=name):
+                fig = table["figure"]
+                self.assertEqual(set(fig), {"base", "modded"})
+                for half in ("base", "modded"):
+                    self.assertEqual(fig[half]["resolved"], table[half]["total"])
+                    self.assertLessEqual(fig[half]["figured"], fig[half]["resolved"])
+                    if fig[half]["resolved"]:
+                        expected = round(
+                            100.0 * fig[half]["figured"] / fig[half]["resolved"], 2
+                        )
+                        self.assertAlmostEqual(fig[half]["pct"], expected, places=6)
+                self.assertEqual(
+                    fig["base"]["figured"] + fig["modded"]["figured"],
+                    table["figure_graded"],
+                )
+
+    def test_the_modded_half_is_the_one_the_target_reads(self):
+        # The operator's target is 100 percent of MODDED classes on a
+        # sourced entry, so the artefact must carry that half even where
+        # the base half is mostly the game's own inventions.
+        for name, table in self.payload["tables"].items():
+            with self.subTest(table=name):
+                self.assertGreater(table["figure"]["modded"]["resolved"], 0)
+                self.assertIn("pct", table["figure"]["modded"])
+
     def test_every_class_is_resolved_and_graded(self):
         """Full resolution is a graded claim, never a silent 100%.
 
