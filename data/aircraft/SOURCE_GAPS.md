@@ -11,9 +11,9 @@ is a labelled zero, not a refusal.
 
 - Catalogue entries: 251
 - Emitted runtime rows: 251
-- Runtime-ready entries: 15
-- Entries with an absent runtime field: 236
-- Absent fields: 576
+- Runtime-ready entries: 17
+- Entries with an absent runtime field: 234
+- Absent fields: 573
 
 ## a10a_thunderbolt_ii - Fairchild A-10A Thunderbolt II (fixed_wing)
 
@@ -2965,17 +2965,12 @@ is a labelled zero, not a refusal.
 - Capture: `data/aircraft/catalogue/fixed_wing_fw.json`
 - Required set: fixed_wing (2 fields)
 - Runtime row: yes
-- Runtime-ready: no
+- Runtime-ready: yes
 
 | Runtime field | Grade | Value | Source | Locator | State |
 |---|---|---|---|---|---|
-| `operating_weight_kg` | absent | 0 | `` |  | no held value and no derivation applies |
-| `rated_power_w` | absent | 0 | `` |  | no held value and no derivation applies |
-
-| Absent field | Next source class |
-|---|---|
-| `operating_weight_kg` | a tier 2 operating manual or a tier 4 manufacturer datasheet |
-| `rated_power_w` | the engine maker rating, or a tier 4 manufacturer datasheet |
+| `operating_weight_kg` | derived | 22000 | `src_odin_weg_2025` | MiG-29 (Fulcrum) record, Dimensions, Weight, Maximum Gross: 22,000 kg | derived operating weight from the maximum takeoff weight; no operating or empty weight is published, so the maximum is the basis |
+| `rated_power_w` | derived | 108773387.72 | `src_odin_weg_2025` | MiG-29 (Fulcrum) record, Performance, Engine Power: 81.58 kN (18,340 lbf) with afterburner | derived rated power from thrust: rated_power_w = thrust_kn * 1000 * reference_speed_ms; 163.16 kN at 666.667 m/s |
 
 ## mig29s_fulcrum_c - Mikoyan MiG-29S Fulcrum-C (fixed_wing)
 
@@ -3811,16 +3806,12 @@ is a labelled zero, not a refusal.
 - Capture: `data/aircraft/catalogue/compilations_fw.json`
 - Required set: fixed_wing (2 fields)
 - Runtime row: yes
-- Runtime-ready: no
+- Runtime-ready: yes
 
 | Runtime field | Grade | Value | Source | Locator | State |
 |---|---|---|---|---|---|
-| `operating_weight_kg` | derived | 4320 | `src_opfor_weg` | Su-25 empty weight 9,525 lb converted to kg | derived operating weight from the published empty weight; no operating weight is published, so the empty weight is the basis |
-| `rated_power_w` | absent | 0 | `` |  | no held value and no derivation applies |
-
-| Absent field | Next source class |
-|---|---|
-| `rated_power_w` | the engine maker rating, or a tier 4 manufacturer datasheet |
+| `operating_weight_kg` | derived | 9500 | `src_odin_weg_2025` | Su-25 Grach (Frogfoot) record, Dimensions, Weight, Empty: 9,500 kg | derived operating weight from the published empty weight; no operating weight is published, so the empty weight is the basis |
+| `rated_power_w` | derived | 21665992.04 | `src_odin_weg_2025` | Su-25 Grach (Frogfoot) record, Automotive, Engine Power: 9,039 lb static thrust each | derived rated power from thrust: rated_power_w = thrust_kn * 1000 * reference_speed_ms; 80.41 kN at 269.444 m/s |
 
 ## su25sm_frogfoot - Sukhoi Su-25SM Frogfoot (fixed_wing)
 

@@ -756,8 +756,89 @@
       "keywords": [
         "fighter"
       ],
-      "runtime_ready": false,
-      "values": {}
+      "runtime_ready": true,
+      "values": {
+        "max_takeoff_weight_kg": {
+          "value": 22000,
+          "unit": "kg",
+          "source": "src_odin_weg_2025",
+          "locator": "MiG-29 (Fulcrum) record, Dimensions, Weight, Maximum Gross: 22,000 kg",
+          "state": "ODIN Worldwide Equipment Guide 2025 maximum gross weight. The record also prints a 'Weight, Maximum Takeoff: 10,900 kg' line that contradicts its own gross figure; that line is not used and the disagreement is left standing rather than averaged. The record prints no empty weight, so operating_weight_kg falls back to this maximum gross weight.",
+          "grade": "documented"
+        },
+        "thrust_kn": {
+          "value": 163.16,
+          "unit": "kN",
+          "source": "src_odin_weg_2025",
+          "locator": "MiG-29 (Fulcrum) record, Performance, Engine Power: 81.58 kN (18,340 lbf) with afterburner",
+          "state": "ODIN Worldwide Equipment Guide 2025 afterburning thrust, two RD-33 engines at 81.58 kN each, summed to the installed 163.16 kN the rated power derivation uses.",
+          "grade": "documented"
+        },
+        "reference_speed_ms": {
+          "value": 666.667,
+          "unit": "m/s",
+          "source": "src_odin_weg_2025",
+          "locator": "MiG-29 (Fulcrum) record, Performance, Speed, Maximum, at altitude: 2,400",
+          "state": "ODIN Worldwide Equipment Guide 2025 maximum speed at altitude, 2,400 km/h converted to m/s at capture (2400 / 3.6). It is the published speed the thrust is rated against.",
+          "grade": "documented"
+        },
+        "length_m": {
+          "value": 17.3,
+          "unit": "m",
+          "source": "src_odin_weg_2025",
+          "locator": "MiG-29 (Fulcrum) record, Dimensions, Length: 17.3",
+          "state": "ODIN Worldwide Equipment Guide 2025 overall length",
+          "grade": "documented"
+        },
+        "height_m": {
+          "value": 4.8,
+          "unit": "m",
+          "source": "src_odin_weg_2025",
+          "locator": "MiG-29 (Fulcrum) record, Dimensions, Height: 4.8",
+          "state": "ODIN Worldwide Equipment Guide 2025 overall height",
+          "grade": "documented"
+        },
+        "wing_span_m": {
+          "value": 11.4,
+          "unit": "m",
+          "source": "src_odin_weg_2025",
+          "locator": "MiG-29 (Fulcrum) record, Dimensions, Width, Wingspan: 11.4",
+          "state": "ODIN Worldwide Equipment Guide 2025 wingspan",
+          "grade": "documented"
+        },
+        "max_speed_kmh": {
+          "value": 2400,
+          "unit": "km/h",
+          "source": "src_odin_weg_2025",
+          "locator": "MiG-29 (Fulcrum) record, Performance, Speed, Maximum, at altitude: 2,400",
+          "state": "ODIN Worldwide Equipment Guide 2025 maximum speed",
+          "grade": "documented"
+        },
+        "service_ceiling_m": {
+          "value": 18000,
+          "unit": "m",
+          "source": "src_odin_weg_2025",
+          "locator": "MiG-29 (Fulcrum) record, Performance, Ceiling: 18,000",
+          "state": "ODIN Worldwide Equipment Guide 2025 service ceiling",
+          "grade": "documented"
+        },
+        "engine_model": {
+          "value": "RD-33",
+          "unit": "text",
+          "source": "src_odin_weg_2025",
+          "locator": "MiG-29 (Fulcrum) record, Performance, Power Plant/Engine: 2 x Kimov/Sakisov RD-33",
+          "state": "ODIN Worldwide Equipment Guide 2025 engine model",
+          "grade": "documented"
+        },
+        "engine_count": {
+          "value": 2,
+          "unit": "count",
+          "source": "src_odin_weg_2025",
+          "locator": "MiG-29 (Fulcrum) record, Performance, Power Plant/Engine: 2 x Kimov/Sakisov RD-33",
+          "state": "ODIN Worldwide Equipment Guide 2025 engine count",
+          "grade": "documented"
+        }
+      }
     },
     {
       "catalogue_id": "mig35_fulcrum_f",

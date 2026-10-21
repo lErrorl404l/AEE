@@ -31,5 +31,16 @@
     "resolution": "keep both; the corpus binding stays light_utility_rotary until a tier 2 or tier 3 source names the PO-30 Orca; the wiki is a claimed identity lead only",
     "rule_applied": "one source never displaces another for the same field; a tier 5 compilation is a lead, never a value",
     "date": "2026-10-09"
+  },
+  {
+    "entity": "su25_frogfoot",
+    "field": "empty_weight_kg",
+    "value_a": "4,320 kg; empty weight, 9,525 lb converted to kilograms",
+    "source_a": "src_opfor_weg",
+    "value_b": "9,500 kg; Weight, Empty",
+    "source_b": "src_odin_weg_2025",
+    "resolution": "keep both; the entry now holds the ODIN figure, which the guide states in kilograms and states as the empty weight. The held OPFOR figure converted 9,525 lb to 4,320 kg, a factor of two from every other published Su-25 empty weight, and the record it came from is a pounds figure. No mean is taken.",
+    "rule_applied": "record the disagreement, keep both values, never average (data/aircraft/SCHEMA.md section 9 rule 4)",
+    "date": "2026-10-21"
   }
 ]

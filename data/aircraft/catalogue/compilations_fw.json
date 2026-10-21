@@ -23,14 +23,102 @@
         "cas",
         "attack"
       ],
-      "runtime_ready": false,
+      "runtime_ready": true,
       "values": {
         "empty_weight_kg": {
-          "value": 4320,
+          "value": 9500,
           "unit": "kg",
-          "source": "src_opfor_weg",
-          "locator": "Su-25 empty weight 9,525 lb converted to kg",
-          "state": "US Army OPFOR guide empty weight; pounds converted to kilograms at capture",
+          "source": "src_odin_weg_2025",
+          "locator": "Su-25 Grach (Frogfoot) record, Dimensions, Weight, Empty: 9,500 kg",
+          "state": "ODIN Worldwide Equipment Guide 2025 empty weight, stated in kilograms by the guide. It replaces the held OPFOR guide figure of 9,525 lb converted to 4,320 kg, which is a factor of two from every other published Su-25 empty weight. Both figures are kept in data/aircraft/conflicts.json.",
+          "grade": "documented"
+        },
+        "max_takeoff_weight_kg": {
+          "value": 17600,
+          "unit": "kg",
+          "source": "src_odin_weg_2025",
+          "locator": "Su-25 Grach (Frogfoot) record, Dimensions, Weight, Maximum Takeoff: 17,600 kg",
+          "state": "ODIN Worldwide Equipment Guide 2025 maximum takeoff weight",
+          "grade": "documented"
+        },
+        "thrust_kn": {
+          "value": 80.41,
+          "unit": "kN",
+          "source": "src_odin_weg_2025",
+          "locator": "Su-25 Grach (Frogfoot) record, Automotive, Engine Power: 9,039 lb static thrust each",
+          "state": "ODIN Worldwide Equipment Guide 2025 static thrust, two R-95 engines at 9,039 lb each, converted at capture (9,039 * 2 * 4.44822 / 1000) and summed to the installed 80.41 kN the rated power derivation uses.",
+          "grade": "documented"
+        },
+        "reference_speed_ms": {
+          "value": 269.444,
+          "unit": "m/s",
+          "source": "src_odin_weg_2025",
+          "locator": "Su-25 Grach (Frogfoot) record, Automotive, Speed, Maximum Low Level: 970 km/h",
+          "state": "ODIN Worldwide Equipment Guide 2025 maximum low level speed, 970 km/h converted to m/s at capture (970 / 3.6). It is the published speed the thrust is rated against.",
+          "grade": "documented"
+        },
+        "length_m": {
+          "value": 15.53,
+          "unit": "m",
+          "source": "src_odin_weg_2025",
+          "locator": "Su-25 Grach (Frogfoot) record, Dimensions, Length: 15.53",
+          "state": "ODIN Worldwide Equipment Guide 2025 overall length",
+          "grade": "documented"
+        },
+        "height_m": {
+          "value": 4.8,
+          "unit": "m",
+          "source": "src_odin_weg_2025",
+          "locator": "Su-25 Grach (Frogfoot) record, Dimensions, Height: 4.80",
+          "state": "ODIN Worldwide Equipment Guide 2025 overall height",
+          "grade": "documented"
+        },
+        "wing_span_m": {
+          "value": 14.36,
+          "unit": "m",
+          "source": "src_odin_weg_2025",
+          "locator": "Su-25 Grach (Frogfoot) record, Dimensions, Wingspan: 14.36",
+          "state": "ODIN Worldwide Equipment Guide 2025 wingspan",
+          "grade": "documented"
+        },
+        "max_speed_kmh": {
+          "value": 970,
+          "unit": "km/h",
+          "source": "src_odin_weg_2025",
+          "locator": "Su-25 Grach (Frogfoot) record, Automotive, Speed, Maximum Low Level: 970",
+          "state": "ODIN Worldwide Equipment Guide 2025 maximum speed",
+          "grade": "documented"
+        },
+        "service_ceiling_m": {
+          "value": 7000,
+          "unit": "m",
+          "source": "src_odin_weg_2025",
+          "locator": "Su-25 Grach (Frogfoot) record, Automotive, Ceiling: 7,000",
+          "state": "ODIN Worldwide Equipment Guide 2025 service ceiling",
+          "grade": "documented"
+        },
+        "rate_of_climb_ms": {
+          "value": 72.0,
+          "unit": "m/s",
+          "source": "src_odin_weg_2025",
+          "locator": "Su-25 Grach (Frogfoot) record, Automotive, Rate of Climb: 4,320 m/min",
+          "state": "ODIN Worldwide Equipment Guide 2025 rate of climb, 4,320 m/min converted to m/s at capture",
+          "grade": "documented"
+        },
+        "engine_model": {
+          "value": "R-95",
+          "unit": "text",
+          "source": "src_odin_weg_2025",
+          "locator": "Su-25 Grach (Frogfoot) record, Automotive, Engine Name: 2 x Ryzhov (Tumansky) R-95",
+          "state": "ODIN Worldwide Equipment Guide 2025 engine model",
+          "grade": "documented"
+        },
+        "engine_count": {
+          "value": 2,
+          "unit": "count",
+          "source": "src_odin_weg_2025",
+          "locator": "Su-25 Grach (Frogfoot) record, Automotive, Engine Name: 2 x Ryzhov (Tumansky) R-95",
+          "state": "ODIN Worldwide Equipment Guide 2025 engine count",
           "grade": "documented"
         }
       }
