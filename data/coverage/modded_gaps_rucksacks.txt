@@ -1,3 +1,3 @@
 # modded match coverage gaps: rucksacks
-# 0 unresolved of 614 modded classes (100.0% resolved)
+# 0 unresolved of 523 modded classes (100.0% resolved)
 # class	display	parent	source

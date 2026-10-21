@@ -12,8 +12,9 @@ recorded in the baseline, so the split is readable without the install.
 A mod class that inherits a base class is modded: the catalogue still has
 to name the thing the player is looking at.
 
-Two kinds of class leave a table before it is scored, and both stay named
-in the output and in the baseline under `excluded`:
+Every class that leaves a table before it is scored stays named in the
+output, in the baseline under `excluded`, and by name in
+`data/coverage/excluded_classes.txt`. The vehicle and armament rules are:
 
 - a ground class whose chain passes `StaticWeapon` is a weapon
   emplacement, not a vehicle. The fleet inventory states the same rule in
@@ -22,6 +23,20 @@ in the output and in the baseline under `excluded`:
 - an armament class that the shared kind filter reads as equipment rather
   than a munition is not a weapon that fires a projectile. The filter is
   `tools/validation/munition_kind.py`.
+
+The clothing and load-carriage tables apply the same rule:
+
+- an abstract base class is scaffolding, not an item: `Uniform_Base`,
+  `Vest_Camo_Base`, `Weapon_Bag_Base`.
+- a gore or damage overlay (`guts`, `bulletholes`, `damagedchest`) is a
+  texture with no mass and no slot.
+- a rucksack table scores `CfgVehicles` under `Bag_Base`, and that root
+  also holds a dismantled HMG, a folded tripod, a mortar tube, a
+  parachute, a radio bag and a gun bag. They leave the table as "weapon
+  bags", "weapon support bags", "parachutes" and "radio bags".
+- headwear declared under `Uniform_Base` is a content defect in the mod,
+  not a uniform: it leaves the table as "misdeclared headwear" and its
+  classes are listed in `excluded_classes.txt`.
 
 
 ## Family rows
