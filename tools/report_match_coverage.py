@@ -881,6 +881,18 @@ def slug(label: str) -> str:
     return label.replace(" ", "_")
 
 
+def figure_pct(res: dict) -> float:
+    """The share of resolved classes sitting on an entry with a sourced figure.
+
+    Every grade above `type` answers with a corpus entry, and every entry in
+    these tables carries at least one published figure. A `type` entry names
+    a kind and carries none, so the difference is the data coverage.
+    """
+    total = res["base"]["total"] + res["modded"]["total"]
+    typed = res.get("grades", {}).get("type", 0)
+    return (100.0 * (total - typed) / total) if total else 0.0
+
+
 def pct(count: dict) -> float:
     return (100.0 * count["hit"] / count["total"]) if count["total"] else 0.0
 
@@ -1359,6 +1371,11 @@ def report(tables: dict) -> None:
             f"modded {modded['hit']}/{modded['total']} ({pct(modded):.1f}%), "
             f"all {both['hit']}/{both['total']} ({pct(both):.1f}%)"
         )
+        print(
+            f"    data coverage {figure_pct(res):.1f}% "
+            f"({res['base']['total'] + res['modded']['total'] - res.get('grades', {}).get('type', 0)}"
+            f"/{res['base']['total'] + res['modded']['total']} on a sourced entry)"
+        )
         for reason, count in sorted(res.get("reasons", {}).items()):
             print(f"    {count:4d} open: {reason}")
 
@@ -1516,6 +1533,12 @@ def write_baseline(
                 "inherited": res.get("inherited", []),
                 "excluded": res.get("excluded", {}),
                 "grades": res.get("grades", {}),
+                "figure_graded": (
+                    res["base"]["total"]
+                    + res["modded"]["total"]
+                    - res.get("grades", {}).get("type", 0)
+                ),
+                "figure_pct": round(figure_pct(res), 2),
                 "reasons": res.get("reasons", {}),
             }
             for name, res in tables.items()
