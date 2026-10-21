@@ -281,6 +281,8 @@
         "total": 43
       },
       "excluded": {},
+      "figure_graded": 221,
+      "figure_pct": 83.08,
       "grades": {
         "alias": 116,
         "closest": 2,
@@ -305,6 +307,8 @@
         "total": 2
       },
       "excluded": {},
+      "figure_graded": 18,
+      "figure_pct": 90.0,
       "grades": {
         "alias": 17,
         "closest": 1,
@@ -327,6 +331,8 @@
         "total": 86
       },
       "excluded": {},
+      "figure_graded": 224,
+      "figure_pct": 100.0,
       "grades": {
         "family": 207,
         "inherited": 17
@@ -348,6 +354,8 @@
         "total": 6
       },
       "excluded": {},
+      "figure_graded": 234,
+      "figure_pct": 71.56,
       "grades": {
         "alias": 123,
         "closest": 8,
@@ -373,6 +381,8 @@
         "total": 18
       },
       "excluded": {},
+      "figure_graded": 78,
+      "figure_pct": 34.51,
       "grades": {
         "alias": 59,
         "keyword": 19,
@@ -395,6 +405,8 @@
         "total": 205
       },
       "excluded": {},
+      "figure_graded": 652,
+      "figure_pct": 79.61,
       "grades": {
         "family": 486,
         "inherited": 166,
@@ -417,6 +429,8 @@
         "total": 14
       },
       "excluded": {},
+      "figure_graded": 119,
+      "figure_pct": 90.15,
       "grades": {
         "alias": 108,
         "closest": 11,
@@ -439,6 +453,8 @@
         "total": 3
       },
       "excluded": {},
+      "figure_graded": 2,
+      "figure_pct": 40.0,
       "grades": {
         "closest": 1,
         "keyword": 1,
@@ -461,6 +477,8 @@
         "total": 136
       },
       "excluded": {},
+      "figure_graded": 10869,
+      "figure_pct": 52.59,
       "grades": {
         "family": 10868,
         "inherited": 1,
@@ -491,6 +509,8 @@
         "ship launcher cell": 3,
         "weapon bay": 1
       },
+      "figure_graded": 349,
+      "figure_pct": 84.71,
       "grades": {
         "alias": 293,
         "closest": 4,
@@ -516,6 +536,8 @@
       "excluded": {
         "static weapon emplacements": 12
       },
+      "figure_graded": 511,
+      "figure_pct": 99.42,
       "grades": {
         "alias": 328,
         "closest": 31,
@@ -816,6 +838,8 @@
         "total": 49
       },
       "excluded": {},
+      "figure_graded": 511,
+      "figure_pct": 91.25,
       "grades": {
         "family": 465,
         "inherited": 46,
