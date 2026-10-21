@@ -9,6 +9,9 @@
 #
 # Modes (default: the phase suite):
 #   --baseline        run once without AEE, for comparison
+#   --load            headless load gate: start the server, wait for
+#                     "Game started", fail on any script error and assert
+#                     every matcher rung answered (tests/docker/verify_load.py)
 #   --maps            run the mission on several worlds, assert each biome
 #   --hosts           load each supported host mod and assert compat
 #   --soak            long AI/wildlife soak (--soak-min N, default 20)
@@ -54,6 +57,7 @@ WITH_CLIENT=0
 while [ $# -gt 0 ]; do
     case "$1" in
     --baseline) MODE="baseline" ;;
+    --load) MODE="load" ;;
     --maps) MODE="maps" ;;
     --hosts) MODE="hosts" ;;
     --soak) MODE="soak" ;;
@@ -298,6 +302,60 @@ fi
 
 # CBA is shared by every mode and every concurrent run, so fetch it once.
 ensure_cba
+
+# ── Headless load gate ──────────────────────────────────────────────────────
+# Boots the mod on a dedicated server and fails on anything the server should
+# not say: a script error, a matcher function that did not compile, or a
+# matcher rung that stopped answering.  The mission lives at
+# tests/docker/missions/load_gate.Stratis and only reports what the matchers
+# returned; tests/docker/verify_load.py holds the verdict.  -autoInit boots
+# the mission with no client, so server.cfg must declare a persistent
+# mission.
+if [ "$MODE" = "load" ]; then
+    echo "==> headless load gate"
+    cat >"$CONFIGS/server.cfg" <<CFGEOF
+hostname = "AEE Load Gate";
+password = "";
+passwordAdmin = "";
+maxPlayers = 8;
+persistent = 1;
+loopback = 1;
+kickDuplicate = 0;
+BattlEye = 0;
+verifySignatures = 0;
+class Missions {
+    class AEELoadGate { template = "load_gate.Stratis"; difficulty = "custom"; };
+};
+CFGEOF
+    cat >"$RUN_DIR/docker-compose.load.yml" <<YAMLEOF
+services:
+  aee-test:
+    environment:
+      - ARMA3_SERVER__PARAMS=-autoInit -noBattlEye -mod=mods/@aee;mods/@cba_a3
+      - ARMA3_SERVER__MISSION=load_gate.Stratis
+YAMLEOF
+    clean_profiles
+    # The global list is empty this early in the script, so this block seeds
+    # it with the base file. The EXIT trap then tears the container down on
+    # every path, including a failure inside this block.
+    COMPOSE_FILES=(-f "$DOCKER/docker-compose.yml" -f "$RUN_DIR/docker-compose.load.yml")
+    docker compose "${COMPOSE_FILES[@]}" up -d --force-recreate
+    for _ in $(seq 1 60); do
+        if docker compose "${COMPOSE_FILES[@]}" logs 2>/dev/null | grep -q "\[LOAD-GATE\] DONE"; then
+            break
+        fi
+        sleep 5
+    done
+    docker compose "${COMPOSE_FILES[@]}" logs >"$RUN_DIR/run.load.log" 2>&1
+    docker compose "${COMPOSE_FILES[@]}" down 2>/dev/null || true
+    clean_profiles
+    if python3 "$DOCKER/verify_load.py" "$RUN_DIR/run.load.log"; then
+        echo "==> load gate PASS"
+        exit 0
+    fi
+    echo "==> load gate FAIL; full log at $RUN_DIR/run.load.log"
+    exit 1
+fi
 
 # ── Dev console wiring (AEE_DEV=1) ──────────────────────────────────────────
 # Builds the standalone dev harness and the native extension, mounts both and
