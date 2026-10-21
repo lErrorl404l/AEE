@@ -199,6 +199,47 @@ Sixteen aircraft classes stay at type, one reason each:
   shared alias `falcon` also answers the F-16A entry and the catalogue holds
   two F-16C blocks. The display names no single entry.
 
+## Optics: second sourcing pass
+
+Fourteen products are now corpus entries with held manufacturer documents
+under `data/device/sources/`, each with its digest and locator in
+`data/device/sources.json`:
+
+| Entry | Figures held | Classes bound |
+|---|---|---|
+| `aimpoint_micro_t1` | 1x, 18 mm clear aperture, 84 g | 8 |
+| `aimpoint_micro_t2` | 1x, 18 mm; **mass absent** — the page states 102 g in its table and 94 g on its card, so neither is entered | 15 |
+| `eotech_xps3` | 1x, 255 g | 8 (the G33 + XPS3 combos) |
+| `eotech_g33` | 3x, 300 g with mount, exit pupil 7.6 mm | none: every class naming it also names a sight |
+| `eotech_vudu_1_6x24` | 1-6x, 24 mm, 570 g | 6, at family level (the class text fixes no magnification) |
+| `trijicon_ta01nsn` | 4x, 32 mm, 7 deg, 442.25 g, exit pupil 8.13 mm | 8 |
+| `trijicon_ta31rco` | 4x, 32 mm, 7 deg, 422.41 g, exit pupil 8.13 mm | 33 |
+| `trijicon_ta11mgo` | 3.5x, 35 mm, 5.5 deg, 498.95 g, exit pupil 9.91 mm | 1 |
+| `trijicon_mro` | 1x, 25 mm, 136.08 g | none: no class names it |
+| `trijicon_rm05` | 1x, 34.02 g | 3 |
+| `trijicon_reap35` | 1.75x, 35 mm, 12 deg, 798.89 g | 1 (class says "20"; only the 35 mm page exists) |
+| `vortex_razor_gen3` | 1-10x, 24 mm, 609.5 g | 7 |
+| `sb_pmii_3_12x50` | 3-12x, 50 mm, 860 g, exit pupil 4.3 mm | 1 |
+| `sb_pmii_5_25x56` | 5-25x, 56 mm, 1125 g, exit pupil 2.3 mm | 3 |
+
+Bucketed after matching, class lists in `excluded_classes.txt`:
+**Arma in-game optic** 44 (ARCO, ACO, Holosight, SOS, MRCO, LRPS, DMS, MRD,
+Yorris, Nightstalker, TWS, AMS, KHS, the ACE 2D/PIP re-renders, R3F
+J4/J8/J10/NF/NF42/FELIN) and **identity failure** 4 (`R3F_ZEISS`,
+`rhsusf_acc_mrds`, the two `DH 5-20x56` declarations).
+
+Left at type, grouped: Nightforce ATACR and NXS (Cloudflare Turnstile,
+archives 429 — the NXS entry already in the corpus binds 8 classes, the
+ATACR classes do not name a magnification), Trijicon AccuPower 5 (retired,
+no spec table), Leupold Mark 4 / M8541 / premier 6 (line withdrawn, archives
+429), ELCAN M145 MGO 2 (parking page), AN/PVS-27 and XM157 (no maker page),
+BelOMO PK-AS and NIT-A 5 (host times out), NPZ 1P63 / 1PN34 / PGO-7V 6 (not
+in the catalogue), NPZ 1P76 Rakurs 1 (the only page is the civilian
+PO1x20-A, so it is not bound to the military class), SMAW and MAAWS sights
+13, MG42 AA sight 1, L2A2 SUIT 3, AN/PVS-2 1, M2A1 GL sight 1, R3F Zeiss
+and the RH_ family (no identity text or no page), and `Scot_LEU_MK8_T2`
+whose Mark 8 variant is not caught by the entry and is under investigation.
+
 ## Optics: variants of the sourced products
 
 Every variant of a sourced optic is bound to its own product: Mark 8 CQBSS

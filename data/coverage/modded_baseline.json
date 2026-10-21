@@ -383,24 +383,28 @@
     },
     "optics": {
       "base": {
-        "hit": 18,
-        "pct": 100.0,
-        "total": 18
+        "hit": 0,
+        "pct": 0.0,
+        "total": 0
       },
-      "excluded": {},
-      "figure_graded": 101,
-      "figure_pct": 44.69,
+      "excluded": {
+        "Arma in-game optic": 44,
+        "identity failure": 4
+      },
+      "figure_graded": 108,
+      "figure_pct": 60.67,
       "grades": {
-        "alias": 68,
-        "keyword": 33,
-        "type": 125
+        "alias": 38,
+        "exact_class": 41,
+        "keyword": 29,
+        "type": 70
       },
       "inherited": [],
       "label": "optics",
       "modded": {
-        "hit": 208,
+        "hit": 178,
         "pct": 100.0,
-        "total": 208
+        "total": 178
       },
       "reasons": {},
       "unresolved_modded": 0

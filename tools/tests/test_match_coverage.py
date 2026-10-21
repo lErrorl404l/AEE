@@ -295,9 +295,15 @@ class TestBaselineArtefact(unittest.TestCase):
                     self.assertIn("hit", counts)
                     self.assertIn("total", counts)
                     self.assertLessEqual(counts["hit"], counts["total"])
-                    self.assertGreater(counts["total"], 0)
-                    expected = round(100.0 * counts["hit"] / counts["total"], 2)
-                    self.assertAlmostEqual(counts["pct"], expected, places=6)
+                    if counts["total"]:
+                        expected = round(100.0 * counts["hit"] / counts["total"], 2)
+                        self.assertAlmostEqual(counts["pct"], expected, places=6)
+                # A half may be empty when every class in it was excluded,
+                # as the optics table now is: every base-game optic is an
+                # Arma invention and leaves under "Arma in-game optic".
+                self.assertGreater(
+                    table["base"]["total"] + table["modded"]["total"], 0
+                )
                 self.assertEqual(
                     table["unresolved_modded"],
                     table["modded"]["total"] - table["modded"]["hit"],
@@ -499,8 +505,14 @@ class TestBaselineReproduces(unittest.TestCase):
         # above while measuring nothing.
         for name, tables in self.tables.items():
             with self.subTest(table=name):
-                self.assertGreater(tables["base"]["total"], 0)
-                self.assertGreater(tables["modded"]["total"], 0)
+                measured = tables["base"]["total"] + tables["modded"]["total"]
+                self.assertGreater(measured, 0)
+                # One half may be empty only when the exclusion that emptied
+                # it is named: the optics base half is every vanilla optic,
+                # all of them Arma inventions in the "Arma in-game optic"
+                # bucket. A silent empty half is still a failure.
+                if tables["base"]["total"] == 0 or tables["modded"]["total"] == 0:
+                    self.assertTrue(tables.get("excluded"))
 
     def test_the_gap_files_are_what_the_tool_writes_now(self):
         """A stale gap list is worse than none: it hides the real worklist."""

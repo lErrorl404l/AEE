@@ -93,6 +93,16 @@ HELMET_ROOT = "helmetbase"
 BACKPACK_ROOT = "bag_base"
 NVG_ROOT = "nvgoggles"
 
+# The base game's sights are Arma's own inventions: an ARCO, an ACO, a
+# Nightstalker. No manufacturer product exists, so no source can ever name
+# them. The R3F names are the same kind of thing, invented designations.
+IN_GAME_OPTIC_TERM = re.compile(
+    r"^(optic_|ace_optic_|r3f_j4$|r3f_j8|r3f_j10|r3f_nf|r3f_felin)", re.I
+)
+# A display that names no model: RHS's own label, or a product that does
+# not exist.
+IDENTITY_FAILURE_TERM = re.compile(r"^(r3f_zeiss|rhsusf_acc_mrds|rhs_acc_dh520x56)$", re.I)
+IDENTITY_FAILURE_DISPLAY = {"MRDS", "DH 5-20x56"}
 # The base game names no product for its own armament: a Titan, a Zephyr, a
 # 120 mm cannon. Those classes are real items of the table and no source can
 # name them, so they leave under the kind they are rather than stay open.
@@ -1429,6 +1439,22 @@ def measure(scanned: list, base: set[str]) -> dict:
         ("optics", "optic", "optic", _optic_rows(scanned, False)),
     ):
         selected, dropped = _device_scope(selected, label)
+        if label == "optics":
+            keep = []
+            for r in selected:
+                if not match_d(r["class"], r["display"]).get("type"):
+                    keep.append(r)
+                elif r["class"].lower() in {
+                    "r3f_zeiss",
+                    "rhsusf_acc_mrds",
+                    "rhs_acc_dh520x56",
+                } or r["display"] in IDENTITY_FAILURE_DISPLAY:
+                    dropped.setdefault("identity failure", []).append(r["class"])
+                elif IN_GAME_OPTIC_TERM.search(r["class"]):
+                    dropped.setdefault("Arma in-game optic", []).append(r["class"])
+                else:
+                    keep.append(r)
+            selected = keep
         if not selected:
             continue
         dtable = device_rows(DEVICE, family)
