@@ -10389,6 +10389,40 @@
   }
  },
  {
+  "weapon_id": "bigboy45colt",
+  "names": [
+   "H6 Big Boy Rifle .45 Colt"
+  ],
+  "aliases": [
+   "bigboy45colt",
+   "h6bigboy45colt",
+   "h6bigboyrifle45colt"
+  ],
+  "manufacturer": "Henry Repeating Arms",
+  "cartridge_id": "45_colt",
+  "note": "Henry Repeating Arms H6 Big Boy Rifle .45 Colt, Model Number H006GC, Additional Specifications: 'Barrel Length 20\" | Barrel Type Octagon Blued Steel | Rate of Twist 1:16 | Overall Length 38.5\" | Weight 8.68 lbs.' 1:16 in = 406.4 mm; 20 in = 508 mm; 8.68 lb = 3.937 kg. The corpus twist of 0.508 m is not supported by the maker page: the 1:20 rows on the same page belong to the .44 Magnum and .44 Special variants.",
+  "values": {
+   "cartridge": {
+    "value": ".45 Colt",
+    "unit": "name",
+    "source": "henry_bigboy45",
+    "grade": "claimed"
+   },
+   "twist_m": {
+    "value": 0.4064,
+    "unit": "m per turn",
+    "source": "henry_bigboy45",
+    "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.937,
+    "unit": "kg",
+    "source": "henry_bigboy45",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
   "weapon_id": "bizon",
   "names": [
    "PP-19 Bizon"
@@ -10477,7 +10511,7 @@
    "blackwidowsingleactionrevolver"
   ],
   "manufacturer": "NAA",
-  "cartridge_id": "",
+  "cartridge_id": "22_winchester_magnum",
   "note": "TWIST NOT STATED. The manufacturer product page gives only 'Black Widow w/ Fixed Sights \u2013 2\u2033 Barrel .22 Magnum' with barrel length, capacity and weight; it publishes no twist rate. A search of the manufacturer site for 'twist' returns 'No results found', and the NAA mini-revolver manual states no twist. No citable twist exists, so the corpus lead (406 mm) is not copied.",
   "values": {
    "cartridge": {
@@ -10799,7 +10833,7 @@
    "carbonfury300prc"
   ],
   "manufacturer": "Fierce Firearms",
-  "cartridge_id": "",
+  "cartridge_id": "300_precision_rifle_cartridge",
   "note": "Fierce Firearms Carbon Fury manufacturer page, CALIBERS list: \"6.5 PRC (twist: 1-8 | barrel: 24\\\")\" and \".300 PRC (twist: 1-9 | barrel: 24\\\")\". States the .300 PRC barrel has 1 turn in 9 inches = 228.6 mm per turn.",
   "values": {
    "cartridge": {
@@ -10928,7 +10962,7 @@
    "cdxmckraken300prc"
   ],
   "manufacturer": "Cadex Defense",
-  "cartridge_id": "",
+  "cartridge_id": "300_precision_rifle_cartridge",
   "note": "Cadex product page, .300 PRC barrel option: \"300 PRC | 26\\\" Bartlein Barrel | 1:8\\\" Twist | 5/8\\\"-24 TPI | MX1 muzzle brake\". States the .300 PRC configuration of the CDX-MC Kraken uses a 26 inch (660.4 mm) Bartlein barrel with 1 turn in 8 inches twist = 203.2 mm per turn.",
   "values": {
    "cartridge": {
@@ -11863,7 +11897,7 @@
    "sigsauercrossmagnum300prc"
   ],
   "manufacturer": "SIG Sauer",
-  "cartridge_id": "",
+  "cartridge_id": "300_precision_rifle_cartridge",
   "note": "CROSS Magnum 300PRC (United States). CROSS Magnum family. The SIG CROSS Magnum product specification table states TWIST RATE 1:9 = 228.6 mm for the .300 Win Mag SKU; the .300 PRC barrel of the same family carries the same 1:9 rate.",
   "values": {
    "cartridge": {
@@ -13008,7 +13042,7 @@
    "deserteagle429desemiautopistol"
   ],
   "manufacturer": "Magnum Research",
-  "cartridge_id": "",
+  "cartridge_id": "429_desert_eagle",
   "note": "Manufacturer owner's manual, Mark XIX specifications table, row 'Polygonal Rifling (Right Hand Twist)', column '.429 DE': '429 DE: 1 in 18'. A separate specification line states 'Rifling Type: R.H. 6-Rib polygonal barrel'. States the .429 DE barrel has a right-hand twist of 1 turn in 18 inches = 457.2 mm, 6 ribs. The corpus lead (457.0 mm) is close but is not the source; the manufacturer figure 457.2 mm is used.",
   "values": {
    "cartridge": {
@@ -13397,7 +13431,7 @@
    "iwiimidror"
   ],
   "manufacturer": "IWI/IMI",
-  "cartridge_id": "",
+  "cartridge_id": "8_x_57_is",
   "note": "Dror (Israel). twist not stated",
   "values": {
    "cartridge": {
@@ -14105,7 +14139,7 @@
    "fg42"
   ],
   "manufacturer": "",
-  "cartridge_id": "",
+  "cartridge_id": "8_x_57_is",
   "note": "FG42 (Germany). TM-E 30-451 (1945), Figure 11: 'Fallschirmjaegergewehr 42, caliber 7.92 mm automatic rifle'. No twist is stated.",
   "values": {
    "cartridge": {
@@ -17838,7 +17872,7 @@
    "hk437"
   ],
   "manufacturer": "",
-  "cartridge_id": "",
+  "cartridge_id": "300_aac_blackout",
   "note": "HK437 (Germany). HK HK437 Handbook technical data: 'Calibre .300 BLK (7.62 mm x 35)'; 'Barrel profile, twist, direction 4 groove rifling, 8 in / 203 mm right-hand twist'. 8 in = 203.2 mm. No chambering standard is given in the task.",
   "values": {
    "cartridge": {
@@ -22036,7 +22070,7 @@
    "m250"
   ],
   "manufacturer": "",
-  "cartridge_id": "",
+  "cartridge_id": "277_sig_fury",
   "note": "M250 (United States). Adopted US Army designation of the XM250; not an AR-pattern weapon.",
   "values": {
    "cartridge": {
@@ -23307,7 +23341,7 @@
   ],
   "aliases": [],
   "manufacturer": "",
-  "cartridge_id": "",
+  "cartridge_id": "277_sig_fury",
   "note": "M7 (United States). Adopted US Army designation of the XM7.",
   "values": {
    "cartridge": {
@@ -24204,7 +24238,7 @@
    "magnuslr300prc"
   ],
   "manufacturer": "Gunwerks",
-  "cartridge_id": "",
+  "cartridge_id": "300_precision_rifle_cartridge",
   "note": "Gunwerks Magnus Rifle System technical specifications: \"Twist Rates: .22 cal - 8 twist, 6mm 7.5 twist, 6.5mm - 8 twist, 7mm 8.5 twist, .30 cal - 9 twist, .338 cal - 9.5 twist, .45 cal - 20 twist, .50 cal 20 twist\", with .300 PRC listed under Calibers Available. The .300 PRC is a .30 calibre chambering, so the twist is 1 turn in 9 inches = 228.6 mm. Groove count not stated; left null.",
   "values": {
    "cartridge": {
@@ -25022,7 +25056,7 @@
    "sigsauermcxrattler300"
   ],
   "manufacturer": "SIG Sauer",
-  "cartridge_id": "",
+  "cartridge_id": "300_aac_blackout",
   "note": "MCX Rattler 300BLK (United States). SIG 2023 catalog RATTLER 300 BLACKOUT column: 5.5 in barrel, RIFLING 1:5 = 127.0 mm.",
   "values": {
    "cartridge": {
@@ -25053,7 +25087,7 @@
    "xm7"
   ],
   "manufacturer": "",
-  "cartridge_id": "",
+  "cartridge_id": "277_sig_fury",
   "note": "SIG MCX Spear (United States). SIG lists a 1:7 twist for the MCX-SPEAR; not confirmed in a downloaded datasheet. XM5 (United States). Original NGSW designation of the MCX-SPEAR, later XM7. XM7 (United States). US Army NGSW-Rifle designation of the MCX-SPEAR, later M7.",
   "values": {
    "cartridge": {
@@ -25324,7 +25358,7 @@
    "mg34"
   ],
   "manufacturer": "",
-  "cartridge_id": "",
+  "cartridge_id": "8_x_57_is",
   "note": "MG34 (Germany). TM-E 30-451 (1945): 'M.G. 34, caliber 7.92 mm'. No twist is stated.",
   "values": {
    "cartridge": {
@@ -25397,7 +25431,7 @@
    "mg42"
   ],
   "manufacturer": "",
-  "cartridge_id": "",
+  "cartridge_id": "8_x_57_is",
   "note": "MG42 (Germany). TM-E 30-451 (1945), Figure 14: 'M.G. 42, caliber 7.92 mm, on bipod mount'. No twist is stated.",
   "values": {
    "cartridge": {
@@ -30435,14 +30469,20 @@
    "sigsauerp238"
   ],
   "manufacturer": "SIG Sauer",
-  "cartridge_id": "",
-  "note": "P238 (United States). SIG Sauer Inc. P238 micro 1911 in .380 ACP. No manufacturer twist row in the held documents.",
+  "cartridge_id": "380_automatic",
+  "note": "SIG SAUER P238/P938 Operator's Manual 17SIG2387 Rev 03, specifications table, P238 column: 'Caliber .380ACP (9mm short) | Barrel Length 2.7\" | Weight w/ Magazine 15.2 oz'. 15.2 oz = 0.431 kg with an empty magazine; 2.7 in = 68.6 mm. The manual states no twist rate and the sigsauer.com product pages carry no specification table, so the twist stays absent.",
   "values": {
    "cartridge": {
     "value": ".380 ACP (9x17mm)",
     "unit": "name",
     "source": "sig2011_catalog",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 0.431,
+    "unit": "kg",
+    "source": "sig_p238_operator_manual",
+    "grade": "documented"
    }
   }
  },
@@ -30932,6 +30972,32 @@
     "unit": "name",
     "source": "walther_p38_manual",
     "grade": "documented"
+   }
+  }
+ },
+ {
+  "weapon_id": "p3at",
+  "names": [
+   "P-3AT"
+  ],
+  "aliases": [
+   "p3at"
+  ],
+  "manufacturer": "Kel-Tec",
+  "cartridge_id": "380_automatic",
+  "note": "KelTec P3AT specifications table: 'Caliber .380ACP 9x17mm | Weight Unloaded 7.7oz 218g | Overall Length 5.2\" 132mm | Barrel Length 2.7\" 68mm'. The table states no rifling row, so the twist stays absent and the lead stays open. Mass and barrel length are stated in both units on the page.",
+  "values": {
+   "cartridge": {
+    "value": ".380 ACP",
+    "unit": "name",
+    "source": "keltec_p3at_spec",
+    "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 0.218,
+    "unit": "kg",
+    "source": "keltec_p3at_spec",
+    "grade": "claimed"
    }
   }
  },
@@ -32093,6 +32159,32 @@
     "unit": "count",
     "source": "cip_762x39",
     "grade": "standard"
+   }
+  }
+ },
+ {
+  "weapon_id": "pmr30",
+  "names": [
+   "PMR30"
+  ],
+  "aliases": [
+   "pmr30"
+  ],
+  "manufacturer": "Kel-Tec",
+  "cartridge_id": "22_winchester_magnum",
+  "note": "KelTec PMR30 specifications table: 'Weight Unloaded 14oz 397g | Overall Length 7.9\" 201mm | Barrel Length 4.3\" 109mm'. The table states no rifling row, so the twist stays absent and the lead stays open. 397 g = 0.397 kg; 4.3 in = 109 mm.",
+  "values": {
+   "cartridge": {
+    "value": ".22 Winchester Magnum",
+    "unit": "name",
+    "source": "keltec_pmr30_spec",
+    "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 0.397,
+    "unit": "kg",
+    "source": "keltec_pmr30_spec",
+    "grade": "claimed"
    }
   }
  },
@@ -34049,7 +34141,7 @@
    "rangeriisingleactiontopbreakrevolver"
   ],
   "manufacturer": "NAA",
-  "cartridge_id": "",
+  "cartridge_id": "22_winchester_magnum",
   "note": "TWIST NOT STATED. The manufacturer product page gives only '22 Magnum \u2013 1 5 / 8 \u201d Barrel .22 Magnum Long Rifle Conversion Cylinder available as NAA-22MC-R 5-Shot'; it publishes no twist rate. A search of the manufacturer site for 'twist' returns 'No results found'. No citable twist exists, so the corpus lead (305 mm) is not copied.",
   "values": {
    "cartridge": {
@@ -36258,7 +36350,7 @@
    "savagearmssavage93"
   ],
   "manufacturer": "Savage Arms",
-  "cartridge_id": "",
+  "cartridge_id": "22_winchester_magnum",
   "note": "93 (United States). Model 93 rimfire; no twist published",
   "values": {
    "cartridge": {
@@ -37010,7 +37102,7 @@
    "sigsauersg510"
   ],
   "manufacturer": "SIG Sauer",
-  "cartridge_id": "",
+  "cartridge_id": "7_5_x_55_suisse",
   "note": "SG510 (Switzerland). SIG SG 510 (Stgw 57). No pitch in the held SIG documents.",
   "values": {
    "cartridge": {
@@ -37031,7 +37123,7 @@
    "sigsauersg5101"
   ],
   "manufacturer": "SIG Sauer",
-  "cartridge_id": "",
+  "cartridge_id": "7_5_x_55_suisse",
   "note": "SG 510-1 (Switzerland). SG 510-1 is an SG 510 variant. No pitch in the held SIG documents.",
   "values": {
    "cartridge": {
@@ -37052,7 +37144,7 @@
    "sigsauersg5102"
   ],
   "manufacturer": "SIG Sauer",
-  "cartridge_id": "",
+  "cartridge_id": "7_5_x_55_suisse",
   "note": "SG 510-2 (Switzerland). SG 510-2 is an SG 510 variant. No pitch in the held SIG documents.",
   "values": {
    "cartridge": {
@@ -37073,7 +37165,7 @@
    "sigsauersg5103"
   ],
   "manufacturer": "SIG Sauer",
-  "cartridge_id": "",
+  "cartridge_id": "7_5_x_55_suisse",
   "note": "SG 510-3 (Switzerland). SG 510-3 is an SG 510 variant. No pitch in the held SIG documents.",
   "values": {
    "cartridge": {
@@ -37427,7 +37519,7 @@
    "sigsauersg553bk"
   ],
   "manufacturer": "SIG Sauer",
-  "cartridge_id": "",
+  "cartridge_id": "300_aac_blackout",
   "note": "SG 553 300 BK (Switzerland). SIG 2023 Swiss catalog: SG553 300 BK (LL 305 mm, Drall 8 in). 8 in = 203.2 mm.",
   "values": {
    "cartridge": {
@@ -44081,7 +44173,7 @@
    "wmp"
   ],
   "manufacturer": "Walther",
-  "cartridge_id": "",
+  "cartridge_id": "22_winchester_magnum",
   "note": "WMP (Germany). twist not stated",
   "values": {
    "cartridge": {
@@ -44553,7 +44645,7 @@
    "xm250"
   ],
   "manufacturer": "",
-  "cartridge_id": "",
+  "cartridge_id": "277_sig_fury",
   "note": "XM250 (United States). Belt-fed light machine gun; not an AR-pattern weapon. Twist not stated in cited sheet.",
   "values": {
    "cartridge": {

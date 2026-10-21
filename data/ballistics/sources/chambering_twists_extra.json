@@ -56,6 +56,24 @@
       "url": "https://www.alexanderarms.com/product/50-beowulf-12-diy-upper-kit/",
       "sha256": "e49278eea0dff739531cb91d07895aa50478d69fb18c61b4679c8c0d56428fa2",
       "capture": "local-cache-only"
+    },
+    {
+      "source_id": "cip_tdcc_8x57is",
+      "title": "C.I.P. TDCC, Table I (Rimless cartridges): 8 x 57 IS, alternative name 8 x 57 JS (Country of origin: DE, date 84-06-14, revision 16-05-18)",
+      "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-i/8-x-57-is-en.pdf",
+      "sha256": "9327148bb2d5db817a166f721dd801cc2f25261815341a4d83ef54d2227c6e6e",
+      "capture": "local-cache-only",
+      "locator": "Drawing header (TAB I, 8 x 57 IS, Alternative Names: 8 x 57 JS) and the Grooves block: N = 4, u = 240.00 mm",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "source_id": "cip_tdcc_7_5x55",
+      "title": "C.I.P. TDCC, Table I (Rimless cartridges): 7,5 x 55 Suisse, alternative name 7,5 x 55 Swiss (Country of origin: CH, date 84-06-14, revision 16-05-18)",
+      "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-i/7-5-x-55-suisse-en.pdf",
+      "sha256": "b60efcf5163989276f8d5b4cbc8c17175080466d839910cb7f1a192c8ca3ebb1",
+      "capture": "local-cache-only",
+      "locator": "Drawing header (TAB I, 7,5 x 55 Suisse, Alternative Names: 7,5 x 55 Swiss) and the Grooves block: N = 4, u = 270.00 mm",
+      "retrieved": "2026-10-21"
     }
   ],
   "twists": [

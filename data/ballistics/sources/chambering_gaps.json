@@ -1,7 +1,7 @@
 {
  "retrieved": "2026-09-23",
- "weapons_resolved": 1567,
- "weapons_unresolved": 60,
+ "weapons_resolved": 1595,
+ "weapons_unresolved": 35,
  "gaps": [
   {
    "chambering": "6.5mm (6.5 Creedmoor/6.5 PRC)",
@@ -19,63 +19,6 @@
    "note": ""
   },
   {
-   "chambering": "7.92x57mm Mauser",
-   "canonical_key": "792x57mauser",
-   "weapons": [
-    "dror",
-    "fg42",
-    "m76",
-    "mg34",
-    "mg42"
-   ],
-   "count": 5,
-   "status": "absent_from_register",
-   "candidate_ids": [],
-   "note": ""
-  },
-  {
-   "chambering": ".300 PRC",
-   "canonical_key": "300prc",
-   "weapons": [
-    "carbonfury",
-    "cdxmckraken",
-    "crossmagnum300prc",
-    "magnuslr"
-   ],
-   "count": 4,
-   "status": "absent_from_register",
-   "candidate_ids": [],
-   "note": ""
-  },
-  {
-   "chambering": "6.8x51mm",
-   "canonical_key": "68x51",
-   "weapons": [
-    "m250",
-    "m7",
-    "mcxspear",
-    "xm250"
-   ],
-   "count": 4,
-   "status": "absent_from_register",
-   "candidate_ids": [],
-   "note": ""
-  },
-  {
-   "chambering": "7.5x55mm Swiss",
-   "canonical_key": "75x55swiss",
-   "weapons": [
-    "sg510",
-    "sg5101",
-    "sg5102",
-    "sg5103"
-   ],
-   "count": 4,
-   "status": "absent_from_register",
-   "candidate_ids": [],
-   "note": ""
-  },
-  {
    "chambering": "40x46mm",
    "canonical_key": "40x46",
    "weapons": [
@@ -84,42 +27,6 @@
     "m79"
    ],
    "count": 3,
-   "status": "absent_from_register",
-   "candidate_ids": [],
-   "note": ""
-  },
-  {
-   "chambering": ".22 WMR",
-   "canonical_key": "22wmr",
-   "weapons": [
-    "savage93",
-    "wmp"
-   ],
-   "count": 2,
-   "status": "absent_from_register",
-   "candidate_ids": [],
-   "note": ""
-  },
-  {
-   "chambering": ".22 Winchester Magnum",
-   "canonical_key": "22winchestermag",
-   "weapons": [
-    "blackwidow",
-    "rangerii"
-   ],
-   "count": 2,
-   "status": "absent_from_register",
-   "candidate_ids": [],
-   "note": ""
-  },
-  {
-   "chambering": "300 BLK (7.62x35mm)",
-   "canonical_key": "300blk762x35",
-   "weapons": [
-    "mcxrattler300",
-    "sg553bk"
-   ],
-   "count": 2,
    "status": "absent_from_register",
    "candidate_ids": [],
    "note": ""
@@ -153,17 +60,6 @@
    "note": ""
   },
   {
-   "chambering": ".300 BLK (7.62x35mm)",
-   "canonical_key": "300blk762x35",
-   "weapons": [
-    "hk437"
-   ],
-   "count": 1,
-   "status": "absent_from_register",
-   "candidate_ids": [],
-   "note": ""
-  },
-  {
    "chambering": ".357 Magnum / 9x19mm",
    "canonical_key": "357mag/9x19",
    "weapons": [
@@ -175,31 +71,6 @@
     "357_magnum",
     "9x19"
    ],
-   "note": ""
-  },
-  {
-   "chambering": ".380 ACP (9x17mm)",
-   "canonical_key": "380acp9x17",
-   "weapons": [
-    "p238"
-   ],
-   "count": 1,
-   "status": "ambiguous",
-   "candidate_ids": [
-    "380_automatic",
-    "9_x_17"
-   ],
-   "note": ""
-  },
-  {
-   "chambering": ".429 DE",
-   "canonical_key": "429de",
-   "weapons": [
-    "deserteagle429de"
-   ],
-   "count": 1,
-   "status": "absent_from_register",
-   "candidate_ids": [],
    "note": ""
   },
   {
@@ -375,6 +246,17 @@
     "308_win",
     "762x51_nato"
    ],
+   "note": ""
+  },
+  {
+   "chambering": "7.92x57mm Mauser",
+   "canonical_key": "792x57mauser",
+   "weapons": [
+    "m76"
+   ],
+   "count": 1,
+   "status": "absent_from_register",
+   "candidate_ids": [],
    "note": ""
   },
   {

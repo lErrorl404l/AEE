@@ -44,7 +44,7 @@ def main():
     chamberings = {}
     for lead in leads:
         if lead["verdict"] == "no_standard":
-            chamberings.setdefault(lead["calibre_key"], lead)
+            chamberings.setdefault(lead["chambering_key"], lead)
     unique = {}
     for lead in wanted:
         unique.setdefault(lead["weapon_id"], lead)
@@ -81,8 +81,8 @@ def main():
     with path.open("w", encoding="utf-8", newline="") as handle:
         writer = csv.writer(handle, delimiter="\t")
         writer.writerow(["chambering", "cartridge_name", "corpus_twist_mm"])
-        for lead in sorted(chamberings.values(), key=lambda item: item["calibre_key"]):
-            writer.writerow([lead["calibre_key"], lead["cartridge"],
+        for lead in sorted(chamberings.values(), key=lambda item: item["chambering_key"]):
+            writer.writerow([lead["chambering_key"], lead["cartridge"],
                              round(lead["twist_m"] * 1000, 2)])
     print(f"weapons to verify: {len(ordered)}, batches: {len(batches)}, "
           f"chamberings without a standard: {len(chamberings)}")
