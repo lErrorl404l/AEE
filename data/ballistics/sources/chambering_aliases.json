@@ -1,5 +1,5 @@
 {
- "retrieved": "2026-09-23",
+ "retrieved": "2026-10-21",
  "note": "A chambering abbreviation that differs from the register name. Each entry is an identity claim between two names for one cartridge, so each carries the source that states the equivalence. Keyed on the canonical key (see tools/validation/chambering.py), never on the raw text, so a register that renames a record does not break the alias.",
  "aliases": [
   {
@@ -37,6 +37,24 @@
    "cartridge_id": "460_weath_mag",
    "note": ".460 Weatherby Magnum is the register's own name for the same cartridge, written in full.",
    "source": "cip_tdcc"
+  },
+  {
+   "key": "300blk",
+   "cartridge_id": "300_aac_blackout",
+   "note": ".300 BLK is the SAAMI short name. The held SAAMI row is titled '300 AAC BLACKOUT [300 BLK]', so the two names are one cartridge.",
+   "source": "saami_z299_4"
+  },
+  {
+   "key": "429de",
+   "cartridge_id": "429_desert_eagle",
+   "note": ".429 DE is the abbreviation on the SAAMI row '429 DESERT EAGLE (429 DE)'.",
+   "source": "saami_z299_3"
+  },
+  {
+   "key": "300prc",
+   "cartridge_id": "300_precision_rifle_cartridge",
+   "note": "C.I.P. registers the cartridge under its full name and the held SAAMI row is titled '300 PRECISION RIFLE CARTRIDGE [300 PRC]', so 300 PRC abbreviates the same cartridge.",
+   "source": "saami_z299_4"
   }
  ]
 }

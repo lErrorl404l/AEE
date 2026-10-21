@@ -4407,6 +4407,39 @@
   }
  },
  {
+  "cartridge_id": "22_winchester_magnum",
+  "names": [
+   ".22 Winchester Magnum Rimfire",
+   ".22 Winchester Magnum",
+   ".22 WMR",
+   "22 WMR"
+  ],
+  "case_family": "",
+  "classification": {
+   "cip_tab": "",
+   "case_type": "rimfire",
+   "cartridge_type": "rimfire",
+   "origin_country": "US",
+   "year_created": "",
+   "classification_source": "saami_z299_1"
+  },
+  "note": "Rimfire cartridge. SAAMI registers it as 22 Winchester Magnum Rimfire; C.I.P. does not list the cartridge, so no C.I.P. dimensions are entered.",
+  "values": {
+   "standard_twist_m": {
+    "value": 0.4064,
+    "unit": "m per turn",
+    "source": "saami_z299_1",
+    "grade": "standard"
+   },
+   "grooves": {
+    "value": 6,
+    "unit": "count",
+    "source": "saami_z299_1",
+    "grade": "standard"
+   }
+  }
+ },
+ {
   "cartridge_id": "240_belt_riml_n_e",
   "names": [
    "240 Belt. Riml. N.E."

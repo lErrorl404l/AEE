@@ -322,6 +322,31 @@ NEW_CARTRIDGES = [
             },
         },
     },
+    # SAAMI registers both cartridges and the held tables state their test
+    # barrel drawings, but no record existed, so every weapon chambered for
+    # one reached no cartridge. The twist is filled by the merge below from
+    # the held row, not entered here: the row carries its own page locator
+    # and the value must not be written twice.
+    {
+        "cartridge_id": "22_winchester_magnum",
+        "names": [
+            ".22 Winchester Magnum Rimfire",
+            ".22 Winchester Magnum",
+            ".22 WMR",
+            "22 WMR",
+        ],
+        "case_family": "",
+        "classification": {
+            "cip_tab": "",
+            "case_type": "rimfire",
+            "cartridge_type": "rimfire",
+            "origin_country": "US",
+            "year_created": "",
+            "classification_source": "saami_z299_1",
+        },
+        "note": "Rimfire cartridge. SAAMI registers it as 22 Winchester Magnum Rimfire; C.I.P. does not list the cartridge, so no C.I.P. dimensions are entered.",
+        "values": {},
+    },
 ]
 
 

@@ -1,0 +1,341 @@
+{
+ "retrieved": "2026-10-21",
+ "note": "Verification of the weapon-lead worklist against maker publications. Each figure was read from a capture whose sha256 is recorded here and held in the local source cache; no page is vendored. A lead whose maker states no twist keeps an absent twist and is listed under searches with the reason.",
+ "sources": [
+  {
+   "source_id": "keltec_p3at_spec",
+   "title": "P3AT Pistol | Six Leading Innovations, One Powerful Pistol | KelTec",
+   "url": "https://www.keltecweapons.com/firearms/pistols/p3at/",
+   "sha256": "234d01227a9f3a50dbb100bc23994591badcf4c7b8c54b587b4f60fd6ffaa2d7",
+   "capture": "ba_lead_keltec_p3at.html",
+   "publisher": "KelTec",
+   "tier": 4,
+   "locator": "Specs table, rows 'Weight Unloaded', 'Barrel Length'"
+  },
+  {
+   "source_id": "sig_p238_operator_manual",
+   "title": "P238 / P938 Operator's Manual (17SIG2387, Rev 03)",
+   "url": "https://www.sigsauer.com/media/sigsauer/resources/17SIG2387-P238-P938OperatorManual_1202508-01_Rev03_proof2.pdf",
+   "sha256": "9584c3ed08bcca10312a95b700aa1daeae59609f27ed025726bd8bf083bf88a7",
+   "capture": "ba_lead_sig_p238_manual.pdf",
+   "publisher": "SIG SAUER",
+   "tier": 4,
+   "locator": "Specifications table (P238 column: Caliber .380ACP, Overall Length 5.5\", Barrel Length 2.7\", Weight w/ Magazine 15.2 oz)"
+  },
+  {
+   "source_id": "staccato_c_spec",
+   "title": "Staccato C - Staccato 2011 Handguns Parts & Gear",
+   "url": "https://www.staccato2011.com/staccato-c",
+   "sha256": "7cdc7a5aa2d686778a24710b65491ebf166bed7cedc6e8922f28267482bd904c",
+   "capture": "ba_lead_staccato_c.html",
+   "publisher": "Staccato 2011",
+   "tier": 4,
+   "locator": "Technical Specifications block, rows 'Barrel' and 'Weight'"
+  },
+  {
+   "source_id": "keltec_p32_spec",
+   "title": "P32 .32ACP Pistol | Easily Concealed Carry | EDC Gun | Specs | KelTec",
+   "url": "https://www.keltecweapons.com/firearms/pistols/p32/",
+   "sha256": "653eb317b7040abf24ea8322179e49aca0ae4b798f0fc9fe139955b16b71f8bc",
+   "capture": "ba_lead_keltec_p32.html",
+   "publisher": "KelTec",
+   "tier": 4,
+   "locator": "Specs table, rows 'Weight Unloaded', 'Barrel Length' (held, not used: weapon id p32 is ambiguous between KelTec and Davis Industries)"
+  },
+  {
+   "source_id": "henry_bigboy45",
+   "title": "H6 Big Boy Rifle & Carbine | Henry Repeating Arms",
+   "url": "https://www.henryusa.com/rifles/big-boy/",
+   "sha256": "5efeef3b34a80fe66046774614852981e5e33d2856c8442566f350f7b03abded",
+   "capture": "ba_lead_henry_bigboy.html",
+   "publisher": "Henry Repeating Arms",
+   "tier": 4,
+   "locator": "Specifications, H6 Big Boy Rifle .45 Colt (Model H006GC), Additional Specifications"
+  },
+  {
+   "source_id": "henry_h6_maresleg",
+   "title": "H6 Mare's Leg Pistol | Henry Repeating Arms",
+   "url": "https://www.henryusa.com/firearm/h6-mares-leg-pistol/",
+   "sha256": "90aa03374d104dd355b0f3bd20e10307cf2c89f2b7b9017cbf1deb9348cb9a46",
+   "capture": "ba_lead_henry_h6_maresleg.html",
+   "publisher": "Henry Repeating Arms",
+   "tier": 4,
+   "locator": "Specifications, H6 Mare's Leg Pistol .45 Colt (Model H006GCML)"
+  },
+  {
+   "source_id": "sarsilmaz_k12_sport",
+   "title": "K12 SPORT - Sarsilmaz",
+   "url": "https://sarsilmaz.com/en/product/k12-sport",
+   "sha256": "7587d81a1fdb323152298e22d06aea3746fccf382f5d189b90ec7884ef356273",
+   "capture": "ba_lead_sarsilmaz_k12sport.html",
+   "publisher": "Sarsilmaz Silah Sanayi",
+   "tier": 4,
+   "locator": "Technical specifications table, Rifling row"
+  },
+  {
+   "source_id": "heizer_brochure",
+   "title": "Heizer Defense Pocket Pistols product brochure",
+   "url": "https://heizerdefense.com/wp-content/uploads/2015/05/heizer-defense-pocket-pistols-productbrochurev2.pdf",
+   "sha256": "a6a59c877054fe1eeb24d50198effa53e289e7080bdb9d0802ab5420ce92c629",
+   "capture": "ba_lead_heizer_brochure.pdf",
+   "publisher": "Heizer Defense LLC",
+   "tier": 4,
+   "locator": "PS1 Pocket Shotgun Pistol / PAR1 Pocket AR Pistol feature blocks"
+  },
+  {
+   "source_id": "kac_catalogue",
+   "title": "Our Products - Knight's Armament",
+   "url": "https://www.knightarmco.com/our-products",
+   "sha256": "a9995ca555acb9b0090d70db14b3788aad9660823d6daa71e032ecc9e29c6ad7",
+   "capture": "ba_lead_kac_products.html",
+   "publisher": "Knight's Armament Company",
+   "tier": 4,
+   "locator": "Complete product taxonomy (no PDW entry; SR-15 and SR-25 only)"
+  },
+  {
+   "source_id": "nemo_rifles",
+   "title": "Rifles - NEMO Arms",
+   "url": "https://nemoarms.com/product-category/rifles/",
+   "sha256": "cd4c82c70a9e89b79eac1d6e414d36a77b7375b981cc03a344ff64e7f34761ae",
+   "capture": "ba_lead_nemo_rifles.html",
+   "publisher": "NEMO Arms",
+   "tier": 4,
+   "locator": "Rifle catalogue listing (no Hush, no Sentinel)"
+  },
+  {
+   "source_id": "shadow_catalogue",
+   "title": "Shadow Systems - official site",
+   "url": "https://shadowsystemscorp.com/",
+   "sha256": "a2271e2c3114b940446b72533cea7f8a55239a92257aad4b5b49baa3359cfd17",
+   "capture": "ba_lead_shadow_home.html",
+   "publisher": "Shadow Systems Corp",
+   "tier": 4,
+   "locator": "Pistol model navigation (CR920, DR920, MR920, XR920 only)"
+  },
+  {
+   "source_id": "ai_sitemap",
+   "title": "Accuracy International sitemap",
+   "url": "https://www.accuracyinternational.com/sitemap.xml",
+   "sha256": "f655a5ce678b7fcae1a66895e3fe781c6dcb8b55c1852dda3c2d10752f08a47b",
+   "capture": "ba_lead_ai_sitemap.xml",
+   "publisher": "Accuracy International",
+   "tier": 4,
+   "locator": "Full site URL list (no Arctic Warfare Covert page)"
+  },
+  {
+   "source_id": "fierce_models",
+   "title": "Page not found - Fierce Firearms",
+   "url": "https://fiercearms.com/firearm/strike/",
+   "sha256": "65c7a44070a4ef2057831a1834bda5866df270d5371e13738890619930d9ca54",
+   "capture": "ba_lead_fierce_strike2.html",
+   "publisher": "Fierce Firearms",
+   "tier": 4,
+   "locator": "Site navigation firearm list (Alpha, Rage, Reaper, Rival, Rogue, Carbon, Upland, Wingman, Sidewinder, Grizz; no Strike)"
+  }
+ ],
+ "weapons": [
+  {
+   "weapon_id": "bigboy45colt",
+   "name": "H6 Big Boy Rifle .45 Colt",
+   "manufacturer": "Henry Repeating Arms",
+   "cartridge": ".45 Colt",
+   "barrel_mm": 508.0,
+   "twist_mm": 406.4,
+   "mass_kg": 3.937,
+   "grooves": null,
+   "source_id": "henry_bigboy45",
+   "source_note": "Henry Repeating Arms H6 Big Boy Rifle .45 Colt, Model Number H006GC, Additional Specifications: 'Barrel Length 20\" | Barrel Type Octagon Blued Steel | Rate of Twist 1:16 | Overall Length 38.5\" | Weight 8.68 lbs.' 1:16 in = 406.4 mm; 20 in = 508 mm; 8.68 lb = 3.937 kg. The corpus twist of 0.508 m is not supported by the maker page: the 1:20 rows on the same page belong to the .44 Magnum and .44 Special variants."
+  },
+  {
+   "weapon_id": "p3at",
+   "name": "P-3AT",
+   "manufacturer": "Kel-Tec",
+   "cartridge": ".380 ACP",
+   "barrel_mm": 68.0,
+   "twist_mm": null,
+   "mass_kg": 0.218,
+   "grooves": null,
+   "source_id": "keltec_p3at_spec",
+   "source_note": "KelTec P3AT specifications table: 'Caliber .380ACP 9x17mm | Weight Unloaded 7.7oz 218g | Overall Length 5.2\" 132mm | Barrel Length 2.7\" 68mm'. The table states no rifling row, so the twist stays absent and the lead stays open. Mass and barrel length are stated in both units on the page."
+  },
+  {
+   "weapon_id": "p238",
+   "name": "SIG Sauer P238",
+   "manufacturer": "SIG Sauer",
+   "cartridge": ".380 ACP",
+   "barrel_mm": 68.6,
+   "twist_mm": null,
+   "mass_kg": 0.431,
+   "grooves": null,
+   "source_id": "sig_p238_operator_manual",
+   "source_note": "SIG SAUER P238/P938 Operator's Manual 17SIG2387 Rev 03, specifications table, P238 column: 'Caliber .380ACP (9mm short) | Barrel Length 2.7\" | Weight w/ Magazine 15.2 oz'. 15.2 oz = 0.431 kg with an empty magazine; 2.7 in = 68.6 mm. The manual states no twist rate and the sigsauer.com product pages carry no specification table, so the twist stays absent."
+  }
+ ],
+ "searches": [
+  {
+   "weapon_id": "dp380",
+   "url": "",
+   "result": "Daewoo is defunct; no maker page or DP-380 manual reachable, so no twist could be held."
+  },
+  {
+   "weapon_id": "f1",
+   "url": "",
+   "result": "Manurhin F1 is out of production; no maker page or manual stating a twist was reached."
+  },
+  {
+   "weapon_id": "ij70",
+   "url": "",
+   "result": "Baikal/Izhmash has no live English maker page and no manual stating a twist was reached."
+  },
+  {
+   "weapon_id": "l32",
+   "url": "",
+   "result": "Lorcin is defunct; no maker page and no L-32 manual reachable."
+  },
+  {
+   "weapon_id": "lws380",
+   "url": "https://seecamp.com/firearm-specs/",
+   "result": "HTTP 202 Cloudflare challenge on chrome, safari, firefox, edge and safari_ios; no bytes held."
+  },
+  {
+   "weapon_id": "model351",
+   "url": "https://rossiusa.com/firearms/revolvers/model-351",
+   "result": "HTTP 202 Cloudflare challenge; the Rossi revolver manual PDF also returns 202."
+  },
+  {
+   "weapon_id": "model461",
+   "url": "https://rossiusa.com/firearms/revolvers/model-461",
+   "result": "HTTP 202 Cloudflare challenge, same block as the Model 351."
+  },
+  {
+   "weapon_id": "mp340",
+   "url": "",
+   "result": "Baikal MP-340 is an export-only model with no maker page and no manual reached."
+  },
+  {
+   "weapon_id": "r380",
+   "url": "",
+   "result": "Rohrbaugh ceased trading in 2014; no maker page or R380 manual reachable."
+  },
+  {
+   "weapon_id": "r851",
+   "url": "https://rossiusa.com/",
+   "result": "HTTP 202 Cloudflare challenge, same block as the other Rossi models."
+  },
+  {
+   "weapon_id": "tp380",
+   "url": "https://bt-usa.com/products/tp380/",
+   "result": "Page states 'Caliber: .380 ACP' and 'More information coming soon'; no dimensions, no twist. bt-usa.com/user-manuals/ returns 404."
+  },
+  {
+   "weapon_id": "p32",
+   "url": "https://www.keltecweapons.com/firearms/pistols/p32/",
+   "result": "Ambiguous id: the corpus holds a KelTec P-32 and a Davis Industries P-32 under one id. KelTec states mass and barrel and no twist; Davis is defunct. One maker's figure cannot stand for the other, so no record was emitted."
+  },
+  {
+   "weapon_id": "staccatoc",
+   "url": "https://www.staccato2011.com/staccato-c",
+   "result": "Page states barrel 4.0 in and weight 26 oz 'without optic and no magazine'. No twist, and the mass is not the same quantity the corpus holds (weapon with empty magazine), so no record was emitted."
+  },
+  {
+   "weapon_id": "k11",
+   "url": "https://www.sntmotiv.com/",
+   "result": "HTTP 200 but a 1.5 kB JavaScript shell with no product or manual text; no twist held."
+  },
+  {
+   "weapon_id": "k2a",
+   "url": "https://www.sntmotiv.com/eng/",
+   "result": "HTTP 200, 1.2 kB JavaScript shell; no maker page, manual or drawing reached."
+  },
+  {
+   "weapon_id": "kacpdw",
+   "url": "https://www.knightarmco.com/our-products",
+   "result": "Catalogue lists SR-15 and SR-25 only; no PDW entry and no twist."
+  },
+  {
+   "weapon_id": "hush",
+   "url": "https://nemoarms.com/product-category/rifles/",
+   "result": "NEMO rifle catalogue has no Hush model; the site search returns no product."
+  },
+  {
+   "weapon_id": "ss300",
+   "url": "https://shadowsystemscorp.com/",
+   "result": "Shadow Systems catalogue is CR920/DR920/MR920/XR920 pistols only; no SS300, no .300 BLK firearm."
+  },
+  {
+   "weapon_id": "l118a1arcticwarfarecovert",
+   "url": "https://www.accuracyinternational.com/sitemap.xml",
+   "result": "Sitemap lists AXSR, AT-XC, AT-X and AX-ELR only. The Arctic Warfare Covert is discontinued and has no live datasheet."
+  },
+  {
+   "weapon_id": "lch762",
+   "url": "https://lancersystems.com/",
+   "result": "At Lancer 'LCH' is the Lightweight Carbon Handguard; LCH7 is a 7.62 handguard, not a rifle, and publishes no twist."
+  },
+  {
+   "weapon_id": "ps1",
+   "url": "https://heizerdefense.com/wp-content/uploads/2015/05/heizer-defense-pocket-pistols-productbrochurev2.pdf",
+   "result": "The maker brochure makes PS1 the .410 Pocket Shotgun with a 3 1/4 in barrel; PAR1 is the .223 pistol. The corpus chamberings (.223 / .300 BLK, 16.25 in) match no Heizer product, so the corpus identity needs review."
+  },
+  {
+   "weapon_id": "spike",
+   "url": "https://liveqordie.com/product/spike/",
+   "result": "HTTP 404; the site search returns no product named Spike."
+  },
+  {
+   "weapon_id": "strike",
+   "url": "https://fiercearms.com/firearms/",
+   "result": "HTTP 404. The Fierce model list (Alpha, Rage, Reaper, Rival, Rogue, Carbon, Upland, Wingman, Sidewinder, Grizz) has no Strike, so the corpus identity needs review."
+  },
+  {
+   "weapon_id": "sentinel",
+   "url": "https://nemoarms.com/product-category/rifles/",
+   "result": "Ambiguous id shared by four makers. NEMO publishes no Sentinel model and no other maker page was captured, so nothing can be attributed."
+  },
+  {
+   "weapon_id": "k12",
+   "url": "https://sarsilmaz.com/en/product/k12-sport",
+   "result": "Sarsilmaz K12 SPORT states 'Rifling 6 Right, 250 mm (1:10\")', but the corpus id is the SNT Motiv 5.56 carbine at 0.185 m. One maker's figure cannot stand for the other, so no record was emitted."
+  },
+  {
+   "weapon_id": "model100",
+   "url": "https://www.winchesterguns.com/support/owners-manuals/model-100.html",
+   "result": "HTTP 404. The manual index lists no Model 100 (discontinued 1973) and no maker literature online states the twist."
+  },
+  {
+   "weapon_id": "drilling",
+   "url": "https://www.krieghoff.com/en/products/rifles/",
+   "result": "HTTP 404. krieghoff.com carries only the Classic Big Five, Classic Double and Essencia rifles; no drilling page and no twist."
+  },
+  {
+   "weapon_id": "brawler",
+   "url": "https://www.rossiusa.com/product/brawler/",
+   "result": "Maker identified as Rossi (single-shot break-action .45 Colt/.410 pistol). HTTP 202 challenge body on chrome, safari and safari_ios."
+  },
+  {
+   "weapon_id": "ranchhand",
+   "url": "https://www.rossiusa.com/product/ranch-hand/",
+   "result": "Maker identified as Rossi (12 in mare's-leg .45 Colt). HTTP 202 challenge. Henry's H6 Mare's Leg states 1:16 over a 12.9 in barrel, but it is another maker's product and was not substituted."
+  },
+  {
+   "weapon_id": "model189445colt",
+   "url": "https://www.marlinfirearms.com/lever-action/model-1894",
+   "result": "Maker is Marlin. The Ruger-era site serves its SPA 404 for every 1894 path and both sitemaps; no .45 Colt 1894 page or manual captured."
+  },
+  {
+   "weapon_id": "p64",
+   "url": "https://fabrykaradom.pl/",
+   "result": "DNS resolution failure (curl error 6) from this host; no Polish maker page or manual captured."
+  },
+  {
+   "weapon_id": "p83wanad",
+   "url": "https://fabrykaradom.com.pl/",
+   "result": "DNS resolution failure (curl error 6), same block as the P-64."
+  },
+  {
+   "weapon_id": "pm63rak",
+   "url": "https://fabrykabroni.pl/",
+   "result": "DNS resolution failure (curl error 6), same block as the P-64."
+  }
+ ]
+}

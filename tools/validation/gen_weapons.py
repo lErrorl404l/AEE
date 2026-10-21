@@ -362,10 +362,15 @@ def main():
                 "title": source.get("title", source["source_id"]),
                 "edition": "",
                 "identifier": source["source_id"],
-                "locator": "weapon twist",
+                # The batch states where in the document the figure sits,
+                # and the digest of the bytes that were read. A reader who
+                # needs the bytes asks the local cache; the digest is what
+                # makes that check possible without vendoring the page.
+                "locator": source.get("locator", "weapon twist"),
                 "published": "",
                 "retrieved": retrieved or "2026-09-22",
                 "url": source.get("url", ""),
+                "sha256": source.get("sha256", ""),
                 "licence": "public domain"
                 if tier <= 3
                 else "manufacturer published data",

@@ -5,11 +5,11 @@ Generated from the sourced real-weapons corpus by
 source, so a lead never becomes a value. It names where the chambering
 standard already applies and where verification is needed.
 
-- Weapons held at the held cartridge standard: 467
-- Weapons that differ: 191
-- Of those, now verified against a held source: 309
-- Of those, still open in this worklist: 36
-- Weapons with no standard for the chambering: 38
+- Weapons held at the held cartridge standard: 468
+- Weapons that differ: 198
+- Of those, now verified against a held source: 310
+- Of those, still open in this worklist: 37
+- Weapons with no standard for the chambering: 30
 - Weak citation, not usable even as a lead: 663
 - Unsourced, skipped: 935
 
@@ -17,7 +17,6 @@ standard already applies and where verification is needed.
 
 | Weapon | Chambering | Corpus twist (m) | Standard (m) | Citation |
 |---|---|---|---|---|
-| bigboy45colt | .45 Colt | 0.508 | 0.406 | tier 4 |
 | brawler | .45 Colt | 0.508 | 0.406 | tier 4 |
 | dp380 | .380 ACP | 0.25 | 0.4064 | tier 4 |
 | drilling | 12 Gauge / .30-06 | 0.305 | 0 | tier 4 |
@@ -43,10 +42,12 @@ standard already applies and where verification is needed.
 | p64 | 9×18mm Makarov | 0.25 | 0.24 | tier 4 |
 | p83wanad | 9×18mm Makarov | 0.25 | 0.24 | tier 4 |
 | pm63rak | 9×18mm Makarov | 0.25 | 0.24 | tier 4 |
+| pmr30 | .22 Winchester Magnum | 0.356 | 0.4064 | tier 4 |
 | ps1 | .223 Remington | 0.229 | 0.305 | tier 4 |
 | r380 | .380 ACP | 0.25 | 0.4064 | tier 4 |
 | r851 | .38 Special | 0.381 | 0.476 | tier 4 |
 | ranchhand | .45 Colt | 0.508 | 0.406 | tier 4 |
+| rangerii | .22 Winchester Magnum | 0.305 | 0.4064 | tier 4 |
 | sentinel | .308 Winchester | 0.254 | 0.305 | tier 4 |
 | spike | 5.56×45mm NATO | 0.203 | 0.1778 | tier 4 |
 | ss300 | .300 AAC Blackout | 0.178 | 0.2032 | tier 4 |

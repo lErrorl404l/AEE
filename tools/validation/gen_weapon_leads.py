@@ -162,7 +162,7 @@ def main():
                 "names": names,
                 "manufacturer": row.get("manufacturer", ""),
                 "cartridge": row.get("cartridge", ""),
-                "candidate_count": len(candidates),
+                "chambering_key": (sorted(chambering.keys(row.get("cartridge", ""))) or [""])[0],
                 "cartridge_id": cartridge_id,
                 "twist_m": twist_m,
                 "standard_twist_m": held,

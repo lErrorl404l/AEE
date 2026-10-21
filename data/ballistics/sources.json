@@ -18398,5 +18398,53 @@
   "licence": "manufacturer published data",
   "primary_held": true,
   "note": "Weapon twist source."
+ },
+ {
+  "source_id": "keltec_p3at_spec",
+  "tier": 4,
+  "type": "manufacturer",
+  "title": "P3AT Pistol | Six Leading Innovations, One Powerful Pistol | KelTec",
+  "edition": "",
+  "identifier": "keltec_p3at_spec",
+  "locator": "Specs table, rows 'Weight Unloaded', 'Barrel Length'",
+  "published": "",
+  "retrieved": "2026-09-22",
+  "url": "https://www.keltecweapons.com/firearms/pistols/p3at/",
+  "sha256": "234d01227a9f3a50dbb100bc23994591badcf4c7b8c54b587b4f60fd6ffaa2d7",
+  "licence": "manufacturer published data",
+  "primary_held": true,
+  "note": "Weapon twist source."
+ },
+ {
+  "source_id": "sig_p238_operator_manual",
+  "tier": 2,
+  "type": "manual",
+  "title": "P238 / P938 Operator's Manual (17SIG2387, Rev 03)",
+  "edition": "",
+  "identifier": "sig_p238_operator_manual",
+  "locator": "Specifications table (P238 column: Caliber .380ACP, Overall Length 5.5\", Barrel Length 2.7\", Weight w/ Magazine 15.2 oz)",
+  "published": "",
+  "retrieved": "2026-09-22",
+  "url": "https://www.sigsauer.com/media/sigsauer/resources/17SIG2387-P238-P938OperatorManual_1202508-01_Rev03_proof2.pdf",
+  "sha256": "9584c3ed08bcca10312a95b700aa1daeae59609f27ed025726bd8bf083bf88a7",
+  "licence": "public domain",
+  "primary_held": true,
+  "note": "Weapon twist source."
+ },
+ {
+  "source_id": "henry_bigboy45",
+  "tier": 4,
+  "type": "manufacturer",
+  "title": "H6 Big Boy Rifle & Carbine | Henry Repeating Arms",
+  "edition": "",
+  "identifier": "henry_bigboy45",
+  "locator": "Specifications, H6 Big Boy Rifle .45 Colt (Model H006GC), Additional Specifications",
+  "published": "",
+  "retrieved": "2026-09-22",
+  "url": "https://www.henryusa.com/rifles/big-boy/",
+  "sha256": "5efeef3b34a80fe66046774614852981e5e33d2856c8442566f350f7b03abded",
+  "licence": "manufacturer published data",
+  "primary_held": true,
+  "note": "Weapon twist source."
  }
 ]
