@@ -485,28 +485,30 @@
     },
     "uniforms": {
       "base": {
-        "hit": 100,
+        "hit": 79,
         "pct": 100.0,
-        "total": 100
+        "total": 79
       },
       "excluded": {
         "abstract base classes": 4,
-        "civilian garment": 4598,
-        "misdeclared headwear": 3696
+        "civilian garment": 4586,
+        "fictional garment": 134,
+        "misdeclared headwear": 3696,
+        "no identity text": 210
       },
       "figure_graded": 10869,
-      "figure_pct": 87.87,
+      "figure_pct": 90.3,
       "grades": {
         "family": 10868,
         "inherited": 1,
-        "type": 1500
+        "type": 1168
       },
       "inherited": [],
       "label": "uniforms",
       "modded": {
-        "hit": 12269,
+        "hit": 11958,
         "pct": 100.0,
-        "total": 12269
+        "total": 11958
       },
       "reasons": {},
       "unresolved_modded": 0

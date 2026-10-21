@@ -63,7 +63,14 @@ entries, written by the report so a number is never the only record).
 | Table | Bucket | Classes | Why |
 |---|---|---|---|
 | uniforms | abstract base classes | 4 | scaffolding (`Uniform_Base`, `JCA_U_Base_F`) |
-| uniforms | civilian garment | 4,598 | civilian clothing in the uniform slot, bucketed only after matching, so no resolved uniform is touched |
+| uniforms | civilian garment | 4,586 | civilian clothing in the uniform slot |
+| uniforms | fictional garment | 134 | Arma-invented outfits (guerrilla, alien) with no real product |
+| uniforms | no identity text | 210 | classes with no display name at all |
+
+All three uniform buckets run only on classes already at the type grade,
+so no resolved garment is touched. The 1,168 uniforms still at type are
+real uniforms (M88, M93, Gorka, G3, Flora, VKPO, 6Sh122, M10, pilot
+coveralls) whose makers publish no garment mass.
 | uniforms | misdeclared headwear | 3,696 | headwear declared in the uniform slot; every class is `NAVSPECWARGRU2_TACDEV_Baseball_*` or `NAVSPECWARGRU2_..._Cap_*` |
 | vests | abstract base classes | 9 | `Vest_Camo_Base`, `Vest_NoCamo_Base` and mod bases |
 | vests | non-wearable overlays | 7 | `guts`, `bulletholes`, `damagedchest`, `backgore` |
@@ -191,6 +198,32 @@ Sixteen aircraft classes stay at type, one reason each:
 - **`FIR_ECM_Dummy_1`**: an ECM decoy whose display prints `F-16C`, where the
   shared alias `falcon` also answers the F-16A entry and the catalogue holds
   two F-16C blocks. The display names no single entry.
+
+## Optics: variants of the sourced products
+
+Every variant of a sourced optic is bound to its own product: Mark 8 CQBSS
+5 classes (base, RMR, RMR Top, RMR Top Canted, T1), SIG TANGO6T 5 (same
+five), 1P29/UPO-1 6 (base, PKP, AS Val and their 3D variants), ELCAN
+Specter DR 1 (`rhsusf_acc_elcan_3d`), Nightforce NXS 8. No variant of a
+sourced product is left at type.
+
+The 20 type classes that carry a variant suffix belong to products the
+corpus does not hold, so the suffix cannot bind:
+
+| Group | Classes | Reason |
+|---|---|---|
+| Trijicon AccuPower RMR/T1 | 5 | retired line, no specification table in any archive |
+| Vortex Razor Gen III RMR/T1 | 5 | the mod holds the Gen III 1-10x; the corpus entry is the Gen II 1-6x24, a different product |
+| `ACE_optic_*_2D`, `_PIP` | 7 | 2D and PIP re-renders of Arma's own fictional optics |
+| `rhs_acc_nita_3d`, `rhsgref_acc_l2a2_3d`, `rhsusf_acc_elcan_pip` | 3 | 3D or PIP variants of optics that are themselves at type (NIT-A, L2A2 SUIT, M145 MGO) |
+
+The remaining ~105 optics type classes are Arma's fictional sights (ARCO,
+ACO, Holosight, MRCO, SOS, DMS, LRPS, MRD, Yorris, Nightstalker, TWS) and
+real mod optics with no capture: Trijicon Reap-IR, EOTech Vudu, Nightforce
+ATACR, Leupold Mk 4 / M8541 / premier, AN/PVS-27, AN/PAS-13, M145 MGO,
+PK-AS, 1P63, OKP-7, NIT-A, PGO-7V, 1PN34, DH 5-20x56, 1P76, T1/RM05/MRDS,
+G33/XPS3, SMAW and MAAWS sights, MG42 AA sight, L2A2 SUIT, AN/PVS-2, Zeiss
+and Schmidt & Bender entries from R3F, XM157 prototype.
 
 ## The last rung
 
