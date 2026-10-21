@@ -93,6 +93,14 @@ HELMET_ROOT = "helmetbase"
 BACKPACK_ROOT = "bag_base"
 NVG_ROOT = "nvgoggles"
 
+# The base game names no product for its own armament: a Titan, a Zephyr, a
+# 120 mm cannon. Those classes are real items of the table and no source can
+# name them, so they leave under the kind they are rather than stay open.
+IN_GAME_ARMAMENT_TERM = re.compile(
+    r"^(missiles_|rockets_|cannon_|autocannon_|gatling_|gmg_|hmg_|lmg_|bomb_"
+    r"|missile_|rocket_|cannon_)",
+    re.I,
+)
 # A rucksack table scores CfgVehicles under Bag_Base, and the engine hangs
 # things there that are not worn loads: a dismantled HMG, a parachute, a
 # radio bag. The vehicle table already excludes a weapon position by name,
@@ -1375,10 +1383,31 @@ def measure(scanned: list, base: set[str]) -> dict:
             if label == "vehicle armament"
             else {}
         )
+        dropped_classes: dict[str, list] = {}
+        if label == "vehicle armament":
+            # The base game's own armament names no product. Those classes
+            # are real items of this table, so they are not excluded for
+            # being fiction; they leave as "no product" only because no
+            # source can ever name them, and only while at the type grade.
+            in_game = []
+            for r in sel:
+                if r["source"].lower() not in base:
+                    continue
+                if not IN_GAME_ARMAMENT_TERM.search(r["class"]):
+                    continue
+                row = pick(r["class"], r["display"])
+                if isinstance(row, dict) and row.get("type"):
+                    in_game.append(r)
+            if in_game:
+                sel = [r for r in sel if r not in in_game]
+                name = "Arma in-game armament, no product"
+                kept[name] = len(in_game)
+                dropped_classes[name] = [r["class"] for r in in_game]
         tables[slug(label)] = {
             "label": label,
             **score(sel, pick, base),
             "excluded": kept,
+            "excluded_classes": dropped_classes,
             "decided": _decided(sel, pick),
             "grades": grades(sel, factory),
         }

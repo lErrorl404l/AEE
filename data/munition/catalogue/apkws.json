@@ -36,7 +36,12 @@
      "state": "as published; source tier-5 compilation",
      "grade": "claimed"
     }
-   }
+   },
+   "classes": [
+    "rksla3_wpn_apkws_m151",
+    "rksla3_wpn_apkws_m229",
+    "rksla3_wpn_apkws_m257"
+   ]
   }
  ]
 }

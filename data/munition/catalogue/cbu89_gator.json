@@ -39,7 +39,10 @@
      "state": "as published; source tier-5 compilation",
      "grade": "claimed"
     }
-   }
+   },
+   "classes": [
+    "FIR_CBU104"
+   ]
   }
  ]
 }

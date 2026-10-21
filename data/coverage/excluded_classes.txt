@@ -1,4 +1,32 @@
 # classes excluded from a table, by the kind they are
+## vehicle armament
+# Arma in-game armament, no product: 26
+Bomb_03_Plane_CAS_02_F
+Cannon_30mm_Plane_CAS_02_F
+GMG_20mm
+GMG_40mm
+HMG_127
+Missile_AA_03_Plane_CAS_02_F
+Missile_AA_04_Plane_CAS_01_F
+Missile_AGM_01_Plane_CAS_02_F
+Missile_AGM_02_Plane_CAS_01_F
+Rocket_03_AP_Plane_CAS_02_F
+Rocket_03_HE_Plane_CAS_02_F
+Rocket_04_AP_Plane_CAS_01_F
+Rocket_04_HE_Plane_CAS_01_F
+autocannon_30mm_CTWS
+autocannon_35mm
+autocannon_40mm_CTWS
+cannon_105mm
+cannon_120mm
+cannon_125mm
+cannon_railgun
+cannon_railgun_fake
+missiles_DAR
+missiles_Zephyr
+missiles_titan
+rockets_230mm_GAT
+rockets_Skyfire
 ## night vision devices
 # NVG mounts: 79
 Hall_G24_Down

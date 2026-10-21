@@ -513,11 +513,12 @@
     },
     "vehicle_armament": {
       "base": {
-        "hit": 38,
+        "hit": 12,
         "pct": 100.0,
-        "total": 38
+        "total": 12
       },
       "excluded": {
+        "Arma in-game armament, no product": 26,
         "cockpit switch": 7,
         "countermeasure": 10,
         "generic label": 1,
@@ -526,13 +527,14 @@
         "ship launcher cell": 3,
         "weapon bay": 1
       },
-      "figure_graded": 349,
-      "figure_pct": 84.71,
+      "figure_graded": 366,
+      "figure_pct": 94.82,
       "grades": {
         "alias": 293,
         "closest": 4,
+        "exact_class": 17,
         "keyword": 52,
-        "type": 63
+        "type": 20
       },
       "inherited": [],
       "label": "vehicle armament",

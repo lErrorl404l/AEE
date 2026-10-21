@@ -37,7 +37,11 @@
      "state": "as published; source tier-5 compilation",
      "grade": "claimed"
     }
-   }
+   },
+   "classes": [
+    "LOP_AZP23",
+    "rhs_weap_azp23"
+   ]
   }
  ]
 }

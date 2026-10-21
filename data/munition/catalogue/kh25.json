@@ -55,7 +55,12 @@
      "state": "as published; source tier-5 compilation",
      "grade": "claimed"
     }
-   }
+   },
+   "classes": [
+    "FIR_Kh25MPU",
+    "FIR_Kh25MS",
+    "FIR_Kh25MTP"
+   ]
   }
  ]
 }

@@ -38,7 +38,10 @@
      "state": "as published; source tier-5 compilation",
      "grade": "claimed"
     }
-   }
+   },
+   "classes": [
+    "rksla3_wpn_us_pw2_gbu12"
+   ]
   }
  ]
 }

@@ -37,7 +37,10 @@
      "state": "as published; source tier-5 compilation",
      "grade": "claimed"
     }
-   }
+   },
+   "classes": [
+    "gatling_25mm"
+   ]
   }
  ]
 }
