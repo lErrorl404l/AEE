@@ -5,7 +5,7 @@ record. Each needs either a decision or a new sourced record. The
 register is the source of the standard twist, so a weapon here
 falls back to its own twist alone.
 
-- Weapons joined to a cartridge record: 1594
+- Weapons joined to a cartridge record: 1595
 - Weapons unresolved: 35
 - Distinct unresolved chamberings: 28
 - Ambiguous: 5

@@ -32163,6 +32163,32 @@
   }
  },
  {
+  "weapon_id": "pmr30",
+  "names": [
+   "PMR30"
+  ],
+  "aliases": [
+   "pmr30"
+  ],
+  "manufacturer": "Kel-Tec",
+  "cartridge_id": "22_winchester_magnum",
+  "note": "KelTec PMR30 specifications table: 'Weight Unloaded 14oz 397g | Overall Length 7.9\" 201mm | Barrel Length 4.3\" 109mm'. The table states no rifling row, so the twist stays absent and the lead stays open. 397 g = 0.397 kg; 4.3 in = 109 mm.",
+  "values": {
+   "cartridge": {
+    "value": ".22 Winchester Magnum",
+    "unit": "name",
+    "source": "keltec_pmr30_spec",
+    "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 0.397,
+    "unit": "kg",
+    "source": "keltec_pmr30_spec",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
   "weapon_id": "pp",
   "names": [
    "Walther PP"

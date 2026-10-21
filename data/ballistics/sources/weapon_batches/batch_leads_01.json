@@ -131,6 +131,16 @@
    "publisher": "Fierce Firearms",
    "tier": 4,
    "locator": "Site navigation firearm list (Alpha, Rage, Reaper, Rival, Rogue, Carbon, Upland, Wingman, Sidewinder, Grizz; no Strike)"
+  },
+  {
+   "source_id": "keltec_pmr30_spec",
+   "title": "PMR30 | KelTec",
+   "url": "https://www.keltecweapons.com/firearms/pistols/pmr30/",
+   "sha256": "174165934c723df9d1354e38c9360232a2fd2549bb9e9504a739aaef71cb1876",
+   "capture": "ba_lead_keltec_pmr30.html",
+   "publisher": "KelTec",
+   "tier": 4,
+   "locator": "Specs table, rows 'Weight Unloaded' and 'Barrel Length'"
   }
  ],
  "weapons": [
@@ -169,6 +179,18 @@
    "grooves": null,
    "source_id": "sig_p238_operator_manual",
    "source_note": "SIG SAUER P238/P938 Operator's Manual 17SIG2387 Rev 03, specifications table, P238 column: 'Caliber .380ACP (9mm short) | Barrel Length 2.7\" | Weight w/ Magazine 15.2 oz'. 15.2 oz = 0.431 kg with an empty magazine; 2.7 in = 68.6 mm. The manual states no twist rate and the sigsauer.com product pages carry no specification table, so the twist stays absent."
+  },
+  {
+   "weapon_id": "pmr30",
+   "name": "PMR30",
+   "manufacturer": "Kel-Tec",
+   "cartridge": ".22 Winchester Magnum",
+   "barrel_mm": 109.0,
+   "twist_mm": null,
+   "mass_kg": 0.397,
+   "grooves": null,
+   "source_id": "keltec_pmr30_spec",
+   "source_note": "KelTec PMR30 specifications table: 'Weight Unloaded 14oz 397g | Overall Length 7.9\" 201mm | Barrel Length 4.3\" 109mm'. The table states no rifling row, so the twist stays absent and the lead stays open. 397 g = 0.397 kg; 4.3 in = 109 mm."
   }
  ],
  "searches": [
@@ -336,6 +358,11 @@
    "weapon_id": "pm63rak",
    "url": "https://fabrykabroni.pl/",
    "result": "DNS resolution failure (curl error 6), same block as the P-64."
+  },
+  {
+   "weapon_id": "rangerii",
+   "url": "https://northamericanarms.com/shop/firearms/naa-ranger-ii/",
+   "result": "HTTP 404; the NAA store path is gone and no current NAA page for the Ranger II was reached, so no twist could be held."
   }
  ]
 }

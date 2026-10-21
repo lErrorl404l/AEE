@@ -1209,6 +1209,7 @@ private _TABLE = [
     ["pmmd63", "cugirromarmpmmd63|pmmd63", 0.24, 4, "762x39", 0],
     ["pmmd65", "cugirromarmpmmd65|pmmd65", 0.24, 4, "762x39", 0],
     ["pmmd90", "cugirromarmpmmd90|pmmd90", 0.24, 4, "762x39", 0],
+    ["pmr30", "pmr30", 0, 0, "22_winchester_magnum", 0.397],
     ["pp", "waltherpp", 0, 0, "32_acp", 0],
     ["pp1901vityaz", "kalashnikovconcernpp1901vityaz|pp1901vityaz", 0.25, 6, "9x19", 0],
     ["pp19vityaz", "kalashnikovconcernpp19vityaz|pp19vityaz", 0.25, 6, "9x19", 2.85],
