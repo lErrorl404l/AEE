@@ -97,3 +97,14 @@ reads them all, so a new file joins the build with no code change.
    row per variant, and `state` names the variant.
 6. Write only your own output file. Never edit another file and never
    commit.
+
+## Camouflage patterns are not garments
+
+A pattern designation names a print, not a cut, and a garment mass belongs
+to the cut. The class text makes this explicit: `M88 (Flora EMR&Lizard)`,
+`M88 (KLMK)`, `M10 TTsKO (Urban)` — the variable is the pattern, the
+garment is constant. Flora, M93 and M10 are therefore not families for a
+mass row. A class that carries one of them belongs to its cut (M88 /
+Afghanka, BDU) where the cut has a row, and otherwise stays at the type
+grade with the pattern-versus-garment reason. No mass may be entered for a
+pattern.

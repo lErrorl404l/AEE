@@ -255,6 +255,7 @@ private _table = [
     ["exfil", "helmet", 0.9, 0, 1],
     ["filbe", "rucksack", 4.3, 0, 1],
     ["ghost", "vest", 2.5, 0, 1],
+    ["gorka", "uniform", 2.134, 0, 1],
     ["gpnvg", "nv", 0.8, 0, 1],
     ["hatka", "rucksack", 0.48, 0, 1],
     ["hm3xt", "optic", 0.329, 0, 1],

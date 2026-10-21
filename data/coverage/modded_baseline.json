@@ -454,9 +454,9 @@
       "figure_graded": 108,
       "figure_pct": 60.67,
       "grades": {
-        "alias": 38,
-        "exact_class": 41,
-        "keyword": 29,
+        "alias": 34,
+        "exact_class": 49,
+        "keyword": 25,
         "type": 70
       },
       "inherited": [],
@@ -603,17 +603,17 @@
           "resolved": 79
         },
         "modded": {
-          "figured": 10834,
-          "pct": 90.6,
+          "figured": 10848,
+          "pct": 90.72,
           "resolved": 11958
         }
       },
-      "figure_graded": 10869,
-      "figure_pct": 90.3,
+      "figure_graded": 10883,
+      "figure_pct": 90.41,
       "grades": {
-        "family": 10868,
-        "inherited": 1,
-        "type": 1168
+        "family": 10881,
+        "inherited": 2,
+        "type": 1154
       },
       "inherited": [],
       "label": "uniforms",

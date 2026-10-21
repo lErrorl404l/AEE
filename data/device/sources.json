@@ -564,5 +564,50 @@
   "sha256": "445c558319765f59c7f4a7e691942f83e1cad241f307b613a7409167b2fe88e6",
   "primary_held": true,
   "note": "Held from the manufacturer host. The R3F pair names no magnification, so their binding is a judgement recorded in the entry."
+ },
+ {
+  "source_id": "nightforce_atacr_sheet",
+  "tier": 4,
+  "type": "manufacturer",
+  "title": "Nightforce ATACR T5 sales sheet",
+  "edition": "",
+  "identifier": "",
+  "locator": "Specification table, row Weight, per product column",
+  "published": "",
+  "retrieved": "2026-10-21",
+  "url": "https://cdn.nightforceoptics.com/content/files/downloads/0323_NF_ATACR_T5-Sales-Sheet_July_FINAL.pdf",
+  "sha256": "7a29c5f3384a20d4af49415af23038c7fb425c4eaab8c4f8b8752c7f3e19b6e4",
+  "primary_held": true,
+  "note": "The manufacturer's own PDF, served from its CDN (cdn.nightforceoptics.com) because the HTML host sits behind a Cloudflare Turnstile. The digest is of the held PDF bytes."
+ },
+ {
+  "source_id": "nightforce_nxs_sheet",
+  "tier": 4,
+  "type": "manufacturer",
+  "title": "Nightforce NXS family sales sheet",
+  "edition": "",
+  "identifier": "",
+  "locator": "Specification table, row Weight, per product column",
+  "published": "",
+  "retrieved": "2026-10-21",
+  "url": "https://cdn.nightforceoptics.com/content/files/downloads/0120_NF_NXS_Family_Sales_Sheet.pdf",
+  "sha256": "0e12160bc9766a56c6385849115407bf3de848be2a3f4948dc50e5080d6aef05",
+  "primary_held": true,
+  "note": "The manufacturer's own PDF, served from its CDN (cdn.nightforceoptics.com) because the HTML host sits behind a Cloudflare Turnstile. The digest is of the held PDF bytes."
+ },
+ {
+  "source_id": "nightforce_2026_catalogue",
+  "tier": 4,
+  "type": "manufacturer",
+  "title": "Nightforce 2026 product catalogue",
+  "edition": "",
+  "identifier": "",
+  "locator": "Product pages, specification table, row Weight",
+  "published": "",
+  "retrieved": "2026-10-21",
+  "url": "https://cdn.nightforceoptics.com/content/files/downloads/NF-2026-Product-Catalog-DIGITAL.pdf",
+  "sha256": "a1547e8bebb58216295753a2e565eef46416794cc039b3a3ad0a416fd95718bc",
+  "primary_held": true,
+  "note": "The manufacturer's own PDF, served from its CDN (cdn.nightforceoptics.com) because the HTML host sits behind a Cloudflare Turnstile. The digest is of the held PDF bytes."
  }
 ]
