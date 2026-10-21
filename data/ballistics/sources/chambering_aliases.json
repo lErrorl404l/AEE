@@ -55,6 +55,24 @@
    "cartridge_id": "300_precision_rifle_cartridge",
    "note": "C.I.P. registers the cartridge under its full name and the held SAAMI row is titled '300 PRECISION RIFLE CARTRIDGE [300 PRC]', so 300 PRC abbreviates the same cartridge.",
    "source": "saami_z299_4"
+  },
+  {
+   "key": "75x55swiss",
+   "cartridge_id": "7_5_x_55_suisse",
+   "note": "The C.I.P. drawing for 7,5 x 55 Suisse states the alternative name '7,5 x 55 Swiss', which is the corpus spelling with a decimal point.",
+   "source": "cip_tdcc_7_5x55"
+  },
+  {
+   "key": "792x57mauser",
+   "cartridge_id": "8_x_57_is",
+   "note": "C.I.P. registers the cartridge as 8 x 57 IS with the alternative name 8 x 57 JS, case length 57.00 mm, country of origin DE. 7,92 x 57 mm is the German service designation of the same cartridge, named by its bullet diameter, so the join rests on the shared case and the JS alternative name, not on a figure.",
+   "source": "cip_tdcc_8x57is"
+  },
+  {
+   "key": "68x51",
+   "cartridge_id": "277_sig_fury",
+   "note": "C.I.P. holds no 6,8 x 51 record. SAAMI registers the cartridge as 277 SIG FURY, and 6,8 x 51 mm is the service designation of that cartridge: a 6,8 mm bullet in a 51 mm case. The join therefore rests on the SAAMI record and the case, not on a figure.",
+   "source": "saami_z299_4"
   }
  ]
 }

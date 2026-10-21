@@ -18446,5 +18446,37 @@
   "licence": "manufacturer published data",
   "primary_held": true,
   "note": "Weapon twist source."
+ },
+ {
+  "source_id": "cip_tdcc_8x57is",
+  "tier": 1,
+  "type": "standard",
+  "title": "C.I.P. TDCC, Table I (Rimless cartridges): 8 x 57 IS, alternative name 8 x 57 JS (Country of origin: DE, date 84-06-14, revision 16-05-18)",
+  "edition": "",
+  "identifier": "cip_tdcc_8x57is",
+  "locator": "reference twist",
+  "published": "",
+  "retrieved": "2026-10-21",
+  "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-i/8-x-57-is-en.pdf",
+  "sha256": "9327148bb2d5db817a166f721dd801cc2f25261815341a4d83ef54d2227c6e6e",
+  "licence": "public domain",
+  "primary_held": true,
+  "note": "Chambering standard."
+ },
+ {
+  "source_id": "cip_tdcc_7_5x55",
+  "tier": 1,
+  "type": "standard",
+  "title": "C.I.P. TDCC, Table I (Rimless cartridges): 7,5 x 55 Suisse, alternative name 7,5 x 55 Swiss (Country of origin: CH, date 84-06-14, revision 16-05-18)",
+  "edition": "",
+  "identifier": "cip_tdcc_7_5x55",
+  "locator": "reference twist",
+  "published": "",
+  "retrieved": "2026-10-21",
+  "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-i/7-5-x-55-suisse-en.pdf",
+  "sha256": "b60efcf5163989276f8d5b4cbc8c17175080466d839910cb7f1a192c8ca3ebb1",
+  "licence": "public domain",
+  "primary_held": true,
+  "note": "Chambering standard."
  }
 ]

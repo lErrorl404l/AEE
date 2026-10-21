@@ -5,11 +5,11 @@ Generated from the sourced real-weapons corpus by
 source, so a lead never becomes a value. It names where the chambering
 standard already applies and where verification is needed.
 
-- Weapons held at the held cartridge standard: 468
+- Weapons held at the held cartridge standard: 472
 - Weapons that differ: 198
 - Of those, now verified against a held source: 310
 - Of those, still open in this worklist: 37
-- Weapons with no standard for the chambering: 30
+- Weapons with no standard for the chambering: 26
 - Weak citation, not usable even as a lead: 663
 - Unsourced, skipped: 935
 

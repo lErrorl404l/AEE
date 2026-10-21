@@ -2,9 +2,9 @@
  "generated": "2026-09-22",
  "note": "A compilation cannot be an entry source (ADR-003, tier 5). These are leads for verification, not values.",
  "counts": {
-  "agrees_with_standard": 468,
+  "agrees_with_standard": 472,
   "differs_from_standard": 198,
-  "no_standard": 30,
+  "no_standard": 26,
   "weak_citation": 663,
   "unsourced": 935,
   "verified": 310
@@ -1995,6 +1995,22 @@
    "citation_tier": 4
   },
   {
+   "weapon_id": "fg42",
+   "verified": false,
+   "names": [
+    "FG 42 Battle Rifle"
+   ],
+   "manufacturer": "Rheinmetall",
+   "cartridge": "7.92\u00d757mm Mauser",
+   "chambering_key": "792x57mauser",
+   "cartridge_id": "8_x_57_is",
+   "twist_m": 0.24,
+   "standard_twist_m": 0.24,
+   "verdict": "agrees_with_standard",
+   "citation": "researched (German TM)",
+   "citation_tier": 4
+  },
+  {
    "weapon_id": "firefly",
    "verified": true,
    "names": [
@@ -2760,6 +2776,22 @@
    "standard_twist_m": 0.25,
    "verdict": "agrees_with_standard",
    "citation": "Manufacturer specifications",
+   "citation_tier": 4
+  },
+  {
+   "weapon_id": "kar98k",
+   "verified": false,
+   "names": [
+    "Kar98k Battle Rifle"
+   ],
+   "manufacturer": "Mauser",
+   "cartridge": "7.92\u00d757mm Mauser",
+   "chambering_key": "792x57mauser",
+   "cartridge_id": "8_x_57_is",
+   "twist_m": 0.24,
+   "standard_twist_m": 0.24,
+   "verdict": "agrees_with_standard",
+   "citation": "researched (German TM)",
    "citation_tier": 4
   },
   {
@@ -4123,6 +4155,22 @@
    "citation_tier": 1
   },
   {
+   "weapon_id": "mg34",
+   "verified": false,
+   "names": [
+    "MG34 General Purpose Machine Gun"
+   ],
+   "manufacturer": "Mauser",
+   "cartridge": "7.92\u00d757mm Mauser",
+   "chambering_key": "792x57mauser",
+   "cartridge_id": "8_x_57_is",
+   "twist_m": 0.24,
+   "standard_twist_m": 0.24,
+   "verdict": "agrees_with_standard",
+   "citation": "researched (WWII German TM)",
+   "citation_tier": 4
+  },
+  {
    "weapon_id": "mg4",
    "verified": false,
    "names": [
@@ -4137,6 +4185,22 @@
    "verdict": "agrees_with_standard",
    "citation": "researched (NATO EPVAT/M855)",
    "citation_tier": 1
+  },
+  {
+   "weapon_id": "mg42",
+   "verified": false,
+   "names": [
+    "MG42 General Purpose Machine Gun"
+   ],
+   "manufacturer": "Mauser",
+   "cartridge": "7.92\u00d757mm Mauser",
+   "chambering_key": "792x57mauser",
+   "cartridge_id": "8_x_57_is",
+   "twist_m": 0.24,
+   "standard_twist_m": 0.24,
+   "verdict": "agrees_with_standard",
+   "citation": "researched (WWII German TM)",
+   "citation_tier": 4
   },
   {
    "weapon_id": "mg5",
@@ -10747,38 +10811,6 @@
    "citation_tier": 4
   },
   {
-   "weapon_id": "fg42",
-   "verified": false,
-   "names": [
-    "FG 42 Battle Rifle"
-   ],
-   "manufacturer": "Rheinmetall",
-   "cartridge": "7.92\u00d757mm Mauser",
-   "chambering_key": "792x57mauser",
-   "cartridge_id": "",
-   "twist_m": 0.24,
-   "standard_twist_m": null,
-   "verdict": "no_standard",
-   "citation": "researched (German TM)",
-   "citation_tier": 4
-  },
-  {
-   "weapon_id": "kar98k",
-   "verified": false,
-   "names": [
-    "Kar98k Battle Rifle"
-   ],
-   "manufacturer": "Mauser",
-   "cartridge": "7.92\u00d757mm Mauser",
-   "chambering_key": "792x57mauser",
-   "cartridge_id": "",
-   "twist_m": 0.24,
-   "standard_twist_m": null,
-   "verdict": "no_standard",
-   "citation": "researched (German TM)",
-   "citation_tier": 4
-  },
-  {
    "weapon_id": "l25",
    "verified": false,
    "names": [
@@ -10920,38 +10952,6 @@
    "standard_twist_m": null,
    "verdict": "no_standard",
    "citation": "Manufacturer specifications",
-   "citation_tier": 4
-  },
-  {
-   "weapon_id": "mg34",
-   "verified": false,
-   "names": [
-    "MG34 General Purpose Machine Gun"
-   ],
-   "manufacturer": "Mauser",
-   "cartridge": "7.92\u00d757mm Mauser",
-   "chambering_key": "792x57mauser",
-   "cartridge_id": "",
-   "twist_m": 0.24,
-   "standard_twist_m": null,
-   "verdict": "no_standard",
-   "citation": "researched (WWII German TM)",
-   "citation_tier": 4
-  },
-  {
-   "weapon_id": "mg42",
-   "verified": false,
-   "names": [
-    "MG42 General Purpose Machine Gun"
-   ],
-   "manufacturer": "Mauser",
-   "cartridge": "7.92\u00d757mm Mauser",
-   "chambering_key": "792x57mauser",
-   "cartridge_id": "",
-   "twist_m": 0.24,
-   "standard_twist_m": null,
-   "verdict": "no_standard",
-   "citation": "researched (WWII German TM)",
    "citation_tier": 4
   },
   {

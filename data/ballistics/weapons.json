@@ -13431,7 +13431,7 @@
    "iwiimidror"
   ],
   "manufacturer": "IWI/IMI",
-  "cartridge_id": "",
+  "cartridge_id": "8_x_57_is",
   "note": "Dror (Israel). twist not stated",
   "values": {
    "cartridge": {
@@ -14139,7 +14139,7 @@
    "fg42"
   ],
   "manufacturer": "",
-  "cartridge_id": "",
+  "cartridge_id": "8_x_57_is",
   "note": "FG42 (Germany). TM-E 30-451 (1945), Figure 11: 'Fallschirmjaegergewehr 42, caliber 7.92 mm automatic rifle'. No twist is stated.",
   "values": {
    "cartridge": {
@@ -22070,7 +22070,7 @@
    "m250"
   ],
   "manufacturer": "",
-  "cartridge_id": "",
+  "cartridge_id": "277_sig_fury",
   "note": "M250 (United States). Adopted US Army designation of the XM250; not an AR-pattern weapon.",
   "values": {
    "cartridge": {
@@ -23341,7 +23341,7 @@
   ],
   "aliases": [],
   "manufacturer": "",
-  "cartridge_id": "",
+  "cartridge_id": "277_sig_fury",
   "note": "M7 (United States). Adopted US Army designation of the XM7.",
   "values": {
    "cartridge": {
@@ -25087,7 +25087,7 @@
    "xm7"
   ],
   "manufacturer": "",
-  "cartridge_id": "",
+  "cartridge_id": "277_sig_fury",
   "note": "SIG MCX Spear (United States). SIG lists a 1:7 twist for the MCX-SPEAR; not confirmed in a downloaded datasheet. XM5 (United States). Original NGSW designation of the MCX-SPEAR, later XM7. XM7 (United States). US Army NGSW-Rifle designation of the MCX-SPEAR, later M7.",
   "values": {
    "cartridge": {
@@ -25358,7 +25358,7 @@
    "mg34"
   ],
   "manufacturer": "",
-  "cartridge_id": "",
+  "cartridge_id": "8_x_57_is",
   "note": "MG34 (Germany). TM-E 30-451 (1945): 'M.G. 34, caliber 7.92 mm'. No twist is stated.",
   "values": {
    "cartridge": {
@@ -25431,7 +25431,7 @@
    "mg42"
   ],
   "manufacturer": "",
-  "cartridge_id": "",
+  "cartridge_id": "8_x_57_is",
   "note": "MG42 (Germany). TM-E 30-451 (1945), Figure 14: 'M.G. 42, caliber 7.92 mm, on bipod mount'. No twist is stated.",
   "values": {
    "cartridge": {
@@ -37076,7 +37076,7 @@
    "sigsauersg510"
   ],
   "manufacturer": "SIG Sauer",
-  "cartridge_id": "",
+  "cartridge_id": "7_5_x_55_suisse",
   "note": "SG510 (Switzerland). SIG SG 510 (Stgw 57). No pitch in the held SIG documents.",
   "values": {
    "cartridge": {
@@ -37097,7 +37097,7 @@
    "sigsauersg5101"
   ],
   "manufacturer": "SIG Sauer",
-  "cartridge_id": "",
+  "cartridge_id": "7_5_x_55_suisse",
   "note": "SG 510-1 (Switzerland). SG 510-1 is an SG 510 variant. No pitch in the held SIG documents.",
   "values": {
    "cartridge": {
@@ -37118,7 +37118,7 @@
    "sigsauersg5102"
   ],
   "manufacturer": "SIG Sauer",
-  "cartridge_id": "",
+  "cartridge_id": "7_5_x_55_suisse",
   "note": "SG 510-2 (Switzerland). SG 510-2 is an SG 510 variant. No pitch in the held SIG documents.",
   "values": {
    "cartridge": {
@@ -37139,7 +37139,7 @@
    "sigsauersg5103"
   ],
   "manufacturer": "SIG Sauer",
-  "cartridge_id": "",
+  "cartridge_id": "7_5_x_55_suisse",
   "note": "SG 510-3 (Switzerland). SG 510-3 is an SG 510 variant. No pitch in the held SIG documents.",
   "values": {
    "cartridge": {
@@ -44619,7 +44619,7 @@
    "xm250"
   ],
   "manufacturer": "",
-  "cartridge_id": "",
+  "cartridge_id": "277_sig_fury",
   "note": "XM250 (United States). Belt-fed light machine gun; not an AR-pattern weapon. Twist not stated in cited sheet.",
   "values": {
    "cartridge": {

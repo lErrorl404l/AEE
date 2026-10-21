@@ -399,8 +399,9 @@ def register_sources(files, sources, known):
                     "identifier": sid,
                     "locator": "reference twist",
                     "published": "",
-                    "retrieved": "2026-09-22",
+                    "retrieved": source.get("retrieved", "2026-09-22"),
                     "url": source.get("url", ""),
+                    "sha256": source.get("sha256", ""),
                     "licence": "public domain"
                     if tier <= 3
                     else "standards body published data",
