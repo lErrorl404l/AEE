@@ -80,21 +80,41 @@ three vanilla Outdoor Packs, which have no published mass, and
 
 ## Sourced optics added for the type set
 
-Two Nightforce products are now corpus entries with captured manufacturer
-pages, so the `rhsusf` NXS classes resolve on a sourced figure instead of
-the type rung:
+Seven products are now corpus entries with captured manufacturer
+documents. The held file, its sha256 and its locator are in
+`data/device/sources.json`, and the bytes are in `data/device/sources/`.
 
-| Entry | Figures | Source | Classes moved off type |
+| Entry | Figures held | Document (tier 4) | Classes moved onto it |
 |---|---|---|---|
-| `nightforce_nxs_3515x50` | magnification 15x (top power), objective 50 mm, weight 0.850 kg, exit pupil 3.3 mm derived | Nightforce product page, tier 4, sha256 `4c16cd5d…bf104` | 4 |
-| `nightforce_nxs_5522x56` | magnification 22x (top power), objective 56 mm, weight 0.907 kg, exit pupil 2.5 mm derived | Nightforce product page, tier 4, sha256 `d8b2a4df…b0e` | 4 |
+| `nightforce_nxs_3515x50` | 15x top power, 50 mm, 0.850 kg, exit pupil 3.3 mm derived | Nightforce product page, sha256 `4c16cd5d…` | 4 |
+| `nightforce_nxs_5522x56` | 22x top power, 56 mm, 0.907 kg, exit pupil 2.5 mm derived | Nightforce product page, sha256 `d8b2a4df…` | 4 |
+| `leupold_mark8_cqbss` | 1.1-8x, 24 mm, 0.666 kg, 17.4 deg at 1.1x, exit pupil 3.0 mm derived | Leupold product page, sha256 `a6cfc3a2…` | 5 |
+| `sig_tango6t` | 1-6x, 24 mm, 0.626 kg FFP and 0.590 kg SFP (both named), exit pupil 4.0 mm derived; no FoV or eye relief published | SIG TANGO6T page, sha256 `b54da900…` | 5 |
+| `vortex_razor_hd_gen2` | 1-6x, 24 mm, 0.610 kg, 21.7 deg at 1x, exit pupil 4.0 mm derived | Vortex product page, sha256 `38261bfe…` | none: see below |
+| `elcan_specter_dr` | 1x/4x, 32 mm entrance pupil, 0.640 kg, 24 deg at 1x, 7.8 mm exit pupil | Raytheon ELCAN datasheet (crawler mirror), sha256 `26818fd7…` | 1 |
+| `upo1_1p29` | 4x, 8 deg, 35 mm eye relief, 6.5 mm exit pupil, 0.800 kg; 1P29 is the military designation of the UPO-1 / UPO-1-1 civil variants | NPZ UPO-1 page and manual, sha256 `034ec99e…` and `d432b520…` | 6 |
 
-The remaining named optics stay at type because no manufacturer figure
-could be held: Leupold renders its specification table client-side, so the
-retrieved bytes hold no weight; Trijicon and SIG return 403/404 to a plain
-fetch; Vortex returns 406; the ELCAN product URL returns 404; and the
-Russian 1P29, OKP-7 and PGO-7V have no manufacturer datasheet reachable. A
-distributor page was not used as a manufacturer figure.
+Three products stay at type, with the reason recorded:
+
+- **Vortex Razor HD Gen II 1-6x24**: no class names it. The mod's Razor
+  classes are the Gen III 1-10x, a different product, and the derived
+  keyword `genii` is a substring of "GEN III", so the entry's canonical
+  name states the family and range only and no class binds to it.
+- **Trijicon AccuPower 1-8x28**: the line is retired. Both the product
+  path and the discontinued path return 404, and the 2021 archived family
+  and detail pages hold no specification table. No figure entered.
+- **OKP-7**: no manufacturer site and no datasheet exist; every result is
+  a forum post, a wiki or a reseller. No figure entered.
+- **PGO-7V**: the only reachable manufacturer page is the Belarusian
+  licensee's **PGO-7V3**, a different variant (2.7x, 0.62 kg, 13 deg). Its
+  figures are held at sha256 `0bb3bfbb…` but are deliberately not entered
+  against the PGO-7V classes, which stay type until a 7V datasheet is held.
+
+The Mark 8 entry corrects an earlier note in this file. That note said the
+Leupold specification table is client-side rendered and unavailable. It is
+not: the held bytes (355,785 bytes, sha256 `a6cfc3a2…`) contain the whole
+specifications block server-rendered, and the figures above are read from
+it. The earlier statement was wrong.
 
 ## The last rung
 
