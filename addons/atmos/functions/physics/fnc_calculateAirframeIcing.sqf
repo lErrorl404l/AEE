@@ -31,16 +31,25 @@ private _maxIceMass = missionNamespace getVariable [QGVAR(maxIceMass), 100];
 private _shedRate   = missionNamespace getVariable [QGVAR(icingShedRate), 0.9];
 _shedRate = _shedRate ^ (_interval / 5);   // per-tick multiplier scales with interval
 
-// ─── Liquid water content proxy (FAR 25 App C envelope) ──────────────────
-// Cloud LWC up to ~0.5 g/m3; precipitation adds up to ~2 g/m3.
+// ─── Liquid water content (FAR 25 App C envelope) ────────────────────────
+// The only cloud LWC the appendix states as a number is 0.35 g/m3, for
+// takeoff maximum icing at -9 C and 20 um (14 CFR 25 App C Part I(c)).  The
+// continuous and intermittent maxima are figures, not stated numbers, and
+// the appendix carries no rain LWC at all.  So both coefficients below are
+// STATED PROXIES with no published figure behind them, and they are named
+// here so the label travels with the value:
+//   0.5 g/m3 at overcast = 1, above the 0.35 g/m3 the appendix states;
+//   2.0 g/m3 added at rain = 1, with no rain figure in that source.
 // The engine's in-cloud probe (aee_core_simulCloudDensity, published by
 // fnc_updateSimulWeather) replaces the overcast term with the REAL cloud
 // density when it is available; a dedicated server or a disabled simul
 // weather leaves the value at -1, so the overcast proxy stays the fallback.
-private _lwc = (_overcast * 0.5) + (_rain * 2);
+private _cloudLwcGm3 = 0.5;   // stated proxy for cloud LWC
+private _rainLwcGm3  = 2;     // stated proxy for precipitation LWC
+private _lwc = (_overcast * _cloudLwcGm3) + (_rain * _rainLwcGm3);
 private _cloudDensity = missionNamespace getVariable [QEGVAR(core,simulCloudDensity), -1];
 if (_cloudDensity isEqualType 0 && _cloudDensity >= 0) then {
-    _lwc = (_cloudDensity * 0.5) + (_rain * 2);
+    _lwc = (_cloudDensity * _cloudLwcGm3) + (_rain * _rainLwcGm3);
 };
 
 // ─── Collection efficiency by ice type ───────────────────────────────────
@@ -60,7 +69,7 @@ private _iceMass = missionNamespace getVariable [QGVAR(iceAccretion_kg), 0];
 // so it joins the gate (fnc_updateSimulWeather publishes it; false default).
 private _inClouds = missionNamespace getVariable [QEGVAR(core,simulInClouds), false];
 if (_temp > -20 && _temp < 0 && (_overcast > 0.5 || _rain > 0 || _inClouds)) then {
-    private _icingRate = _lwc * _efficiency * 0.05;   // kg/s
+    private _icingRate = _lwc * _efficiency * 0.05;   // kg/s; 0.05 is a stated scale, not a measurement
     _iceMass = _iceMass + (_icingRate * _interval);
 } else {
     // Shedding — warm or dry air removes ice
