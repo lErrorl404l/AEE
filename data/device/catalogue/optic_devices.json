@@ -819,6 +819,341 @@
      "grade": "claimed"
     }
    }
+  },
+  {
+   "device_id": "leupold_mark8_cqbss",
+   "canonical_name": "Leupold Mark 8 CQBSS 1.1-8x24",
+   "family": "optic",
+   "maker": "Leupold",
+   "country": "US",
+   "class_names": [
+    "Mark 8 CQBSS",
+    "MK8 CQBSS",
+    "Mark 8"
+   ],
+   "aliases": [
+    "mark8cqbss",
+    "leupoldmark8"
+   ],
+   "keywords": [
+    "mark8cqbss",
+    "cqbss",
+    "mark8"
+   ],
+   "values": {
+    "magnification": {
+     "value": 8,
+     "unit": "ratio",
+     "source": "leupold_mark8_cqbss",
+     "locator": "Magnification row (1.1-8x); the table holds the top power",
+     "state": "1.1-8x, top power",
+     "grade": "claimed"
+    },
+    "objective_mm": {
+     "value": 24,
+     "unit": "mm",
+     "source": "leupold_mark8_cqbss",
+     "locator": "Objective row and product title (1.1-8x24)",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "fov_deg": {
+     "value": 17.4,
+     "unit": "deg",
+     "source": "leupold_mark8_cqbss",
+     "locator": "Field of View row, low power (92 ft at 100 yd = 17.4 deg)",
+     "state": "at 1.1x; 3.4 deg at 8x",
+     "grade": "claimed"
+    },
+    "weight_kg": {
+     "value": 0.666,
+     "unit": "kg",
+     "source": "leupold_mark8_cqbss",
+     "locator": "Weight row (23.5 oz); converted to kg",
+     "state": "as published, bare scope",
+     "grade": "claimed"
+    },
+    "exit_pupil_mm": {
+     "value": 3.0,
+     "unit": "mm",
+     "source": "leupold_mark8_cqbss",
+     "locator": "Derived: objective 24 mm / top power 8",
+     "state": "derived at top power",
+     "grade": "derived"
+    },
+    "active": {
+     "value": "passive",
+     "unit": "enum",
+     "source": "leupold_mark8_cqbss",
+     "locator": "Specifications table: no active illumination of the image",
+     "state": "as published",
+     "grade": "claimed"
+    }
+   }
+  },
+  {
+   "device_id": "sig_tango6t",
+   "canonical_name": "SIG Sauer TANGO6T 1-6x24",
+   "family": "optic",
+   "maker": "SIG Sauer",
+   "country": "US",
+   "class_names": [
+    "TANGO6T",
+    "Tango 6"
+   ],
+   "aliases": [
+    "tango6",
+    "tango6t"
+   ],
+   "keywords": [
+    "tango6"
+   ],
+   "values": {
+    "magnification": {
+     "value": 6,
+     "unit": "ratio",
+     "source": "sig_tango6t",
+     "locator": "Magnification row (1-6x); the table holds the top power",
+     "state": "1-6x, top power",
+     "grade": "claimed"
+    },
+    "objective_mm": {
+     "value": 24,
+     "unit": "mm",
+     "source": "sig_tango6t",
+     "locator": "Product designation (TANGO6T 1-6x24 mm); the specifications table states no objective row",
+     "state": "from the product designation",
+     "grade": "claimed"
+    },
+    "weight_kg": {
+     "value": 0.626,
+     "unit": "kg",
+     "source": "sig_tango6t",
+     "locator": "Weight row, first focal plane (22.08 oz); converted to kg. The second focal plane variant is 20.8 oz = 590 g",
+     "state": "FFP; SFP variant 0.590 kg",
+     "grade": "claimed"
+    },
+    "exit_pupil_mm": {
+     "value": 4.0,
+     "unit": "mm",
+     "source": "sig_tango6t",
+     "locator": "Derived: objective 24 mm / top power 6",
+     "state": "derived at top power",
+     "grade": "derived"
+    },
+    "active": {
+     "value": "passive",
+     "unit": "enum",
+     "source": "sig_tango6t",
+     "locator": "Specifications table: no active illumination of the image",
+     "state": "as published",
+     "grade": "claimed"
+    }
+   }
+  },
+  {
+   "device_id": "vortex_razor_hd_gen2",
+   "canonical_name": "Razor HD 1-6x24",
+   "family": "optic",
+   "maker": "Vortex Optics",
+   "country": "US",
+   "class_names": [
+    "Razor HD Gen II",
+    "Razor HD Gen II 1-6x24"
+   ],
+   "aliases": [
+    "razorhdgenii",
+    "razorgen2"
+   ],
+   "keywords": [
+    "razorhdgenii"
+   ],
+   "values": {
+    "magnification": {
+     "value": 6,
+     "unit": "ratio",
+     "source": "vortex_razor_hd_gen2",
+     "locator": "Magnification row (1-6x); the table holds the top power",
+     "state": "1-6x, top power",
+     "grade": "claimed"
+    },
+    "objective_mm": {
+     "value": 24,
+     "unit": "mm",
+     "source": "vortex_razor_hd_gen2",
+     "locator": "Objective row and product title (1-6x24)",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "fov_deg": {
+     "value": 21.7,
+     "unit": "deg",
+     "source": "vortex_razor_hd_gen2",
+     "locator": "Field of View row, low power (115.2 ft at 100 yd = 21.7 deg)",
+     "state": "at 1x; 3.9 deg at 6x",
+     "grade": "claimed"
+    },
+    "weight_kg": {
+     "value": 0.61,
+     "unit": "kg",
+     "source": "vortex_razor_hd_gen2",
+     "locator": "Weight row (21.5 oz); converted to kg",
+     "state": "as published, bare scope",
+     "grade": "claimed"
+    },
+    "exit_pupil_mm": {
+     "value": 4.0,
+     "unit": "mm",
+     "source": "vortex_razor_hd_gen2",
+     "locator": "Derived: objective 24 mm / top power 6",
+     "state": "derived at top power",
+     "grade": "derived"
+    },
+    "active": {
+     "value": "passive",
+     "unit": "enum",
+     "source": "vortex_razor_hd_gen2",
+     "locator": "Specification block: no active illumination of the image",
+     "state": "as published",
+     "grade": "claimed"
+    }
+   }
+  },
+  {
+   "device_id": "elcan_specter_dr",
+   "canonical_name": "ELCAN Specter DR 1x/4x",
+   "family": "optic",
+   "maker": "Raytheon ELCAN",
+   "country": "CA",
+   "class_names": [
+    "Elcan Specter DR"
+   ],
+   "aliases": [
+    "elcan"
+   ],
+   "keywords": [
+    "elcan"
+   ],
+   "values": {
+    "magnification": {
+     "value": 4,
+     "unit": "ratio",
+     "source": "raytheon_elcan_specter_dr",
+     "locator": "Specifications panel: switchable 1x and 4x; the table holds the top power",
+     "state": "1x/4x, top power",
+     "grade": "claimed"
+    },
+    "objective_mm": {
+     "value": 32,
+     "unit": "mm",
+     "source": "raytheon_elcan_specter_dr",
+     "locator": "Specifications panel, entrance pupil",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "fov_deg": {
+     "value": 24,
+     "unit": "deg",
+     "source": "raytheon_elcan_specter_dr",
+     "locator": "Specifications panel, field of view at 1x (24 deg; 6 deg at 4x)",
+     "state": "at 1x",
+     "grade": "claimed"
+    },
+    "weight_kg": {
+     "value": 0.64,
+     "unit": "kg",
+     "source": "raytheon_elcan_specter_dr",
+     "locator": "Specifications panel, weight 640 g",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "exit_pupil_mm": {
+     "value": 7.8,
+     "unit": "mm",
+     "source": "raytheon_elcan_specter_dr",
+     "locator": "Specifications panel, exit pupil",
+     "state": "as stated",
+     "grade": "claimed"
+    },
+    "active": {
+     "value": "passive",
+     "unit": "enum",
+     "source": "raytheon_elcan_specter_dr",
+     "locator": "Specifications panel: illuminated reticle, passive image",
+     "state": "as published",
+     "grade": "claimed"
+    }
+   }
+  },
+  {
+   "device_id": "upo1_1p29",
+   "canonical_name": "UPO-1 (1P29) 4x",
+   "family": "optic",
+   "maker": "NPZ (Novosibirsk Instrument-Making Plant)",
+   "country": "RU",
+   "class_names": [
+    "1P29",
+    "UPO-1",
+    "UPO-1-1"
+   ],
+   "aliases": [
+    "1p29",
+    "upo1"
+   ],
+   "keywords": [
+    "1p29",
+    "upo1"
+   ],
+   "values": {
+    "magnification": {
+     "value": 4,
+     "unit": "ratio",
+     "source": "npz_upo1_manual",
+     "locator": "Table 1, magnification (4x)",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "fov_deg": {
+     "value": 8,
+     "unit": "deg",
+     "source": "npz_upo1_manual",
+     "locator": "Table 1, field of view (8 deg)",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "weight_kg": {
+     "value": 0.8,
+     "unit": "kg",
+     "source": "npz_upo1_manual",
+     "locator": "Table 1, weight (0.8 kg maximum)",
+     "state": "maximum",
+     "grade": "claimed"
+    },
+    "exit_pupil_mm": {
+     "value": 6.5,
+     "unit": "mm",
+     "source": "npz_upo1_page",
+     "locator": "Product page, exit pupil (6.5 mm)",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "active": {
+     "value": "passive",
+     "unit": "enum",
+     "source": "npz_upo1_page",
+     "locator": "Product page: tritium-lit reticle, passive image",
+     "state": "as published",
+     "grade": "claimed"
+    },
+    "objective_mm": {
+     "value": 0,
+     "unit": "mm",
+     "source": "npz_upo1_page",
+     "locator": "The manufacturer states no objective diameter",
+     "state": "absent",
+     "grade": "claimed"
+    }
+   }
   }
  ]
 }

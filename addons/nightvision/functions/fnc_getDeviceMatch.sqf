@@ -110,6 +110,7 @@ private _tableAll = [
     ["catherine", "thermal", "catherinemp|catherine", "catherine", "catherinemplw", "aee_sensor_device_library", [0.025, 1280, 1024, 50, "cooled", 7.9, "lwir"]],
     ["coti", "thermal", "anpas29coti|coti|pas29", "coti|pas29", "pas29coti", "aee_sensor_device_library", [0.05, 320, 240, 30, "uncooled", 0.15, "lwir"]],
     ["ecoti", "thermal", "ecoti", "ecoti", "safranoptics1ecoti|safranoptics|optics1|1ecoti", "safran_ecoti_datasheet", [0, 640, 480, 0, "uncooled", 0.125, "lwir"]],
+    ["elcan_specter_dr", "optic", "elcanspecterdr", "elcan", "elcanspecterdr1x|elcanspecter|specterdr", "raytheon_elcan_specter_dr", [4, 32, 24, 0.64, 7.8, "passive"]],
     ["envg_thermal", "thermal", "envgb|anpsq42", "envg|envgb", "psq42|envgbthermalchannel|envgbthermal|thermalchannel", "aee_sensor_device_library", [0.04, 640, 480, 30, "uncooled", 1.133, "lwir"]],
     ["envgb", "nvg", "envgb|envg|anpsq42|anpsq44|nvgogglesb", "envg|envgb|psq42|psq44|nvgogglesb", "", "l3harris_envgb", ["white", 72, 32, 0.5533]],
     ["fixed_10x", "optic", "leupoldmark4|mark4|10x", "mark4|10x", "fixed10xsniperoptic|fixed10x|10xsniper|sniperoptic", "aee_sensor_device_library", [10, 40, 3.5, 0.68, 4, "passive"]],
@@ -120,6 +121,7 @@ private _tableAll = [
     ["holographic", "optic", "eotechexps3|exps|553", "eotech|exps|553", "holographicsight", "aee_sensor_device_library", [1, 0, 0, 0.32, 0, "passive"]],
     ["jim_lr", "thermal", "jimlr|jim", "jim", "jimlr|safranjim|safranjimlr", "aee_sensor_device_library", [0.025, 384, 288, 50, "cooled", 2.8, "mwir"]],
     ["kestrel_bnvd", "nvg", "kestrelbnvd", "kestrelbnvd", "kestrel", "", ["", 0, 0, 0]],
+    ["leupold_mark8_cqbss", "optic", "mark8cqbss|mk8cqbss|mark8", "mark8cqbss|leupoldmark8", "cqbss|mark8|leupoldmark8cqbss118x24|118x24|leupoldmark|8cqbss|cqbss118x24", "leupold_mark8_cqbss", [8, 24, 17.4, 0.666, 3.0, "passive"]],
     ["m145_class", "optic", "m145mgo|c79|mgo", "m145|c79|mgo", "m145mgoandc79|m145mgo|mgoand|andc79", "aee_sensor_device_library", [3.4, 28, 8.5, 0.68, 8.2, "passive"]],
     ["mowgli", "thermal", "1pn97|mowgli", "mowgli|1pn97", "1pn97mowgli2m|mowgli2m|mowgli2", "aee_sensor_device_library", [0.05, 320, 240, 50, "uncooled", 1.5, "lwir"]],
     ["nightforce_nxs_3515x50", "optic", "nxs3515x50|3515x50", "nxs3515|3515x50", "3515|nightforcenxs3515x50|nightforcenxs|nxs3515x50", "nightforce_nxs_3515x50", [15, 50, 0, 0.85, 3.3, "passive"]],
@@ -141,13 +143,16 @@ private _tableAll = [
     ["russian_1pn63", "nvg", "1pn63|1pn58", "1pn63|1pn58", "", "aee_sensor_device_library", ["", 30, 0, 0]],
     ["russian_1pn93", "nvg", "1pn93", "1pn93", "", "", ["", 0, 0, 0]],
     ["shakhin", "thermal", "1pn139|1pn140|shakhin", "shakhin|1pn139|1pn140", "1pn140shakhin", "aee_sensor_device_library", [0.05, 640, 480, 50, "uncooled", 2.2, "lwir"]],
+    ["sig_tango6t", "optic", "tango6t|tango6", "tango6|tango6t", "sigsauertango6t16x24|16x24|sigsauer|sauertango6t|tango6t16x24", "sig_tango6t", [6, 24, 0, 0.626, 4.0, "passive"]],
     ["sophie", "thermal", "thalessophie|sophie", "sophie", "thalessophie", "aee_sensor_device_library", [0.05, 384, 288, 50, "uncooled", 2.0, "lwir"]],
     ["sophie_ultima", "thermal", "sophieultima|ultima", "ultima", "sophieultima", "aee_sensor_device_library", [0.025, 640, 512, 50, "cooled", 2.5, "mwir"]],
     ["thermion", "thermal", "pulsarthermionxp50|thermion", "thermion", "pulsarthermionxp50|xp50|pulsarthermion|thermionxp50", "aee_sensor_device_library", [0.025, 640, 480, 50, "uncooled", 0.9, "lwir"]],
+    ["upo1_1p29", "optic", "1p29|upo1|upo11", "1p29|upo1", "upo11p294x|upo11p29|1p294x", "npz_upo1_manual", [4, 0, 8, 0.8, 6.5, "passive"]],
     ["vanilla_gen2", "nvg", "nvgogglesopfor|nvgen2", "", "nvgen2|nvgogglesopfor|nvgogglesopforgen2|nvgogglesopforgen", "cui_2012_halo", ["", 0, 0, 0.2388]],
     ["vanilla_gen3", "nvg", "nvgoggles|nvgogglesindep|nvgen3", "", "nvgen3|nvgogglesindep|nvgogglesgen3|nvgogglesgen", "cui_2012_halo", ["", 0, 0, 0.5533]],
     ["variable_1_4x", "optic", "specterdr|14x|16x|lds", "specterdr|14|16|1x4|1x6|lds|su230|su230a", "14x|16x|variable14xcombatoptic|variable14x|14xcombat|combatoptic", "aee_sensor_device_library", [4, 30, 8, 0.6, 7.5, "passive"]],
-    ["variable_sniper", "optic", "atacr|pmii|mark5|525x56", "atacr|pmii|pm2|mark5|525", "variableprecisionoptic|variableprecision|precisionoptic", "aee_sensor_device_library", [10, 56, 3, 1.05, 5.6, "passive"]]
+    ["variable_sniper", "optic", "atacr|pmii|mark5|525x56", "atacr|pmii|pm2|mark5|525", "variableprecisionoptic|variableprecision|precisionoptic", "aee_sensor_device_library", [10, 56, 3, 1.05, 5.6, "passive"]],
+    ["vortex_razor_hd_gen2", "optic", "razorhdgenii|razorhdgenii16x24", "razorhdgenii|razorgen2", "razorhd16x24|16x24|razorhd|hd16x24", "vortex_razor_hd_gen2", [6, 24, 21.7, 0.61, 4.0, "passive"]]
 ];
 
 // Filter by family so a class two families share cannot tie.

@@ -383,12 +383,12 @@
         "total": 18
       },
       "excluded": {},
-      "figure_graded": 86,
-      "figure_pct": 38.05,
+      "figure_graded": 101,
+      "figure_pct": 44.69,
       "grades": {
-        "alias": 63,
-        "keyword": 23,
-        "type": 140
+        "alias": 68,
+        "keyword": 33,
+        "type": 125
       },
       "inherited": [],
       "label": "optics",
