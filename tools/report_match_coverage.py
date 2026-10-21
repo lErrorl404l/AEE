@@ -1479,17 +1479,23 @@ def measure(scanned: list, base: set[str]) -> dict:
         # already resolves on a family or a sourced entry is never
         # bucketed, and only a class already at the type grade can be.
         if label == "uniforms":
-            civilian = [
-                r
-                for r in selected
-                if match_e(r["class"], r["display"]).get("type")
-                and CIVILIAN_TERM.search(r["class"] + " " + r["display"])
-            ]
-            if civilian:
-                selected = [r for r in selected if r not in civilian]
-                dropped.setdefault("civilian garment", []).extend(
-                    r["class"] for r in civilian
-                )
+            keep = []
+            for r in selected:
+                if not match_e(r["class"], r["display"]).get("type"):
+                    keep.append(r)
+                    continue
+                text = r["class"] + " " + r["display"]
+                if FICTIONAL_GARMENT_TERM.search(text):
+                    bucket = "fictional garment"
+                elif not r["display"].strip():
+                    bucket = "no identity text"
+                elif CIVILIAN_TERM.search(text):
+                    bucket = "civilian garment"
+                else:
+                    keep.append(r)
+                    continue
+                dropped.setdefault(bucket, []).append(r["class"])
+            selected = keep
         reasons = defaultdict(int)
         for r in selected:
             if match_e(r["class"], r["display"]) is not None:
