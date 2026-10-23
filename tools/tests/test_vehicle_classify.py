@@ -37,6 +37,7 @@ FUNCTIONS = REPO / "addons" / "vehicles" / "functions"
 MOBILITY_FUNCTIONS = REPO / "addons" / "mobility" / "functions"
 BANDS_PATH = FUNCTIONS / "fnc_getVehicleBands.sqf"
 CLASSIFY_PATH = FUNCTIONS / "fnc_classifyVehicle.sqf"
+TOKEN_PATH = FUNCTIONS / "fnc_getEngineToken.sqf"
 WRAPPER_PATH = FUNCTIONS / "fnc_estimateVehicleMass.sqf"
 TRACTION_PATH = MOBILITY_FUNCTIONS / "fnc_calculateTraction.sqf"
 PREP_PATH = REPO / "addons" / "vehicles" / "XEH_PREP.hpp"
@@ -46,6 +47,7 @@ EQUIPMENT_PATH = (
 
 BANDS = BANDS_PATH.read_text(encoding="utf-8")
 CLASSIFY = CLASSIFY_PATH.read_text(encoding="utf-8")
+TOKEN = TOKEN_PATH.read_text(encoding="utf-8")
 TRACTION = TRACTION_PATH.read_text(encoding="utf-8")
 EQUIPMENT = EQUIPMENT_PATH.read_text(encoding="utf-8")
 
@@ -487,12 +489,14 @@ class ClassifierSourceTest(unittest.TestCase):
             self.assertIn(token, CLASSIFY)
 
     def test_the_token_order_is_most_specific_first(self) -> None:
-        # The selector column is an engine class, and it runs most specific
-        # first. The token column is the AEE vocabulary and does not order:
-        # every MRAP row returns "MRAP" and every tracked APC row returns
-        # "Tracked_APC", so the old assertion on the token column could not
-        # see that Tracked_APC is a token and not a class.
-        table = CLASSIFY[CLASSIFY.index("private _vehicleTokens = [") :]
+        # The ladder lives in aee_vehicles_fnc_getEngineToken, shared by the
+        # classifier and the mass estimate. The selector column is an engine
+        # class, and it runs most specific first. The token column is the AEE
+        # vocabulary and does not order: every MRAP row returns "MRAP" and
+        # every tracked APC row returns "Tracked_APC", so the old assertion on
+        # the token column could not see that Tracked_APC is a token and not
+        # a class.
+        table = TOKEN[TOKEN.index("private _vehicleTokens = [") :]
         table = table[: table.index("];")]
         rows = re.findall(
             r'\["([A-Za-z_][A-Za-z0-9_]*)",\s*"([A-Za-z_][A-Za-z0-9_]*)"\]',
@@ -522,7 +526,7 @@ class ClassifierSourceTest(unittest.TestCase):
             ],
         )
         for token in GROUND_TOKENS:
-            self.assertIn(f'"{token}"', CLASSIFY, f"{token} has no token route")
+            self.assertIn(f'"{token}"', TOKEN, f"{token} has no token route")
 
     def test_the_classifier_reads_the_live_properties(self) -> None:
         for call in (
@@ -544,6 +548,15 @@ class ClassifierSourceTest(unittest.TestCase):
         prep = PREP_PATH.read_text(encoding="utf-8")
         hits = [line for line in prep.splitlines() if "getVehicleBands" in line]
         self.assertEqual(hits, ["PREP(getVehicleBands);"])
+
+    def test_the_token_ladder_is_shared_not_duplicated(self) -> None:
+        # One ladder, two callers. A second copy in the classifier is how the
+        # mass estimate drifted from the token vocabulary.
+        self.assertIn("call FUNC(getEngineToken)", CLASSIFY)
+        self.assertNotIn("_vehicleTokens", CLASSIFY)
+        prep = PREP_PATH.read_text(encoding="utf-8")
+        hits = [line for line in prep.splitlines() if "getEngineToken" in line]
+        self.assertEqual(hits, ["PREP(getEngineToken);"])
 
 
 class ConsumerWiringTest(unittest.TestCase):
@@ -639,7 +652,7 @@ class NonVehicleGuardTest(unittest.TestCase):
 
     def test_the_air_and_sea_token_routes_are_present(self) -> None:
         for token in AIR_TOKENS + SEA_TOKENS:
-            self.assertIn(f'"{token}"', CLASSIFY, f"{token} has no token route")
+            self.assertIn(f'"{token}"', TOKEN, f"{token} has no token route")
 
     def test_a_person_would_band_match_without_the_guard(self) -> None:
         # A light synthetic row stands in for the catalogue's lightest

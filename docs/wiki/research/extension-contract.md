@@ -127,7 +127,7 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_weatherfx` | `weatherfx` |
 | `aee_wildlife` | `wildlife` |
 
-### Public functions (914)
+### Public functions (915)
 
 Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespace. Call one as `call aee_<component>_fnc_<name>`.
 
@@ -898,6 +898,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_vehicles_fnc_classifyVehicle`
 - `aee_vehicles_fnc_estimateVehicleMass`
 - `aee_vehicles_fnc_estimateVehicleMassCore`
+- `aee_vehicles_fnc_getEngineToken`
 - `aee_vehicles_fnc_getFuelData`
 - `aee_vehicles_fnc_getNearbyVehicles`
 - `aee_vehicles_fnc_getVehicleBands`

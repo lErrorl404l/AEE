@@ -85,7 +85,7 @@
         "addons/mobility/functions/fnc_calculateSSF.sqf:108",
         "addons/thermal/functions/solver/fnc_calculateObjectTemperature.sqf:288",
         "addons/thermal_display/functions/outline/fnc_outlineCollect.sqf:52",
-        "addons/vehicles/functions/fnc_classifyVehicle.sqf:87",
+        "addons/vehicles/functions/fnc_classifyVehicle.sqf:88",
         "addons/vehicles/functions/fnc_getVehicleGeometry.sqf:74",
         "addons/weatherfx/functions/weather/fnc_applyExhaustShimmer.sqf:401"
       ]
@@ -250,7 +250,7 @@
         "addons/mobility/functions/fnc_calculateTerrainLimits.sqf:92",
         "addons/thermal/functions/ground/fnc_applyGroundContactStamps.sqf:61",
         "addons/thermal/functions/solver/fnc_calculateObjectTemperature.sqf:288",
-        "addons/vehicles/functions/fnc_classifyVehicle.sqf:86",
+        "addons/vehicles/functions/fnc_classifyVehicle.sqf:87",
         "addons/weatherfx/functions/weather/fnc_applyExhaustShimmer.sqf:389"
       ]
     },
@@ -374,7 +374,7 @@
         "addons/maritime/functions/fnc_calculateShipMotion.sqf:49",
         "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:169",
         "addons/thermal/functions/solver/fnc_calculateObjectTemperature.sqf:288",
-        "addons/vehicles/functions/fnc_classifyVehicle.sqf:88",
+        "addons/vehicles/functions/fnc_classifyVehicle.sqf:89",
         "addons/vehicles/functions/fnc_getVehicleGeometry.sqf:74"
       ]
     },
@@ -395,7 +395,7 @@
       "provenance": [
         "addons/thermal/functions/display/fnc_calculateVehicleHeat.sqf:77",
         "addons/thermal_display/functions/outline/fnc_outlineCollect.sqf:52",
-        "addons/vehicles/functions/fnc_classifyVehicle.sqf:133",
+        "addons/vehicles/functions/fnc_classifyVehicle.sqf:134",
         "addons/vehicles/functions/fnc_updateFuelConsumption.sqf:117"
       ]
     },
@@ -414,7 +414,7 @@
         "addons/thermal/functions/ground/fnc_applyGroundContactStamps.sqf:61",
         "addons/thermal_display/functions/outline/fnc_outlineCollect.sqf:52",
         "addons/vehicles/functions/common/fnc_getNearbyVehicles.sqf:44",
-        "addons/vehicles/functions/fnc_classifyVehicle.sqf:114"
+        "addons/vehicles/functions/fnc_classifyVehicle.sqf:115"
       ]
     },
     {

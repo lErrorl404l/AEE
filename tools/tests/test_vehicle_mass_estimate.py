@@ -871,6 +871,80 @@ class GeneratedMassClassFallThroughTest(unittest.TestCase):
         self.assertEqual(chosen[2], "tracked")
 
 
+TOKEN = FUNCTIONS / "fnc_getEngineToken.sqf"
+
+
+def engine_token_rows() -> list[tuple[str, str]]:
+    """The shared token ladder, as (engine class, coarse token) rows."""
+    text = TOKEN.read_text(encoding="utf-8")
+    table = text[text.index("private _vehicleTokens = [") :]
+    table = table[: table.index("];")]
+    return re.findall(
+        r'\["([A-Za-z_][A-Za-z0-9_]*)",\s*"([A-Za-z_][A-Za-z0-9_]*)"\]', table
+    )
+
+
+def engine_token(chain: set[str]) -> str:
+    """Mirror of aee_vehicles_fnc_getEngineToken: most specific first.
+
+    The harness executes a forEach exitWith as a per-iteration return, so a
+    run of the SQF would take the LAST matching row. The order is mirrored
+    from the same table instead, and the table itself is pinned by
+    test_vehicle_classify.
+    """
+    for selector, token in engine_token_rows():
+        if selector in chain:
+            return token
+    return ""
+
+
+class MassClassTokenRouteTest(unittest.TestCase):
+    """A specific vehicle class resolves its own mass-class row.
+
+    The wrapper matched the row key with `_vehicle isKindOf _key`. The
+    MRAP, Wheeled_APC and Tracked_APC rows are AEE tokens, not engine
+    classes, so no class could ever match them and Car answered for every
+    one. The rows are keyed on the coarse token now, and these cases run
+    the ladder and the committed table together.
+    """
+
+    @classmethod
+    def setUpClass(cls) -> None:
+        table = cast("list[object]", gen.build_table(gen.load_model(MODEL)))
+        cls.rows = cast("list[list[object]]", table[2])
+
+    def resolve(self, chain: set[str], vehicle_type: str) -> tuple[str, str]:
+        token = engine_token(chain)
+        self.assertNotEqual(token, "", f"no token for {sorted(chain)}")
+        chosen = select_mass_class_row(self.rows, vehicle_type, {token})
+        self.assertIsNotNone(chosen, f"no mass-class row for {token}")
+        assert chosen is not None
+        return token, cast(str, chosen[0])
+
+    def test_an_mrap_resolves_the_mrap_row(self) -> None:
+        # Its chain reaches Car, so the Car row is the shadowing case.
+        token, key = self.resolve({"MRAP_01_base_F", "Car_F", "Car"}, "wheeled")
+        self.assertEqual(token, "MRAP")
+        self.assertEqual(key, "MRAP")
+
+    def test_a_wheeled_apc_resolves_the_wheeled_apc_row(self) -> None:
+        token, key = self.resolve({"Wheeled_APC_F", "Car_F", "Car"}, "wheeled")
+        self.assertEqual(token, "Wheeled_APC")
+        self.assertEqual(key, "Wheeled_APC")
+
+    def test_a_tracked_apc_resolves_the_tracked_apc_row(self) -> None:
+        token, key = self.resolve(
+            {"APC_Tracked_01_base_F", "Tank_F", "Tank"}, "tracked"
+        )
+        self.assertEqual(token, "Tracked_APC")
+        self.assertEqual(key, "Tracked_APC")
+
+    def test_a_plain_car_still_resolves_the_car_row(self) -> None:
+        token, key = self.resolve({"Car"}, "wheeled")
+        self.assertEqual(token, "Car")
+        self.assertEqual(key, "Car")
+
+
 class WrapperMassClassFallThroughTest(unittest.TestCase):
     """The wrapper implements the first-usable-match policy.
 
@@ -887,6 +961,13 @@ class WrapperMassClassFallThroughTest(unittest.TestCase):
 
     def test_the_usable_test_requires_a_positive_ordered_fill_range(self) -> None:
         self.assertIn(USABLE_PREDICATE, self.block)
+
+    def test_a_token_row_matches_the_coarse_token_not_an_engine_class(self) -> None:
+        # The MRAP, Wheeled_APC and Tracked_APC rows are tokens, so an
+        # isKindOf test on the row key could never reach them.
+        self.assertIn("call FUNC(getEngineToken)", self.raw)
+        self.assertIn('_rowMatch = (_token != "") && (_token == _key);', self.block)
+        self.assertNotIn("isKindOf _key", self.flat)
 
     def test_a_row_is_stored_only_when_usable_and_none_is_chosen(self) -> None:
         # The usability test runs first, so an unusable row never stops the
@@ -1171,7 +1252,11 @@ class ArityGuardSourceTest(unittest.TestCase):
     def setUpClass(cls) -> None:
         cls.wrapper_flat = compact(code(WRAPPER.read_text(encoding="utf-8")))
         cls.ssf_flat = compact(
-            code((MOBILITY_FUNCTIONS / "fnc_calculateSSF.sqf").read_text(encoding="utf-8"))
+            code(
+                (MOBILITY_FUNCTIONS / "fnc_calculateSSF.sqf").read_text(
+                    encoding="utf-8"
+                )
+            )
         )
 
     def test_the_wrapper_guard_accepts_two_or_three_elements(self) -> None:
@@ -1192,7 +1277,9 @@ class ArityGuardSourceTest(unittest.TestCase):
         self.assertIn("first two elements are corners", raw)
 
     def test_the_ssf_header_states_the_box_arity(self) -> None:
-        raw = compact((MOBILITY_FUNCTIONS / "fnc_calculateSSF.sqf").read_text(encoding="utf-8"))
+        raw = compact(
+            (MOBILITY_FUNCTIONS / "fnc_calculateSSF.sqf").read_text(encoding="utf-8")
+        )
         self.assertIn("boundingSphereDiameter", raw)
         self.assertIn("first two elements are corners", raw)
 

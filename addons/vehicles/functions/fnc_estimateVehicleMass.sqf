@@ -25,10 +25,15 @@ The order is sourced-first and fail-closed:
      class is a disagreement. No material, or only the ground residual,
      uses the mass-class default density.
   6. The generated mass-class table resolves the density class and the fill
-     range, in the order token, vehicle type, default. A matched row is used
-     only when its fill range is usable. A zero-fill or inverted row is
-     skipped, so the search continues to a later row. An empty token row
-     therefore cannot shadow a later calibrated vehicle-type row.
+     range, in the order token, vehicle type, default. A token row matches
+     the class's coarse engine token from
+     aee_vehicles_fnc_getEngineToken, never an isKindOf test on the row
+     key: "MRAP", "Wheeled_APC" and "Tracked_APC" are AEE tokens, not
+     engine classes, so the specific row wins over the Car row the class
+     also sits under. A matched row is used only when its fill range is
+     usable. A zero-fill or inverted row is skipped, so the search
+     continues to a later row. An empty token row therefore cannot shadow
+     a later calibrated vehicle-type row.
   7. The core computes the bounded range.
   8. The power check runs only when the model power block is enabled. It is
      disabled until an in-engine probe records the band.
@@ -178,9 +183,16 @@ private _vehicleType = "wheeled";
 // The tracked flag comes from the shared classifier, which reads the same
 // live isKindOf chain the ad-hoc check used. A match already held by this
 // function is passed in, so the classifier reuses it.
-if (([_vehicle, _match] call FUNC(classifyVehicle)) select 2) then {
+private _identity = [_vehicle, _match] call FUNC(classifyVehicle);
+if (_identity select 2) then {
     _vehicleType = "tracked";
 };
+// The mass-class token rows are keyed on the coarse engine token, never on
+// an engine class. "MRAP", "Wheeled_APC" and "Tracked_APC" are AEE tokens,
+// so `_vehicle isKindOf _key` was false for every one of them and the Car
+// row answered instead. The token is the same one the classifier's token
+// route returns.
+private _token = [_vehicle] call FUNC(getEngineToken);
 
 private _classRow = [];
 {
@@ -192,7 +204,10 @@ private _classRow = [];
     if (_rowUsable && {_classRow isEqualTo []}) then {
         private _rowMatch = false;
         if (_matchKind == "token") then {
-            _rowMatch = _vehicle isKindOf _key;
+            // The row key is the coarse token, and only its own token may
+            // claim the class. The specific rows therefore win: an MRAP
+            // matches MRAP and never the Car row it also sits under.
+            _rowMatch = (_token != "") && (_token == _key);
         } else {
             if (_matchKind == "vehicle_type") then {
                 _rowMatch = (_rowType == _vehicleType);
