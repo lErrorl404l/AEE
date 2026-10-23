@@ -116,8 +116,6 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 DATA = ROOT / "data" / "ballistics"
-REPORT_MD = DATA / "VERIFICATION.md"
-REPORT_JSON = DATA / "verification.json"
 
 # Kernel constants, transcribed from addons/lib/constants.hpp and
 # fnc_calculateBallisticDrag.sqf.
