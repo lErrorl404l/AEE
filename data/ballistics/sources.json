@@ -18524,5 +18524,20 @@
   "licence": "manufacturer published data",
   "primary_held": true,
   "note": "Manufacturer claim. One sheet per cartridge, each stating its test barrel length, the bullets by part number and a special load that names a powder, a charge and the velocity it produced. The parsed special loads and the SHA256 of every sheet are held under data/ballistics/sources/sierra_velocity.json; the sheets are held in the local source cache and are not redistributed."
+ },
+ {
+  "source_id": "nosler_velocity",
+  "tier": 4,
+  "type": "manufacturer",
+  "title": "Nosler load data, per-cartridge load sheets",
+  "edition": "version 9.0",
+  "identifier": "Nosler load data sheets",
+  "locator": "per-cartridge sheet, bullet-weight group table, maximum charge row",
+  "published": "current",
+  "retrieved": "2026-10-23",
+  "url": "https://www.nosler.com/load-data/caliber-and-cartridge-data.html",
+  "licence": "manufacturer published data",
+  "primary_held": true,
+  "note": "Manufacturer claim. One single-page sheet per cartridge and bullet-weight group; each sheet states its own test barrel and a muzzle velocity per powder charge, and its header names the bullets the group covers. The parsed rows and the digest of the captured sheets are held under data/ballistics/sources/nosler_velocity.json. The sheets are held in the local source cache and are not redistributed."
  }
 ]

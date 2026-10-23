@@ -2098,6 +2098,5026 @@
    "drift_bias": 0.002
   },
   {
+   "projectile_id": "nosler_16314",
+   "names": [
+    "6mm 85 Gr. Spitzer Partition"
+   ],
+   "model": "G1",
+   "bc": 0.315,
+   "mv_ms": 991.5,
+   "load_id": "6_mm_creedmoor_85_gr_spitzer_partition",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.089,
+   "worst_drop_error_over_tolerance": 0.242,
+   "worst_drift_error_over_tolerance": 0.165,
+   "worst_tof_error_over_tolerance": 0.268,
+   "drift_bias": 0.0014
+  },
+  {
+   "projectile_id": "nosler_16315",
+   "names": [
+    "6mm 95 Gr. Spitzer Partition"
+   ],
+   "model": "G7",
+   "bc": 0.177,
+   "mv_ms": 955.5,
+   "load_id": "6_mm_creedmoor_95_gr_spitzer_partition",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.087,
+   "worst_drop_error_over_tolerance": 0.161,
+   "worst_drift_error_over_tolerance": 0.142,
+   "worst_tof_error_over_tolerance": 0.863,
+   "drift_bias": 0.0034
+  },
+  {
+   "projectile_id": "nosler_16316",
+   "names": [
+    "22 Cal 60 Gr. Spitzer Partition"
+   ],
+   "model": "G1",
+   "bc": 0.228,
+   "mv_ms": 1131.4,
+   "load_id": "220_swift_60_gr_spitzer_partition",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.119,
+   "worst_drop_error_over_tolerance": 0.143,
+   "worst_drift_error_over_tolerance": 0.185,
+   "worst_tof_error_over_tolerance": 0.52,
+   "drift_bias": 0.0023
+  },
+  {
+   "projectile_id": "nosler_16317",
+   "names": [
+    "25 Cal 100 Gr. Spitzer Partition"
+   ],
+   "model": "G1",
+   "bc": 0.377,
+   "mv_ms": 951.0,
+   "load_id": "257_roberts_100_gr_spitzer_partition",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.056,
+   "worst_drop_error_over_tolerance": 0.174,
+   "worst_drift_error_over_tolerance": 0.086,
+   "worst_tof_error_over_tolerance": 0.601,
+   "drift_bias": 0.0021
+  },
+  {
+   "projectile_id": "nosler_16318",
+   "names": [
+    "25 Cal 115 Gr. Spitzer Partition"
+   ],
+   "model": "G1",
+   "bc": 0.389,
+   "mv_ms": 861.7,
+   "load_id": "257_roberts_115_gr_spitzer_partition",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.064,
+   "worst_drop_error_over_tolerance": 0.199,
+   "worst_drift_error_over_tolerance": 0.125,
+   "worst_tof_error_over_tolerance": 0.341,
+   "drift_bias": 0.0014
+  },
+  {
+   "projectile_id": "nosler_16319",
+   "names": [
+    "6.5mm 100 Gr. Spitzer Partition"
+   ],
+   "model": "G1",
+   "bc": 0.326,
+   "mv_ms": 951.0,
+   "load_id": "257_roberts_100_gr_spitzer_partition",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.087,
+   "worst_drop_error_over_tolerance": 0.247,
+   "worst_drift_error_over_tolerance": 0.166,
+   "worst_tof_error_over_tolerance": 0.73,
+   "drift_bias": 0.0027
+  },
+  {
+   "projectile_id": "nosler_16320",
+   "names": [
+    "6.5mm 125 Gr. Spitzer Partition"
+   ],
+   "model": "G1",
+   "bc": 0.449,
+   "mv_ms": 997.3,
+   "load_id": "264_winchester_magnum_125_gr_spitzer_partition",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.055,
+   "worst_drop_error_over_tolerance": 0.179,
+   "worst_drift_error_over_tolerance": 0.144,
+   "worst_tof_error_over_tolerance": 0.631,
+   "drift_bias": 0.0026
+  },
+  {
+   "projectile_id": "nosler_16321",
+   "names": [
+    "6.5mm 140 Gr. Spitzer Partition"
+   ],
+   "model": "G1",
+   "bc": 0.49,
+   "mv_ms": 940.3,
+   "load_id": "264_winchester_magnum_140_gr_spitzer_partition",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.044,
+   "worst_drop_error_over_tolerance": 0.131,
+   "worst_drift_error_over_tolerance": 0.08,
+   "worst_tof_error_over_tolerance": 0.582,
+   "drift_bias": 0.0024
+  },
+  {
+   "projectile_id": "nosler_16322",
+   "names": [
+    "270 Cal 130 Gr. Spitzer Partition"
+   ],
+   "model": "G1",
+   "bc": 0.416,
+   "mv_ms": 1059.5,
+   "load_id": "270_weatherby_magnum_130_gr_spitzer_partition",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.042,
+   "worst_drop_error_over_tolerance": 0.103,
+   "worst_drift_error_over_tolerance": 0.042,
+   "worst_tof_error_over_tolerance": 0.53,
+   "drift_bias": 0.0018
+  },
+  {
+   "projectile_id": "nosler_16323",
+   "names": [
+    "270 Cal 150 Gr. Spitzer Partition"
+   ],
+   "model": "G1",
+   "bc": 0.465,
+   "mv_ms": 1044.2,
+   "load_id": "28_nosler_150_gr_spitzer_partition",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.037,
+   "worst_drop_error_over_tolerance": 0.125,
+   "worst_drift_error_over_tolerance": 0.05,
+   "worst_tof_error_over_tolerance": 0.523,
+   "drift_bias": 0.0019
+  },
+  {
+   "projectile_id": "nosler_16324",
+   "names": [
+    "270 Cal 160 Gr. Semi Spitzer Partition"
+   ],
+   "model": "G1",
+   "bc": 0.434,
+   "mv_ms": 1003.7,
+   "load_id": "28_nosler_160_gr_spitzer_partition",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.039,
+   "worst_drop_error_over_tolerance": 0.136,
+   "worst_drift_error_over_tolerance": 0.102,
+   "worst_tof_error_over_tolerance": 0.183,
+   "drift_bias": 0.0015
+  },
+  {
+   "projectile_id": "nosler_16325",
+   "names": [
+    "7mm 140 Gr. Spitzer Partition"
+   ],
+   "model": "G1",
+   "bc": 0.434,
+   "mv_ms": 1019.9,
+   "load_id": "26_nosler_140_gr_spitzer_partition",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.066,
+   "worst_drop_error_over_tolerance": 0.141,
+   "worst_drift_error_over_tolerance": 0.11,
+   "worst_tof_error_over_tolerance": 0.832,
+   "drift_bias": 0.0028
+  },
+  {
+   "projectile_id": "nosler_16326",
+   "names": [
+    "7mm 150 Gr. Spitzer Partition"
+   ],
+   "model": "G7",
+   "bc": 0.212,
+   "mv_ms": 1044.2,
+   "load_id": "28_nosler_150_gr_spitzer_partition",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.069,
+   "worst_drop_error_over_tolerance": 0.27,
+   "worst_drift_error_over_tolerance": 0.129,
+   "worst_tof_error_over_tolerance": 0.381,
+   "drift_bias": 0.0024
+  },
+  {
+   "projectile_id": "nosler_16327",
+   "names": [
+    "7mm 160 Gr. Spitzer Partition"
+   ],
+   "model": "G1",
+   "bc": 0.475,
+   "mv_ms": 1003.7,
+   "load_id": "28_nosler_160_gr_spitzer_partition",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.065,
+   "worst_drop_error_over_tolerance": 0.22,
+   "worst_drift_error_over_tolerance": 0.116,
+   "worst_tof_error_over_tolerance": 0.539,
+   "drift_bias": 0.0029
+  },
+  {
+   "projectile_id": "nosler_16329",
+   "names": [
+    "30 Cal 150 Gr. Spitzer Partition"
+   ],
+   "model": "G1",
+   "bc": 0.387,
+   "mv_ms": 1044.2,
+   "load_id": "28_nosler_150_gr_spitzer_partition",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.071,
+   "worst_drop_error_over_tolerance": 0.193,
+   "worst_drift_error_over_tolerance": 0.17,
+   "worst_tof_error_over_tolerance": 0.742,
+   "drift_bias": 0.0034
+  },
+  {
+   "projectile_id": "nosler_16330",
+   "names": [
+    "30 Cal 165 Gr. Spitzer Partition"
+   ],
+   "model": "G7",
+   "bc": 0.188,
+   "mv_ms": 777.2,
+   "load_id": "300_savage_165_gr_spitzer_partition",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.062,
+   "worst_drop_error_over_tolerance": 0.154,
+   "worst_drift_error_over_tolerance": 0.069,
+   "worst_tof_error_over_tolerance": 0.293,
+   "drift_bias": 0.0016
+  },
+  {
+   "projectile_id": "nosler_16331",
+   "names": [
+    "30 Cal 180 Gr. Spitzer Partition"
+   ],
+   "model": "G7",
+   "bc": 0.184,
+   "mv_ms": 762.6,
+   "load_id": "300_savage_180_gr_spitzer_partition",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.068,
+   "worst_drop_error_over_tolerance": 0.209,
+   "worst_drift_error_over_tolerance": 0.152,
+   "worst_tof_error_over_tolerance": 0.416,
+   "drift_bias": 0.0021
+  },
+  {
+   "projectile_id": "nosler_16332",
+   "names": [
+    "30 Cal 220 Gr. Semi Spitzer Partition"
+   ],
+   "model": "G1",
+   "bc": 0.351,
+   "mv_ms": 906.2,
+   "load_id": "300_remington_ultra_magnum_220_gr_semi_spitzer_partition",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.061,
+   "worst_drop_error_over_tolerance": 0.111,
+   "worst_drift_error_over_tolerance": 0.073,
+   "worst_tof_error_over_tolerance": 0.596,
+   "drift_bias": 0.002
+  },
+  {
+   "projectile_id": "nosler_16333",
+   "names": [
+    "30 Cal 170 Gr. Round Nose Partition"
+   ],
+   "model": "G1",
+   "bc": 0.252,
+   "mv_ms": 668.1,
+   "load_id": "30_30_winchester_170_gr_round_nose_partition",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.06,
+   "worst_drop_error_over_tolerance": 0.312,
+   "worst_drift_error_over_tolerance": 0.075,
+   "worst_tof_error_over_tolerance": 0.139,
+   "drift_bias": 0.0003
+  },
+  {
+   "projectile_id": "nosler_16336",
+   "names": [
+    "338 Cal 225 Gr. Spitzer Partition"
+   ],
+   "model": "G1",
+   "bc": 0.454,
+   "mv_ms": 740.1,
+   "load_id": "338_federal_225_gr_spitzer_partition",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.058,
+   "worst_drop_error_over_tolerance": 0.2,
+   "worst_drift_error_over_tolerance": 0.114,
+   "worst_tof_error_over_tolerance": 0.576,
+   "drift_bias": 0.0017
+  },
+  {
+   "projectile_id": "nosler_16337",
+   "names": [
+    "338 Cal 210 Gr. Spitzer Partition"
+   ],
+   "model": "G1",
+   "bc": 0.4,
+   "mv_ms": 771.1,
+   "load_id": "338_federal_210_gr_spitzer_partition",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.057,
+   "worst_drop_error_over_tolerance": 0.228,
+   "worst_drift_error_over_tolerance": 0.128,
+   "worst_tof_error_over_tolerance": 0.58,
+   "drift_bias": 0.0019
+  },
+  {
+   "projectile_id": "nosler_17101",
+   "names": [
+    "22 Cal 69 Gr. HPBT Custom Competition"
+   ],
+   "model": "G1",
+   "bc": 0.305,
+   "mv_ms": 901.3,
+   "load_id": "223_rem_69_gr_hpbt_custom_competition",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.057,
+   "worst_drop_error_over_tolerance": 0.18,
+   "worst_drift_error_over_tolerance": 0.106,
+   "worst_tof_error_over_tolerance": 0.232,
+   "drift_bias": 0.0011
+  },
+  {
+   "projectile_id": "nosler_22421",
+   "names": [
+    "22 Cal 77 Gr. HPBT Custom Competition"
+   ],
+   "model": "G7",
+   "bc": 0.193,
+   "mv_ms": 822.0,
+   "load_id": "223_rem_77_gr_hpbt_custom_competition",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.05,
+   "worst_drop_error_over_tolerance": 0.146,
+   "worst_drift_error_over_tolerance": 0.083,
+   "worst_tof_error_over_tolerance": 0.209,
+   "drift_bias": 0.0011
+  },
+  {
+   "projectile_id": "nosler_24055",
+   "names": [
+    "6mm 55 Gr. Spitzer (Purple Tip) Ballistic Tip Varmint"
+   ],
+   "model": "G1",
+   "bc": 0.276,
+   "mv_ms": 1242.7,
+   "load_id": "6_mm_creedmoor_55_gr_spitzer_purple_tip_ballistic_tip_varmint",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.094,
+   "worst_drop_error_over_tolerance": 0.203,
+   "worst_drift_error_over_tolerance": 0.121,
+   "worst_tof_error_over_tolerance": 0.331,
+   "drift_bias": 0.0015
+  },
+  {
+   "projectile_id": "nosler_24080",
+   "names": [
+    "6mm 80 Gr. Spitzer (Purple Tip) Ballistic Tip Varmint"
+   ],
+   "model": "G7",
+   "bc": 0.165,
+   "mv_ms": 1052.8,
+   "load_id": "6_mm_creedmoor_80_gr_spitzer_purple_tip_ballistic_tip_varmint",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.092,
+   "worst_drop_error_over_tolerance": 0.22,
+   "worst_drift_error_over_tolerance": 0.182,
+   "worst_tof_error_over_tolerance": 0.277,
+   "drift_bias": 0.0015
+  },
+  {
+   "projectile_id": "nosler_24090",
+   "names": [
+    "6mm 90 Gr. Spitzer (Purple Tip) Ballistic Tip Hunting"
+   ],
+   "model": "G1",
+   "bc": 0.365,
+   "mv_ms": 991.5,
+   "load_id": "6_mm_creedmoor_90_gr_spitzer_purple_tip_ballistic_tip_hunting",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.063,
+   "worst_drop_error_over_tolerance": 0.233,
+   "worst_drift_error_over_tolerance": 0.101,
+   "worst_tof_error_over_tolerance": 0.167,
+   "drift_bias": 0.0011
+  },
+  {
+   "projectile_id": "nosler_24095",
+   "names": [
+    "6mm 95 Gr. Spitzer (Purple Tip) Ballistic Tip Hunting"
+   ],
+   "model": "G1",
+   "bc": 0.379,
+   "mv_ms": 955.5,
+   "load_id": "6_mm_creedmoor_95_gr_spitzer_purple_tip_ballistic_tip_hunting",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.068,
+   "worst_drop_error_over_tolerance": 0.271,
+   "worst_drift_error_over_tolerance": 0.114,
+   "worst_tof_error_over_tolerance": 0.199,
+   "drift_bias": 0.0015
+  },
+  {
+   "projectile_id": "nosler_25100",
+   "names": [
+    "25 Cal 100 Gr. Spitzer (Blue Tip) Ballistic Tip Hunting"
+   ],
+   "model": "G1",
+   "bc": 0.393,
+   "mv_ms": 951.0,
+   "load_id": "257_roberts_100_gr_spitzer_blue_tip_ballistic_tip_hunting",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.075,
+   "worst_drop_error_over_tolerance": 0.158,
+   "worst_drift_error_over_tolerance": 0.134,
+   "worst_tof_error_over_tolerance": 0.801,
+   "drift_bias": 0.0033
+  },
+  {
+   "projectile_id": "nosler_25115",
+   "names": [
+    "25 Cal 115 Gr. Spitzer (Blue Tip) Ballistic Tip Hunting"
+   ],
+   "model": "G7",
+   "bc": 0.204,
+   "mv_ms": 861.7,
+   "load_id": "257_roberts_115_gr_spitzer_blue_tip_ballistic_tip_hunting",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.05,
+   "worst_drop_error_over_tolerance": 0.188,
+   "worst_drift_error_over_tolerance": 0.119,
+   "worst_tof_error_over_tolerance": 0.403,
+   "drift_bias": 0.0017
+  },
+  {
+   "projectile_id": "nosler_25116",
+   "names": [
+    "22 Cal 80 Gr. HPBT Custom Competition"
+   ],
+   "model": "G1",
+   "bc": 0.415,
+   "mv_ms": 822.0,
+   "load_id": "223_rem_80_gr_hpbt_custom_competition",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.056,
+   "worst_drop_error_over_tolerance": 0.132,
+   "worst_drift_error_over_tolerance": 0.099,
+   "worst_tof_error_over_tolerance": 0.488,
+   "drift_bias": 0.0021
+  },
+  {
+   "projectile_id": "nosler_25396",
+   "names": [
+    "30 Cal 180 Gr. Protected Point Partition"
+   ],
+   "model": "G7",
+   "bc": 0.184,
+   "mv_ms": 762.6,
+   "load_id": "300_savage_180_gr_protected_point_partition",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.068,
+   "worst_drop_error_over_tolerance": 0.209,
+   "worst_drift_error_over_tolerance": 0.152,
+   "worst_tof_error_over_tolerance": 0.416,
+   "drift_bias": 0.0021
+  },
+  {
+   "projectile_id": "nosler_26100",
+   "names": [
+    "6.5mm 100 Gr. Spitzer (Brown Tip) Ballistic Tip Hunting"
+   ],
+   "model": "G1",
+   "bc": 0.35,
+   "mv_ms": 1092.1,
+   "load_id": "264_winchester_magnum_100_gr_spitzer_brown_tip_ballistic_tip_hunting",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.082,
+   "worst_drop_error_over_tolerance": 0.199,
+   "worst_drift_error_over_tolerance": 0.179,
+   "worst_tof_error_over_tolerance": 0.733,
+   "drift_bias": 0.0027
+  },
+  {
+   "projectile_id": "nosler_26120",
+   "names": [
+    "6.5mm 120 Gr. Spitzer (Brown Tip) Ballistic Tip Hunting"
+   ],
+   "model": "G7",
+   "bc": 0.214,
+   "mv_ms": 1008.0,
+   "load_id": "264_winchester_magnum_120_gr_spitzer_brown_tip_ballistic_tip_hunting",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.058,
+   "worst_drop_error_over_tolerance": 0.198,
+   "worst_drift_error_over_tolerance": 0.114,
+   "worst_tof_error_over_tolerance": 0.72,
+   "drift_bias": 0.0031
+  },
+  {
+   "projectile_id": "nosler_26140",
+   "names": [
+    "6.5mm 140 Gr. Spitzer (Brown Tip) Ballistic Tip Hunting"
+   ],
+   "model": "G1",
+   "bc": 0.509,
+   "mv_ms": 940.3,
+   "load_id": "264_winchester_magnum_140_gr_spitzer_brown_tip_ballistic_tip_hunting",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.05,
+   "worst_drop_error_over_tolerance": 0.188,
+   "worst_drift_error_over_tolerance": 0.139,
+   "worst_tof_error_over_tolerance": 0.722,
+   "drift_bias": 0.0029
+  },
+  {
+   "projectile_id": "nosler_26725",
+   "names": [
+    "6.5mm 140 Gr. HPBT Custom Competition"
+   ],
+   "model": "G7",
+   "bc": 0.281,
+   "mv_ms": 940.3,
+   "load_id": "264_winchester_magnum_140_gr_hpbt_custom_competition",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.048,
+   "worst_drop_error_over_tolerance": 0.268,
+   "worst_drift_error_over_tolerance": 0.123,
+   "worst_tof_error_over_tolerance": 0.212,
+   "drift_bias": 0.0013
+  },
+  {
+   "projectile_id": "nosler_27130",
+   "names": [
+    "270 Cal 130 Gr. Spitzer (Yellow Tip) Ballistic Tip Hunting"
+   ],
+   "model": "G1",
+   "bc": 0.433,
+   "mv_ms": 1059.5,
+   "load_id": "270_weatherby_magnum_130_gr_spitzer_yellow_tip_ballistic_tip_hunting",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.072,
+   "worst_drop_error_over_tolerance": 0.2,
+   "worst_drift_error_over_tolerance": 0.165,
+   "worst_tof_error_over_tolerance": 0.7,
+   "drift_bias": 0.0035
+  },
+  {
+   "projectile_id": "nosler_27140",
+   "names": [
+    "270 Cal 140 Gr. Spitzer (Yellow Tip) Ballistic Tip Hunting"
+   ],
+   "model": "G7",
+   "bc": 0.227,
+   "mv_ms": 1001.3,
+   "load_id": "270_weatherby_magnum_140_gr_spitzer_yellow_tip_ballistic_tip_hunting",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.046,
+   "worst_drop_error_over_tolerance": 0.149,
+   "worst_drift_error_over_tolerance": 0.114,
+   "worst_tof_error_over_tolerance": 0.269,
+   "drift_bias": 0.0015
+  },
+  {
+   "projectile_id": "nosler_27150",
+   "names": [
+    "270 Cal 150 Gr. Spitzer (Yellow Tip) Ballistic Tip Hunting"
+   ],
+   "model": "G1",
+   "bc": 0.496,
+   "mv_ms": 977.2,
+   "load_id": "270_weatherby_magnum_150_gr_spitzer_yellow_tip_ballistic_tip_hunting",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.059,
+   "worst_drop_error_over_tolerance": 0.229,
+   "worst_drift_error_over_tolerance": 0.125,
+   "worst_tof_error_over_tolerance": 0.847,
+   "drift_bias": 0.0037
+  },
+  {
+   "projectile_id": "nosler_28120",
+   "names": [
+    "7mm 120 Gr. Spitzer (Red Tip) Ballistic Tip Hunting"
+   ],
+   "model": "G7",
+   "bc": 0.185,
+   "mv_ms": 1158.2,
+   "load_id": "28_nosler_120_gr_spitzer_red_tip_ballistic_tip_hunting",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.097,
+   "worst_drop_error_over_tolerance": 0.202,
+   "worst_drift_error_over_tolerance": 0.202,
+   "worst_tof_error_over_tolerance": 1.069,
+   "drift_bias": 0.0048
+  },
+  {
+   "projectile_id": "nosler_28140",
+   "names": [
+    "7mm 140 Gr. Spitzer (Red Tip) Ballistic Tip Hunting"
+   ],
+   "model": "G1",
+   "bc": 0.485,
+   "mv_ms": 1082.3,
+   "load_id": "28_nosler_140_gr_spitzer_red_tip_ballistic_tip_hunting",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.034,
+   "worst_drop_error_over_tolerance": 0.142,
+   "worst_drift_error_over_tolerance": 0.08,
+   "worst_tof_error_over_tolerance": 0.203,
+   "drift_bias": 0.0013
+  },
+  {
+   "projectile_id": "nosler_28150",
+   "names": [
+    "7mm 150 Gr. Spitzer (Red Tip) Ballistic Tip Hunting"
+   ],
+   "model": "G7",
+   "bc": 0.229,
+   "mv_ms": 1044.2,
+   "load_id": "28_nosler_150_gr_spitzer_red_tip_ballistic_tip_hunting",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.062,
+   "worst_drop_error_over_tolerance": 0.184,
+   "worst_drift_error_over_tolerance": 0.149,
+   "worst_tof_error_over_tolerance": 0.682,
+   "drift_bias": 0.0033
+  },
+  {
+   "projectile_id": "nosler_30125",
+   "names": [
+    "30 Cal 125 Gr. Spitzer (Green Tip) Ballistic Tip Hunting"
+   ],
+   "model": "G7",
+   "bc": 0.167,
+   "mv_ms": 681.8,
+   "load_id": "300_aac_blackout_125_gr_spitzer_green_tip_ballistic_tip_hunting",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.076,
+   "worst_drop_error_over_tolerance": 0.262,
+   "worst_drift_error_over_tolerance": 0.118,
+   "worst_tof_error_over_tolerance": 0.537,
+   "drift_bias": 0.002
+  },
+  {
+   "projectile_id": "nosler_30131",
+   "names": [
+    "7.62x39 123 Gr. Spitzer (Green Tip) Ballistic Tip Hunting"
+   ],
+   "model": "G1",
+   "bc": 0.31,
+   "mv_ms": 758.3,
+   "load_id": "762x39_123_gr_spitzer_green_tip_ballistic_tip_hunting",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.071,
+   "worst_drop_error_over_tolerance": 0.217,
+   "worst_drift_error_over_tolerance": 0.163,
+   "worst_tof_error_over_tolerance": 0.286,
+   "drift_bias": 0.0015
+  },
+  {
+   "projectile_id": "nosler_30150",
+   "names": [
+    "30 Cal 150 Gr. Spitzer (Green Tip) Ballistic Tip Hunting"
+   ],
+   "model": "G7",
+   "bc": 0.203,
+   "mv_ms": 817.5,
+   "load_id": "300_savage_150_gr_spitzer_green_tip_ballistic_tip_hunting",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.053,
+   "worst_drop_error_over_tolerance": 0.054,
+   "worst_drift_error_over_tolerance": 0.061,
+   "worst_tof_error_over_tolerance": 0.574,
+   "drift_bias": 0.0018
+  },
+  {
+   "projectile_id": "nosler_30165",
+   "names": [
+    "30 Cal 165 Gr. Spitzer (Green Tip) Ballistic Tip Hunting"
+   ],
+   "model": "G7",
+   "bc": 0.227,
+   "mv_ms": 777.2,
+   "load_id": "300_savage_165_gr_spitzer_green_tip_ballistic_tip_hunting",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.052,
+   "worst_drop_error_over_tolerance": 0.176,
+   "worst_drift_error_over_tolerance": 0.114,
+   "worst_tof_error_over_tolerance": 0.476,
+   "drift_bias": 0.002
+  },
+  {
+   "projectile_id": "nosler_30168",
+   "names": [
+    "30 Cal 168 Gr. Spitzer (Green Tip) Ballistic Tip Hunting"
+   ],
+   "model": "G1",
+   "bc": 0.49,
+   "mv_ms": 885.1,
+   "load_id": "308_win_168_gr_spitzer_green_tip_ballistic_tip_hunting",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.055,
+   "worst_drop_error_over_tolerance": 0.228,
+   "worst_drift_error_over_tolerance": 0.16,
+   "worst_tof_error_over_tolerance": 0.574,
+   "drift_bias": 0.002
+  },
+  {
+   "projectile_id": "nosler_30180",
+   "names": [
+    "30 Cal 180 Gr. Spitzer (Green Tip) Ballistic Tip Hunting"
+   ],
+   "model": "G7",
+   "bc": 0.241,
+   "mv_ms": 762.6,
+   "load_id": "300_savage_180_gr_spitzer_green_tip_ballistic_tip_hunting",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.045,
+   "worst_drop_error_over_tolerance": 0.253,
+   "worst_drift_error_over_tolerance": 0.118,
+   "worst_tof_error_over_tolerance": 0.291,
+   "drift_bias": 0.002
+  },
+  {
+   "projectile_id": "nosler_30181",
+   "names": [
+    "30 Cal 220 Gr. Round Nose (Green Tip) Ballistic Tip Hunting"
+   ],
+   "model": "G1",
+   "bc": 0.472,
+   "mv_ms": 396.8,
+   "load_id": "300_aac_blackout_220_gr_round_nose_green_tip_ballistic_tip_hunting",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.049,
+   "worst_drop_error_over_tolerance": 0.256,
+   "worst_drift_error_over_tolerance": 0.054,
+   "worst_tof_error_over_tolerance": 0.201,
+   "drift_bias": -0.0004
+  },
+  {
+   "projectile_id": "nosler_31456",
+   "names": [
+    "458 Cal 300 Gr. Spitzer (Orange Tip) Ballistic Tip Hunting"
+   ],
+   "model": "G1",
+   "bc": 0.25,
+   "mv_ms": 596.2,
+   "load_id": "458_socom_300_gr_spitzer_orange_tip_ballistic_tip_hunting",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.059,
+   "worst_drop_error_over_tolerance": 0.082,
+   "worst_drift_error_over_tolerance": 0.086,
+   "worst_tof_error_over_tolerance": 0.367,
+   "drift_bias": 0.0004
+  },
+  {
+   "projectile_id": "nosler_32180",
+   "names": [
+    "8mm 180 Gr. Spitzer (Gunmetal Tip) Ballistic Tip Hunting"
+   ],
+   "model": "G1",
+   "bc": 0.394,
+   "mv_ms": 961.0,
+   "load_id": "325_winchester_short_magnum_180_gr_spitzer_gunmetal_tip_ballistic_tip_hunting",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.066,
+   "worst_drop_error_over_tolerance": 0.236,
+   "worst_drift_error_over_tolerance": 0.155,
+   "worst_tof_error_over_tolerance": 0.25,
+   "drift_bias": 0.0017
+  },
+  {
+   "projectile_id": "nosler_34992",
+   "names": [
+    "22 Cal 60 Gr. Spitzer (Orange Tip) Ballistic Tip Varmint"
+   ],
+   "model": "G1",
+   "bc": 0.27,
+   "mv_ms": 1131.4,
+   "load_id": "220_swift_60_gr_spitzer_orange_tip_ballistic_tip_varmint",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.1,
+   "worst_drop_error_over_tolerance": 0.21,
+   "worst_drift_error_over_tolerance": 0.166,
+   "worst_tof_error_over_tolerance": 0.7,
+   "drift_bias": 0.0026
+  },
+  {
+   "projectile_id": "nosler_35200",
+   "names": [
+    "270 Cal 140 Gr. Spitzer Partition"
+   ],
+   "model": "G7",
+   "bc": 0.207,
+   "mv_ms": 1019.9,
+   "load_id": "26_nosler_140_gr_spitzer_partition",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.07,
+   "worst_drop_error_over_tolerance": 0.228,
+   "worst_drift_error_over_tolerance": 0.131,
+   "worst_tof_error_over_tolerance": 0.822,
+   "drift_bias": 0.0034
+  },
+  {
+   "projectile_id": "nosler_35216",
+   "names": [
+    "204 Cal 32 Gr. Spitzer (Maroon Tip) Ballistic Tip Varmint"
+   ],
+   "model": "G1",
+   "bc": 0.206,
+   "mv_ms": 1267.4,
+   "load_id": "204_ruger_32_gr_spitzer_maroon_tip_ballistic_tip_varmint",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.138,
+   "worst_drop_error_over_tolerance": 0.191,
+   "worst_drift_error_over_tolerance": 0.174,
+   "worst_tof_error_over_tolerance": 0.302,
+   "drift_bias": 0.0014
+  },
+  {
+   "projectile_id": "nosler_35277",
+   "names": [
+    "8mm 200 Gr. Spitzer Partition"
+   ],
+   "model": "G1",
+   "bc": 0.426,
+   "mv_ms": 903.4,
+   "load_id": "325_winchester_short_magnum_200_gr_spitzer_partition",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.056,
+   "worst_drop_error_over_tolerance": 0.107,
+   "worst_drift_error_over_tolerance": 0.047,
+   "worst_tof_error_over_tolerance": 0.364,
+   "drift_bias": 0.0014
+  },
+  {
+   "projectile_id": "nosler_35626",
+   "names": [
+    "30 Cal 200 Gr. Spitzer Partition"
+   ],
+   "model": "G7",
+   "bc": 0.25,
+   "mv_ms": 970.8,
+   "load_id": "300_remington_ultra_magnum_200_gr_spitzer_partition",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.048,
+   "worst_drop_error_over_tolerance": 0.197,
+   "worst_drift_error_over_tolerance": 0.082,
+   "worst_tof_error_over_tolerance": 0.342,
+   "drift_bias": 0.002
+  },
+  {
+   "projectile_id": "nosler_35642",
+   "names": [
+    "6mm 100 Gr. Spitzer Partition"
+   ],
+   "model": "G1",
+   "bc": 0.384,
+   "mv_ms": 951.0,
+   "load_id": "257_roberts_100_gr_spitzer_partition",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.063,
+   "worst_drop_error_over_tolerance": 0.198,
+   "worst_drift_error_over_tolerance": 0.098,
+   "worst_tof_error_over_tolerance": 0.691,
+   "drift_bias": 0.0025
+  },
+  {
+   "projectile_id": "nosler_35643",
+   "names": [
+    "25 Cal 120 Gr. Spitzer Partition"
+   ],
+   "model": "G1",
+   "bc": 0.391,
+   "mv_ms": 858.6,
+   "load_id": "257_roberts_120_gr_spitzer_partition",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.061,
+   "worst_drop_error_over_tolerance": 0.166,
+   "worst_drift_error_over_tolerance": 0.12,
+   "worst_tof_error_over_tolerance": 0.657,
+   "drift_bias": 0.0023
+  },
+  {
+   "projectile_id": "nosler_35644",
+   "names": [
+    "338 Cal 250 Gr. Spitzer Partition"
+   ],
+   "model": "G1",
+   "bc": 0.473,
+   "mv_ms": 910.1,
+   "load_id": "338_remington_ultra_magnum_250_gr_spitzer_partition",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.052,
+   "worst_drop_error_over_tolerance": 0.131,
+   "worst_drift_error_over_tolerance": 0.072,
+   "worst_tof_error_over_tolerance": 0.684,
+   "drift_bias": 0.0024
+  },
+  {
+   "projectile_id": "nosler_35645",
+   "names": [
+    "7mm 175 Gr. Spitzer Partition"
+   ],
+   "model": "G7",
+   "bc": 0.232,
+   "mv_ms": 978.7,
+   "load_id": "28_nosler_175_gr_spitzer_partition",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.065,
+   "worst_drop_error_over_tolerance": 0.095,
+   "worst_drift_error_over_tolerance": 0.054,
+   "worst_tof_error_over_tolerance": 0.863,
+   "drift_bias": 0.0029
+  },
+  {
+   "projectile_id": "nosler_39510",
+   "names": [
+    "22 Cal 40 Gr. Spitzer (Orange Tip) Ballistic Tip Varmint"
+   ],
+   "model": "G1",
+   "bc": 0.221,
+   "mv_ms": 1281.4,
+   "load_id": "220_swift_40_gr_spitzer_orange_tip_ballistic_tip_varmint",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.101,
+   "worst_drop_error_over_tolerance": 0.156,
+   "worst_drift_error_over_tolerance": 0.144,
+   "worst_tof_error_over_tolerance": 0.649,
+   "drift_bias": 0.0025
+  },
+  {
+   "projectile_id": "nosler_39522",
+   "names": [
+    "22 Cal 50 Gr. Spitzer (Orange Tip) Ballistic Tip Varmint"
+   ],
+   "model": "G1",
+   "bc": 0.238,
+   "mv_ms": 1215.5,
+   "load_id": "220_swift_50_gr_spitzer_orange_tip_ballistic_tip_varmint",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.117,
+   "worst_drop_error_over_tolerance": 0.234,
+   "worst_drift_error_over_tolerance": 0.173,
+   "worst_tof_error_over_tolerance": 0.509,
+   "drift_bias": 0.0028
+  },
+  {
+   "projectile_id": "nosler_39526",
+   "names": [
+    "22 Cal 55 Gr. Spitzer (Orange Tip) Ballistic Tip Varmint"
+   ],
+   "model": "G7",
+   "bc": 0.13,
+   "mv_ms": 1175.0,
+   "load_id": "220_swift_55_gr_spitzer_orange_tip_ballistic_tip_varmint",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.128,
+   "worst_drop_error_over_tolerance": 0.188,
+   "worst_drift_error_over_tolerance": 0.175,
+   "worst_tof_error_over_tolerance": 0.73,
+   "drift_bias": 0.0037
+  },
+  {
+   "projectile_id": "nosler_39532",
+   "names": [
+    "6mm 70 Gr. Spitzer (Purple Tip) Ballistic Tip Varmint"
+   ],
+   "model": "G7",
+   "bc": 0.143,
+   "mv_ms": 1105.8,
+   "load_id": "6_mm_creedmoor_70_gr_spitzer_purple_tip_ballistic_tip_varmint",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.102,
+   "worst_drop_error_over_tolerance": 0.252,
+   "worst_drift_error_over_tolerance": 0.129,
+   "worst_tof_error_over_tolerance": 0.301,
+   "drift_bias": 0.0026
+  },
+  {
+   "projectile_id": "nosler_42069",
+   "names": [
+    "44 Cal 300 Gr. JHP Sporting Handgun"
+   ],
+   "model": "G1",
+   "bc": 0.206,
+   "mv_ms": 477.3,
+   "load_id": "44_remington_magnum_2_300_gr_jhp_sporting_handgun",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.062,
+   "worst_drop_error_over_tolerance": 0.349,
+   "worst_drift_error_over_tolerance": 0.12,
+   "worst_tof_error_over_tolerance": 0.388,
+   "drift_bias": 0.0
+  },
+  {
+   "projectile_id": "nosler_43004",
+   "names": [
+    "25 Cal 85 Gr. Spitzer (Blue Tip) Ballistic Tip Varmint"
+   ],
+   "model": "G1",
+   "bc": 0.329,
+   "mv_ms": 1030.5,
+   "load_id": "257_roberts_85_gr_spitzer_blue_tip_ballistic_tip_varmint",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.056,
+   "worst_drop_error_over_tolerance": 0.106,
+   "worst_drift_error_over_tolerance": 0.047,
+   "worst_tof_error_over_tolerance": 0.545,
+   "drift_bias": 0.0019
+  },
+  {
+   "projectile_id": "nosler_43012",
+   "names": [
+    "41 Cal 210 Gr. JHP Sporting Handgun"
+   ],
+   "model": "G1",
+   "bc": 0.17,
+   "mv_ms": 509.0,
+   "load_id": "41_remington_magnum_210_gr_jhp_sporting_handgun",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.064,
+   "worst_drop_error_over_tolerance": 0.066,
+   "worst_drift_error_over_tolerance": 0.044,
+   "worst_tof_error_over_tolerance": 0.038,
+   "drift_bias": -0.0009
+  },
+  {
+   "projectile_id": "nosler_43013",
+   "names": [
+    "45 Colt 250 Gr. JHP Sporting Handgun"
+   ],
+   "model": "G1",
+   "bc": 0.177,
+   "mv_ms": 432.8,
+   "load_id": "45_colt_250_gr_jhp_sporting_handgun",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.048,
+   "worst_drop_error_over_tolerance": 0.169,
+   "worst_drift_error_over_tolerance": 0.091,
+   "worst_tof_error_over_tolerance": 0.314,
+   "drift_bias": -0.0002
+  },
+  {
+   "projectile_id": "nosler_43123",
+   "names": [
+    "9mm 124 Gr. JHP Sporting Handgun"
+   ],
+   "model": "G1",
+   "bc": 0.118,
+   "mv_ms": 419.4,
+   "load_id": "357_sig_124_gr_jhp_sporting_handgun",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.04,
+   "worst_drop_error_over_tolerance": 0.147,
+   "worst_drift_error_over_tolerance": 0.045,
+   "worst_tof_error_over_tolerance": 0.174,
+   "drift_bias": -0.0005
+  },
+  {
+   "projectile_id": "nosler_44750",
+   "names": [
+    "9.3mm 286 Gr. Spitzer (18.5 gram) Partition"
+   ],
+   "model": "G1",
+   "bc": 0.482,
+   "mv_ms": 738.8,
+   "load_id": "9_3_x_62_286_gr_spitzer_18_5_gram_partition",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.055,
+   "worst_drop_error_over_tolerance": 0.207,
+   "worst_drift_error_over_tolerance": 0.123,
+   "worst_tof_error_over_tolerance": 0.657,
+   "drift_bias": 0.0021
+  },
+  {
+   "projectile_id": "nosler_44800",
+   "names": [
+    "35 Cal 225 Gr. Spitzer Partition"
+   ],
+   "model": "G1",
+   "bc": 0.421,
+   "mv_ms": 740.1,
+   "load_id": "338_federal_225_gr_spitzer_partition",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.046,
+   "worst_drop_error_over_tolerance": 0.162,
+   "worst_drift_error_over_tolerance": 0.061,
+   "worst_tof_error_over_tolerance": 0.222,
+   "drift_bias": 0.001
+  },
+  {
+   "projectile_id": "nosler_44801",
+   "names": [
+    "35 Cal 250 Gr. Spitzer Partition"
+   ],
+   "model": "G1",
+   "bc": 0.446,
+   "mv_ms": 805.6,
+   "load_id": "35_whelen_250_gr_spitzer_partition",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.056,
+   "worst_drop_error_over_tolerance": 0.247,
+   "worst_drift_error_over_tolerance": 0.13,
+   "worst_tof_error_over_tolerance": 0.338,
+   "drift_bias": 0.002
+  },
+  {
+   "projectile_id": "nosler_44841",
+   "names": [
+    "38 Cal 158 Gr. JHP Sporting Handgun"
+   ],
+   "model": "G1",
+   "bc": 0.182,
+   "mv_ms": 484.0,
+   "load_id": "357_magnum_158_gr_jhp_sporting_handgun",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.048,
+   "worst_drop_error_over_tolerance": 0.084,
+   "worst_drift_error_over_tolerance": 0.097,
+   "worst_tof_error_over_tolerance": 0.298,
+   "drift_bias": -0.0
+  },
+  {
+   "projectile_id": "nosler_44842",
+   "names": [
+    "44 Cal 240 Gr. JHP Sporting Handgun"
+   ],
+   "model": "G1",
+   "bc": 0.173,
+   "mv_ms": 522.7,
+   "load_id": "44_remington_magnum_2_240_gr_jhp_sporting_handgun",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.07,
+   "worst_drop_error_over_tolerance": 0.183,
+   "worst_drift_error_over_tolerance": 0.065,
+   "worst_tof_error_over_tolerance": 0.196,
+   "drift_bias": -0.0003
+  },
+  {
+   "projectile_id": "nosler_44845",
+   "names": [
+    "375 Cal 300 Gr. Spitzer Partition"
+   ],
+   "model": "G1",
+   "bc": 0.398,
+   "mv_ms": 827.5,
+   "load_id": "375_ruger_300_gr_spitzer_partition",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.058,
+   "worst_drop_error_over_tolerance": 0.19,
+   "worst_drift_error_over_tolerance": 0.099,
+   "worst_tof_error_over_tolerance": 0.182,
+   "drift_bias": 0.0011
+  },
+  {
+   "projectile_id": "nosler_44846",
+   "names": [
+    "44 Cal 200 Gr. JHP Sporting Handgun"
+   ],
+   "model": "G1",
+   "bc": 0.151,
+   "mv_ms": 592.5,
+   "load_id": "44_remington_magnum_2_200_gr_jhp_sporting_handgun",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.103,
+   "worst_drop_error_over_tolerance": 0.222,
+   "worst_drift_error_over_tolerance": 0.173,
+   "worst_tof_error_over_tolerance": 0.434,
+   "drift_bias": 0.0012
+  },
+  {
+   "projectile_id": "nosler_44847",
+   "names": [
+    "45 Cal 185 Gr. JHP Sporting Handgun"
+   ],
+   "model": "G1",
+   "bc": 0.142,
+   "mv_ms": 339.2,
+   "load_id": "45_auto_185_gr_jhp_sporting_handgun",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.058,
+   "worst_drop_error_over_tolerance": 0.054,
+   "worst_drift_error_over_tolerance": 0.038,
+   "worst_tof_error_over_tolerance": 0.219,
+   "drift_bias": 0.0003
+  },
+  {
+   "projectile_id": "nosler_44848",
+   "names": [
+    "9mm 115 Gr. JHP Sporting Handgun"
+   ],
+   "model": "G1",
+   "bc": 0.109,
+   "mv_ms": 443.2,
+   "load_id": "357_sig_115_gr_jhp_sporting_handgun",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.073,
+   "worst_drop_error_over_tolerance": 0.245,
+   "worst_drift_error_over_tolerance": 0.072,
+   "worst_tof_error_over_tolerance": 0.16,
+   "drift_bias": -0.0009
+  },
+  {
+   "projectile_id": "nosler_44850",
+   "names": [
+    "375 Cal 260 Gr. Spitzer Partition"
+   ],
+   "model": "G1",
+   "bc": 0.314,
+   "mv_ms": 896.4,
+   "load_id": "375_ruger_260_gr_spitzer_partition",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.063,
+   "worst_drop_error_over_tolerance": 0.193,
+   "worst_drift_error_over_tolerance": 0.08,
+   "worst_tof_error_over_tolerance": 0.547,
+   "drift_bias": 0.0018
+  },
+  {
+   "projectile_id": "nosler_44852",
+   "names": [
+    "10mm 135 Gr. JHP Sporting Handgun"
+   ],
+   "model": "G1",
+   "bc": 0.093,
+   "mv_ms": 468.8,
+   "load_id": "10_mm_auto_135_gr_jhp_sporting_handgun",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.069,
+   "worst_drop_error_over_tolerance": 0.14,
+   "worst_drift_error_over_tolerance": 0.049,
+   "worst_tof_error_over_tolerance": 0.086,
+   "drift_bias": -0.0011
+  },
+  {
+   "projectile_id": "nosler_44860",
+   "names": [
+    "10mm 150 Gr. JHP Sporting Handgun"
+   ],
+   "model": "G1",
+   "bc": 0.106,
+   "mv_ms": 420.9,
+   "load_id": "10_mm_auto_150_gr_jhp_sporting_handgun",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.084,
+   "worst_drop_error_over_tolerance": 0.074,
+   "worst_drift_error_over_tolerance": 0.108,
+   "worst_tof_error_over_tolerance": 0.051,
+   "drift_bias": -0.0021
+  },
+  {
+   "projectile_id": "nosler_44868",
+   "names": [
+    "44 Cal 240 Gr. JSP Sporting Handgun"
+   ],
+   "model": "G1",
+   "bc": 0.177,
+   "mv_ms": 522.7,
+   "load_id": "44_remington_magnum_2_240_gr_jsp_sporting_handgun",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.054,
+   "worst_drop_error_over_tolerance": 0.26,
+   "worst_drift_error_over_tolerance": 0.043,
+   "worst_tof_error_over_tolerance": 0.103,
+   "drift_bias": -0.0004
+  },
+  {
+   "projectile_id": "nosler_44885",
+   "names": [
+    "10mm 180 Gr. JHP Sporting Handgun"
+   ],
+   "model": "G1",
+   "bc": 0.147,
+   "mv_ms": 386.2,
+   "load_id": "10_mm_auto_180_gr_jhp_sporting_handgun",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.049,
+   "worst_drop_error_over_tolerance": 0.189,
+   "worst_drift_error_over_tolerance": 0.063,
+   "worst_tof_error_over_tolerance": 0.22,
+   "drift_bias": -0.0004
+  },
+  {
+   "projectile_id": "nosler_44917",
+   "names": [
+    "44 Cal 240 Gr. JHP Sporting Handgun"
+   ],
+   "model": "G1",
+   "bc": 0.185,
+   "mv_ms": 522.7,
+   "load_id": "44_remington_magnum_2_240_gr_jhp_sporting_handgun",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.06,
+   "worst_drop_error_over_tolerance": 0.187,
+   "worst_drift_error_over_tolerance": 0.046,
+   "worst_tof_error_over_tolerance": 0.154,
+   "drift_bias": -0.0003
+  },
+  {
+   "projectile_id": "nosler_44922",
+   "names": [
+    "45 Cal 230 Gr. JHP Sporting Handgun"
+   ],
+   "model": "G1",
+   "bc": 0.175,
+   "mv_ms": 279.2,
+   "load_id": "45_auto_230_gr_jhp_sporting_handgun",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.06,
+   "worst_drop_error_over_tolerance": 0.061,
+   "worst_drift_error_over_tolerance": 0.038,
+   "worst_tof_error_over_tolerance": 0.153,
+   "drift_bias": 0.0016
+  },
+  {
+   "projectile_id": "nosler_44952",
+   "names": [
+    "10mm 200 Gr. JHP Sporting Handgun"
+   ],
+   "model": "G1",
+   "bc": 0.163,
+   "mv_ms": 349.9,
+   "load_id": "10_mm_auto_200_gr_jhp_sporting_handgun",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.051,
+   "worst_drop_error_over_tolerance": 0.124,
+   "worst_drift_error_over_tolerance": 0.046,
+   "worst_tof_error_over_tolerance": 0.202,
+   "drift_bias": -0.0004
+  },
+  {
+   "projectile_id": "nosler_45140",
+   "names": [
+    "204 Cal 32 Gr. Spitzer (Metallic Maroon Tip) Ballistic Tip Lead-Free"
+   ],
+   "model": "G1",
+   "bc": 0.228,
+   "mv_ms": 1267.4,
+   "load_id": "204_ruger_32_gr_spitzer_metallic_maroon_tip_ballistic_tip_lead_free",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.133,
+   "worst_drop_error_over_tolerance": 0.187,
+   "worst_drift_error_over_tolerance": 0.117,
+   "worst_tof_error_over_tolerance": 0.963,
+   "drift_bias": 0.0031
+  },
+  {
+   "projectile_id": "nosler_45150",
+   "names": [
+    "22 Cal 35 Gr. Spitzer (Metallic Orange Tip) Ballistic Tip Lead-Free"
+   ],
+   "model": "G1",
+   "bc": 0.201,
+   "mv_ms": 1345.7,
+   "load_id": "220_swift_35_gr_spitzer_metallic_orange_tip_ballistic_tip_lead_free",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.182,
+   "worst_drop_error_over_tolerance": 0.148,
+   "worst_drift_error_over_tolerance": 0.147,
+   "worst_tof_error_over_tolerance": 1.182,
+   "drift_bias": 0.0037
+  },
+  {
+   "projectile_id": "nosler_45160",
+   "names": [
+    "22 Cal 40 Gr. Spitzer (Metallic Orange Tip) Ballistic Tip Lead-Free"
+   ],
+   "model": "G1",
+   "bc": 0.22,
+   "mv_ms": 1281.4,
+   "load_id": "220_swift_40_gr_spitzer_metallic_orange_tip_ballistic_tip_lead_free",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.137,
+   "worst_drop_error_over_tolerance": 0.202,
+   "worst_drift_error_over_tolerance": 0.19,
+   "worst_tof_error_over_tolerance": 0.612,
+   "drift_bias": 0.0028
+  },
+  {
+   "projectile_id": "nosler_45170",
+   "names": [
+    "6mm 55 Gr. Spitzer Ballistic Tip Lead-Free"
+   ],
+   "model": "G1",
+   "bc": 0.288,
+   "mv_ms": 1242.7,
+   "load_id": "6_mm_creedmoor_55_gr_spitzer_ballistic_tip_lead_free",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.1,
+   "worst_drop_error_over_tolerance": 0.21,
+   "worst_drift_error_over_tolerance": 0.187,
+   "worst_tof_error_over_tolerance": 0.599,
+   "drift_bias": 0.0024
+  },
+  {
+   "projectile_id": "nosler_45498",
+   "names": [
+    "22 Cal 50 Gr. Spitzer Ballistic Tip Lead-Free"
+   ],
+   "model": "G1",
+   "bc": 0.251,
+   "mv_ms": 1079.0,
+   "load_id": "223_rem_50_gr_spitzer_ballistic_tip_lead_free",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.096,
+   "worst_drop_error_over_tolerance": 0.199,
+   "worst_drift_error_over_tolerance": 0.154,
+   "worst_tof_error_over_tolerance": 0.533,
+   "drift_bias": 0.0025
+  },
+  {
+   "projectile_id": "nosler_49524",
+   "names": [
+    "8mm 200 Gr. HPBT Custom Competition"
+   ],
+   "model": "G1",
+   "bc": 0.52,
+   "mv_ms": 903.4,
+   "load_id": "325_winchester_short_magnum_200_gr_hpbt_custom_competition",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.035,
+   "worst_drop_error_over_tolerance": 0.187,
+   "worst_drift_error_over_tolerance": 0.101,
+   "worst_tof_error_over_tolerance": 0.29,
+   "drift_bias": 0.0016
+  },
+  {
+   "projectile_id": "nosler_49742",
+   "names": [
+    "6mm 107 Gr. HPBT Custom Competition"
+   ],
+   "model": "G1",
+   "bc": 0.525,
+   "mv_ms": 927.5,
+   "load_id": "6_mm_creedmoor_107_gr_hpbt_custom_competition",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.047,
+   "worst_drop_error_over_tolerance": 0.242,
+   "worst_drift_error_over_tolerance": 0.09,
+   "worst_tof_error_over_tolerance": 0.342,
+   "drift_bias": 0.002
+  },
+  {
+   "projectile_id": "nosler_49824",
+   "names": [
+    "6.5mm 140 Gr. HPBT RDF"
+   ],
+   "model": "G7",
+   "bc": 0.33,
+   "mv_ms": 940.3,
+   "load_id": "264_winchester_magnum_140_gr_hpbt_rdf",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.036,
+   "worst_drop_error_over_tolerance": 0.199,
+   "worst_drift_error_over_tolerance": 0.082,
+   "worst_tof_error_over_tolerance": 0.691,
+   "drift_bias": 0.0024
+  },
+  {
+   "projectile_id": "nosler_50712",
+   "names": [
+    "35 Cal 225 Gr. Spitzer ( Whelen ) AccuBond"
+   ],
+   "model": "G1",
+   "bc": 0.43,
+   "mv_ms": 740.1,
+   "load_id": "338_federal_225_gr_spitzer_accubond",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.052,
+   "worst_drop_error_over_tolerance": 0.191,
+   "worst_drift_error_over_tolerance": 0.115,
+   "worst_tof_error_over_tolerance": 0.324,
+   "drift_bias": 0.0014
+  },
+  {
+   "projectile_id": "nosler_51040",
+   "names": [
+    "6mm 95 Gr. Spitzer (Silver Tip) CT Ballistic Silvertip"
+   ],
+   "model": "G1",
+   "bc": 0.379,
+   "mv_ms": 955.5,
+   "load_id": "6_mm_creedmoor_95_gr_spitzer_silver_tip_ct_ballistic_silvertip",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.068,
+   "worst_drop_error_over_tolerance": 0.271,
+   "worst_drift_error_over_tolerance": 0.114,
+   "worst_tof_error_over_tolerance": 0.199,
+   "drift_bias": 0.0015
+  },
+  {
+   "projectile_id": "nosler_51050",
+   "names": [
+    "25 Cal 115 Gr. Spitzer (Silver Tip) CT Ballistic Silvertip"
+   ],
+   "model": "G7",
+   "bc": 0.204,
+   "mv_ms": 861.7,
+   "load_id": "257_roberts_115_gr_spitzer_silver_tip_ct_ballistic_silvertip",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.05,
+   "worst_drop_error_over_tolerance": 0.188,
+   "worst_drift_error_over_tolerance": 0.119,
+   "worst_tof_error_over_tolerance": 0.403,
+   "drift_bias": 0.0017
+  },
+  {
+   "projectile_id": "nosler_51075",
+   "names": [
+    "270 Cal 130 Gr. Spitzer (Silver Tip) CT Ballistic Silvertip"
+   ],
+   "model": "G1",
+   "bc": 0.433,
+   "mv_ms": 1059.5,
+   "load_id": "270_weatherby_magnum_130_gr_spitzer_silver_tip_ct_ballistic_silvertip",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.072,
+   "worst_drop_error_over_tolerance": 0.2,
+   "worst_drift_error_over_tolerance": 0.165,
+   "worst_tof_error_over_tolerance": 0.7,
+   "drift_bias": 0.0035
+  },
+  {
+   "projectile_id": "nosler_51100",
+   "names": [
+    "270 Cal 150 Gr. Spitzer (Silver Tip) CT Ballistic Silvertip"
+   ],
+   "model": "G1",
+   "bc": 0.496,
+   "mv_ms": 1044.2,
+   "load_id": "28_nosler_150_gr_spitzer_silver_tip_ct_ballistic_silvertip",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.052,
+   "worst_drop_error_over_tolerance": 0.205,
+   "worst_drift_error_over_tolerance": 0.12,
+   "worst_tof_error_over_tolerance": 0.764,
+   "drift_bias": 0.0029
+  },
+  {
+   "projectile_id": "nosler_51105",
+   "names": [
+    "7mm 140 Gr. Spitzer (Silver Tip) CT Ballistic Silvertip"
+   ],
+   "model": "G1",
+   "bc": 0.485,
+   "mv_ms": 1082.3,
+   "load_id": "28_nosler_140_gr_spitzer_silver_tip_ct_ballistic_silvertip",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.034,
+   "worst_drop_error_over_tolerance": 0.142,
+   "worst_drift_error_over_tolerance": 0.08,
+   "worst_tof_error_over_tolerance": 0.203,
+   "drift_bias": 0.0013
+  },
+  {
+   "projectile_id": "nosler_51110",
+   "names": [
+    "7mm 150 Gr. Spitzer (Silver Tip) CT Ballistic Silvertip"
+   ],
+   "model": "G7",
+   "bc": 0.229,
+   "mv_ms": 1044.2,
+   "load_id": "28_nosler_150_gr_spitzer_silver_tip_ct_ballistic_silvertip",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.062,
+   "worst_drop_error_over_tolerance": 0.184,
+   "worst_drift_error_over_tolerance": 0.149,
+   "worst_tof_error_over_tolerance": 0.682,
+   "drift_bias": 0.0033
+  },
+  {
+   "projectile_id": "nosler_51150",
+   "names": [
+    "30 Cal 150 Gr. Spitzer (Silver Tip) CT Ballistic Silvertip"
+   ],
+   "model": "G7",
+   "bc": 0.203,
+   "mv_ms": 1044.2,
+   "load_id": "28_nosler_150_gr_spitzer_silver_tip_ct_ballistic_silvertip",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.062,
+   "worst_drop_error_over_tolerance": 0.174,
+   "worst_drift_error_over_tolerance": 0.147,
+   "worst_tof_error_over_tolerance": 0.266,
+   "drift_bias": 0.0021
+  },
+  {
+   "projectile_id": "nosler_51160",
+   "names": [
+    "30 Cal 168 Gr. Spitzer (Silver Tip) CT Ballistic Silvertip"
+   ],
+   "model": "G1",
+   "bc": 0.49,
+   "mv_ms": 777.2,
+   "load_id": "300_savage_168_gr_spitzer_silver_tip_ct_ballistic_silvertip",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.051,
+   "worst_drop_error_over_tolerance": 0.253,
+   "worst_drift_error_over_tolerance": 0.112,
+   "worst_tof_error_over_tolerance": 0.336,
+   "drift_bias": 0.0012
+  },
+  {
+   "projectile_id": "nosler_51165",
+   "names": [
+    "30 Cal 150 Gr. Round Nose (Silver Tip) CT Ballistic Silvertip"
+   ],
+   "model": "G1",
+   "bc": 0.232,
+   "mv_ms": 691.3,
+   "load_id": "30_30_winchester_150_gr_round_nose_silver_tip_ct_ballistic_silvertip",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.072,
+   "worst_drop_error_over_tolerance": 0.261,
+   "worst_drift_error_over_tolerance": 0.121,
+   "worst_tof_error_over_tolerance": 0.402,
+   "drift_bias": 0.0011
+  },
+  {
+   "projectile_id": "nosler_51170",
+   "names": [
+    "30 Cal 180 Gr. Spitzer (Silver Tip) CT Ballistic Silvertip"
+   ],
+   "model": "G7",
+   "bc": 0.241,
+   "mv_ms": 762.6,
+   "load_id": "300_savage_180_gr_spitzer_silver_tip_ct_ballistic_silvertip",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.045,
+   "worst_drop_error_over_tolerance": 0.253,
+   "worst_drift_error_over_tolerance": 0.118,
+   "worst_tof_error_over_tolerance": 0.291,
+   "drift_bias": 0.002
+  },
+  {
+   "projectile_id": "nosler_51200",
+   "names": [
+    "338 Cal 200 Gr. Spitzer (Silver Tip) CT Ballistic Silvertip"
+   ],
+   "model": "G1",
+   "bc": 0.414,
+   "mv_ms": 771.1,
+   "load_id": "338_federal_200_gr_spitzer_silver_tip_ct_ballistic_silvertip",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.054,
+   "worst_drop_error_over_tolerance": 0.162,
+   "worst_drift_error_over_tolerance": 0.065,
+   "worst_tof_error_over_tolerance": 0.105,
+   "drift_bias": 0.0005
+  },
+  {
+   "projectile_id": "nosler_52111",
+   "names": [
+    "204 Cal 40 Gr. Spitzer (Maroon Tip) Ballistic Tip Varmint"
+   ],
+   "model": "G1",
+   "bc": 0.239,
+   "mv_ms": 1162.8,
+   "load_id": "204_ruger_40_gr_spitzer_maroon_tip_ballistic_tip_varmint",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.121,
+   "worst_drop_error_over_tolerance": 0.207,
+   "worst_drift_error_over_tolerance": 0.175,
+   "worst_tof_error_over_tolerance": 0.471,
+   "drift_bias": 0.0019
+  },
+  {
+   "projectile_id": "nosler_52165",
+   "names": [
+    "30 Cal 125 Gr. Spitzer AccuBond"
+   ],
+   "model": "G1",
+   "bc": 0.366,
+   "mv_ms": 681.8,
+   "load_id": "300_aac_blackout_125_gr_spitzer_accubond",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.052,
+   "worst_drop_error_over_tolerance": 0.098,
+   "worst_drift_error_over_tolerance": 0.064,
+   "worst_tof_error_over_tolerance": 0.478,
+   "drift_bias": 0.0013
+  },
+  {
+   "projectile_id": "nosler_53033",
+   "names": [
+    "22 Cal 77 Gr. HPBT W/Cannelure Custom Competition"
+   ],
+   "model": "G7",
+   "bc": 0.193,
+   "mv_ms": 822.0,
+   "load_id": "223_rem_77_gr_hpbt_custom_competition",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.05,
+   "worst_drop_error_over_tolerance": 0.146,
+   "worst_drift_error_over_tolerance": 0.083,
+   "worst_tof_error_over_tolerance": 0.209,
+   "drift_bias": 0.0011
+  },
+  {
+   "projectile_id": "nosler_53066",
+   "names": [
+    "22 Cal 70 Gr. HPBT RDF"
+   ],
+   "model": "G7",
+   "bc": 0.211,
+   "mv_ms": 901.3,
+   "load_id": "223_rem_70_gr_hpbt_rdf",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.043,
+   "worst_drop_error_over_tolerance": 0.194,
+   "worst_drift_error_over_tolerance": 0.1,
+   "worst_tof_error_over_tolerance": 0.208,
+   "drift_bias": 0.0016
+  },
+  {
+   "projectile_id": "nosler_53154",
+   "names": [
+    "30 Cal 220 Gr. HPBT Custom Competition"
+   ],
+   "model": "G1",
+   "bc": 0.69,
+   "mv_ms": 396.8,
+   "load_id": "300_aac_blackout_220_gr_hpbt_custom_competition",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.039,
+   "worst_drop_error_over_tolerance": 0.369,
+   "worst_drift_error_over_tolerance": 0.04,
+   "worst_tof_error_over_tolerance": 0.138,
+   "drift_bias": -0.0006
+  },
+  {
+   "projectile_id": "nosler_53155",
+   "names": [
+    "30 Cal 155 Gr. HPBT Custom Competition"
+   ],
+   "model": "G1",
+   "bc": 0.45,
+   "mv_ms": 817.5,
+   "load_id": "300_savage_155_gr_hpbt_custom_competition",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.054,
+   "worst_drop_error_over_tolerance": 0.257,
+   "worst_drift_error_over_tolerance": 0.088,
+   "worst_tof_error_over_tolerance": 0.292,
+   "drift_bias": 0.0011
+  },
+  {
+   "projectile_id": "nosler_53164",
+   "names": [
+    "30 Cal 168 Gr. HPBT Custom Competition"
+   ],
+   "model": "G7",
+   "bc": 0.218,
+   "mv_ms": 991.2,
+   "load_id": "28_nosler_168_gr_hpbt_custom_competition",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.045,
+   "worst_drop_error_over_tolerance": 0.188,
+   "worst_drift_error_over_tolerance": 0.09,
+   "worst_tof_error_over_tolerance": 0.142,
+   "drift_bias": 0.0011
+  },
+  {
+   "projectile_id": "nosler_53170",
+   "names": [
+    "30 Cal 175 Gr. HPBT RDF"
+   ],
+   "model": "G7",
+   "bc": 0.27,
+   "mv_ms": 762.6,
+   "load_id": "300_savage_175_gr_hpbt_rdf",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.051,
+   "worst_drop_error_over_tolerance": 0.096,
+   "worst_drift_error_over_tolerance": 0.055,
+   "worst_tof_error_over_tolerance": 0.721,
+   "drift_bias": 0.002
+  },
+  {
+   "projectile_id": "nosler_53182",
+   "names": [
+    "30 Cal 168 Gr. HPBT RDF"
+   ],
+   "model": "G7",
+   "bc": 0.253,
+   "mv_ms": 777.2,
+   "load_id": "300_savage_168_gr_hpbt_rdf",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.031,
+   "worst_drop_error_over_tolerance": 0.195,
+   "worst_drift_error_over_tolerance": 0.072,
+   "worst_tof_error_over_tolerance": 0.188,
+   "drift_bias": 0.0013
+  },
+  {
+   "projectile_id": "nosler_53294",
+   "names": [
+    "22 Cal 52 Gr. HPBT Custom Competition"
+   ],
+   "model": "G7",
+   "bc": 0.113,
+   "mv_ms": 1215.5,
+   "load_id": "220_swift_52_gr_hpbt_custom_competition",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.139,
+   "worst_drop_error_over_tolerance": 0.208,
+   "worst_drift_error_over_tolerance": 0.178,
+   "worst_tof_error_over_tolerance": 0.278,
+   "drift_bias": 0.0025
+  },
+  {
+   "projectile_id": "nosler_53410",
+   "names": [
+    "6mm 105 Gr. HPBT RDF"
+   ],
+   "model": "G7",
+   "bc": 0.28,
+   "mv_ms": 927.5,
+   "load_id": "6_mm_creedmoor_105_gr_hpbt_rdf",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.047,
+   "worst_drop_error_over_tolerance": 0.161,
+   "worst_drift_error_over_tolerance": 0.109,
+   "worst_tof_error_over_tolerance": 0.608,
+   "drift_bias": 0.0029
+  },
+  {
+   "projectile_id": "nosler_53412",
+   "names": [
+    "30 Cal 190 Gr. HPBT Custom Competition"
+   ],
+   "model": "G1",
+   "bc": 0.53,
+   "mv_ms": 800.7,
+   "load_id": "308_win_190_gr_hpbt_custom_competition",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.042,
+   "worst_drop_error_over_tolerance": 0.276,
+   "worst_drift_error_over_tolerance": 0.102,
+   "worst_tof_error_over_tolerance": 0.386,
+   "drift_bias": 0.0017
+  },
+  {
+   "projectile_id": "nosler_53415",
+   "names": [
+    "6.5mm 123 Gr. HPBT Custom Competition"
+   ],
+   "model": "G1",
+   "bc": 0.51,
+   "mv_ms": 997.3,
+   "load_id": "264_winchester_magnum_123_gr_hpbt_custom_competition",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.047,
+   "worst_drop_error_over_tolerance": 0.256,
+   "worst_drift_error_over_tolerance": 0.089,
+   "worst_tof_error_over_tolerance": 0.345,
+   "drift_bias": 0.0017
+  },
+  {
+   "projectile_id": "nosler_53418",
+   "names": [
+    "7mm 168 Gr. HPBT Custom Competition"
+   ],
+   "model": "G1",
+   "bc": 0.52,
+   "mv_ms": 991.2,
+   "load_id": "28_nosler_168_gr_hpbt_custom_competition",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.041,
+   "worst_drop_error_over_tolerance": 0.155,
+   "worst_drift_error_over_tolerance": 0.09,
+   "worst_tof_error_over_tolerance": 0.562,
+   "drift_bias": 0.0029
+  },
+  {
+   "projectile_id": "nosler_53432",
+   "names": [
+    "7mm 185 Gr. HPBT RDF"
+   ],
+   "model": "G7",
+   "bc": 0.357,
+   "mv_ms": 960.7,
+   "load_id": "28_nosler_185_gr_hpbt_rdf",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.035,
+   "worst_drop_error_over_tolerance": 0.229,
+   "worst_drift_error_over_tolerance": 0.118,
+   "worst_tof_error_over_tolerance": 0.308,
+   "drift_bias": 0.0018
+  },
+  {
+   "projectile_id": "nosler_53434",
+   "names": [
+    "30 Cal 210 Gr. HPBT RDF"
+   ],
+   "model": "G7",
+   "bc": 0.348,
+   "mv_ms": 930.6,
+   "load_id": "300_remington_ultra_magnum_210_gr_hpbt_rdf",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.034,
+   "worst_drop_error_over_tolerance": 0.196,
+   "worst_drift_error_over_tolerance": 0.092,
+   "worst_tof_error_over_tolerance": 0.684,
+   "drift_bias": 0.0028
+  },
+  {
+   "projectile_id": "nosler_53441",
+   "names": [
+    "22 Cal 85 Gr. HPBT RDF"
+   ],
+   "model": "G7",
+   "bc": 0.245,
+   "mv_ms": 808.9,
+   "load_id": "223_rem_85_gr_hpbt_rdf",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.045,
+   "worst_drop_error_over_tolerance": 0.266,
+   "worst_drift_error_over_tolerance": 0.116,
+   "worst_tof_error_over_tolerance": 0.324,
+   "drift_bias": 0.0017
+  },
+  {
+   "projectile_id": "nosler_53445",
+   "names": [
+    "338 Cal 300 Gr. HPBT RDF"
+   ],
+   "model": "G7",
+   "bc": 0.415,
+   "mv_ms": 838.5,
+   "load_id": "338_lapua_mag_300_gr_hpbt_rdf",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.021,
+   "worst_drop_error_over_tolerance": 0.19,
+   "worst_drift_error_over_tolerance": 0.062,
+   "worst_tof_error_over_tolerance": 0.123,
+   "drift_bias": 0.001
+  },
+  {
+   "projectile_id": "nosler_53452",
+   "names": [
+    "22 Cal 77 Gr. HPBT RDF"
+   ],
+   "model": "G7",
+   "bc": 0.228,
+   "mv_ms": 822.0,
+   "load_id": "223_rem_77_gr_hpbt_rdf",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.064,
+   "worst_drop_error_over_tolerance": 0.262,
+   "worst_drift_error_over_tolerance": 0.128,
+   "worst_tof_error_over_tolerance": 0.345,
+   "drift_bias": 0.0017
+  },
+  {
+   "projectile_id": "nosler_53505",
+   "names": [
+    "6.5mm 130 Gr. HPBT RDF"
+   ],
+   "model": "G7",
+   "bc": 0.307,
+   "mv_ms": 973.8,
+   "load_id": "264_winchester_magnum_130_gr_hpbt_rdf",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.039,
+   "worst_drop_error_over_tolerance": 0.243,
+   "worst_drift_error_over_tolerance": 0.091,
+   "worst_tof_error_over_tolerance": 0.341,
+   "drift_bias": 0.0023
+  },
+  {
+   "projectile_id": "nosler_53507",
+   "names": [
+    "6mm 115 Gr. HPBT RDF"
+   ],
+   "model": "G7",
+   "bc": 0.312,
+   "mv_ms": 906.2,
+   "load_id": "6_mm_creedmoor_115_gr_hpbt_rdf",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.042,
+   "worst_drop_error_over_tolerance": 0.201,
+   "worst_drift_error_over_tolerance": 0.107,
+   "worst_tof_error_over_tolerance": 0.379,
+   "drift_bias": 0.0026
+  },
+  {
+   "projectile_id": "nosler_53515",
+   "names": [
+    "338 Cal 300 Gr. HPBT Custom Competition"
+   ],
+   "model": "G1",
+   "bc": 0.8,
+   "mv_ms": 838.5,
+   "load_id": "338_lapua_mag_300_gr_hpbt_custom_competition",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.033,
+   "worst_drop_error_over_tolerance": 0.142,
+   "worst_drift_error_over_tolerance": 0.064,
+   "worst_tof_error_over_tolerance": 0.746,
+   "drift_bias": 0.0028
+  },
+  {
+   "projectile_id": "nosler_53662",
+   "names": [
+    "375 Cal 300 Gr. Spitzer W/Cannelure AccuBond"
+   ],
+   "model": "G1",
+   "bc": 0.485,
+   "mv_ms": 827.5,
+   "load_id": "375_ruger_300_gr_spitzer_w_cannelure_accubond",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.044,
+   "worst_drop_error_over_tolerance": 0.162,
+   "worst_drift_error_over_tolerance": 0.077,
+   "worst_tof_error_over_tolerance": 0.265,
+   "drift_bias": 0.0014
+  },
+  {
+   "projectile_id": "nosler_53742",
+   "names": [
+    "25 Cal 110 Gr. Spitzer AccuBond"
+   ],
+   "model": "G1",
+   "bc": 0.418,
+   "mv_ms": 895.5,
+   "load_id": "257_roberts_110_gr_spitzer_accubond",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.044,
+   "worst_drop_error_over_tolerance": 0.125,
+   "worst_drift_error_over_tolerance": 0.082,
+   "worst_tof_error_over_tolerance": 0.256,
+   "drift_bias": 0.0015
+  },
+  {
+   "projectile_id": "nosler_53780",
+   "names": [
+    "22 Cal 70 Gr. Spitzer AccuBond"
+   ],
+   "model": "G1",
+   "bc": 0.37,
+   "mv_ms": 901.3,
+   "load_id": "223_rem_70_gr_spitzer_accubond",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.056,
+   "worst_drop_error_over_tolerance": 0.187,
+   "worst_drift_error_over_tolerance": 0.12,
+   "worst_tof_error_over_tolerance": 0.319,
+   "drift_bias": 0.0015
+  },
+  {
+   "projectile_id": "nosler_53952",
+   "names": [
+    "30 Cal 175 Gr. HPBT Custom Competition"
+   ],
+   "model": "G1",
+   "bc": 0.505,
+   "mv_ms": 762.6,
+   "load_id": "300_savage_175_gr_hpbt_custom_competition",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.05,
+   "worst_drop_error_over_tolerance": 0.238,
+   "worst_drift_error_over_tolerance": 0.13,
+   "worst_tof_error_over_tolerance": 0.491,
+   "drift_bias": 0.0017
+  },
+  {
+   "projectile_id": "nosler_54357",
+   "names": [
+    "338 Cal 225 Gr. Spitzer AccuBond"
+   ],
+   "model": "G1",
+   "bc": 0.55,
+   "mv_ms": 740.1,
+   "load_id": "338_federal_225_gr_spitzer_accubond",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.056,
+   "worst_drop_error_over_tolerance": 0.124,
+   "worst_drift_error_over_tolerance": 0.063,
+   "worst_tof_error_over_tolerance": 0.649,
+   "drift_bias": 0.0019
+  },
+  {
+   "projectile_id": "nosler_54374",
+   "names": [
+    "8mm 200 Gr. Spitzer AccuBond"
+   ],
+   "model": "G1",
+   "bc": 0.45,
+   "mv_ms": 771.1,
+   "load_id": "338_federal_200_gr_spitzer_accubond",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.051,
+   "worst_drop_error_over_tolerance": 0.089,
+   "worst_drift_error_over_tolerance": 0.067,
+   "worst_tof_error_over_tolerance": 0.403,
+   "drift_bias": 0.0013
+  },
+  {
+   "projectile_id": "nosler_54413",
+   "names": [
+    "375 Cal 260 Gr. Spitzer W/Cannelure AccuBond"
+   ],
+   "model": "G1",
+   "bc": 0.473,
+   "mv_ms": 896.4,
+   "load_id": "375_ruger_260_gr_spitzer_w_cannelure_accubond",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.031,
+   "worst_drop_error_over_tolerance": 0.117,
+   "worst_drift_error_over_tolerance": 0.059,
+   "worst_tof_error_over_tolerance": 0.209,
+   "drift_bias": 0.001
+  },
+  {
+   "projectile_id": "nosler_54618",
+   "names": [
+    "30 Cal 200 Gr. Spitzer AccuBond"
+   ],
+   "model": "G1",
+   "bc": 0.588,
+   "mv_ms": 771.1,
+   "load_id": "338_federal_200_gr_spitzer_accubond",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.045,
+   "worst_drop_error_over_tolerance": 0.179,
+   "worst_drift_error_over_tolerance": 0.124,
+   "worst_tof_error_over_tolerance": 0.703,
+   "drift_bias": 0.0025
+  },
+  {
+   "projectile_id": "nosler_54765",
+   "names": [
+    "270 Cal 140 Gr. Spitzer AccuBond"
+   ],
+   "model": "G1",
+   "bc": 0.46,
+   "mv_ms": 1019.9,
+   "load_id": "26_nosler_140_gr_spitzer_accubond",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.064,
+   "worst_drop_error_over_tolerance": 0.176,
+   "worst_drift_error_over_tolerance": 0.108,
+   "worst_tof_error_over_tolerance": 0.441,
+   "drift_bias": 0.0017
+  },
+  {
+   "projectile_id": "nosler_54801",
+   "names": [
+    "270 Cal 150 Gr. Spitzer AccuBond"
+   ],
+   "model": "G1",
+   "bc": 0.5,
+   "mv_ms": 1044.2,
+   "load_id": "28_nosler_150_gr_spitzer_accubond",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.053,
+   "worst_drop_error_over_tolerance": 0.154,
+   "worst_drift_error_over_tolerance": 0.116,
+   "worst_tof_error_over_tolerance": 0.793,
+   "drift_bias": 0.0029
+  },
+  {
+   "projectile_id": "nosler_54825",
+   "names": [
+    "30 Cal 180 Gr. Spitzer AccuBond"
+   ],
+   "model": "G7",
+   "bc": 0.246,
+   "mv_ms": 762.6,
+   "load_id": "300_savage_180_gr_spitzer_accubond",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.04,
+   "worst_drop_error_over_tolerance": 0.139,
+   "worst_drift_error_over_tolerance": 0.06,
+   "worst_tof_error_over_tolerance": 0.356,
+   "drift_bias": 0.0015
+  },
+  {
+   "projectile_id": "nosler_54827",
+   "names": [
+    "270 Cal 165 Gr. Spitzer AccuBond Long Range"
+   ],
+   "model": "G7",
+   "bc": 0.312,
+   "mv_ms": 777.2,
+   "load_id": "300_savage_165_gr_spitzer_accubond",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.033,
+   "worst_drop_error_over_tolerance": 0.227,
+   "worst_drift_error_over_tolerance": 0.103,
+   "worst_tof_error_over_tolerance": 0.28,
+   "drift_bias": 0.0016
+  },
+  {
+   "projectile_id": "nosler_54851",
+   "names": [
+    "338 Cal 300 Gr. Spitzer AccuBond"
+   ],
+   "model": "G1",
+   "bc": 0.72,
+   "mv_ms": 838.5,
+   "load_id": "338_lapua_mag_300_gr_spitzer_accubond",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.024,
+   "worst_drop_error_over_tolerance": 0.125,
+   "worst_drift_error_over_tolerance": 0.057,
+   "worst_tof_error_over_tolerance": 0.481,
+   "drift_bias": 0.0021
+  },
+  {
+   "projectile_id": "nosler_54932",
+   "names": [
+    "7mm 160 Gr. Spitzer AccuBond"
+   ],
+   "model": "G1",
+   "bc": 0.531,
+   "mv_ms": 1003.7,
+   "load_id": "28_nosler_160_gr_spitzer_accubond",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.061,
+   "worst_drop_error_over_tolerance": 0.217,
+   "worst_drift_error_over_tolerance": 0.126,
+   "worst_tof_error_over_tolerance": 0.942,
+   "drift_bias": 0.0041
+  },
+  {
+   "projectile_id": "nosler_54951",
+   "names": [
+    "7mm 150 Gr. Spitzer AccuBond"
+   ],
+   "model": "G1",
+   "bc": 0.493,
+   "mv_ms": 1044.2,
+   "load_id": "28_nosler_150_gr_spitzer_accubond",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.05,
+   "worst_drop_error_over_tolerance": 0.161,
+   "worst_drift_error_over_tolerance": 0.067,
+   "worst_tof_error_over_tolerance": 0.742,
+   "drift_bias": 0.0023
+  },
+  {
+   "projectile_id": "nosler_54987",
+   "names": [
+    "270 Cal 130 Gr. Spitzer AccuBond"
+   ],
+   "model": "G1",
+   "bc": 0.435,
+   "mv_ms": 1062.2,
+   "load_id": "26_nosler_130_gr_spitzer_accubond",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.075,
+   "worst_drop_error_over_tolerance": 0.2,
+   "worst_drift_error_over_tolerance": 0.17,
+   "worst_tof_error_over_tolerance": 0.977,
+   "drift_bias": 0.0032
+  },
+  {
+   "projectile_id": "nosler_55602",
+   "names": [
+    "30 Cal 165 Gr. Spitzer AccuBond"
+   ],
+   "model": "G7",
+   "bc": 0.228,
+   "mv_ms": 777.2,
+   "load_id": "300_savage_165_gr_spitzer_accubond",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.041,
+   "worst_drop_error_over_tolerance": 0.151,
+   "worst_drift_error_over_tolerance": 0.067,
+   "worst_tof_error_over_tolerance": 0.495,
+   "drift_bias": 0.0015
+  },
+  {
+   "projectile_id": "nosler_56357",
+   "names": [
+    "6mm 90 Gr. Spitzer AccuBond"
+   ],
+   "model": "G1",
+   "bc": 0.376,
+   "mv_ms": 991.5,
+   "load_id": "6_mm_creedmoor_90_gr_spitzer_accubond",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.077,
+   "worst_drop_error_over_tolerance": 0.244,
+   "worst_drift_error_over_tolerance": 0.175,
+   "worst_tof_error_over_tolerance": 0.323,
+   "drift_bias": 0.0019
+  },
+  {
+   "projectile_id": "nosler_56382",
+   "names": [
+    "338 Cal 200 Gr. Spitzer AccuBond"
+   ],
+   "model": "G1",
+   "bc": 0.414,
+   "mv_ms": 771.1,
+   "load_id": "338_federal_200_gr_spitzer_accubond",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.054,
+   "worst_drop_error_over_tolerance": 0.162,
+   "worst_drift_error_over_tolerance": 0.065,
+   "worst_tof_error_over_tolerance": 0.105,
+   "drift_bias": 0.0005
+  },
+  {
+   "projectile_id": "nosler_56719",
+   "names": [
+    "30 Cal 150 Gr. Spitzer AccuBond"
+   ],
+   "model": "G1",
+   "bc": 0.435,
+   "mv_ms": 1044.2,
+   "load_id": "28_nosler_150_gr_spitzer_accubond",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.063,
+   "worst_drop_error_over_tolerance": 0.244,
+   "worst_drift_error_over_tolerance": 0.127,
+   "worst_tof_error_over_tolerance": 0.256,
+   "drift_bias": 0.0016
+  },
+  {
+   "projectile_id": "nosler_56902",
+   "names": [
+    "6.5mm 130 Gr. Spitzer AccuBond"
+   ],
+   "model": "G1",
+   "bc": 0.488,
+   "mv_ms": 973.8,
+   "load_id": "264_winchester_magnum_130_gr_spitzer_accubond",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.055,
+   "worst_drop_error_over_tolerance": 0.25,
+   "worst_drift_error_over_tolerance": 0.144,
+   "worst_tof_error_over_tolerance": 0.432,
+   "drift_bias": 0.0028
+  },
+  {
+   "projectile_id": "nosler_57287",
+   "names": [
+    "338 Cal 250 Gr. Spitzer AccuBond"
+   ],
+   "model": "G1",
+   "bc": 0.575,
+   "mv_ms": 910.1,
+   "load_id": "338_remington_ultra_magnum_250_gr_spitzer_accubond",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.032,
+   "worst_drop_error_over_tolerance": 0.119,
+   "worst_drift_error_over_tolerance": 0.063,
+   "worst_tof_error_over_tolerance": 0.505,
+   "drift_bias": 0.0021
+  },
+  {
+   "projectile_id": "nosler_57625",
+   "names": [
+    "338 Cal 180 Gr. Spitzer AccuBond"
+   ],
+   "model": "G1",
+   "bc": 0.372,
+   "mv_ms": 762.6,
+   "load_id": "300_savage_180_gr_spitzer_accubond",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.054,
+   "worst_drop_error_over_tolerance": 0.149,
+   "worst_drift_error_over_tolerance": 0.09,
+   "worst_tof_error_over_tolerance": 0.515,
+   "drift_bias": 0.0016
+  },
+  {
+   "projectile_id": "nosler_57873",
+   "names": [
+    "6.5mm 140 Gr. Spitzer AccuBond"
+   ],
+   "model": "G1",
+   "bc": 0.509,
+   "mv_ms": 940.3,
+   "load_id": "264_winchester_magnum_140_gr_spitzer_accubond",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.05,
+   "worst_drop_error_over_tolerance": 0.188,
+   "worst_drift_error_over_tolerance": 0.139,
+   "worst_tof_error_over_tolerance": 0.722,
+   "drift_bias": 0.0029
+  },
+  {
+   "projectile_id": "nosler_58454",
+   "names": [
+    "338 Cal 265 Gr. Spitzer AccuBond Long Range"
+   ],
+   "model": "G7",
+   "bc": 0.369,
+   "mv_ms": 890.9,
+   "load_id": "338_lapua_mag_265_gr_spitzer_accubond_long_range",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.039,
+   "worst_drop_error_over_tolerance": 0.152,
+   "worst_drift_error_over_tolerance": 0.073,
+   "worst_tof_error_over_tolerance": 0.82,
+   "drift_bias": 0.0034
+  },
+  {
+   "projectile_id": "nosler_58455",
+   "names": [
+    "30 Cal 168 Gr. Spitzer AccuBond Long Range"
+   ],
+   "model": "G7",
+   "bc": 0.265,
+   "mv_ms": 991.2,
+   "load_id": "28_nosler_168_gr_spitzer_accubond_long_range",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.05,
+   "worst_drop_error_over_tolerance": 0.236,
+   "worst_drift_error_over_tolerance": 0.124,
+   "worst_tof_error_over_tolerance": 0.746,
+   "drift_bias": 0.0029
+  },
+  {
+   "projectile_id": "nosler_58456",
+   "names": [
+    "338 Cal 300 Gr. Spitzer AccuBond Long Range"
+   ],
+   "model": "G7",
+   "bc": 0.325,
+   "mv_ms": 838.5,
+   "load_id": "338_lapua_mag_300_gr_spitzer_accubond",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.028,
+   "worst_drop_error_over_tolerance": 0.191,
+   "worst_drift_error_over_tolerance": 0.088,
+   "worst_tof_error_over_tolerance": 0.186,
+   "drift_bias": 0.0013
+  },
+  {
+   "projectile_id": "nosler_58517",
+   "names": [
+    "7mm 175 Gr. Spitzer AccuBond Long Range"
+   ],
+   "model": "G7",
+   "bc": 0.326,
+   "mv_ms": 978.7,
+   "load_id": "28_nosler_175_gr_spitzer_accubond_long_range",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.039,
+   "worst_drop_error_over_tolerance": 0.206,
+   "worst_drift_error_over_tolerance": 0.081,
+   "worst_tof_error_over_tolerance": 0.151,
+   "drift_bias": 0.0015
+  },
+  {
+   "projectile_id": "nosler_58623",
+   "names": [
+    "30 Cal 210 Gr. Spitzer AccuBond Long Range"
+   ],
+   "model": "G7",
+   "bc": 0.333,
+   "mv_ms": 930.6,
+   "load_id": "300_remington_ultra_magnum_210_gr_spitzer_accubond_long_range",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.036,
+   "worst_drop_error_over_tolerance": 0.191,
+   "worst_drift_error_over_tolerance": 0.099,
+   "worst_tof_error_over_tolerance": 0.567,
+   "drift_bias": 0.0022
+  },
+  {
+   "projectile_id": "nosler_58734",
+   "names": [
+    "7mm 150 Gr. Spitzer AccuBond Long Range"
+   ],
+   "model": "G7",
+   "bc": 0.275,
+   "mv_ms": 1044.2,
+   "load_id": "28_nosler_150_gr_spitzer_accubond",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.039,
+   "worst_drop_error_over_tolerance": 0.162,
+   "worst_drift_error_over_tolerance": 0.094,
+   "worst_tof_error_over_tolerance": 0.296,
+   "drift_bias": 0.0021
+  },
+  {
+   "projectile_id": "nosler_58836",
+   "names": [
+    "270 Cal 150 Gr. Spitzer AccuBond Long Range"
+   ],
+   "model": "G7",
+   "bc": 0.298,
+   "mv_ms": 1044.2,
+   "load_id": "28_nosler_150_gr_spitzer_accubond",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.039,
+   "worst_drop_error_over_tolerance": 0.15,
+   "worst_drift_error_over_tolerance": 0.093,
+   "worst_tof_error_over_tolerance": 0.534,
+   "drift_bias": 0.0026
+  },
+  {
+   "projectile_id": "nosler_58922",
+   "names": [
+    "6.5mm 142 Gr. Spitzer AccuBond Long Range"
+   ],
+   "model": "G7",
+   "bc": 0.315,
+   "mv_ms": 940.3,
+   "load_id": "264_winchester_magnum_142_gr_spitzer_accubond_long_range",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.042,
+   "worst_drop_error_over_tolerance": 0.2,
+   "worst_drift_error_over_tolerance": 0.114,
+   "worst_tof_error_over_tolerance": 0.56,
+   "drift_bias": 0.0029
+  },
+  {
+   "projectile_id": "nosler_58930",
+   "names": [
+    "7mm 168 Gr. Spitzer AccuBond Long Range"
+   ],
+   "model": "G7",
+   "bc": 0.31,
+   "mv_ms": 991.2,
+   "load_id": "28_nosler_168_gr_spitzer_accubond_long_range",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.03,
+   "worst_drop_error_over_tolerance": 0.162,
+   "worst_drift_error_over_tolerance": 0.088,
+   "worst_tof_error_over_tolerance": 0.266,
+   "drift_bias": 0.0017
+  },
+  {
+   "projectile_id": "nosler_58943",
+   "names": [
+    "6.5mm 129 Gr. Spitzer AccuBond Long Range"
+   ],
+   "model": "G7",
+   "bc": 0.267,
+   "mv_ms": 973.8,
+   "load_id": "264_winchester_magnum_129_gr_spitzer_accubond_long_range",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.056,
+   "worst_drop_error_over_tolerance": 0.231,
+   "worst_drift_error_over_tolerance": 0.146,
+   "worst_tof_error_over_tolerance": 0.852,
+   "drift_bias": 0.0034
+  },
+  {
+   "projectile_id": "nosler_59165",
+   "names": [
+    "6mm 90 Gr. Spitzer E-Tip"
+   ],
+   "model": "G1",
+   "bc": 0.403,
+   "mv_ms": 991.5,
+   "load_id": "6_mm_creedmoor_90_gr_spitzer_e_tip",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.048,
+   "worst_drop_error_over_tolerance": 0.14,
+   "worst_drift_error_over_tolerance": 0.118,
+   "worst_tof_error_over_tolerance": 0.528,
+   "drift_bias": 0.0019
+  },
+  {
+   "projectile_id": "nosler_59180",
+   "names": [
+    "30 Cal 180 Gr. Spitzer E-Tip"
+   ],
+   "model": "G1",
+   "bc": 0.523,
+   "mv_ms": 762.6,
+   "load_id": "300_savage_180_gr_spitzer_e_tip",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.059,
+   "worst_drop_error_over_tolerance": 0.197,
+   "worst_drift_error_over_tolerance": 0.123,
+   "worst_tof_error_over_tolerance": 0.627,
+   "drift_bias": 0.0023
+  },
+  {
+   "projectile_id": "nosler_59186",
+   "names": [
+    "338 Cal 200 Gr. Spitzer E-Tip"
+   ],
+   "model": "G1",
+   "bc": 0.425,
+   "mv_ms": 771.1,
+   "load_id": "338_federal_200_gr_spitzer_e_tip",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.06,
+   "worst_drop_error_over_tolerance": 0.287,
+   "worst_drift_error_over_tolerance": 0.133,
+   "worst_tof_error_over_tolerance": 0.339,
+   "drift_bias": 0.0013
+  },
+  {
+   "projectile_id": "nosler_59265",
+   "names": [
+    "8mm 180 Gr. Spitzer E-Tip"
+   ],
+   "model": "G1",
+   "bc": 0.427,
+   "mv_ms": 762.6,
+   "load_id": "300_savage_180_gr_spitzer_e_tip",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.054,
+   "worst_drop_error_over_tolerance": 0.217,
+   "worst_drift_error_over_tolerance": 0.108,
+   "worst_tof_error_over_tolerance": 0.492,
+   "drift_bias": 0.0019
+  },
+  {
+   "projectile_id": "nosler_59270",
+   "names": [
+    "9.3mm 250 Gr. Spitzer E-Tip"
+   ],
+   "model": "G1",
+   "bc": 0.494,
+   "mv_ms": 787.6,
+   "load_id": "9_3_x_62_250_gr_spitzer_e_tip",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.055,
+   "worst_drop_error_over_tolerance": 0.152,
+   "worst_drift_error_over_tolerance": 0.111,
+   "worst_tof_error_over_tolerance": 0.723,
+   "drift_bias": 0.0026
+  },
+  {
+   "projectile_id": "nosler_59298",
+   "names": [
+    "270 Cal 130 Gr. Spitzer E-Tip"
+   ],
+   "model": "G1",
+   "bc": 0.459,
+   "mv_ms": 1059.5,
+   "load_id": "270_weatherby_magnum_130_gr_spitzer_e_tip",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.068,
+   "worst_drop_error_over_tolerance": 0.204,
+   "worst_drift_error_over_tolerance": 0.109,
+   "worst_tof_error_over_tolerance": 0.935,
+   "drift_bias": 0.0034
+  },
+  {
+   "projectile_id": "nosler_59372",
+   "names": [
+    "338 Cal 225 Gr. Spitzer E-Tip"
+   ],
+   "model": "G1",
+   "bc": 0.611,
+   "mv_ms": 740.1,
+   "load_id": "338_federal_225_gr_spitzer_e_tip",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.052,
+   "worst_drop_error_over_tolerance": 0.216,
+   "worst_drift_error_over_tolerance": 0.105,
+   "worst_tof_error_over_tolerance": 0.302,
+   "drift_bias": 0.0014
+  },
+  {
+   "projectile_id": "nosler_59378",
+   "names": [
+    "30 Cal 150 Gr. Spitzer E-Tip"
+   ],
+   "model": "G1",
+   "bc": 0.469,
+   "mv_ms": 1044.2,
+   "load_id": "28_nosler_150_gr_spitzer_e_tip",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.052,
+   "worst_drop_error_over_tolerance": 0.206,
+   "worst_drift_error_over_tolerance": 0.115,
+   "worst_tof_error_over_tolerance": 0.556,
+   "drift_bias": 0.0023
+  },
+  {
+   "projectile_id": "nosler_59379",
+   "names": [
+    "375 Cal 260 Gr. Spitzer E-Tip"
+   ],
+   "model": "G1",
+   "bc": 0.49,
+   "mv_ms": 896.4,
+   "load_id": "375_ruger_260_gr_spitzer_e_tip",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.04,
+   "worst_drop_error_over_tolerance": 0.197,
+   "worst_drift_error_over_tolerance": 0.071,
+   "worst_tof_error_over_tolerance": 0.148,
+   "drift_bias": 0.001
+  },
+  {
+   "projectile_id": "nosler_59380",
+   "names": [
+    "300 AAC 110 Gr. Spitzer E-Tip"
+   ],
+   "model": "G1",
+   "bc": 0.245,
+   "mv_ms": 720.9,
+   "load_id": "300_aac_blackout_110_gr_spitzer_e_tip",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.062,
+   "worst_drop_error_over_tolerance": 0.199,
+   "worst_drift_error_over_tolerance": 0.126,
+   "worst_tof_error_over_tolerance": 0.199,
+   "drift_bias": 0.0004
+  },
+  {
+   "projectile_id": "nosler_59385",
+   "names": [
+    "338 Cal 250 Gr. Spitzer E-Tip"
+   ],
+   "model": "G1",
+   "bc": 0.627,
+   "mv_ms": 910.1,
+   "load_id": "338_remington_ultra_magnum_250_gr_spitzer_e_tip",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.044,
+   "worst_drop_error_over_tolerance": 0.141,
+   "worst_drift_error_over_tolerance": 0.08,
+   "worst_tof_error_over_tolerance": 0.773,
+   "drift_bias": 0.0031
+  },
+  {
+   "projectile_id": "nosler_59387",
+   "names": [
+    "7.62x39 123 Gr. Spitzer E-Tip"
+   ],
+   "model": "G1",
+   "bc": 0.316,
+   "mv_ms": 758.3,
+   "load_id": "762x39_123_gr_spitzer_e_tip",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.057,
+   "worst_drop_error_over_tolerance": 0.127,
+   "worst_drift_error_over_tolerance": 0.124,
+   "worst_tof_error_over_tolerance": 0.392,
+   "drift_bias": 0.0013
+  },
+  {
+   "projectile_id": "nosler_59415",
+   "names": [
+    "30 Cal 168 Gr. Spitzer E-Tip"
+   ],
+   "model": "G1",
+   "bc": 0.503,
+   "mv_ms": 777.2,
+   "load_id": "300_savage_168_gr_spitzer_e_tip",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.049,
+   "worst_drop_error_over_tolerance": 0.186,
+   "worst_drift_error_over_tolerance": 0.073,
+   "worst_tof_error_over_tolerance": 0.195,
+   "drift_bias": 0.0013
+  },
+  {
+   "projectile_id": "nosler_59426",
+   "names": [
+    "7mm 150 Gr. Spitzer E-Tip"
+   ],
+   "model": "G1",
+   "bc": 0.498,
+   "mv_ms": 1044.2,
+   "load_id": "28_nosler_150_gr_spitzer_e_tip",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.052,
+   "worst_drop_error_over_tolerance": 0.209,
+   "worst_drift_error_over_tolerance": 0.094,
+   "worst_tof_error_over_tolerance": 0.779,
+   "drift_bias": 0.0028
+  },
+  {
+   "projectile_id": "nosler_59451",
+   "names": [
+    "30/30 150 Gr. Round Nose E-Tip"
+   ],
+   "model": "G1",
+   "bc": 0.344,
+   "mv_ms": 691.3,
+   "load_id": "30_30_winchester_150_gr_round_nose_e_tip",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.052,
+   "worst_drop_error_over_tolerance": 0.251,
+   "worst_drift_error_over_tolerance": 0.091,
+   "worst_tof_error_over_tolerance": 0.234,
+   "drift_bias": 0.0008
+  },
+  {
+   "projectile_id": "nosler_59456",
+   "names": [
+    "25 Cal 100 Gr. Spitzer E-Tip"
+   ],
+   "model": "G1",
+   "bc": 0.409,
+   "mv_ms": 951.0,
+   "load_id": "257_roberts_100_gr_spitzer_e_tip",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.066,
+   "worst_drop_error_over_tolerance": 0.247,
+   "worst_drift_error_over_tolerance": 0.162,
+   "worst_tof_error_over_tolerance": 0.373,
+   "drift_bias": 0.002
+  },
+  {
+   "projectile_id": "nosler_59624",
+   "names": [
+    "22 Cal 55 Gr. Spitzer E-Tip"
+   ],
+   "model": "G1",
+   "bc": 0.305,
+   "mv_ms": 1008.3,
+   "load_id": "223_rem_55_gr_spitzer_e_tip",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.088,
+   "worst_drop_error_over_tolerance": 0.21,
+   "worst_drift_error_over_tolerance": 0.085,
+   "worst_tof_error_over_tolerance": 0.777,
+   "drift_bias": 0.0022
+  },
+  {
+   "projectile_id": "nosler_59756",
+   "names": [
+    "9.3mm 250 Gr. Spitzer W/Cannelure AccuBond"
+   ],
+   "model": "G1",
+   "bc": 0.494,
+   "mv_ms": 787.6,
+   "load_id": "9_3_x_62_250_gr_spitzer_w_cannelure_accubond",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.055,
+   "worst_drop_error_over_tolerance": 0.152,
+   "worst_drift_error_over_tolerance": 0.111,
+   "worst_tof_error_over_tolerance": 0.723,
+   "drift_bias": 0.0026
+  },
+  {
+   "projectile_id": "nosler_59765",
+   "names": [
+    "6.5mm 120 Gr. Spitzer E-Tip"
+   ],
+   "model": "G1",
+   "bc": 0.497,
+   "mv_ms": 1008.0,
+   "load_id": "264_winchester_magnum_120_gr_spitzer_e_tip",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.042,
+   "worst_drop_error_over_tolerance": 0.165,
+   "worst_drift_error_over_tolerance": 0.108,
+   "worst_tof_error_over_tolerance": 0.312,
+   "drift_bias": 0.0019
+  },
+  {
+   "projectile_id": "nosler_59955",
+   "names": [
+    "7mm 140 Gr. Spitzer E-Tip"
+   ],
+   "model": "G1",
+   "bc": 0.489,
+   "mv_ms": 1082.3,
+   "load_id": "28_nosler_140_gr_spitzer_e_tip",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.04,
+   "worst_drop_error_over_tolerance": 0.125,
+   "worst_drift_error_over_tolerance": 0.079,
+   "worst_tof_error_over_tolerance": 0.233,
+   "drift_bias": 0.0016
+  },
+  {
+   "projectile_id": "nosler_59992",
+   "names": [
+    "7mm 140 Gr. Spitzer AccuBond"
+   ],
+   "model": "G1",
+   "bc": 0.485,
+   "mv_ms": 1019.9,
+   "load_id": "26_nosler_140_gr_spitzer_accubond",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.052,
+   "worst_drop_error_over_tolerance": 0.175,
+   "worst_drift_error_over_tolerance": 0.121,
+   "worst_tof_error_over_tolerance": 0.384,
+   "drift_bias": 0.0021
+  },
+  {
    "projectile_id": "sierra_1032",
    "names": [
     "20 Cal 32 gr Tipped VarmintKing (TVK)"
@@ -6005,14 +11025,14 @@
   }
  ],
  "counts": {
-  "compared": 205,
-  "unmatched": 463,
+  "compared": 387,
+  "unmatched": 281,
   "trajectory_disagreements": 0,
   "gross_disagreements": 0,
   "form_factor_flags": 122,
   "transposition_flags": 0,
   "hard_transposition_on_compared": 0,
-  "mean_drift_bias": 0.0017
+  "mean_drift_bias": 0.0018
  },
  "disagreements": [],
  "form_factor": [
@@ -9396,160 +14416,6 @@
    "note": "no declared muzzle velocity"
   },
   {
-   "projectile_id": "nosler_16314",
-   "names": [
-    "6mm 85 Gr. Spitzer Partition"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_16315",
-   "names": [
-    "6mm 95 Gr. Spitzer Partition"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_16316",
-   "names": [
-    "22 Cal 60 Gr. Spitzer Partition"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_16317",
-   "names": [
-    "25 Cal 100 Gr. Spitzer Partition"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_16318",
-   "names": [
-    "25 Cal 115 Gr. Spitzer Partition"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_16319",
-   "names": [
-    "6.5mm 100 Gr. Spitzer Partition"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_16320",
-   "names": [
-    "6.5mm 125 Gr. Spitzer Partition"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_16321",
-   "names": [
-    "6.5mm 140 Gr. Spitzer Partition"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_16322",
-   "names": [
-    "270 Cal 130 Gr. Spitzer Partition"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_16323",
-   "names": [
-    "270 Cal 150 Gr. Spitzer Partition"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_16324",
-   "names": [
-    "270 Cal 160 Gr. Semi Spitzer Partition"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_16325",
-   "names": [
-    "7mm 140 Gr. Spitzer Partition"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_16326",
-   "names": [
-    "7mm 150 Gr. Spitzer Partition"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_16327",
-   "names": [
-    "7mm 160 Gr. Spitzer Partition"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_16329",
-   "names": [
-    "30 Cal 150 Gr. Spitzer Partition"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_16330",
-   "names": [
-    "30 Cal 165 Gr. Spitzer Partition"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_16331",
-   "names": [
-    "30 Cal 180 Gr. Spitzer Partition"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_16332",
-   "names": [
-    "30 Cal 220 Gr. Semi Spitzer Partition"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_16333",
-   "names": [
-    "30 Cal 170 Gr. Round Nose Partition"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_16336",
-   "names": [
-    "338 Cal 225 Gr. Spitzer Partition"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_16337",
-   "names": [
-    "338 Cal 210 Gr. Spitzer Partition"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_17101",
-   "names": [
-    "22 Cal 69 Gr. HPBT Custom Competition"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
    "projectile_id": "nosler_17205",
    "names": [
     "17 Cal 20 Gr. FBHP Ballistic Tip Varmint"
@@ -9599,83 +14465,6 @@
    "note": "no declared muzzle velocity"
   },
   {
-   "projectile_id": "nosler_22421",
-   "names": [
-    "22 Cal 77 Gr. HPBT Custom Competition"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_24055",
-   "names": [
-    "6mm 55 Gr. Spitzer (Purple Tip) Ballistic Tip Varmint"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_24080",
-   "names": [
-    "6mm 80 Gr. Spitzer (Purple Tip) Ballistic Tip Varmint"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_24090",
-   "names": [
-    "6mm 90 Gr. Spitzer (Purple Tip) Ballistic Tip Hunting"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_24095",
-   "names": [
-    "6mm 95 Gr. Spitzer (Purple Tip) Ballistic Tip Hunting"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_25100",
-   "names": [
-    "25 Cal 100 Gr. Spitzer (Blue Tip) Ballistic Tip Hunting"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_25115",
-   "names": [
-    "25 Cal 115 Gr. Spitzer (Blue Tip) Ballistic Tip Hunting"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_25116",
-   "names": [
-    "22 Cal 80 Gr. HPBT Custom Competition"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_25396",
-   "names": [
-    "30 Cal 180 Gr. Protected Point Partition"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_26100",
-   "names": [
-    "6.5mm 100 Gr. Spitzer (Brown Tip) Ballistic Tip Hunting"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_26120",
-   "names": [
-    "6.5mm 120 Gr. Spitzer (Brown Tip) Ballistic Tip Hunting"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
    "projectile_id": "nosler_26123",
    "names": [
     "6mm 70 Gr. FB Tipped (Metallic Black Tip) Ballistic Tip Varmint"
@@ -9686,48 +14475,6 @@
    "projectile_id": "nosler_26129",
    "names": [
     "6.5mm 90 Gr. FB Tipped (Metallic Black Tip) Ballistic Tip Varmint"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_26140",
-   "names": [
-    "6.5mm 140 Gr. Spitzer (Brown Tip) Ballistic Tip Hunting"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_26725",
-   "names": [
-    "6.5mm 140 Gr. HPBT Custom Competition"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_27130",
-   "names": [
-    "270 Cal 130 Gr. Spitzer (Yellow Tip) Ballistic Tip Hunting"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_27140",
-   "names": [
-    "270 Cal 140 Gr. Spitzer (Yellow Tip) Ballistic Tip Hunting"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_27150",
-   "names": [
-    "270 Cal 150 Gr. Spitzer (Yellow Tip) Ballistic Tip Hunting"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_28120",
-   "names": [
-    "7mm 120 Gr. Spitzer (Red Tip) Ballistic Tip Hunting"
    ],
    "note": "no declared muzzle velocity"
   },
@@ -9746,83 +14493,6 @@
    "note": "no declared muzzle velocity"
   },
   {
-   "projectile_id": "nosler_28140",
-   "names": [
-    "7mm 140 Gr. Spitzer (Red Tip) Ballistic Tip Hunting"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_28150",
-   "names": [
-    "7mm 150 Gr. Spitzer (Red Tip) Ballistic Tip Hunting"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_30125",
-   "names": [
-    "30 Cal 125 Gr. Spitzer (Green Tip) Ballistic Tip Hunting"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_30131",
-   "names": [
-    "7.62x39 123 Gr. Spitzer (Green Tip) Ballistic Tip Hunting"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_30150",
-   "names": [
-    "30 Cal 150 Gr. Spitzer (Green Tip) Ballistic Tip Hunting"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_30165",
-   "names": [
-    "30 Cal 165 Gr. Spitzer (Green Tip) Ballistic Tip Hunting"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_30168",
-   "names": [
-    "30 Cal 168 Gr. Spitzer (Green Tip) Ballistic Tip Hunting"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_30180",
-   "names": [
-    "30 Cal 180 Gr. Spitzer (Green Tip) Ballistic Tip Hunting"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_30181",
-   "names": [
-    "30 Cal 220 Gr. Round Nose (Green Tip) Ballistic Tip Hunting"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_31456",
-   "names": [
-    "458 Cal 300 Gr. Spitzer (Orange Tip) Ballistic Tip Hunting"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_32180",
-   "names": [
-    "8mm 180 Gr. Spitzer (Gunmetal Tip) Ballistic Tip Hunting"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
    "projectile_id": "nosler_34056",
    "names": [
     "7.62x39 123 Gr. FB Tipped (Metallic Black Tip) Ballistic Tip Varmint"
@@ -9837,72 +14507,9 @@
    "note": "no declared muzzle velocity"
   },
   {
-   "projectile_id": "nosler_34992",
-   "names": [
-    "22 Cal 60 Gr. Spitzer (Orange Tip) Ballistic Tip Varmint"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_35200",
-   "names": [
-    "270 Cal 140 Gr. Spitzer Partition"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_35216",
-   "names": [
-    "204 Cal 32 Gr. Spitzer (Maroon Tip) Ballistic Tip Varmint"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_35277",
-   "names": [
-    "8mm 200 Gr. Spitzer Partition"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_35626",
-   "names": [
-    "30 Cal 200 Gr. Spitzer Partition"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
    "projectile_id": "nosler_35631",
    "names": [
     "22 Cal 62 Gr. FBHP W/Cannelure Ballistic Tip Varmint"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_35642",
-   "names": [
-    "6mm 100 Gr. Spitzer Partition"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_35643",
-   "names": [
-    "25 Cal 120 Gr. Spitzer Partition"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_35644",
-   "names": [
-    "338 Cal 250 Gr. Spitzer Partition"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_35645",
-   "names": [
-    "7mm 175 Gr. Spitzer Partition"
    ],
    "note": "no declared muzzle velocity"
   },
@@ -9991,170 +14598,9 @@
    "note": "no declared muzzle velocity"
   },
   {
-   "projectile_id": "nosler_39510",
-   "names": [
-    "22 Cal 40 Gr. Spitzer (Orange Tip) Ballistic Tip Varmint"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_39522",
-   "names": [
-    "22 Cal 50 Gr. Spitzer (Orange Tip) Ballistic Tip Varmint"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_39526",
-   "names": [
-    "22 Cal 55 Gr. Spitzer (Orange Tip) Ballistic Tip Varmint"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_39532",
-   "names": [
-    "6mm 70 Gr. Spitzer (Purple Tip) Ballistic Tip Varmint"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_42069",
-   "names": [
-    "44 Cal 300 Gr. JHP Sporting Handgun"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_43004",
-   "names": [
-    "25 Cal 85 Gr. Spitzer (Blue Tip) Ballistic Tip Varmint"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_43012",
-   "names": [
-    "41 Cal 210 Gr. JHP Sporting Handgun"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_43013",
-   "names": [
-    "45 Colt 250 Gr. JHP Sporting Handgun"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_43123",
-   "names": [
-    "9mm 124 Gr. JHP Sporting Handgun"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
    "projectile_id": "nosler_43258",
    "names": [
     "9mm 147 Gr. JHP Sporting Handgun"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_44750",
-   "names": [
-    "9.3mm 286 Gr. Spitzer (18.5 gram) Partition"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_44800",
-   "names": [
-    "35 Cal 225 Gr. Spitzer Partition"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_44801",
-   "names": [
-    "35 Cal 250 Gr. Spitzer Partition"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_44841",
-   "names": [
-    "38 Cal 158 Gr. JHP Sporting Handgun"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_44842",
-   "names": [
-    "44 Cal 240 Gr. JHP Sporting Handgun"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_44845",
-   "names": [
-    "375 Cal 300 Gr. Spitzer Partition"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_44846",
-   "names": [
-    "44 Cal 200 Gr. JHP Sporting Handgun"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_44847",
-   "names": [
-    "45 Cal 185 Gr. JHP Sporting Handgun"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_44848",
-   "names": [
-    "9mm 115 Gr. JHP Sporting Handgun"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_44850",
-   "names": [
-    "375 Cal 260 Gr. Spitzer Partition"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_44852",
-   "names": [
-    "10mm 135 Gr. JHP Sporting Handgun"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_44860",
-   "names": [
-    "10mm 150 Gr. JHP Sporting Handgun"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_44868",
-   "names": [
-    "44 Cal 240 Gr. JSP Sporting Handgun"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_44885",
-   "names": [
-    "10mm 180 Gr. JHP Sporting Handgun"
    ],
    "note": "no declared muzzle velocity"
   },
@@ -10166,86 +14612,9 @@
    "note": "no declared muzzle velocity"
   },
   {
-   "projectile_id": "nosler_44917",
-   "names": [
-    "44 Cal 240 Gr. JHP Sporting Handgun"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_44922",
-   "names": [
-    "45 Cal 230 Gr. JHP Sporting Handgun"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_44952",
-   "names": [
-    "10mm 200 Gr. JHP Sporting Handgun"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_45140",
-   "names": [
-    "204 Cal 32 Gr. Spitzer (Metallic Maroon Tip) Ballistic Tip Lead-Free"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_45150",
-   "names": [
-    "22 Cal 35 Gr. Spitzer (Metallic Orange Tip) Ballistic Tip Lead-Free"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_45160",
-   "names": [
-    "22 Cal 40 Gr. Spitzer (Metallic Orange Tip) Ballistic Tip Lead-Free"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_45170",
-   "names": [
-    "6mm 55 Gr. Spitzer Ballistic Tip Lead-Free"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
    "projectile_id": "nosler_45357",
    "names": [
     "6.8mm 115 Gr. HPBT W/Cannelure Custom Competition"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_45498",
-   "names": [
-    "22 Cal 50 Gr. Spitzer Ballistic Tip Lead-Free"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_49524",
-   "names": [
-    "8mm 200 Gr. HPBT Custom Competition"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_49742",
-   "names": [
-    "6mm 107 Gr. HPBT Custom Competition"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_49824",
-   "names": [
-    "6.5mm 140 Gr. HPBT RDF"
    ],
    "note": "no declared muzzle velocity"
   },
@@ -10264,632 +14633,9 @@
    "note": "no declared muzzle velocity"
   },
   {
-   "projectile_id": "nosler_50712",
-   "names": [
-    "35 Cal 225 Gr. Spitzer ( Whelen ) AccuBond"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_51040",
-   "names": [
-    "6mm 95 Gr. Spitzer (Silver Tip) CT Ballistic Silvertip"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_51050",
-   "names": [
-    "25 Cal 115 Gr. Spitzer (Silver Tip) CT Ballistic Silvertip"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_51075",
-   "names": [
-    "270 Cal 130 Gr. Spitzer (Silver Tip) CT Ballistic Silvertip"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_51100",
-   "names": [
-    "270 Cal 150 Gr. Spitzer (Silver Tip) CT Ballistic Silvertip"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_51105",
-   "names": [
-    "7mm 140 Gr. Spitzer (Silver Tip) CT Ballistic Silvertip"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_51110",
-   "names": [
-    "7mm 150 Gr. Spitzer (Silver Tip) CT Ballistic Silvertip"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_51150",
-   "names": [
-    "30 Cal 150 Gr. Spitzer (Silver Tip) CT Ballistic Silvertip"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_51160",
-   "names": [
-    "30 Cal 168 Gr. Spitzer (Silver Tip) CT Ballistic Silvertip"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_51165",
-   "names": [
-    "30 Cal 150 Gr. Round Nose (Silver Tip) CT Ballistic Silvertip"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_51170",
-   "names": [
-    "30 Cal 180 Gr. Spitzer (Silver Tip) CT Ballistic Silvertip"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_51200",
-   "names": [
-    "338 Cal 200 Gr. Spitzer (Silver Tip) CT Ballistic Silvertip"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_52111",
-   "names": [
-    "204 Cal 40 Gr. Spitzer (Maroon Tip) Ballistic Tip Varmint"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_52165",
-   "names": [
-    "30 Cal 125 Gr. Spitzer AccuBond"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_53033",
-   "names": [
-    "22 Cal 77 Gr. HPBT W/Cannelure Custom Competition"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_53066",
-   "names": [
-    "22 Cal 70 Gr. HPBT RDF"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_53154",
-   "names": [
-    "30 Cal 220 Gr. HPBT Custom Competition"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_53155",
-   "names": [
-    "30 Cal 155 Gr. HPBT Custom Competition"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_53164",
-   "names": [
-    "30 Cal 168 Gr. HPBT Custom Competition"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_53170",
-   "names": [
-    "30 Cal 175 Gr. HPBT RDF"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_53182",
-   "names": [
-    "30 Cal 168 Gr. HPBT RDF"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_53294",
-   "names": [
-    "22 Cal 52 Gr. HPBT Custom Competition"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_53410",
-   "names": [
-    "6mm 105 Gr. HPBT RDF"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_53412",
-   "names": [
-    "30 Cal 190 Gr. HPBT Custom Competition"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_53415",
-   "names": [
-    "6.5mm 123 Gr. HPBT Custom Competition"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_53418",
-   "names": [
-    "7mm 168 Gr. HPBT Custom Competition"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_53432",
-   "names": [
-    "7mm 185 Gr. HPBT RDF"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_53434",
-   "names": [
-    "30 Cal 210 Gr. HPBT RDF"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_53441",
-   "names": [
-    "22 Cal 85 Gr. HPBT RDF"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_53445",
-   "names": [
-    "338 Cal 300 Gr. HPBT RDF"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_53452",
-   "names": [
-    "22 Cal 77 Gr. HPBT RDF"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_53505",
-   "names": [
-    "6.5mm 130 Gr. HPBT RDF"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_53507",
-   "names": [
-    "6mm 115 Gr. HPBT RDF"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_53515",
-   "names": [
-    "338 Cal 300 Gr. HPBT Custom Competition"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_53662",
-   "names": [
-    "375 Cal 300 Gr. Spitzer W/Cannelure AccuBond"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_53742",
-   "names": [
-    "25 Cal 110 Gr. Spitzer AccuBond"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_53780",
-   "names": [
-    "22 Cal 70 Gr. Spitzer AccuBond"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_53952",
-   "names": [
-    "30 Cal 175 Gr. HPBT Custom Competition"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_54357",
-   "names": [
-    "338 Cal 225 Gr. Spitzer AccuBond"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_54374",
-   "names": [
-    "8mm 200 Gr. Spitzer AccuBond"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_54413",
-   "names": [
-    "375 Cal 260 Gr. Spitzer W/Cannelure AccuBond"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_54618",
-   "names": [
-    "30 Cal 200 Gr. Spitzer AccuBond"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_54765",
-   "names": [
-    "270 Cal 140 Gr. Spitzer AccuBond"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_54801",
-   "names": [
-    "270 Cal 150 Gr. Spitzer AccuBond"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_54825",
-   "names": [
-    "30 Cal 180 Gr. Spitzer AccuBond"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_54827",
-   "names": [
-    "270 Cal 165 Gr. Spitzer AccuBond Long Range"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_54851",
-   "names": [
-    "338 Cal 300 Gr. Spitzer AccuBond"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_54932",
-   "names": [
-    "7mm 160 Gr. Spitzer AccuBond"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_54951",
-   "names": [
-    "7mm 150 Gr. Spitzer AccuBond"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_54987",
-   "names": [
-    "270 Cal 130 Gr. Spitzer AccuBond"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_55602",
-   "names": [
-    "30 Cal 165 Gr. Spitzer AccuBond"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_56357",
-   "names": [
-    "6mm 90 Gr. Spitzer AccuBond"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_56382",
-   "names": [
-    "338 Cal 200 Gr. Spitzer AccuBond"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_56719",
-   "names": [
-    "30 Cal 150 Gr. Spitzer AccuBond"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_56902",
-   "names": [
-    "6.5mm 130 Gr. Spitzer AccuBond"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_57287",
-   "names": [
-    "338 Cal 250 Gr. Spitzer AccuBond"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
    "projectile_id": "nosler_57520",
    "names": [
     "338 Cal 250 Gr. HPBT Custom Competition"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_57625",
-   "names": [
-    "338 Cal 180 Gr. Spitzer AccuBond"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_57873",
-   "names": [
-    "6.5mm 140 Gr. Spitzer AccuBond"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_58454",
-   "names": [
-    "338 Cal 265 Gr. Spitzer AccuBond Long Range"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_58455",
-   "names": [
-    "30 Cal 168 Gr. Spitzer AccuBond Long Range"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_58456",
-   "names": [
-    "338 Cal 300 Gr. Spitzer AccuBond Long Range"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_58517",
-   "names": [
-    "7mm 175 Gr. Spitzer AccuBond Long Range"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_58623",
-   "names": [
-    "30 Cal 210 Gr. Spitzer AccuBond Long Range"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_58734",
-   "names": [
-    "7mm 150 Gr. Spitzer AccuBond Long Range"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_58836",
-   "names": [
-    "270 Cal 150 Gr. Spitzer AccuBond Long Range"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_58922",
-   "names": [
-    "6.5mm 142 Gr. Spitzer AccuBond Long Range"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_58930",
-   "names": [
-    "7mm 168 Gr. Spitzer AccuBond Long Range"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_58943",
-   "names": [
-    "6.5mm 129 Gr. Spitzer AccuBond Long Range"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_59165",
-   "names": [
-    "6mm 90 Gr. Spitzer E-Tip"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_59180",
-   "names": [
-    "30 Cal 180 Gr. Spitzer E-Tip"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_59186",
-   "names": [
-    "338 Cal 200 Gr. Spitzer E-Tip"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_59265",
-   "names": [
-    "8mm 180 Gr. Spitzer E-Tip"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_59270",
-   "names": [
-    "9.3mm 250 Gr. Spitzer E-Tip"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_59298",
-   "names": [
-    "270 Cal 130 Gr. Spitzer E-Tip"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_59372",
-   "names": [
-    "338 Cal 225 Gr. Spitzer E-Tip"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_59378",
-   "names": [
-    "30 Cal 150 Gr. Spitzer E-Tip"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_59379",
-   "names": [
-    "375 Cal 260 Gr. Spitzer E-Tip"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_59380",
-   "names": [
-    "300 AAC 110 Gr. Spitzer E-Tip"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_59385",
-   "names": [
-    "338 Cal 250 Gr. Spitzer E-Tip"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_59387",
-   "names": [
-    "7.62x39 123 Gr. Spitzer E-Tip"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_59415",
-   "names": [
-    "30 Cal 168 Gr. Spitzer E-Tip"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_59426",
-   "names": [
-    "7mm 150 Gr. Spitzer E-Tip"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_59451",
-   "names": [
-    "30/30 150 Gr. Round Nose E-Tip"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_59456",
-   "names": [
-    "25 Cal 100 Gr. Spitzer E-Tip"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_59624",
-   "names": [
-    "22 Cal 55 Gr. Spitzer E-Tip"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_59756",
-   "names": [
-    "9.3mm 250 Gr. Spitzer W/Cannelure AccuBond"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_59765",
-   "names": [
-    "6.5mm 120 Gr. Spitzer E-Tip"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_59955",
-   "names": [
-    "7mm 140 Gr. Spitzer E-Tip"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "nosler_59992",
-   "names": [
-    "7mm 140 Gr. Spitzer AccuBond"
    ],
    "note": "no declared muzzle velocity"
   },
