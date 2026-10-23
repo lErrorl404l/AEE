@@ -1,0 +1,1103 @@
+{
+ "method": "One entry per projectile that the form-factor screen flagged. The screen is unchanged: this register answers it, record by record. A decision of genuine means a held source states the coefficient and the shape explains the form factor. Any other decision means the value was corrected or withdrawn, so the record leaves the flag list. The verifier treats an entry as stale when its record is no longer flagged.",
+ "reviews": [
+  {
+   "projectile_id": "berger_22422",
+   "decision": "genuine",
+   "reason": "Berger states this G7 coefficient and its own G7 form factor of 0.976 for the same bullet; the form factor of 0.978 below the band is the bullet's long ogive and is not a coefficient fault. The independent measurement held as apg_litz_g7 states 0.228, 2.1% lower, and the record keeps the maker value under ADR-003.",
+   "evidence": [
+    "berger_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "berger_22423",
+   "decision": "genuine",
+   "reason": "Berger states this G7 coefficient and its own G7 form factor of 0.937 for the same bullet; the form factor of 0.935 below the band is the bullet's long ogive and is not a coefficient fault. The independent measurement held as apg_litz_g7 states 0.281, 2.6% higher, and the record keeps the maker value under ADR-003.",
+   "evidence": [
+    "berger_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "berger_22485",
+   "decision": "genuine",
+   "reason": "Berger states this G7 coefficient and its own G7 form factor of 0.907 for the same bullet; the form factor of 0.908 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "berger_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "berger_24427",
+   "decision": "genuine",
+   "reason": "Berger states this G7 coefficient and its own G7 form factor of 0.958 for the same bullet; the form factor of 0.958 below the band is the bullet's long ogive and is not a coefficient fault. The independent measurement held as apg_litz_g7 states 0.249, 3.8% higher, and the record keeps the maker value under ADR-003.",
+   "evidence": [
+    "berger_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "berger_24433",
+   "decision": "genuine",
+   "reason": "Berger states this G7 coefficient and its own G7 form factor of 0.925 for the same bullet; the form factor of 0.924 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "berger_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "berger_24485",
+   "decision": "genuine",
+   "reason": "Berger states this G7 coefficient and its own G7 form factor of 0.906 for the same bullet; the form factor of 0.903 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "berger_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "berger_24528",
+   "decision": "genuine",
+   "reason": "Berger states this G7 coefficient and its own G7 form factor of 0.915 for the same bullet; the form factor of 0.914 below the band is the bullet's long ogive and is not a coefficient fault. The independent measurement held as apg_litz_g7 states 0.272, 2.2% lower, and the record keeps the maker value under ADR-003. The independent measurement held as apg_litz_g7 states 0.267, 4.0% lower, and the record keeps the maker value under ADR-003.",
+   "evidence": [
+    "berger_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "berger_24530",
+   "decision": "genuine",
+   "reason": "Berger states this G7 coefficient and its own G7 form factor of 0.956 for the same bullet; the form factor of 0.956 below the band is the bullet's long ogive and is not a coefficient fault. The independent measurement held as apg_litz_g7 states 0.279, 4.1% lower, and the record keeps the maker value under ADR-003.",
+   "evidence": [
+    "berger_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "berger_24556",
+   "decision": "genuine",
+   "reason": "Berger states this G7 coefficient and its own G7 form factor of 0.912 for the same bullet; the form factor of 0.910 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "berger_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "berger_25485",
+   "decision": "genuine",
+   "reason": "Berger states this G7 coefficient and its own G7 form factor of 0.876 for the same bullet; the form factor of 0.874 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "berger_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "berger_25586",
+   "decision": "genuine",
+   "reason": "Berger states this G7 coefficient and its own G7 form factor of 0.914 for the same bullet; the form factor of 0.913 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "berger_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "berger_26195",
+   "decision": "genuine",
+   "reason": "Berger states this G7 coefficient and its own G7 form factor of 0.928 for the same bullet; the form factor of 0.928 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "berger_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "berger_26403",
+   "decision": "genuine",
+   "reason": "Berger states this G7 coefficient and its own G7 form factor of 0.926 for the same bullet; the form factor of 0.925 below the band is the bullet's long ogive and is not a coefficient fault. The independent measurement held as apg_litz_g7 states 0.282, 2.1% lower, and the record keeps the maker value under ADR-003.",
+   "evidence": [
+    "berger_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "berger_26414",
+   "decision": "genuine",
+   "reason": "Berger states this G7 coefficient and its own G7 form factor of 0.923 for the same bullet; the form factor of 0.923 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "berger_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "berger_26485",
+   "decision": "genuine",
+   "reason": "Berger states this G7 coefficient and its own G7 form factor of 0.879 for the same bullet; the form factor of 0.878 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "berger_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "berger_26486",
+   "decision": "genuine",
+   "reason": "Berger states this G7 coefficient and its own G7 form factor of 0.884 for the same bullet; the form factor of 0.884 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "berger_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "berger_26503",
+   "decision": "genuine",
+   "reason": "Berger states this G7 coefficient and its own G7 form factor of 0.925 for the same bullet; the form factor of 0.925 below the band is the bullet's long ogive and is not a coefficient fault. The independent measurement held as apg_litz_g7 states 0.282, 2.1% lower, and the record keeps the maker value under ADR-003.",
+   "evidence": [
+    "berger_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "berger_26550",
+   "decision": "genuine",
+   "reason": "Berger states this G7 coefficient and its own G7 form factor of 0.921 for the same bullet; the form factor of 0.921 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "berger_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "berger_26552",
+   "decision": "genuine",
+   "reason": "Berger states this G7 coefficient and its own G7 form factor of 0.926 for the same bullet; the form factor of 0.926 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "berger_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "berger_26571",
+   "decision": "genuine",
+   "reason": "Berger states this G7 coefficient and its own G7 form factor of 0.913 for the same bullet; the form factor of 0.913 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "berger_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "berger_28405",
+   "decision": "genuine",
+   "reason": "Berger states this G7 coefficient and its own G7 form factor of 0.911 for the same bullet; the form factor of 0.911 below the band is the bullet's long ogive and is not a coefficient fault. The independent measurement held as apg_litz_g7 states 0.337, 3.7% lower, and the record keeps the maker value under ADR-003.",
+   "evidence": [
+    "berger_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "berger_28407",
+   "decision": "genuine",
+   "reason": "Berger states this G7 coefficient and its own G7 form factor of 0.915 for the same bullet; the form factor of 0.913 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "berger_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "berger_28408",
+   "decision": "genuine",
+   "reason": "Berger states this G7 coefficient and its own G7 form factor of 0.937 for the same bullet; the form factor of 0.915 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "berger_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "berger_28485",
+   "decision": "genuine",
+   "reason": "Berger states this G7 coefficient and its own G7 form factor of 0.878 for the same bullet; the form factor of 0.876 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "berger_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "berger_28550",
+   "decision": "genuine",
+   "reason": "Berger states this G7 coefficient and its own G7 form factor of 0.892 for the same bullet; the form factor of 0.892 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "berger_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "berger_28554",
+   "decision": "genuine",
+   "reason": "Berger states this G7 coefficient and its own G7 form factor of 0.922 for the same bullet; the form factor of 0.922 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "berger_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "berger_30112",
+   "decision": "genuine",
+   "reason": "Berger states this G7 coefficient and its own G7 form factor of 0.953 for the same bullet; the form factor of 0.952 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "berger_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "berger_30410",
+   "decision": "genuine",
+   "reason": "Berger states this G7 coefficient and its own G7 form factor of 0.973 for the same bullet; the form factor of 0.973 below the band is the bullet's long ogive and is not a coefficient fault. The independent measurement held as apg_litz_g7 states 0.242, 6.9% lower, and the record keeps the maker value under ADR-003.",
+   "evidence": [
+    "berger_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "berger_30416",
+   "decision": "genuine",
+   "reason": "Berger states this G7 coefficient and its own G7 form factor of 0.968 for the same bullet; the form factor of 0.968 below the band is the bullet's long ogive and is not a coefficient fault. The independent measurement held as apg_litz_g7 states 0.237, 2.1% lower, and the record keeps the maker value under ADR-003.",
+   "evidence": [
+    "berger_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "berger_30424",
+   "decision": "genuine",
+   "reason": "Berger states this G7 coefficient and its own G7 form factor of 0.944 for the same bullet; the form factor of 0.944 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "berger_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "berger_30425",
+   "decision": "genuine",
+   "reason": "Berger states this G7 coefficient and its own G7 form factor of 0.960 for the same bullet; the form factor of 0.958 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "berger_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "berger_30426",
+   "decision": "genuine",
+   "reason": "Berger states this G7 coefficient and its own G7 form factor of 0.953 for the same bullet; the form factor of 0.953 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "berger_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "berger_30427",
+   "decision": "genuine",
+   "reason": "Berger states this G7 coefficient and its own G7 form factor of 0.954 for the same bullet; the form factor of 0.953 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "berger_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "berger_30429",
+   "decision": "genuine",
+   "reason": "Berger states this G7 coefficient and its own G7 form factor of 0.915 for the same bullet; the form factor of 0.915 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "berger_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "berger_30430",
+   "decision": "genuine",
+   "reason": "Berger states this G7 coefficient and its own G7 form factor of 0.941 for the same bullet; the form factor of 0.941 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "berger_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "berger_30485",
+   "decision": "genuine",
+   "reason": "Berger states this G7 coefficient and its own G7 form factor of 0.884 for the same bullet; the form factor of 0.885 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "berger_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "berger_30486",
+   "decision": "genuine",
+   "reason": "Berger states this G7 coefficient and its own G7 form factor of 0.897 for the same bullet; the form factor of 0.898 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "berger_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "berger_30487",
+   "decision": "genuine",
+   "reason": "Berger states this G7 coefficient and its own G7 form factor of 0.893 for the same bullet; the form factor of 0.852 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "berger_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "berger_30551",
+   "decision": "genuine",
+   "reason": "Berger states this G7 coefficient and its own G7 form factor of 0.942 for the same bullet; the form factor of 0.942 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "berger_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "berger_30554",
+   "decision": "genuine",
+   "reason": "Berger states this G7 coefficient and its own G7 form factor of 0.919 for the same bullet; the form factor of 0.919 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "berger_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "berger_30555",
+   "decision": "genuine",
+   "reason": "Berger states this G7 coefficient and its own G7 form factor of 0.954 for the same bullet; the form factor of 0.953 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "berger_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "berger_30560",
+   "decision": "genuine",
+   "reason": "Berger states this G7 coefficient and its own G7 form factor of 0.893 for the same bullet; the form factor of 0.893 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "berger_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "hornady_atip_22_90",
+   "decision": "genuine",
+   "reason": "Hornady states this G7 coefficient beside a G1 of 0.410 for the same bullet; the form factor of 0.869 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "hornady_bc"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "hornady_atip_30_176",
+   "decision": "genuine",
+   "reason": "Hornady states this G7 coefficient beside a G1 of 0.564 for the same bullet; the form factor of 0.934 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "hornady_bc"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "hornady_atip_30_177",
+   "decision": "genuine",
+   "reason": "Hornady states this G7 coefficient beside a G1 of 0.565 for the same bullet; the form factor of 0.936 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "hornady_bc"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "hornady_atip_30_230",
+   "decision": "genuine",
+   "reason": "Hornady states this G7 coefficient beside a G1 of 0.616 for the same bullet; the form factor of 0.837 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "hornady_bc"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "hornady_atip_30_250",
+   "decision": "genuine",
+   "reason": "Hornady states this G7 coefficient beside a G1 of 0.878 for the same bullet; the form factor of 0.853 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "hornady_bc"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "hornady_atip_65_135",
+   "decision": "genuine",
+   "reason": "Hornady states this G7 coefficient beside a G1 of 0.637 for the same bullet; the form factor of 0.861 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "hornady_bc"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "hornady_atip_65_153",
+   "decision": "genuine",
+   "reason": "Hornady states this G7 coefficient beside a G1 of 0.704 for the same bullet; the form factor of 0.882 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "hornady_bc"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "hornady_atip_6_110",
+   "decision": "genuine",
+   "reason": "Hornady states this G7 coefficient beside a G1 of 0.465 for the same bullet; the form factor of 0.876 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "hornady_bc"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "hornady_atip_6_120",
+   "decision": "genuine",
+   "reason": "Hornady states this G7 coefficient beside a G1 of 0.486 for the same bullet; the form factor of 0.855 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "hornady_bc"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "hornady_atip_7_166",
+   "decision": "genuine",
+   "reason": "Hornady states this G7 coefficient beside a G1 of 0.664 for the same bullet; the form factor of 0.886 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "hornady_bc"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "hornady_atip_7_190",
+   "decision": "genuine",
+   "reason": "Hornady states this G7 coefficient beside a G1 of 0.838 for the same bullet; the form factor of 0.798 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "hornady_bc"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "hornady_eldm_22_75",
+   "decision": "genuine",
+   "reason": "Hornady states this G7 coefficient beside a G1 of 0.467 for the same bullet; the form factor of 0.908 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "hornady_bc"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "hornady_eldm_22_80",
+   "decision": "genuine",
+   "reason": "Hornady states this G7 coefficient beside a G1 of 0.485 for the same bullet; the form factor of 0.933 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "hornady_bc"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "hornady_eldm_22_88",
+   "decision": "genuine",
+   "reason": "Hornady states this G7 coefficient beside a G1 of 0.545 for the same bullet; the form factor of 0.914 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "hornady_bc"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "hornady_eldm_30_168",
+   "decision": "genuine",
+   "reason": "Hornady states this G7 coefficient beside a G1 of 0.523 for the same bullet; the form factor of 0.963 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "hornady_bc"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "hornady_eldm_30_208",
+   "decision": "genuine",
+   "reason": "Hornady states this G7 coefficient beside a G1 of 0.690 for the same bullet; the form factor of 0.901 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "hornady_bc"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "hornady_eldm_30_225_t10",
+   "decision": "genuine",
+   "reason": "Hornady states this G7 coefficient beside a G1 of 0.777 for the same bullet, for a 1 in 10 inch twist; the form factor of 0.867 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "hornady_bc"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "hornady_eldm_30_225_t7",
+   "decision": "genuine",
+   "reason": "Hornady states this G7 coefficient beside a G1 of 0.798 for the same bullet, for a 1 in 7 inch twist; the form factor of 0.844 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "hornady_bc"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "hornady_eldm_65_140",
+   "decision": "genuine",
+   "reason": "Hornady states this G7 coefficient beside a G1 of 0.646 for the same bullet; the form factor of 0.879 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "hornady_bc"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "hornady_eldm_65_147",
+   "decision": "genuine",
+   "reason": "Hornady states this G7 coefficient beside a G1 of 0.697 for the same bullet; the form factor of 0.857 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "hornady_bc"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "hornady_eldm_7_162",
+   "decision": "genuine",
+   "reason": "Hornady states this G7 coefficient beside a G1 of 0.670 for the same bullet; the form factor of 0.850 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "hornady_bc"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "hornady_eldm_7_180_t7p5",
+   "decision": "genuine",
+   "reason": "Hornady states this G7 coefficient beside a G1 of 0.816 for the same bullet, for a 1 in 7.5 inch twist; the form factor of 0.776 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "hornady_bc"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "hornady_eldm_7_180_t8p75",
+   "decision": "genuine",
+   "reason": "Hornady states this G7 coefficient beside a G1 of 0.777 for the same bullet, for a 1 in 8.75 inch twist; the form factor of 0.816 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "hornady_bc"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "hornady_eldvt_22_62",
+   "decision": "genuine",
+   "reason": "Hornady states this G7 coefficient beside a G1 of 0.395 for the same bullet; the form factor of 0.887 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "hornady_bc"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "hornady_eldvt_30_174",
+   "decision": "genuine",
+   "reason": "Hornady states this G7 coefficient beside a G1 of 0.573 for the same bullet; the form factor of 0.907 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "hornady_bc"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "hornady_eldvt_65_100",
+   "decision": "genuine",
+   "reason": "Hornady states this G7 coefficient beside a G1 of 0.385 for the same bullet; the form factor of 0.906 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "hornady_bc"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "hornady_eldvt_6_80",
+   "decision": "genuine",
+   "reason": "Hornady states this G7 coefficient beside a G1 of 0.485 for the same bullet; the form factor of 0.940 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "hornady_bc"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "hornady_eldx_30_178",
+   "decision": "genuine",
+   "reason": "Hornady states this G7 coefficient beside a G1 of 0.547 for the same bullet; the form factor of 0.965 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "hornady_bc"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "hornady_eldx_30_212_t10",
+   "decision": "genuine",
+   "reason": "Hornady states this G7 coefficient beside a G1 of 0.663 for the same bullet, for a 1 in 10 inch twist; the form factor of 0.957 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "hornady_bc"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "hornady_eldx_30_212_t7",
+   "decision": "genuine",
+   "reason": "Hornady states this G7 coefficient beside a G1 of 0.702 for the same bullet, for a 1 in 7 inch twist; the form factor of 0.903 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "hornady_bc"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "hornady_eldx_65_143",
+   "decision": "genuine",
+   "reason": "Hornady states this G7 coefficient beside a G1 of 0.623 for the same bullet; the form factor of 0.932 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "hornady_bc"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "hornady_eldx_7_150",
+   "decision": "genuine",
+   "reason": "Hornady states this G7 coefficient beside a G1 of 0.574 for the same bullet; the form factor of 0.920 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "hornady_bc"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "hornady_eldx_7_162",
+   "decision": "genuine",
+   "reason": "Hornady states this G7 coefficient beside a G1 of 0.670 for the same bullet; the form factor of 0.903 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "hornady_bc"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "hornady_eldx_7_175",
+   "decision": "genuine",
+   "reason": "Hornady states this G7 coefficient beside a G1 of 0.689 for the same bullet; the form factor of 0.894 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "hornady_bc"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "lapua_GB581",
+   "decision": "genuine",
+   "reason": "Lapua states this G7 coefficient beside a G1 of 0.581 on the same page; the form factor of 0.921 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "lapua_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "lapua_GB582",
+   "decision": "genuine",
+   "reason": "Lapua states this G7 coefficient beside a G1 of 0.670 on the same page; the form factor of 0.881 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "lapua_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "nosler_49824",
+   "decision": "genuine",
+   "reason": "Nosler states this G7 coefficient beside a G1 of 0.658 on the same page; the form factor of 0.870 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "nosler_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "nosler_49826",
+   "decision": "genuine",
+   "reason": "Nosler states this G7 coefficient beside a G1 of 0.670 on the same page; the form factor of 0.899 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "nosler_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "nosler_53066",
+   "decision": "genuine",
+   "reason": "Nosler states this G7 coefficient beside a G1 of 0.416 on the same page; the form factor of 0.945 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "nosler_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "nosler_53410",
+   "decision": "genuine",
+   "reason": "Nosler states this G7 coefficient beside a G1 of 0.571 on the same page; the form factor of 0.907 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "nosler_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "nosler_53432",
+   "decision": "genuine",
+   "reason": "Nosler states this G7 coefficient beside a G1 of 0.719 on the same page; the form factor of 0.918 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "nosler_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "nosler_53434",
+   "decision": "genuine",
+   "reason": "Nosler states this G7 coefficient beside a G1 of 0.707 on the same page; the form factor of 0.909 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "nosler_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "nosler_53441",
+   "decision": "genuine",
+   "reason": "Nosler states this G7 coefficient beside a G1 of 0.498 on the same page; the form factor of 0.988 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "nosler_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "nosler_53452",
+   "decision": "genuine",
+   "reason": "Nosler states this G7 coefficient beside a G1 of 0.454 on the same page; the form factor of 0.962 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "nosler_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "nosler_53505",
+   "decision": "genuine",
+   "reason": "Nosler states this G7 coefficient beside a G1 of 0.615 on the same page; the form factor of 0.868 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "nosler_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "nosler_53507",
+   "decision": "genuine",
+   "reason": "Nosler states this G7 coefficient beside a G1 of 0.634 on the same page; the form factor of 0.892 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "nosler_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "nosler_58455",
+   "decision": "genuine",
+   "reason": "Nosler states this G7 coefficient beside a G1 of 0.525 on the same page; the form factor of 0.955 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "nosler_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "nosler_58623",
+   "decision": "genuine",
+   "reason": "Nosler states this G7 coefficient beside a G1 of 0.661 on the same page; the form factor of 0.950 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "nosler_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "nosler_58922",
+   "decision": "genuine",
+   "reason": "Nosler states this G7 coefficient beside a G1 of 0.625 on the same page; the form factor of 0.924 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "nosler_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "sierra_1390",
+   "decision": "genuine",
+   "reason": "Sierra states this G7 coefficient beside a G1 of 0.185 on the same page; the form factor of 1.614 above the band is a short, light Sierra bullet for this calibre and is not a coefficient fault.",
+   "evidence": [
+    "sierra_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "sierra_1396",
+   "decision": "genuine",
+   "reason": "Sierra states this G7 coefficient beside a G1 of 0.600 on the same page; the form factor of 0.905 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "sierra_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "sierra_1530",
+   "decision": "genuine",
+   "reason": "Sierra states this G7 coefficient beside a G1 of 0.311 on the same page; the form factor of 1.318 above the band is a short, light Sierra bullet for this calibre and is not a coefficient fault.",
+   "evidence": [
+    "sierra_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "sierra_1565",
+   "decision": "genuine",
+   "reason": "Sierra states this G7 coefficient beside a G1 of 0.577 on the same page; the form factor of 0.894 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "sierra_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "sierra_1575",
+   "decision": "genuine",
+   "reason": "Sierra states this G7 coefficient beside a G1 of 0.617 on the same page; the form factor of 0.875 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "sierra_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "sierra_1615",
+   "decision": "genuine",
+   "reason": "Sierra states this G7 coefficient beside a G1 of 0.250 on the same page; the form factor of 1.464 above the band is a short, light Sierra bullet for this calibre and is not a coefficient fault.",
+   "evidence": [
+    "sierra_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "sierra_1625",
+   "decision": "genuine",
+   "reason": "Sierra states this G7 coefficient beside a G1 of 0.355 on the same page; the form factor of 1.272 above the band is a short, light Sierra bullet for this calibre and is not a coefficient fault.",
+   "evidence": [
+    "sierra_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "sierra_1630",
+   "decision": "genuine",
+   "reason": "Sierra states this G7 coefficient beside a G1 of 0.410 on the same page; the form factor of 1.247 above the band is a short, light Sierra bullet for this calibre and is not a coefficient fault.",
+   "evidence": [
+    "sierra_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "sierra_1728",
+   "decision": "genuine",
+   "reason": "Sierra states this G7 coefficient beside a G1 of 0.355 on the same page; the form factor of 1.410 above the band is a short, light Sierra bullet for this calibre and is not a coefficient fault.",
+   "evidence": [
+    "sierra_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "sierra_1755",
+   "decision": "genuine",
+   "reason": "Sierra states this G7 coefficient beside a G1 of 0.713 on the same page; the form factor of 0.869 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "sierra_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "sierra_1815",
+   "decision": "genuine",
+   "reason": "Sierra states this G7 coefficient beside a G1 of 0.324 on the same page; the form factor of 1.381 above the band is a short, light Sierra bullet for this calibre and is not a coefficient fault. The independent measurement held as litz_dfrl states 0.162, 4.5% higher, and the record keeps the maker value under ADR-003.",
+   "evidence": [
+    "sierra_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "sierra_1835",
+   "decision": "genuine",
+   "reason": "Sierra states this G7 coefficient beside a G1 of 0.337 on the same page; the form factor of 1.424 above the band is a short, light Sierra bullet for this calibre and is not a coefficient fault.",
+   "evidence": [
+    "sierra_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "sierra_1925",
+   "decision": "genuine",
+   "reason": "Sierra states this G7 coefficient beside a G1 of 0.384 on the same page; the form factor of 1.417 above the band is a short, light Sierra bullet for this calibre and is not a coefficient fault.",
+   "evidence": [
+    "sierra_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "sierra_1983",
+   "decision": "genuine",
+   "reason": "Sierra states this G7 coefficient beside a G1 of 0.707 on the same page; the form factor of 0.923 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "sierra_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "sierra_1997",
+   "decision": "genuine",
+   "reason": "Sierra states this G7 coefficient beside a G1 of 0.780 on the same page; the form factor of 0.906 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "sierra_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "sierra_2231",
+   "decision": "genuine",
+   "reason": "Sierra states this G7 coefficient beside a G1 of 0.715 on the same page; the form factor of 0.851 below the band is the bullet's long ogive and is not a coefficient fault. The independent measurement held as litz_dfrl states 0.285, 19.5% lower, and the record keeps the maker value under ADR-003.",
+   "evidence": [
+    "sierra_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "sierra_2237",
+   "decision": "genuine",
+   "reason": "Sierra states this G7 coefficient beside a G1 of 0.680 on the same page; the form factor of 0.964 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "sierra_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "sierra_2251",
+   "decision": "genuine",
+   "reason": "Sierra states this G7 coefficient beside a G1 of 0.800 on the same page; the form factor of 0.868 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "sierra_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "sierra_4110T",
+   "decision": "genuine",
+   "reason": "Sierra states this G7 coefficient beside a G1 of 0.515 on the same page; the form factor of 0.956 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "sierra_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "sierra_4540",
+   "decision": "genuine",
+   "reason": "Sierra states this G7 coefficient beside a G1 of 0.545 on the same page; the form factor of 0.912 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "sierra_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "sierra_4540C",
+   "decision": "genuine",
+   "reason": "Sierra states this G7 coefficient beside a G1 of 0.545 on the same page; the form factor of 0.912 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "sierra_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "sierra_7188",
+   "decision": "genuine",
+   "reason": "Sierra states this G7 coefficient beside a G1 of 0.525 on the same page; the form factor of 0.953 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "sierra_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "sierra_7207",
+   "decision": "genuine",
+   "reason": "Sierra states this G7 coefficient beside a G1 of 0.574 on the same page; the form factor of 0.886 below the band is the bullet's long ogive and is not a coefficient fault. The independent measurement held as litz_dfrl states 0.262, 10.3% lower, and the record keeps the maker value under ADR-003.",
+   "evidence": [
+    "sierra_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "sierra_7216",
+   "decision": "genuine",
+   "reason": "Sierra states this G7 coefficient beside a G1 of 0.609 on the same page; the form factor of 0.920 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "sierra_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "sierra_7295",
+   "decision": "genuine",
+   "reason": "Sierra states this G7 coefficient beside a G1 of 0.500 on the same page; the form factor of 0.934 below the band is the bullet's long ogive and is not a coefficient fault. The independent measurement held as litz_dfrl states 0.232, 5.7% lower, and the record keeps the maker value under ADR-003.",
+   "evidence": [
+    "sierra_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "sierra_7720",
+   "decision": "genuine",
+   "reason": "Sierra states this G7 coefficient beside a G1 of 0.696 on the same page; the form factor of 0.939 below the band is the bullet's long ogive and is not a coefficient fault. The independent measurement held as litz_dfrl states 0.310, 12.2% lower, and the record keeps the maker value under ADR-003.",
+   "evidence": [
+    "sierra_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "sierra_7755",
+   "decision": "genuine",
+   "reason": "Sierra states this G7 coefficient beside a G1 of 0.519 on the same page; the form factor of 0.912 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "sierra_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "sierra_7768",
+   "decision": "genuine",
+   "reason": "Sierra states this G7 coefficient beside a G1 of 0.535 on the same page; the form factor of 0.948 below the band is the bullet's long ogive and is not a coefficient fault. The independent measurement held as litz_dfrl states 0.218, 18.4% lower, and the record keeps the maker value under ADR-003.",
+   "evidence": [
+    "sierra_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "sierra_7795",
+   "decision": "genuine",
+   "reason": "Sierra states this G7 coefficient beside a G1 of 0.610 on the same page; the form factor of 0.969 below the band is the bullet's long ogive and is not a coefficient fault.",
+   "evidence": [
+    "sierra_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "sierra_9240T",
+   "decision": "genuine",
+   "reason": "Sierra states this G7 coefficient beside a G1 of 0.670 on the same page; the form factor of 0.967 below the band is the bullet's long ogive and is not a coefficient fault. The independent measurement held as litz_dfrl states 0.316, 3.4% lower, and the record keeps the maker value under ADR-003.",
+   "evidence": [
+    "sierra_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  },
+  {
+   "projectile_id": "sierra_9290T",
+   "decision": "genuine",
+   "reason": "Sierra states this G7 coefficient beside a G1 of 0.563 on the same page; the form factor of 0.922 below the band is the bullet's long ogive and is not a coefficient fault. The independent measurement held as litz_dfrl states 0.256, 7.9% lower, and the record keeps the maker value under ADR-003.",
+   "evidence": [
+    "sierra_bullets"
+   ],
+   "reviewed": "2026-10-23"
+  }
+ ]
+}

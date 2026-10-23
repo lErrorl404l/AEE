@@ -172,6 +172,25 @@ of its matched load. A shared coefficient only counts as a copy at four
 significant figures, because manufacturer coefficients are commonly published
 to three decimals and two bullets sharing 0.240 is ordinary rounding.
 
+## Answering a flag
+
+A flag is a question, not a verdict. The answer is written once, in
+`data/ballistics/form_factor_reviews.json`, and copied onto the projectile as
+`form_factor_review` by `gen_projectiles.py`. The record states the decision,
+the reason and the sources that state the value, and the record's `note`
+carries the same sentence, so a reader of the corpus sees the review beside the
+number.
+
+The band and the screen are not touched by a review, and no coefficient moves
+because of one. A decision of `genuine` keeps the value and says why the shape
+explains the form factor. `source_error`, `unit_error` and `unsupported` say
+the value was corrected or withdrawn, so the record leaves the flag list, and a
+review carrying one of those decisions on a record that is still outside the
+band is reported as a defect. A review on a record that is inside the band is
+stale and is reported the same way. The data gate requires the reason and at
+least one known evidence source, so an answer without evidence cannot close a
+screen.
+
 ## Outcome
 
 The verifier reports and changes nothing. No corpus value is edited by it. A
@@ -180,3 +199,13 @@ flagged value is a follow-up item with its own citations.
 First full run: 62 bullets compared out of 681 (the rest have no declared
 muzzle velocity or no ballistic coefficient), 0 trajectory disagreements, 122
 form factor flags, 0 transposition flags. Exit status 0.
+
+Review of the 122 flags, 2026-10-23: every flag was settled against the held
+source table, and all 122 are `genuine`. Each value equals a coefficient the
+maker states for that bullet; 42 of them (Berger) also equal the maker's own
+published G7 form factor, and 18 carry an independent measurement in
+`conflicts.json`. Of those 19 measurements, 12 agree within 5 percent and five
+agree within 13 percent. Two Sierra bullets differ by 18 and 20 percent, and
+the record keeps the maker value under ADR-003. No value was corrected and
+none was withdrawn. The screen is unchanged, so the open count is now 0 and
+the reviewed count is 122.

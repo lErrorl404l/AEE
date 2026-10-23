@@ -81,7 +81,9 @@ examine the declarations, not the trajectories.
    band is derived from the corpus, not invented: the minimum and maximum of i
    over the records whose bc_g7 grade is "measured". A record that carries only
    a G1 BC is mapped onto the G7 scale with the median BC_g1 / BC_g7 ratio the
-   corpus itself exhibits. The derivation is printed.
+   corpus itself exhibits. The derivation is printed. A flag whose record
+   carries a `form_factor_review` is reported as reviewed, not as open, and a
+   review that contradicts the corpus is reported as a defect of its own.
 2. Transposition. Checks for a drag model that disagrees with its field name, a
    BC_g1 / BC_g7 ratio outside the corpus's own ratio band, a mass that is a
    decade away from the median for its calibre, a BC identical to another
@@ -93,8 +95,9 @@ Exit status
 -----------
 0  No data error. Both report files are still written.
 1  At least one compared bullet breaches tolerance by a factor of five or more,
-   or a hard transposition flag stands on a compared bullet. Either means the
-   declaration is wrong, not the arithmetic.
+   or a hard transposition flag stands on a compared bullet, or a form-factor
+   review contradicts the corpus. Either means the declaration is wrong, not
+   the arithmetic.
 
 Usage
 -----
@@ -148,17 +151,17 @@ RANGE_GRID = [float(r) for r in range(0, int(MAX_RANGE_M) + 1, int(RANGE_STEP_M)
 # The representative set: G1 and G7, pistol to .338, and one launcher-scale
 # bullet. Each entry must resolve to a corpus projectile and a muzzle velocity.
 REPRESENTATIVE = [
-    "apg_m855",       # 5.56 mm, G7, measured
-    "apg_m80",        # 7.62 mm, G7, measured
-    "apg_m118",       # 7.62 mm match, G7, measured
-    "lapua_GB552",    # .308 155 gr, G7
-    "lapua_E469",     # .308 150 gr, G1 only
-    "lapua_E433",     # 9.3 mm 285 gr, G1 only
-    "lapua_GB458",    # 6.5 mm 139 gr, G7
-    "lapua_GB488",    # .338 250 gr, G7
-    "lapua_GB528",    # .338 300 gr, G7
-    "lapua_GB544",    # 5.56 mm 69 gr, G7
-    "apg_m33",        # .50 BMG, G7, measured
+    "apg_m855",  # 5.56 mm, G7, measured
+    "apg_m80",  # 7.62 mm, G7, measured
+    "apg_m118",  # 7.62 mm match, G7, measured
+    "lapua_GB552",  # .308 155 gr, G7
+    "lapua_E469",  # .308 150 gr, G1 only
+    "lapua_E433",  # 9.3 mm 285 gr, G1 only
+    "lapua_GB458",  # 6.5 mm 139 gr, G7
+    "lapua_GB488",  # .338 250 gr, G7
+    "lapua_GB528",  # .338 300 gr, G7
+    "lapua_GB544",  # 5.56 mm 69 gr, G7
+    "apg_m33",  # .50 BMG, G7, measured
 ]
 
 
@@ -494,7 +497,9 @@ def _load_calibre_hint(load: dict) -> float:
     return 0.0
 
 
-def match_load(projectile: dict, loads: list[dict], require_calibre: bool = True) -> dict | None:
+def match_load(
+    projectile: dict, loads: list[dict], require_calibre: bool = True
+) -> dict | None:
     """Match a projectile to the load that names it.
 
     The mass in grains must agree and every token of the load's projectile name
@@ -517,7 +522,12 @@ def match_load(projectile: dict, loads: list[dict], require_calibre: bool = True
         if load_mass is not None and abs(load_mass - mass) > max(1.5, 0.03 * mass):
             continue
         hint = _load_calibre_hint(load)
-        if require_calibre and calibre is not None and hint > 0.0 and abs(hint - calibre) > 0.03:
+        if (
+            require_calibre
+            and calibre is not None
+            and hint > 0.0
+            and abs(hint - calibre) > 0.03
+        ):
             continue
         score = -abs(hint - calibre) if (calibre is not None and hint > 0.0) else 0.0
         if load_mass is not None:
@@ -788,7 +798,9 @@ def derive_form_factor_band(projectiles: list[dict]) -> dict:
         if _value(p, "bc_g1") and _value(p, "bc_g7")
     )
     if not banded or not ratios:
-        raise RuntimeError("the corpus holds no measured G7 record to derive a band from")
+        raise RuntimeError(
+            "the corpus holds no measured G7 record to derive a band from"
+        )
     return {
         "method": (
             "i = SD / BC with SD = (mass_gr / 7000) / calibre_in^2, so i is 1.0 "
@@ -844,6 +856,59 @@ def screen_form_factor(projectiles: list[dict], band: dict) -> list[dict]:
         )
     flags.sort(key=lambda f: -abs(math.log(f["deviation"])))
     return flags
+
+
+REVIEW_DECISIONS = ("genuine", "source_error", "unit_error", "unsupported")
+
+
+def split_reviewed_flags(
+    projectiles: list[dict], flags: list[dict]
+) -> tuple[list[dict], list[dict], list[str]]:
+    """Separate a reviewed flag from an open one, and check each review.
+
+    A review is the record's own answer to the screen, written when a person
+    read the source. It changes no coefficient and no band. It can go wrong in
+    two ways, and both are reported as defects of their own: a decision other
+    than "genuine" says the value had to be corrected or withdrawn, so the
+    record must have left the flag list, and a review on a record that is
+    inside the band is stale.
+    """
+    by_id = {p["projectile_id"]: p for p in projectiles}
+    open_flags: list[dict] = []
+    reviewed: list[dict] = []
+    problems: list[str] = []
+    for flag in flags:
+        review = by_id[flag["projectile_id"]].get("form_factor_review")
+        if not review:
+            open_flags.append(flag)
+            continue
+        decision = review.get("decision")
+        if decision not in REVIEW_DECISIONS:
+            problems.append(
+                f"{flag['projectile_id']}: review decision {decision!r} is not one of "
+                f"{', '.join(REVIEW_DECISIONS)}"
+            )
+        elif decision != "genuine":
+            problems.append(
+                f"{flag['projectile_id']}: review decision {decision} says the value "
+                "was wrong, but the record is still outside the band"
+            )
+        reviewed.append(
+            {
+                **flag,
+                "decision": decision,
+                "reviewed": review.get("reviewed", ""),
+                "review_reason": review.get("reason", ""),
+            }
+        )
+    flagged_ids = {flag["projectile_id"] for flag in flags}
+    for pid, projectile in by_id.items():
+        if projectile.get("form_factor_review") and pid not in flagged_ids:
+            problems.append(
+                f"{pid}: the review is stale, because the record is inside the band"
+            )
+    reviewed.sort(key=lambda f: f["projectile_id"])
+    return open_flags, reviewed, problems
 
 
 def screen_transposition(
@@ -1167,7 +1232,10 @@ def build_report(full: bool) -> tuple[dict, int]:
             continue
         comparisons.append(compare_projectile(projectile, load, mv, tables))
 
-    form_factor_flags = screen_form_factor(projectiles, band)
+    form_factor_screen = screen_form_factor(projectiles, band)
+    form_factor_flags, form_factor_reviewed, review_problems = split_reviewed_flags(
+        projectiles, form_factor_screen
+    )
     transposition_flags = screen_transposition(projectiles, loads, band)
     published = check_published_examples()
 
@@ -1245,6 +1313,9 @@ def build_report(full: bool) -> tuple[dict, int]:
             "trajectory_disagreements": len(trajectory_failures),
             "gross_disagreements": len(gross),
             "form_factor_flags": len(form_factor_flags),
+            "form_factor_reviewed": len(form_factor_reviewed),
+            "form_factor_flagged": len(form_factor_screen),
+            "form_factor_review_errors": len(review_problems),
             "transposition_flags": len(transposition_flags),
             "hard_transposition_on_compared": len(hard_on_compared),
             "mean_drift_bias": round(statistics.fmean(drift_biases), 4)
@@ -1265,9 +1336,11 @@ def build_report(full: bool) -> tuple[dict, int]:
             for f in sorted(trajectory_failures, key=lambda f: -f.excess)
         ],
         "form_factor": form_factor_flags,
+        "form_factor_reviewed": form_factor_reviewed,
+        "form_factor_review_errors": review_problems,
         "transposition": transposition_flags,
         "unmatched": unmatched,
-        "data_error": bool(gross or hard_on_compared),
+        "data_error": bool(gross or hard_on_compared or review_problems),
     }
     return report, (1 if report["data_error"] else 0)
 
@@ -1369,15 +1442,23 @@ def render_markdown(report: dict) -> str:
     band = report["form_factor_band"]
     add(band["method"])
     add("")
-    add(f"- G7 records in the corpus: {band['g7_records']}; screened {band['screened']}, "
-        f"not screened {band['unscreened']}.")
-    add(f"- Measured G7 records: {band['measured_count']}, i from {band['g7_min']:.3f} to "
-        f"{band['g7_max']:.3f}, median {band['g7_median']:.3f}.")
-    add(f"- BC_g1 / BC_g7 over the {band['ratio_count']} records holding both: "
+    add(
+        f"- G7 records in the corpus: {band['g7_records']}; screened {band['screened']}, "
+        f"not screened {band['unscreened']}."
+    )
+    add(
+        f"- Measured G7 records: {band['measured_count']}, i from {band['g7_min']:.3f} to "
+        f"{band['g7_max']:.3f}, median {band['g7_median']:.3f}."
+    )
+    add(
+        f"- BC_g1 / BC_g7 over the {band['ratio_count']} records holding both: "
         f"{band['bc1_bc7_min']:.3f} to {band['bc1_bc7_max']:.3f}, median "
-        f"{band['bc1_bc7_median']:.3f}.")
+        f"{band['bc1_bc7_median']:.3f}."
+    )
     add("")
-    add("| Calibre (in) | Records | Measured or corroborated | Band min | Band max | Band median | Flagged |")
+    add(
+        "| Calibre (in) | Records | Measured or corroborated | Band min | Band max | Band median | Flagged |"
+    )
     add("|---|---|---|---|---|---|---|")
     flagged_by_calibre: dict[str, int] = {}
     for flag in report["form_factor"]:
@@ -1404,7 +1485,58 @@ def render_markdown(report: dict) -> str:
             )
         if len(report["form_factor"]) > 15:
             add("")
-            add(f"The machine-readable report lists all {len(report['form_factor'])} flags.")
+            add(
+                f"The machine-readable report lists all {len(report['form_factor'])} flags."
+            )
+    add("")
+    add("## Form factor reviews")
+    add("")
+    add(
+        "A reviewed flag is one whose record carries `form_factor_review`, the "
+        "answer a person wrote after reading the source. The screen is unchanged "
+        "and no coefficient moved: the review states why the shape explains the "
+        "value, or it records the correction that took the record out of the list."
+    )
+    add("")
+    add(
+        f"- Flags raised by the screen: {counts['form_factor_flagged']}; open "
+        f"{counts['form_factor_flags']}, reviewed {counts['form_factor_reviewed']}."
+    )
+    if report["form_factor_reviewed"]:
+        by_decision: dict[str, int] = {}
+        by_maker: dict[str, int] = {}
+        for flag in report["form_factor_reviewed"]:
+            by_decision[flag["decision"]] = by_decision.get(flag["decision"], 0) + 1
+            maker = flag["projectile_id"].split("_", 1)[0]
+            by_maker[maker] = by_maker.get(maker, 0) + 1
+        for decision, count in sorted(by_decision.items()):
+            add(f"- Reviewed as {decision}: {count}.")
+        add(
+            "- Reviewed by maker: "
+            + ", ".join(f"{maker} {count}" for maker, count in sorted(by_maker.items()))
+            + "."
+        )
+        add("")
+        add("| Bullet | i | Band | Decision | Reason |")
+        add("|---|---|---|---|---|")
+        for flag in report["form_factor_reviewed"][:15]:
+            add(
+                f"| {flag['projectile_id']} | {flag['form_factor']:.3f} | "
+                f"{flag['band'][0]:.3f} to {flag['band'][1]:.3f} | {flag['decision']} | "
+                f"{flag['review_reason']} |"
+            )
+        if len(report["form_factor_reviewed"]) > 15:
+            add("")
+            add(
+                "The machine-readable report lists all "
+                f"{len(report['form_factor_reviewed'])} reviews."
+            )
+    if report["form_factor_review_errors"]:
+        add("")
+        add("Review defects:")
+        add("")
+        for problem in report["form_factor_review_errors"]:
+            add(f"- {problem}.")
     add("")
     add("## Density convention")
     add("")
@@ -1473,7 +1605,9 @@ def render_markdown(report: dict) -> str:
             add(f"| {flag['projectile_id']} | {flag['subclass']} | {detail} |")
         if len(report["transposition"]) > 15:
             add("")
-            add(f"The machine-readable report lists all {len(report['transposition'])} flags.")
+            add(
+                f"The machine-readable report lists all {len(report['transposition'])} flags."
+            )
     add("")
     add("## Unmatched bullets")
     add("")
@@ -1519,7 +1653,9 @@ def main(argv: list[str] | None = None, out_dir: Path | None = None) -> int:
     print(
         f"compared {counts['compared']}, unmatched {counts['unmatched']}, "
         f"trajectory disagreements {counts['trajectory_disagreements']}, "
-        f"form factor flags {counts['form_factor_flags']}, "
+        f"form factor flags {counts['form_factor_flags']} "
+        f"(reviewed {counts['form_factor_reviewed']}, "
+        f"review defects {counts['form_factor_review_errors']}), "
         f"transposition flags {counts['transposition_flags']}"
     )
     print(f"wrote {report_md} and {report_json}")

@@ -277,6 +277,39 @@ def check_records(kind, records, by_id, errors):
             errors.append(
                 f"{kind} {rid}: classification_source must name a known source"
             )
+        if kind == "projectile" and "form_factor_review" in r:
+            check_form_factor_review(rid, r["form_factor_review"], by_id, errors)
+
+
+REVIEW_DECISIONS = ("genuine", "source_error", "unit_error", "unsupported")
+
+
+def check_form_factor_review(rid, review, by_id, errors):
+    """A form-factor review must say what was decided and what shows it.
+
+    An answer without evidence is an opinion, and an opinion must not close a
+    data screen. The decision names what happened to the value: "genuine"
+    keeps it, and the other three mean it was corrected or withdrawn, so the
+    record has to leave the flag list and the verifier reports a review that
+    did not.
+    """
+    where = f"projectile {rid} form factor review"
+    if not isinstance(review, dict):
+        errors.append(f"{where}: must be an object")
+        return
+    if review.get("decision") not in REVIEW_DECISIONS:
+        errors.append(f"{where}: decision must be one of {sorted(REVIEW_DECISIONS)}")
+    if not str(review.get("reason") or "").strip():
+        errors.append(f"{where}: reason is required")
+    evidence = review.get("evidence")
+    if not isinstance(evidence, list) or not evidence:
+        errors.append(f"{where}: evidence must name at least one source")
+    else:
+        for sid in evidence:
+            if sid not in by_id:
+                errors.append(f"{where}: unknown evidence source {sid}")
+    if not str(review.get("reviewed") or "").strip():
+        errors.append(f"{where}: reviewed date is required")
 
 
 def check_launchers(weapons, errors):

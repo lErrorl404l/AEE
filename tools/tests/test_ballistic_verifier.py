@@ -45,8 +45,9 @@ try:
 except ImportError:
     _SOLVER = False
 
-if _SOLVER:
-    import verify_ballistics as verifier
+# The form-factor screen and its review check touch no solver, so they are
+# imported and tested even when py-ballisticcalc is absent.
+import verify_ballistics as verifier  # noqa: E402
 
 
 @unittest.skipUnless(
@@ -63,7 +64,9 @@ class TestBallisticVerifier(unittest.TestCase):
         cls.tmp = tempfile.TemporaryDirectory()
         cls.out_dir = Path(cls.tmp.name)
         cls.status = verifier.main([], out_dir=cls.out_dir)
-        cls.report = json.loads((cls.out_dir / "verification.json").read_text(encoding="utf-8"))
+        cls.report = json.loads(
+            (cls.out_dir / "verification.json").read_text(encoding="utf-8")
+        )
         cls.projectiles, cls.loads, _ = verifier.load_corpus()
 
     @classmethod
@@ -189,6 +192,90 @@ class TestBallisticScreens(unittest.TestCase):
         }
         flags = verifier.screen_transposition([planted], self.loads, self.band)
         self.assertIn("drag_model_field", {f["subclass"] for f in flags})
+
+
+class TestFormFactorReviews(unittest.TestCase):
+    """A review answers a flag without moving the band or the coefficient."""
+
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.projectiles, _loads, _weapons = verifier.load_corpus()
+        cls.band = verifier.derive_form_factor_band(cls.projectiles)
+
+    def planted(self, review=None) -> dict:
+        record = {
+            "projectile_id": "planted_reviewed",
+            "names": ["planted"],
+            "values": {
+                "mass_g": {"value": 10.0, "grade": "planted"},
+                "diameter_mm": {"value": 7.82, "grade": "planted"},
+                "bc_g7": {"value": 0.023, "grade": "planted"},
+            },
+        }
+        if review is not None:
+            record["form_factor_review"] = review
+        return record
+
+    def review(self, decision="genuine") -> dict:
+        return {
+            "decision": decision,
+            "reason": "Berger states this coefficient and its own form factor for the bullet.",
+            "evidence": ["berger_bullets"],
+            "reviewed": "2026-10-23",
+        }
+
+    def test_the_corpus_raises_no_open_form_factor_flag(self):
+        flags = verifier.screen_form_factor(self.projectiles, self.band)
+        open_flags, reviewed, problems = verifier.split_reviewed_flags(
+            self.projectiles, flags
+        )
+        self.assertEqual(problems, [])
+        self.assertEqual(open_flags, [])
+        self.assertEqual(len(reviewed), len(flags))
+        self.assertTrue(all(f["decision"] == "genuine" for f in reviewed))
+
+    def test_a_review_closes_a_flag_without_moving_the_value(self):
+        record = self.planted(self.review())
+        flags = verifier.screen_form_factor([record], self.band)
+        open_flags, reviewed, problems = verifier.split_reviewed_flags([record], flags)
+        self.assertEqual(open_flags, [])
+        self.assertEqual(problems, [])
+        self.assertEqual(len(reviewed), 1)
+        self.assertEqual(reviewed[0]["decision"], "genuine")
+        self.assertEqual(reviewed[0]["form_factor"], flags[0]["form_factor"])
+
+    def test_a_correction_decision_on_a_still_flagged_record_is_a_defect(self):
+        record = self.planted(self.review("source_error"))
+        flags = verifier.screen_form_factor([record], self.band)
+        _open_flags, _reviewed, problems = verifier.split_reviewed_flags(
+            [record], flags
+        )
+        self.assertEqual(len(problems), 1)
+        self.assertIn("still outside the band", problems[0])
+
+    def test_a_review_on_a_record_inside_the_band_is_stale(self):
+        group = self.band["groups"]["0.31"]
+        mass_g = 9.72
+        sd = (mass_g / 0.06479891 / 7000) / (0.308**2)
+        record = self.planted(self.review())
+        record["values"]["mass_g"]["value"] = mass_g
+        record["values"]["bc_g7"]["value"] = sd / group["median"]
+        flags = verifier.screen_form_factor([record], self.band)
+        self.assertEqual(flags, [])
+        _open_flags, _reviewed, problems = verifier.split_reviewed_flags(
+            [record], flags
+        )
+        self.assertEqual(len(problems), 1)
+        self.assertIn("stale", problems[0])
+
+    def test_an_unknown_decision_is_a_defect(self):
+        record = self.planted(self.review("looks_about_right"))
+        flags = verifier.screen_form_factor([record], self.band)
+        _open_flags, _reviewed, problems = verifier.split_reviewed_flags(
+            [record], flags
+        )
+        self.assertEqual(len(problems), 1)
+        self.assertIn("is not one of", problems[0])
 
 
 def run_full() -> int:

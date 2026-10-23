@@ -20,6 +20,7 @@ from pathlib import Path
 DATA = Path(__file__).parents[2] / "data" / "ballistics"
 SRC = DATA / "sources"
 DB = DATA / "projectiles.json"
+REVIEWS = DATA / "form_factor_reviews.json"
 
 GRAIN_TO_G = 0.06479891
 
@@ -49,8 +50,7 @@ def source_editions():
     """Return the edition a source states, keyed by source id."""
     registry = json.loads((DATA / "sources.json").read_text(encoding="utf-8"))
     return {
-        s["source_id"]: s.get("edition") or s.get("published", "")
-        for s in registry
+        s["source_id"]: s.get("edition") or s.get("published", "") for s in registry
     }
 
 
@@ -255,6 +255,35 @@ def corroborate(records, index):
     return hits
 
 
+def apply_reviews(merged: dict[str, dict]) -> int:
+    """Copy each reviewed form-factor answer onto its projectile record.
+
+    The register holds what a person found when they read the source. The
+    record states the same finding beside the value, so a reader of the corpus
+    sees the review without opening the register, and a rebuild cannot lose it.
+    """
+    if not REVIEWS.exists():
+        return 0
+    data = json.loads(REVIEWS.read_text(encoding="utf-8"))
+    applied = 0
+    for review in data.get("reviews", []):
+        pid = review["projectile_id"]
+        record = merged.get(pid)
+        if record is None:
+            raise SystemExit(f"form factor review names an unknown projectile: {pid}")
+        record["form_factor_review"] = {
+            "decision": review["decision"],
+            "reason": review["reason"],
+            "evidence": review["evidence"],
+            "reviewed": review["reviewed"],
+        }
+        note = record.get("note", "").rstrip()
+        sentence = f"Form factor reviewed {review['reviewed']}: {review['reason']}"
+        record["note"] = f"{note} {sentence}" if note else sentence
+        applied += 1
+    return applied
+
+
 def main():
     existing = json.loads(DB.read_text(encoding="utf-8")) if DB.exists() else []
     prefixes = ("hornady_", "berger_", "sierra_", "nosler_", "lapua_")
@@ -266,9 +295,13 @@ def main():
     merged = {r["projectile_id"]: r for r in existing}
     for rec in records:
         merged.setdefault(rec["projectile_id"], rec)
+    reviewed = apply_reviews(merged)
     out = sorted(merged.values(), key=lambda r: r["projectile_id"])
     DB.write_text(json.dumps(out, indent=1) + "\n", encoding="utf-8")
-    print(f"projectiles: {len(out)} (weights corroborated: {hits})")
+    print(
+        f"projectiles: {len(out)} (weights corroborated: {hits}, "
+        f"form factor reviews: {reviewed})"
+    )
 
 
 if __name__ == "__main__":

@@ -2130,165 +2130,856 @@
   "unmatched": 606,
   "trajectory_disagreements": 0,
   "gross_disagreements": 0,
-  "form_factor_flags": 122,
+  "form_factor_flags": 0,
+  "form_factor_reviewed": 122,
+  "form_factor_flagged": 122,
+  "form_factor_review_errors": 0,
   "transposition_flags": 0,
   "hard_transposition_on_compared": 0,
   "mean_drift_bias": 0.002
  },
  "disagreements": [],
- "form_factor": [
+ "form_factor": [],
+ "form_factor_reviewed": [
   {
    "class_name": "form_factor",
-   "projectile_id": "hornady_eldm_7_180_t7p5",
+   "projectile_id": "berger_22422",
    "names": [
-    "7mm 180 gr. ELD Match (1 in 7.5\" twist)",
-    "180ELDM",
-    "180 ELD-M",
-    "180gr ELD-M",
-    "180ELDM 7.5in"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.2839,
-   "form_factor": 0.7765,
-   "band": [
-    0.9241,
-    1.336
-   ],
-   "band_records": 12,
-   "deviation": 0.673,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "hornady_atip_7_190",
-   "names": [
-    "7 mm 190 gr A-Tip\u00ae Match Bullet",
-    "190ATIP",
-    "190 A-Tip",
-    "190gr A-Tip"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.2839,
-   "form_factor": 0.7983,
-   "band": [
-    0.9241,
-    1.336
-   ],
-   "band_records": 12,
-   "deviation": 0.691,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "sierra_1615",
-   "names": [
-    "25 Cal 90 gr HPBT GameKing (SGK)"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.257,
-   "form_factor": 1.4636,
-   "band": [
-    0.9347,
-    1.2193
-   ],
-   "band_records": 9,
-   "deviation": 1.433,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "hornady_eldm_7_180_t8p75",
-   "names": [
-    "7mm 180 gr. ELD Match (1 in 8.75\" twist)",
-    "180ELDM",
-    "180 ELD-M",
-    "180gr ELD-M",
-    "180ELDM 8.75in"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.2839,
-   "form_factor": 0.8162,
-   "band": [
-    0.9241,
-    1.336
-   ],
-   "band_records": 12,
-   "deviation": 0.707,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "sierra_1390",
-   "names": [
-    "22 Cal 55 gr HPBT GameKing (SGK)"
+    "22 Cal 80 Grain VLD Target"
    ],
    "basis": "bc_g7",
    "calibre_in": 0.224,
-   "form_factor": 1.6143,
+   "form_factor": 0.9775,
    "band": [
     0.9886,
     1.3459
    ],
    "band_records": 13,
-   "deviation": 1.381,
-   "note": "declared BC is not consistent with the calibre and mass"
+   "deviation": 0.836,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Berger states this G7 coefficient and its own G7 form factor of 0.976 for the same bullet; the form factor of 0.978 below the band is the bullet's long ogive and is not a coefficient fault. The independent measurement held as apg_litz_g7 states 0.228, 2.1% lower, and the record keeps the maker value under ADR-003."
   },
   {
    "class_name": "form_factor",
-   "projectile_id": "sierra_1728",
+   "projectile_id": "berger_22423",
    "names": [
-    "6.5mm 130 gr HPBT GameKing (SGK)"
+    "22 Cal 90 Grain VLD Target"
    ],
    "basis": "bc_g7",
-   "calibre_in": 0.264,
-   "form_factor": 1.4099,
+   "calibre_in": 0.224,
+   "form_factor": 0.9352,
    "band": [
-    0.9347,
-    1.2193
+    0.9886,
+    1.3459
    ],
-   "band_records": 9,
-   "deviation": 1.381,
-   "note": "declared BC is not consistent with the calibre and mass"
+   "band_records": 13,
+   "deviation": 0.8,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Berger states this G7 coefficient and its own G7 form factor of 0.937 for the same bullet; the form factor of 0.935 below the band is the bullet's long ogive and is not a coefficient fault. The independent measurement held as apg_litz_g7 states 0.281, 2.6% higher, and the record keeps the maker value under ADR-003."
   },
   {
    "class_name": "form_factor",
-   "projectile_id": "hornady_atip_6_120",
+   "projectile_id": "berger_22485",
    "names": [
-    "6 mm 120 gr A-Tip\u00ae Match Bullet",
-    "120ATIP",
-    "120 A-Tip",
-    "120gr A-Tip"
+    "22 Cal 85.5 Grain Long Range Hybrid Target"
    ],
    "basis": "bc_g7",
-   "calibre_in": 0.2429,
-   "form_factor": 0.8545,
+   "calibre_in": 0.224,
+   "form_factor": 0.9083,
+   "band": [
+    0.9886,
+    1.3459
+   ],
+   "band_records": 13,
+   "deviation": 0.777,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Berger states this G7 coefficient and its own G7 form factor of 0.907 for the same bullet; the form factor of 0.908 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_24427",
+   "names": [
+    "6mm 95 Grain VLD Target"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.243,
+   "form_factor": 0.9576,
    "band": [
     0.9586,
     1.2985
    ],
    "band_records": 9,
-   "deviation": 0.728,
-   "note": "declared BC is not consistent with the calibre and mass"
+   "deviation": 0.816,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Berger states this G7 coefficient and its own G7 form factor of 0.958 for the same bullet; the form factor of 0.958 below the band is the bullet's long ogive and is not a coefficient fault. The independent measurement held as apg_litz_g7 states 0.249, 3.8% higher, and the record keeps the maker value under ADR-003."
   },
   {
    "class_name": "form_factor",
-   "projectile_id": "hornady_eldm_7_162",
+   "projectile_id": "berger_24433",
    "names": [
-    "7mm 162 gr. ELD Match",
-    "162ELDM",
-    "162 ELD-M",
-    "162gr ELD-M"
+    "6mm 105 Grain Hybrid Target"
    ],
    "basis": "bc_g7",
-   "calibre_in": 0.2839,
-   "form_factor": 0.8498,
+   "calibre_in": 0.243,
+   "form_factor": 0.9237,
+   "band": [
+    0.9586,
+    1.2985
+   ],
+   "band_records": 9,
+   "deviation": 0.788,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Berger states this G7 coefficient and its own G7 form factor of 0.925 for the same bullet; the form factor of 0.924 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_24485",
+   "names": [
+    "6mm 109 Grain Long Range Hybrid Target"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.243,
+   "form_factor": 0.9031,
+   "band": [
+    0.9586,
+    1.2985
+   ],
+   "band_records": 9,
+   "deviation": 0.77,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Berger states this G7 coefficient and its own G7 form factor of 0.906 for the same bullet; the form factor of 0.903 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_24528",
+   "names": [
+    "6mm 105 Grain VLD Hunting"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.243,
+   "form_factor": 0.9138,
+   "band": [
+    0.9586,
+    1.2985
+   ],
+   "band_records": 9,
+   "deviation": 0.779,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Berger states this G7 coefficient and its own G7 form factor of 0.915 for the same bullet; the form factor of 0.914 below the band is the bullet's long ogive and is not a coefficient fault. The independent measurement held as apg_litz_g7 states 0.272, 2.2% lower, and the record keeps the maker value under ADR-003. The independent measurement held as apg_litz_g7 states 0.267, 4.0% lower, and the record keeps the maker value under ADR-003."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_24530",
+   "names": [
+    "6mm 115 Grain VLD Hunting"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.243,
+   "form_factor": 0.9561,
+   "band": [
+    0.9586,
+    1.2985
+   ],
+   "band_records": 9,
+   "deviation": 0.815,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Berger states this G7 coefficient and its own G7 form factor of 0.956 for the same bullet; the form factor of 0.956 below the band is the bullet's long ogive and is not a coefficient fault. The independent measurement held as apg_litz_g7 states 0.279, 4.1% lower, and the record keeps the maker value under ADR-003."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_24556",
+   "names": [
+    "6mm 108 Grain Elite Hunter"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.243,
+   "form_factor": 0.9104,
+   "band": [
+    0.9586,
+    1.2985
+   ],
+   "band_records": 9,
+   "deviation": 0.776,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Berger states this G7 coefficient and its own G7 form factor of 0.912 for the same bullet; the form factor of 0.910 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_25485",
+   "names": [
+    "25 Cal 135 Grain Long Range Hybrid Target"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.257,
+   "form_factor": 0.8742,
+   "band": [
+    0.9347,
+    1.2193
+   ],
+   "band_records": 9,
+   "deviation": 0.856,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Berger states this G7 coefficient and its own G7 form factor of 0.876 for the same bullet; the form factor of 0.874 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_25586",
+   "names": [
+    "25 Cal 133 Grain Elite Hunter"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.257,
+   "form_factor": 0.9132,
+   "band": [
+    0.9347,
+    1.2193
+   ],
+   "band_records": 9,
+   "deviation": 0.894,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Berger states this G7 coefficient and its own G7 form factor of 0.914 for the same bullet; the form factor of 0.913 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_26195",
+   "names": [
+    "6.5mm 130 Grain AR Hybrid OTM Tactical"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.264,
+   "form_factor": 0.9284,
+   "band": [
+    0.9347,
+    1.2193
+   ],
+   "band_records": 9,
+   "deviation": 0.909,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Berger states this G7 coefficient and its own G7 form factor of 0.928 for the same bullet; the form factor of 0.928 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_26403",
+   "names": [
+    "6.5mm 130 Grain VLD Target"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.264,
+   "form_factor": 0.9252,
+   "band": [
+    0.9347,
+    1.2193
+   ],
+   "band_records": 9,
+   "deviation": 0.906,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Berger states this G7 coefficient and its own G7 form factor of 0.926 for the same bullet; the form factor of 0.925 below the band is the bullet's long ogive and is not a coefficient fault. The independent measurement held as apg_litz_g7 states 0.282, 2.1% lower, and the record keeps the maker value under ADR-003."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_26414",
+   "names": [
+    "6.5mm 140 Grain Hybrid Target"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.264,
+   "form_factor": 0.9227,
+   "band": [
+    0.9347,
+    1.2193
+   ],
+   "band_records": 9,
+   "deviation": 0.904,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Berger states this G7 coefficient and its own G7 form factor of 0.923 for the same bullet; the form factor of 0.923 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_26485",
+   "names": [
+    "6.5mm 144 Grain Long Range Hybrid Target"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.264,
+   "form_factor": 0.8784,
+   "band": [
+    0.9347,
+    1.2193
+   ],
+   "band_records": 9,
+   "deviation": 0.86,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Berger states this G7 coefficient and its own G7 form factor of 0.879 for the same bullet; the form factor of 0.878 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_26486",
+   "names": [
+    "6.5mm 153.5 Grain Long Range Hybrid Target"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.264,
+   "form_factor": 0.8838,
+   "band": [
+    0.9347,
+    1.2193
+   ],
+   "band_records": 9,
+   "deviation": 0.865,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Berger states this G7 coefficient and its own G7 form factor of 0.884 for the same bullet; the form factor of 0.884 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_26503",
+   "names": [
+    "6.5mm 130 Grain VLD Hunting"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.264,
+   "form_factor": 0.9252,
+   "band": [
+    0.9347,
+    1.2193
+   ],
+   "band_records": 9,
+   "deviation": 0.906,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Berger states this G7 coefficient and its own G7 form factor of 0.925 for the same bullet; the form factor of 0.925 below the band is the bullet's long ogive and is not a coefficient fault. The independent measurement held as apg_litz_g7 states 0.282, 2.1% lower, and the record keeps the maker value under ADR-003."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_26550",
+   "names": [
+    "6.5mm 156 Grain Elite Hunter"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.264,
+   "form_factor": 0.9215,
+   "band": [
+    0.9347,
+    1.2193
+   ],
+   "band_records": 9,
+   "deviation": 0.902,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Berger states this G7 coefficient and its own G7 form factor of 0.921 for the same bullet; the form factor of 0.921 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_26552",
+   "names": [
+    "6.5mm 140 Grain Elite Hunter"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.264,
+   "form_factor": 0.9257,
+   "band": [
+    0.9347,
+    1.2193
+   ],
+   "band_records": 9,
+   "deviation": 0.906,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Berger states this G7 coefficient and its own G7 form factor of 0.926 for the same bullet; the form factor of 0.926 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_26571",
+   "names": [
+    "6.5mm 135 Grain Classic Hybrid Hunter"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.264,
+   "form_factor": 0.9132,
+   "band": [
+    0.9347,
+    1.2193
+   ],
+   "band_records": 9,
+   "deviation": 0.894,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Berger states this G7 coefficient and its own G7 form factor of 0.913 for the same bullet; the form factor of 0.913 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_28405",
+   "names": [
+    "7mm 180 Grain VLD Target"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.284,
+   "form_factor": 0.9109,
    "band": [
     0.9241,
     1.336
    ],
    "band_records": 12,
-   "deviation": 0.736,
-   "note": "declared BC is not consistent with the calibre and mass"
+   "deviation": 0.789,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Berger states this G7 coefficient and its own G7 form factor of 0.911 for the same bullet; the form factor of 0.911 below the band is the bullet's long ogive and is not a coefficient fault. The independent measurement held as apg_litz_g7 states 0.337, 3.7% lower, and the record keeps the maker value under ADR-003."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_28407",
+   "names": [
+    "7mm 180 Grain Hybrid Target"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.284,
+   "form_factor": 0.9135,
+   "band": [
+    0.9241,
+    1.336
+   ],
+   "band_records": 12,
+   "deviation": 0.791,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Berger states this G7 coefficient and its own G7 form factor of 0.915 for the same bullet; the form factor of 0.913 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_28408",
+   "names": [
+    "7mm 184 Grain F-Open Hybrid Target"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.284,
+   "form_factor": 0.9154,
+   "band": [
+    0.9241,
+    1.336
+   ],
+   "band_records": 12,
+   "deviation": 0.793,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Berger states this G7 coefficient and its own G7 form factor of 0.937 for the same bullet; the form factor of 0.915 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_28485",
+   "names": [
+    "7mm 190 Grain Long Range Hybrid Target"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.284,
+   "form_factor": 0.8764,
+   "band": [
+    0.9241,
+    1.336
+   ],
+   "band_records": 12,
+   "deviation": 0.759,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Berger states this G7 coefficient and its own G7 form factor of 0.878 for the same bullet; the form factor of 0.876 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_28550",
+   "names": [
+    "7mm 195 Grain Elite Hunter"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.284,
+   "form_factor": 0.8925,
+   "band": [
+    0.9241,
+    1.336
+   ],
+   "band_records": 12,
+   "deviation": 0.773,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Berger states this G7 coefficient and its own G7 form factor of 0.892 for the same bullet; the form factor of 0.892 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_28554",
+   "names": [
+    "7mm 175 Grain Elite Hunter"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.284,
+   "form_factor": 0.9225,
+   "band": [
+    0.9241,
+    1.336
+   ],
+   "band_records": 12,
+   "deviation": 0.799,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Berger states this G7 coefficient and its own G7 form factor of 0.922 for the same bullet; the form factor of 0.922 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_30112",
+   "names": [
+    "30 Cal 230 Grain Hybrid OTM Tactical"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.308,
+   "form_factor": 0.9515,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.855,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Berger states this G7 coefficient and its own G7 form factor of 0.953 for the same bullet; the form factor of 0.952 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_30410",
+   "names": [
+    "30 Cal 168 Grain VLD Target"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.308,
+   "form_factor": 0.9731,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.874,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Berger states this G7 coefficient and its own G7 form factor of 0.973 for the same bullet; the form factor of 0.973 below the band is the bullet's long ogive and is not a coefficient fault. The independent measurement held as apg_litz_g7 states 0.242, 6.9% lower, and the record keeps the maker value under ADR-003."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_30416",
+   "names": [
+    "30 Cal 155.5 Grain FULLBORE"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.308,
+   "form_factor": 0.9676,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.87,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Berger states this G7 coefficient and its own G7 form factor of 0.968 for the same bullet; the form factor of 0.968 below the band is the bullet's long ogive and is not a coefficient fault. The independent measurement held as apg_litz_g7 states 0.237, 2.1% lower, and the record keeps the maker value under ADR-003."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_30424",
+   "names": [
+    "30 Cal 185 Grain Hybrid Target"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.308,
+   "form_factor": 0.9444,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.849,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Berger states this G7 coefficient and its own G7 form factor of 0.944 for the same bullet; the form factor of 0.944 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_30425",
+   "names": [
+    "30 Cal 168 Grain Hybrid Target"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.308,
+   "form_factor": 0.9583,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.861,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Berger states this G7 coefficient and its own G7 form factor of 0.960 for the same bullet; the form factor of 0.958 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_30426",
+   "names": [
+    "30 Cal 155 Grain Hybrid Target"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.308,
+   "form_factor": 0.9527,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.856,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Berger states this G7 coefficient and its own G7 form factor of 0.953 for the same bullet; the form factor of 0.953 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_30427",
+   "names": [
+    "30 Cal 200 Grain Hybrid Target"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.308,
+   "form_factor": 0.9531,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.857,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Berger states this G7 coefficient and its own G7 form factor of 0.954 for the same bullet; the form factor of 0.953 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_30429",
+   "names": [
+    "30 Cal 215 Grain Hybrid Target"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.308,
+   "form_factor": 0.9146,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.822,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Berger states this G7 coefficient and its own G7 form factor of 0.915 for the same bullet; the form factor of 0.915 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_30430",
+   "names": [
+    "30 Cal 230 Grain Hybrid Target"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.308,
+   "form_factor": 0.9412,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.846,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Berger states this G7 coefficient and its own G7 form factor of 0.941 for the same bullet; the form factor of 0.941 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_30485",
+   "names": [
+    "30 Cal 208 Grain Long Range Hybrid Target"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.308,
+   "form_factor": 0.8848,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.795,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Berger states this G7 coefficient and its own G7 form factor of 0.884 for the same bullet; the form factor of 0.885 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_30486",
+   "names": [
+    "30 Cal 220 Grain Long Range Hybrid Target"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.308,
+   "form_factor": 0.8978,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.807,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Berger states this G7 coefficient and its own G7 form factor of 0.897 for the same bullet; the form factor of 0.898 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_30487",
+   "names": [
+    "30 Cal 245 Grain Long Range Hybrid Target"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.308,
+   "form_factor": 0.8521,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.766,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Berger states this G7 coefficient and its own G7 form factor of 0.893 for the same bullet; the form factor of 0.852 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_30551",
+   "names": [
+    "30 cal 217 Grain Elite Hunter NEW"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.308,
+   "form_factor": 0.9417,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.846,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Berger states this G7 coefficient and its own G7 form factor of 0.942 for the same bullet; the form factor of 0.942 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_30554",
+   "names": [
+    "30 Cal 180 Grain Elite Hunter"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.308,
+   "form_factor": 0.9189,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.826,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Berger states this G7 coefficient and its own G7 form factor of 0.919 for the same bullet; the form factor of 0.919 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_30555",
+   "names": [
+    "30 Cal 205 Grain Elite Hunter"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.308,
+   "form_factor": 0.9528,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.856,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Berger states this G7 coefficient and its own G7 form factor of 0.954 for the same bullet; the form factor of 0.953 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_30560",
+   "names": [
+    "30 Cal 245 Grain Elite Hunter"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.308,
+   "form_factor": 0.8933,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.803,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Berger states this G7 coefficient and its own G7 form factor of 0.893 for the same bullet; the form factor of 0.893 below the band is the bullet's long ogive and is not a coefficient fault."
   },
   {
    "class_name": "form_factor",
@@ -2308,44 +2999,56 @@
    ],
    "band_records": 13,
    "deviation": 0.743,
-   "note": "declared BC is not consistent with the calibre and mass"
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Hornady states this G7 coefficient beside a G1 of 0.410 for the same bullet; the form factor of 0.869 below the band is the bullet's long ogive and is not a coefficient fault."
   },
   {
    "class_name": "form_factor",
-   "projectile_id": "sierra_1575",
+   "projectile_id": "hornady_atip_30_176",
    "names": [
-    "6mm 110 gr HPBT/CN MatchKing (SMK)"
+    "30 Cal 176 gr A-Tip\u00ae Match Bullet",
+    "176ATIP",
+    "176 A-Tip",
+    "176gr A-Tip"
    ],
    "basis": "bc_g7",
-   "calibre_in": 0.243,
-   "form_factor": 0.8754,
+   "calibre_in": 0.3079,
+   "form_factor": 0.934,
    "band": [
-    0.9586,
-    1.2985
+    0.9741,
+    1.4732
    ],
-   "band_records": 9,
-   "deviation": 0.746,
-   "note": "declared BC is not consistent with the calibre and mass"
+   "band_records": 27,
+   "deviation": 0.839,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Hornady states this G7 coefficient beside a G1 of 0.564 for the same bullet; the form factor of 0.934 below the band is the bullet's long ogive and is not a coefficient fault."
   },
   {
    "class_name": "form_factor",
-   "projectile_id": "hornady_atip_6_110",
+   "projectile_id": "hornady_atip_30_177",
    "names": [
-    "6 mm 110 gr A-Tip\u00ae Match Bullet",
-    "110ATIP",
-    "110 A-Tip",
-    "110gr A-Tip"
+    "30 Cal 177 gr A-Tip\u00ae Match Bullet",
+    "177ATIP",
+    "177 A-Tip",
+    "177gr A-Tip"
    ],
    "basis": "bc_g7",
-   "calibre_in": 0.2429,
-   "form_factor": 0.876,
+   "calibre_in": 0.3079,
+   "form_factor": 0.936,
    "band": [
-    0.9586,
-    1.2985
+    0.9741,
+    1.4732
    ],
-   "band_records": 9,
-   "deviation": 0.747,
-   "note": "declared BC is not consistent with the calibre and mass"
+   "band_records": 27,
+   "deviation": 0.841,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Hornady states this G7 coefficient beside a G1 of 0.565 for the same bullet; the form factor of 0.936 below the band is the bullet's long ogive and is not a coefficient fault."
   },
   {
    "class_name": "form_factor",
@@ -2365,150 +3068,10 @@
    ],
    "band_records": 27,
    "deviation": 0.752,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "sierra_7207",
-   "names": [
-    "6mm 107 gr Tipped MatchKing (TMK)"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.243,
-   "form_factor": 0.8865,
-   "band": [
-    0.9586,
-    1.2985
-   ],
-   "band_records": 9,
-   "deviation": 0.756,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "hornady_eldm_30_225_t7",
-   "names": [
-    "30 Cal 225 gr. ELD Match (1 in 7\" twist)",
-    "225ELDM",
-    "225 ELD-M",
-    "225gr ELD-M",
-    "225ELDM 7in"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.3079,
-   "form_factor": 0.8436,
-   "band": [
-    0.9741,
-    1.4732
-   ],
-   "band_records": 27,
-   "deviation": 0.758,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "berger_28485",
-   "names": [
-    "7mm 190 Grain Long Range Hybrid Target"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.284,
-   "form_factor": 0.8764,
-   "band": [
-    0.9241,
-    1.336
-   ],
-   "band_records": 12,
-   "deviation": 0.759,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "hornady_eldvt_22_62",
-   "names": [
-    ".22 cal 62gr ELD-VT\u00ae",
-    "62ELDVT",
-    "62 ELD-VT",
-    "62gr ELD-VT"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.224,
-   "form_factor": 0.8869,
-   "band": [
-    0.9886,
-    1.3459
-   ],
-   "band_records": 13,
-   "deviation": 0.759,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "nosler_53507",
-   "names": [
-    "6mm 115 Gr. HPBT RDF"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.243,
-   "form_factor": 0.8917,
-   "band": [
-    0.9586,
-    1.2985
-   ],
-   "band_records": 9,
-   "deviation": 0.76,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "sierra_1565",
-   "names": [
-    "6mm 105 gr HPBT/CN MatchKing (SMK)"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.243,
-   "form_factor": 0.8945,
-   "band": [
-    0.9586,
-    1.2985
-   ],
-   "band_records": 9,
-   "deviation": 0.763,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "sierra_2231",
-   "names": [
-    "30 Cal 200 gr HPBT/CN MatchKing (SMK)"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.308,
-   "form_factor": 0.8508,
-   "band": [
-    0.9741,
-    1.4732
-   ],
-   "band_records": 27,
-   "deviation": 0.765,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "berger_30487",
-   "names": [
-    "30 Cal 245 Grain Long Range Hybrid Target"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.308,
-   "form_factor": 0.8521,
-   "band": [
-    0.9741,
-    1.4732
-   ],
-   "band_records": 27,
-   "deviation": 0.766,
-   "note": "declared BC is not consistent with the calibre and mass"
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Hornady states this G7 coefficient beside a G1 of 0.616 for the same bullet; the form factor of 0.837 below the band is the bullet's long ogive and is not a coefficient fault."
   },
   {
    "class_name": "form_factor",
@@ -2528,7 +3091,102 @@
    ],
    "band_records": 27,
    "deviation": 0.766,
-   "note": "declared BC is not consistent with the calibre and mass"
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Hornady states this G7 coefficient beside a G1 of 0.878 for the same bullet; the form factor of 0.853 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "hornady_atip_65_135",
+   "names": [
+    "6.5 mm 135 gr A-Tip\u00ae Match Bullet",
+    "135ATIP",
+    "135 A-Tip",
+    "135gr A-Tip"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.2642,
+   "form_factor": 0.8609,
+   "band": [
+    0.9347,
+    1.2193
+   ],
+   "band_records": 9,
+   "deviation": 0.843,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Hornady states this G7 coefficient beside a G1 of 0.637 for the same bullet; the form factor of 0.861 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "hornady_atip_65_153",
+   "names": [
+    "6.5 mm 153 gr A-Tip\u00ae Match Bullet",
+    "153ATIP",
+    "153 A-Tip",
+    "153gr A-Tip"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.2642,
+   "form_factor": 0.8822,
+   "band": [
+    0.9347,
+    1.2193
+   ],
+   "band_records": 9,
+   "deviation": 0.864,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Hornady states this G7 coefficient beside a G1 of 0.704 for the same bullet; the form factor of 0.882 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "hornady_atip_6_110",
+   "names": [
+    "6 mm 110 gr A-Tip\u00ae Match Bullet",
+    "110ATIP",
+    "110 A-Tip",
+    "110gr A-Tip"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.2429,
+   "form_factor": 0.876,
+   "band": [
+    0.9586,
+    1.2985
+   ],
+   "band_records": 9,
+   "deviation": 0.747,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Hornady states this G7 coefficient beside a G1 of 0.465 for the same bullet; the form factor of 0.876 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "hornady_atip_6_120",
+   "names": [
+    "6 mm 120 gr A-Tip\u00ae Match Bullet",
+    "120ATIP",
+    "120 A-Tip",
+    "120gr A-Tip"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.2429,
+   "form_factor": 0.8545,
+   "band": [
+    0.9586,
+    1.2985
+   ],
+   "band_records": 9,
+   "deviation": 0.728,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Hornady states this G7 coefficient beside a G1 of 0.486 for the same bullet; the form factor of 0.855 below the band is the bullet's long ogive and is not a coefficient fault."
   },
   {
    "class_name": "form_factor",
@@ -2548,129 +3206,33 @@
    ],
    "band_records": 12,
    "deviation": 0.768,
-   "note": "declared BC is not consistent with the calibre and mass"
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Hornady states this G7 coefficient beside a G1 of 0.664 for the same bullet; the form factor of 0.886 below the band is the bullet's long ogive and is not a coefficient fault."
   },
   {
    "class_name": "form_factor",
-   "projectile_id": "berger_24485",
+   "projectile_id": "hornady_atip_7_190",
    "names": [
-    "6mm 109 Grain Long Range Hybrid Target"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.243,
-   "form_factor": 0.9031,
-   "band": [
-    0.9586,
-    1.2985
-   ],
-   "band_records": 9,
-   "deviation": 0.77,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "berger_28550",
-   "names": [
-    "7mm 195 Grain Elite Hunter"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.284,
-   "form_factor": 0.8925,
-   "band": [
-    0.9241,
-    1.336
-   ],
-   "band_records": 12,
-   "deviation": 0.773,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "nosler_53410",
-   "names": [
-    "6mm 105 Gr. HPBT RDF"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.243,
-   "form_factor": 0.9072,
-   "band": [
-    0.9586,
-    1.2985
-   ],
-   "band_records": 9,
-   "deviation": 0.773,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "hornady_eldx_7_175",
-   "names": [
-    "7mm 175 gr. ELD-X",
-    "175ELDX",
-    "175 ELD-X",
-    "175gr ELD-X"
+    "7 mm 190 gr A-Tip\u00ae Match Bullet",
+    "190ATIP",
+    "190 A-Tip",
+    "190gr A-Tip"
    ],
    "basis": "bc_g7",
    "calibre_in": 0.2839,
-   "form_factor": 0.8941,
+   "form_factor": 0.7983,
    "band": [
     0.9241,
     1.336
    ],
    "band_records": 12,
-   "deviation": 0.774,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "sierra_1396",
-   "names": [
-    "22 Cal 95 gr HPBT/CN MatchKing (SMK)"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.224,
-   "form_factor": 0.9046,
-   "band": [
-    0.9886,
-    1.3459
-   ],
-   "band_records": 13,
-   "deviation": 0.774,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "berger_24556",
-   "names": [
-    "6mm 108 Grain Elite Hunter"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.243,
-   "form_factor": 0.9104,
-   "band": [
-    0.9586,
-    1.2985
-   ],
-   "band_records": 9,
-   "deviation": 0.776,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "berger_22485",
-   "names": [
-    "22 Cal 85.5 Grain Long Range Hybrid Target"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.224,
-   "form_factor": 0.9083,
-   "band": [
-    0.9886,
-    1.3459
-   ],
-   "band_records": 13,
-   "deviation": 0.777,
-   "note": "declared BC is not consistent with the calibre and mass"
+   "deviation": 0.691,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Hornady states this G7 coefficient beside a G1 of 0.838 for the same bullet; the form factor of 0.798 below the band is the bullet's long ogive and is not a coefficient fault."
   },
   {
    "class_name": "form_factor",
@@ -2690,24 +3252,102 @@
    ],
    "band_records": 13,
    "deviation": 0.777,
-   "note": "declared BC is not consistent with the calibre and mass"
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Hornady states this G7 coefficient beside a G1 of 0.467 for the same bullet; the form factor of 0.908 below the band is the bullet's long ogive and is not a coefficient fault."
   },
   {
    "class_name": "form_factor",
-   "projectile_id": "berger_24528",
+   "projectile_id": "hornady_eldm_22_80",
    "names": [
-    "6mm 105 Grain VLD Hunting"
+    "22 Cal 80 gr. ELD Match",
+    "80ELDM",
+    "80 ELD-M",
+    "80gr ELD-M"
    ],
    "basis": "bc_g7",
-   "calibre_in": 0.243,
-   "form_factor": 0.9138,
+   "calibre_in": 0.224,
+   "form_factor": 0.9333,
    "band": [
-    0.9586,
-    1.2985
+    0.9886,
+    1.3459
    ],
-   "band_records": 9,
-   "deviation": 0.779,
-   "note": "declared BC is not consistent with the calibre and mass"
+   "band_records": 13,
+   "deviation": 0.798,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Hornady states this G7 coefficient beside a G1 of 0.485 for the same bullet; the form factor of 0.933 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "hornady_eldm_22_88",
+   "names": [
+    "22 Cal 88 gr. ELD Match",
+    "88ELDM",
+    "88 ELD-M",
+    "88gr ELD-M"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.224,
+   "form_factor": 0.9143,
+   "band": [
+    0.9886,
+    1.3459
+   ],
+   "band_records": 13,
+   "deviation": 0.782,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Hornady states this G7 coefficient beside a G1 of 0.545 for the same bullet; the form factor of 0.914 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "hornady_eldm_30_168",
+   "names": [
+    "30 Cal 168 gr. ELD Match",
+    "168ELDM",
+    "168 ELD-M",
+    "168gr ELD-M"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.3079,
+   "form_factor": 0.9627,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.865,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Hornady states this G7 coefficient beside a G1 of 0.523 for the same bullet; the form factor of 0.963 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "hornady_eldm_30_208",
+   "names": [
+    "30 Cal 208 gr. ELD Match",
+    "208ELDM",
+    "208 ELD-M",
+    "208gr ELD-M"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.3079,
+   "form_factor": 0.9008,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.81,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Hornady states this G7 coefficient beside a G1 of 0.690 for the same bullet; the form factor of 0.901 below the band is the bullet's long ogive and is not a coefficient fault."
   },
   {
    "class_name": "form_factor",
@@ -2728,783 +3368,57 @@
    ],
    "band_records": 27,
    "deviation": 0.779,
-   "note": "declared BC is not consistent with the calibre and mass"
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Hornady states this G7 coefficient beside a G1 of 0.777 for the same bullet, for a 1 in 10 inch twist; the form factor of 0.867 below the band is the bullet's long ogive and is not a coefficient fault."
   },
   {
    "class_name": "form_factor",
-   "projectile_id": "sierra_2251",
+   "projectile_id": "hornady_eldm_30_225_t7",
    "names": [
-    "30 Cal 230 gr HPBT/CN MatchKing (SMK)"
+    "30 Cal 225 gr. ELD Match (1 in 7\" twist)",
+    "225ELDM",
+    "225 ELD-M",
+    "225gr ELD-M",
+    "225ELDM 7in"
    ],
    "basis": "bc_g7",
-   "calibre_in": 0.308,
-   "form_factor": 0.8681,
+   "calibre_in": 0.3079,
+   "form_factor": 0.8436,
    "band": [
     0.9741,
     1.4732
    ],
    "band_records": 27,
-   "deviation": 0.78,
-   "note": "declared BC is not consistent with the calibre and mass"
+   "deviation": 0.758,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Hornady states this G7 coefficient beside a G1 of 0.798 for the same bullet, for a 1 in 7 inch twist; the form factor of 0.844 below the band is the bullet's long ogive and is not a coefficient fault."
   },
   {
    "class_name": "form_factor",
-   "projectile_id": "hornady_eldm_22_88",
+   "projectile_id": "hornady_eldm_65_140",
    "names": [
-    "22 Cal 88 gr. ELD Match",
-    "88ELDM",
-    "88 ELD-M",
-    "88gr ELD-M"
+    "6.5mm 140 gr. ELD Match",
+    "140ELDM",
+    "140 ELD-M",
+    "140gr ELD-M"
    ],
    "basis": "bc_g7",
-   "calibre_in": 0.224,
-   "form_factor": 0.9143,
-   "band": [
-    0.9886,
-    1.3459
-   ],
-   "band_records": 13,
-   "deviation": 0.782,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "hornady_eldx_7_162",
-   "names": [
-    "7mm 162 gr. ELD-X",
-    "162ELDX",
-    "162 ELD-X",
-    "162gr ELD-X"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.2839,
-   "form_factor": 0.9032,
-   "band": [
-    0.9241,
-    1.336
-   ],
-   "band_records": 12,
-   "deviation": 0.782,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "sierra_7216",
-   "names": [
-    "6mm 116 gr Tipped MatchKing (TMK)"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.243,
-   "form_factor": 0.9201,
-   "band": [
-    0.9586,
-    1.2985
-   ],
-   "band_records": 9,
-   "deviation": 0.784,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "sierra_1997",
-   "names": [
-    "7mm 197 gr HPBT/CN MatchKing (SMK)"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.284,
-   "form_factor": 0.9063,
-   "band": [
-    0.9241,
-    1.336
-   ],
-   "band_records": 12,
-   "deviation": 0.785,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "berger_24433",
-   "names": [
-    "6mm 105 Grain Hybrid Target"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.243,
-   "form_factor": 0.9237,
-   "band": [
-    0.9586,
-    1.2985
-   ],
-   "band_records": 9,
-   "deviation": 0.788,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "sierra_9290T",
-   "names": [
-    "22 Cal 90 gr HPBT/CN MatchKing (SMK)"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.224,
-   "form_factor": 0.9217,
-   "band": [
-    0.9886,
-    1.3459
-   ],
-   "band_records": 13,
-   "deviation": 0.788,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "berger_28405",
-   "names": [
-    "7mm 180 Grain VLD Target"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.284,
-   "form_factor": 0.9109,
-   "band": [
-    0.9241,
-    1.336
-   ],
-   "band_records": 12,
-   "deviation": 0.789,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "sierra_4540",
-   "names": [
-    "7mm 140 gr Tipped GameKing (TGK)"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.284,
-   "form_factor": 0.9116,
-   "band": [
-    0.9241,
-    1.336
-   ],
-   "band_records": 12,
-   "deviation": 0.79,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "sierra_4540C",
-   "names": [
-    "7mm 140 gr Tipped GameKing (TGK)- BGB"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.284,
-   "form_factor": 0.9116,
-   "band": [
-    0.9241,
-    1.336
-   ],
-   "band_records": 12,
-   "deviation": 0.79,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "berger_28407",
-   "names": [
-    "7mm 180 Grain Hybrid Target"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.284,
-   "form_factor": 0.9135,
-   "band": [
-    0.9241,
-    1.336
-   ],
-   "band_records": 12,
-   "deviation": 0.791,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "berger_28408",
-   "names": [
-    "7mm 184 Grain F-Open Hybrid Target"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.284,
-   "form_factor": 0.9154,
-   "band": [
-    0.9241,
-    1.336
-   ],
-   "band_records": 12,
-   "deviation": 0.793,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "berger_30485",
-   "names": [
-    "30 Cal 208 Grain Long Range Hybrid Target"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.308,
-   "form_factor": 0.8848,
-   "band": [
-    0.9741,
-    1.4732
-   ],
-   "band_records": 27,
-   "deviation": 0.795,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "nosler_53432",
-   "names": [
-    "7mm 185 Gr. HPBT RDF"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.284,
-   "form_factor": 0.9178,
-   "band": [
-    0.9241,
-    1.336
-   ],
-   "band_records": 12,
-   "deviation": 0.795,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "sierra_7295",
-   "names": [
-    "6mm 95 gr Tipped MatchKing (TMK)"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.243,
-   "form_factor": 0.9343,
-   "band": [
-    0.9586,
-    1.2985
-   ],
-   "band_records": 9,
-   "deviation": 0.796,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "hornady_eldx_7_150",
-   "names": [
-    "7mm 150 gr. ELD-X",
-    "150ELDX",
-    "150 ELD-X",
-    "150gr ELD-X"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.2839,
-   "form_factor": 0.9202,
-   "band": [
-    0.9241,
-    1.336
-   ],
-   "band_records": 12,
-   "deviation": 0.797,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "hornady_eldm_22_80",
-   "names": [
-    "22 Cal 80 gr. ELD Match",
-    "80ELDM",
-    "80 ELD-M",
-    "80gr ELD-M"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.224,
-   "form_factor": 0.9333,
-   "band": [
-    0.9886,
-    1.3459
-   ],
-   "band_records": 13,
-   "deviation": 0.798,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "berger_28554",
-   "names": [
-    "7mm 175 Grain Elite Hunter"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.284,
-   "form_factor": 0.9225,
-   "band": [
-    0.9241,
-    1.336
-   ],
-   "band_records": 12,
-   "deviation": 0.799,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "berger_22423",
-   "names": [
-    "22 Cal 90 Grain VLD Target"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.224,
-   "form_factor": 0.9352,
-   "band": [
-    0.9886,
-    1.3459
-   ],
-   "band_records": 13,
-   "deviation": 0.8,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "sierra_1983",
-   "names": [
-    "7mm 183 gr HPBT/CN MatchKing (SMK)"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.284,
-   "form_factor": 0.9234,
-   "band": [
-    0.9241,
-    1.336
-   ],
-   "band_records": 12,
-   "deviation": 0.8,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "hornady_eldvt_6_80",
-   "names": [
-    "6mm 80gr ELD-VT\u00ae",
-    "80ELDVT",
-    "80 ELD-VT",
-    "80gr ELD-VT"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.2429,
-   "form_factor": 0.9402,
-   "band": [
-    0.9586,
-    1.2985
-   ],
-   "band_records": 9,
-   "deviation": 0.802,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "sierra_1625",
-   "names": [
-    "25 Cal 100 gr SBT GameKing (SGK)"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.257,
-   "form_factor": 1.2723,
+   "calibre_in": 0.2642,
+   "form_factor": 0.8791,
    "band": [
     0.9347,
     1.2193
    ],
    "band_records": 9,
-   "deviation": 1.246,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "berger_30560",
-   "names": [
-    "30 Cal 245 Grain Elite Hunter"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.308,
-   "form_factor": 0.8933,
-   "band": [
-    0.9741,
-    1.4732
-   ],
-   "band_records": 27,
-   "deviation": 0.803,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "berger_30486",
-   "names": [
-    "30 Cal 220 Grain Long Range Hybrid Target"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.308,
-   "form_factor": 0.8978,
-   "band": [
-    0.9741,
-    1.4732
-   ],
-   "band_records": 27,
-   "deviation": 0.807,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "nosler_53066",
-   "names": [
-    "22 Cal 70 Gr. HPBT RDF"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.224,
-   "form_factor": 0.9445,
-   "band": [
-    0.9886,
-    1.3459
-   ],
-   "band_records": 13,
-   "deviation": 0.808,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "hornady_eldm_30_208",
-   "names": [
-    "30 Cal 208 gr. ELD Match",
-    "208ELDM",
-    "208 ELD-M",
-    "208gr ELD-M"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.3079,
-   "form_factor": 0.9008,
-   "band": [
-    0.9741,
-    1.4732
-   ],
-   "band_records": 27,
-   "deviation": 0.81,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "sierra_1835",
-   "names": [
-    "270 Cal 140 gr HPBT GameKing (SGK)"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.277,
-   "form_factor": 1.4244,
-   "band": [
-    0.9241,
-    1.336
-   ],
-   "band_records": 12,
-   "deviation": 1.234,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "hornady_eldx_30_212_t7",
-   "names": [
-    "30 Cal 212 gr. ELD-X (1 in 7\" twist)",
-    "212ELDX",
-    "212 ELD-X",
-    "212gr ELD-X",
-    "212ELDX 7in"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.3079,
-   "form_factor": 0.9026,
-   "band": [
-    0.9741,
-    1.4732
-   ],
-   "band_records": 27,
-   "deviation": 0.811,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "sierra_1925",
-   "names": [
-    "7mm 160 gr HPBT GameKing (SGK)"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.284,
-   "form_factor": 1.4169,
-   "band": [
-    0.9241,
-    1.336
-   ],
-   "band_records": 12,
-   "deviation": 1.227,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "berger_24530",
-   "names": [
-    "6mm 115 Grain VLD Hunting"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.243,
-   "form_factor": 0.9561,
-   "band": [
-    0.9586,
-    1.2985
-   ],
-   "band_records": 9,
-   "deviation": 0.815,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "hornady_eldvt_30_174",
-   "names": [
-    ".30 cal 174gr ELD-VT\u00ae",
-    "174ELDVT",
-    "174 ELD-VT",
-    "174gr ELD-VT"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.3079,
-   "form_factor": 0.9074,
-   "band": [
-    0.9741,
-    1.4732
-   ],
-   "band_records": 27,
-   "deviation": 0.815,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "sierra_4110T",
-   "names": [
-    "6mm 100 gr Tipped GameKing (TGK)"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.243,
-   "form_factor": 0.9562,
-   "band": [
-    0.9586,
-    1.2985
-   ],
-   "band_records": 9,
-   "deviation": 0.815,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "sierra_7188",
-   "names": [
-    "22 Cal 88 gr Tipped MatchKing (TMK)"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.224,
-   "form_factor": 0.9526,
-   "band": [
-    0.9886,
-    1.3459
-   ],
-   "band_records": 13,
-   "deviation": 0.815,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "berger_24427",
-   "names": [
-    "6mm 95 Grain VLD Target"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.243,
-   "form_factor": 0.9576,
-   "band": [
-    0.9586,
-    1.2985
-   ],
-   "band_records": 9,
-   "deviation": 0.816,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "nosler_53434",
-   "names": [
-    "30 Cal 210 Gr. HPBT RDF"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.308,
-   "form_factor": 0.9087,
-   "band": [
-    0.9741,
-    1.4732
-   ],
-   "band_records": 27,
-   "deviation": 0.817,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "sierra_7755",
-   "names": [
-    "30 Cal 155 gr Tipped MatchKing (TMK)"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.308,
-   "form_factor": 0.9118,
-   "band": [
-    0.9741,
-    1.4732
-   ],
-   "band_records": 27,
-   "deviation": 0.819,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "sierra_1630",
-   "names": [
-    "25 Cal 117 gr SBT GameKing (SGK)"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.257,
-   "form_factor": 1.2466,
-   "band": [
-    0.9347,
-    1.2193
-   ],
-   "band_records": 9,
-   "deviation": 1.221,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "berger_30429",
-   "names": [
-    "30 Cal 215 Grain Hybrid Target"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.308,
-   "form_factor": 0.9146,
-   "band": [
-    0.9741,
-    1.4732
-   ],
-   "band_records": 27,
-   "deviation": 0.822,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "nosler_53452",
-   "names": [
-    "22 Cal 77 Gr. HPBT RDF"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.224,
-   "form_factor": 0.9615,
-   "band": [
-    0.9886,
-    1.3459
-   ],
-   "band_records": 13,
-   "deviation": 0.823,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "berger_30554",
-   "names": [
-    "30 Cal 180 Grain Elite Hunter"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.308,
-   "form_factor": 0.9189,
-   "band": [
-    0.9741,
-    1.4732
-   ],
-   "band_records": 27,
-   "deviation": 0.826,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "lapua_GB581",
-   "names": [
-    "7.62 mm 175 gr MaxRange Target"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.308,
-   "form_factor": 0.9215,
-   "band": [
-    0.9741,
-    1.4732
-   ],
-   "band_records": 27,
-   "deviation": 0.828,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "berger_22422",
-   "names": [
-    "22 Cal 80 Grain VLD Target"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.224,
-   "form_factor": 0.9775,
-   "band": [
-    0.9886,
-    1.3459
-   ],
-   "band_records": 13,
-   "deviation": 0.836,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "sierra_1815",
-   "names": [
-    "270 Cal 115 gr HPBT MatchKing (SMK)"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.277,
-   "form_factor": 1.3814,
-   "band": [
-    0.9241,
-    1.336
-   ],
-   "band_records": 12,
-   "deviation": 1.196,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "hornady_atip_30_176",
-   "names": [
-    "30 Cal 176 gr A-Tip\u00ae Match Bullet",
-    "176ATIP",
-    "176 A-Tip",
-    "176gr A-Tip"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.3079,
-   "form_factor": 0.934,
-   "band": [
-    0.9741,
-    1.4732
-   ],
-   "band_records": 27,
-   "deviation": 0.839,
-   "note": "declared BC is not consistent with the calibre and mass"
+   "deviation": 0.861,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Hornady states this G7 coefficient beside a G1 of 0.646 for the same bullet; the form factor of 0.879 below the band is the bullet's long ogive and is not a coefficient fault."
   },
   {
    "class_name": "form_factor",
@@ -3524,336 +3438,196 @@
    ],
    "band_records": 9,
    "deviation": 0.839,
-   "note": "declared BC is not consistent with the calibre and mass"
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Hornady states this G7 coefficient beside a G1 of 0.697 for the same bullet; the form factor of 0.857 below the band is the bullet's long ogive and is not a coefficient fault."
   },
   {
    "class_name": "form_factor",
-   "projectile_id": "hornady_atip_30_177",
+   "projectile_id": "hornady_eldm_7_162",
    "names": [
-    "30 Cal 177 gr A-Tip\u00ae Match Bullet",
-    "177ATIP",
-    "177 A-Tip",
-    "177gr A-Tip"
+    "7mm 162 gr. ELD Match",
+    "162ELDM",
+    "162 ELD-M",
+    "162gr ELD-M"
    ],
    "basis": "bc_g7",
-   "calibre_in": 0.3079,
-   "form_factor": 0.936,
+   "calibre_in": 0.2839,
+   "form_factor": 0.8498,
    "band": [
-    0.9741,
-    1.4732
+    0.9241,
+    1.336
    ],
-   "band_records": 27,
-   "deviation": 0.841,
-   "note": "declared BC is not consistent with the calibre and mass"
+   "band_records": 12,
+   "deviation": 0.736,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Hornady states this G7 coefficient beside a G1 of 0.670 for the same bullet; the form factor of 0.850 below the band is the bullet's long ogive and is not a coefficient fault."
   },
   {
    "class_name": "form_factor",
-   "projectile_id": "hornady_atip_65_135",
+   "projectile_id": "hornady_eldm_7_180_t7p5",
    "names": [
-    "6.5 mm 135 gr A-Tip\u00ae Match Bullet",
-    "135ATIP",
-    "135 A-Tip",
-    "135gr A-Tip"
+    "7mm 180 gr. ELD Match (1 in 7.5\" twist)",
+    "180ELDM",
+    "180 ELD-M",
+    "180gr ELD-M",
+    "180ELDM 7.5in"
    ],
    "basis": "bc_g7",
-   "calibre_in": 0.2642,
-   "form_factor": 0.8609,
+   "calibre_in": 0.2839,
+   "form_factor": 0.7765,
    "band": [
-    0.9347,
-    1.2193
+    0.9241,
+    1.336
    ],
-   "band_records": 9,
-   "deviation": 0.843,
-   "note": "declared BC is not consistent with the calibre and mass"
+   "band_records": 12,
+   "deviation": 0.673,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Hornady states this G7 coefficient beside a G1 of 0.816 for the same bullet, for a 1 in 7.5 inch twist; the form factor of 0.776 below the band is the bullet's long ogive and is not a coefficient fault."
   },
   {
    "class_name": "form_factor",
-   "projectile_id": "sierra_7720",
+   "projectile_id": "hornady_eldm_7_180_t8p75",
    "names": [
-    "30 Cal 220 gr Tipped MatchKing (TMK)"
+    "7mm 180 gr. ELD Match (1 in 8.75\" twist)",
+    "180ELDM",
+    "180 ELD-M",
+    "180gr ELD-M",
+    "180ELDM 8.75in"
    ],
    "basis": "bc_g7",
-   "calibre_in": 0.308,
-   "form_factor": 0.9385,
+   "calibre_in": 0.2839,
+   "form_factor": 0.8162,
    "band": [
-    0.9741,
-    1.4732
+    0.9241,
+    1.336
    ],
-   "band_records": 27,
-   "deviation": 0.843,
-   "note": "declared BC is not consistent with the calibre and mass"
+   "band_records": 12,
+   "deviation": 0.707,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Hornady states this G7 coefficient beside a G1 of 0.777 for the same bullet, for a 1 in 8.75 inch twist; the form factor of 0.816 below the band is the bullet's long ogive and is not a coefficient fault."
   },
   {
    "class_name": "form_factor",
-   "projectile_id": "nosler_53441",
+   "projectile_id": "hornady_eldvt_22_62",
    "names": [
-    "22 Cal 85 Gr. HPBT RDF"
+    ".22 cal 62gr ELD-VT\u00ae",
+    "62ELDVT",
+    "62 ELD-VT",
+    "62gr ELD-VT"
    ],
    "basis": "bc_g7",
    "calibre_in": 0.224,
-   "form_factor": 0.9878,
+   "form_factor": 0.8869,
    "band": [
     0.9886,
     1.3459
    ],
    "band_records": 13,
-   "deviation": 0.845,
-   "note": "declared BC is not consistent with the calibre and mass"
+   "deviation": 0.759,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Hornady states this G7 coefficient beside a G1 of 0.395 for the same bullet; the form factor of 0.887 below the band is the bullet's long ogive and is not a coefficient fault."
   },
   {
    "class_name": "form_factor",
-   "projectile_id": "berger_30430",
+   "projectile_id": "hornady_eldvt_30_174",
    "names": [
-    "30 Cal 230 Grain Hybrid Target"
+    ".30 cal 174gr ELD-VT\u00ae",
+    "174ELDVT",
+    "174 ELD-VT",
+    "174gr ELD-VT"
    ],
    "basis": "bc_g7",
-   "calibre_in": 0.308,
-   "form_factor": 0.9412,
+   "calibre_in": 0.3079,
+   "form_factor": 0.9074,
    "band": [
     0.9741,
     1.4732
    ],
    "band_records": 27,
-   "deviation": 0.846,
-   "note": "declared BC is not consistent with the calibre and mass"
+   "deviation": 0.815,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Hornady states this G7 coefficient beside a G1 of 0.573 for the same bullet; the form factor of 0.907 below the band is the bullet's long ogive and is not a coefficient fault."
   },
   {
    "class_name": "form_factor",
-   "projectile_id": "berger_30551",
+   "projectile_id": "hornady_eldvt_65_100",
    "names": [
-    "30 cal 217 Grain Elite Hunter NEW"
+    "6.5mm 100gr ELD-VT\u00ae",
+    "100ELDVT",
+    "100 ELD-VT",
+    "100gr ELD-VT"
    ],
    "basis": "bc_g7",
-   "calibre_in": 0.308,
-   "form_factor": 0.9417,
-   "band": [
-    0.9741,
-    1.4732
-   ],
-   "band_records": 27,
-   "deviation": 0.846,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "berger_30424",
-   "names": [
-    "30 Cal 185 Grain Hybrid Target"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.308,
-   "form_factor": 0.9444,
-   "band": [
-    0.9741,
-    1.4732
-   ],
-   "band_records": 27,
-   "deviation": 0.849,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "nosler_53505",
-   "names": [
-    "6.5mm 130 Gr. HPBT RDF"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.264,
-   "form_factor": 0.868,
+   "calibre_in": 0.2642,
+   "form_factor": 0.9058,
    "band": [
     0.9347,
     1.2193
    ],
    "band_records": 9,
-   "deviation": 0.85,
-   "note": "declared BC is not consistent with the calibre and mass"
+   "deviation": 0.887,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Hornady states this G7 coefficient beside a G1 of 0.385 for the same bullet; the form factor of 0.906 below the band is the bullet's long ogive and is not a coefficient fault."
   },
   {
    "class_name": "form_factor",
-   "projectile_id": "sierra_1755",
+   "projectile_id": "hornady_eldvt_6_80",
    "names": [
-    "6.5mm 150 gr HPBT/CN MatchKing (SMK)"
+    "6mm 80gr ELD-VT\u00ae",
+    "80ELDVT",
+    "80 ELD-VT",
+    "80gr ELD-VT"
    ],
    "basis": "bc_g7",
-   "calibre_in": 0.264,
-   "form_factor": 0.8685,
+   "calibre_in": 0.2429,
+   "form_factor": 0.9402,
    "band": [
-    0.9347,
-    1.2193
+    0.9586,
+    1.2985
    ],
    "band_records": 9,
-   "deviation": 0.85,
-   "note": "declared BC is not consistent with the calibre and mass"
+   "deviation": 0.802,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Hornady states this G7 coefficient beside a G1 of 0.485 for the same bullet; the form factor of 0.940 below the band is the bullet's long ogive and is not a coefficient fault."
   },
   {
    "class_name": "form_factor",
-   "projectile_id": "nosler_49824",
+   "projectile_id": "hornady_eldx_30_178",
    "names": [
-    "6.5mm 140 Gr. HPBT RDF"
+    "30 Cal 178 gr. ELD-X",
+    "178ELDX",
+    "178 ELD-X",
+    "178gr ELD-X"
    ],
    "basis": "bc_g7",
-   "calibre_in": 0.264,
-   "form_factor": 0.8696,
-   "band": [
-    0.9347,
-    1.2193
-   ],
-   "band_records": 9,
-   "deviation": 0.852,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "sierra_7768",
-   "names": [
-    "30 Cal 168 gr Tipped MatchKing (TMK)"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.308,
-   "form_factor": 0.9475,
+   "calibre_in": 0.3079,
+   "form_factor": 0.965,
    "band": [
     0.9741,
     1.4732
    ],
    "band_records": 27,
-   "deviation": 0.852,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "nosler_58623",
-   "names": [
-    "30 Cal 210 Gr. Spitzer AccuBond Long Range"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.308,
-   "form_factor": 0.9497,
-   "band": [
-    0.9741,
-    1.4732
-   ],
-   "band_records": 27,
-   "deviation": 0.853,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "berger_30112",
-   "names": [
-    "30 Cal 230 Grain Hybrid OTM Tactical"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.308,
-   "form_factor": 0.9515,
-   "band": [
-    0.9741,
-    1.4732
-   ],
-   "band_records": 27,
-   "deviation": 0.855,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "berger_25485",
-   "names": [
-    "25 Cal 135 Grain Long Range Hybrid Target"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.257,
-   "form_factor": 0.8742,
-   "band": [
-    0.9347,
-    1.2193
-   ],
-   "band_records": 9,
-   "deviation": 0.856,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "berger_30426",
-   "names": [
-    "30 Cal 155 Grain Hybrid Target"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.308,
-   "form_factor": 0.9527,
-   "band": [
-    0.9741,
-    1.4732
-   ],
-   "band_records": 27,
-   "deviation": 0.856,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "berger_30555",
-   "names": [
-    "30 Cal 205 Grain Elite Hunter"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.308,
-   "form_factor": 0.9528,
-   "band": [
-    0.9741,
-    1.4732
-   ],
-   "band_records": 27,
-   "deviation": 0.856,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "berger_30427",
-   "names": [
-    "30 Cal 200 Grain Hybrid Target"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.308,
-   "form_factor": 0.9531,
-   "band": [
-    0.9741,
-    1.4732
-   ],
-   "band_records": 27,
-   "deviation": 0.857,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "nosler_58455",
-   "names": [
-    "30 Cal 168 Gr. Spitzer AccuBond Long Range"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.308,
-   "form_factor": 0.9547,
-   "band": [
-    0.9741,
-    1.4732
-   ],
-   "band_records": 27,
-   "deviation": 0.858,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "berger_26485",
-   "names": [
-    "6.5mm 144 Grain Long Range Hybrid Target"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.264,
-   "form_factor": 0.8784,
-   "band": [
-    0.9347,
-    1.2193
-   ],
-   "band_records": 9,
-   "deviation": 0.86,
-   "note": "declared BC is not consistent with the calibre and mass"
+   "deviation": 0.867,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Hornady states this G7 coefficient beside a G1 of 0.547 for the same bullet; the form factor of 0.965 below the band is the bullet's long ogive and is not a coefficient fault."
   },
   {
    "class_name": "form_factor",
@@ -3874,430 +3648,34 @@
    ],
    "band_records": 27,
    "deviation": 0.86,
-   "note": "declared BC is not consistent with the calibre and mass"
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Hornady states this G7 coefficient beside a G1 of 0.663 for the same bullet, for a 1 in 10 inch twist; the form factor of 0.957 below the band is the bullet's long ogive and is not a coefficient fault."
   },
   {
    "class_name": "form_factor",
-   "projectile_id": "berger_30425",
+   "projectile_id": "hornady_eldx_30_212_t7",
    "names": [
-    "30 Cal 168 Grain Hybrid Target"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.308,
-   "form_factor": 0.9583,
-   "band": [
-    0.9741,
-    1.4732
-   ],
-   "band_records": 27,
-   "deviation": 0.861,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "hornady_eldm_65_140",
-   "names": [
-    "6.5mm 140 gr. ELD Match",
-    "140ELDM",
-    "140 ELD-M",
-    "140gr ELD-M"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.2642,
-   "form_factor": 0.8791,
-   "band": [
-    0.9347,
-    1.2193
-   ],
-   "band_records": 9,
-   "deviation": 0.861,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "lapua_GB582",
-   "names": [
-    "6.5 mm 144 gr MaxRange Target"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.264,
-   "form_factor": 0.8811,
-   "band": [
-    0.9347,
-    1.2193
-   ],
-   "band_records": 9,
-   "deviation": 0.863,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "hornady_atip_65_153",
-   "names": [
-    "6.5 mm 153 gr A-Tip\u00ae Match Bullet",
-    "153ATIP",
-    "153 A-Tip",
-    "153gr A-Tip"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.2642,
-   "form_factor": 0.8822,
-   "band": [
-    0.9347,
-    1.2193
-   ],
-   "band_records": 9,
-   "deviation": 0.864,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "berger_26486",
-   "names": [
-    "6.5mm 153.5 Grain Long Range Hybrid Target"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.264,
-   "form_factor": 0.8838,
-   "band": [
-    0.9347,
-    1.2193
-   ],
-   "band_records": 9,
-   "deviation": 0.865,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "hornady_eldm_30_168",
-   "names": [
-    "30 Cal 168 gr. ELD Match",
-    "168ELDM",
-    "168 ELD-M",
-    "168gr ELD-M"
+    "30 Cal 212 gr. ELD-X (1 in 7\" twist)",
+    "212ELDX",
+    "212 ELD-X",
+    "212gr ELD-X",
+    "212ELDX 7in"
    ],
    "basis": "bc_g7",
    "calibre_in": 0.3079,
-   "form_factor": 0.9627,
+   "form_factor": 0.9026,
    "band": [
     0.9741,
     1.4732
    ],
    "band_records": 27,
-   "deviation": 0.865,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "sierra_2237",
-   "names": [
-    "30 Cal 215 gr HPBT/CN MatchKing (SMK)"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.308,
-   "form_factor": 0.9636,
-   "band": [
-    0.9741,
-    1.4732
-   ],
-   "band_records": 27,
-   "deviation": 0.866,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "hornady_eldx_30_178",
-   "names": [
-    "30 Cal 178 gr. ELD-X",
-    "178ELDX",
-    "178 ELD-X",
-    "178gr ELD-X"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.3079,
-   "form_factor": 0.965,
-   "band": [
-    0.9741,
-    1.4732
-   ],
-   "band_records": 27,
-   "deviation": 0.867,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "sierra_9240T",
-   "names": [
-    "30 Cal 210 gr HPBT/CN MatchKing (SMK)"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.308,
-   "form_factor": 0.9671,
-   "band": [
-    0.9741,
-    1.4732
-   ],
-   "band_records": 27,
-   "deviation": 0.869,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "berger_30416",
-   "names": [
-    "30 Cal 155.5 Grain FULLBORE"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.308,
-   "form_factor": 0.9676,
-   "band": [
-    0.9741,
-    1.4732
-   ],
-   "band_records": 27,
-   "deviation": 0.87,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "sierra_7795",
-   "names": [
-    "30 Cal 195 gr Tipped MatchKing (TMK)"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.308,
-   "form_factor": 0.9692,
-   "band": [
-    0.9741,
-    1.4732
-   ],
-   "band_records": 27,
-   "deviation": 0.871,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "berger_30410",
-   "names": [
-    "30 Cal 168 Grain VLD Target"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.308,
-   "form_factor": 0.9731,
-   "band": [
-    0.9741,
-    1.4732
-   ],
-   "band_records": 27,
-   "deviation": 0.874,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "nosler_49826",
-   "names": [
-    "6.5mm 150 Gr. HPBT RDF"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.264,
-   "form_factor": 0.899,
-   "band": [
-    0.9347,
-    1.2193
-   ],
-   "band_records": 9,
-   "deviation": 0.88,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "hornady_eldvt_65_100",
-   "names": [
-    "6.5mm 100gr ELD-VT\u00ae",
-    "100ELDVT",
-    "100 ELD-VT",
-    "100gr ELD-VT"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.2642,
-   "form_factor": 0.9058,
-   "band": [
-    0.9347,
-    1.2193
-   ],
-   "band_records": 9,
-   "deviation": 0.887,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "sierra_1530",
-   "names": [
-    "6mm 85 gr HPBT GameKing (SGK)"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.243,
-   "form_factor": 1.3182,
-   "band": [
-    0.9586,
-    1.2985
-   ],
-   "band_records": 9,
-   "deviation": 1.124,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "berger_25586",
-   "names": [
-    "25 Cal 133 Grain Elite Hunter"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.257,
-   "form_factor": 0.9132,
-   "band": [
-    0.9347,
-    1.2193
-   ],
-   "band_records": 9,
-   "deviation": 0.894,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "berger_26571",
-   "names": [
-    "6.5mm 135 Grain Classic Hybrid Hunter"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.264,
-   "form_factor": 0.9132,
-   "band": [
-    0.9347,
-    1.2193
-   ],
-   "band_records": 9,
-   "deviation": 0.894,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "berger_26550",
-   "names": [
-    "6.5mm 156 Grain Elite Hunter"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.264,
-   "form_factor": 0.9215,
-   "band": [
-    0.9347,
-    1.2193
-   ],
-   "band_records": 9,
-   "deviation": 0.902,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "berger_26414",
-   "names": [
-    "6.5mm 140 Grain Hybrid Target"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.264,
-   "form_factor": 0.9227,
-   "band": [
-    0.9347,
-    1.2193
-   ],
-   "band_records": 9,
-   "deviation": 0.904,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "nosler_58922",
-   "names": [
-    "6.5mm 142 Gr. Spitzer AccuBond Long Range"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.264,
-   "form_factor": 0.924,
-   "band": [
-    0.9347,
-    1.2193
-   ],
-   "band_records": 9,
-   "deviation": 0.905,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "berger_26403",
-   "names": [
-    "6.5mm 130 Grain VLD Target"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.264,
-   "form_factor": 0.9252,
-   "band": [
-    0.9347,
-    1.2193
-   ],
-   "band_records": 9,
-   "deviation": 0.906,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "berger_26503",
-   "names": [
-    "6.5mm 130 Grain VLD Hunting"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.264,
-   "form_factor": 0.9252,
-   "band": [
-    0.9347,
-    1.2193
-   ],
-   "band_records": 9,
-   "deviation": 0.906,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "berger_26552",
-   "names": [
-    "6.5mm 140 Grain Elite Hunter"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.264,
-   "form_factor": 0.9257,
-   "band": [
-    0.9347,
-    1.2193
-   ],
-   "band_records": 9,
-   "deviation": 0.906,
-   "note": "declared BC is not consistent with the calibre and mass"
-  },
-  {
-   "class_name": "form_factor",
-   "projectile_id": "berger_26195",
-   "names": [
-    "6.5mm 130 Grain AR Hybrid OTM Tactical"
-   ],
-   "basis": "bc_g7",
-   "calibre_in": 0.264,
-   "form_factor": 0.9284,
-   "band": [
-    0.9347,
-    1.2193
-   ],
-   "band_records": 9,
-   "deviation": 0.909,
-   "note": "declared BC is not consistent with the calibre and mass"
+   "deviation": 0.811,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Hornady states this G7 coefficient beside a G1 of 0.702 for the same bullet, for a 1 in 7 inch twist; the form factor of 0.903 below the band is the bullet's long ogive and is not a coefficient fault."
   },
   {
    "class_name": "form_factor",
@@ -4317,9 +3695,1002 @@
    ],
    "band_records": 9,
    "deviation": 0.913,
-   "note": "declared BC is not consistent with the calibre and mass"
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Hornady states this G7 coefficient beside a G1 of 0.623 for the same bullet; the form factor of 0.932 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "hornady_eldx_7_150",
+   "names": [
+    "7mm 150 gr. ELD-X",
+    "150ELDX",
+    "150 ELD-X",
+    "150gr ELD-X"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.2839,
+   "form_factor": 0.9202,
+   "band": [
+    0.9241,
+    1.336
+   ],
+   "band_records": 12,
+   "deviation": 0.797,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Hornady states this G7 coefficient beside a G1 of 0.574 for the same bullet; the form factor of 0.920 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "hornady_eldx_7_162",
+   "names": [
+    "7mm 162 gr. ELD-X",
+    "162ELDX",
+    "162 ELD-X",
+    "162gr ELD-X"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.2839,
+   "form_factor": 0.9032,
+   "band": [
+    0.9241,
+    1.336
+   ],
+   "band_records": 12,
+   "deviation": 0.782,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Hornady states this G7 coefficient beside a G1 of 0.670 for the same bullet; the form factor of 0.903 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "hornady_eldx_7_175",
+   "names": [
+    "7mm 175 gr. ELD-X",
+    "175ELDX",
+    "175 ELD-X",
+    "175gr ELD-X"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.2839,
+   "form_factor": 0.8941,
+   "band": [
+    0.9241,
+    1.336
+   ],
+   "band_records": 12,
+   "deviation": 0.774,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Hornady states this G7 coefficient beside a G1 of 0.689 for the same bullet; the form factor of 0.894 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "lapua_GB581",
+   "names": [
+    "7.62 mm 175 gr MaxRange Target"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.308,
+   "form_factor": 0.9215,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.828,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Lapua states this G7 coefficient beside a G1 of 0.581 on the same page; the form factor of 0.921 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "lapua_GB582",
+   "names": [
+    "6.5 mm 144 gr MaxRange Target"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.264,
+   "form_factor": 0.8811,
+   "band": [
+    0.9347,
+    1.2193
+   ],
+   "band_records": 9,
+   "deviation": 0.863,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Lapua states this G7 coefficient beside a G1 of 0.670 on the same page; the form factor of 0.881 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "nosler_49824",
+   "names": [
+    "6.5mm 140 Gr. HPBT RDF"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.264,
+   "form_factor": 0.8696,
+   "band": [
+    0.9347,
+    1.2193
+   ],
+   "band_records": 9,
+   "deviation": 0.852,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Nosler states this G7 coefficient beside a G1 of 0.658 on the same page; the form factor of 0.870 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "nosler_49826",
+   "names": [
+    "6.5mm 150 Gr. HPBT RDF"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.264,
+   "form_factor": 0.899,
+   "band": [
+    0.9347,
+    1.2193
+   ],
+   "band_records": 9,
+   "deviation": 0.88,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Nosler states this G7 coefficient beside a G1 of 0.670 on the same page; the form factor of 0.899 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "nosler_53066",
+   "names": [
+    "22 Cal 70 Gr. HPBT RDF"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.224,
+   "form_factor": 0.9445,
+   "band": [
+    0.9886,
+    1.3459
+   ],
+   "band_records": 13,
+   "deviation": 0.808,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Nosler states this G7 coefficient beside a G1 of 0.416 on the same page; the form factor of 0.945 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "nosler_53410",
+   "names": [
+    "6mm 105 Gr. HPBT RDF"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.243,
+   "form_factor": 0.9072,
+   "band": [
+    0.9586,
+    1.2985
+   ],
+   "band_records": 9,
+   "deviation": 0.773,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Nosler states this G7 coefficient beside a G1 of 0.571 on the same page; the form factor of 0.907 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "nosler_53432",
+   "names": [
+    "7mm 185 Gr. HPBT RDF"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.284,
+   "form_factor": 0.9178,
+   "band": [
+    0.9241,
+    1.336
+   ],
+   "band_records": 12,
+   "deviation": 0.795,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Nosler states this G7 coefficient beside a G1 of 0.719 on the same page; the form factor of 0.918 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "nosler_53434",
+   "names": [
+    "30 Cal 210 Gr. HPBT RDF"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.308,
+   "form_factor": 0.9087,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.817,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Nosler states this G7 coefficient beside a G1 of 0.707 on the same page; the form factor of 0.909 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "nosler_53441",
+   "names": [
+    "22 Cal 85 Gr. HPBT RDF"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.224,
+   "form_factor": 0.9878,
+   "band": [
+    0.9886,
+    1.3459
+   ],
+   "band_records": 13,
+   "deviation": 0.845,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Nosler states this G7 coefficient beside a G1 of 0.498 on the same page; the form factor of 0.988 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "nosler_53452",
+   "names": [
+    "22 Cal 77 Gr. HPBT RDF"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.224,
+   "form_factor": 0.9615,
+   "band": [
+    0.9886,
+    1.3459
+   ],
+   "band_records": 13,
+   "deviation": 0.823,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Nosler states this G7 coefficient beside a G1 of 0.454 on the same page; the form factor of 0.962 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "nosler_53505",
+   "names": [
+    "6.5mm 130 Gr. HPBT RDF"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.264,
+   "form_factor": 0.868,
+   "band": [
+    0.9347,
+    1.2193
+   ],
+   "band_records": 9,
+   "deviation": 0.85,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Nosler states this G7 coefficient beside a G1 of 0.615 on the same page; the form factor of 0.868 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "nosler_53507",
+   "names": [
+    "6mm 115 Gr. HPBT RDF"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.243,
+   "form_factor": 0.8917,
+   "band": [
+    0.9586,
+    1.2985
+   ],
+   "band_records": 9,
+   "deviation": 0.76,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Nosler states this G7 coefficient beside a G1 of 0.634 on the same page; the form factor of 0.892 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "nosler_58455",
+   "names": [
+    "30 Cal 168 Gr. Spitzer AccuBond Long Range"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.308,
+   "form_factor": 0.9547,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.858,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Nosler states this G7 coefficient beside a G1 of 0.525 on the same page; the form factor of 0.955 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "nosler_58623",
+   "names": [
+    "30 Cal 210 Gr. Spitzer AccuBond Long Range"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.308,
+   "form_factor": 0.9497,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.853,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Nosler states this G7 coefficient beside a G1 of 0.661 on the same page; the form factor of 0.950 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "nosler_58922",
+   "names": [
+    "6.5mm 142 Gr. Spitzer AccuBond Long Range"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.264,
+   "form_factor": 0.924,
+   "band": [
+    0.9347,
+    1.2193
+   ],
+   "band_records": 9,
+   "deviation": 0.905,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Nosler states this G7 coefficient beside a G1 of 0.625 on the same page; the form factor of 0.924 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "sierra_1390",
+   "names": [
+    "22 Cal 55 gr HPBT GameKing (SGK)"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.224,
+   "form_factor": 1.6143,
+   "band": [
+    0.9886,
+    1.3459
+   ],
+   "band_records": 13,
+   "deviation": 1.381,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Sierra states this G7 coefficient beside a G1 of 0.185 on the same page; the form factor of 1.614 above the band is a short, light Sierra bullet for this calibre and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "sierra_1396",
+   "names": [
+    "22 Cal 95 gr HPBT/CN MatchKing (SMK)"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.224,
+   "form_factor": 0.9046,
+   "band": [
+    0.9886,
+    1.3459
+   ],
+   "band_records": 13,
+   "deviation": 0.774,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Sierra states this G7 coefficient beside a G1 of 0.600 on the same page; the form factor of 0.905 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "sierra_1530",
+   "names": [
+    "6mm 85 gr HPBT GameKing (SGK)"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.243,
+   "form_factor": 1.3182,
+   "band": [
+    0.9586,
+    1.2985
+   ],
+   "band_records": 9,
+   "deviation": 1.124,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Sierra states this G7 coefficient beside a G1 of 0.311 on the same page; the form factor of 1.318 above the band is a short, light Sierra bullet for this calibre and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "sierra_1565",
+   "names": [
+    "6mm 105 gr HPBT/CN MatchKing (SMK)"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.243,
+   "form_factor": 0.8945,
+   "band": [
+    0.9586,
+    1.2985
+   ],
+   "band_records": 9,
+   "deviation": 0.763,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Sierra states this G7 coefficient beside a G1 of 0.577 on the same page; the form factor of 0.894 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "sierra_1575",
+   "names": [
+    "6mm 110 gr HPBT/CN MatchKing (SMK)"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.243,
+   "form_factor": 0.8754,
+   "band": [
+    0.9586,
+    1.2985
+   ],
+   "band_records": 9,
+   "deviation": 0.746,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Sierra states this G7 coefficient beside a G1 of 0.617 on the same page; the form factor of 0.875 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "sierra_1615",
+   "names": [
+    "25 Cal 90 gr HPBT GameKing (SGK)"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.257,
+   "form_factor": 1.4636,
+   "band": [
+    0.9347,
+    1.2193
+   ],
+   "band_records": 9,
+   "deviation": 1.433,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Sierra states this G7 coefficient beside a G1 of 0.250 on the same page; the form factor of 1.464 above the band is a short, light Sierra bullet for this calibre and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "sierra_1625",
+   "names": [
+    "25 Cal 100 gr SBT GameKing (SGK)"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.257,
+   "form_factor": 1.2723,
+   "band": [
+    0.9347,
+    1.2193
+   ],
+   "band_records": 9,
+   "deviation": 1.246,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Sierra states this G7 coefficient beside a G1 of 0.355 on the same page; the form factor of 1.272 above the band is a short, light Sierra bullet for this calibre and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "sierra_1630",
+   "names": [
+    "25 Cal 117 gr SBT GameKing (SGK)"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.257,
+   "form_factor": 1.2466,
+   "band": [
+    0.9347,
+    1.2193
+   ],
+   "band_records": 9,
+   "deviation": 1.221,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Sierra states this G7 coefficient beside a G1 of 0.410 on the same page; the form factor of 1.247 above the band is a short, light Sierra bullet for this calibre and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "sierra_1728",
+   "names": [
+    "6.5mm 130 gr HPBT GameKing (SGK)"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.264,
+   "form_factor": 1.4099,
+   "band": [
+    0.9347,
+    1.2193
+   ],
+   "band_records": 9,
+   "deviation": 1.381,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Sierra states this G7 coefficient beside a G1 of 0.355 on the same page; the form factor of 1.410 above the band is a short, light Sierra bullet for this calibre and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "sierra_1755",
+   "names": [
+    "6.5mm 150 gr HPBT/CN MatchKing (SMK)"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.264,
+   "form_factor": 0.8685,
+   "band": [
+    0.9347,
+    1.2193
+   ],
+   "band_records": 9,
+   "deviation": 0.85,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Sierra states this G7 coefficient beside a G1 of 0.713 on the same page; the form factor of 0.869 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "sierra_1815",
+   "names": [
+    "270 Cal 115 gr HPBT MatchKing (SMK)"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.277,
+   "form_factor": 1.3814,
+   "band": [
+    0.9241,
+    1.336
+   ],
+   "band_records": 12,
+   "deviation": 1.196,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Sierra states this G7 coefficient beside a G1 of 0.324 on the same page; the form factor of 1.381 above the band is a short, light Sierra bullet for this calibre and is not a coefficient fault. The independent measurement held as litz_dfrl states 0.162, 4.5% higher, and the record keeps the maker value under ADR-003."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "sierra_1835",
+   "names": [
+    "270 Cal 140 gr HPBT GameKing (SGK)"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.277,
+   "form_factor": 1.4244,
+   "band": [
+    0.9241,
+    1.336
+   ],
+   "band_records": 12,
+   "deviation": 1.234,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Sierra states this G7 coefficient beside a G1 of 0.337 on the same page; the form factor of 1.424 above the band is a short, light Sierra bullet for this calibre and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "sierra_1925",
+   "names": [
+    "7mm 160 gr HPBT GameKing (SGK)"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.284,
+   "form_factor": 1.4169,
+   "band": [
+    0.9241,
+    1.336
+   ],
+   "band_records": 12,
+   "deviation": 1.227,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Sierra states this G7 coefficient beside a G1 of 0.384 on the same page; the form factor of 1.417 above the band is a short, light Sierra bullet for this calibre and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "sierra_1983",
+   "names": [
+    "7mm 183 gr HPBT/CN MatchKing (SMK)"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.284,
+   "form_factor": 0.9234,
+   "band": [
+    0.9241,
+    1.336
+   ],
+   "band_records": 12,
+   "deviation": 0.8,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Sierra states this G7 coefficient beside a G1 of 0.707 on the same page; the form factor of 0.923 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "sierra_1997",
+   "names": [
+    "7mm 197 gr HPBT/CN MatchKing (SMK)"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.284,
+   "form_factor": 0.9063,
+   "band": [
+    0.9241,
+    1.336
+   ],
+   "band_records": 12,
+   "deviation": 0.785,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Sierra states this G7 coefficient beside a G1 of 0.780 on the same page; the form factor of 0.906 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "sierra_2231",
+   "names": [
+    "30 Cal 200 gr HPBT/CN MatchKing (SMK)"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.308,
+   "form_factor": 0.8508,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.765,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Sierra states this G7 coefficient beside a G1 of 0.715 on the same page; the form factor of 0.851 below the band is the bullet's long ogive and is not a coefficient fault. The independent measurement held as litz_dfrl states 0.285, 19.5% lower, and the record keeps the maker value under ADR-003."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "sierra_2237",
+   "names": [
+    "30 Cal 215 gr HPBT/CN MatchKing (SMK)"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.308,
+   "form_factor": 0.9636,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.866,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Sierra states this G7 coefficient beside a G1 of 0.680 on the same page; the form factor of 0.964 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "sierra_2251",
+   "names": [
+    "30 Cal 230 gr HPBT/CN MatchKing (SMK)"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.308,
+   "form_factor": 0.8681,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.78,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Sierra states this G7 coefficient beside a G1 of 0.800 on the same page; the form factor of 0.868 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "sierra_4110T",
+   "names": [
+    "6mm 100 gr Tipped GameKing (TGK)"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.243,
+   "form_factor": 0.9562,
+   "band": [
+    0.9586,
+    1.2985
+   ],
+   "band_records": 9,
+   "deviation": 0.815,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Sierra states this G7 coefficient beside a G1 of 0.515 on the same page; the form factor of 0.956 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "sierra_4540",
+   "names": [
+    "7mm 140 gr Tipped GameKing (TGK)"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.284,
+   "form_factor": 0.9116,
+   "band": [
+    0.9241,
+    1.336
+   ],
+   "band_records": 12,
+   "deviation": 0.79,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Sierra states this G7 coefficient beside a G1 of 0.545 on the same page; the form factor of 0.912 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "sierra_4540C",
+   "names": [
+    "7mm 140 gr Tipped GameKing (TGK)- BGB"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.284,
+   "form_factor": 0.9116,
+   "band": [
+    0.9241,
+    1.336
+   ],
+   "band_records": 12,
+   "deviation": 0.79,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Sierra states this G7 coefficient beside a G1 of 0.545 on the same page; the form factor of 0.912 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "sierra_7188",
+   "names": [
+    "22 Cal 88 gr Tipped MatchKing (TMK)"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.224,
+   "form_factor": 0.9526,
+   "band": [
+    0.9886,
+    1.3459
+   ],
+   "band_records": 13,
+   "deviation": 0.815,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Sierra states this G7 coefficient beside a G1 of 0.525 on the same page; the form factor of 0.953 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "sierra_7207",
+   "names": [
+    "6mm 107 gr Tipped MatchKing (TMK)"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.243,
+   "form_factor": 0.8865,
+   "band": [
+    0.9586,
+    1.2985
+   ],
+   "band_records": 9,
+   "deviation": 0.756,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Sierra states this G7 coefficient beside a G1 of 0.574 on the same page; the form factor of 0.886 below the band is the bullet's long ogive and is not a coefficient fault. The independent measurement held as litz_dfrl states 0.262, 10.3% lower, and the record keeps the maker value under ADR-003."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "sierra_7216",
+   "names": [
+    "6mm 116 gr Tipped MatchKing (TMK)"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.243,
+   "form_factor": 0.9201,
+   "band": [
+    0.9586,
+    1.2985
+   ],
+   "band_records": 9,
+   "deviation": 0.784,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Sierra states this G7 coefficient beside a G1 of 0.609 on the same page; the form factor of 0.920 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "sierra_7295",
+   "names": [
+    "6mm 95 gr Tipped MatchKing (TMK)"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.243,
+   "form_factor": 0.9343,
+   "band": [
+    0.9586,
+    1.2985
+   ],
+   "band_records": 9,
+   "deviation": 0.796,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Sierra states this G7 coefficient beside a G1 of 0.500 on the same page; the form factor of 0.934 below the band is the bullet's long ogive and is not a coefficient fault. The independent measurement held as litz_dfrl states 0.232, 5.7% lower, and the record keeps the maker value under ADR-003."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "sierra_7720",
+   "names": [
+    "30 Cal 220 gr Tipped MatchKing (TMK)"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.308,
+   "form_factor": 0.9385,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.843,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Sierra states this G7 coefficient beside a G1 of 0.696 on the same page; the form factor of 0.939 below the band is the bullet's long ogive and is not a coefficient fault. The independent measurement held as litz_dfrl states 0.310, 12.2% lower, and the record keeps the maker value under ADR-003."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "sierra_7755",
+   "names": [
+    "30 Cal 155 gr Tipped MatchKing (TMK)"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.308,
+   "form_factor": 0.9118,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.819,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Sierra states this G7 coefficient beside a G1 of 0.519 on the same page; the form factor of 0.912 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "sierra_7768",
+   "names": [
+    "30 Cal 168 gr Tipped MatchKing (TMK)"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.308,
+   "form_factor": 0.9475,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.852,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Sierra states this G7 coefficient beside a G1 of 0.535 on the same page; the form factor of 0.948 below the band is the bullet's long ogive and is not a coefficient fault. The independent measurement held as litz_dfrl states 0.218, 18.4% lower, and the record keeps the maker value under ADR-003."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "sierra_7795",
+   "names": [
+    "30 Cal 195 gr Tipped MatchKing (TMK)"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.308,
+   "form_factor": 0.9692,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.871,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Sierra states this G7 coefficient beside a G1 of 0.610 on the same page; the form factor of 0.969 below the band is the bullet's long ogive and is not a coefficient fault."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "sierra_9240T",
+   "names": [
+    "30 Cal 210 gr HPBT/CN MatchKing (SMK)"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.308,
+   "form_factor": 0.9671,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.869,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Sierra states this G7 coefficient beside a G1 of 0.670 on the same page; the form factor of 0.967 below the band is the bullet's long ogive and is not a coefficient fault. The independent measurement held as litz_dfrl states 0.316, 3.4% lower, and the record keeps the maker value under ADR-003."
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "sierra_9290T",
+   "names": [
+    "22 Cal 90 gr HPBT/CN MatchKing (SMK)"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.224,
+   "form_factor": 0.9217,
+   "band": [
+    0.9886,
+    1.3459
+   ],
+   "band_records": 13,
+   "deviation": 0.788,
+   "note": "declared BC is not consistent with the calibre and mass",
+   "decision": "genuine",
+   "reviewed": "2026-10-23",
+   "review_reason": "Sierra states this G7 coefficient beside a G1 of 0.563 on the same page; the form factor of 0.922 below the band is the bullet's long ogive and is not a coefficient fault. The independent measurement held as litz_dfrl states 0.256, 7.9% lower, and the record keeps the maker value under ADR-003."
   }
  ],
+ "form_factor_review_errors": [],
  "transposition": [],
  "unmatched": [
   {
