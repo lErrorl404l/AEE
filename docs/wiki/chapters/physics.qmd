@@ -108,7 +108,7 @@ near 973 C.
 
 ## Biome
 
-Biome uses the Koppen classification. The 18 codes are `Af`, `Am`, `Aw`,
+Biome uses the Koppen classification. The 17 codes are `Af`, `Am`, `Aw`,
 `BWh`, `BWk`, `BSh`, `BSk`, `Csa`, `Csb`, `Cfa`, `Cfb`, `Cwa`, `Dfa`, `Dfb`,
 `Dfc`, `ET`, and `EF`.
 
@@ -248,9 +248,11 @@ on windscreens. Thunder follows the flash after a fixed sound-travel delay.
 - Dust devils form in a 2-8 m/s wind band.
 - Space weather aurora requires Kp > 4, clear sky, night, and latitude
   above 45 from the world config.
-- CBRN persistence uses the per-agent Arrhenius slope of the agent's latent
-  heat of vaporisation. Decay is faster when warmer; there is no generic
-  Q10 rule of thumb.
+- CBRN persistence uses the per-agent Arrhenius slope. A published
+  hydrolysis activation energy answers where one exists: 64.25 kJ/mol for
+  GD and 108.8 kJ/mol for HD. The latent heat of vaporisation is a labelled
+  interim slope for GB, VX and CG, which have none. Decay is faster when
+  warmer, and there is no generic Q10 rule of thumb.
 - Fire spread uses the Rothermel rate-of-spread with growing-circle area.
 - Avalanche risk peaks at a 35 degree slope.
 - Flash flood risk is driven by rainfall intensity (mm/h), antecedent

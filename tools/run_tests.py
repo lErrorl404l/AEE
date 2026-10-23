@@ -360,6 +360,10 @@ def main():
         "tools/tests/test_engine_docs.py",
         # Addon inventory: the README and wiki addon list must match the tree.
         "tools/tests/test_docs_addon_index.py",
+        # The README feature claims against the code and the tree: the CBRN
+        # model, the compat addon count, the item-mass grades, the coverage
+        # measurement and the headless load gate.
+        "tools/tests/test_readme_claims.py",
         # Engine field guide: index completeness and path portability.
         "tools/tests/test_field_guide.py",
         # Interface control documents: freshness, index and grounding.
