@@ -153,7 +153,7 @@
   "primary_held": true,
   "held_file": "apg_litz_g7.xls",
   "archive_hash": "d23878aec0ce880d19b09ffcfdb7211d3166b9a05716e465a367d190f397f703",
-  "note": "Independent G7 measurements for military and commercial bullets. The rows are labelled APG (Aberdeen Proving Ground), Litz, or SL (a ShootingLab conversion, which is not a measurement and is marked as such). Distributed as a public list. Held under data/ballistics/sources/apg_litz_g7.json."
+  "note": "Secondary compilation. The compiling page states the table was generated from Aberdeen Proving Ground data, Shooting Lab conversions and the work of Brian Litz, and it does not say which row came from which. The nine rows labelled APG G7 are the range measurements. A row labelled SL G7 is a conversion and is not used as a measured value."
  },
  {
   "source_id": "litz_dfrl",
@@ -161,8 +161,8 @@
   "type": "measurement",
   "title": "Comparing Advertised Ballistic Coefficients with Independent Measurements",
   "edition": "USAFA DFRL research report, 17-01-2012",
-  "identifier": "DFRL 2012",
-  "locator": "Tables 1 to 7",
+  "identifier": "USAFA research report 17-01-2012, DTIC ADA554683",
+  "locator": "Tables 1 to 7, measured column",
   "published": "2012-01-17",
   "retrieved": "2026-09-22",
   "url": "https://sentineltactical.com/wp-content/uploads/2019/12/Litz-BC-of-bullets.pdf",
@@ -170,7 +170,7 @@
   "primary_held": true,
   "held_file": "litz_dfrl.pdf",
   "held_pdf_sha256": "31e76d202d4ee42e582b68a7d93d1d9a6900f70f6057bc89b12f996c956c9d72",
-  "note": "Compares the manufacturer G1 claim against the Litz measured G1 and G7 for the Barnes, Hornady, Sierra and Nosler lines. The measurements used a chronograph and acoustic sensors over 600 yards. Held under data/ballistics/sources/litz_dfrl.json."
+  "note": "Public-release US Government report, held from the publisher mirror named in url. The DTIC accession is ADA554683. The measured column reports Doppler-radar measurements by Bryan Litz; the manufacturer column is the maker claim, which the report exists to compare."
  },
  {
   "source_id": "mil_specs_more",

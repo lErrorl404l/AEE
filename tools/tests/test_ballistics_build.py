@@ -12,6 +12,7 @@ Run: python3 tools/tests/test_ballistics_build.py
 """
 
 import json
+import re
 import shutil
 import sys
 import tempfile
@@ -94,6 +95,27 @@ class TestCoefficientBasis(unittest.TestCase):
                     record["projectile_id"],
                 )
                 self.assertTrue(entry.get("edition"), record["projectile_id"])
+
+    def test_the_basis_report_matches_the_coefficients(self):
+        """A basis count in the report is a claim about the corpus.
+
+        The report is generated from the same run, so a disagreement means
+        one of the two was edited by hand or not regenerated.
+        """
+        counts = {"independent_measurement": 0, "maker_published_secondary": 0}
+        for record in load("projectiles.json"):
+            for field in ("bc_g1", "bc_g7"):
+                entry = record["values"].get(field)
+                if isinstance(entry, dict) and entry.get("basis") in counts:
+                    counts[entry["basis"]] += 1
+        report = (DATA / "BC_BASIS.md").read_text(encoding="utf-8")
+        for basis, expected in counts.items():
+            row = re.search(rf"^\| {basis} \| (\d+) \|$", report, re.M)
+            self.assertIsNotNone(row, f"{basis} is missing from the report")
+            self.assertEqual(int(row.group(1)), expected, basis)
+        stated = re.search(r"^\| Total \| (\d+) \|$", report, re.M)
+        self.assertIsNotNone(stated, "the report states no total")
+        self.assertEqual(int(stated.group(1)), sum(counts.values()))
 
 
 if __name__ == "__main__":
