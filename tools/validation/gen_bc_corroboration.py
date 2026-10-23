@@ -127,6 +127,10 @@ def main():
         for c in json.loads(CONFLICTS.read_text(encoding="utf-8"))
         if c.get("entity") not in projectiles
     ]
+    recorded = {
+        (c.get("entity"), c.get("field"), c.get("value_a"), c.get("value_b"))
+        for c in conflicts
+    }
     corroborated = 0
     disagreements = 0
     for rec in db:
@@ -169,7 +173,15 @@ def main():
                     if candidate["source"] not in entry["corroborated_by"]:
                         entry["corroborated_by"].append(candidate["source"])
                     corroborated += 1
-                else:
+                elif (
+                    rec["projectile_id"],
+                    field,
+                    entry["value"],
+                    measured,
+                ) not in recorded:
+                    recorded.add(
+                        (rec["projectile_id"], field, entry["value"], measured)
+                    )
                     conflicts.append(
                         {
                             "entity": rec["projectile_id"],

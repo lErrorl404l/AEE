@@ -43,6 +43,12 @@ def main():
         for c in json.loads(CONFLICTS.read_text(encoding="utf-8"))
         if c.get("source_b") != "nato_epvat"
     ]
+    # One disagreement is one row, whatever names its second source. A
+    # table and its underlying standard present the same competitor.
+    recorded = {
+        (c.get("entity"), c.get("field"), c.get("value_a"), c.get("value_b"))
+        for c in conflicts
+    }
     upgraded = 0
     for doc in docs:
         rec = by_id.get(MAP.get(doc["calibre"]))
@@ -57,6 +63,15 @@ def main():
                 values["pressure_standard"] = standard("NATO EPVAT", "name")
                 upgraded += 1
             elif abs(existing["value"] - service) > 0.01 * existing["value"]:
+                key = (
+                    rec["cartridge_id"],
+                    "max_pressure_mpa",
+                    existing["value"],
+                    service,
+                )
+                if key in recorded:
+                    continue
+                recorded.add(key)
                 conflicts.append(
                     {
                         "entity": rec["cartridge_id"],

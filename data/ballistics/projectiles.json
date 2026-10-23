@@ -447,6 +447,19 @@
     "value": "G1 and G7",
     "source": "berger_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 17.272,
+    "unit": "mm",
+    "source": "berger_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2503,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -510,6 +523,19 @@
     "value": "G1 and G7",
     "source": "berger_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 25.781,
+    "unit": "mm",
+    "source": "berger_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2132,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -576,6 +602,19 @@
     "value": "G1 and G7",
     "source": "berger_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 24.4094,
+    "unit": "mm",
+    "source": "berger_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2201,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -693,6 +732,19 @@
     "value": "G1 and G7",
     "source": "berger_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 24.4602,
+    "unit": "mm",
+    "source": "berger_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2241,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -759,6 +811,19 @@
     "value": "G1 and G7",
     "source": "berger_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 26.6954,
+    "unit": "mm",
+    "source": "berger_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -822,6 +887,19 @@
     "value": "G1 and G7",
     "source": "berger_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 27.7114,
+    "unit": "mm",
+    "source": "berger_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.1956,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -885,6 +963,19 @@
     "value": "G1 and G7",
     "source": "berger_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 31.8516,
+    "unit": "mm",
+    "source": "berger_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.1692,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -1008,6 +1099,19 @@
     "value": "G1 and G7",
     "source": "berger_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 29.6418,
+    "unit": "mm",
+    "source": "berger_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.1833,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -1065,6 +1169,19 @@
     "value": "G1 and G7",
     "source": "berger_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 21.1582,
+    "unit": "mm",
+    "source": "berger_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.281,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -1128,6 +1245,19 @@
     "value": "G1 and G7",
     "source": "berger_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 26.67,
+    "unit": "mm",
+    "source": "berger_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2371,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -1191,6 +1321,19 @@
     "value": "G1 and G7",
     "source": "berger_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 27.1526,
+    "unit": "mm",
+    "source": "berger_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2374,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -1254,6 +1397,19 @@
     "value": "G1 and G7",
     "source": "berger_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 31.0642,
+    "unit": "mm",
+    "source": "berger_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2051,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -1383,6 +1539,19 @@
     "value": "G1 and G7",
     "source": "berger_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 34.2392,
+    "unit": "mm",
+    "source": "berger_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.1861,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -1446,6 +1615,19 @@
     "value": "G1 and G7",
     "source": "berger_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 32.004,
+    "unit": "mm",
+    "source": "berger_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.1992,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -1626,6 +1808,19 @@
     "value": "G1 and G7",
     "source": "berger_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 26.4668,
+    "unit": "mm",
+    "source": "berger_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2357,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -2001,6 +2196,19 @@
     "value": "G1 and G7",
     "source": "berger_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 35.9664,
+    "unit": "mm",
+    "source": "berger_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.1981,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -2058,6 +2266,19 @@
     "value": "G1 and G7",
     "source": "berger_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 30.1752,
+    "unit": "mm",
+    "source": "berger_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2363,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -2118,6 +2339,19 @@
     "value": "G1 and G7",
     "source": "berger_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 35.7378,
+    "unit": "mm",
+    "source": "berger_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.1984,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -2175,6 +2409,19 @@
     "value": "G1 and G7",
     "source": "berger_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 33.6296,
+    "unit": "mm",
+    "source": "berger_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2201,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -2238,6 +2485,19 @@
     "value": "G1 and G7",
     "source": "berger_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 35.6362,
+    "unit": "mm",
+    "source": "berger_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2098,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -2301,6 +2561,19 @@
     "value": "G1 and G7",
     "source": "berger_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 30.9626,
+    "unit": "mm",
+    "source": "berger_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2386,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -2550,6 +2823,19 @@
     "value": "G1 and G7",
     "source": "berger_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 35.8902,
+    "unit": "mm",
+    "source": "berger_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2106,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -2604,6 +2890,19 @@
     "value": "G1 and G7",
     "source": "berger_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 38.4556,
+    "unit": "mm",
+    "source": "berger_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.1965,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -2790,6 +3089,19 @@
     "value": "G1 and G7",
     "source": "berger_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 38.4048,
+    "unit": "mm",
+    "source": "berger_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.1985,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -2916,6 +3228,19 @@
     "value": "G1 and G7",
     "source": "berger_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 33.655,
+    "unit": "mm",
+    "source": "berger_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.224,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -2979,6 +3304,19 @@
     "value": "G1 and G7",
     "source": "berger_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 30.734,
+    "unit": "mm",
+    "source": "berger_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2627,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -3042,6 +3380,19 @@
     "value": "G1 and G7",
     "source": "berger_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 32.3596,
+    "unit": "mm",
+    "source": "berger_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.253,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -3108,6 +3459,19 @@
     "value": "G1 and G7",
     "source": "berger_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 32.8676,
+    "unit": "mm",
+    "source": "berger_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.256,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -3297,6 +3661,19 @@
     "value": "G1 and G7",
     "source": "berger_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 37.846,
+    "unit": "mm",
+    "source": "berger_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2218,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -3363,6 +3740,19 @@
     "value": "G1 and G7",
     "source": "berger_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 34.8488,
+    "unit": "mm",
+    "source": "berger_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2548,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -3426,6 +3816,19 @@
     "value": "G1 and G7",
     "source": "berger_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 38.2524,
+    "unit": "mm",
+    "source": "berger_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2301,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -3552,6 +3955,19 @@
     "value": "G1 and G7",
     "source": "berger_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 40.005,
+    "unit": "mm",
+    "source": "berger_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2179,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -3612,6 +4028,19 @@
     "value": "G1 and G7",
     "source": "berger_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 40.6654,
+    "unit": "mm",
+    "source": "berger_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2161,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -3798,6 +4227,19 @@
     "value": "G1 and G7",
     "source": "berger_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 32.1818,
+    "unit": "mm",
+    "source": "berger_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2612,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -3861,6 +4303,19 @@
     "value": "G1 and G7",
     "source": "berger_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 41.8592,
+    "unit": "mm",
+    "source": "berger_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2098,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -3924,6 +4379,19 @@
     "value": "G1 and G7",
     "source": "berger_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 38.1508,
+    "unit": "mm",
+    "source": "berger_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2278,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -4050,6 +4518,19 @@
     "value": "G1 and G7",
     "source": "berger_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 31.8262,
+    "unit": "mm",
+    "source": "berger_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2747,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -4113,6 +4594,19 @@
     "value": "G1 and G7",
     "source": "berger_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 33.7312,
+    "unit": "mm",
+    "source": "berger_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2946,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -4176,6 +4670,19 @@
     "value": "G1 and G7",
     "source": "berger_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 33.3756,
+    "unit": "mm",
+    "source": "berger_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.3076,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -4239,6 +4746,19 @@
     "value": "G1 and G7",
     "source": "berger_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 42.3672,
+    "unit": "mm",
+    "source": "berger_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2422,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -4302,6 +4822,19 @@
     "value": "G1 and G7",
     "source": "berger_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 31.1912,
+    "unit": "mm",
+    "source": "berger_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.3232,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -4434,6 +4967,19 @@
     "value": "G1 and G7",
     "source": "berger_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 37.338,
+    "unit": "mm",
+    "source": "berger_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2784,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -4497,6 +5043,19 @@
     "value": "G1 and G7",
     "source": "berger_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 31.0642,
+    "unit": "mm",
+    "source": "berger_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.3128,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -4875,6 +5434,19 @@
     "value": "G1 and G7",
     "source": "berger_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 37.8206,
+    "unit": "mm",
+    "source": "berger_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2667,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -4938,6 +5510,19 @@
     "value": "G1 and G7",
     "source": "berger_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 40.5892,
+    "unit": "mm",
+    "source": "berger_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2494,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -5115,6 +5700,19 @@
     "value": "G1 and G7",
     "source": "berger_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 40.5638,
+    "unit": "mm",
+    "source": "berger_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2525,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -5169,6 +5767,19 @@
     "value": "G1 and G7",
     "source": "berger_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 45.085,
+    "unit": "mm",
+    "source": "berger_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2282,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -5484,6 +6095,19 @@
     "value": "G1 and G7",
     "source": "berger_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 34.8234,
+    "unit": "mm",
+    "source": "berger_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2931,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -5667,6 +6291,19 @@
     "value": "G1 and G7",
     "source": "berger_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 34.925,
+    "unit": "mm",
+    "source": "berger_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2841,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -5727,6 +6364,19 @@
     "value": "G1 and G7",
     "source": "berger_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 37.7698,
+    "unit": "mm",
+    "source": "berger_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2705,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -5964,6 +6614,19 @@
     "value": "G1 and G7",
     "source": "berger_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 41.3258,
+    "unit": "mm",
+    "source": "berger_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2864,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -6027,6 +6690,19 @@
     "value": "G1 and G7",
     "source": "berger_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 46.1264,
+    "unit": "mm",
+    "source": "berger_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2672,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -6216,6 +6892,19 @@
     "value": "G1 and G7",
     "source": "berger_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 56.7944,
+    "unit": "mm",
+    "source": "berger_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2446,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -6276,6 +6965,19 @@
     "value": "G1 and G7",
     "source": "berger_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 59.6138,
+    "unit": "mm",
+    "source": "berger_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2369,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -12443,6 +13145,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 24.13,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2663,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -12481,6 +13196,30 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 28.448,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "bc_g7": {
+    "value": 0.177,
+    "source": "apg_litz_g7",
+    "grade": "corroborated",
+    "drag_model": "G7",
+    "basis": "independent_measurement",
+    "edition": "2012-11-06",
+    "corroborated_by": [
+     "litz_dfrl"
+    ]
+   },
+   "required_twist_m": {
+    "value": 0.2218,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -12525,6 +13264,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 21.717,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2412,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -12569,6 +13321,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 28.194,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2432,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -12613,6 +13378,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 30.861,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2287,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -12657,6 +13435,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 24.4348,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.3065,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -12698,6 +13489,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 29.718,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2584,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -12736,6 +13540,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 33.1978,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2328,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -12780,6 +13597,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 30.988,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2596,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -12824,6 +13654,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 34.29,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2407,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -12865,6 +13708,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 33.02,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2626,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -12903,6 +13759,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 34.544,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2356,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -12947,6 +13816,30 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 35.56,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "bc_g7": {
+    "value": 0.212,
+    "source": "apg_litz_g7",
+    "grade": "corroborated",
+    "drag_model": "G7",
+    "basis": "independent_measurement",
+    "edition": "2012-11-06",
+    "corroborated_by": [
+     "litz_dfrl"
+    ]
+   },
+   "required_twist_m": {
+    "value": 0.2338,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -12991,6 +13884,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 35.179,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2452,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -13035,6 +13941,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 32.8422,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2835,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -13079,6 +13998,30 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 32.766,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "bc_g7": {
+    "value": 0.188,
+    "source": "apg_litz_g7",
+    "grade": "corroborated",
+    "drag_model": "G7",
+    "basis": "independent_measurement",
+    "edition": "2012-11-06",
+    "corroborated_by": [
+     "litz_dfrl"
+    ]
+   },
+   "required_twist_m": {
+    "value": 0.2983,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -13123,6 +14066,27 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 29.972,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "bc_g7": {
+    "value": 0.184,
+    "source": "litz_dfrl",
+    "grade": "measured",
+    "drag_model": "G7",
+    "basis": "independent_measurement",
+    "edition": "USAFA DFRL research report, 17-01-2012"
+   },
+   "required_twist_m": {
+    "value": 0.3543,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -13167,6 +14131,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 38.862,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2688,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -13208,6 +14185,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 26.162,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.4181,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -13246,6 +14236,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 36.83,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.3212,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -13287,6 +14290,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 30.48,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.4074,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -13331,6 +14347,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 22.86,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2402,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -13372,6 +14401,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 14.097,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2019,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -13407,6 +14449,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 14.097,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2019,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -13442,6 +14497,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 15.24,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.267,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -13477,6 +14545,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 19.05,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2654,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -13512,6 +14593,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 16.891,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2812,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -13550,6 +14644,27 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 20.193,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "bc_g7": {
+    "value": 0.13,
+    "source": "apg_litz_g7",
+    "grade": "measured",
+    "drag_model": "G7",
+    "basis": "independent_measurement",
+    "edition": "2012-11-06"
+   },
+   "required_twist_m": {
+    "value": 0.2562,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -13591,6 +14706,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 19.05,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2998,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -13635,6 +14763,27 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 24.892,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "bc_g7": {
+    "value": 0.193,
+    "source": "apg_litz_g7",
+    "grade": "measured",
+    "drag_model": "G7",
+    "basis": "independent_measurement",
+    "edition": "2012-11-06"
+   },
+   "required_twist_m": {
+    "value": 0.2244,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -13676,6 +14825,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 19.939,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2812,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -13714,6 +14876,27 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 25.146,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "bc_g7": {
+    "value": 0.165,
+    "source": "apg_litz_g7",
+    "grade": "measured",
+    "drag_model": "G7",
+    "basis": "independent_measurement",
+    "edition": "2012-11-06"
+   },
+   "required_twist_m": {
+    "value": 0.2434,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -13758,6 +14941,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 27.559,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2261,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -13802,6 +14998,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 28.448,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2218,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -13846,6 +15055,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 28.194,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2432,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -13890,6 +15112,27 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "bc_g7": {
+    "value": 0.204,
+    "source": "apg_litz_g7",
+    "grade": "measured",
+    "drag_model": "G7",
+    "basis": "independent_measurement",
+    "edition": "2012-11-06"
+   },
+   "length_mm": {
+    "value": 30.861,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2287,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -13940,6 +15183,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 27.051,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2026,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -13987,6 +15243,27 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "bc_g7": {
+    "value": 0.184,
+    "source": "litz_dfrl",
+    "grade": "measured",
+    "drag_model": "G7",
+    "basis": "independent_measurement",
+    "edition": "USAFA DFRL research report, 17-01-2012"
+   },
+   "length_mm": {
+    "value": 29.972,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.3543,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -14031,6 +15308,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 27.432,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2595,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -14075,6 +15365,27 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 30.988,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "bc_g7": {
+    "value": 0.214,
+    "source": "apg_litz_g7",
+    "grade": "measured",
+    "drag_model": "G7",
+    "basis": "independent_measurement",
+    "edition": "2012-11-06"
+   },
+   "required_twist_m": {
+    "value": 0.2383,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -14119,6 +15430,27 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 22.225,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "bc_g7": {
+    "value": 0.143,
+    "source": "apg_litz_g7",
+    "grade": "measured",
+    "drag_model": "G7",
+    "basis": "independent_measurement",
+    "edition": "2012-11-06"
+   },
+   "required_twist_m": {
+    "value": 0.2719,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -14160,6 +15492,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 25.908,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2674,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -14198,6 +15543,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 34.29,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.222,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -14242,6 +15600,27 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "bc_g7": {
+    "value": 0.281,
+    "source": "apg_litz_g7",
+    "grade": "measured",
+    "drag_model": "G7",
+    "basis": "independent_measurement",
+    "edition": "2012-11-06"
+   },
+   "length_mm": {
+    "value": 33.1978,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2328,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -14286,6 +15665,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 30.988,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2596,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -14330,6 +15722,27 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 32.9184,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "bc_g7": {
+    "value": 0.227,
+    "source": "litz_dfrl",
+    "grade": "measured",
+    "drag_model": "G7",
+    "basis": "independent_measurement",
+    "edition": "USAFA DFRL research report, 17-01-2012"
+   },
+   "required_twist_m": {
+    "value": 0.2468,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -14374,6 +15787,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 34.29,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2407,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -14424,6 +15850,27 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 28.829,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "bc_g7": {
+    "value": 0.185,
+    "source": "apg_litz_g7",
+    "grade": "measured",
+    "drag_model": "G7",
+    "basis": "independent_measurement",
+    "edition": "2012-11-06"
+   },
+   "required_twist_m": {
+    "value": 0.2835,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -14468,6 +15915,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 35.179,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2452,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -14509,6 +15969,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 37.719,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2229,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -14547,6 +16020,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 31.877,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2648,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -14591,6 +16077,27 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "bc_g7": {
+    "value": 0.229,
+    "source": "apg_litz_g7",
+    "grade": "measured",
+    "drag_model": "G7",
+    "basis": "independent_measurement",
+    "edition": "2012-11-06"
+   },
+   "length_mm": {
+    "value": 33.02,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2604,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -14635,6 +16142,27 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "bc_g7": {
+    "value": 0.167,
+    "source": "apg_litz_g7",
+    "grade": "measured",
+    "drag_model": "G7",
+    "basis": "independent_measurement",
+    "edition": "2012-11-06"
+   },
+   "length_mm": {
+    "value": 26.924,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.3442,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -14676,6 +16204,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 24.13,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.401,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -14714,6 +16255,27 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "bc_g7": {
+    "value": 0.203,
+    "source": "apg_litz_g7",
+    "grade": "measured",
+    "drag_model": "G7",
+    "basis": "independent_measurement",
+    "edition": "2012-11-06"
+   },
+   "length_mm": {
+    "value": 30.988,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.3083,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -14758,6 +16320,27 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "bc_g7": {
+    "value": 0.227,
+    "source": "apg_litz_g7",
+    "grade": "measured",
+    "drag_model": "G7",
+    "basis": "independent_measurement",
+    "edition": "2012-11-06"
+   },
+   "length_mm": {
+    "value": 32.766,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2983,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -14802,6 +16385,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 30.48,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.3341,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -14846,6 +16442,27 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "bc_g7": {
+    "value": 0.241,
+    "source": "apg_litz_g7",
+    "grade": "measured",
+    "drag_model": "G7",
+    "basis": "independent_measurement",
+    "edition": "2012-11-06"
+   },
+   "length_mm": {
+    "value": 34.544,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2886,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -14890,6 +16507,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 37.211,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2864,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -14931,6 +16561,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 20.447,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 1.0844,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -14966,6 +16609,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 32.512,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.3296,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -15001,6 +16657,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 24.13,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.401,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -15036,6 +16705,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 23.368,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.3943,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -15074,6 +16756,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 21.717,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2412,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -15118,6 +16813,27 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "bc_g7": {
+    "value": 0.207,
+    "source": "litz_dfrl",
+    "grade": "measured",
+    "drag_model": "G7",
+    "basis": "independent_measurement",
+    "edition": "USAFA DFRL research report, 17-01-2012"
+   },
+   "length_mm": {
+    "value": 30.226,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2793,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -15159,6 +16875,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 16.256,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2439,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -15194,6 +16923,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 33.655,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.3305,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -15232,6 +16974,27 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 37.719,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "bc_g7": {
+    "value": 0.25,
+    "source": "litz_dfrl",
+    "grade": "measured",
+    "drag_model": "G7",
+    "basis": "independent_measurement",
+    "edition": "USAFA DFRL research report, 17-01-2012"
+   },
+   "required_twist_m": {
+    "value": 0.2677,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -15273,6 +17036,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 19.558,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2847,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -15308,6 +17084,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 27.051,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2449,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -15343,6 +17132,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 29.845,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2453,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -15381,6 +17183,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 40.513,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2948,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -15425,6 +17240,30 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 39.116,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "bc_g7": {
+    "value": 0.232,
+    "source": "apg_litz_g7",
+    "grade": "corroborated",
+    "drag_model": "G7",
+    "basis": "independent_measurement",
+    "edition": "2012-11-06",
+    "corroborated_by": [
+     "litz_dfrl"
+    ]
+   },
+   "required_twist_m": {
+    "value": 0.2196,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -15466,6 +17305,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 21.082,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2365,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -15501,6 +17353,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 13.208,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.3687,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -15536,6 +17401,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 27.2288,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2425,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -15574,6 +17452,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 32.639,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2386,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -15618,6 +17509,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 28.4988,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2931,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -15662,6 +17566,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 29.083,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.3024,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -15706,6 +17623,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 24.2824,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.4363,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -15750,6 +17680,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 28.321,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.3508,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -15794,6 +17737,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 30.099,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.3372,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -15835,6 +17791,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 21.9964,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.6212,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -15870,6 +17839,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 20.447,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.8261,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -15905,6 +17887,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 20.447,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 1.0844,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -15940,6 +17935,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 17.907,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2591,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -15975,6 +17983,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 20.32,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2421,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -16013,6 +18034,27 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "bc_g7": {
+    "value": 0.13,
+    "source": "apg_litz_g7",
+    "grade": "measured",
+    "drag_model": "G7",
+    "basis": "independent_measurement",
+    "edition": "2012-11-06"
+   },
+   "length_mm": {
+    "value": 20.574,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2495,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -16057,6 +18099,27 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "bc_g7": {
+    "value": 0.143,
+    "source": "apg_litz_g7",
+    "grade": "measured",
+    "drag_model": "G7",
+    "basis": "independent_measurement",
+    "edition": "2012-11-06"
+   },
+   "length_mm": {
+    "value": 23.241,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.255,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -16098,6 +18161,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 24.7904,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.8014,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -16133,6 +18209,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 25.781,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2552,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -16168,6 +18257,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 17.4498,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 1.0178,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -16203,6 +18305,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 19.6596,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 1.0278,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -16238,6 +18353,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 14.224,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.905,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -16273,6 +18401,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 16.002,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.8518,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -16308,6 +18449,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 34.925,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.4214,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -16343,6 +18497,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 34.671,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.37,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -16378,6 +18545,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 32.258,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.4324,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -16413,6 +18593,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 19.685,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.6786,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -16448,6 +18641,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 18.3134,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 1.0597,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -16486,6 +18692,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 33.909,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.4605,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -16527,6 +18746,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 15.494,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 1.1832,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -16562,6 +18794,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 13.462,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 1.3754,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -16597,6 +18842,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 12.9794,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.9723,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -16632,6 +18890,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 37.8206,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.3666,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -16667,6 +18938,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 12.5476,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 1.1817,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -16702,6 +18986,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 13.589,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 1.1389,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -16737,6 +19034,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 17.78,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 1.0991,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -16772,6 +19082,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 15.748,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 1.0493,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -16807,6 +19130,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 14.4272,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.8967,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -16877,6 +19213,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 16.129,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 1.2518,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -16912,6 +19261,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 17.1196,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.9986,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -16947,6 +19309,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 18.923,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.1966,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -16982,6 +19357,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 18.542,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2307,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -17017,6 +19405,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 19.8882,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2233,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -17052,6 +19453,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 24.13,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2142,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -17090,6 +19504,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 24.511,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.3421,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -17131,6 +19558,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 22.86,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2045,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -17166,6 +19606,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 33.655,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.3305,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -17207,6 +19660,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 31.496,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2029,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -17253,6 +19719,19 @@
     "value": "G1 and G7",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 36.068,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2062,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -17302,6 +19781,19 @@
     "value": "G1 and G7",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 38.227,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.1959,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -17337,6 +19829,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 24.384,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.9276,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -17372,6 +19877,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 34.671,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.37,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -17410,6 +19928,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 28.448,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2218,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -17454,6 +19985,27 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "bc_g7": {
+    "value": 0.204,
+    "source": "apg_litz_g7",
+    "grade": "measured",
+    "drag_model": "G7",
+    "basis": "independent_measurement",
+    "edition": "2012-11-06"
+   },
+   "length_mm": {
+    "value": 30.861,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2287,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -17498,6 +20050,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 30.988,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2596,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -17542,6 +20107,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 34.29,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2407,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -17586,6 +20164,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 31.877,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2648,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -17630,6 +20221,27 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "bc_g7": {
+    "value": 0.229,
+    "source": "apg_litz_g7",
+    "grade": "measured",
+    "drag_model": "G7",
+    "basis": "independent_measurement",
+    "edition": "2012-11-06"
+   },
+   "length_mm": {
+    "value": 33.02,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2604,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -17674,6 +20286,27 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "bc_g7": {
+    "value": 0.203,
+    "source": "apg_litz_g7",
+    "grade": "measured",
+    "drag_model": "G7",
+    "basis": "independent_measurement",
+    "edition": "2012-11-06"
+   },
+   "length_mm": {
+    "value": 30.988,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.3083,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -17718,6 +20351,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 33.1978,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2954,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -17762,6 +20408,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 27.0764,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.374,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -17806,6 +20465,27 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "bc_g7": {
+    "value": 0.241,
+    "source": "apg_litz_g7",
+    "grade": "measured",
+    "drag_model": "G7",
+    "basis": "independent_measurement",
+    "edition": "2012-11-06"
+   },
+   "length_mm": {
+    "value": 34.544,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2886,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -17850,6 +20530,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 34.036,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.3394,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -17891,6 +20584,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 18.542,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2263,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -17929,6 +20635,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 27.432,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.3352,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -17979,6 +20698,27 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "bc_g7": {
+    "value": 0.193,
+    "source": "apg_litz_g7",
+    "grade": "measured",
+    "drag_model": "G7",
+    "basis": "independent_measurement",
+    "edition": "2012-11-06"
+   },
+   "length_mm": {
+    "value": 24.892,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2244,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -18037,6 +20777,19 @@
     "value": "G1 and G7",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 24.511,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2188,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -18081,6 +20834,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 38.862,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2688,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -18125,6 +20891,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 29.083,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.3433,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -18169,6 +20948,27 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "bc_g7": {
+    "value": 0.218,
+    "source": "apg_litz_g7",
+    "grade": "measured",
+    "drag_model": "G7",
+    "basis": "independent_measurement",
+    "edition": "2012-11-06"
+   },
+   "length_mm": {
+    "value": 30.48,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.3341,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -18221,6 +21021,19 @@
     "value": "G1 and G7",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 31.496,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.3253,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -18273,6 +21086,19 @@
     "value": "G1 and G7",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 33.528,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2912,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -18317,6 +21143,27 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "bc_g7": {
+    "value": 0.113,
+    "source": "apg_litz_g7",
+    "grade": "measured",
+    "drag_model": "G7",
+    "basis": "independent_measurement",
+    "edition": "2012-11-06"
+   },
+   "length_mm": {
+    "value": 18.542,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2812,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -18369,6 +21216,19 @@
     "value": "G1 and G7",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 31.75,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.1987,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -18413,6 +21273,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 34.1122,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.302,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -18457,6 +21330,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 30.48,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2471,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -18501,6 +21387,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 32.766,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2787,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -18553,6 +21452,19 @@
     "value": "G1 and G7",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 39.116,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2258,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -18605,6 +21517,19 @@
     "value": "G1 and G7",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 38.5064,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2662,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -18660,6 +21585,19 @@
     "value": "G1 and G7",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 28.829,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.1903,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -18706,6 +21644,19 @@
     "value": "G1 and G7",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 43.815,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.288,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -18764,6 +21715,19 @@
     "value": "G1 and G7",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 27.178,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.1974,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -18816,6 +21780,19 @@
     "value": "G1 and G7",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 34.798,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2094,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -18865,6 +21842,19 @@
     "value": "G1 and G7",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 34.29,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.1857,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -18903,6 +21893,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 43.815,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.288,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -18947,6 +21950,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 38.608,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.3822,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -18991,6 +22007,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 29.972,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2334,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -19035,6 +22064,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 25.019,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2123,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -19079,6 +22121,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 31.496,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.3253,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -19123,6 +22178,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 36.83,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.3212,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -19164,6 +22232,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 35.052,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.3116,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -19199,6 +22280,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 35.052,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.4089,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -19237,6 +22331,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 37.719,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2677,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -19281,6 +22388,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 32.893,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.247,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -19325,6 +22445,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 34.163,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.242,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -19369,6 +22502,27 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "bc_g7": {
+    "value": 0.246,
+    "source": "apg_litz_g7",
+    "grade": "measured",
+    "drag_model": "G7",
+    "basis": "independent_measurement",
+    "edition": "2012-11-06"
+   },
+   "length_mm": {
+    "value": 35.052,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2826,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -19418,6 +22572,19 @@
     "value": "G1 and G7",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 38.481,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2132,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -19456,6 +22623,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 44.45,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.282,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -19500,6 +22680,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 35.179,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2452,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -19544,6 +22737,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 32.766,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2634,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -19588,6 +22794,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 31.242,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2566,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -19632,6 +22851,27 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "bc_g7": {
+    "value": 0.228,
+    "source": "apg_litz_g7",
+    "grade": "measured",
+    "drag_model": "G7",
+    "basis": "independent_measurement",
+    "edition": "2012-11-06"
+   },
+   "length_mm": {
+    "value": 32.766,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2983,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -19682,6 +22922,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 27.559,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2261,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -19726,6 +22979,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 34.036,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.3394,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -19770,6 +23036,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 30.48,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.3157,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -19814,6 +23093,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 33.147,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2248,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -19858,6 +23150,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 39.8018,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.3025,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -19902,6 +23207,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 40.513,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2948,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -19946,6 +23264,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 31.496,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.3599,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -19990,6 +23321,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 34.925,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2161,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -20039,6 +23383,19 @@
     "value": "G1 and G7",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 43.18,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2766,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -20085,6 +23442,19 @@
     "value": "G1 and G7",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 34.671,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2774,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -20137,6 +23507,19 @@
     "value": "G1 and G7",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 47.625,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2549,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -20189,6 +23572,19 @@
     "value": "G1 and G7",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 39.116,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2196,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -20241,6 +23637,19 @@
     "value": "G1 and G7",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 39.878,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2529,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -20293,6 +23702,19 @@
     "value": "G1 and G7",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 35.56,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2338,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -20345,6 +23767,19 @@
     "value": "G1 and G7",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 35.306,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2306,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -20397,6 +23832,19 @@
     "value": "G1 and G7",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 36.703,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2024,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -20449,6 +23897,19 @@
     "value": "G1 and G7",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 38.1,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2236,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -20501,6 +23962,19 @@
     "value": "G1 and G7",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 34.798,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2086,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -20551,6 +24025,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 29.972,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2001,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -20595,6 +24082,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 37.719,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.254,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -20639,6 +24139,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 36.2458,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.3099,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -20680,6 +24193,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 34.671,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.3004,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -20715,6 +24241,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 42.672,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.295,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -20753,6 +24292,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 34.163,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2253,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -20797,6 +24349,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 40.005,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2849,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -20841,6 +24406,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 32.8422,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2835,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -20882,6 +24460,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 37.8206,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.3666,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -20917,6 +24508,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 27.813,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.3083,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -20955,6 +24559,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 42.672,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2733,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -20996,6 +24613,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 28.575,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.3155,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -21034,6 +24664,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 35.941,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2632,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -21078,6 +24721,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 36.195,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2278,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -21122,6 +24778,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 29.591,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.3294,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -21172,6 +24841,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 30.861,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2133,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -21216,6 +24898,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 22.606,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2179,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -21257,6 +24952,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 34.925,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.394,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   }
  },
@@ -21295,6 +25003,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 34.29,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2055,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -21339,6 +25060,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 34.544,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2356,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -21383,6 +25117,19 @@
     "value": "G1",
     "source": "nosler_bullets",
     "grade": "claimed"
+   },
+   "length_mm": {
+    "value": 32.258,
+    "unit": "mm",
+    "source": "nosler_bullets",
+    "grade": "claimed"
+   },
+   "required_twist_m": {
+    "value": 0.2603,
+    "unit": "m per turn",
+    "formula": "T = sqrt(30 m / (SG L (1 + (L/d)^2))) at SG=1.5; Miller twist rule; shape-blind, assumes a boat tail",
+    "source": "miller_rule",
+    "grade": "derived"
    }
   },
   "applied_ballistics": {
@@ -23652,6 +27399,14 @@
     "value": "G1",
     "source": "sierra_bullets",
     "grade": "claimed"
+   },
+   "bc_g7": {
+    "value": 0.204,
+    "source": "apg_litz_g7",
+    "grade": "measured",
+    "drag_model": "G7",
+    "basis": "independent_measurement",
+    "edition": "2012-11-06"
    }
   },
   "applied_ballistics": {
@@ -24868,6 +28623,14 @@
     "value": "G1",
     "source": "sierra_bullets",
     "grade": "claimed"
+   },
+   "bc_g7": {
+    "value": 0.22,
+    "source": "apg_litz_g7",
+    "grade": "measured",
+    "drag_model": "G7",
+    "basis": "independent_measurement",
+    "edition": "2012-11-06"
    }
   },
   "applied_ballistics": {
@@ -25068,6 +28831,17 @@
     "value": "G1",
     "source": "sierra_bullets",
     "grade": "claimed"
+   },
+   "bc_g7": {
+    "value": 0.289,
+    "source": "apg_litz_g7",
+    "grade": "corroborated",
+    "drag_model": "G7",
+    "basis": "independent_measurement",
+    "edition": "2012-11-06",
+    "corroborated_by": [
+     "litz_dfrl"
+    ]
    }
   },
   "applied_ballistics": {

@@ -332,6 +332,7 @@ def main():
         "tools/tests/test_runtime_cartridges.py",
         "tools/tests/test_runtime_projectiles.py",
         "tools/tests/test_runtime_weapons.py",
+        "tools/tests/test_ballistics_build.py",
         "tools/tests/test_stability.py",
         "tools/tests/test_stefan_coefficient.py",
         "tools/tests/test_surface_type_normalisation.py",

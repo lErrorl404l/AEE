@@ -341,61 +341,6 @@
   "date": "2026-09-22"
  },
  {
-  "entity": "9x19",
-  "field": "max_pressure_mpa",
-  "value_a": 235,
-  "source_a": "cip_tdcc",
-  "value_b": 285,
-  "source_b": "nato_epvat",
-  "resolution": "Kept the existing standard value. A CIP or SAAMI pressure and a NATO EPVAT pressure use different test methods.",
-  "rule_applied": "Record both. Do not average.",
-  "date": "2026-09-22"
- },
- {
-  "entity": "50_bmg",
-  "field": "max_pressure_mpa",
-  "value_a": 379.2,
-  "source_a": "mil_specs",
-  "value_b": 450,
-  "source_b": "nato_epvat",
-  "resolution": "Kept the existing standard value. A CIP or SAAMI pressure and a NATO EPVAT pressure use different test methods.",
-  "rule_applied": "Record both. Do not average.",
-  "date": "2026-09-22"
- },
- {
-  "entity": "556x45_nato",
-  "field": "max_pressure_mpa",
-  "value_a": 445,
-  "source_a": "nato_epvat",
-  "value_b": 430,
-  "source_b": "nato_epvat",
-  "resolution": "Kept the existing standard value. A CIP or SAAMI pressure and a NATO EPVAT pressure use different test methods.",
-  "rule_applied": "Record both. Do not average.",
-  "date": "2026-09-22"
- },
- {
-  "entity": "762x51_nato",
-  "field": "max_pressure_mpa",
-  "value_a": 445,
-  "source_a": "nato_epvat",
-  "value_b": 415.2,
-  "source_b": "nato_epvat",
-  "resolution": "Kept the existing standard value. A CIP or SAAMI pressure and a NATO EPVAT pressure use different test methods.",
-  "rule_applied": "Record both. Do not average.",
-  "date": "2026-09-22"
- },
- {
-  "entity": "50_bmg",
-  "field": "max_pressure_mpa",
-  "value_a": 379.2,
-  "source_a": "mil_specs",
-  "value_b": 417.04,
-  "source_b": "nato_epvat",
-  "resolution": "Kept the existing standard value. A CIP or SAAMI pressure and a NATO EPVAT pressure use different test methods.",
-  "rule_applied": "Record both. Do not average.",
-  "date": "2026-09-22"
- },
- {
   "entity": "17_hornet",
   "field": "max_pressure_mpa",
   "value_a": 370.0,
@@ -867,6 +812,83 @@
   "resolution": "Keep both, keyed by the pressure standard. C.I.P. and SAAMI measure pressure by different methods, so the two values are not comparable and are never averaged.",
   "rule_applied": "Record both. Do not average.",
   "date": "2026-10-23"
+ },
+ {
+  "entity": "svd",
+  "field": "twist_m",
+  "value_a": 0.254,
+  "source_a": "svd_tm_or15",
+  "value_b": 0.24,
+  "source_b": "kalashnikov_club_svd_twist",
+  "resolution": "Kept the existing value. Recorded both.",
+  "rule_applied": "Two sources disagree. It is recorded, never averaged.",
+  "date": "2026-09-22"
+ },
+ {
+  "entity": "sw1911proseries",
+  "field": "twist_m",
+  "value_a": 0.4064,
+  "source_a": "sw_1911_government_oem_barrel_275500000",
+  "value_b": 0.254,
+  "source_b": "sig_classic_8501154",
+  "resolution": "Kept the existing value. Recorded both.",
+  "rule_applied": "Two sources disagree. It is recorded, never averaged.",
+  "date": "2026-09-22"
+ },
+ {
+  "entity": "9x19",
+  "field": "max_pressure_mpa",
+  "value_a": 235,
+  "source_a": "cip_tdcc",
+  "value_b": 285,
+  "source_b": "nato_epvat",
+  "resolution": "Kept the existing standard value. A CIP or SAAMI pressure and a NATO EPVAT pressure use different test methods.",
+  "rule_applied": "Record both. Do not average.",
+  "date": "2026-09-22"
+ },
+ {
+  "entity": "50_bmg",
+  "field": "max_pressure_mpa",
+  "value_a": 379.2,
+  "source_a": "mil_specs",
+  "value_b": 450,
+  "source_b": "nato_epvat",
+  "resolution": "Kept the existing standard value. A CIP or SAAMI pressure and a NATO EPVAT pressure use different test methods.",
+  "rule_applied": "Record both. Do not average.",
+  "date": "2026-09-22"
+ },
+ {
+  "entity": "556x45_nato",
+  "field": "max_pressure_mpa",
+  "value_a": 445,
+  "source_a": "nato_epvat",
+  "value_b": 430,
+  "source_b": "nato_epvat",
+  "resolution": "Kept the existing standard value. A CIP or SAAMI pressure and a NATO EPVAT pressure use different test methods.",
+  "rule_applied": "Record both. Do not average.",
+  "date": "2026-09-22"
+ },
+ {
+  "entity": "762x51_nato",
+  "field": "max_pressure_mpa",
+  "value_a": 445,
+  "source_a": "nato_epvat",
+  "value_b": 415.2,
+  "source_b": "nato_epvat",
+  "resolution": "Kept the existing standard value. A CIP or SAAMI pressure and a NATO EPVAT pressure use different test methods.",
+  "rule_applied": "Record both. Do not average.",
+  "date": "2026-09-22"
+ },
+ {
+  "entity": "50_bmg",
+  "field": "max_pressure_mpa",
+  "value_a": 379.2,
+  "source_a": "mil_specs",
+  "value_b": 417.04,
+  "source_b": "nato_epvat",
+  "resolution": "Kept the existing standard value. A CIP or SAAMI pressure and a NATO EPVAT pressure use different test methods.",
+  "rule_applied": "Record both. Do not average.",
+  "date": "2026-09-22"
  },
  {
   "entity": "berger_22422",
@@ -1534,17 +1556,6 @@
   "value_a": 0.504,
   "source_a": "sierra_bullets",
   "value_b": 0.428,
-  "source_b": "litz_dfrl",
-  "resolution": "Kept the manufacturer value. Recorded the measured value.",
-  "rule_applied": "Record both. Do not average.",
-  "date": "2026-09-22"
- },
- {
-  "entity": "sierra_2156",
-  "field": "bc_g7",
-  "value_a": 0.236,
-  "source_a": "sierra_bullets",
-  "value_b": 0.214,
   "source_b": "litz_dfrl",
   "resolution": "Kept the manufacturer value. Recorded the measured value.",
   "rule_applied": "Record both. Do not average.",

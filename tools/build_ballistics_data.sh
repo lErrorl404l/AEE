@@ -56,6 +56,9 @@ step "projectiles: Miller stability" "$V/gen_stability.py"
 # after it.
 step "loads: military documents" "$V/gen_loads_from_mil.py"
 step "loads: velocity anchors" "$V/gen_loads_from_velocity.py"
+# The cannon and grenade loads a data sheet defines leave the table when
+# the military ingest rebuilds it, so the held set is merged back.
+step "loads: cannon and grenade" "$V/gen_loads_from_cannon.py"
 
 # ─── The weapon layer ─────────────────────────────────────────────────────
 step "weapons: catalogue" "$V/gen_weapons.py"
