@@ -21,8 +21,9 @@ It resolves in this order.
            row. This is the route for a class whose display name is a
            fictional Arma designation.
   token    the class is the first engine family row it isKindOf, most
-           specific first, and the row gives the coarse class token. This is
-           the coarse class identity and the type source. The ground order is
+           specific first, and the row gives the coarse class token. The
+           ladder is aee_vehicles_fnc_getEngineToken, shared with the mass
+           estimate. This is the coarse class identity and the type source. The ground order is
            the one aee_mobility_fnc_calculateSSF uses.
   none     no route resolved. The class token is empty. The classifier
            never returns a wrong catalogue entry.
@@ -256,45 +257,10 @@ if (!_resolved && !_isEmplacement && (_massKg > 0)) then {
 
 // ─── Token: the coarse class identity ────────────────────────────────────
 if (!_resolved && !_isEmplacement) then {
-    // Most specific first. The row maps an ENGINE class to the AEE coarse
-    // token. "MRAP", "Wheeled_APC" and "Tracked_APC" are AEE tokens, not
-    // CfgVehicles classes, so they are the value of a row and never the
-    // selector. The ground order follows the aee_mobility_fnc_calculateSSF
-    // track table. The chains come from the shipped PBO configs (hemtt
-    // derapify, 2026-10-18):
-    //   MRAP_01_base_F : Car_F : Car
-    //   MRAP_02_base_F : Car_F : Car
-    //   MRAP_03_base_F : Car_F : Car
-    //   Wheeled_APC_F  : Car_F : Car
-    //   APC_Tracked_01_base_F : Tank_F : Tank
-    //   APC_Tracked_02_base_F : Tank_F : Tank
-    //   APC_Tracked_03_base_F : Tank_F : Tank
-    //   Truck_F : Car_F : Car
-    //   Truck : Car
-    // Every MRAP and Wheeled_APC_F is kindOf Car, and every APC_Tracked is
-    // kindOf Tank, so those rows precede Car and Tank. Truck_F and Truck are
-    // kindOf Car, so they precede Car too. A class reaches one engine family
-    // only, so the family order does not change a land match.
-    private _vehicleTokens = [
-        ["MRAP_01_base_F", "MRAP"],
-        ["MRAP_02_base_F", "MRAP"],
-        ["MRAP_03_base_F", "MRAP"],
-        ["Wheeled_APC_F", "Wheeled_APC"],
-        ["APC_Tracked_01_base_F", "Tracked_APC"],
-        ["APC_Tracked_02_base_F", "Tracked_APC"],
-        ["APC_Tracked_03_base_F", "Tracked_APC"],
-        ["Truck_F", "Truck"],
-        ["Truck", "Truck"],
-        ["Tank", "Tank"],
-        ["Car", "Car"],
-        ["Helicopter", "Helicopter"],
-        ["Plane", "Plane"],
-        ["Ship", "Ship"]
-    ];
-    {
-        _x params ["_familyClass", "_familyToken"];
-        if (_vehicle isKindOf _familyClass) exitWith { _classToken = _familyToken; };
-    } forEach _vehicleTokens;
+    // The ladder is shared with the mass estimate, so it lives in
+    // aee_vehicles_fnc_getEngineToken. The token is the coarse class
+    // identity and it is never a catalogue id.
+    _classToken = [_vehicle] call FUNC(getEngineToken);
     if (_classToken != "") then { _matchedBy = "token"; };
 };
 

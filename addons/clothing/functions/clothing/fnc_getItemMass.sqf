@@ -8,19 +8,35 @@ tools/validation/gen_equipment_data.py and must not be edited by hand.
 
 A classname carries a family keyword (pvs14, peq15, prc152, alice). The
 table holds the median published mass for each family and category, with
-the number of published rows behind it. A classname that carries no known
-family falls to the type rung: the caller's stated slot names the kind of
-item, and the answer is that kind with no figure, never a guessed mass.
+the number of published rows behind it.
 
 A caller that knows the slot category passes it as the second argument, so
 a family keyword shared by two categories (a pack and a belt named ALICE)
 resolves to the right row.
 
+The answer carries one grade, in this order:
+
+  sourced      the classname itself names a researched family, so the
+               figure is that family's published mass.
+  family       a published family mass the class does not name: the
+               nearest ancestor names it, or the engine-mass band selects
+               it. The trace states the family that answered.
+  engine_mass  no published figure exists, but the class declares an
+               engine config mass. The answer is the ENGINE value in kg,
+               never a published one, and the grade says so.
+  type         no published figure and no engine mass. The caller's slot
+               names the kind of item, so the kind is stated and the mass
+               stays 0.
+  zero         nothing is known about the item, so the mass is 0.
+
+A figure is never guessed. The engine mass is the last value before zero
+because it is the engine's own statement about the class.
+
 Arguments:
   0: item (STRING, a classname, default "")
   1: allowed categories (ARRAY of STRING, default [] = any)
 
-Returns the published mass in kg, or 0 when no family matches.
+Returns the mass in kg, or 0 when no family, band or engine mass answers.
 */
 
 params [["_item", "", [""]], ["_allowed", [], [[]]]];
@@ -440,12 +456,14 @@ private _TABLE = [
 private _match = 0;
 private _family = "";
 private _familyCategory = "";
+private _grade = "zero";
 {
     _x params ["_familyName", "_category", "_mass"];
     if ((_allowed isEqualTo [] || {_category in _allowed}) && {_hay find _familyName >= 0}) exitWith {
         _match = _mass;
         _family = _familyName;
         _familyCategory = _category;
+        _grade = "sourced";
     };
 } forEach _TABLE;
 
@@ -466,6 +484,7 @@ if (_known == "" && _allowed isNotEqualTo []) then { _known = _allowed select 0;
 if (_known != "" && _familyCategory != "" && _familyCategory != _known) then {
     _match = 0;
     _family = "";
+    _grade = "zero";
 };
 
 // ─── Inherited: the nearest ancestor the table names ────────────────────
@@ -495,15 +514,15 @@ if (_match == 0) then {
 if (_inherited > 0) then {
     _match = _inherited;
     _family = _inheritedFamily;
+    _grade = "family";
 };
 
-// ─── Band: the live item mass ────────────────────────────────────────────
-// An item whose identity text carries no family keyword is matched by its
-// own config mass against the researched family masses of its category.
-// The config mass is the engine's identity signal, never a source value. A
-// miss stays 0, exactly as before.
-if ((_match == 0) && (_known != "")) then {
-    private _liveMass = 0;
+// ─── Engine mass: the class's own config mass ────────────────────────────
+// The engine mass is the band's identity signal and the last figure the
+// resolver may return. It is the engine's own value in 0.1 lb units,
+// converted to kg, and it is never a published figure.
+private _liveMass = 0;
+if (_match == 0) then {
     {
         private _bandCfg = configFile >> _x >> _item;
         if (isClass _bandCfg) exitWith {
@@ -515,14 +534,33 @@ if ((_match == 0) && (_known != "")) then {
             _liveMass = _liveMass * ENGINE_MASS_UNIT_KG;
         };
     } forEach ["CfgWeapons", "CfgVehicles", "CfgGlasses"];
+};
+
+// ─── Band: the live item mass ────────────────────────────────────────────
+// An item whose identity text carries no family keyword is matched by its
+// own config mass against the researched family masses of its category.
+// The config mass is the engine's identity signal, never a source value. A
+// miss falls to the engine mass itself.
+if ((_match == 0) && (_known != "")) then {
     if (_liveMass > 0) then {
         private _band = [call FUNC(getEquipmentBands), _known, _liveMass, 0]
             call FUNC(selectBand);
         if (_band isNotEqualTo []) then {
             _match = _band select 2;
             _family = _band select 0;
+            _grade = "family";
         };
     };
+};
+
+// ─── Engine mass: the last figure before zero ────────────────────────────
+// No published figure names the item, but the class declares its own mass.
+// The answer is the engine value in kg and the grade is engine_mass, so it
+// is never presented as a published one.
+if ((_match == 0) && (_liveMass > 0)) then {
+    _match = _liveMass;
+    _family = "";
+    _grade = "engine_mass";
 };
 
 // The trace names what resolved and, when nothing did, says so: an item
@@ -537,10 +575,11 @@ private _typeName = "";
 if ((_allowed isNotEqualTo []) && {(_allowed select 0) != ""}) then {
     _typeName = _allowed select 0;
 };
-if (_typeName != "") then {
+if ((_match == 0) && (_typeName != "")) then {
     _family = _typeName;
+    _grade = "type";
 };
 
-private _logMsg = format ["item mass: %1 -> %2 kg (family '%3', grade '%4')", _item, _match, _family, (["family", "type"] select (_match == 0 && _typeName != ""))];
+private _logMsg = format ["item mass: %1 -> %2 kg (family '%3', grade '%4')", _item, _match, _family, _grade];
 AEE_LOG_DEBUG(_logMsg);
 _match

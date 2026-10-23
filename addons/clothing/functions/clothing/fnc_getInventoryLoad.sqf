@@ -22,8 +22,9 @@ The engine commands give each classname once per instance:
   only when the engine does not report them as assigned.
 - weaponCargo - the weapons stowed in the backpack.
 
-An unknown item resolves to 0 (fnc_getItemMass): it is unknown, not
-guessed, and the coverage test reports it.
+An item with no published family resolves through fnc_getItemMass: the
+engine mass when the class declares one, labelled engine_mass, then 0. No
+figure is guessed, and the coverage test reports the zero.
 
 Argument:
   0: unit (OBJECT, default player)

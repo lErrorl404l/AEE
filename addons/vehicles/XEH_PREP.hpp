@@ -13,6 +13,7 @@ PREP(calculateFuelRate);
 PREP(calculateRoadLoad);
 PREP(classifyVehicle);
 PREP(getFuelData);
+PREP(getEngineToken);
 PREP(getVehicleBands);
 PREP(getVehicleData);
 PREP(getVehicleGeometry);
