@@ -109,12 +109,18 @@ def parse_dfrl():
         ["pdftotext", "-layout", str(PDF), "-"], capture_output=True, text=True
     ).stdout
     rows = []
-    brand = ""
+    pending = []
     caption = re.compile(r"Table \d+:.*?(Barnes|Hornady|Sierra|Nosler)", re.S)
     for line in text.splitlines():
         cap = caption.search(line)
         if cap:
-            brand = cap.group(1)
+            # The report prints each table's caption below its rows, so a
+            # row is labelled by the caption that follows it and never by
+            # the one that came before.
+            for row in pending:
+                row["brand"] = cap.group(1)
+            rows.extend(pending)
+            pending = []
             continue
         m = ROW.match(line)
         if not m:
@@ -125,7 +131,7 @@ def parse_dfrl():
             return None if x == "NT" else float(x)
 
         row = {
-            "brand": brand,
+            "brand": "",
             "style": style.strip(),
             "diameter_in": float(dia),
             "mass_gr": float(mass),
@@ -136,8 +142,10 @@ def parse_dfrl():
             "overestimate_pct": float(over),
         }
         if 0.1 <= row["diameter_in"] <= 0.8:
-            rows.append(row)
-    return rows
+            pending.append(row)
+    # A row block with no caption under it is unlabelled, and an unlabelled
+    # row cannot name a maker. It is dropped rather than guessed.
+    return [row for row in rows if row["brand"]]
 
 
 def main():
@@ -150,6 +158,7 @@ def main():
                 "url": URL_G7,
                 "retrieved": "2026-09-22",
                 "sha256": sha(XLS),
+                "capture": "local-cache-only",
                 "bullets": g7,
             },
             indent=1,
@@ -164,6 +173,7 @@ def main():
                 "url": URL_DFRL,
                 "retrieved": "2026-09-22",
                 "sha256": sha(PDF),
+                "capture": "local-cache-only",
                 "bullets": dfrl,
             },
             indent=1,

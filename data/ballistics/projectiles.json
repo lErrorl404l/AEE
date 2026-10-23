@@ -22506,10 +22506,13 @@
    "bc_g7": {
     "value": 0.246,
     "source": "apg_litz_g7",
-    "grade": "measured",
+    "grade": "corroborated",
     "drag_model": "G7",
     "basis": "independent_measurement",
-    "edition": "2012-11-06"
+    "edition": "2012-11-06",
+    "corroborated_by": [
+     "litz_dfrl"
+    ]
    },
    "length_mm": {
     "value": 35.052,
@@ -22855,10 +22858,13 @@
    "bc_g7": {
     "value": 0.228,
     "source": "apg_litz_g7",
-    "grade": "measured",
+    "grade": "corroborated",
     "drag_model": "G7",
     "basis": "independent_measurement",
-    "edition": "2012-11-06"
+    "edition": "2012-11-06",
+    "corroborated_by": [
+     "litz_dfrl"
+    ]
    },
    "length_mm": {
     "value": 32.766,
@@ -28614,10 +28620,13 @@
    "bc_g1": {
     "value": 0.436,
     "source": "sierra_bullets",
-    "grade": "claimed",
+    "grade": "corroborated",
     "drag_model": "G1",
     "basis": "maker_published_secondary",
-    "edition": "current"
+    "edition": "current",
+    "corroborated_by": [
+     "litz_dfrl"
+    ]
    },
    "drag_model": {
     "value": "G1",
@@ -28627,10 +28636,13 @@
    "bc_g7": {
     "value": 0.22,
     "source": "apg_litz_g7",
-    "grade": "measured",
+    "grade": "corroborated",
     "drag_model": "G7",
     "basis": "independent_measurement",
-    "edition": "2012-11-06"
+    "edition": "2012-11-06",
+    "corroborated_by": [
+     "litz_dfrl"
+    ]
    }
   },
   "applied_ballistics": {
