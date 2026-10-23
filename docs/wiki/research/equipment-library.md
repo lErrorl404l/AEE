@@ -290,11 +290,23 @@ captures under `data/equipment/sources/` (schema:
 `data/equipment/SCHEMA.md`). A capture names a lowercase family keyword that
 a classname carries (`pvs14`, `peq15`, `prc152`, `alice`), and the table
 holds the median published mass for that family and category, with the
-number of published rows behind it. An unknown classname returns 0: it is
-unknown, not guessed, and `test_inventory_load.py` fails when a capture
-lands without a regenerated resolver. The slot classifiers consult the same
-table first, so a published family mass outranks the tier value; armour,
-NIR and clo stay with the tier.
+number of published rows behind it. The resolver states one grade with every
+answer, in this order:
+
+| Grade | The figure it returns |
+|---|---|
+| `sourced` | The classname names a researched family, and the answer is that family's published mass. |
+| `family` | A published family mass the class does not name. The nearest ancestor names the family, or the engine-mass band selects one. |
+| `engine_mass` | No published figure exists, so the answer is the class's own engine config mass in kg. The engine mass is an ENGINE value, never a published one, and the grade states that. |
+| `type` | No published figure and no engine mass. The caller's slot names the kind of item, the trace states that kind, and the mass is 0. |
+| `zero` | Nothing is known about the item. The mass is 0, labelled as zero. |
+
+A class that declares no engine mass still returns 0, labelled. The engine
+config mass is in 0.1 lb units and the resolver converts it with
+`ENGINE_MASS_UNIT_KG`. No figure is guessed, and `test_inventory_load.py`
+fails when a capture lands without a regenerated resolver. The slot
+classifiers consult the same table first, so a published family mass
+outranks the tier value; armour, NIR and clo stay with the tier.
 
 The engine `load` command returns 0..1 of a container's capacity, a
 fraction and not a mass. An earlier version added that fraction to the
@@ -303,8 +315,9 @@ ratio semantics.
 
 ### The derived tier (planned, ADR-001 measure-from-model)
 
-An item with no capture and no family keyword resolves to 0 today. The next
-tier measures the item's own model, the principle `fnc_measureBarrel`
+An item with no capture and no family keyword returns its engine mass when
+the class declares one, and 0 otherwise. The next tier measures the item's
+own model, the principle `fnc_measureBarrel`
 already uses (ADR-001). `boundingBoxReal` returns the real dimensions in
 metres, so a locally created simple object (`createSimpleObject`) yields an
 envelope volume; the mass follows as envelope volume x effective density,

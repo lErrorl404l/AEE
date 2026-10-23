@@ -309,6 +309,92 @@ class TestInventoryWalkExecutes(unittest.TestCase):
         self.assertAlmostEqual(total, 4.0, places=3)
 
 
+class TestEngineMassGrade(unittest.TestCase):
+    """The grade ladder: sourced, family, engine_mass, then zero.
+
+    A retextured uniform names no published family and its slot resolves to
+    the type rung, so the old resolver returned 0 kg and the item weighed
+    nothing in play. The class still declares an engine config mass, and
+    the resolver now returns it as grade engine_mass: the ENGINE value, in
+    kg, never a published figure.
+
+    The resolver is executed from the shipped SQF with the config reads
+    stubbed, so the rung order is proven, not read.
+    """
+
+    ENGINE_MASS_UNIT_KG = 0.045359237
+
+    def _resolve(self, item="V_ZzzTest", allowed=(), mass=22, band=None, ancestor=""):
+        band = [] if band is None else band
+        own = f"/CfgWeapons/{item}"
+        is_class = lambda path: path == own or (ancestor != "" and path == ancestor)
+        globals_ = {
+            "configFile": "",
+            "isClass": is_class,
+            "getText": lambda path: "",
+            "getNumber": lambda path: mass if path.endswith("/mass") else 0,
+            "inheritsFrom": lambda path: ancestor if path == own and ancestor else "",
+            "configName": lambda path: "rhs_pvs14",
+            "missionNamespace": {},
+            "AEE_LOG_DEBUG": lambda message: None,
+            "__FUNC__getEquipmentBands": lambda: [],
+            "__FUNC__selectBand": lambda table, category, mass_kg, reserved: band,
+        }
+        return run_sqf(
+            CLOTHING / "fnc_getItemMass.sqf", [item, list(allowed)], globals_
+        )
+
+    def test_a_class_with_no_published_family_returns_its_engine_mass(self):
+        # No family keyword, no ancestor, no band row: the config mass is the
+        # only figure left, and it is returned in kg.
+        mass = self._resolve(mass=22, allowed=["uniform"])
+        self.assertAlmostEqual(mass, 22 * self.ENGINE_MASS_UNIT_KG, places=6)
+
+    def test_a_class_with_no_engine_mass_still_returns_zero(self):
+        self.assertEqual(self._resolve(mass=0, allowed=["uniform"]), 0.0)
+
+    def test_a_sourced_family_figure_still_beats_the_engine_mass(self):
+        mass = self._resolve(item="rhs_pvs14", allowed=["nv"], mass=22)
+        self.assertAlmostEqual(mass, 0.35, places=3)
+
+    def test_an_inherited_family_figure_still_beats_the_engine_mass(self):
+        mass = self._resolve(
+            item="V_TestChild",
+            allowed=["nv"],
+            mass=22,
+            ancestor="/CfgWeapons/rhs_pvs14",
+        )
+        self.assertAlmostEqual(mass, 0.35, places=3)
+
+    def test_a_band_figure_still_beats_the_engine_mass(self):
+        mass = self._resolve(
+            allowed=["uniform"], mass=22, band=["acu", "uniform", 1.34, 0]
+        )
+        self.assertAlmostEqual(mass, 1.34, places=3)
+
+    def test_the_grade_vocabulary_is_stated_and_ordered(self):
+        # The trace names the rung, so an engine value is never reported as
+        # a published one.
+        order = [
+            FNC_ITEM.index('_grade = "sourced";'),
+            FNC_ITEM.index('_grade = "family";'),
+            FNC_ITEM.index('_grade = "engine_mass";'),
+            FNC_ITEM.index('_grade = "type";'),
+        ]
+        self.assertEqual(order, sorted(order), "the grade rungs are out of order")
+        self.assertIn('private _grade = "zero";', FNC_ITEM)
+        self.assertIn("family '%3', grade '%4'", FNC_ITEM)
+        self.assertIn("_item, _match, _family, _grade];", FNC_ITEM)
+
+    def test_the_engine_mass_is_the_engine_value_never_a_published_row(self):
+        # The engine rung returns the config mass itself, converted to kg. It
+        # does not select a published family row, and its label says so.
+        block = FNC_ITEM[FNC_ITEM.index('_grade = "engine_mass";') :]
+        self.assertIn("_match = _liveMass;", FNC_ITEM)
+        self.assertNotIn("selectBand", block)
+        self.assertNotIn("_band select 2", block)
+
+
 class TestMagazineLoadRowShape(unittest.TestCase):
     """A magazinesAmmoFull row is [classname, round count, isLoaded, ...].
 
