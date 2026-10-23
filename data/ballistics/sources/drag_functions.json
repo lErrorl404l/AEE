@@ -4,7 +4,6 @@
  "sha256": "dd1bbc31f16d3819e70cb0d96cd331097998d1689e67b177dd5bd73694c7d9d7",
  "note": "Standard projectile drag curves Cd(Mach) from the JBM Ballistics drag function tables (R. L. McCoy, Modern Exterior Ballistics). Values were read from the machine-readable C# tables in gehtsoft-usa/BallisticCalculator1 at BallisticCalculator/Drag/<model>DragTable.cs. Each table was verified point by point against the JBM primary text files mcg1.txt, mcg2.txt, mcg5.txt, mcg6.txt, mcg7.txt, mcg8.txt, mcgi.txt, mcgs.txt and ra4.txt. The live JBM paths now return 404, so the Wayback Machine copies at https://web.archive.org/web/2024id_/http://www.jbmballistics.com/ballistics/downloads/text/ were used. The sha256 covers the concatenation of the nine raw C# files in model order G1, G2, G5, G6, G7, G8, GI, GS, RA4. G3 and G4 are not published in this source set. GL does not exist. The APFSDS model is the SCHAPIRO curve reused as a placeholder under the cannon label: Cd is low and nearly flat (0.102 at Mach 0 to 0.118 at Mach 5) with a small transonic rise. It is not a measured APFSDS curve and it has no source of its own (see placeholder_models). A measured APFSDS drag curve is not held and is phase-2 work.",
  "sources": {
-  "APFSDS": "https://github.com/gehtsoft-usa/BallisticCalculator1/tree/main/BallisticCalculator/Drag",
   "G1": "https://github.com/gehtsoft-usa/BallisticCalculator1/tree/main/BallisticCalculator/Drag",
   "G2": "https://github.com/gehtsoft-usa/BallisticCalculator1/tree/main/BallisticCalculator/Drag",
   "G5": "https://github.com/gehtsoft-usa/BallisticCalculator1/tree/main/BallisticCalculator/Drag",
@@ -19,6 +18,12 @@
   "RA4": "https://github.com/gehtsoft-usa/BallisticCalculator1/tree/main/BallisticCalculator/Drag",
   "RWS1943": "https://github.com/gehtsoft-usa/BallisticCalculator1/tree/main/BallisticCalculator/Drag",
   "SCHAPIRO": "https://github.com/gehtsoft-usa/BallisticCalculator1/tree/main/BallisticCalculator/Drag"
+ },
+ "placeholder_models": {
+  "APFSDS": {
+   "reuses": "SCHAPIRO",
+   "note": "The APFSDS label reuses the SCHAPIRO curve. No measured APFSDS drag curve is held, so the model carries no source of its own."
+  }
  },
  "models": {
   "APFSDS": [
