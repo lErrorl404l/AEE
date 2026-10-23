@@ -187,6 +187,7 @@ def main():
         "tools/tests/test_missile_seeker.py",
         "tools/tests/test_interior_ballistics.py",
         "tools/tests/test_ballistic_coefficient.py",
+        "tools/tests/test_ballistic_verifier.py",
         "tools/tests/test_armour_database.py",
         "tools/tests/test_derivation.py",
         "tools/tests/test_vehicle_weapons.py",
