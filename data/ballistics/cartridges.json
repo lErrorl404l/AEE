@@ -13631,7 +13631,17 @@
    "year_created": "",
    "classification_source": "gdots_30x173"
   },
-  "standards": []
+  "standards": [
+   {
+    "standard": "NATO",
+    "document": "STANAG 4624, 30 mm x 173 Ammunition",
+    "designation": "30 mm x 173",
+    "datasheet": "AEP-4624 and AOP-4624 Edition A, technical performance specification",
+    "edition": "Edition 2, 2024-10-30",
+    "locator": "interchangeability specification, scope",
+    "authoritative": true
+   }
+  ]
  },
  {
   "cartridge_id": "310_cadet_rifle",
@@ -22525,7 +22535,17 @@
     "grade": "claimed"
    }
   },
-  "standards": []
+  "standards": [
+   {
+    "standard": "C.I.P.",
+    "document": "TDCC, Tables of Dimensions of Cartridges and Chambers",
+    "designation": "40 x 46 DEFTEC",
+    "datasheet": "tabxcal-en-page17.pdf",
+    "edition": "revision 2008-04-15",
+    "locator": "Tab X other weapons",
+    "authoritative": true
+   }
+  ]
  },
  {
   "cartridge_id": "40x53",

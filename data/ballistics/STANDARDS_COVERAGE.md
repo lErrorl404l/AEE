@@ -5,10 +5,10 @@ Do not edit by hand.
 
 | Basis | Cartridges |
 |---|---|
-| C.I.P. TDCC | 557 |
+| C.I.P. TDCC | 558 |
 | SAAMI Z299 | 173 |
-| NATO or military manual only | 11 |
-| No held standard | 6 |
+| NATO or military manual only | 12 |
+| No held standard | 4 |
 | Total | 678 |
 
 A cartridge can cite more than one standard. The counts overlap.
@@ -17,7 +17,41 @@ A cartridge can cite more than one standard. The counts overlap.
 
 - `125mm_2a46`
 - `145x114`
-- `30x173`
-- `40x46_sr`
 - `58x42`
 - `77x58_arisaka`
+
+## Searches recorded
+
+Each entry records what was searched for a cartridge that no held standard defines, and what the search returned. An absent pressure stays absent.
+
+### `125mm_2a46`
+
+- C.I.P. TDCC: all twelve tables enumerated. No 120 mm and no 125 mm cartridge is registered.
+- SAAMI Z299: no 125 mm cartridge is registered.
+- NATO: no tank-gun ammunition standard found. STANAG 4624 covers 30 mm x 173 only.
+- The held Yugoimport M88 sheet states no chamber pressure, so none is entered. Figures of 510 MPa and 650 MPa circulate in encyclopaedic sources with no primary citation, so they are not entered.
+
+### `145x114`
+
+- C.I.P. TDCC: no 14,5 designation in any of the twelve tables. The nearest Soviet entry is 5,45 x 39.
+- SAAMI Z299: no 14.5 x 114 entry.
+- No public military manual, proof-house sheet or drawing found that states the case dimensions or the maximum pressure. A figure of 360 MPa circulates with no primary citation, so it is not entered.
+
+### `40x46_sr`
+
+- C.I.P. Tab X registers the case twice, as 40 x 46 DEFTEC and as 40 x 46 BDLR X, and never under the United States military designation. A search for the military designation alone misses it.
+- SAAMI Z299: does not register 40 x 46.
+- TM 43-0001-28, held, gives the M406 and M433 rounds, the 40 mm calibre and the muzzle velocity, and states no chamber pressure for either.
+
+### `58x42`
+
+- C.I.P. TDCC and SAAMI Z299: not registered, and no 5,8 designation exists in either.
+- DSIAC technical inquiry, Information on the 5.8- x 42-mm DBP10 Round, 8 July 2019: states that the material and ballistic data were supplied privately and were classified, and publishes no dimension and no pressure. This is positive evidence that the defining data is not public.
+- No GJB number could be verified from a public register.
+
+### `77x58_arisaka`
+
+- C.I.P. TDCC: only 6,5 x 51 R (Arisaka) is registered. No 7,7 designation exists in any table.
+- SAAMI Z299.4: no Arisaka entry and no 7.7 x 58 entry.
+- Catalog of Enemy Ordnance Materiel (1945), held as coe_1945_part2, gives the designations and prints a chamber-pressure row, but the scan of that row is not legible, so no pressure is entered from it.
+

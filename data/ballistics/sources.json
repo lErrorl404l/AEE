@@ -18494,5 +18494,20 @@
   "licence": "manufacturer published data",
   "primary_held": true,
   "note": "Weapon twist source."
+ },
+ {
+  "source_id": "stanag_4624",
+  "tier": 2,
+  "type": "standard",
+  "title": "STANAG 4624, technical performance specification providing for the interchangeability of 30 mm x 173 ammunition, with AEP-4624 and AOP-4624 Edition A",
+  "edition": "Edition 2, 2024-10-30",
+  "identifier": "STANAG 4624 Ed. 2:2024",
+  "locator": "scope and interchangeability specification",
+  "published": "2024",
+  "retrieved": "2026-10-23",
+  "url": "https://shop.standards.ie/en-ie/standards/stanag-4624-ed-2-2024-737144_saig_nato_nato_3505041/",
+  "licence": "NATO standard, sold through the national standards bodies",
+  "primary_held": false,
+  "note": "The public catalogue listing states the title, the edition and the date, and that it supersedes the 2012 edition. The technical text is not public, so no case dimension, no pressure and no twist is entered from it."
  }
 ]
