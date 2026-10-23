@@ -1,4 +1,4 @@
-# ADR-046: An independent ballistic verifier
+# ADR-047: An independent ballistic verifier
 
 Status: accepted. This record fixes the reference solver, its licence position,
 the dependency pin, the validation of the solver against published tables, the

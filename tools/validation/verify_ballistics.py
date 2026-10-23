@@ -13,7 +13,7 @@ Comparison contract
 -------------------
 Solver            py-ballisticcalc 3.1.1, LGPL-3.0, pinned in
                   tools/requirements-tooling.txt and never vendored. See
-                  docs/adr/ADR-046-independent-ballistic-verifier.md.
+                  docs/adr/ADR-047-independent-ballistic-verifier.md.
 Zero distance     100 m, on both sides.
 Sight height      40 mm, the value the published reference tables use.
 Atmosphere        ISA sea level: 15.0 C, 1013.25 hPa, 0 % relative humidity.
