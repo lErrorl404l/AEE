@@ -63,6 +63,19 @@ BORE_CARTRIDGE = {
 }
 BORE_TOLERANCE_MM = 0.02
 
+# Sheet titles the cartridge register spells another way. Each pair is the
+# same chambering under two conventions: the manual's title on the left, the
+# name the register holds on the right. A title with no pair and no register
+# match is left out rather than guessed.
+SHEET_ALIAS = {
+    "8 x 57mm Mauser": "8mm Mauser (8 x 57)",
+    "375 H&H Magnum": ".375 Holland & Holland Magnum",
+    "6.5 x 55mm Swedish": "6.5 x 55 Swedish",
+    "8mm Remington Magnum": "8 mm Rem. Mag.",
+    "38 Super Auto +P": ".38 Super Automatic +P",
+    "9 x 21mm": "9 x 21",
+}
+
 
 def norm(text: str) -> str:
     return re.sub(r"[^a-z0-9]+", "", (text or "").lower())
@@ -117,7 +130,8 @@ def main() -> int:
 
     rows = {}
     for row in extract["loads"]:
-        cartridge_id = by_name.get(norm(row["section"]))
+        title = SHEET_ALIAS.get(row["section"], row["section"])
+        cartridge_id = by_name.get(norm(title))
         if cartridge_id is None:
             continue
         record = by_part.get(str(row["part"]).lstrip("0"))

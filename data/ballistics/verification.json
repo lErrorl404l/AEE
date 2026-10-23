@@ -10431,6 +10431,118 @@
    "drift_bias": 0.0014
   },
   {
+   "projectile_id": "sierra_2400",
+   "names": [
+    "8mm 150 gr SPT Pro-Hunter"
+   ],
+   "model": "G1",
+   "bc": 0.336,
+   "mv_ms": 823.0,
+   "load_id": "8mm_mauser_8_x_57_sierra_2400",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.064,
+   "worst_drop_error_over_tolerance": 0.17,
+   "worst_drift_error_over_tolerance": 0.131,
+   "worst_tof_error_over_tolerance": 0.282,
+   "drift_bias": 0.0011
+  },
+  {
+   "projectile_id": "sierra_2410",
+   "names": [
+    "8mm 175 gr SPT Pro-Hunter"
+   ],
+   "model": "G1",
+   "bc": 0.381,
+   "mv_ms": 731.5,
+   "load_id": "8mm_mauser_8_x_57_sierra_2410",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.062,
+   "worst_drop_error_over_tolerance": 0.051,
+   "worst_drift_error_over_tolerance": 0.071,
+   "worst_tof_error_over_tolerance": 0.607,
+   "drift_bias": 0.0016
+  },
+  {
+   "projectile_id": "sierra_2415",
+   "names": [
+    "8mm 200 gr HPBT MatchKing (SMK)"
+   ],
+   "model": "G7",
+   "bc": 0.256,
+   "mv_ms": 670.6,
+   "load_id": "8mm_mauser_8_x_57_sierra_2415",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.043,
+   "worst_drop_error_over_tolerance": 0.218,
+   "worst_drift_error_over_tolerance": 0.109,
+   "worst_tof_error_over_tolerance": 0.433,
+   "drift_bias": 0.0019
+  },
+  {
+   "projectile_id": "sierra_2420",
+   "names": [
+    "8mm 220 gr SBT GameKing (SGK)"
+   ],
+   "model": "G7",
+   "bc": 0.261,
+   "mv_ms": 609.6,
+   "load_id": "8mm_mauser_8_x_57_sierra_2420",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.046,
+   "worst_drop_error_over_tolerance": 0.132,
+   "worst_drift_error_over_tolerance": 0.084,
+   "worst_tof_error_over_tolerance": 0.557,
+   "drift_bias": 0.0022
+  },
+  {
    "projectile_id": "sierra_2600",
    "names": [
     "338 Cal 250 gr SBT GameKing (SGK)"
@@ -10541,6 +10653,88 @@
    "worst_drift_error_over_tolerance": 0.089,
    "worst_tof_error_over_tolerance": 0.389,
    "drift_bias": 0.0018
+  },
+  {
+   "projectile_id": "sierra_2900",
+   "names": [
+    "375 Cal 200 gr FN Pro-Hunter"
+   ],
+   "model": "G1",
+   "bc": 0.195,
+   "mv_ms": 655.3,
+   "load_id": "375_holland_holland_magnum_sierra_2900",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.058,
+   "worst_drop_error_over_tolerance": 0.12,
+   "worst_drift_error_over_tolerance": 0.077,
+   "worst_tof_error_over_tolerance": 0.274,
+   "drift_bias": 0.0006
+  },
+  {
+   "projectile_id": "sierra_2950",
+   "names": [
+    "375 Cal 250 gr SBT GameKing (SGK)"
+   ],
+   "model": "G7",
+   "bc": 0.186,
+   "mv_ms": 823.0,
+   "load_id": "375_holland_holland_magnum_sierra_2950",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.066,
+   "worst_drop_error_over_tolerance": 0.3,
+   "worst_drift_error_over_tolerance": 0.136,
+   "worst_tof_error_over_tolerance": 0.303,
+   "drift_bias": 0.0014
+  },
+  {
+   "projectile_id": "sierra_3000",
+   "names": [
+    "375 Cal 300 gr SBT GameKing (SGK)"
+   ],
+   "model": "G7",
+   "bc": 0.239,
+   "mv_ms": 762.0,
+   "load_id": "375_holland_holland_magnum_sierra_3000",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.051,
+   "worst_drop_error_over_tolerance": 0.314,
+   "worst_drift_error_over_tolerance": 0.135,
+   "worst_tof_error_over_tolerance": 0.219,
+   "drift_bias": 0.0012
   },
   {
    "projectile_id": "sierra_7160",
@@ -11305,8 +11499,8 @@
   }
  ],
  "counts": {
-  "compared": 397,
-  "unmatched": 271,
+  "compared": 404,
+  "unmatched": 264,
   "trajectory_disagreements": 0,
   "gross_disagreements": 0,
   "form_factor_flags": 122,
@@ -14983,34 +15177,6 @@
    "note": "no declared muzzle velocity"
   },
   {
-   "projectile_id": "sierra_2400",
-   "names": [
-    "8mm 150 gr SPT Pro-Hunter"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "sierra_2410",
-   "names": [
-    "8mm 175 gr SPT Pro-Hunter"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "sierra_2415",
-   "names": [
-    "8mm 200 gr HPBT MatchKing (SMK)"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "sierra_2420",
-   "names": [
-    "8mm 220 gr SBT GameKing (SGK)"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
    "projectile_id": "sierra_2755",
    "names": [
     "35 Cal 155 gr FN Pro-Hunter"
@@ -15028,27 +15194,6 @@
    "projectile_id": "sierra_2850",
    "names": [
     "35 Cal 225 gr SBT GameKing (SGK)"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "sierra_2900",
-   "names": [
-    "375 Cal 200 gr FN Pro-Hunter"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "sierra_2950",
-   "names": [
-    "375 Cal 250 gr SBT GameKing (SGK)"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "sierra_3000",
-   "names": [
-    "375 Cal 300 gr SBT GameKing (SGK)"
    ],
    "note": "no declared muzzle velocity"
   },

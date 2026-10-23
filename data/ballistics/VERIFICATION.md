@@ -114,8 +114,8 @@ The machine-readable report lists all 122 flags.
 
 ## Counts
 
-- compared: 397
-- unmatched: 271
+- compared: 404
+- unmatched: 264
 - trajectory disagreements: 0
 - gross disagreements: 0
 - form factor flags: 122
@@ -152,6 +152,6 @@ None.
 - berger_24428: no declared muzzle velocity.
 - berger_24429: no declared muzzle velocity.
 - berger_24430: no declared muzzle velocity.
-- and 251 more.
+- and 244 more.
 
 No corpus value is changed by this tool. A flagged value is a follow-up item.

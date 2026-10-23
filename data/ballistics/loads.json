@@ -32001,6 +32001,138 @@
   }
  },
  {
+  "load_id": "375_holland_holland_magnum_sierra_2900",
+  "cartridge_id": "375_holland_holland_magnum",
+  "projectile": "375 Cal 200 gr FN Pro-Hunter",
+  "note": "Sierra accuracy load for 375 Cal 200 gr FN Pro-Hunter in the 375 H&H Magnum sheet: 38.7 gr SR i, 2150 fps in a 25 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".375 Holland & Holland Magnum",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "375 Cal 200 gr FN Pro-Hunter",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 635.0,
+      "mv_ms": 655.3
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2150 fps x 0.3048 m/s per fps; 25 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 2.508,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "38.7 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "SR i",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "375_holland_holland_magnum_sierra_2950",
+  "cartridge_id": "375_holland_holland_magnum",
+  "projectile": "375 Cal 250 gr SBT GameKing",
+  "note": "Sierra accuracy load for 375 Cal 250 gr SBT GameKing (SGK) in the 375 H&H Magnum sheet: 67.9 gr no IMR, 2700 fps in a 25 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".375 Holland & Holland Magnum",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "375 Cal 250 gr SBT GameKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 635.0,
+      "mv_ms": 823.0
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2700 fps x 0.3048 m/s per fps; 25 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 4.4,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "67.9 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "no IMR",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "375_holland_holland_magnum_sierra_3000",
+  "cartridge_id": "375_holland_holland_magnum",
+  "projectile": "375 Cal 300 gr SBT GameKing",
+  "note": "Sierra accuracy load for 375 Cal 300 gr SBT GameKing (SGK) in the 375 H&H Magnum sheet: 66.7 gr IMR, 2500 fps in a 25 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".375 Holland & Holland Magnum",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "375 Cal 300 gr SBT GameKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 635.0,
+      "mv_ms": 762.0
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2500 fps x 0.3048 m/s per fps; 25 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 4.322,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "66.7 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "IMR",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
   "load_id": "375_rem_ultra_mag_300_gr_dgs",
   "cartridge_id": "375_rem_ultra_mag",
   "projectile": "300 gr DGS",
@@ -44909,6 +45041,182 @@
     ],
     "unit": "mm, m/s",
     "source": "lapua_velocity",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "8mm_mauser_8_x_57_sierra_2400",
+  "cartridge_id": "8mm_mauser_8_x_57",
+  "projectile": "8mm 150 gr SPT Pro-Hunter",
+  "note": "Sierra accuracy load for 8mm 150 gr SPT Pro-Hunter in the 8 x 57mm Mauser sheet: 50.8 gr Varget, 2700 fps in a 23 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": "8mm Mauser (8 x 57)",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "8mm 150 gr SPT Pro-Hunter",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 584.2,
+      "mv_ms": 823.0
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2700 fps x 0.3048 m/s per fps; 23 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 3.292,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "50.8 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "Varget",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "8mm_mauser_8_x_57_sierra_2410",
+  "cartridge_id": "8mm_mauser_8_x_57",
+  "projectile": "8mm 175 gr SPT Pro-Hunter",
+  "note": "Sierra accuracy load for 8mm 175 gr SPT Pro-Hunter in the 8 x 57mm Mauser sheet: 47.4 gr Viht N, 2400 fps in a 23 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": "8mm Mauser (8 x 57)",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "8mm 175 gr SPT Pro-Hunter",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 584.2,
+      "mv_ms": 731.5
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2400 fps x 0.3048 m/s per fps; 23 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 3.071,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "47.4 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "Viht N",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "8mm_mauser_8_x_57_sierra_2415",
+  "cartridge_id": "8mm_mauser_8_x_57",
+  "projectile": "8mm 200 gr HPBT MatchKing",
+  "note": "Sierra accuracy load for 8mm 200 gr HPBT MatchKing (SMK) in the 8 x 57mm Mauser sheet: 42.0 gr IMR-, 2200 fps in a 23 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": "8mm Mauser (8 x 57)",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "8mm 200 gr HPBT MatchKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 584.2,
+      "mv_ms": 670.6
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2200 fps x 0.3048 m/s per fps; 23 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 2.722,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "42.0 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "IMR-",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "8mm_mauser_8_x_57_sierra_2420",
+  "cartridge_id": "8mm_mauser_8_x_57",
+  "projectile": "8mm 220 gr SBT GameKing",
+  "note": "Sierra accuracy load for 8mm 220 gr SBT GameKing (SGK) in the 8 x 57mm Mauser sheet: 39.0 gr IMR-, 2000 fps in a 23 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": "8mm Mauser (8 x 57)",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "8mm 220 gr SBT GameKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 584.2,
+      "mv_ms": 609.6
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2000 fps x 0.3048 m/s per fps; 23 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 2.527,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "39.0 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "IMR-",
+    "source": "sierra_reloading_manual",
     "grade": "claimed"
    }
   }
