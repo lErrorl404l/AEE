@@ -40,6 +40,9 @@ step "found data: pressures, twists, lengths" "$V/gen_found_data.py"
 # The reference twists and the records no register holds, after the
 # register tools and the found data, so nothing overwrites a held value.
 step "cartridges: reference twists" "$V/gen_cartridge_standards.py"
+# The standard that defines each cartridge, with its designation, edition
+# and locator. Runs after every cartridge merge, so no record is missed.
+step "cartridges: standards register" "$V/gen_cartridge_citations.py"
 
 step "projectiles: corroboration" "$V/gen_bc_corroboration.py"
 # A derived value is deliberately absent from the database.
