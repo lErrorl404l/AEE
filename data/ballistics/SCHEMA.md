@@ -54,3 +54,27 @@ A projectile holds `bc_g1` or `bc_g7`, never a converted value. Each
 coefficient names its drag model in the field name. The source states
 whether the value is a measurement or a maker claim, and the gate grades
 it from that source.
+
+## Form-factor review
+
+The independent verifier screens every G7 record against a form-factor band
+derived from the corpus, and flags a record outside the band. A flag is a
+question for a person, and `form_factor_review` records the answer:
+
+```json
+"form_factor_review": {
+ "decision": "genuine",
+ "reason": "Berger states this G7 coefficient and its own G7 form factor of 0.976 for the same bullet; the form factor of 0.978 below the band is the bullet's long ogive and is not a coefficient fault.",
+ "evidence": ["berger_bullets"],
+ "reviewed": "2026-10-23"
+}
+```
+
+The decision is one of `genuine`, `source_error`, `unit_error` or
+`unsupported`. Only `genuine` leaves the record outside the band. The other
+three say the value was corrected or withdrawn, so the record must leave the
+flag list, and the verifier reports a review that did not. `evidence` names
+the sources that state the value, and the data gate rejects an entry whose
+evidence is empty or names an unknown source. Reviews are written in
+`data/ballistics/form_factor_reviews.json` and copied onto the record by
+`gen_projectiles.py`, so a rebuild cannot lose them.
