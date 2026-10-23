@@ -7,7 +7,7 @@ Do not edit by hand.
 |---|---|
 | C.I.P. TDCC | 558 |
 | SAAMI Z299 | 173 |
-| NATO or military manual only | 12 |
+| NATO or military manual | 11 |
 | No held standard | 4 |
 | Total | 678 |
 

@@ -423,7 +423,14 @@ def main():
         for c in conflicts
     }
     added = 0
-    counts = {"SAAMI": 0, "C.I.P.": 0, "NATO": 0, "Military manual": 0, "none": 0}
+    counts = {
+        "SAAMI": 0,
+        "C.I.P.": 0,
+        "NATO": 0,
+        "Military manual": 0,
+        "NATO or military manual": 0,
+        "none": 0,
+    }
     without = []
     for record in db:
         entries = build_entries(record, cip, saami, by_id, editions)
@@ -432,8 +439,15 @@ def main():
             counts["none"] += 1
             without.append(record["cartridge_id"])
             continue
+        armed = ("NATO", "Military manual")
+        if any(e["standard"] in armed for e in entries):
+            # One cartridge is one row, whether one armed service document
+            # or two cite it. The two names are added together never.
+            counts["NATO or military manual"] += 1
         for name in counts:
-            if name != "none" and any(e["standard"] == name for e in entries):
+            if name not in ("none", "NATO or military manual") and any(
+                e["standard"] == name for e in entries
+            ):
                 counts[name] += 1
         row = pressure_conflicts(record, entries, seen)
         if row:
@@ -448,7 +462,7 @@ def main():
     write_coverage(db, counts, without)
     print(
         f"citations: {len(db)} cartridges, SAAMI {counts['SAAMI']}, "
-        f"C.I.P. {counts['C.I.P.']}, NATO/TM {counts['NATO'] + counts['Military manual']}, "
+        f"C.I.P. {counts['C.I.P.']}, NATO/TM {counts['NATO or military manual']}, "
         f"none {counts['none']}, pressure conflicts added {added}, "
         f"declared sources registered {registered}"
     )
@@ -479,7 +493,7 @@ def write_coverage(db, counts, without):
         "|---|---|",
         f"| C.I.P. TDCC | {counts['C.I.P.']} |",
         f"| SAAMI Z299 | {counts['SAAMI']} |",
-        f"| NATO or military manual only | {counts['NATO'] + counts['Military manual']} |",
+        f"| NATO or military manual | {counts['NATO or military manual']} |",
         f"| No held standard | {counts['none']} |",
         f"| Total | {len(db)} |",
         "",
