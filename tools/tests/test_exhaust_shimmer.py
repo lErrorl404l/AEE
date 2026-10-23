@@ -1,16 +1,21 @@
 #!/usr/bin/env python3
 """Exhaust heat-shimmer physics, class selection and overdraw tests.
 
-Verifies fnc_calculateThermalRefraction.sqf (the optical kernel) and
-fnc_calculateExhaustPlume.sqf (the power ramp kernel), both in mobility, and
-fnc_applyExhaustShimmer.sqf (the renderer) in fx, plus the vision-mode gate
-on the mirage emitter and the solar-glare LightShafts effect.
+Verifies fnc_calculateThermalRefraction.sqf (the optical kernel) in
+hydrology and fnc_calculateExhaustPlume.sqf (the power ramp kernel) in
+vehicles, fnc_applyExhaustShimmer.sqf (the renderer) in weatherfx, and the
+vision-mode gate on the mirage emitter and the solar-glare LightShafts
+effect.
 
 The kernel tests PARSE the real SQF and read their constants from the file
 they test, then re-derive the physics from first principles, so a wrong
 constant in either place fails.  A hand-transcribed Python mirror is not
 acceptable: a mirror once replicated the SQF's own bugs and drifted without
 detection.
+
+A shared constant is read from addons/lib/constants.hpp, where the
+single-source refactor put it, so the test pins the define and the source
+standard's value together.
 
 Every test that reads SQF strips comments first, because the headers quote
 the broken constructs they explain and a raw search matches the prose.
@@ -44,6 +49,25 @@ PLUME_SRC = PLUME.read_text(encoding="utf-8")
 LOAD_SRC = LOAD.read_text(encoding="utf-8")
 AIRLOAD_SRC = AIRLOAD.read_text(encoding="utf-8")
 SHIMMER_SRC = SHIMMER.read_text(encoding="utf-8")
+
+CONSTANTS = REPO / "addons/lib/constants.hpp"
+
+
+def _define(name):
+    """Read one shared physical constant from addons/lib/constants.hpp.
+
+    The kernels no longer carry the raw literals, so the value and its source
+    standard live in one header.  The test reads that header, not a copy, so a
+    changed constant fails here and a deleted define fails loudly.
+    """
+    match = re.search(
+        rf"^#define\s+{name}\s+([0-9.]+)",
+        CONSTANTS.read_text(encoding="utf-8"),
+        re.M,
+    )
+    if not match:
+        raise AssertionError(f"constants.hpp no longer defines {name}")
+    return float(match.group(1))
 
 
 def _code_only(text):
@@ -108,7 +132,8 @@ def _brace_block_end(text, token):
 class ThermalRefractionKernel(unittest.TestCase):
     def setUp(self):
         self.k = _sqf_number(r"private _k\s*=\s*([0-9.]+)\s*;")
-        self.rho0 = _sqf_number(r"private _rhoAmbient\s*=\s*([0-9.]+)")
+        self.rho0 = _define("AERO_ISA_SEA_LEVEL_DENSITY")
+        self.kelvin = _define("KELVIN_OFFSET")
 
     def contrast(self, gas_c, ambient_c, rho_rel=1.0):
         """The kernel result in its reported units, re-derived here."""
@@ -116,8 +141,8 @@ class ThermalRefractionKernel(unittest.TestCase):
             return 0.0
         if gas_c <= ambient_c:
             return 0.0
-        gas_k = gas_c + 273.15
-        ambient_k = ambient_c + 273.15
+        gas_k = gas_c + self.kelvin
+        ambient_k = ambient_c + self.kelvin
         if gas_k <= 0 or ambient_k <= 0:
             return 0.0
         return self.k * self.rho0 * rho_rel * (ambient_k / gas_k - 1.0) / 0.0001
@@ -128,6 +153,13 @@ class ThermalRefractionKernel(unittest.TestCase):
 
     def test_ambient_density_is_isa_sea_level(self):
         self.assertEqual(self.rho0, 1.225)
+        # The kernel reads the shared define, so no addon carries a copy.
+        self.assertIn("AERO_ISA_SEA_LEVEL_DENSITY * _rhoRel", KERNEL_SRC)
+
+    def test_kelvin_offset_is_the_shared_define(self):
+        self.assertEqual(self.kelvin, 273.15)
+        self.assertIn("_gasTempC + KELVIN_OFFSET", KERNEL_SRC)
+        self.assertIn("_ambientTempC + KELVIN_OFFSET", KERNEL_SRC)
 
     # ── the reference values the task fixes ────────────────────────────
     def test_500c_ratio_and_contrast(self):
@@ -218,7 +250,8 @@ class ThermalRefractionKernel(unittest.TestCase):
         self.assertIn("Returns the refractive index contrast", KERNEL_SRC)
 
     def test_reports_in_1e_4_units(self):
-        self.assertIn("_contrast / 0.0001", KERNEL_SRC)
+        self.assertIn("_contrast / EPSILON", KERNEL_SRC)
+        self.assertEqual(_define("EPSILON"), 0.0001)
 
 
 class ExhaustPlumeKernel(unittest.TestCase):
@@ -322,7 +355,12 @@ class VisionModeGate(unittest.TestCase):
     def test_solar_glare_gates_on_vision_mode(self):
         code = _code_only(GLARE.read_text(encoding="utf-8"))
         self.assertIn("currentVisionMode", code)
-        self.assertRegex(code, r"if \(_visionMode != 0\) exitWith")
+        # A sensor mode rejects the god-rays, and so does the thermal host,
+        # whose day channel draws its own image.
+        self.assertRegex(
+            code, r"if \(_visionMode != 0(?:\s*\|\|\s*\{[^\n]*\})?\) exitWith"
+        )
+        self.assertIn("[_player] call EFUNC(thermal,isThermalHostActive)", code)
         # The string-LHS form is disabled on the way out.
         self.assertIn('"LightShafts" ppEffectEnable false', code)
 
@@ -977,7 +1015,8 @@ class AirEngineLoadKernel(unittest.TestCase):
         self.assertEqual(self._default("_dragAreaM2"), 0.7)
         self.assertEqual(self._default("_rotorDiscAreaM2"), 50.0)
         self.assertEqual(self._default("_idleFraction"), 0.05)
-        self.assertEqual(self._default("_airDensity"), 1.225)
+        self.assertIn('["_airDensity", AERO_ISA_SEA_LEVEL_DENSITY, [0]]', self.code)
+        self.assertEqual(_define("AERO_ISA_SEA_LEVEL_DENSITY"), 1.225)
 
     # ── the two balances ───────────────────────────────────────────────
     def test_wing_is_the_drag_power_cube(self):
@@ -988,7 +1027,8 @@ class AirEngineLoadKernel(unittest.TestCase):
         self.assertIn("_load = _dragW / _ratedPowerW", self.code)
 
     def test_rotor_is_the_momentum_theory_hover_power(self):
-        self.assertIn("_weightN = _massKg * 9.80665", self.code)
+        self.assertIn("_weightN = _massKg * STANDARD_GRAVITY", self.code)
+        self.assertEqual(_define("STANDARD_GRAVITY"), 9.80665)
         self.assertIn(
             "_hoverW = (_weightN ^ 1.5) / sqrt (2 * _rho * _rotorDiscAreaM2)",
             self.code,

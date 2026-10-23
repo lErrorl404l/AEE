@@ -75,6 +75,11 @@ def main():
         "tools/tests/test_thermal_prewarm.py",
         "tools/tests/test_thermal_heat_sources.py",
         "tools/tests/test_thermal_selection_walk.py",
+        # Exhaust heat shimmer: the thermal-refraction kernel, the plume ramp,
+        # the renderer tiers and overdraw budget, and the shared constants
+        # they read.  It sat on the suite-registration allowlist while it
+        # tracked raw literals the single-source refactor had removed.
+        "tools/tests/test_exhaust_shimmer.py",
         "tools/tests/test_component_anchors.py",
         "tools/tests/test_visual_pipeline_audit.py",
         "tools/tests/test_astronomical.py",

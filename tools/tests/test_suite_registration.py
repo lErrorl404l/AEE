@@ -33,11 +33,6 @@ ALLOWLIST: dict[str, str] = {
     # registered because a registered red suite would break `make lint`, and
     # they are not fixed here because the drift is owned by other work.  The
     # defect is recorded, not hidden.
-    "test_exhaust_shimmer": (
-        "pre-existing source-contract drift: the air-engine override literals "
-        "it pins are absent from the scanned source after the engine-override "
-        "rework (fails on main too)."
-    ),
     "test_ground_state_frost": (
         "pre-existing source-contract drift: the frost-to-ground-state Frozen "
         "branch was restructured, so the pinned structure is gone (fails on "
