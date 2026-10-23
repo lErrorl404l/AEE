@@ -90,7 +90,7 @@ Method: `hemtt utils pbo extract <pbo> config.bin <out>` then
   `fnc_calculateBallisticDrag.sqf`, `fnc_calculateCrosswindBallistics.sqf`) from
   its own cited database. Base sample: `B_556x45_Ball { hit = 9; typicalSpeed =
   920; airFriction = -0.0012; caliber = 0.869565; }`.
-- **Realistic value**: per-cartridge. AEE holds 677 cartridges with pressure,
+- **Realistic value**: per-cartridge. AEE holds 678 cartridges with pressure,
   twist and grooves (`data/ballistics/INDEX.md`, source CIP TDCC under
   `data/ballistics/sources/cip/`). The BC and drag model is derived, never
   copied from mod data (ADR-003).

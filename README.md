@@ -70,7 +70,9 @@ Place the **AEE Environment Config** module in the editor to customise settings.
 
 ### Environmental
 
-- CBRN persistence (Arrhenius Q10), Rothermel fire spread, avalanche risk.
+- CBRN persistence from the published hydrolysis activation energy where one
+  exists, and a labelled latent-heat slope otherwise. Rothermel fire spread,
+  avalanche risk.
 - Stefan freeze/thaw, flash-flood prediction, surface wetness, scent dispersion.
 
 ### Maritime
@@ -106,7 +108,7 @@ Place the **AEE Environment Config** module in the editor to customise settings.
 
 ## Compatibility
 
-Six compat addons load only when their host mod is present. Install the ones you need:
+Five compat addons load only when their host mod is present. Install the ones you need:
 
 | Addon | Host Mod | Purpose |
 |-------|----------|---------|
@@ -208,9 +210,15 @@ Profiles are `default`, `ace3`, `acre2`, `tfar`, `kat`, `acm`, and `full`. Works
 python3 tools/run_tests.py   # Unit tests and physics validation
 ```
 
-The unit tests mirror the core physics models in Python. They cover reference values, edge cases, and clamps. A pre-commit hook runs them on every commit.
+The unit tests read the real SQF kernels through the `sqf_lite` harness where a kernel is pure, and mirror the rest in Python. They cover reference values, edge cases, and clamps. A pre-commit hook runs them on every commit. `tools/tests/test_suite_registration.py` fails when a suite on disk is not in the runner.
 
 The headless dedicated-server test in Docker runs the mod against real Arma 3 and verifies ten phases (see `docs/wiki/chapters/testing.qmd`).
+
+`tools/docker_test.sh --load` is the fast pre-flight gate. It boots the server on the load-gate mission and fails when a matcher function does not compile, the log holds an error line, or a matcher rung answers weaker than its case expects.
+
+### Match coverage
+
+`tools/report_match_coverage.py` measures how much of the installed content each matcher can name. It splits the classes by the PBO that declares them, so the base-game and modded numbers stay separate. It writes the gap lists and the baseline under `data/coverage/`, and `tools/tests/test_match_coverage.py` locks the measurement.
 
 ### Engine mass census
 
@@ -231,6 +239,24 @@ When the calibration is approved, `tools/validation/gen_physics_config.py`
 derives one mass per bound class as `real_analogue_mass_kg / fit.scale` and
 emits it into the same `CfgVehicles` block as `maxSpeed`. The generator refuses
 an unapproved calibration and a class with no held mass or no resolved parent.
+
+### Item-mass grades
+
+`aee_clothing_fnc_getItemMass` states one grade with every answer, in this
+order: `sourced` (the classname names a researched family), `family` (a
+published family mass the class does not name), `engine_mass` (the engine
+config mass, converted to kilograms and never presented as a published
+figure), `type` (the slot names the kind and the mass is 0), and `zero`
+(nothing is known and the mass is 0). ADR-046 records the decision.
+
+### Sources and citations
+
+The repository publishes the extracted values as JSON with their citations
+under `data/*/sources/`. It never publishes the captured third-party page,
+drawing or manual, because those belong to their publisher. The retrieved
+bytes stay in the local source cache outside the working tree, and
+`tools/tests/test_source_capture_policy.py` fails on any other tracked file
+under a sources directory.
 
 ---
 

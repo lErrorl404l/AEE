@@ -177,3 +177,41 @@ field.
 
 Non-goals: the corpus adds no PBO, no addon and no CBA setting. It reads no
 Arma config value as a figure. It does not replace the engine flight model.
+
+### The identity ladder
+
+Each matcher resolves a game class to a real record through an ordered ladder.
+The first rung that yields exactly one candidate answers, and a tie at any rung
+ends the ladder with no answer. The vehicle matcher runs these rungs:
+
+| Rung | Reads |
+|---|---|
+| `exact_class` | The normalised class equals a mapped game class |
+| `alias` | A classname or display-name token equals an alias |
+| `keyword` | The query holds a keyword of 4 or more characters |
+| `inheritance` | The class is `isKindOf` the entry class token, and exactly one entry carries it |
+| `closest` | The longest alias or keyword substring, at least 4 characters, with a strictly lower runner-up score |
+| `inherited` | The nearest config ancestor the table maps by classname, when the class text names that entry |
+| `family` | Exactly one row of the family table carries a designation in the query |
+| `type` | The engine kind answers: armoured vehicle, truck, motorcycle, car or vehicle |
+
+The equipment resolver adds the same discipline to the carried mass. The
+clothing and vehicle tables exclude a class before it is scored, and the
+exclusion stays named in the output. A ground class whose chain passes
+`StaticWeapon` is a weapon emplacement, not a vehicle. An armament class that
+`tools/validation/munition_kind.py` reads as equipment is not a munition. An
+abstract base class, a gore overlay and a misdeclared headwear class leave the
+table by name. `data/coverage/README.md` states every rule and
+`data/coverage/excluded_classes.txt` names every class.
+
+### Match coverage
+
+`tools/report_match_coverage.py` measures how much of the installed content a
+matcher can name. It reads the class scan that `tools/scan_game_classes.py`
+writes. A class is base when the PBO that declares it sits in the base game
+`Addons/` directory, and modded otherwise, so the split is by declaring PBO and
+never by name. The modded number is the one that must reach 100%.
+
+The tool writes each gap list, the baseline and the exclusion list under
+`data/coverage/`. `tools/tests/test_match_coverage.py` locks the split and the
+artefacts, so a matcher change cannot move the measurement silently.

@@ -75,6 +75,11 @@ def main():
         "tools/tests/test_thermal_prewarm.py",
         "tools/tests/test_thermal_heat_sources.py",
         "tools/tests/test_thermal_selection_walk.py",
+        # Exhaust heat shimmer: the thermal-refraction kernel, the plume ramp,
+        # the renderer tiers and overdraw budget, and the shared constants
+        # they read.  It sat on the suite-registration allowlist while it
+        # tracked raw literals the single-source refactor had removed.
+        "tools/tests/test_exhaust_shimmer.py",
         "tools/tests/test_component_anchors.py",
         "tools/tests/test_visual_pipeline_audit.py",
         "tools/tests/test_astronomical.py",
@@ -355,6 +360,10 @@ def main():
         "tools/tests/test_engine_docs.py",
         # Addon inventory: the README and wiki addon list must match the tree.
         "tools/tests/test_docs_addon_index.py",
+        # The README feature claims against the code and the tree: the CBRN
+        # model, the compat addon count, the item-mass grades, the coverage
+        # measurement and the headless load gate.
+        "tools/tests/test_readme_claims.py",
         # Engine field guide: index completeness and path portability.
         "tools/tests/test_field_guide.py",
         # Interface control documents: freshness, index and grounding.
