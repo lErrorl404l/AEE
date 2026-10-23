@@ -76,33 +76,43 @@ i = SD / BC with SD = (mass_gr / 7000) / calibre_in^2, so i is 1.0 for the drag 
 
 | Calibre (in) | Records | Measured or corroborated | Band min | Band max | Band median | Flagged |
 |---|---|---|---|---|---|---|
-| 0.22 | 51 | 13 | 0.989 | 1.346 | 1.169 | 15 |
-| 0.24 | 43 | 9 | 0.959 | 1.298 | 1.173 | 18 |
-| 0.26 | 72 | 9 | 0.935 | 1.219 | 1.021 | 27 |
-| 0.28 | 71 | 12 | 0.924 | 1.336 | 1.155 | 22 |
-| 0.31 | 117 | 27 | 0.974 | 1.473 | 1.113 | 40 |
+| 0.22 | 51 | 13 | 0.989 | 1.346 | 1.169 | 0 |
+| 0.24 | 43 | 9 | 0.959 | 1.298 | 1.173 | 0 |
+| 0.26 | 72 | 9 | 0.935 | 1.219 | 1.021 | 0 |
+| 0.28 | 71 | 12 | 0.924 | 1.336 | 1.155 | 0 |
+| 0.31 | 117 | 27 | 0.974 | 1.473 | 1.113 | 0 |
 
 Worst form factor flags by deviation from the group median:
 
-| Bullet | Calibre (in) | i | Band | Deviation |
-|---|---|---|---|---|
-| hornady_eldm_7_180_t7p5 | 0.284 | 0.776 | 0.924 to 1.336 | 0.67x |
-| hornady_atip_7_190 | 0.284 | 0.798 | 0.924 to 1.336 | 0.69x |
-| sierra_1615 | 0.257 | 1.464 | 0.935 to 1.219 | 1.43x |
-| hornady_eldm_7_180_t8p75 | 0.284 | 0.816 | 0.924 to 1.336 | 0.71x |
-| sierra_1390 | 0.224 | 1.614 | 0.989 to 1.346 | 1.38x |
-| sierra_1728 | 0.264 | 1.410 | 0.935 to 1.219 | 1.38x |
-| hornady_atip_6_120 | 0.243 | 0.855 | 0.959 to 1.298 | 0.73x |
-| hornady_eldm_7_162 | 0.284 | 0.850 | 0.924 to 1.336 | 0.74x |
-| hornady_atip_22_90 | 0.224 | 0.869 | 0.989 to 1.346 | 0.74x |
-| sierra_1575 | 0.243 | 0.875 | 0.959 to 1.298 | 0.75x |
-| hornady_atip_6_110 | 0.243 | 0.876 | 0.959 to 1.298 | 0.75x |
-| hornady_atip_30_230 | 0.308 | 0.837 | 0.974 to 1.473 | 0.75x |
-| sierra_7207 | 0.243 | 0.886 | 0.959 to 1.298 | 0.76x |
-| hornady_eldm_30_225_t7 | 0.308 | 0.844 | 0.974 to 1.473 | 0.76x |
-| berger_28485 | 0.284 | 0.876 | 0.924 to 1.336 | 0.76x |
+None.
 
-The machine-readable report lists all 122 flags.
+## Form factor reviews
+
+A reviewed flag is one whose record carries `form_factor_review`, the answer a person wrote after reading the source. The screen is unchanged and no coefficient moved: the review states why the shape explains the value, or it records the correction that took the record out of the list.
+
+- Flags raised by the screen: 122; open 0, reviewed 122.
+- Reviewed as genuine: 122.
+- Reviewed by maker: berger 42, hornady 34, lapua 2, nosler 13, sierra 31.
+
+| Bullet | i | Band | Decision | Reason |
+|---|---|---|---|---|
+| berger_22422 | 0.978 | 0.989 to 1.346 | genuine | Berger states this G7 coefficient and its own G7 form factor of 0.976 for the same bullet; the form factor of 0.978 below the band is the bullet's long ogive and is not a coefficient fault. The independent measurement held as apg_litz_g7 states 0.228, 2.1% lower, and the record keeps the maker value under ADR-003. |
+| berger_22423 | 0.935 | 0.989 to 1.346 | genuine | Berger states this G7 coefficient and its own G7 form factor of 0.937 for the same bullet; the form factor of 0.935 below the band is the bullet's long ogive and is not a coefficient fault. The independent measurement held as apg_litz_g7 states 0.281, 2.6% higher, and the record keeps the maker value under ADR-003. |
+| berger_22485 | 0.908 | 0.989 to 1.346 | genuine | Berger states this G7 coefficient and its own G7 form factor of 0.907 for the same bullet; the form factor of 0.908 below the band is the bullet's long ogive and is not a coefficient fault. |
+| berger_24427 | 0.958 | 0.959 to 1.298 | genuine | Berger states this G7 coefficient and its own G7 form factor of 0.958 for the same bullet; the form factor of 0.958 below the band is the bullet's long ogive and is not a coefficient fault. The independent measurement held as apg_litz_g7 states 0.249, 3.8% higher, and the record keeps the maker value under ADR-003. |
+| berger_24433 | 0.924 | 0.959 to 1.298 | genuine | Berger states this G7 coefficient and its own G7 form factor of 0.925 for the same bullet; the form factor of 0.924 below the band is the bullet's long ogive and is not a coefficient fault. |
+| berger_24485 | 0.903 | 0.959 to 1.298 | genuine | Berger states this G7 coefficient and its own G7 form factor of 0.906 for the same bullet; the form factor of 0.903 below the band is the bullet's long ogive and is not a coefficient fault. |
+| berger_24528 | 0.914 | 0.959 to 1.298 | genuine | Berger states this G7 coefficient and its own G7 form factor of 0.915 for the same bullet; the form factor of 0.914 below the band is the bullet's long ogive and is not a coefficient fault. The independent measurement held as apg_litz_g7 states 0.272, 2.2% lower, and the record keeps the maker value under ADR-003. The independent measurement held as apg_litz_g7 states 0.267, 4.0% lower, and the record keeps the maker value under ADR-003. |
+| berger_24530 | 0.956 | 0.959 to 1.298 | genuine | Berger states this G7 coefficient and its own G7 form factor of 0.956 for the same bullet; the form factor of 0.956 below the band is the bullet's long ogive and is not a coefficient fault. The independent measurement held as apg_litz_g7 states 0.279, 4.1% lower, and the record keeps the maker value under ADR-003. |
+| berger_24556 | 0.910 | 0.959 to 1.298 | genuine | Berger states this G7 coefficient and its own G7 form factor of 0.912 for the same bullet; the form factor of 0.910 below the band is the bullet's long ogive and is not a coefficient fault. |
+| berger_25485 | 0.874 | 0.935 to 1.219 | genuine | Berger states this G7 coefficient and its own G7 form factor of 0.876 for the same bullet; the form factor of 0.874 below the band is the bullet's long ogive and is not a coefficient fault. |
+| berger_25586 | 0.913 | 0.935 to 1.219 | genuine | Berger states this G7 coefficient and its own G7 form factor of 0.914 for the same bullet; the form factor of 0.913 below the band is the bullet's long ogive and is not a coefficient fault. |
+| berger_26195 | 0.928 | 0.935 to 1.219 | genuine | Berger states this G7 coefficient and its own G7 form factor of 0.928 for the same bullet; the form factor of 0.928 below the band is the bullet's long ogive and is not a coefficient fault. |
+| berger_26403 | 0.925 | 0.935 to 1.219 | genuine | Berger states this G7 coefficient and its own G7 form factor of 0.926 for the same bullet; the form factor of 0.925 below the band is the bullet's long ogive and is not a coefficient fault. The independent measurement held as apg_litz_g7 states 0.282, 2.1% lower, and the record keeps the maker value under ADR-003. |
+| berger_26414 | 0.923 | 0.935 to 1.219 | genuine | Berger states this G7 coefficient and its own G7 form factor of 0.923 for the same bullet; the form factor of 0.923 below the band is the bullet's long ogive and is not a coefficient fault. |
+| berger_26485 | 0.878 | 0.935 to 1.219 | genuine | Berger states this G7 coefficient and its own G7 form factor of 0.879 for the same bullet; the form factor of 0.878 below the band is the bullet's long ogive and is not a coefficient fault. |
+
+The machine-readable report lists all 122 reviews.
 
 ## Density convention
 
@@ -118,7 +128,7 @@ The machine-readable report lists all 122 flags.
 - unmatched: 606
 - trajectory disagreements: 0
 - gross disagreements: 0
-- form factor flags: 122
+- form factor flags: 0
 - transposition flags: 0
 - hard transposition on compared: 0
 
