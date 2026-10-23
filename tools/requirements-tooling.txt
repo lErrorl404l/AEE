@@ -1,0 +1,10 @@
+# Tooling dependencies for the validation suite. These are development-side
+# only. Nothing here is vendored, and nothing here is conveyed inside a PBO.
+#
+# py-ballisticcalc is LGPL-3.0. It is the reference solver for the independent
+# ballistic verifier (tools/validation/verify_ballistics.py). The repository is
+# GPL-2.0-or-later with a PBO distribution exception, and GPL-2.0-or-later
+# permits an upgrade to GPL-3.0, which combines with LGPL-3.0. Vendoring it
+# would create a combined-work obligation, so the rule is: pinned dependency,
+# never vendored. See docs/adr/ADR-046-independent-ballistic-verifier.md.
+py-ballisticcalc==3.1.1
