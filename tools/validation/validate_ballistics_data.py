@@ -279,11 +279,35 @@ def check_records(kind, records, by_id, errors):
             )
 
 
+def check_launchers(weapons, errors):
+    """A launcher fires a rocket, so it chambers no cartridge.
+
+    The rule is stated once here and in data/ballistics/SCHEMA.md: a
+    record of kind launcher names the round it fires in `rocket`, and it
+    carries neither a cartridge value nor a cartridge_id. A launcher that
+    names no rocket is an unreported hole, the same way a small arm with
+    no chambering is.
+    """
+    for weapon in weapons:
+        if weapon.get("kind") != "launcher":
+            continue
+        wid = weapon["weapon_id"]
+        if weapon.get("cartridge_id"):
+            errors.append(f"launcher {wid}: a launcher chambers no cartridge")
+        values = weapon.get("values") or {}
+        if "cartridge" in values:
+            errors.append(f"launcher {wid}: a launcher carries no cartridge value")
+        rocket = values.get("rocket")
+        if not isinstance(rocket, dict) or not rocket.get("value"):
+            errors.append(f"launcher {wid}: must name the rocket it fires")
+
+
 def check_references(weapons, cartridges, gaps, errors):
     """Every joined cartridge_id names a cartridge. Every blank one is
     reported. A weapon with a blank id falls back to its own twist alone,
     and the gap report is where that is recorded, so a blank id that no
-    report names is an unreported hole."""
+    report names is an unreported hole. A launcher is exempt: it chambers
+    no cartridge, and check_launchers holds it to its own rule."""
     cartridge_ids = {c["cartridge_id"] for c in cartridges}
     for weapon in weapons:
         cid = weapon.get("cartridge_id", "")
@@ -300,6 +324,8 @@ def check_references(weapons, cartridges, gaps, errors):
         for wid in row["weapons"]:
             reported.add(wid)
     for weapon in weapons:
+        if weapon.get("kind") == "launcher":
+            continue
         if weapon.get("cartridge_id") or weapon["weapon_id"] in reported:
             continue
         errors.append(
@@ -363,6 +389,7 @@ def main():
         else None
     )
     check_references(load("weapons.json"), load("cartridges.json"), gaps, errors)
+    check_launchers(load("weapons.json"), errors)
 
     if errors:
         print("ballistics data gate: FAIL")

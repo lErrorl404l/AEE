@@ -14165,8 +14165,8 @@
   "cartridge_id": "",
   "note": "English Wikipedia 'FGM-148 Javelin', infobox Mass: '22.3 kg (49 lb), ready to fire / 6.4 kg (14 lb), detachable CLU / 15.9 kg (35 lb), missile in launch tube'. The ready-to-fire mass is taken, because the game class is the weapon a soldier shoulders. A guided missile has no rifled barrel, so no twist is recorded.",
   "values": {
-   "cartridge": {
-    "value": "",
+   "rocket": {
+    "value": "FGM-148 missile",
     "unit": "name",
     "source": "wikipedia_fgm148_javelin",
     "grade": "claimed"
@@ -20394,8 +20394,8 @@
   "cartridge_id": "",
   "note": "English Wikipedia 'AT4', infobox Mass: '6.7 kg (14.8 lb) (AT4) / 8 kg (18 lb) (AT4-CS)'; Variants/M136 AT4: 'American version with modified launch tube bumpers, sights, and slings'. The AT4 mass is taken for the M136, which the article states is the American AT4. A rocket launcher has no rifled barrel, so no twist is recorded.",
   "values": {
-   "cartridge": {
-    "value": "",
+   "rocket": {
+    "value": "AT4 HEAT round",
     "unit": "name",
     "source": "wikipedia_at4",
     "grade": "claimed"
@@ -22508,8 +22508,8 @@
   "cartridge_id": "",
   "note": "English Wikipedia 'Carl Gustaf 8.4 cm recoilless rifle', infobox Mass: 'M2: 14.2 kg / M3: 10 kg / M4+M3A1: 6.6 kg'; body: 'In US military service, it is officially known as the M3 Multi-Role Anti-Armor Anti-Personnel Weapon System (MAAWS) or Ranger Antitank Weapons System (RAWS), but is often simply called the M3 Carl Gustaf'. The M3 mass is taken, because M3 MAAWS is the M3. The barrel IS rifled, but the corpus holds the rifling twist for a cartridge-firing small arm and this article states none, so no twist is recorded.",
   "values": {
-   "cartridge": {
-    "value": "",
+   "rocket": {
+    "value": "FFV551",
     "unit": "name",
     "source": "wikipedia_carl_gustaf_84",
     "grade": "claimed"
@@ -23535,8 +23535,8 @@
   "cartridge_id": "",
   "note": "English Wikipedia 'M72 LAW', infobox Mass: '2.5 kg (5.5 lb) (M72A1-3) / 3.6 kg (7.9 lb) (M72A4-7)'. The M72A7 falls in the A4-A7 band, so 3.6 kg is its published mass. A rocket launcher has no rifled barrel, so no twist is recorded.",
   "values": {
-   "cartridge": {
-    "value": "",
+   "rocket": {
+    "value": "M72A7 rocket",
     "unit": "name",
     "source": "wikipedia_m72_law",
     "grade": "claimed"
@@ -26078,8 +26078,8 @@
   "cartridge_id": "",
   "note": "English Wikipedia 'Shoulder-Launched Multipurpose Assault Weapon', infobox Mass: '16.92 lb (7.67 kg) (empty) / 29.34 lb (13.31 kg) (loaded with HEDM)'. The empty mass is the launcher's own; the round is carried as ammunition. A rocket launcher has no rifled barrel, so no twist is recorded.",
   "values": {
-   "cartridge": {
-    "value": "",
+   "rocket": {
+    "value": "HEDM rocket",
     "unit": "name",
     "source": "wikipedia_smaw",
     "grade": "claimed"
@@ -26347,8 +26347,8 @@
   "cartridge_id": "",
   "note": "English Wikipedia 'Predator SRAW', infobox Mass: '9.7 kg (21 lb)', Warhead 'FGM-172A: explosively formed penetrator / FGM-172B: multipurpose blast warhead'. A guided missile has no rifled barrel, so no twist is recorded.",
   "values": {
-   "cartridge": {
-    "value": "",
+   "rocket": {
+    "value": "FGM-172 missile",
     "unit": "name",
     "source": "wikipedia_predator_sraw",
     "grade": "claimed"
@@ -34802,8 +34802,8 @@
   "cartridge_id": "",
   "note": "English Wikipedia 'RPG-18', infobox Mass: '1.4 kg (projectile) / 2.6 kg (loaded)'. The loaded mass is the weapon's own, because the RPG-18 is a disposable launcher. A rocket launcher has no rifled barrel, so no twist is recorded.",
   "values": {
-   "cartridge": {
-    "value": "",
+   "rocket": {
+    "value": "PG-18",
     "unit": "name",
     "source": "wikipedia_rpg18",
     "grade": "claimed"
@@ -34831,8 +34831,8 @@
   "cartridge_id": "",
   "note": "English Wikipedia 'RPG-26', infobox Mass: '1.8 kg (projectile) / 2.9 kg (loaded)'. The loaded mass is the weapon's own, because the RPG-26 is a disposable launcher that is issued loaded and cannot be reloaded. A rocket launcher has no rifled barrel, so no twist is recorded.",
   "values": {
-   "cartridge": {
-    "value": "",
+   "rocket": {
+    "value": "PG-26",
     "unit": "name",
     "source": "wikipedia_rpg26",
     "grade": "claimed"
@@ -34860,8 +34860,8 @@
   "cartridge_id": "",
   "note": "English Wikipedia 'RPG-29', infobox Mass: '12.1 kg (27 lb) unloaded (with optical sight) / 18.8 kg (41 lb) loaded (ready to fire)'. The UNLOADED mass is taken, because the corpus's weapon mass is the weapon's own and the round is carried as ammunition. A rocket launcher has no rifled barrel, so no twist is recorded.",
   "values": {
-   "cartridge": {
-    "value": "",
+   "rocket": {
+    "value": "PG-29V",
     "unit": "name",
     "source": "wikipedia_rpg29",
     "grade": "claimed"
@@ -34889,8 +34889,8 @@
   "cartridge_id": "",
   "note": "English Wikipedia 'RPG-30', infobox Mass: '10.3 kg', Caliber '105 mm'; lead: 'also known as the Kryuk ... a Russian hand-held disposable anti-tank rocket launcher'. A rocket launcher has no rifled barrel, so no twist is recorded.",
   "values": {
-   "cartridge": {
-    "value": "",
+   "rocket": {
+    "value": "PG-30",
     "unit": "name",
     "source": "wikipedia_rpg30",
     "grade": "claimed"
@@ -34920,8 +34920,8 @@
   "cartridge_id": "",
   "note": "English Wikipedia 'RPG-7', infobox Mass: '6.3 kg (13.9 lb) (without a telescopic sight) / 7 kg (15.4 lb) (with PGO-7)', Variants: 'RPG-7V2 (current model), RPG-7D3 (paratrooper)'; body: 'Russia produces the RPG-7V2 ... The RPG-7D3 is the equivalent paratrooper model'. The mass without the sight is taken, because the sight is a separate item. A rocket launcher has no rifled barrel, so no twist is recorded.",
   "values": {
-   "cartridge": {
-    "value": "",
+   "rocket": {
+    "value": "PG-7V",
     "unit": "name",
     "source": "wikipedia_rpg7",
     "grade": "claimed"
@@ -34947,8 +34947,8 @@
   "cartridge_id": "",
   "note": "English Wikipedia 'RPG-75', infobox Mass: '3.2 kg (7 lb)', Caliber '68 mm'; lead: 'a portable, disposable, single-shot' launcher. A rocket launcher has no rifled barrel, so no twist is recorded.",
   "values": {
-   "cartridge": {
-    "value": "",
+   "rocket": {
+    "value": "PG-75",
     "unit": "name",
     "source": "wikipedia_rpg75",
     "grade": "claimed"
@@ -35280,8 +35280,8 @@
   "cartridge_id": "",
   "note": "English Wikipedia 'RPG-26', Variants/RShG-2: 'The RShG-2 ... is a RPG-26 variant with thermobaric warhead. It is also called the Aglen-2 ... The RShG-2 is heavier than the RPG-26 at 3.5 kilograms (7.7 lb)'. The RShG-2 has no article of its own; that title redirects to this one. A rocket launcher has no rifled barrel, so no twist is recorded.",
   "values": {
-   "cartridge": {
-    "value": "",
+   "rocket": {
+    "value": "RShG-2 (thermobaric)",
     "unit": "name",
     "source": "wikipedia_rpg26",
     "grade": "claimed"

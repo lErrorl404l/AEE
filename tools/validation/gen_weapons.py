@@ -161,9 +161,7 @@ def model_key(weapon):
     # model: "XD(M)" and "XD(S)" are two pistols, not one written twice.
     name = re.sub(r"\s+\([^)]*\)", " ", name)
     words = [
-        normalise(word)
-        for word in re.split(r"[^A-Za-z0-9]+", name)
-        if normalise(word)
+        normalise(word) for word in re.split(r"[^A-Za-z0-9]+", name) if normalise(word)
     ]
     key = "".join(w for w in words if w not in maker_words(weapon) and w not in GENERIC)
     return key if len(key) >= 3 else "".join(words)
@@ -210,7 +208,9 @@ def consolidate(weapons):
             out[out.index(first)] = weapon
             index[key] = weapon
         for field in ("names", "aliases"):
-            keep[field] = sorted(set(keep.get(field) or []) | set(drop.get(field) or []))
+            keep[field] = sorted(
+                set(keep.get(field) or []) | set(drop.get(field) or [])
+            )
         for field, value in (drop.get("values") or {}).items():
             (keep.setdefault("values", {})).setdefault(field, value)
         keep["cartridge_id"] = keep.get("cartridge_id") or drop.get("cartridge_id")
@@ -263,9 +263,7 @@ def merge_record(first, later, name):
         first["mass_kg"] = later["mass_kg"]
         # The mass carries the source that STATES it, which is the later
         # record's, not the one the held record cites for its rifling.
-        first["mass_source_id"] = later.get("mass_source_id") or later.get(
-            "source_id"
-        )
+        first["mass_source_id"] = later.get("mass_source_id") or later.get("source_id")
         first["source_id"] = first.get("source_id") or first["mass_source_id"]
         filled = True
     if later.get("aliases"):
@@ -440,14 +438,28 @@ def main():
             "manual": "documented",
             "manufacturer": "claimed",
         }.get(kind, "claimed")
-        values = {
-            "cartridge": {
-                "value": row.get("cartridge", ""),
-                "unit": "name",
-                "source": source_id,
-                "grade": grade,
-            },
-        }
+        # A launcher fires a rocket or a recoilless round. It has no
+        # chambering and no cartridge, so the record names the round it
+        # fires instead. The validator enforces the same split, stated
+        # once in data/ballistics/SCHEMA.md.
+        if row.get("kind") == "launcher":
+            values = {
+                "rocket": {
+                    "value": row.get("rocket", ""),
+                    "unit": "name",
+                    "source": source_id,
+                    "grade": grade,
+                },
+            }
+        else:
+            values = {
+                "cartridge": {
+                    "value": row.get("cartridge", ""),
+                    "unit": "name",
+                    "source": source_id,
+                    "grade": grade,
+                },
+            }
         millimetres = twist_mm(row)
         if millimetres > 0:
             values["twist_m"] = {
@@ -502,6 +514,11 @@ def main():
                 str(value.get("grade")), 0
             ) > GRADE_RANK.get(str(kept.get("grade")), 0):
                 values[key] = value
+        # The carried-over values come from a record built before the
+        # launcher rule, so a launcher may still hold the empty cartridge
+        # value that rule retires. The rocket is the record now.
+        if row.get("kind") == "launcher":
+            values.pop("cartridge", None)
         weapons.append(
             {
                 "weapon_id": row["weapon_id"],
