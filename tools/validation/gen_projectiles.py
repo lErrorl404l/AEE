@@ -22,6 +22,12 @@ SRC = DATA / "sources"
 DB = DATA / "projectiles.json"
 
 GRAIN_TO_G = 0.06479891
+
+# A ballistic coefficient is only meaningful against the drag model it
+# was measured with. The field name states the model, and the entry states
+# the basis: a maker catalogue value is a secondary claim and says so.
+BC_MODEL = {"bc_g1": "G1", "bc_g7": "G7"}
+MAKER_BASIS = "maker_published_secondary"
 FAMILY = {
     "eld match": ("ELDM", "ELD-M"),
     "eld-x": ("ELDX", "ELD-X"),
@@ -37,6 +43,35 @@ CATALOGS = [
     ("nosler_bullets", "Nosler"),
     ("lapua_bullets", "Lapua"),
 ]
+
+
+def source_editions():
+    """Return the edition a source states, keyed by source id."""
+    registry = json.loads((DATA / "sources.json").read_text(encoding="utf-8"))
+    return {
+        s["source_id"]: s.get("edition") or s.get("published", "")
+        for s in registry
+    }
+
+
+def bc_model(values):
+    """Return the drag model the held coefficients actually use."""
+    models = [BC_MODEL[f] for f in ZBC_ORDER if values.get(f)]
+    return " and ".join(models)
+
+
+ZBC_ORDER = ("bc_g1", "bc_g7")
+
+
+def mark_coefficients(values, editions):
+    """State the drag model, the basis and the edition on every coefficient."""
+    for field, model in BC_MODEL.items():
+        entry = values.get(field)
+        if entry is None:
+            continue
+        entry["drag_model"] = model
+        entry["basis"] = MAKER_BASIS
+        entry["edition"] = editions.get(entry.get("source"), "")
 
 
 def hornady_aliases(mass, family, twist_in):
@@ -59,6 +94,7 @@ def clean_name(name, twist_in):
 
 def hornady_records():
     src = json.loads((SRC / "hornady_bc.json").read_text(encoding="utf-8"))
+    editions = source_editions()
     out = []
     for b in src["bullets"]:
         if not b["diameter_mm"]:
@@ -68,6 +104,40 @@ def hornady_records():
         twist = f"_t{('%g' % b['twist_in']).replace('.', 'p')}" if b["twist_in"] else ""
         pid = f"hornady_{FAMILY[family][0].lower()}_{cal}_{int(b['mass_gr'])}{twist}"
         diameter_in = b["diameter_mm"] / 25.4
+        values = {
+            "mass_g": {
+                "value": b["mass_g"],
+                "unit": "g",
+                "source": "hornady_bc",
+                "grade": "claimed",
+            },
+            "diameter_mm": {
+                "value": b["diameter_mm"],
+                "unit": "mm",
+                "formula": DIAMETER_NOTE,
+                "source": "hornady_bc",
+                "grade": "derived",
+            },
+        }
+        for field in ZBC_ORDER:
+            if b.get(field) is not None:
+                values[field] = {
+                    "value": b[field],
+                    "source": "hornady_bc",
+                    "grade": "claimed",
+                }
+        values["drag_model"] = {
+            "value": bc_model(values),
+            "source": "hornady_bc",
+            "grade": "claimed",
+        }
+        values["sectional_density"] = {
+            "value": round((b["mass_gr"] / 7000) / (diameter_in**2), 4),
+            "formula": "SD = (mass_gr / 7000) / (diameter_in ^ 2)",
+            "source": "hornady_bc",
+            "grade": "derived",
+        }
+        mark_coefficients(values, editions)
         out.append(
             {
                 "projectile_id": pid,
@@ -77,42 +147,7 @@ def hornady_records():
                 "note": ""
                 if not b["twist_in"]
                 else f"BC published for a 1 in {b['twist_in']:g} inch twist.",
-                "values": {
-                    "mass_g": {
-                        "value": b["mass_g"],
-                        "unit": "g",
-                        "source": "hornady_bc",
-                        "grade": "claimed",
-                    },
-                    "diameter_mm": {
-                        "value": b["diameter_mm"],
-                        "unit": "mm",
-                        "formula": DIAMETER_NOTE,
-                        "source": "hornady_bc",
-                        "grade": "derived",
-                    },
-                    "bc_g1": {
-                        "value": b["bc_g1"],
-                        "source": "hornady_bc",
-                        "grade": "claimed",
-                    },
-                    "bc_g7": {
-                        "value": b["bc_g7"],
-                        "source": "hornady_bc",
-                        "grade": "claimed",
-                    },
-                    "drag_model": {
-                        "value": "G1 and G7",
-                        "source": "hornady_bc",
-                        "grade": "claimed",
-                    },
-                    "sectional_density": {
-                        "value": round((b["mass_gr"] / 7000) / (diameter_in**2), 4),
-                        "formula": "SD = (mass_gr / 7000) / (diameter_in ^ 2)",
-                        "source": "hornady_bc",
-                        "grade": "derived",
-                    },
-                },
+                "values": values,
             }
         )
     return out
@@ -120,6 +155,7 @@ def hornady_records():
 
 def catalog_records(source_id, maker):
     src = json.loads((SRC / f"{source_id}.json").read_text(encoding="utf-8"))
+    editions = source_editions()
     out = []
     for b in src["bullets"]:
         if not b.get("diameter_in") or not b.get("mass_gr"):
@@ -163,6 +199,13 @@ def catalog_records(source_id, maker):
                 "source": source_id,
                 "grade": "claimed",
             }
+        mark_coefficients(values, editions)
+        if any(values.get(f) for f in ZBC_ORDER):
+            values["drag_model"] = {
+                "value": bc_model(values),
+                "source": source_id,
+                "grade": "claimed",
+            }
         out.append(
             {
                 "projectile_id": f"{maker.lower()}_{b['part']}",
@@ -198,6 +241,16 @@ def corroborate(records, index):
         if any(abs(m - mass_gr) <= 0.005 * mass_gr for m in candidates):
             values["mass_g"]["grade"] = "corroborated"
             values["mass_g"]["corroborated_by"] = ["ab_bullet_library"]
+            # Applied Ballistics is the primary source for what its
+            # library states. Version 925 states identity, mass and
+            # diameter; it states no coefficient, so the maker remains
+            # the basis for the BC and the record says so.
+            rec["applied_ballistics"] = {
+                "library": "Applied Ballistics bullet library",
+                "version": "925",
+                "covers": "identity and mass",
+                "bc_covered": False,
+            }
             hits += 1
     return hits
 

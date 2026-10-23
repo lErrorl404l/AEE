@@ -57,6 +57,9 @@ def main():
                         "value": b["bc_g7"],
                         "source": "apg_litz_g7",
                         "grade": "measured",
+                        "drag_model": "G7",
+                        "basis": "independent_measurement",
+                        "edition": "2012-11-06",
                     },
                     "drag_model": {
                         "value": "G7",
