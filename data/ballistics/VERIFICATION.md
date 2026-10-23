@@ -120,12 +120,12 @@ The machine-readable report lists all 122 reviews.
 - AEE ISA density ratio at 1500 m: 0.863712.
 - Solver density ratio at the same sea level conditions: 1.000426.
 - AEE rho0 = 1.225 kg/m3. The solver documents cStandardDensity 0.076474 lb/ft3 = 1.2250 kg/m3. Both ratios are printed so the constant offset between the two sides is known rather than absorbed by a tolerance.
-- Measured mean drift bias (AEE divided by solver): +0.20%.
+- Measured mean drift bias (AEE divided by solver): +0.18%.
 
 ## Counts
 
-- compared: 62
-- unmatched: 606
+- compared: 405
+- unmatched: 263
 - trajectory disagreements: 0
 - gross disagreements: 0
 - form factor flags: 0
@@ -162,6 +162,6 @@ None.
 - berger_24428: no declared muzzle velocity.
 - berger_24429: no declared muzzle velocity.
 - berger_24430: no declared muzzle velocity.
-- and 586 more.
+- and 243 more.
 
 No corpus value is changed by this tool. A flagged value is a follow-up item.
