@@ -461,6 +461,286 @@
    "drift_bias": 0.0023
   },
   {
+   "projectile_id": "berger_26552",
+   "names": [
+    "6.5mm 140 Grain Elite Hunter"
+   ],
+   "model": "G7",
+   "bc": 0.31,
+   "mv_ms": 872.0,
+   "load_id": "260_remington_140_grain_elite_hunter",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.042,
+   "worst_drop_error_over_tolerance": 0.135,
+   "worst_drift_error_over_tolerance": 0.093,
+   "worst_tof_error_over_tolerance": 0.717,
+   "drift_bias": 0.0025
+  },
+  {
+   "projectile_id": "berger_26571",
+   "names": [
+    "6.5mm 135 Grain Classic Hybrid Hunter"
+   ],
+   "model": "G7",
+   "bc": 0.303,
+   "mv_ms": 890.0,
+   "load_id": "260_remington_135_grain_classic_hybrid_hunter",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.04,
+   "worst_drop_error_over_tolerance": 0.258,
+   "worst_drift_error_over_tolerance": 0.118,
+   "worst_tof_error_over_tolerance": 0.237,
+   "drift_bias": 0.0015
+  },
+  {
+   "projectile_id": "berger_27571",
+   "names": [
+    "270 Cal 140 Grain Classic Hybrid Hunter"
+   ],
+   "model": "G7",
+   "bc": 0.271,
+   "mv_ms": 973.8,
+   "load_id": "270_winchester_140_grain_classic_hybrid_hunter",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.057,
+   "worst_drop_error_over_tolerance": 0.151,
+   "worst_drift_error_over_tolerance": 0.077,
+   "worst_tof_error_over_tolerance": 0.901,
+   "drift_bias": 0.0034
+  },
+  {
+   "projectile_id": "berger_28554",
+   "names": [
+    "7mm 175 Grain Elite Hunter"
+   ],
+   "model": "G7",
+   "bc": 0.336,
+   "mv_ms": 845.2,
+   "load_id": "280_remington_175_grain_elite_hunter",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.024,
+   "worst_drop_error_over_tolerance": 0.112,
+   "worst_drift_error_over_tolerance": 0.048,
+   "worst_tof_error_over_tolerance": 0.273,
+   "drift_bias": 0.0014
+  },
+  {
+   "projectile_id": "berger_28571",
+   "names": [
+    "7mm 150 Grain Classic Hybrid Hunter"
+   ],
+   "model": "G7",
+   "bc": 0.258,
+   "mv_ms": 913.5,
+   "load_id": "280_remington_150_grain_classic_hybrid_hunter",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.049,
+   "worst_drop_error_over_tolerance": 0.191,
+   "worst_drift_error_over_tolerance": 0.109,
+   "worst_tof_error_over_tolerance": 0.549,
+   "drift_bias": 0.0027
+  },
+  {
+   "projectile_id": "berger_30554",
+   "names": [
+    "30 Cal 180 Grain Elite Hunter"
+   ],
+   "model": "G7",
+   "bc": 0.295,
+   "mv_ms": 958.9,
+   "load_id": "300_remington_ultra_magnum_180_grain_elite_hunter",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.045,
+   "worst_drop_error_over_tolerance": 0.199,
+   "worst_drift_error_over_tolerance": 0.12,
+   "worst_tof_error_over_tolerance": 0.525,
+   "drift_bias": 0.0025
+  },
+  {
+   "projectile_id": "berger_33107",
+   "names": [
+    "338 Cal 250 Grain Hybrid OTM Tactical"
+   ],
+   "model": "G7",
+   "bc": 0.349,
+   "mv_ms": 886.1,
+   "load_id": "338_lapua_mag_250_grain_hybrid_otm_tactical",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.04,
+   "worst_drop_error_over_tolerance": 0.248,
+   "worst_drift_error_over_tolerance": 0.107,
+   "worst_tof_error_over_tolerance": 0.403,
+   "drift_bias": 0.0023
+  },
+  {
+   "projectile_id": "berger_33109",
+   "names": [
+    "338 Cal 300 Grain Hybrid OTM Tactical"
+   ],
+   "model": "G7",
+   "bc": 0.421,
+   "mv_ms": 824.2,
+   "load_id": "338_lapua_mag_300_grain_hybrid_otm_tactical",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.032,
+   "worst_drop_error_over_tolerance": 0.1,
+   "worst_drift_error_over_tolerance": 0.053,
+   "worst_tof_error_over_tolerance": 0.731,
+   "drift_bias": 0.002
+  },
+  {
+   "projectile_id": "berger_33554",
+   "names": [
+    "338 Cal 250 Grain Elite Hunter"
+   ],
+   "model": "G7",
+   "bc": 0.351,
+   "mv_ms": 886.1,
+   "load_id": "338_lapua_mag_250_grain_elite_hunter",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.028,
+   "worst_drop_error_over_tolerance": 0.226,
+   "worst_drift_error_over_tolerance": 0.093,
+   "worst_tof_error_over_tolerance": 0.153,
+   "drift_bias": 0.0009
+  },
+  {
+   "projectile_id": "berger_33556",
+   "names": [
+    "338 Cal 300 Grain Elite Hunter"
+   ],
+   "model": "G7",
+   "bc": 0.417,
+   "mv_ms": 824.2,
+   "load_id": "338_lapua_mag_300_grain_elite_hunter",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.031,
+   "worst_drop_error_over_tolerance": 0.199,
+   "worst_drift_error_over_tolerance": 0.096,
+   "worst_tof_error_over_tolerance": 0.709,
+   "drift_bias": 0.0032
+  },
+  {
    "projectile_id": "hornady_eldm_22_73",
    "names": [
     "22 Cal 73 gr. ELD Match",
@@ -11025,8 +11305,8 @@
   }
  ],
  "counts": {
-  "compared": 387,
-  "unmatched": 281,
+  "compared": 397,
+  "unmatched": 271,
   "trajectory_disagreements": 0,
   "gross_disagreements": 0,
   "form_factor_flags": 122,
@@ -13527,20 +13807,6 @@
    "note": "no declared muzzle velocity"
   },
   {
-   "projectile_id": "berger_26552",
-   "names": [
-    "6.5mm 140 Grain Elite Hunter"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "berger_26571",
-   "names": [
-    "6.5mm 135 Grain Classic Hybrid Hunter"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
    "projectile_id": "berger_27501",
    "names": [
     "270 Cal 130 Grain VLD Hunting"
@@ -13565,13 +13831,6 @@
    "projectile_id": "berger_27570",
    "names": [
     "270 Cal 130 Grain Classic Hybrid Hunter"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "berger_27571",
-   "names": [
-    "270 Cal 140 Grain Classic Hybrid Hunter"
    ],
    "note": "no declared muzzle velocity"
   },
@@ -13646,23 +13905,9 @@
    "note": "no declared muzzle velocity"
   },
   {
-   "projectile_id": "berger_28554",
-   "names": [
-    "7mm 175 Grain Elite Hunter"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
    "projectile_id": "berger_28570",
    "names": [
     "7mm 168 Grain Classic Hybrid Hunter"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "berger_28571",
-   "names": [
-    "7mm 150 Grain Classic Hybrid Hunter"
    ],
    "note": "no declared muzzle velocity"
   },
@@ -13842,13 +14087,6 @@
    "note": "no declared muzzle velocity"
   },
   {
-   "projectile_id": "berger_30554",
-   "names": [
-    "30 Cal 180 Grain Elite Hunter"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
    "projectile_id": "berger_30555",
    "names": [
     "30 Cal 205 Grain Elite Hunter"
@@ -13873,34 +14111,6 @@
    "projectile_id": "berger_30571",
    "names": [
     "30 Cal 185 Grain Classic Hybrid Hunter"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "berger_33107",
-   "names": [
-    "338 Cal 250 Grain Hybrid OTM Tactical"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "berger_33109",
-   "names": [
-    "338 Cal 300 Grain Hybrid OTM Tactical"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "berger_33554",
-   "names": [
-    "338 Cal 250 Grain Elite Hunter"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "berger_33556",
-   "names": [
-    "338 Cal 300 Grain Elite Hunter"
    ],
    "note": "no declared muzzle velocity"
   },

@@ -19,6 +19,7 @@ FILES = [
     ("hornady_velocity", "hornady_velocity.json"),
     ("lapua_velocity", "lapua_velocity.json"),
     ("nosler_velocity", "nosler_velocity.json"),
+    ("berger_velocity", "berger_velocity.json"),
 ]
 
 

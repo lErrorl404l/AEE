@@ -1,0 +1,378 @@
+{
+ "url": "https://bergerbullets.com/reloading-data/",
+ "retrieved": "2026-10-23",
+ "sha256": "96149b67c4f4e15451cf22fced2f4d293c4b32633b4b39f17ea25e1668e20e5e",
+ "capture": "local-cache-only",
+ "capture_path": "berger/reloading-data.html",
+ "note": "Berger load-data sheets linked from the Berger Reloading Data page, one PDF per cartridge and bullet weight. Every sheet prints the test barrel length; a sheet without one was not used. The projectile designation repeats the mass and model words the Berger projectile name uses, so the verifier's token test binds the load. Velocities are the fastest approximate maximum-charge velocity each sheet prints. Each load cites its own sheet URL and that sheet's sha256; the bytes are held in the local source cache and are not redistributed. Six further scanned sheets (338-300 Winchester Short Magnum, 338 Edge, 338-378 Weatherby Magnum) are not emitted because cartridges.json holds no record for those chamberings. The 2024 catalogue's ammunition velocities are not used because it prints no barrel length.",
+ "loads": [
+  {
+   "cartridge": "26 Nosler",
+   "projectile": "135 Grain Classic Hybrid Hunter",
+   "barrel_mm": 660.4,
+   "velocity_ms": 1009.2,
+   "source_locator": "https://bergerbullets.com/pdf/26-Nosler-135gr.pdf p.1, table row 'VIHT N570'",
+   "source_note": "Berger 26 Nosler 135 grain load sheet (part 26571), Barrel Length = 26 in; fastest published approximate maximum velocity: VIHT N570 82.4 gr -> 3311 fps (start load 78.5 gr -> 3144 fps); sheet sha256=28331691ed5e595d4a27965b66a61ee59c8c77df83cc2020b4708520002b3f36"
+  },
+  {
+   "cartridge": "26 Nosler",
+   "projectile": "140 Grain Elite Hunter",
+   "barrel_mm": 660.4,
+   "velocity_ms": 994.0,
+   "source_locator": "https://bergerbullets.com/pdf/26-Nosler.pdf p.1, table row 'VIHT N570'",
+   "source_note": "Berger 26 Nosler 140 grain load sheet (part 26552), Barrel Length = 26 in; fastest published approximate maximum velocity: VIHT N570 81.2 gr -> 3261 fps (start load 77.0 gr -> 3082 fps); sheet sha256=213dec6e31ca4609a6235985057d8a8b3c7c4d4af5f9934514cc95f09c0b1cde"
+  },
+  {
+   "cartridge": "260 Remington",
+   "projectile": "135 Grain Classic Hybrid Hunter",
+   "barrel_mm": 609.6,
+   "velocity_ms": 890.0,
+   "source_locator": "https://bergerbullets.com/pdf/260-Rem-135gr.pdf p.1, table row 'RE-26'",
+   "source_note": "Berger 260 Remington 135 grain load sheet (part 26571), Barrel Length = 24 in; fastest published approximate maximum velocity: RE-26 48.2 gr -> 2920 fps (start load 44.5 gr -> 2665 fps); sheet sha256=1879dc77272eb010db3795d1feca4269b609a14ab69dc8fed8544f0ab59c2e79"
+  },
+  {
+   "cartridge": "260 Remington",
+   "projectile": "140 Grain Elite Hunter",
+   "barrel_mm": 609.6,
+   "velocity_ms": 872.0,
+   "source_locator": "https://bergerbullets.com/pdf/260-Remington.pdf p.1, table row 'RE-26'",
+   "source_note": "Berger 260 Remington 140 grain load sheet (part 26552), Barrel Length = 24 in; fastest published approximate maximum velocity: RE-26 47.0 gr -> 2861 fps (start load 43.0 gr -> 2587 fps); sheet sha256=b5a4a3e1d001006be340d227812f118e2661180038b73029ed99c081f22820a5"
+  },
+  {
+   "cartridge": "270 Winchester Short Magnum",
+   "projectile": "140 Grain Classic Hybrid Hunter",
+   "barrel_mm": 609.6,
+   "velocity_ms": 970.5,
+   "source_locator": "https://bergerbullets.com/pdf/270-WSM-140gr.pdf p.1, table row 'RE-26'",
+   "source_note": "Berger 270 Winchester Short Magnum 140 grain load sheet (part 27571), Barrel Length = 24 in; fastest published approximate maximum velocity: RE-26 68.2 gr -> 3184 fps (start load 65.0 gr -> 3034 fps); sheet sha256=1311261c852582938615ae3df7ab1f783349a225fc7969b5db2594e58b46edaa"
+  },
+  {
+   "cartridge": "270 Winchester",
+   "projectile": "140 Grain Classic Hybrid Hunter",
+   "barrel_mm": 660.4,
+   "velocity_ms": 973.8,
+   "source_locator": "https://bergerbullets.com/pdf/270-Win-140gr.pdf p.1, table row 'RE-26'",
+   "source_note": "Berger 270 Winchester 140 grain load sheet (part 27571), Barrel Length = 26 in; fastest published approximate maximum velocity: RE-26 61.5 gr -> 3195 fps (start load 55.5 gr -> 2861 fps); sheet sha256=efeebbfe5e335656b501c0a6ecc36142ce94ae8a49b9cf472073a251a5cc3f3f"
+  },
+  {
+   "cartridge": "28 Nosler",
+   "projectile": "150 Grain Classic Hybrid Hunter",
+   "barrel_mm": 660.4,
+   "velocity_ms": 1009.2,
+   "source_locator": "https://bergerbullets.com/pdf/28-Nosler-150gr.pdf p.1, table row 'RE-33'",
+   "source_note": "Berger 28 Nosler 150 grain load sheet (part 28571), Barrel Length = 26 in; fastest published approximate maximum velocity: RE-33 91.4 gr -> 3311 fps (start load 87.0 gr -> 3120 fps); sheet sha256=02a80b06d735617b5c9add4e45fa08680b012e062c43841289671c61cf60e3dd"
+  },
+  {
+   "cartridge": "28 Nosler",
+   "projectile": "175 Grain Elite Hunter",
+   "barrel_mm": 660.4,
+   "velocity_ms": 949.1,
+   "source_locator": "https://bergerbullets.com/pdf/28-Nosler.pdf p.1, table row 'VIHT N570'",
+   "source_note": "Berger 28 Nosler 175 grain load sheet (part 28554), Barrel Length = 26 in; fastest published approximate maximum velocity: VIHT N570 82.3 gr -> 3114 fps (start load 78.0 gr -> 2936 fps); sheet sha256=5a473c8fa9cd94dae2a8475dbdc68ad17ad67edda08475ee4f037457e191806a"
+  },
+  {
+   "cartridge": "280 Remington",
+   "projectile": "150 Grain Classic Hybrid Hunter",
+   "barrel_mm": 609.6,
+   "velocity_ms": 913.5,
+   "source_locator": "https://bergerbullets.com/pdf/280-Rem-150gr.pdf p.1, table row 'RE-26'",
+   "source_note": "Berger 280 Remington 150 grain load sheet (part 28571), Barrel Length = 24 in; fastest published approximate maximum velocity: RE-26 61.0 gr -> 2997 fps (start load 56.5 gr -> 2750 fps); sheet sha256=a5b570af1cbaefcf39fd98b02969ed8058994e6071063a0de63c739c6d68529b"
+  },
+  {
+   "cartridge": "280 Remington",
+   "projectile": "175 Grain Elite Hunter",
+   "barrel_mm": 609.6,
+   "velocity_ms": 845.2,
+   "source_locator": "https://bergerbullets.com/pdf/280-Remington.pdf p.1, table row 'RE-26'",
+   "source_note": "Berger 280 Remington 175 grain load sheet (part 28554), Barrel Length = 24 in; fastest published approximate maximum velocity: RE-26 56.4 gr -> 2773 fps (start load 52.0 gr -> 2545 fps); sheet sha256=a7251dc1dc95e9e06de4d086498df2d0ca8d5f4978aafe1074859342d539e621"
+  },
+  {
+   "cartridge": "30-06 Springfield",
+   "projectile": "180 Grain Elite Hunter",
+   "barrel_mm": 660.4,
+   "velocity_ms": 869.6,
+   "source_locator": "https://bergerbullets.com/pdf/30-06-Springfield.pdf p.1, table row 'RE-17'",
+   "source_note": "Berger 30-06 Springfield 180 grain load sheet (part 30554), Barrel Length = 26 in; fastest published approximate maximum velocity: RE-17 55.2 gr -> 2853 fps (start load 50.0 gr -> 2600 fps); sheet sha256=d6f3c8d4b4ba04b7e7e71030768d2aa1436bd50a600fb2558024f36e5c8462e1"
+  },
+  {
+   "cartridge": "30 Nosler",
+   "projectile": "180 Grain Elite Hunter",
+   "barrel_mm": 660.4,
+   "velocity_ms": 987.9,
+   "source_locator": "https://bergerbullets.com/pdf/30-Nosler.pdf p.1, table row 'VIHT N570'",
+   "source_note": "Berger 30 Nosler 180 grain load sheet (part 30554), Barrel Length = 26 in; fastest published approximate maximum velocity: VIHT N570 92.0 gr -> 3241 fps (start load 87.5 gr -> 3050 fps); sheet sha256=4c3168d039b1c5ae04606a7e07572ee16a01ac8f1f44fcfe423bd863275cdf9e"
+  },
+  {
+   "cartridge": "300 Remington Ultra Magnum",
+   "projectile": "180 Grain Elite Hunter",
+   "barrel_mm": 660.4,
+   "velocity_ms": 958.9,
+   "source_locator": "https://bergerbullets.com/pdf/300-Remington-Ultra-Magnum.pdf p.1, table row 'VIHT N570'",
+   "source_note": "Berger 300 Remington Ultra Magnum 180 grain load sheet (part 30554), Barrel Length = 26 in; fastest published approximate maximum velocity: VIHT N570 97.9 gr -> 3146 fps (start load 93.0 gr -> 2973 fps); sheet sha256=be99fe296083c1aed242ffd4b9889f5b0e4b8a7910b602319c6777b43fa00849"
+  },
+  {
+   "cartridge": "300 Winchester Magnum",
+   "projectile": "180 Grain Elite Hunter",
+   "barrel_mm": 660.4,
+   "velocity_ms": 947.0,
+   "source_locator": "https://bergerbullets.com/pdf/300-Winchester-Magnum.pdf p.1, table row 'NORMAMRP'",
+   "source_note": "Berger 300 Winchester Magnum 180 grain load sheet (part 30554), Barrel Length = 26 in; fastest published approximate maximum velocity: NORMAMRP 77.7 gr -> 3107 fps (start load 74.0 gr -> 2959 fps); sheet sha256=083c653cc69eebc85857a67a3becf6f788a25c5f262ea6130934c7bfe3059941"
+  },
+  {
+   "cartridge": "300 Winchester Short Magnum",
+   "projectile": "180 Grain Elite Hunter",
+   "barrel_mm": 660.4,
+   "velocity_ms": 950.7,
+   "source_locator": "https://bergerbullets.com/pdf/300-Winchester-Short-Magnum.pdf p.1, table row 'RE-26'",
+   "source_note": "Berger 300 Winchester Short Magnum 180 grain load sheet (part 30554), Barrel Length = 26 in; fastest published approximate maximum velocity: RE-26 72.8 gr -> 3119 fps (start load 69.0 gr -> 2948 fps); sheet sha256=1944a662b6a7b145bd1e36b5ccb6aadd88563f8c1bfc0c9747864a3c5c616949"
+  },
+  {
+   "cartridge": "308 Winchester",
+   "projectile": "180 Grain Elite Hunter",
+   "barrel_mm": 609.6,
+   "velocity_ms": 808.6,
+   "source_locator": "https://bergerbullets.com/pdf/308-Winchester.pdf p.1, table row 'CFE223'",
+   "source_note": "Berger 308 Winchester 180 grain load sheet (part 30554), Barrel Length = 24 in; fastest published approximate maximum velocity: CFE223 44.9 gr -> 2653 fps (start load 40.5 gr -> 2404 fps); sheet sha256=3ed27f26d30b5272d75fbf5e8bd6b8332f8202c4c222083feb4f8dde1a8fa91e"
+  },
+  {
+   "cartridge": "6.5-284 Norma",
+   "projectile": "135 Grain Classic Hybrid Hunter",
+   "barrel_mm": 660.4,
+   "velocity_ms": 931.8,
+   "source_locator": "https://bergerbullets.com/pdf/6.5-284-135gr.pdf p.1, table row 'RE-26'",
+   "source_note": "Berger 6.5-284 Norma 135 grain load sheet (part 26571), Barrel Length = 26 in; fastest published approximate maximum velocity: RE-26 57.2 gr -> 3057 fps (start load 52.5 gr -> 2808 fps); sheet sha256=81f143eb0c3d7fac776027cdcd85528d04f5a9f252e040915d81463650c97905"
+  },
+  {
+   "cartridge": "6.5-284 Norma",
+   "projectile": "140 Grain Elite Hunter",
+   "barrel_mm": 660.4,
+   "velocity_ms": 910.1,
+   "source_locator": "https://bergerbullets.com/pdf/6.5-284-Norma.pdf p.1, table row 'NORMAMRP'",
+   "source_note": "Berger 6.5-284 Norma 140 grain load sheet (part 26552), Barrel Length = 26 in; fastest published approximate maximum velocity: NORMAMRP 55.3 gr -> 2986 fps (start load 50.5 gr -> 2732 fps); sheet sha256=a8dc96d9dfa014eb058a4692c35c2ea9b5eab5438ebec364937f5bd982b77bf3"
+  },
+  {
+   "cartridge": "6.5 Creedmoor",
+   "projectile": "135 Grain Classic Hybrid Hunter",
+   "barrel_mm": 609.6,
+   "velocity_ms": 907.4,
+   "source_locator": "https://bergerbullets.com/pdf/6.5-Creedmoor-135gr.pdf p.1, table row 'RE-26'",
+   "source_note": "Berger 6.5 Creedmoor 135 grain load sheet (part 26571), Barrel Length = 24 in; fastest published approximate maximum velocity: RE-26 49.8 gr -> 2977 fps (start load 45.0 gr -> 2657 fps); sheet sha256=2b0d47b5965b76da188536aff6162c259240f60b826c61fd1844662422721029"
+  },
+  {
+   "cartridge": "6.5 Creedmoor",
+   "projectile": "140 Grain Elite Hunter",
+   "barrel_mm": 609.6,
+   "velocity_ms": 862.6,
+   "source_locator": "https://bergerbullets.com/pdf/6.5-Creedmoor.pdf p.1, table row 'RE-17'",
+   "source_note": "Berger 6.5 Creedmoor 140 grain load sheet (part 26552), Barrel Length = 24 in; fastest published approximate maximum velocity: RE-17 42.6 gr -> 2830 fps (start load 38.5 gr -> 2582 fps); sheet sha256=33608dd6714661bdef8db6055e0289beaffef510013f87743564dcd5eeae0dec"
+  },
+  {
+   "cartridge": "6.5 x 55 Swedish",
+   "projectile": "135 Grain Classic Hybrid Hunter",
+   "barrel_mm": 609.6,
+   "velocity_ms": 876.3,
+   "source_locator": "https://bergerbullets.com/pdf/6.5x55-Swedish-Mauser-135gr.pdf p.1, table row 'RE-26'",
+   "source_note": "Berger 6.5 x 55mm Swedish Mauser 135 grain load sheet (part 26571), Barrel Length = 24 in; fastest published approximate maximum velocity: RE-26 50.6 gr -> 2875 fps (start load 47.5 gr -> 2685 fps); sheet sha256=40d95d924b7018fe8fe22425b578998511fe09b40309c1948641666909e31cbc"
+  },
+  {
+   "cartridge": "6.5 x 55 Swedish",
+   "projectile": "140 Grain Elite Hunter",
+   "barrel_mm": 609.6,
+   "velocity_ms": 859.2,
+   "source_locator": "https://bergerbullets.com/pdf/6.5x55-Swedish-Mauser.pdf p.1, table row 'RE-26'",
+   "source_note": "Berger 6.5 x 55mm Swedish Mauser 140 grain load sheet (part 26552), Barrel Length = 24 in; fastest published approximate maximum velocity: RE-26 49.4 gr -> 2819 fps (start load 46.5 gr -> 2642 fps); sheet sha256=0aaa1cf517e69c2e7657e42679d2c8acd490633353edc61df4faf0dd86840505"
+  },
+  {
+   "cartridge": "7mm-08 Remington",
+   "projectile": "150 Grain Classic Hybrid Hunter",
+   "barrel_mm": 609.6,
+   "velocity_ms": 864.4,
+   "source_locator": "https://bergerbullets.com/pdf/7mm-08-Rem-150gr.pdf p.1, table row 'RE-17'",
+   "source_note": "Berger 7mm-08 Remington 150 grain load sheet (part 28571), Barrel Length = 24 in; fastest published approximate maximum velocity: RE-17 45.9 gr -> 2836 fps (start load 42.0 gr -> 2597 fps); sheet sha256=7cf1396accc187461b8338410b1214b7e7de607531d1d642e9b8615f82a0a0da"
+  },
+  {
+   "cartridge": "7mm-08 Remington",
+   "projectile": "175 Grain Elite Hunter",
+   "barrel_mm": 609.6,
+   "velocity_ms": 795.5,
+   "source_locator": "https://bergerbullets.com/pdf/7mm-08-Remington.pdf p.1, table row 'RE-17'",
+   "source_note": "Berger 7mm-08 Remington 175 grain load sheet (part 28554), Barrel Length = 24 in; fastest published approximate maximum velocity: RE-17 42.3 gr -> 2610 fps (start load 38.5 gr -> 2389 fps); sheet sha256=e24b480cf9002cbd6eba572b8227ea28f079d8cc8489ddab66d8f4fbd3b8121e"
+  },
+  {
+   "cartridge": "7mm Remington Ultra Magnum",
+   "projectile": "150 Grain Classic Hybrid Hunter",
+   "barrel_mm": 660.4,
+   "velocity_ms": 969.6,
+   "source_locator": "https://bergerbullets.com/pdf/7mm-RUM-150gr.pdf p.1, table row 'VIHT N570'",
+   "source_note": "Berger 7mm Remington Ultra Magnum 150 grain load sheet (part 28571), Barrel Length = 26 in; fastest published approximate maximum velocity: VIHT N570 92.6 gr -> 3181 fps (start load 88.0 gr -> 3016 fps); sheet sha256=cd81fd9d79dc80c6af405159e24958735f4c426add278b6e19ee840754051d72"
+  },
+  {
+   "cartridge": "7mm Remington Magnum",
+   "projectile": "150 Grain Classic Hybrid Hunter",
+   "barrel_mm": 660.4,
+   "velocity_ms": 962.9,
+   "source_locator": "https://bergerbullets.com/pdf/7mm-Rem-Mag-150gr.pdf p.1, table row 'RE-26'",
+   "source_note": "Berger 7mm Remington Magnum 150 grain load sheet (part 28571), Barrel Length = 26 in; fastest published approximate maximum velocity: RE-26 69.8 gr -> 3159 fps (start load 66.5 gr -> 3012 fps); sheet sha256=7f112956956147cc0c94961678b232f92aef3995420b21e79f83d9442867fcb0"
+  },
+  {
+   "cartridge": "7mm Remington Magnum",
+   "projectile": "175 Grain Elite Hunter",
+   "barrel_mm": 660.4,
+   "velocity_ms": 907.7,
+   "source_locator": "https://bergerbullets.com/pdf/7mm-Remington-Magnum.pdf p.1, table row 'RE-33'",
+   "source_note": "Berger 7mm Remington Magnum 175 grain load sheet (part 28554), Barrel Length = 26 in; fastest published approximate maximum velocity: RE-33 75.5 gr -> 2978 fps (start load 71.5 gr -> 2786 fps); sheet sha256=f3fe6d7fff294f779e8e73ee0b9cbb65c314c67a9b6a8b2a852fa54001f04d88"
+  },
+  {
+   "cartridge": "7mm Remington Ultra Magnum",
+   "projectile": "175 Grain Elite Hunter",
+   "barrel_mm": 660.4,
+   "velocity_ms": 905.6,
+   "source_locator": "https://bergerbullets.com/pdf/7mm-Remington-Ultra-Magnum.pdf p.1, table row 'RE-50'",
+   "source_note": "Berger 7mm Remington Ultra Magnum 175 grain load sheet (part 28554), Barrel Length = 26 in; fastest published approximate maximum velocity: RE-50 95.7 gr -> 2971 fps (start load 91.0 gr -> 2812 fps); sheet sha256=c1230fd94ba65b1beb40a2d358d7b71bf3af30a9f57b174510450d3837dd4f02"
+  },
+  {
+   "cartridge": "7mm Winchester Short Magnum",
+   "projectile": "150 Grain Classic Hybrid Hunter",
+   "barrel_mm": 609.6,
+   "velocity_ms": 952.8,
+   "source_locator": "https://bergerbullets.com/pdf/7mm-WSM-150gr.pdf p.1, table row 'NORMAMRP'",
+   "source_note": "Berger 7mm Winchester Short Magnum 150 grain load sheet (part 28571), Barrel Length = 24 in; fastest published approximate maximum velocity: NORMAMRP 68.6 gr -> 3126 fps (start load 65.0 gr -> 2960 fps); sheet sha256=f06bcea9b191f226d01f2ead167cc0bc292ad33b48c58220281874ab5fd5b8d6"
+  },
+  {
+   "cartridge": "7mm Winchester Short Magnum",
+   "projectile": "175 Grain Elite Hunter",
+   "barrel_mm": 609.6,
+   "velocity_ms": 885.1,
+   "source_locator": "https://bergerbullets.com/pdf/7mm-Winchester-Short-Magnum.pdf p.1, table row 'VIHT N560'",
+   "source_note": "Berger 7mm Winchester Short Magnum 175 grain load sheet (part 28554), Barrel Length = 24 in; fastest published approximate maximum velocity: VIHT N560 63.9 gr -> 2904 fps (start load 60.5 gr -> 2750 fps); sheet sha256=99cb016b43544cbcf84cf75c4530ed401c1752d3d9694268cd6d19e6478e6836"
+  },
+  {
+   "cartridge": "338 Lapua Magnum",
+   "projectile": "250 Grain Elite Hunter",
+   "barrel_mm": 660.4,
+   "velocity_ms": 886.1,
+   "source_locator": "https://bergerbullets.com/pdf/338-Lapua-Magnum-250gr.pdf p.1 (scanned page, table row 'RETUMBO')",
+   "source_note": "Berger 338 Lapua Magnum 250 grain load sheet, Barrel Length = 26 in; fastest published approximate maximum velocity: RETUMBO 94.0 gr -> 2907 fps (start load 86.5 gr -> 2669 fps). The sheet is an image with no text layer, so the printed table was read from the page; it lists both 250 grain bullets against one table. Sheet sha256=dbc7bfc0ea8c9c990c621eb0bbb07c916b6c38dfdc09348d47afa6092ed71318"
+  },
+  {
+   "cartridge": "338 Lapua Magnum",
+   "projectile": "250 Grain Hybrid OTM Tactical",
+   "barrel_mm": 660.4,
+   "velocity_ms": 886.1,
+   "source_locator": "https://bergerbullets.com/pdf/338-Lapua-Magnum-250gr.pdf p.1 (scanned page, table row 'RETUMBO')",
+   "source_note": "Berger 338 Lapua Magnum 250 grain load sheet, Barrel Length = 26 in; fastest published approximate maximum velocity: RETUMBO 94.0 gr -> 2907 fps (start load 86.5 gr -> 2669 fps). The sheet is an image with no text layer, so the printed table was read from the page; it lists both 250 grain bullets against one table. Sheet sha256=dbc7bfc0ea8c9c990c621eb0bbb07c916b6c38dfdc09348d47afa6092ed71318"
+  },
+  {
+   "cartridge": "338 Lapua Magnum",
+   "projectile": "300 Grain Elite Hunter",
+   "barrel_mm": 660.4,
+   "velocity_ms": 824.2,
+   "source_locator": "https://bergerbullets.com/pdf/338-Lapua-Magnum-300gr.pdf p.1 (scanned page, table row 'VIHT N570')",
+   "source_note": "Berger 338 Lapua Magnum 300 grain load sheet, Barrel Length = 26 in; fastest published approximate maximum velocity: VIHT N570 90.0 gr -> 2704 fps (start load 85.5 gr -> 2554 fps). The sheet is an image with no text layer, so the printed table was read from the page; it lists both 300 grain bullets against one table. Sheet sha256=ffb2b537a9053fb79673c0042a90b81e4e181606a1dc2a4eb3560d7048dd3bd8"
+  },
+  {
+   "cartridge": "338 Lapua Magnum",
+   "projectile": "300 Grain Hybrid OTM Tactical",
+   "barrel_mm": 660.4,
+   "velocity_ms": 824.2,
+   "source_locator": "https://bergerbullets.com/pdf/338-Lapua-Magnum-300gr.pdf p.1 (scanned page, table row 'VIHT N570')",
+   "source_note": "Berger 338 Lapua Magnum 300 grain load sheet, Barrel Length = 26 in; fastest published approximate maximum velocity: VIHT N570 90.0 gr -> 2704 fps (start load 85.5 gr -> 2554 fps). The sheet is an image with no text layer, so the printed table was read from the page; it lists both 300 grain bullets against one table. Sheet sha256=ffb2b537a9053fb79673c0042a90b81e4e181606a1dc2a4eb3560d7048dd3bd8"
+  },
+  {
+   "cartridge": "338 Remington Ultra Magnum",
+   "projectile": "250 Grain Elite Hunter",
+   "barrel_mm": 660.4,
+   "velocity_ms": 858.0,
+   "source_locator": "https://bergerbullets.com/pdf/338-Remington-Ultra-Magnum-250gr.pdf p.1 (scanned page, table row 'RAMSHOT MAGNUM')",
+   "source_note": "Berger 338 Remington Ultra Magnum 250 grain load sheet, Barrel Length = 26 in; fastest published approximate maximum velocity: RAMSHOT MAGNUM 90.5 gr -> 2815 fps (start load 86.0 gr -> 2666 fps). The sheet is an image with no text layer, so the printed table was read from the page; it lists both 250 grain bullets against one table. Sheet sha256=3ca97896b811836ad4959d3deda11dd2dc43849cbe57161c4faad17207cc1450"
+  },
+  {
+   "cartridge": "338 Remington Ultra Magnum",
+   "projectile": "250 Grain Hybrid OTM Tactical",
+   "barrel_mm": 660.4,
+   "velocity_ms": 858.0,
+   "source_locator": "https://bergerbullets.com/pdf/338-Remington-Ultra-Magnum-250gr.pdf p.1 (scanned page, table row 'RAMSHOT MAGNUM')",
+   "source_note": "Berger 338 Remington Ultra Magnum 250 grain load sheet, Barrel Length = 26 in; fastest published approximate maximum velocity: RAMSHOT MAGNUM 90.5 gr -> 2815 fps (start load 86.0 gr -> 2666 fps). The sheet is an image with no text layer, so the printed table was read from the page; it lists both 250 grain bullets against one table. Sheet sha256=3ca97896b811836ad4959d3deda11dd2dc43849cbe57161c4faad17207cc1450"
+  },
+  {
+   "cartridge": "338 Remington Ultra Magnum",
+   "projectile": "300 Grain Elite Hunter",
+   "barrel_mm": 660.4,
+   "velocity_ms": 795.8,
+   "source_locator": "https://bergerbullets.com/pdf/338-Remington-Ultra-Magnum-300gr.pdf p.1 (scanned page, table row 'RETUMBO')",
+   "source_note": "Berger 338 Remington Ultra Magnum 300 grain load sheet, Barrel Length = 26 in; fastest published approximate maximum velocity: RETUMBO 87.3 gr -> 2611 fps (start load 83.0 gr -> 2489 fps). The sheet is an image with no text layer, so the printed table was read from the page; it lists both 300 grain bullets against one table. Sheet sha256=ccf3e408fc1a35e27659186af120a3784366205b19d41b1552a29c2b288c134e"
+  },
+  {
+   "cartridge": "338 Remington Ultra Magnum",
+   "projectile": "300 Grain Hybrid OTM Tactical",
+   "barrel_mm": 660.4,
+   "velocity_ms": 795.8,
+   "source_locator": "https://bergerbullets.com/pdf/338-Remington-Ultra-Magnum-300gr.pdf p.1 (scanned page, table row 'RETUMBO')",
+   "source_note": "Berger 338 Remington Ultra Magnum 300 grain load sheet, Barrel Length = 26 in; fastest published approximate maximum velocity: RETUMBO 87.3 gr -> 2611 fps (start load 83.0 gr -> 2489 fps). The sheet is an image with no text layer, so the printed table was read from the page; it lists both 300 grain bullets against one table. Sheet sha256=ccf3e408fc1a35e27659186af120a3784366205b19d41b1552a29c2b288c134e"
+  },
+  {
+   "cartridge": "338 Winchester Magnum",
+   "projectile": "250 Grain Elite Hunter",
+   "barrel_mm": 660.4,
+   "velocity_ms": 823.9,
+   "source_locator": "https://bergerbullets.com/pdf/338-Winchester-Magnum-250gr.pdf p.1 (scanned page, table row 'RAMSHOT HUNTER')",
+   "source_note": "Berger 338 Winchester Magnum 250 grain load sheet, Barrel Length = 26 in; fastest published approximate maximum velocity: RAMSHOT HUNTER 66.5 gr -> 2703 fps (start load 63.0 gr -> 2569 fps). The sheet is an image with no text layer, so the printed table was read from the page; it lists both 250 grain bullets against one table. Sheet sha256=5ad94a899a63b5cfd88c28d8ac6d3f940d5bd61b8db6334f13a79a158efc918e"
+  },
+  {
+   "cartridge": "338 Winchester Magnum",
+   "projectile": "250 Grain Hybrid OTM Tactical",
+   "barrel_mm": 660.4,
+   "velocity_ms": 823.9,
+   "source_locator": "https://bergerbullets.com/pdf/338-Winchester-Magnum-250gr.pdf p.1 (scanned page, table row 'RAMSHOT HUNTER')",
+   "source_note": "Berger 338 Winchester Magnum 250 grain load sheet, Barrel Length = 26 in; fastest published approximate maximum velocity: RAMSHOT HUNTER 66.5 gr -> 2703 fps (start load 63.0 gr -> 2569 fps). The sheet is an image with no text layer, so the printed table was read from the page; it lists both 250 grain bullets against one table. Sheet sha256=5ad94a899a63b5cfd88c28d8ac6d3f940d5bd61b8db6334f13a79a158efc918e"
+  },
+  {
+   "cartridge": "338 Winchester Magnum",
+   "projectile": "300 Grain Elite Hunter",
+   "barrel_mm": 660.4,
+   "velocity_ms": 768.7,
+   "source_locator": "https://bergerbullets.com/pdf/338-Winchester-Magnum-300gr.pdf p.1 (scanned page, table row 'VIHT N560')",
+   "source_note": "Berger 338 Winchester Magnum 300 grain load sheet, Barrel Length = 26 in; fastest published approximate maximum velocity: VIHT N560 65.5 gr -> 2522 fps (start load 62.0 gr -> 2384 fps). The sheet is an image with no text layer, so the printed table was read from the page; it lists both 300 grain bullets against one table. Sheet sha256=71349aa6ec3f15bd5941283634f15fd56bb48be030ea79e0ebf32d78701ce320"
+  },
+  {
+   "cartridge": "338 Winchester Magnum",
+   "projectile": "300 Grain Hybrid OTM Tactical",
+   "barrel_mm": 660.4,
+   "velocity_ms": 768.7,
+   "source_locator": "https://bergerbullets.com/pdf/338-Winchester-Magnum-300gr.pdf p.1 (scanned page, table row 'VIHT N560')",
+   "source_note": "Berger 338 Winchester Magnum 300 grain load sheet, Barrel Length = 26 in; fastest published approximate maximum velocity: VIHT N560 65.5 gr -> 2522 fps (start load 62.0 gr -> 2384 fps). The sheet is an image with no text layer, so the printed table was read from the page; it lists both 300 grain bullets against one table. Sheet sha256=71349aa6ec3f15bd5941283634f15fd56bb48be030ea79e0ebf32d78701ce320"
+  },
+  {
+   "cartridge": "340 Weatherby Magnum",
+   "projectile": "250 Grain Elite Hunter",
+   "barrel_mm": 660.4,
+   "velocity_ms": 866.2,
+   "source_locator": "https://bergerbullets.com/pdf/340-Weatherby-Magnum-250gr.pdf p.1 (scanned page, table row 'NORMA MRP')",
+   "source_note": "Berger 340 Weatherby Magnum 250 grain load sheet, Barrel Length = 26 in; fastest published approximate maximum velocity: NORMA MRP 80.0 gr -> 2842 fps (start load 76.0 gr -> 2699 fps). The sheet is an image with no text layer, so the printed table was read from the page; it lists both 250 grain bullets against one table. Sheet sha256=5edda285b45d8bcb1ca6d8a52d8eb5bf585ed8bf56a1a4aa97eb317dd1b100a2"
+  },
+  {
+   "cartridge": "340 Weatherby Magnum",
+   "projectile": "250 Grain Hybrid OTM Tactical",
+   "barrel_mm": 660.4,
+   "velocity_ms": 866.2,
+   "source_locator": "https://bergerbullets.com/pdf/340-Weatherby-Magnum-250gr.pdf p.1 (scanned page, table row 'NORMA MRP')",
+   "source_note": "Berger 340 Weatherby Magnum 250 grain load sheet, Barrel Length = 26 in; fastest published approximate maximum velocity: NORMA MRP 80.0 gr -> 2842 fps (start load 76.0 gr -> 2699 fps). The sheet is an image with no text layer, so the printed table was read from the page; it lists both 250 grain bullets against one table. Sheet sha256=5edda285b45d8bcb1ca6d8a52d8eb5bf585ed8bf56a1a4aa97eb317dd1b100a2"
+  },
+  {
+   "cartridge": "340 Weatherby Magnum",
+   "projectile": "300 Grain Elite Hunter",
+   "barrel_mm": 660.4,
+   "velocity_ms": 787.0,
+   "source_locator": "https://bergerbullets.com/pdf/340-Weatherby-Magnum-300gr.pdf p.1 (scanned page, table row 'VIHT N560')",
+   "source_note": "Berger 340 Weatherby Magnum 300 grain load sheet, Barrel Length = 26 in; fastest published approximate maximum velocity: VIHT N560 73.8 gr -> 2582 fps (start load 70.0 gr -> 2458 fps). The sheet is an image with no text layer, so the printed table was read from the page; it lists both 300 grain bullets against one table. Sheet sha256=159ed3a144e0ee26a8257f32148a397d7eeda5552e8a554feb7790d6e04a74b7"
+  },
+  {
+   "cartridge": "340 Weatherby Magnum",
+   "projectile": "300 Grain Hybrid OTM Tactical",
+   "barrel_mm": 660.4,
+   "velocity_ms": 787.0,
+   "source_locator": "https://bergerbullets.com/pdf/340-Weatherby-Magnum-300gr.pdf p.1 (scanned page, table row 'VIHT N560')",
+   "source_note": "Berger 340 Weatherby Magnum 300 grain load sheet, Barrel Length = 26 in; fastest published approximate maximum velocity: VIHT N560 73.8 gr -> 2582 fps (start load 70.0 gr -> 2458 fps). The sheet is an image with no text layer, so the printed table was read from the page; it lists both 300 grain bullets against one table. Sheet sha256=159ed3a144e0ee26a8257f32148a397d7eeda5552e8a554feb7790d6e04a74b7"
+  }
+ ]
+}

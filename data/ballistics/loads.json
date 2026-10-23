@@ -9066,6 +9066,37 @@
   }
  },
  {
+  "load_id": "260_remington_135_grain_classic_hybrid_hunter",
+  "cartridge_id": "260_remington",
+  "projectile": "135 Grain Classic Hybrid Hunter",
+  "note": "",
+  "values": {
+   "cartridge": {
+    "value": "260 Remington",
+    "unit": "name",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "135 Grain Classic Hybrid Hunter",
+    "unit": "designation",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 890.0
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
   "load_id": "260_remington_140_gr_hpbt_custom_competition",
   "cartridge_id": "260_remington",
   "projectile": "140 gr HPBT Custom Competition",
@@ -9216,6 +9247,37 @@
     ],
     "unit": "mm, m/s",
     "source": "nosler_velocity",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "260_remington_140_grain_elite_hunter",
+  "cartridge_id": "260_remington",
+  "projectile": "140 Grain Elite Hunter",
+  "note": "",
+  "values": {
+   "cartridge": {
+    "value": "260 Remington",
+    "unit": "name",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "140 Grain Elite Hunter",
+    "unit": "designation",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 872.0
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "berger_velocity",
     "grade": "claimed"
    }
   }
@@ -10062,6 +10124,37 @@
   }
  },
  {
+  "load_id": "26_nosler_135_grain_classic_hybrid_hunter",
+  "cartridge_id": "26_nosler",
+  "projectile": "135 Grain Classic Hybrid Hunter",
+  "note": "",
+  "values": {
+   "cartridge": {
+    "value": "26 Nosler",
+    "unit": "name",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "135 Grain Classic Hybrid Hunter",
+    "unit": "designation",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 660.4,
+      "mv_ms": 1009.2
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
   "load_id": "26_nosler_140_gr_hpbt_custom_competition",
   "cartridge_id": "26_nosler",
   "projectile": "140 gr HPBT Custom Competition",
@@ -10212,6 +10305,37 @@
     ],
     "unit": "mm, m/s",
     "source": "nosler_velocity",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "26_nosler_140_grain_elite_hunter",
+  "cartridge_id": "26_nosler",
+  "projectile": "140 Grain Elite Hunter",
+  "note": "",
+  "values": {
+   "cartridge": {
+    "value": "26 Nosler",
+    "unit": "name",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "140 Grain Elite Hunter",
+    "unit": "designation",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 660.4,
+      "mv_ms": 994.0
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "berger_velocity",
     "grade": "claimed"
    }
   }
@@ -11066,6 +11190,37 @@
   }
  },
  {
+  "load_id": "270_winchester_140_grain_classic_hybrid_hunter",
+  "cartridge_id": "270_winchester",
+  "projectile": "140 Grain Classic Hybrid Hunter",
+  "note": "",
+  "values": {
+   "cartridge": {
+    "value": "270 Winchester",
+    "unit": "name",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "140 Grain Classic Hybrid Hunter",
+    "unit": "designation",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 660.4,
+      "mv_ms": 973.8
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
   "load_id": "270_winchester_150_gr_spitzer_accubond",
   "cartridge_id": "270_winchester",
   "projectile": "150 gr Spitzer AccuBond",
@@ -11402,6 +11557,37 @@
     ],
     "unit": "mm, m/s",
     "source": "nosler_velocity",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "270_winchester_short_magnum_140_grain_classic_hybrid_hunter",
+  "cartridge_id": "270_winchester_short_magnum",
+  "projectile": "140 Grain Classic Hybrid Hunter",
+  "note": "",
+  "values": {
+   "cartridge": {
+    "value": "270 Winchester Short Magnum",
+    "unit": "name",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "140 Grain Classic Hybrid Hunter",
+    "unit": "designation",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 970.5
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "berger_velocity",
     "grade": "claimed"
    }
   }
@@ -13393,6 +13579,37 @@
   }
  },
  {
+  "load_id": "280_remington_150_grain_classic_hybrid_hunter",
+  "cartridge_id": "280_remington",
+  "projectile": "150 Grain Classic Hybrid Hunter",
+  "note": "",
+  "values": {
+   "cartridge": {
+    "value": "280 Remington",
+    "unit": "name",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "150 Grain Classic Hybrid Hunter",
+    "unit": "designation",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 913.5
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
   "load_id": "280_remington_160_gr_spitzer_accubond",
   "cartridge_id": "280_remington",
   "projectile": "160 gr Spitzer AccuBond",
@@ -13574,6 +13791,37 @@
     ],
     "unit": "mm, m/s",
     "source": "nosler_velocity",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "280_remington_175_grain_elite_hunter",
+  "cartridge_id": "280_remington",
+  "projectile": "175 Grain Elite Hunter",
+  "note": "",
+  "values": {
+   "cartridge": {
+    "value": "280 Remington",
+    "unit": "name",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "175 Grain Elite Hunter",
+    "unit": "designation",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 845.2
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "berger_velocity",
     "grade": "claimed"
    }
   }
@@ -13986,6 +14234,37 @@
   }
  },
  {
+  "load_id": "28_nosler_150_grain_classic_hybrid_hunter",
+  "cartridge_id": "28_nosler",
+  "projectile": "150 Grain Classic Hybrid Hunter",
+  "note": "",
+  "values": {
+   "cartridge": {
+    "value": "28 Nosler",
+    "unit": "name",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "150 Grain Classic Hybrid Hunter",
+    "unit": "designation",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 660.4,
+      "mv_ms": 1009.2
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
   "load_id": "28_nosler_160_gr_spitzer_accubond",
   "cartridge_id": "28_nosler",
   "projectile": "160 gr Spitzer AccuBond",
@@ -14233,6 +14512,37 @@
     ],
     "unit": "mm, m/s",
     "source": "nosler_velocity",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "28_nosler_175_grain_elite_hunter",
+  "cartridge_id": "28_nosler",
+  "projectile": "175 Grain Elite Hunter",
+  "note": "",
+  "values": {
+   "cartridge": {
+    "value": "28 Nosler",
+    "unit": "name",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "175 Grain Elite Hunter",
+    "unit": "designation",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 660.4,
+      "mv_ms": 949.1
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "berger_velocity",
     "grade": "claimed"
    }
   }
@@ -15334,6 +15644,37 @@
     ],
     "unit": "mm, m/s",
     "source": "nosler_velocity",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "300_remington_ultra_magnum_180_grain_elite_hunter",
+  "cartridge_id": "300_remington_ultra_magnum",
+  "projectile": "180 Grain Elite Hunter",
+  "note": "",
+  "values": {
+   "cartridge": {
+    "value": "300 Remington Ultra Magnum",
+    "unit": "name",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "180 Grain Elite Hunter",
+    "unit": "designation",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 660.4,
+      "mv_ms": 958.9
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "berger_velocity",
     "grade": "claimed"
    }
   }
@@ -19354,6 +19695,37 @@
   }
  },
  {
+  "load_id": "300_winchester_magnum_180_grain_elite_hunter",
+  "cartridge_id": "300_winchester_magnum",
+  "projectile": "180 Grain Elite Hunter",
+  "note": "",
+  "values": {
+   "cartridge": {
+    "value": "300 Winchester Magnum",
+    "unit": "name",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "180 Grain Elite Hunter",
+    "unit": "designation",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 660.4,
+      "mv_ms": 947.0
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
   "load_id": "300_winchester_magnum_190_gr_hpbt_custom_competition",
   "cartridge_id": "300_winchester_magnum",
   "projectile": "190 gr HPBT Custom Competition",
@@ -20341,6 +20713,37 @@
     ],
     "unit": "mm, m/s",
     "source": "nosler_velocity",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "300_winchester_short_magnum_180_grain_elite_hunter",
+  "cartridge_id": "300_winchester_short_magnum",
+  "projectile": "180 Grain Elite Hunter",
+  "note": "",
+  "values": {
+   "cartridge": {
+    "value": "300 Winchester Short Magnum",
+    "unit": "name",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "180 Grain Elite Hunter",
+    "unit": "designation",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 660.4,
+      "mv_ms": 950.7
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "berger_velocity",
     "grade": "claimed"
    }
   }
@@ -22421,6 +22824,37 @@
     ],
     "unit": "mm, m/s",
     "source": "nosler_velocity",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "308_win_180_grain_elite_hunter",
+  "cartridge_id": "308_win",
+  "projectile": "180 Grain Elite Hunter",
+  "note": "",
+  "values": {
+   "cartridge": {
+    "value": "308 Winchester",
+    "unit": "name",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "180 Grain Elite Hunter",
+    "unit": "designation",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 808.6
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "berger_velocity",
     "grade": "claimed"
    }
   }
@@ -25083,6 +25517,37 @@
   }
  },
  {
+  "load_id": "30_06_springfield_180_grain_elite_hunter",
+  "cartridge_id": "30_06_springfield",
+  "projectile": "180 Grain Elite Hunter",
+  "note": "",
+  "values": {
+   "cartridge": {
+    "value": "30-06 Springfield",
+    "unit": "name",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "180 Grain Elite Hunter",
+    "unit": "designation",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 660.4,
+      "mv_ms": 869.6
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
   "load_id": "30_06_springfield_190_gr_hpbt_custom_competition",
   "cartridge_id": "30_06_springfield",
   "projectile": "190 gr HPBT Custom Competition",
@@ -26299,6 +26764,37 @@
     ],
     "unit": "mm, m/s",
     "source": "nosler_velocity",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "30_nosler_180_grain_elite_hunter",
+  "cartridge_id": "30_nosler",
+  "projectile": "180 Grain Elite Hunter",
+  "note": "",
+  "values": {
+   "cartridge": {
+    "value": "30 Nosler",
+    "unit": "name",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "180 Grain Elite Hunter",
+    "unit": "designation",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 660.4,
+      "mv_ms": 987.9
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "berger_velocity",
     "grade": "claimed"
    }
   }
@@ -27521,6 +28017,68 @@
   }
  },
  {
+  "load_id": "338_lapua_mag_250_grain_elite_hunter",
+  "cartridge_id": "338_lapua_mag",
+  "projectile": "250 Grain Elite Hunter",
+  "note": "",
+  "values": {
+   "cartridge": {
+    "value": "338 Lapua Magnum",
+    "unit": "name",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "250 Grain Elite Hunter",
+    "unit": "designation",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 660.4,
+      "mv_ms": 886.1
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "338_lapua_mag_250_grain_hybrid_otm_tactical",
+  "cartridge_id": "338_lapua_mag",
+  "projectile": "250 Grain Hybrid OTM Tactical",
+  "note": "",
+  "values": {
+   "cartridge": {
+    "value": "338 Lapua Magnum",
+    "unit": "name",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "250 Grain Hybrid OTM Tactical",
+    "unit": "designation",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 660.4,
+      "mv_ms": 886.1
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
   "load_id": "338_lapua_mag_265_gr_spitzer_accubond_long_range",
   "cartridge_id": "338_lapua_mag",
   "projectile": "265 gr Spitzer AccuBond Long Range",
@@ -27772,6 +28330,68 @@
     ],
     "unit": "mm, m/s",
     "source": "nosler_velocity",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "338_lapua_mag_300_grain_elite_hunter",
+  "cartridge_id": "338_lapua_mag",
+  "projectile": "300 Grain Elite Hunter",
+  "note": "",
+  "values": {
+   "cartridge": {
+    "value": "338 Lapua Magnum",
+    "unit": "name",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "300 Grain Elite Hunter",
+    "unit": "designation",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 660.4,
+      "mv_ms": 824.2
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "338_lapua_mag_300_grain_hybrid_otm_tactical",
+  "cartridge_id": "338_lapua_mag",
+  "projectile": "300 Grain Hybrid OTM Tactical",
+  "note": "",
+  "values": {
+   "cartridge": {
+    "value": "338 Lapua Magnum",
+    "unit": "name",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "300 Grain Hybrid OTM Tactical",
+    "unit": "designation",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 660.4,
+      "mv_ms": 824.2
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "berger_velocity",
     "grade": "claimed"
    }
   }
@@ -28407,6 +29027,68 @@
   }
  },
  {
+  "load_id": "338_remington_ultra_magnum_250_grain_elite_hunter",
+  "cartridge_id": "338_remington_ultra_magnum",
+  "projectile": "250 Grain Elite Hunter",
+  "note": "",
+  "values": {
+   "cartridge": {
+    "value": "338 Remington Ultra Magnum",
+    "unit": "name",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "250 Grain Elite Hunter",
+    "unit": "designation",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 660.4,
+      "mv_ms": 858.0
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "338_remington_ultra_magnum_250_grain_hybrid_otm_tactical",
+  "cartridge_id": "338_remington_ultra_magnum",
+  "projectile": "250 Grain Hybrid OTM Tactical",
+  "note": "",
+  "values": {
+   "cartridge": {
+    "value": "338 Remington Ultra Magnum",
+    "unit": "name",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "250 Grain Hybrid OTM Tactical",
+    "unit": "designation",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 660.4,
+      "mv_ms": 858.0
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
   "load_id": "338_remington_ultra_magnum_265_gr_spitzer_accubond_long_range",
   "cartridge_id": "338_remington_ultra_magnum",
   "projectile": "265 gr Spitzer AccuBond Long Range",
@@ -28557,6 +29239,68 @@
     ],
     "unit": "mm, m/s",
     "source": "nosler_velocity",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "338_remington_ultra_magnum_300_grain_elite_hunter",
+  "cartridge_id": "338_remington_ultra_magnum",
+  "projectile": "300 Grain Elite Hunter",
+  "note": "",
+  "values": {
+   "cartridge": {
+    "value": "338 Remington Ultra Magnum",
+    "unit": "name",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "300 Grain Elite Hunter",
+    "unit": "designation",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 660.4,
+      "mv_ms": 795.8
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "338_remington_ultra_magnum_300_grain_hybrid_otm_tactical",
+  "cartridge_id": "338_remington_ultra_magnum",
+  "projectile": "300 Grain Hybrid OTM Tactical",
+  "note": "",
+  "values": {
+   "cartridge": {
+    "value": "338 Remington Ultra Magnum",
+    "unit": "name",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "300 Grain Hybrid OTM Tactical",
+    "unit": "designation",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 660.4,
+      "mv_ms": 795.8
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "berger_velocity",
     "grade": "claimed"
    }
   }
@@ -29035,6 +29779,68 @@
   }
  },
  {
+  "load_id": "338_winchester_magnum_250_grain_elite_hunter",
+  "cartridge_id": "338_winchester_magnum",
+  "projectile": "250 Grain Elite Hunter",
+  "note": "",
+  "values": {
+   "cartridge": {
+    "value": "338 Winchester Magnum",
+    "unit": "name",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "250 Grain Elite Hunter",
+    "unit": "designation",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 660.4,
+      "mv_ms": 823.9
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "338_winchester_magnum_250_grain_hybrid_otm_tactical",
+  "cartridge_id": "338_winchester_magnum",
+  "projectile": "250 Grain Hybrid OTM Tactical",
+  "note": "",
+  "values": {
+   "cartridge": {
+    "value": "338 Winchester Magnum",
+    "unit": "name",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "250 Grain Hybrid OTM Tactical",
+    "unit": "designation",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 660.4,
+      "mv_ms": 823.9
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
   "load_id": "338_winchester_magnum_265_gr_spitzer_accubond_long_range",
   "cartridge_id": "338_winchester_magnum",
   "projectile": "265 gr Spitzer AccuBond Long Range",
@@ -29185,6 +29991,68 @@
     ],
     "unit": "mm, m/s",
     "source": "nosler_velocity",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "338_winchester_magnum_300_grain_elite_hunter",
+  "cartridge_id": "338_winchester_magnum",
+  "projectile": "300 Grain Elite Hunter",
+  "note": "",
+  "values": {
+   "cartridge": {
+    "value": "338 Winchester Magnum",
+    "unit": "name",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "300 Grain Elite Hunter",
+    "unit": "designation",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 660.4,
+      "mv_ms": 768.7
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "338_winchester_magnum_300_grain_hybrid_otm_tactical",
+  "cartridge_id": "338_winchester_magnum",
+  "projectile": "300 Grain Hybrid OTM Tactical",
+  "note": "",
+  "values": {
+   "cartridge": {
+    "value": "338 Winchester Magnum",
+    "unit": "name",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "300 Grain Hybrid OTM Tactical",
+    "unit": "designation",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 660.4,
+      "mv_ms": 768.7
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "berger_velocity",
     "grade": "claimed"
    }
   }
@@ -30062,6 +30930,68 @@
   }
  },
  {
+  "load_id": "340_weatherby_magnum_250_grain_elite_hunter",
+  "cartridge_id": "340_weatherby_magnum",
+  "projectile": "250 Grain Elite Hunter",
+  "note": "",
+  "values": {
+   "cartridge": {
+    "value": "340 Weatherby Magnum",
+    "unit": "name",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "250 Grain Elite Hunter",
+    "unit": "designation",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 660.4,
+      "mv_ms": 866.2
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "340_weatherby_magnum_250_grain_hybrid_otm_tactical",
+  "cartridge_id": "340_weatherby_magnum",
+  "projectile": "250 Grain Hybrid OTM Tactical",
+  "note": "",
+  "values": {
+   "cartridge": {
+    "value": "340 Weatherby Magnum",
+    "unit": "name",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "250 Grain Hybrid OTM Tactical",
+    "unit": "designation",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 660.4,
+      "mv_ms": 866.2
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
   "load_id": "340_weatherby_magnum_265_gr_spitzer_accubond_long_range",
   "cartridge_id": "340_weatherby_magnum",
   "projectile": "265 gr Spitzer AccuBond Long Range",
@@ -30212,6 +31142,68 @@
     ],
     "unit": "mm, m/s",
     "source": "nosler_velocity",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "340_weatherby_magnum_300_grain_elite_hunter",
+  "cartridge_id": "340_weatherby_magnum",
+  "projectile": "300 Grain Elite Hunter",
+  "note": "",
+  "values": {
+   "cartridge": {
+    "value": "340 Weatherby Magnum",
+    "unit": "name",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "300 Grain Elite Hunter",
+    "unit": "designation",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 660.4,
+      "mv_ms": 787.0
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "340_weatherby_magnum_300_grain_hybrid_otm_tactical",
+  "cartridge_id": "340_weatherby_magnum",
+  "projectile": "300 Grain Hybrid OTM Tactical",
+  "note": "",
+  "values": {
+   "cartridge": {
+    "value": "340 Weatherby Magnum",
+    "unit": "name",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "300 Grain Hybrid OTM Tactical",
+    "unit": "designation",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 660.4,
+      "mv_ms": 787.0
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "berger_velocity",
     "grade": "claimed"
    }
   }
@@ -34189,6 +35181,37 @@
   }
  },
  {
+  "load_id": "65_creedmoor_135_grain_classic_hybrid_hunter",
+  "cartridge_id": "65_creedmoor",
+  "projectile": "135 Grain Classic Hybrid Hunter",
+  "note": "",
+  "values": {
+   "cartridge": {
+    "value": "6.5 Creedmoor",
+    "unit": "name",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "135 Grain Classic Hybrid Hunter",
+    "unit": "designation",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 907.4
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
   "load_id": "65_creedmoor_136_gr_scenar_l",
   "cartridge_id": "65_creedmoor",
   "projectile": "136 gr Scenar-L",
@@ -34471,6 +35494,37 @@
     ],
     "unit": "mm, m/s",
     "source": "nosler_velocity",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "65_creedmoor_140_grain_elite_hunter",
+  "cartridge_id": "65_creedmoor",
+  "projectile": "140 Grain Elite Hunter",
+  "note": "",
+  "values": {
+   "cartridge": {
+    "value": "6.5 Creedmoor",
+    "unit": "name",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "140 Grain Elite Hunter",
+    "unit": "designation",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 862.6
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "berger_velocity",
     "grade": "claimed"
    }
   }
@@ -35730,6 +36784,37 @@
   }
  },
  {
+  "load_id": "6_5_284_norma_135_grain_classic_hybrid_hunter",
+  "cartridge_id": "6_5_284_norma",
+  "projectile": "135 Grain Classic Hybrid Hunter",
+  "note": "",
+  "values": {
+   "cartridge": {
+    "value": "6.5-284 Norma",
+    "unit": "name",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "135 Grain Classic Hybrid Hunter",
+    "unit": "designation",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 660.4,
+      "mv_ms": 931.8
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
   "load_id": "6_5_284_norma_140_gr_hpbt_custom_competition",
   "cartridge_id": "6_5_284_norma",
   "projectile": "140 gr HPBT Custom Competition",
@@ -35880,6 +36965,37 @@
     ],
     "unit": "mm, m/s",
     "source": "nosler_velocity",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "6_5_284_norma_140_grain_elite_hunter",
+  "cartridge_id": "6_5_284_norma",
+  "projectile": "140 Grain Elite Hunter",
+  "note": "",
+  "values": {
+   "cartridge": {
+    "value": "6.5-284 Norma",
+    "unit": "name",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "140 Grain Elite Hunter",
+    "unit": "designation",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 660.4,
+      "mv_ms": 910.1
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "berger_velocity",
     "grade": "claimed"
    }
   }
@@ -37017,6 +38133,37 @@
   }
  },
  {
+  "load_id": "6_5_x_55_swedish_135_grain_classic_hybrid_hunter",
+  "cartridge_id": "6_5_x_55_swedish",
+  "projectile": "135 Grain Classic Hybrid Hunter",
+  "note": "",
+  "values": {
+   "cartridge": {
+    "value": "6.5 x 55 Swedish",
+    "unit": "name",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "135 Grain Classic Hybrid Hunter",
+    "unit": "designation",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 876.3
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
   "load_id": "6_5_x_55_swedish_140_gr_hpbt_custom_competition",
   "cartridge_id": "6_5_x_55_swedish",
   "projectile": "140 gr HPBT Custom Competition",
@@ -37167,6 +38314,37 @@
     ],
     "unit": "mm, m/s",
     "source": "nosler_velocity",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "6_5_x_55_swedish_140_grain_elite_hunter",
+  "cartridge_id": "6_5_x_55_swedish",
+  "projectile": "140 Grain Elite Hunter",
+  "note": "",
+  "values": {
+   "cartridge": {
+    "value": "6.5 x 55 Swedish",
+    "unit": "name",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "140 Grain Elite Hunter",
+    "unit": "designation",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 859.2
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "berger_velocity",
     "grade": "claimed"
    }
   }
@@ -39742,6 +40920,37 @@
   }
  },
  {
+  "load_id": "7mm_08_remington_150_grain_classic_hybrid_hunter",
+  "cartridge_id": "7mm_08_remington",
+  "projectile": "150 Grain Classic Hybrid Hunter",
+  "note": "",
+  "values": {
+   "cartridge": {
+    "value": "7mm-08 Remington",
+    "unit": "name",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "150 Grain Classic Hybrid Hunter",
+    "unit": "designation",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 864.4
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
   "load_id": "7mm_08_remington_160_gr_spitzer_accubond",
   "cartridge_id": "7mm_08_remington",
   "projectile": "160 gr Spitzer AccuBond",
@@ -39923,6 +41132,37 @@
     ],
     "unit": "mm, m/s",
     "source": "nosler_velocity",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "7mm_08_remington_175_grain_elite_hunter",
+  "cartridge_id": "7mm_08_remington",
+  "projectile": "175 Grain Elite Hunter",
+  "note": "",
+  "values": {
+   "cartridge": {
+    "value": "7mm-08 Remington",
+    "unit": "name",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "175 Grain Elite Hunter",
+    "unit": "designation",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 795.5
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "berger_velocity",
     "grade": "claimed"
    }
   }
@@ -41500,6 +42740,37 @@
   }
  },
  {
+  "load_id": "7mm_remington_magnum_150_grain_classic_hybrid_hunter",
+  "cartridge_id": "7mm_remington_magnum",
+  "projectile": "150 Grain Classic Hybrid Hunter",
+  "note": "",
+  "values": {
+   "cartridge": {
+    "value": "7mm Remington Magnum",
+    "unit": "name",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "150 Grain Classic Hybrid Hunter",
+    "unit": "designation",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 660.4,
+      "mv_ms": 962.9
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
   "load_id": "7mm_remington_magnum_160_gr_spitzer_accubond",
   "cartridge_id": "7mm_remington_magnum",
   "projectile": "160 gr Spitzer AccuBond",
@@ -41681,6 +42952,37 @@
     ],
     "unit": "mm, m/s",
     "source": "nosler_velocity",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "7mm_remington_magnum_175_grain_elite_hunter",
+  "cartridge_id": "7mm_remington_magnum",
+  "projectile": "175 Grain Elite Hunter",
+  "note": "",
+  "values": {
+   "cartridge": {
+    "value": "7mm Remington Magnum",
+    "unit": "name",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "175 Grain Elite Hunter",
+    "unit": "designation",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 660.4,
+      "mv_ms": 907.7
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "berger_velocity",
     "grade": "claimed"
    }
   }
@@ -42089,6 +43391,37 @@
   }
  },
  {
+  "load_id": "7mm_remington_ultra_magnum_150_grain_classic_hybrid_hunter",
+  "cartridge_id": "7mm_remington_ultra_magnum",
+  "projectile": "150 Grain Classic Hybrid Hunter",
+  "note": "",
+  "values": {
+   "cartridge": {
+    "value": "7mm Remington Ultra Magnum",
+    "unit": "name",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "150 Grain Classic Hybrid Hunter",
+    "unit": "designation",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 660.4,
+      "mv_ms": 969.6
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
   "load_id": "7mm_remington_ultra_magnum_160_gr_spitzer_accubond",
   "cartridge_id": "7mm_remington_ultra_magnum",
   "projectile": "160 gr Spitzer AccuBond",
@@ -42208,6 +43541,37 @@
     ],
     "unit": "mm, m/s",
     "source": "nosler_velocity",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "7mm_remington_ultra_magnum_175_grain_elite_hunter",
+  "cartridge_id": "7mm_remington_ultra_magnum",
+  "projectile": "175 Grain Elite Hunter",
+  "note": "",
+  "values": {
+   "cartridge": {
+    "value": "7mm Remington Ultra Magnum",
+    "unit": "name",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "175 Grain Elite Hunter",
+    "unit": "designation",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 660.4,
+      "mv_ms": 905.6
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "berger_velocity",
     "grade": "claimed"
    }
   }
@@ -43174,6 +44538,37 @@
   }
  },
  {
+  "load_id": "7mm_winchester_short_magnum_150_grain_classic_hybrid_hunter",
+  "cartridge_id": "7mm_winchester_short_magnum",
+  "projectile": "150 Grain Classic Hybrid Hunter",
+  "note": "",
+  "values": {
+   "cartridge": {
+    "value": "7mm Winchester Short Magnum",
+    "unit": "name",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "150 Grain Classic Hybrid Hunter",
+    "unit": "designation",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 952.8
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
   "load_id": "7mm_winchester_short_magnum_160_gr_spitzer_accubond",
   "cartridge_id": "7mm_winchester_short_magnum",
   "projectile": "160 gr Spitzer AccuBond",
@@ -43355,6 +44750,37 @@
     ],
     "unit": "mm, m/s",
     "source": "nosler_velocity",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "7mm_winchester_short_magnum_175_grain_elite_hunter",
+  "cartridge_id": "7mm_winchester_short_magnum",
+  "projectile": "175 Grain Elite Hunter",
+  "note": "",
+  "values": {
+   "cartridge": {
+    "value": "7mm Winchester Short Magnum",
+    "unit": "name",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "175 Grain Elite Hunter",
+    "unit": "designation",
+    "source": "berger_velocity",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 885.1
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "berger_velocity",
     "grade": "claimed"
    }
   }
