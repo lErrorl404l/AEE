@@ -1,0 +1,8678 @@
+{
+ "conditions": {
+  "zero_m": 100.0,
+  "sight_m": 0.04,
+  "wind_ms": 4.0,
+  "wind_from_degrees": 90,
+  "temperature_c": 15.0,
+  "pressure_hpa": 1013.25,
+  "humidity": 0.0,
+  "gravity_ms2": 9.80665,
+  "range_step_m": 100.0,
+  "max_range_m": 1000.0,
+  "subsonic_floor_ms": 200.0,
+  "rk4_step_s": 0.001
+ },
+ "tolerances": {
+  "velocity_relative": 0.01,
+  "drop": "max(relative * |drop|, 0.03 mrad * range); the relative floor ramps from 1 percent at 300 m to 2 percent at 1000 m",
+  "drift": "max(0.03 * |drift|, 5 mm)",
+  "tof_relative": 0.01
+ },
+ "form_factor_band": {
+  "method": "i = SD / BC with SD = (mass_gr / 7000) / calibre_in^2, so i is 1.0 for the drag model's standard projectile. The band is taken per calibre group over the bc_g7 records graded 'measured' or 'corroborated', and a group is banded only when it holds at least three such records. Records outside a banded group are flagged. Groups without enough measurement, and records that hold only a bc_g1, are not screened.",
+  "g7_records": 388,
+  "screened": 354,
+  "unscreened": 34,
+  "groups": {
+   "0.22": {
+    "records": 51,
+    "strong": 13,
+    "min": 0.9885799651820832,
+    "max": 1.3458944378187776,
+    "median": 1.1690071324140952
+   },
+   "0.24": {
+    "records": 43,
+    "strong": 9,
+    "min": 0.9585919117890822,
+    "max": 1.2984941643159786,
+    "median": 1.1729901986282443
+   },
+   "0.26": {
+    "records": 72,
+    "strong": 9,
+    "min": 0.9347199181670739,
+    "max": 1.2192839685980976,
+    "median": 1.0212064586380487
+   },
+   "0.28": {
+    "records": 71,
+    "strong": 12,
+    "min": 0.9240979706303554,
+    "max": 1.336026244666619,
+    "median": 1.1545244993253514
+   },
+   "0.31": {
+    "records": 117,
+    "strong": 27,
+    "min": 0.9741061427577277,
+    "max": 1.4731774673720406,
+    "median": 1.112741068979939
+   }
+  },
+  "measured_count": 37,
+  "g7_min": 1.0212064586380487,
+  "g7_max": 1.4731774673720406,
+  "g7_median": 1.1601641084507546,
+  "ratio_count": 381,
+  "bc1_bc7_min": 1.3854748603351956,
+  "bc1_bc7_median": 1.9872122762148337,
+  "bc1_bc7_max": 2.5760869565217392
+ },
+ "density_check": {
+  "aee_isa_density_ratio_sea_level": 0.999982,
+  "aee_isa_density_ratio_1500m": 0.863712,
+  "solver_density_ratio_sea_level": 1.0004255875331192,
+  "note": "AEE rho0 = 1.225 kg/m3. The solver documents cStandardDensity 0.076474 lb/ft3 = 1.2250 kg/m3. Both ratios are printed so the constant offset between the two sides is known rather than absorbed by a tolerance."
+ },
+ "published_examples": [
+  {
+   "id": "lapua_308_155_scenar_l",
+   "citation": "Lapua Catalog 2026, .308 Win product 4317076, 155 gr Scenar-L (GB552), metric trajectory table",
+   "url": "https://www.lapua.com/wp-content/uploads/2026/06/Lapua_Catalog_2026_ENG_web.pdf",
+   "sha256": "27b2ebed6394cfa9a762527f8188eb3e534d39c1ef75dd9524f78c7954417f64",
+   "model": "G1",
+   "bc": 0.46,
+   "mv_ms": 860.0,
+   "conditions": {
+    "zero_m": 100.0,
+    "sight_m": 0.04,
+    "wind_ms": 4.0,
+    "temperature_c": 15.0,
+    "pressure_hpa": 1013.25,
+    "humidity": 0.0
+   },
+   "rows": [
+    {
+     "range_m": 100,
+     "published_velocity_ms": 794,
+     "velocity_ms": 792.9,
+     "velocity_error": 0.0013,
+     "published_drop_mm": 0,
+     "drop_mm": -0.0,
+     "drop_error": 0.0,
+     "published_drift_mm": 18,
+     "drift_mm": 19.3,
+     "drift_error": 0.0724,
+     "drift_approx_mm": 19.3,
+     "tof_s": 0.121
+    },
+    {
+     "range_m": 200,
+     "published_velocity_ms": 730,
+     "velocity_ms": 729.0,
+     "velocity_error": 0.0013,
+     "published_drop_mm": -115,
+     "drop_mm": -116.4,
+     "drop_error": 0.0122,
+     "published_drift_mm": 76,
+     "drift_mm": 80.3,
+     "drift_error": 0.0567,
+     "drift_approx_mm": 80.3,
+     "tof_s": 0.253
+    },
+    {
+     "range_m": 300,
+     "published_velocity_ms": 669,
+     "velocity_ms": 668.1,
+     "velocity_error": 0.0013,
+     "published_drop_mm": -414,
+     "drop_mm": -417.9,
+     "drop_error": 0.0093,
+     "published_drift_mm": 180,
+     "drift_mm": 188.3,
+     "drift_error": 0.0463,
+     "drift_approx_mm": 188.3,
+     "tof_s": 0.396
+    },
+    {
+     "range_m": 600,
+     "published_velocity_ms": 503,
+     "velocity_ms": 504.0,
+     "velocity_error": 0.002,
+     "published_drop_mm": -2813,
+     "drop_mm": -2831.3,
+     "drop_error": 0.0065,
+     "published_drift_mm": 831,
+     "drift_mm": 863.1,
+     "drift_error": 0.0386,
+     "drift_approx_mm": 863.1,
+     "tof_s": 0.913
+    },
+    {
+     "range_m": 800,
+     "published_velocity_ms": 408,
+     "velocity_ms": 414.4,
+     "velocity_error": 0.0156,
+     "published_drop_mm": -6265,
+     "drop_mm": -6288.6,
+     "drop_error": 0.0038,
+     "published_drift_mm": 1640,
+     "drift_mm": 1687.1,
+     "drift_error": 0.0287,
+     "drift_approx_mm": 1687.1,
+     "tof_s": 1.352
+    },
+    {
+     "range_m": 1000,
+     "published_velocity_ms": 331,
+     "velocity_ms": 347.8,
+     "velocity_error": 0.0507,
+     "published_drop_mm": -12106,
+     "drop_mm": -12051.7,
+     "drop_error": 0.0045,
+     "published_drift_mm": 2857,
+     "drift_mm": 2875.0,
+     "drift_error": 0.0063,
+     "drift_approx_mm": 2875.0,
+     "tof_s": 1.882
+    }
+   ],
+   "worst_error": {
+    "velocity": 0.0156,
+    "drop": 0.0122,
+    "drift": 0.0724
+   },
+   "gate_until_m": 800,
+   "passed": true,
+   "atmosphere": {
+    "density_ratio": 1.0004255875331192
+   },
+   "tolerance": {
+    "velocity": 0.02,
+    "drop": 0.02,
+    "drift": 0.1
+   }
+  },
+  {
+   "id": "lapua_338lm_250_scenar",
+   "citation": "Lapua Catalog 2026, .338 Lapua Mag. product 4318017, 250 gr Scenar (GB488), metric trajectory table",
+   "url": "https://www.lapua.com/wp-content/uploads/2026/06/Lapua_Catalog_2026_ENG_web.pdf",
+   "sha256": "27b2ebed6394cfa9a762527f8188eb3e534d39c1ef75dd9524f78c7954417f64",
+   "model": "G7",
+   "bc": 0.322,
+   "mv_ms": 905.0,
+   "conditions": {
+    "zero_m": 100.0,
+    "sight_m": 0.04,
+    "wind_ms": 4.0,
+    "temperature_c": 15.0,
+    "pressure_hpa": 1013.25,
+    "humidity": 0.0
+   },
+   "rows": [
+    {
+     "range_m": 100,
+     "published_velocity_ms": 856,
+     "velocity_ms": 855.4,
+     "velocity_error": 0.0007,
+     "published_drop_mm": 0,
+     "drop_mm": -0.0,
+     "drop_error": 0.0,
+     "published_drift_mm": 12,
+     "drift_mm": 12.6,
+     "drift_error": 0.0516,
+     "drift_approx_mm": 12.6,
+     "tof_s": 0.114
+    },
+    {
+     "range_m": 200,
+     "published_velocity_ms": 808,
+     "velocity_ms": 807.2,
+     "velocity_error": 0.0009,
+     "published_drop_mm": -93,
+     "drop_mm": -94.2,
+     "drop_error": 0.0128,
+     "published_drift_mm": 48,
+     "drift_mm": 52.0,
+     "drift_error": 0.083,
+     "drift_approx_mm": 52.0,
+     "tof_s": 0.234
+    },
+    {
+     "range_m": 300,
+     "published_velocity_ms": 762,
+     "velocity_ms": 760.5,
+     "velocity_error": 0.0019,
+     "published_drop_mm": -336,
+     "drop_mm": -339.1,
+     "drop_error": 0.0092,
+     "published_drift_mm": 112,
+     "drift_mm": 120.5,
+     "drift_error": 0.076,
+     "drift_approx_mm": 120.5,
+     "tof_s": 0.362
+    },
+    {
+     "range_m": 600,
+     "published_velocity_ms": 631,
+     "velocity_ms": 629.8,
+     "velocity_error": 0.0019,
+     "published_drop_mm": -2164,
+     "drop_mm": -2184.8,
+     "drop_error": 0.0096,
+     "published_drift_mm": 495,
+     "drift_mm": 528.9,
+     "drift_error": 0.0685,
+     "drift_approx_mm": 528.9,
+     "tof_s": 0.795
+    },
+    {
+     "range_m": 800,
+     "published_velocity_ms": 551,
+     "velocity_ms": 550.2,
+     "velocity_error": 0.0014,
+     "published_drop_mm": -4570,
+     "drop_mm": -4611.7,
+     "drop_error": 0.0091,
+     "published_drift_mm": 944,
+     "drift_mm": 1004.0,
+     "drift_error": 0.0636,
+     "drift_approx_mm": 1004.0,
+     "tof_s": 1.135
+    },
+    {
+     "range_m": 1000,
+     "published_velocity_ms": 477,
+     "velocity_ms": 475.5,
+     "velocity_error": 0.0031,
+     "published_drop_mm": -8274,
+     "drop_mm": -8345.7,
+     "drop_error": 0.0087,
+     "published_drift_mm": 1589,
+     "drift_mm": 1684.2,
+     "drift_error": 0.0599,
+     "drift_approx_mm": 1684.2,
+     "tof_s": 1.526
+    }
+   ],
+   "worst_error": {
+    "velocity": 0.0031,
+    "drop": 0.0128,
+    "drift": 0.083
+   },
+   "gate_until_m": 1000,
+   "passed": true,
+   "atmosphere": {
+    "density_ratio": 1.0004255875331192
+   },
+   "tolerance": {
+    "velocity": 0.02,
+    "drop": 0.02,
+    "drift": 0.1
+   }
+  }
+ ],
+ "compared": [
+  {
+   "projectile_id": "apg_m118",
+   "names": [
+    "M118",
+    "173 gr M118"
+   ],
+   "model": "G7",
+   "bc": 0.24,
+   "mv_ms": 777.24,
+   "load_id": "762x51_nato_m118",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.057,
+   "worst_drop_error_over_tolerance": 0.171,
+   "worst_drift_error_over_tolerance": 0.082,
+   "worst_tof_error_over_tolerance": 0.721,
+   "drift_bias": 0.0022
+  },
+  {
+   "projectile_id": "apg_m193",
+   "names": [
+    "M193",
+    "55 gr M193"
+   ],
+   "model": "G7",
+   "bc": 0.122,
+   "mv_ms": 964.7,
+   "load_id": "556x45_nato_m193",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.082,
+   "worst_drop_error_over_tolerance": 0.142,
+   "worst_drift_error_over_tolerance": 0.109,
+   "worst_tof_error_over_tolerance": 0.402,
+   "drift_bias": 0.0021
+  },
+  {
+   "projectile_id": "apg_m33",
+   "names": [
+    "M33",
+    "650 gr M33"
+   ],
+   "model": "G7",
+   "bc": 0.34,
+   "mv_ms": 886.97,
+   "load_id": "50_bmg_m33",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.037,
+   "worst_drop_error_over_tolerance": 0.184,
+   "worst_drift_error_over_tolerance": 0.07,
+   "worst_tof_error_over_tolerance": 0.359,
+   "drift_bias": 0.0017
+  },
+  {
+   "projectile_id": "apg_m80",
+   "names": [
+    "M80",
+    "149 gr M80"
+   ],
+   "model": "G7",
+   "bc": 0.2,
+   "mv_ms": 838.2,
+   "load_id": "762x51_nato_m80",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.069,
+   "worst_drop_error_over_tolerance": 0.17,
+   "worst_drift_error_over_tolerance": 0.141,
+   "worst_tof_error_over_tolerance": 0.707,
+   "drift_bias": 0.0031
+  },
+  {
+   "projectile_id": "apg_m855",
+   "names": [
+    "M855",
+    "62 gr M855"
+   ],
+   "model": "G7",
+   "bc": 0.151,
+   "mv_ms": 914.4,
+   "load_id": "556x45_nato_m855",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.084,
+   "worst_drop_error_over_tolerance": 0.141,
+   "worst_drift_error_over_tolerance": 0.113,
+   "worst_tof_error_over_tolerance": 0.686,
+   "drift_bias": 0.0023
+  },
+  {
+   "projectile_id": "hornady_eldm_22_73",
+   "names": [
+    "22 Cal 73 gr. ELD Match",
+    "73ELDM",
+    "73 ELD-M",
+    "73gr ELD-M"
+   ],
+   "model": "G7",
+   "bc": 0.2,
+   "mv_ms": 850.0,
+   "load_id": "223_rem_73_gr_eld_match",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.058,
+   "worst_drop_error_over_tolerance": 0.149,
+   "worst_drift_error_over_tolerance": 0.115,
+   "worst_tof_error_over_tolerance": 0.537,
+   "drift_bias": 0.0024
+  },
+  {
+   "projectile_id": "hornady_eldm_22_88",
+   "names": [
+    "22 Cal 88 gr. ELD Match",
+    "88ELDM",
+    "88 ELD-M",
+    "88gr ELD-M"
+   ],
+   "model": "G7",
+   "bc": 0.274,
+   "mv_ms": 838.0,
+   "load_id": "224_valkyrie_88_gr_eld_match",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.05,
+   "worst_drop_error_over_tolerance": 0.203,
+   "worst_drift_error_over_tolerance": 0.102,
+   "worst_tof_error_over_tolerance": 0.387,
+   "drift_bias": 0.0021
+  },
+  {
+   "projectile_id": "hornady_eldm_30_168",
+   "names": [
+    "30 Cal 168 gr. ELD Match",
+    "168ELDM",
+    "168 ELD-M",
+    "168gr ELD-M"
+   ],
+   "model": "G7",
+   "bc": 0.263,
+   "mv_ms": 866.0,
+   "load_id": "308_win_168_gr_eld_match",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.044,
+   "worst_drop_error_over_tolerance": 0.198,
+   "worst_drift_error_over_tolerance": 0.085,
+   "worst_tof_error_over_tolerance": 0.321,
+   "drift_bias": 0.0021
+  },
+  {
+   "projectile_id": "hornady_eldm_30_178",
+   "names": [
+    "30 Cal 178 gr. ELD Match",
+    "178ELDM",
+    "178 ELD-M",
+    "178gr ELD-M"
+   ],
+   "model": "G7",
+   "bc": 0.275,
+   "mv_ms": 902.0,
+   "load_id": "300_win_mag_178_gr_eld_match",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.044,
+   "worst_drop_error_over_tolerance": 0.157,
+   "worst_drift_error_over_tolerance": 0.082,
+   "worst_tof_error_over_tolerance": 0.352,
+   "drift_bias": 0.002
+  },
+  {
+   "projectile_id": "hornady_eldm_30_195",
+   "names": [
+    "30 Cal 195 gr. ELD Match",
+    "195ELDM",
+    "195 ELD-M",
+    "195gr ELD-M"
+   ],
+   "model": "G7",
+   "bc": 0.294,
+   "mv_ms": 893.0,
+   "load_id": "300_win_mag_195_gr_eld_match",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.027,
+   "worst_drop_error_over_tolerance": 0.151,
+   "worst_drift_error_over_tolerance": 0.072,
+   "worst_tof_error_over_tolerance": 0.416,
+   "drift_bias": 0.0018
+  },
+  {
+   "projectile_id": "hornady_eldm_338_285",
+   "names": [
+    "338 Cal 285 gr. ELD Match",
+    "285ELDM",
+    "285 ELD-M",
+    "285gr ELD-M"
+   ],
+   "model": "G7",
+   "bc": 0.417,
+   "mv_ms": 837.0,
+   "load_id": "338_lapua_mag_285_gr_eld_match",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.03,
+   "worst_drop_error_over_tolerance": 0.196,
+   "worst_drift_error_over_tolerance": 0.089,
+   "worst_tof_error_over_tolerance": 0.654,
+   "drift_bias": 0.0031
+  },
+  {
+   "projectile_id": "hornady_eldm_65_120",
+   "names": [
+    "6.5mm 120 gr. ELD Match",
+    "120ELDM",
+    "120 ELD-M",
+    "120gr ELD-M"
+   ],
+   "model": "G7",
+   "bc": 0.245,
+   "mv_ms": 887.0,
+   "load_id": "65_creedmoor_120_gr_eld_match",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.059,
+   "worst_drop_error_over_tolerance": 0.14,
+   "worst_drift_error_over_tolerance": 0.123,
+   "worst_tof_error_over_tolerance": 0.806,
+   "drift_bias": 0.003
+  },
+  {
+   "projectile_id": "hornady_eldm_65_123",
+   "names": [
+    "6.5mm 123 gr. ELD Match",
+    "123ELDM",
+    "123 ELD-M",
+    "123gr ELD-M"
+   ],
+   "model": "G7",
+   "bc": 0.255,
+   "mv_ms": 786.0,
+   "load_id": "65_grendel_123_gr_eld_match",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.048,
+   "worst_drop_error_over_tolerance": 0.18,
+   "worst_drift_error_over_tolerance": 0.105,
+   "worst_tof_error_over_tolerance": 0.613,
+   "drift_bias": 0.0024
+  },
+  {
+   "projectile_id": "hornady_eldm_65_130",
+   "names": [
+    "6.5mm 130 gr. ELD Match",
+    "130ELDM",
+    "130 ELD-M",
+    "130gr ELD-M"
+   ],
+   "model": "G7",
+   "bc": 0.279,
+   "mv_ms": 866.0,
+   "load_id": "260_rem_130_gr_eld_match",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.044,
+   "worst_drop_error_over_tolerance": 0.206,
+   "worst_drift_error_over_tolerance": 0.124,
+   "worst_tof_error_over_tolerance": 0.513,
+   "drift_bias": 0.0028
+  },
+  {
+   "projectile_id": "hornady_eldm_65_140",
+   "names": [
+    "6.5mm 140 gr. ELD Match",
+    "140ELDM",
+    "140 ELD-M",
+    "140gr ELD-M"
+   ],
+   "model": "G7",
+   "bc": 0.326,
+   "mv_ms": 826.0,
+   "load_id": "65_creedmoor_140_gr_eld_match",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.027,
+   "worst_drop_error_over_tolerance": 0.162,
+   "worst_drift_error_over_tolerance": 0.08,
+   "worst_tof_error_over_tolerance": 0.285,
+   "drift_bias": 0.0014
+  },
+  {
+   "projectile_id": "hornady_eldm_65_147",
+   "names": [
+    "6.5mm 147 gr. ELD Match",
+    "147ELDM",
+    "147 ELD-M",
+    "147gr ELD-M"
+   ],
+   "model": "G7",
+   "bc": 0.351,
+   "mv_ms": 821.0,
+   "load_id": "65_creedmoor_147_gr_eld_match",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.035,
+   "worst_drop_error_over_tolerance": 0.155,
+   "worst_drift_error_over_tolerance": 0.091,
+   "worst_tof_error_over_tolerance": 0.679,
+   "drift_bias": 0.0028
+  },
+  {
+   "projectile_id": "hornady_eldm_6_108",
+   "names": [
+    "6mm 108 gr. ELD Match",
+    "108ELDM",
+    "108 ELD-M",
+    "108gr ELD-M"
+   ],
+   "model": "G7",
+   "bc": 0.27,
+   "mv_ms": 930.0,
+   "load_id": "6_mm_creedmoor_108_gr_eld_match",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.052,
+   "worst_drop_error_over_tolerance": 0.147,
+   "worst_drift_error_over_tolerance": 0.094,
+   "worst_tof_error_over_tolerance": 0.763,
+   "drift_bias": 0.0031
+  },
+  {
+   "projectile_id": "hornady_eldx_25_110",
+   "names": [
+    "25 Cal 110 gr. ELD-X",
+    "110ELDX",
+    "110 ELD-X",
+    "110gr ELD-X"
+   ],
+   "model": "G7",
+   "bc": 0.234,
+   "mv_ms": 957.0,
+   "load_id": "25_06_rem_110_gr_eld_x",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.053,
+   "worst_drop_error_over_tolerance": 0.165,
+   "worst_drift_error_over_tolerance": 0.072,
+   "worst_tof_error_over_tolerance": 0.451,
+   "drift_bias": 0.002
+  },
+  {
+   "projectile_id": "hornady_eldx_270_145",
+   "names": [
+    "270 Cal 145 gr. ELD-X",
+    "145ELDX",
+    "145 ELD-X",
+    "145gr ELD-X"
+   ],
+   "model": "G7",
+   "bc": 0.27,
+   "mv_ms": 905.0,
+   "load_id": "270_win_145_gr_eld_x",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.05,
+   "worst_drop_error_over_tolerance": 0.213,
+   "worst_drift_error_over_tolerance": 0.142,
+   "worst_tof_error_over_tolerance": 0.629,
+   "drift_bias": 0.0025
+  },
+  {
+   "projectile_id": "hornady_eldx_30_178",
+   "names": [
+    "30 Cal 178 gr. ELD-X",
+    "178ELDX",
+    "178 ELD-X",
+    "178gr ELD-X"
+   ],
+   "model": "G7",
+   "bc": 0.278,
+   "mv_ms": 884.0,
+   "load_id": "300_rcm_178_gr_eld_x",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.046,
+   "worst_drop_error_over_tolerance": 0.271,
+   "worst_drift_error_over_tolerance": 0.135,
+   "worst_tof_error_over_tolerance": 0.246,
+   "drift_bias": 0.0013
+  },
+  {
+   "projectile_id": "hornady_eldx_30_200",
+   "names": [
+    "30 Cal 200 gr. ELD-X",
+    "200ELDX",
+    "200 ELD-X",
+    "200gr ELD-X"
+   ],
+   "model": "G7",
+   "bc": 0.301,
+   "mv_ms": 884.0,
+   "load_id": "300_win_mag_200_gr_eld_x",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.033,
+   "worst_drop_error_over_tolerance": 0.199,
+   "worst_drift_error_over_tolerance": 0.086,
+   "worst_tof_error_over_tolerance": 0.318,
+   "drift_bias": 0.0017
+  },
+  {
+   "projectile_id": "hornady_eldx_30_220",
+   "names": [
+    "30 Cal 220 gr. ELD-X",
+    "220ELDX",
+    "220 ELD-X",
+    "220gr ELD-X"
+   ],
+   "model": "G7",
+   "bc": 0.329,
+   "mv_ms": 899.0,
+   "load_id": "300_rem_ultra_mag_220_gr_eld_x",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.031,
+   "worst_drop_error_over_tolerance": 0.137,
+   "worst_drift_error_over_tolerance": 0.073,
+   "worst_tof_error_over_tolerance": 0.566,
+   "drift_bias": 0.0025
+  },
+  {
+   "projectile_id": "hornady_eldx_338_230",
+   "names": [
+    "338 Cal 230 gr. ELD-X",
+    "230ELDX",
+    "230 ELD-X",
+    "230gr ELD-X"
+   ],
+   "model": "G7",
+   "bc": 0.31,
+   "mv_ms": 856.0,
+   "load_id": "338_win_mag_230_gr_eld_x",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.037,
+   "worst_drop_error_over_tolerance": 0.248,
+   "worst_drift_error_over_tolerance": 0.106,
+   "worst_tof_error_over_tolerance": 0.502,
+   "drift_bias": 0.0023
+  },
+  {
+   "projectile_id": "hornady_eldx_338_270",
+   "names": [
+    "338 Cal 270 gr. ELD-X",
+    "270ELDX",
+    "270 ELD-X",
+    "270gr ELD-X"
+   ],
+   "model": "G7",
+   "bc": 0.381,
+   "mv_ms": 853.0,
+   "load_id": "338_lapua_mag_270_gr_eld_x",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.034,
+   "worst_drop_error_over_tolerance": 0.22,
+   "worst_drift_error_over_tolerance": 0.107,
+   "worst_tof_error_over_tolerance": 0.716,
+   "drift_bias": 0.003
+  },
+  {
+   "projectile_id": "hornady_eldx_65_143",
+   "names": [
+    "6.5mm 143 gr. ELD-X",
+    "143ELDX",
+    "143 ELD-X",
+    "143gr ELD-X"
+   ],
+   "model": "G7",
+   "bc": 0.314,
+   "mv_ms": 930.0,
+   "load_id": "264_win_mag_143_gr_eld_x",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.034,
+   "worst_drop_error_over_tolerance": 0.177,
+   "worst_drift_error_over_tolerance": 0.096,
+   "worst_tof_error_over_tolerance": 0.335,
+   "drift_bias": 0.0018
+  },
+  {
+   "projectile_id": "hornady_eldx_7_150",
+   "names": [
+    "7mm 150 gr. ELD-X",
+    "150ELDX",
+    "150 ELD-X",
+    "150gr ELD-X"
+   ],
+   "model": "G7",
+   "bc": 0.289,
+   "mv_ms": 892.0,
+   "load_id": "280_rem_150_gr_eld_x",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.048,
+   "worst_drop_error_over_tolerance": 0.259,
+   "worst_drift_error_over_tolerance": 0.14,
+   "worst_tof_error_over_tolerance": 0.366,
+   "drift_bias": 0.0024
+  },
+  {
+   "projectile_id": "hornady_eldx_7_162",
+   "names": [
+    "7mm 162 gr. ELD-X",
+    "162ELDX",
+    "162 ELD-X",
+    "162gr ELD-X"
+   ],
+   "model": "G7",
+   "bc": 0.318,
+   "mv_ms": 823.0,
+   "load_id": "280_rem_162_gr_eld_x",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.037,
+   "worst_drop_error_over_tolerance": 0.119,
+   "worst_drift_error_over_tolerance": 0.069,
+   "worst_tof_error_over_tolerance": 0.64,
+   "drift_bias": 0.0022
+  },
+  {
+   "projectile_id": "hornady_eldx_7_175",
+   "names": [
+    "7mm 175 gr. ELD-X",
+    "175ELDX",
+    "175 ELD-X",
+    "175gr ELD-X"
+   ],
+   "model": "G7",
+   "bc": 0.347,
+   "mv_ms": 930.0,
+   "load_id": "28_nosler_175_gr_eld_x",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.033,
+   "worst_drop_error_over_tolerance": 0.173,
+   "worst_drift_error_over_tolerance": 0.093,
+   "worst_tof_error_over_tolerance": 0.611,
+   "drift_bias": 0.0026
+  },
+  {
+   "projectile_id": "lapua_B408",
+   "names": [
+    "8.61 mm 250 gr Lock Base"
+   ],
+   "model": "G7",
+   "bc": 0.31,
+   "mv_ms": 900.0,
+   "load_id": "338_lapua_mag_250_gr_lock_base",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.045,
+   "worst_drop_error_over_tolerance": 0.235,
+   "worst_drift_error_over_tolerance": 0.13,
+   "worst_tof_error_over_tolerance": 0.507,
+   "drift_bias": 0.0022
+  },
+  {
+   "projectile_id": "lapua_B476",
+   "names": [
+    "7.62 mm 170 gr Lock Base"
+   ],
+   "model": "G7",
+   "bc": 0.249,
+   "mv_ms": 840.0,
+   "load_id": "308_win_170_gr_lock_base",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.053,
+   "worst_drop_error_over_tolerance": 0.225,
+   "worst_drift_error_over_tolerance": 0.084,
+   "worst_tof_error_over_tolerance": 0.288,
+   "drift_bias": 0.0018
+  },
+  {
+   "projectile_id": "lapua_E401",
+   "names": [
+    "7.62 mm 200 gr Mega"
+   ],
+   "model": "G1",
+   "bc": 0.344,
+   "mv_ms": 775.0,
+   "load_id": "30_06_spring_200_gr_mega",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.063,
+   "worst_drop_error_over_tolerance": 0.278,
+   "worst_drift_error_over_tolerance": 0.127,
+   "worst_tof_error_over_tolerance": 0.276,
+   "drift_bias": 0.0015
+  },
+  {
+   "projectile_id": "lapua_E415",
+   "names": [
+    "7.62 mm 185 gr Mega"
+   ],
+   "model": "G1",
+   "bc": 0.319,
+   "mv_ms": 830.0,
+   "load_id": "300_win_mag_185_gr_mega",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.052,
+   "worst_drop_error_over_tolerance": 0.212,
+   "worst_drift_error_over_tolerance": 0.092,
+   "worst_tof_error_over_tolerance": 0.149,
+   "drift_bias": 0.0009
+  },
+  {
+   "projectile_id": "lapua_E433",
+   "names": [
+    "9.3 mm 285 gr Mega"
+   ],
+   "model": "G1",
+   "bc": 0.339,
+   "mv_ms": 690.0,
+   "load_id": "9_3_x_62_285_gr_mega",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.071,
+   "worst_drop_error_over_tolerance": 0.108,
+   "worst_drift_error_over_tolerance": 0.085,
+   "worst_tof_error_over_tolerance": 0.598,
+   "drift_bias": 0.0014
+  },
+  {
+   "projectile_id": "lapua_E469",
+   "names": [
+    "7.62 mm 150 gr Mega"
+   ],
+   "model": "G1",
+   "bc": 0.33,
+   "mv_ms": 850.0,
+   "load_id": "308_win_150_gr_mega",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.058,
+   "worst_drop_error_over_tolerance": 0.188,
+   "worst_drift_error_over_tolerance": 0.107,
+   "worst_tof_error_over_tolerance": 0.329,
+   "drift_bias": 0.0012
+  },
+  {
+   "projectile_id": "lapua_GB422",
+   "names": [
+    "7.62 mm 167 gr Scenar"
+   ],
+   "model": "G7",
+   "bc": 0.223,
+   "mv_ms": 820.0,
+   "load_id": "308_win_167_gr_scenar",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.048,
+   "worst_drop_error_over_tolerance": 0.116,
+   "worst_drift_error_over_tolerance": 0.091,
+   "worst_tof_error_over_tolerance": 0.541,
+   "drift_bias": 0.0022
+  },
+  {
+   "projectile_id": "lapua_GB432",
+   "names": [
+    "7.62 mm 185 gr Scenar"
+   ],
+   "model": "G7",
+   "bc": 0.242,
+   "mv_ms": 900.0,
+   "load_id": "300_win_mag_185_gr_scenar",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.061,
+   "worst_drop_error_over_tolerance": 0.183,
+   "worst_drift_error_over_tolerance": 0.113,
+   "worst_tof_error_over_tolerance": 0.532,
+   "drift_bias": 0.0025
+  },
+  {
+   "projectile_id": "lapua_GB458",
+   "names": [
+    "6.5 mm 139 gr Scenar"
+   ],
+   "model": "G7",
+   "bc": 0.29,
+   "mv_ms": 820.0,
+   "load_id": "6_5_x_47_lapua_139_gr_scenar",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.049,
+   "worst_drop_error_over_tolerance": 0.222,
+   "worst_drift_error_over_tolerance": 0.126,
+   "worst_tof_error_over_tolerance": 0.768,
+   "drift_bias": 0.0028
+  },
+  {
+   "projectile_id": "lapua_GB464",
+   "names": [
+    "6.5 mm 108 gr Scenar"
+   ],
+   "model": "G7",
+   "bc": 0.231,
+   "mv_ms": 900.0,
+   "load_id": "6_5_x_55_se_108_gr_scenar",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.047,
+   "worst_drop_error_over_tolerance": 0.186,
+   "worst_drift_error_over_tolerance": 0.127,
+   "worst_tof_error_over_tolerance": 0.348,
+   "drift_bias": 0.0016
+  },
+  {
+   "projectile_id": "lapua_GB488",
+   "names": [
+    "8.61 mm 250 gr Scenar"
+   ],
+   "model": "G7",
+   "bc": 0.322,
+   "mv_ms": 905.0,
+   "load_id": "338_lapua_mag_250_gr_scenar",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.033,
+   "worst_drop_error_over_tolerance": 0.218,
+   "worst_drift_error_over_tolerance": 0.098,
+   "worst_tof_error_over_tolerance": 0.306,
+   "drift_bias": 0.0016
+  },
+  {
+   "projectile_id": "lapua_GB489",
+   "names": [
+    "6.5 mm 123 gr Scenar"
+   ],
+   "model": "G7",
+   "bc": 0.263,
+   "mv_ms": 850.0,
+   "load_id": "6_5_x_47_lapua_123_gr_scenar",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.052,
+   "worst_drop_error_over_tolerance": 0.278,
+   "worst_drift_error_over_tolerance": 0.103,
+   "worst_tof_error_over_tolerance": 0.378,
+   "drift_bias": 0.0018
+  },
+  {
+   "projectile_id": "lapua_GB504",
+   "names": [
+    "6.5 mm 100 gr Scenar"
+   ],
+   "model": "G7",
+   "bc": 0.212,
+   "mv_ms": 800.0,
+   "load_id": "6_5_x_55_se_100_gr_scenar",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.055,
+   "worst_drop_error_over_tolerance": 0.243,
+   "worst_drift_error_over_tolerance": 0.078,
+   "worst_tof_error_over_tolerance": 0.166,
+   "drift_bias": 0.0011
+  },
+  {
+   "projectile_id": "lapua_GB528",
+   "names": [
+    "8.61 mm 300 gr Scenar"
+   ],
+   "model": "G7",
+   "bc": 0.368,
+   "mv_ms": 830.0,
+   "load_id": "338_lapua_mag_300_gr_scenar",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.028,
+   "worst_drop_error_over_tolerance": 0.218,
+   "worst_drift_error_over_tolerance": 0.091,
+   "worst_tof_error_over_tolerance": 0.308,
+   "drift_bias": 0.0017
+  },
+  {
+   "projectile_id": "lapua_GB542",
+   "names": [
+    "6 mm 105 gr Scenar-L"
+   ],
+   "model": "G7",
+   "bc": 0.236,
+   "mv_ms": 815.0,
+   "load_id": "6_mm_br_norma_105_gr_scenar_l",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.037,
+   "worst_drop_error_over_tolerance": 0.197,
+   "worst_drift_error_over_tolerance": 0.065,
+   "worst_tof_error_over_tolerance": 0.158,
+   "drift_bias": 0.0011
+  },
+  {
+   "projectile_id": "lapua_GB543",
+   "names": [
+    "6 mm 90 gr Scenar-L"
+   ],
+   "model": "G7",
+   "bc": 0.216,
+   "mv_ms": 900.0,
+   "load_id": "6_mm_br_norma_90_gr_scenar_l",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.053,
+   "worst_drop_error_over_tolerance": 0.164,
+   "worst_drift_error_over_tolerance": 0.085,
+   "worst_tof_error_over_tolerance": 0.272,
+   "drift_bias": 0.0016
+  },
+  {
+   "projectile_id": "lapua_GB544",
+   "names": [
+    "5.69 mm 69 gr Scenar-L"
+   ],
+   "model": "G7",
+   "bc": 0.171,
+   "mv_ms": 830.0,
+   "load_id": "223_rem_69_gr_scenar_l",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.061,
+   "worst_drop_error_over_tolerance": 0.198,
+   "worst_drift_error_over_tolerance": 0.098,
+   "worst_tof_error_over_tolerance": 0.443,
+   "drift_bias": 0.002
+  },
+  {
+   "projectile_id": "lapua_GB546",
+   "names": [
+    "6.5 mm 136 gr Scenar-L"
+   ],
+   "model": "G7",
+   "bc": 0.274,
+   "mv_ms": 814.0,
+   "load_id": "260_rem_136_gr_scenar_l",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.041,
+   "worst_drop_error_over_tolerance": 0.14,
+   "worst_drift_error_over_tolerance": 0.066,
+   "worst_tof_error_over_tolerance": 0.609,
+   "drift_bias": 0.0019
+  },
+  {
+   "projectile_id": "lapua_GB547",
+   "names": [
+    "6.5 mm 120 gr Scenar-L"
+   ],
+   "model": "G7",
+   "bc": 0.246,
+   "mv_ms": 845.0,
+   "load_id": "6_5_x_47_lapua_120_gr_scenar_l",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.061,
+   "worst_drop_error_over_tolerance": 0.275,
+   "worst_drift_error_over_tolerance": 0.141,
+   "worst_tof_error_over_tolerance": 0.227,
+   "drift_bias": 0.0011
+  },
+  {
+   "projectile_id": "lapua_GB550",
+   "names": [
+    "7.62 mm 175 gr Scenar-L"
+   ],
+   "model": "G7",
+   "bc": 0.247,
+   "mv_ms": 793.0,
+   "load_id": "308_win_175_gr_scenar_l",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.048,
+   "worst_drop_error_over_tolerance": 0.106,
+   "worst_drift_error_over_tolerance": 0.085,
+   "worst_tof_error_over_tolerance": 0.635,
+   "drift_bias": 0.0023
+  },
+  {
+   "projectile_id": "lapua_GB552",
+   "names": [
+    "7.62 mm 155 gr Scenar-L"
+   ],
+   "model": "G7",
+   "bc": 0.23,
+   "mv_ms": 860.0,
+   "load_id": "308_win_155_gr_scenar_l",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.058,
+   "worst_drop_error_over_tolerance": 0.239,
+   "worst_drift_error_over_tolerance": 0.132,
+   "worst_tof_error_over_tolerance": 0.734,
+   "drift_bias": 0.0029
+  },
+  {
+   "projectile_id": "lapua_N508",
+   "names": [
+    "8.61 mm 231 gr Naturalis"
+   ],
+   "model": "G1",
+   "bc": 0.373,
+   "mv_ms": 920.0,
+   "load_id": "338_lapua_mag_231_gr_naturalis",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.069,
+   "worst_drop_error_over_tolerance": 0.126,
+   "worst_drift_error_over_tolerance": 0.109,
+   "worst_tof_error_over_tolerance": 0.725,
+   "drift_bias": 0.0027
+  },
+  {
+   "projectile_id": "lapua_N509",
+   "names": [
+    "6 mm 90 gr Naturalis"
+   ],
+   "model": "G1",
+   "bc": 0.23,
+   "mv_ms": 910.0,
+   "load_id": "243_win_90_gr_naturalis",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.126,
+   "worst_drop_error_over_tolerance": 0.22,
+   "worst_drift_error_over_tolerance": 0.236,
+   "worst_tof_error_over_tolerance": 0.703,
+   "drift_bias": 0.0027
+  },
+  {
+   "projectile_id": "lapua_N558",
+   "names": [
+    "7.62 mm 170 gr Naturalis"
+   ],
+   "model": "G7",
+   "bc": 0.177,
+   "mv_ms": 902.0,
+   "load_id": "300_win_mag_170_gr_naturalis",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.078,
+   "worst_drop_error_over_tolerance": 0.273,
+   "worst_drift_error_over_tolerance": 0.16,
+   "worst_tof_error_over_tolerance": 0.255,
+   "drift_bias": 0.0018
+  },
+  {
+   "projectile_id": "lapua_N559",
+   "names": [
+    "8 mm 180 gr Naturalis"
+   ],
+   "model": "G7",
+   "bc": 0.179,
+   "mv_ms": 805.0,
+   "load_id": "8_x_57_irs_180_gr_naturalis",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.068,
+   "worst_drop_error_over_tolerance": 0.079,
+   "worst_drift_error_over_tolerance": 0.074,
+   "worst_tof_error_over_tolerance": 0.642,
+   "drift_bias": 0.002
+  },
+  {
+   "projectile_id": "lapua_N560",
+   "names": [
+    "9.3 mm 250 gr Naturalis"
+   ],
+   "model": "G7",
+   "bc": 0.215,
+   "mv_ms": 740.0,
+   "load_id": "9_3_x_62_250_gr_naturalis",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.052,
+   "worst_drop_error_over_tolerance": 0.158,
+   "worst_drift_error_over_tolerance": 0.087,
+   "worst_tof_error_over_tolerance": 0.278,
+   "drift_bias": 0.0017
+  },
+  {
+   "projectile_id": "lapua_N563",
+   "names": [
+    "6.5 mm 140 gr Naturalis"
+   ],
+   "model": "G1",
+   "bc": 0.201,
+   "mv_ms": 807.0,
+   "load_id": "6_5_x_47_lapua_140_gr_naturalis",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.087,
+   "worst_drop_error_over_tolerance": 0.198,
+   "worst_drift_error_over_tolerance": 0.14,
+   "worst_tof_error_over_tolerance": 0.249,
+   "drift_bias": 0.0012
+  },
+  {
+   "projectile_id": "lapua_N564",
+   "names": [
+    "7 mm 156 gr Naturalis"
+   ],
+   "model": "G1",
+   "bc": 0.28,
+   "mv_ms": 840.0,
+   "load_id": "7_x_64_156_gr_naturalis",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.088,
+   "worst_drop_error_over_tolerance": 0.179,
+   "worst_drift_error_over_tolerance": 0.177,
+   "worst_tof_error_over_tolerance": 0.431,
+   "drift_bias": 0.0019
+  },
+  {
+   "projectile_id": "lapua_S341",
+   "names": [
+    "6.5 mm 100 gr FMJ"
+   ],
+   "model": "G1",
+   "bc": 0.25,
+   "mv_ms": 830.0,
+   "load_id": "6_5_x_55_se_100_gr_fmj",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.102,
+   "worst_drop_error_over_tolerance": 0.069,
+   "worst_drift_error_over_tolerance": 0.101,
+   "worst_tof_error_over_tolerance": 0.666,
+   "drift_bias": 0.0016
+  },
+  {
+   "projectile_id": "lapua_S374",
+   "names": [
+    "7.62 mm 123 gr FMJ"
+   ],
+   "model": "G1",
+   "bc": 0.27,
+   "mv_ms": 895.0,
+   "load_id": "308_win_123_gr_fmj",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.082,
+   "worst_drop_error_over_tolerance": 0.225,
+   "worst_drift_error_over_tolerance": 0.123,
+   "worst_tof_error_over_tolerance": 0.232,
+   "drift_bias": 0.0014
+  },
+  {
+   "projectile_id": "lapua_S405",
+   "names": [
+    "7.62 mm 123 gr FMJ"
+   ],
+   "model": "G1",
+   "bc": 0.257,
+   "mv_ms": 895.0,
+   "load_id": "30_06_spring_123_gr_fmj",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.101,
+   "worst_drop_error_over_tolerance": 0.104,
+   "worst_drift_error_over_tolerance": 0.093,
+   "worst_tof_error_over_tolerance": 0.704,
+   "drift_bias": 0.0021
+  },
+  {
+   "projectile_id": "lapua_S496",
+   "names": [
+    "6.5 mm 100 gr FMJ Cutting Edge"
+   ],
+   "model": "G1",
+   "bc": 0.25,
+   "mv_ms": 830.0,
+   "load_id": "6_5_x_55_se_100_gr_fmj",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.102,
+   "worst_drop_error_over_tolerance": 0.069,
+   "worst_drift_error_over_tolerance": 0.101,
+   "worst_tof_error_over_tolerance": 0.666,
+   "drift_bias": 0.0016
+  },
+  {
+   "projectile_id": "lapua_S569",
+   "names": [
+    "5.69 mm 55 gr FMJ"
+   ],
+   "model": "G1",
+   "bc": 0.255,
+   "mv_ms": 955.0,
+   "load_id": "223_rem_55_gr_fmj",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.105,
+   "worst_drop_error_over_tolerance": 0.252,
+   "worst_drift_error_over_tolerance": 0.15,
+   "worst_tof_error_over_tolerance": 0.451,
+   "drift_bias": 0.002
+  },
+  {
+   "projectile_id": "sierra_2135",
+   "names": [
+    "30 Cal 150 gr RN Pro-Hunter"
+   ],
+   "model": "G1",
+   "bc": 0.2,
+   "mv_ms": 762.0,
+   "load_id": "307_win_150_gr_rn",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.114,
+   "worst_drop_error_over_tolerance": 0.073,
+   "worst_drift_error_over_tolerance": 0.123,
+   "worst_tof_error_over_tolerance": 0.56,
+   "drift_bias": 0.0014
+  }
+ ],
+ "counts": {
+  "compared": 62,
+  "unmatched": 606,
+  "trajectory_disagreements": 0,
+  "gross_disagreements": 0,
+  "form_factor_flags": 122,
+  "transposition_flags": 0,
+  "hard_transposition_on_compared": 0,
+  "mean_drift_bias": 0.002
+ },
+ "disagreements": [],
+ "form_factor": [
+  {
+   "class_name": "form_factor",
+   "projectile_id": "hornady_eldm_7_180_t7p5",
+   "names": [
+    "7mm 180 gr. ELD Match (1 in 7.5\" twist)",
+    "180ELDM",
+    "180 ELD-M",
+    "180gr ELD-M",
+    "180ELDM 7.5in"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.2839,
+   "form_factor": 0.7765,
+   "band": [
+    0.9241,
+    1.336
+   ],
+   "band_records": 12,
+   "deviation": 0.673,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "hornady_atip_7_190",
+   "names": [
+    "7 mm 190 gr A-Tip\u00ae Match Bullet",
+    "190ATIP",
+    "190 A-Tip",
+    "190gr A-Tip"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.2839,
+   "form_factor": 0.7983,
+   "band": [
+    0.9241,
+    1.336
+   ],
+   "band_records": 12,
+   "deviation": 0.691,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "sierra_1615",
+   "names": [
+    "25 Cal 90 gr HPBT GameKing (SGK)"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.257,
+   "form_factor": 1.4636,
+   "band": [
+    0.9347,
+    1.2193
+   ],
+   "band_records": 9,
+   "deviation": 1.433,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "hornady_eldm_7_180_t8p75",
+   "names": [
+    "7mm 180 gr. ELD Match (1 in 8.75\" twist)",
+    "180ELDM",
+    "180 ELD-M",
+    "180gr ELD-M",
+    "180ELDM 8.75in"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.2839,
+   "form_factor": 0.8162,
+   "band": [
+    0.9241,
+    1.336
+   ],
+   "band_records": 12,
+   "deviation": 0.707,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "sierra_1390",
+   "names": [
+    "22 Cal 55 gr HPBT GameKing (SGK)"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.224,
+   "form_factor": 1.6143,
+   "band": [
+    0.9886,
+    1.3459
+   ],
+   "band_records": 13,
+   "deviation": 1.381,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "sierra_1728",
+   "names": [
+    "6.5mm 130 gr HPBT GameKing (SGK)"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.264,
+   "form_factor": 1.4099,
+   "band": [
+    0.9347,
+    1.2193
+   ],
+   "band_records": 9,
+   "deviation": 1.381,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "hornady_atip_6_120",
+   "names": [
+    "6 mm 120 gr A-Tip\u00ae Match Bullet",
+    "120ATIP",
+    "120 A-Tip",
+    "120gr A-Tip"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.2429,
+   "form_factor": 0.8545,
+   "band": [
+    0.9586,
+    1.2985
+   ],
+   "band_records": 9,
+   "deviation": 0.728,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "hornady_eldm_7_162",
+   "names": [
+    "7mm 162 gr. ELD Match",
+    "162ELDM",
+    "162 ELD-M",
+    "162gr ELD-M"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.2839,
+   "form_factor": 0.8498,
+   "band": [
+    0.9241,
+    1.336
+   ],
+   "band_records": 12,
+   "deviation": 0.736,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "hornady_atip_22_90",
+   "names": [
+    "22 cal 90 gr A-Tip\u00ae Match Bullet",
+    "90ATIP",
+    "90 A-Tip",
+    "90gr A-Tip"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.224,
+   "form_factor": 0.8685,
+   "band": [
+    0.9886,
+    1.3459
+   ],
+   "band_records": 13,
+   "deviation": 0.743,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "sierra_1575",
+   "names": [
+    "6mm 110 gr HPBT/CN MatchKing (SMK)"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.243,
+   "form_factor": 0.8754,
+   "band": [
+    0.9586,
+    1.2985
+   ],
+   "band_records": 9,
+   "deviation": 0.746,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "hornady_atip_6_110",
+   "names": [
+    "6 mm 110 gr A-Tip\u00ae Match Bullet",
+    "110ATIP",
+    "110 A-Tip",
+    "110gr A-Tip"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.2429,
+   "form_factor": 0.876,
+   "band": [
+    0.9586,
+    1.2985
+   ],
+   "band_records": 9,
+   "deviation": 0.747,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "hornady_atip_30_230",
+   "names": [
+    "30 Cal 230 gr A-Tip\u00ae Match Bullet",
+    "230ATIP",
+    "230 A-Tip",
+    "230gr A-Tip"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.3079,
+   "form_factor": 0.8373,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.752,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "sierra_7207",
+   "names": [
+    "6mm 107 gr Tipped MatchKing (TMK)"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.243,
+   "form_factor": 0.8865,
+   "band": [
+    0.9586,
+    1.2985
+   ],
+   "band_records": 9,
+   "deviation": 0.756,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "hornady_eldm_30_225_t7",
+   "names": [
+    "30 Cal 225 gr. ELD Match (1 in 7\" twist)",
+    "225ELDM",
+    "225 ELD-M",
+    "225gr ELD-M",
+    "225ELDM 7in"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.3079,
+   "form_factor": 0.8436,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.758,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_28485",
+   "names": [
+    "7mm 190 Grain Long Range Hybrid Target"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.284,
+   "form_factor": 0.8764,
+   "band": [
+    0.9241,
+    1.336
+   ],
+   "band_records": 12,
+   "deviation": 0.759,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "hornady_eldvt_22_62",
+   "names": [
+    ".22 cal 62gr ELD-VT\u00ae",
+    "62ELDVT",
+    "62 ELD-VT",
+    "62gr ELD-VT"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.224,
+   "form_factor": 0.8869,
+   "band": [
+    0.9886,
+    1.3459
+   ],
+   "band_records": 13,
+   "deviation": 0.759,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "nosler_53507",
+   "names": [
+    "6mm 115 Gr. HPBT RDF"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.243,
+   "form_factor": 0.8917,
+   "band": [
+    0.9586,
+    1.2985
+   ],
+   "band_records": 9,
+   "deviation": 0.76,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "sierra_1565",
+   "names": [
+    "6mm 105 gr HPBT/CN MatchKing (SMK)"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.243,
+   "form_factor": 0.8945,
+   "band": [
+    0.9586,
+    1.2985
+   ],
+   "band_records": 9,
+   "deviation": 0.763,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "sierra_2231",
+   "names": [
+    "30 Cal 200 gr HPBT/CN MatchKing (SMK)"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.308,
+   "form_factor": 0.8508,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.765,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_30487",
+   "names": [
+    "30 Cal 245 Grain Long Range Hybrid Target"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.308,
+   "form_factor": 0.8521,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.766,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "hornady_atip_30_250",
+   "names": [
+    "30 Cal 250 gr A-Tip\u00ae Match Bullet",
+    "250ATIP",
+    "250 A-Tip",
+    "250gr A-Tip"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.3079,
+   "form_factor": 0.8525,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.766,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "hornady_atip_7_166",
+   "names": [
+    "7 mm 166 gr A-Tip\u00ae Match Bullet",
+    "166ATIP",
+    "166 A-Tip",
+    "166gr A-Tip"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.2839,
+   "form_factor": 0.8865,
+   "band": [
+    0.9241,
+    1.336
+   ],
+   "band_records": 12,
+   "deviation": 0.768,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_24485",
+   "names": [
+    "6mm 109 Grain Long Range Hybrid Target"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.243,
+   "form_factor": 0.9031,
+   "band": [
+    0.9586,
+    1.2985
+   ],
+   "band_records": 9,
+   "deviation": 0.77,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_28550",
+   "names": [
+    "7mm 195 Grain Elite Hunter"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.284,
+   "form_factor": 0.8925,
+   "band": [
+    0.9241,
+    1.336
+   ],
+   "band_records": 12,
+   "deviation": 0.773,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "nosler_53410",
+   "names": [
+    "6mm 105 Gr. HPBT RDF"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.243,
+   "form_factor": 0.9072,
+   "band": [
+    0.9586,
+    1.2985
+   ],
+   "band_records": 9,
+   "deviation": 0.773,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "hornady_eldx_7_175",
+   "names": [
+    "7mm 175 gr. ELD-X",
+    "175ELDX",
+    "175 ELD-X",
+    "175gr ELD-X"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.2839,
+   "form_factor": 0.8941,
+   "band": [
+    0.9241,
+    1.336
+   ],
+   "band_records": 12,
+   "deviation": 0.774,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "sierra_1396",
+   "names": [
+    "22 Cal 95 gr HPBT/CN MatchKing (SMK)"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.224,
+   "form_factor": 0.9046,
+   "band": [
+    0.9886,
+    1.3459
+   ],
+   "band_records": 13,
+   "deviation": 0.774,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_24556",
+   "names": [
+    "6mm 108 Grain Elite Hunter"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.243,
+   "form_factor": 0.9104,
+   "band": [
+    0.9586,
+    1.2985
+   ],
+   "band_records": 9,
+   "deviation": 0.776,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_22485",
+   "names": [
+    "22 Cal 85.5 Grain Long Range Hybrid Target"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.224,
+   "form_factor": 0.9083,
+   "band": [
+    0.9886,
+    1.3459
+   ],
+   "band_records": 13,
+   "deviation": 0.777,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "hornady_eldm_22_75",
+   "names": [
+    "22 Cal 75 gr. ELD Match",
+    "75ELDM",
+    "75 ELD-M",
+    "75gr ELD-M"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.224,
+   "form_factor": 0.9085,
+   "band": [
+    0.9886,
+    1.3459
+   ],
+   "band_records": 13,
+   "deviation": 0.777,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_24528",
+   "names": [
+    "6mm 105 Grain VLD Hunting"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.243,
+   "form_factor": 0.9138,
+   "band": [
+    0.9586,
+    1.2985
+   ],
+   "band_records": 9,
+   "deviation": 0.779,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "hornady_eldm_30_225_t10",
+   "names": [
+    "30 Cal 225 gr. ELD Match (1 in 10\" twist)",
+    "225ELDM",
+    "225 ELD-M",
+    "225gr ELD-M",
+    "225ELDM 10in"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.3079,
+   "form_factor": 0.8673,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.779,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "sierra_2251",
+   "names": [
+    "30 Cal 230 gr HPBT/CN MatchKing (SMK)"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.308,
+   "form_factor": 0.8681,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.78,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "hornady_eldm_22_88",
+   "names": [
+    "22 Cal 88 gr. ELD Match",
+    "88ELDM",
+    "88 ELD-M",
+    "88gr ELD-M"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.224,
+   "form_factor": 0.9143,
+   "band": [
+    0.9886,
+    1.3459
+   ],
+   "band_records": 13,
+   "deviation": 0.782,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "hornady_eldx_7_162",
+   "names": [
+    "7mm 162 gr. ELD-X",
+    "162ELDX",
+    "162 ELD-X",
+    "162gr ELD-X"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.2839,
+   "form_factor": 0.9032,
+   "band": [
+    0.9241,
+    1.336
+   ],
+   "band_records": 12,
+   "deviation": 0.782,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "sierra_7216",
+   "names": [
+    "6mm 116 gr Tipped MatchKing (TMK)"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.243,
+   "form_factor": 0.9201,
+   "band": [
+    0.9586,
+    1.2985
+   ],
+   "band_records": 9,
+   "deviation": 0.784,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "sierra_1997",
+   "names": [
+    "7mm 197 gr HPBT/CN MatchKing (SMK)"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.284,
+   "form_factor": 0.9063,
+   "band": [
+    0.9241,
+    1.336
+   ],
+   "band_records": 12,
+   "deviation": 0.785,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_24433",
+   "names": [
+    "6mm 105 Grain Hybrid Target"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.243,
+   "form_factor": 0.9237,
+   "band": [
+    0.9586,
+    1.2985
+   ],
+   "band_records": 9,
+   "deviation": 0.788,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "sierra_9290T",
+   "names": [
+    "22 Cal 90 gr HPBT/CN MatchKing (SMK)"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.224,
+   "form_factor": 0.9217,
+   "band": [
+    0.9886,
+    1.3459
+   ],
+   "band_records": 13,
+   "deviation": 0.788,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_28405",
+   "names": [
+    "7mm 180 Grain VLD Target"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.284,
+   "form_factor": 0.9109,
+   "band": [
+    0.9241,
+    1.336
+   ],
+   "band_records": 12,
+   "deviation": 0.789,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "sierra_4540",
+   "names": [
+    "7mm 140 gr Tipped GameKing (TGK)"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.284,
+   "form_factor": 0.9116,
+   "band": [
+    0.9241,
+    1.336
+   ],
+   "band_records": 12,
+   "deviation": 0.79,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "sierra_4540C",
+   "names": [
+    "7mm 140 gr Tipped GameKing (TGK)- BGB"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.284,
+   "form_factor": 0.9116,
+   "band": [
+    0.9241,
+    1.336
+   ],
+   "band_records": 12,
+   "deviation": 0.79,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_28407",
+   "names": [
+    "7mm 180 Grain Hybrid Target"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.284,
+   "form_factor": 0.9135,
+   "band": [
+    0.9241,
+    1.336
+   ],
+   "band_records": 12,
+   "deviation": 0.791,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_28408",
+   "names": [
+    "7mm 184 Grain F-Open Hybrid Target"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.284,
+   "form_factor": 0.9154,
+   "band": [
+    0.9241,
+    1.336
+   ],
+   "band_records": 12,
+   "deviation": 0.793,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_30485",
+   "names": [
+    "30 Cal 208 Grain Long Range Hybrid Target"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.308,
+   "form_factor": 0.8848,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.795,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "nosler_53432",
+   "names": [
+    "7mm 185 Gr. HPBT RDF"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.284,
+   "form_factor": 0.9178,
+   "band": [
+    0.9241,
+    1.336
+   ],
+   "band_records": 12,
+   "deviation": 0.795,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "sierra_7295",
+   "names": [
+    "6mm 95 gr Tipped MatchKing (TMK)"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.243,
+   "form_factor": 0.9343,
+   "band": [
+    0.9586,
+    1.2985
+   ],
+   "band_records": 9,
+   "deviation": 0.796,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "hornady_eldx_7_150",
+   "names": [
+    "7mm 150 gr. ELD-X",
+    "150ELDX",
+    "150 ELD-X",
+    "150gr ELD-X"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.2839,
+   "form_factor": 0.9202,
+   "band": [
+    0.9241,
+    1.336
+   ],
+   "band_records": 12,
+   "deviation": 0.797,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "hornady_eldm_22_80",
+   "names": [
+    "22 Cal 80 gr. ELD Match",
+    "80ELDM",
+    "80 ELD-M",
+    "80gr ELD-M"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.224,
+   "form_factor": 0.9333,
+   "band": [
+    0.9886,
+    1.3459
+   ],
+   "band_records": 13,
+   "deviation": 0.798,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_28554",
+   "names": [
+    "7mm 175 Grain Elite Hunter"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.284,
+   "form_factor": 0.9225,
+   "band": [
+    0.9241,
+    1.336
+   ],
+   "band_records": 12,
+   "deviation": 0.799,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_22423",
+   "names": [
+    "22 Cal 90 Grain VLD Target"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.224,
+   "form_factor": 0.9352,
+   "band": [
+    0.9886,
+    1.3459
+   ],
+   "band_records": 13,
+   "deviation": 0.8,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "sierra_1983",
+   "names": [
+    "7mm 183 gr HPBT/CN MatchKing (SMK)"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.284,
+   "form_factor": 0.9234,
+   "band": [
+    0.9241,
+    1.336
+   ],
+   "band_records": 12,
+   "deviation": 0.8,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "hornady_eldvt_6_80",
+   "names": [
+    "6mm 80gr ELD-VT\u00ae",
+    "80ELDVT",
+    "80 ELD-VT",
+    "80gr ELD-VT"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.2429,
+   "form_factor": 0.9402,
+   "band": [
+    0.9586,
+    1.2985
+   ],
+   "band_records": 9,
+   "deviation": 0.802,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "sierra_1625",
+   "names": [
+    "25 Cal 100 gr SBT GameKing (SGK)"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.257,
+   "form_factor": 1.2723,
+   "band": [
+    0.9347,
+    1.2193
+   ],
+   "band_records": 9,
+   "deviation": 1.246,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_30560",
+   "names": [
+    "30 Cal 245 Grain Elite Hunter"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.308,
+   "form_factor": 0.8933,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.803,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_30486",
+   "names": [
+    "30 Cal 220 Grain Long Range Hybrid Target"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.308,
+   "form_factor": 0.8978,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.807,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "nosler_53066",
+   "names": [
+    "22 Cal 70 Gr. HPBT RDF"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.224,
+   "form_factor": 0.9445,
+   "band": [
+    0.9886,
+    1.3459
+   ],
+   "band_records": 13,
+   "deviation": 0.808,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "hornady_eldm_30_208",
+   "names": [
+    "30 Cal 208 gr. ELD Match",
+    "208ELDM",
+    "208 ELD-M",
+    "208gr ELD-M"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.3079,
+   "form_factor": 0.9008,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.81,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "sierra_1835",
+   "names": [
+    "270 Cal 140 gr HPBT GameKing (SGK)"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.277,
+   "form_factor": 1.4244,
+   "band": [
+    0.9241,
+    1.336
+   ],
+   "band_records": 12,
+   "deviation": 1.234,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "hornady_eldx_30_212_t7",
+   "names": [
+    "30 Cal 212 gr. ELD-X (1 in 7\" twist)",
+    "212ELDX",
+    "212 ELD-X",
+    "212gr ELD-X",
+    "212ELDX 7in"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.3079,
+   "form_factor": 0.9026,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.811,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "sierra_1925",
+   "names": [
+    "7mm 160 gr HPBT GameKing (SGK)"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.284,
+   "form_factor": 1.4169,
+   "band": [
+    0.9241,
+    1.336
+   ],
+   "band_records": 12,
+   "deviation": 1.227,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_24530",
+   "names": [
+    "6mm 115 Grain VLD Hunting"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.243,
+   "form_factor": 0.9561,
+   "band": [
+    0.9586,
+    1.2985
+   ],
+   "band_records": 9,
+   "deviation": 0.815,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "hornady_eldvt_30_174",
+   "names": [
+    ".30 cal 174gr ELD-VT\u00ae",
+    "174ELDVT",
+    "174 ELD-VT",
+    "174gr ELD-VT"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.3079,
+   "form_factor": 0.9074,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.815,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "sierra_4110T",
+   "names": [
+    "6mm 100 gr Tipped GameKing (TGK)"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.243,
+   "form_factor": 0.9562,
+   "band": [
+    0.9586,
+    1.2985
+   ],
+   "band_records": 9,
+   "deviation": 0.815,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "sierra_7188",
+   "names": [
+    "22 Cal 88 gr Tipped MatchKing (TMK)"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.224,
+   "form_factor": 0.9526,
+   "band": [
+    0.9886,
+    1.3459
+   ],
+   "band_records": 13,
+   "deviation": 0.815,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_24427",
+   "names": [
+    "6mm 95 Grain VLD Target"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.243,
+   "form_factor": 0.9576,
+   "band": [
+    0.9586,
+    1.2985
+   ],
+   "band_records": 9,
+   "deviation": 0.816,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "nosler_53434",
+   "names": [
+    "30 Cal 210 Gr. HPBT RDF"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.308,
+   "form_factor": 0.9087,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.817,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "sierra_7755",
+   "names": [
+    "30 Cal 155 gr Tipped MatchKing (TMK)"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.308,
+   "form_factor": 0.9118,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.819,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "sierra_1630",
+   "names": [
+    "25 Cal 117 gr SBT GameKing (SGK)"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.257,
+   "form_factor": 1.2466,
+   "band": [
+    0.9347,
+    1.2193
+   ],
+   "band_records": 9,
+   "deviation": 1.221,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_30429",
+   "names": [
+    "30 Cal 215 Grain Hybrid Target"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.308,
+   "form_factor": 0.9146,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.822,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "nosler_53452",
+   "names": [
+    "22 Cal 77 Gr. HPBT RDF"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.224,
+   "form_factor": 0.9615,
+   "band": [
+    0.9886,
+    1.3459
+   ],
+   "band_records": 13,
+   "deviation": 0.823,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_30554",
+   "names": [
+    "30 Cal 180 Grain Elite Hunter"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.308,
+   "form_factor": 0.9189,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.826,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "lapua_GB581",
+   "names": [
+    "7.62 mm 175 gr MaxRange Target"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.308,
+   "form_factor": 0.9215,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.828,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_22422",
+   "names": [
+    "22 Cal 80 Grain VLD Target"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.224,
+   "form_factor": 0.9775,
+   "band": [
+    0.9886,
+    1.3459
+   ],
+   "band_records": 13,
+   "deviation": 0.836,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "sierra_1815",
+   "names": [
+    "270 Cal 115 gr HPBT MatchKing (SMK)"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.277,
+   "form_factor": 1.3814,
+   "band": [
+    0.9241,
+    1.336
+   ],
+   "band_records": 12,
+   "deviation": 1.196,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "hornady_atip_30_176",
+   "names": [
+    "30 Cal 176 gr A-Tip\u00ae Match Bullet",
+    "176ATIP",
+    "176 A-Tip",
+    "176gr A-Tip"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.3079,
+   "form_factor": 0.934,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.839,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "hornady_eldm_65_147",
+   "names": [
+    "6.5mm 147 gr. ELD Match",
+    "147ELDM",
+    "147 ELD-M",
+    "147gr ELD-M"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.2642,
+   "form_factor": 0.8573,
+   "band": [
+    0.9347,
+    1.2193
+   ],
+   "band_records": 9,
+   "deviation": 0.839,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "hornady_atip_30_177",
+   "names": [
+    "30 Cal 177 gr A-Tip\u00ae Match Bullet",
+    "177ATIP",
+    "177 A-Tip",
+    "177gr A-Tip"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.3079,
+   "form_factor": 0.936,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.841,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "hornady_atip_65_135",
+   "names": [
+    "6.5 mm 135 gr A-Tip\u00ae Match Bullet",
+    "135ATIP",
+    "135 A-Tip",
+    "135gr A-Tip"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.2642,
+   "form_factor": 0.8609,
+   "band": [
+    0.9347,
+    1.2193
+   ],
+   "band_records": 9,
+   "deviation": 0.843,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "sierra_7720",
+   "names": [
+    "30 Cal 220 gr Tipped MatchKing (TMK)"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.308,
+   "form_factor": 0.9385,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.843,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "nosler_53441",
+   "names": [
+    "22 Cal 85 Gr. HPBT RDF"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.224,
+   "form_factor": 0.9878,
+   "band": [
+    0.9886,
+    1.3459
+   ],
+   "band_records": 13,
+   "deviation": 0.845,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_30430",
+   "names": [
+    "30 Cal 230 Grain Hybrid Target"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.308,
+   "form_factor": 0.9412,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.846,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_30551",
+   "names": [
+    "30 cal 217 Grain Elite Hunter NEW"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.308,
+   "form_factor": 0.9417,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.846,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_30424",
+   "names": [
+    "30 Cal 185 Grain Hybrid Target"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.308,
+   "form_factor": 0.9444,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.849,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "nosler_53505",
+   "names": [
+    "6.5mm 130 Gr. HPBT RDF"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.264,
+   "form_factor": 0.868,
+   "band": [
+    0.9347,
+    1.2193
+   ],
+   "band_records": 9,
+   "deviation": 0.85,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "sierra_1755",
+   "names": [
+    "6.5mm 150 gr HPBT/CN MatchKing (SMK)"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.264,
+   "form_factor": 0.8685,
+   "band": [
+    0.9347,
+    1.2193
+   ],
+   "band_records": 9,
+   "deviation": 0.85,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "nosler_49824",
+   "names": [
+    "6.5mm 140 Gr. HPBT RDF"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.264,
+   "form_factor": 0.8696,
+   "band": [
+    0.9347,
+    1.2193
+   ],
+   "band_records": 9,
+   "deviation": 0.852,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "sierra_7768",
+   "names": [
+    "30 Cal 168 gr Tipped MatchKing (TMK)"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.308,
+   "form_factor": 0.9475,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.852,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "nosler_58623",
+   "names": [
+    "30 Cal 210 Gr. Spitzer AccuBond Long Range"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.308,
+   "form_factor": 0.9497,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.853,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_30112",
+   "names": [
+    "30 Cal 230 Grain Hybrid OTM Tactical"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.308,
+   "form_factor": 0.9515,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.855,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_25485",
+   "names": [
+    "25 Cal 135 Grain Long Range Hybrid Target"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.257,
+   "form_factor": 0.8742,
+   "band": [
+    0.9347,
+    1.2193
+   ],
+   "band_records": 9,
+   "deviation": 0.856,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_30426",
+   "names": [
+    "30 Cal 155 Grain Hybrid Target"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.308,
+   "form_factor": 0.9527,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.856,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_30555",
+   "names": [
+    "30 Cal 205 Grain Elite Hunter"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.308,
+   "form_factor": 0.9528,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.856,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_30427",
+   "names": [
+    "30 Cal 200 Grain Hybrid Target"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.308,
+   "form_factor": 0.9531,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.857,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "nosler_58455",
+   "names": [
+    "30 Cal 168 Gr. Spitzer AccuBond Long Range"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.308,
+   "form_factor": 0.9547,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.858,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_26485",
+   "names": [
+    "6.5mm 144 Grain Long Range Hybrid Target"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.264,
+   "form_factor": 0.8784,
+   "band": [
+    0.9347,
+    1.2193
+   ],
+   "band_records": 9,
+   "deviation": 0.86,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "hornady_eldx_30_212_t10",
+   "names": [
+    "30 Cal 212 gr. ELD-X (1 in 10\" twist)",
+    "212ELDX",
+    "212 ELD-X",
+    "212gr ELD-X",
+    "212ELDX 10in"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.3079,
+   "form_factor": 0.9566,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.86,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_30425",
+   "names": [
+    "30 Cal 168 Grain Hybrid Target"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.308,
+   "form_factor": 0.9583,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.861,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "hornady_eldm_65_140",
+   "names": [
+    "6.5mm 140 gr. ELD Match",
+    "140ELDM",
+    "140 ELD-M",
+    "140gr ELD-M"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.2642,
+   "form_factor": 0.8791,
+   "band": [
+    0.9347,
+    1.2193
+   ],
+   "band_records": 9,
+   "deviation": 0.861,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "lapua_GB582",
+   "names": [
+    "6.5 mm 144 gr MaxRange Target"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.264,
+   "form_factor": 0.8811,
+   "band": [
+    0.9347,
+    1.2193
+   ],
+   "band_records": 9,
+   "deviation": 0.863,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "hornady_atip_65_153",
+   "names": [
+    "6.5 mm 153 gr A-Tip\u00ae Match Bullet",
+    "153ATIP",
+    "153 A-Tip",
+    "153gr A-Tip"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.2642,
+   "form_factor": 0.8822,
+   "band": [
+    0.9347,
+    1.2193
+   ],
+   "band_records": 9,
+   "deviation": 0.864,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_26486",
+   "names": [
+    "6.5mm 153.5 Grain Long Range Hybrid Target"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.264,
+   "form_factor": 0.8838,
+   "band": [
+    0.9347,
+    1.2193
+   ],
+   "band_records": 9,
+   "deviation": 0.865,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "hornady_eldm_30_168",
+   "names": [
+    "30 Cal 168 gr. ELD Match",
+    "168ELDM",
+    "168 ELD-M",
+    "168gr ELD-M"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.3079,
+   "form_factor": 0.9627,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.865,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "sierra_2237",
+   "names": [
+    "30 Cal 215 gr HPBT/CN MatchKing (SMK)"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.308,
+   "form_factor": 0.9636,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.866,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "hornady_eldx_30_178",
+   "names": [
+    "30 Cal 178 gr. ELD-X",
+    "178ELDX",
+    "178 ELD-X",
+    "178gr ELD-X"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.3079,
+   "form_factor": 0.965,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.867,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "sierra_9240T",
+   "names": [
+    "30 Cal 210 gr HPBT/CN MatchKing (SMK)"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.308,
+   "form_factor": 0.9671,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.869,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_30416",
+   "names": [
+    "30 Cal 155.5 Grain FULLBORE"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.308,
+   "form_factor": 0.9676,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.87,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "sierra_7795",
+   "names": [
+    "30 Cal 195 gr Tipped MatchKing (TMK)"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.308,
+   "form_factor": 0.9692,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.871,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_30410",
+   "names": [
+    "30 Cal 168 Grain VLD Target"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.308,
+   "form_factor": 0.9731,
+   "band": [
+    0.9741,
+    1.4732
+   ],
+   "band_records": 27,
+   "deviation": 0.874,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "nosler_49826",
+   "names": [
+    "6.5mm 150 Gr. HPBT RDF"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.264,
+   "form_factor": 0.899,
+   "band": [
+    0.9347,
+    1.2193
+   ],
+   "band_records": 9,
+   "deviation": 0.88,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "hornady_eldvt_65_100",
+   "names": [
+    "6.5mm 100gr ELD-VT\u00ae",
+    "100ELDVT",
+    "100 ELD-VT",
+    "100gr ELD-VT"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.2642,
+   "form_factor": 0.9058,
+   "band": [
+    0.9347,
+    1.2193
+   ],
+   "band_records": 9,
+   "deviation": 0.887,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "sierra_1530",
+   "names": [
+    "6mm 85 gr HPBT GameKing (SGK)"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.243,
+   "form_factor": 1.3182,
+   "band": [
+    0.9586,
+    1.2985
+   ],
+   "band_records": 9,
+   "deviation": 1.124,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_25586",
+   "names": [
+    "25 Cal 133 Grain Elite Hunter"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.257,
+   "form_factor": 0.9132,
+   "band": [
+    0.9347,
+    1.2193
+   ],
+   "band_records": 9,
+   "deviation": 0.894,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_26571",
+   "names": [
+    "6.5mm 135 Grain Classic Hybrid Hunter"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.264,
+   "form_factor": 0.9132,
+   "band": [
+    0.9347,
+    1.2193
+   ],
+   "band_records": 9,
+   "deviation": 0.894,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_26550",
+   "names": [
+    "6.5mm 156 Grain Elite Hunter"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.264,
+   "form_factor": 0.9215,
+   "band": [
+    0.9347,
+    1.2193
+   ],
+   "band_records": 9,
+   "deviation": 0.902,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_26414",
+   "names": [
+    "6.5mm 140 Grain Hybrid Target"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.264,
+   "form_factor": 0.9227,
+   "band": [
+    0.9347,
+    1.2193
+   ],
+   "band_records": 9,
+   "deviation": 0.904,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "nosler_58922",
+   "names": [
+    "6.5mm 142 Gr. Spitzer AccuBond Long Range"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.264,
+   "form_factor": 0.924,
+   "band": [
+    0.9347,
+    1.2193
+   ],
+   "band_records": 9,
+   "deviation": 0.905,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_26403",
+   "names": [
+    "6.5mm 130 Grain VLD Target"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.264,
+   "form_factor": 0.9252,
+   "band": [
+    0.9347,
+    1.2193
+   ],
+   "band_records": 9,
+   "deviation": 0.906,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_26503",
+   "names": [
+    "6.5mm 130 Grain VLD Hunting"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.264,
+   "form_factor": 0.9252,
+   "band": [
+    0.9347,
+    1.2193
+   ],
+   "band_records": 9,
+   "deviation": 0.906,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_26552",
+   "names": [
+    "6.5mm 140 Grain Elite Hunter"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.264,
+   "form_factor": 0.9257,
+   "band": [
+    0.9347,
+    1.2193
+   ],
+   "band_records": 9,
+   "deviation": 0.906,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "berger_26195",
+   "names": [
+    "6.5mm 130 Grain AR Hybrid OTM Tactical"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.264,
+   "form_factor": 0.9284,
+   "band": [
+    0.9347,
+    1.2193
+   ],
+   "band_records": 9,
+   "deviation": 0.909,
+   "note": "declared BC is not consistent with the calibre and mass"
+  },
+  {
+   "class_name": "form_factor",
+   "projectile_id": "hornady_eldx_65_143",
+   "names": [
+    "6.5mm 143 gr. ELD-X",
+    "143ELDX",
+    "143 ELD-X",
+    "143gr ELD-X"
+   ],
+   "basis": "bc_g7",
+   "calibre_in": 0.2642,
+   "form_factor": 0.9322,
+   "band": [
+    0.9347,
+    1.2193
+   ],
+   "band_records": 9,
+   "deviation": 0.913,
+   "note": "declared BC is not consistent with the calibre and mass"
+  }
+ ],
+ "transposition": [],
+ "unmatched": [
+  {
+   "projectile_id": "apg_7.62m43",
+   "names": [
+    "7.62m43",
+    "123 gr 7.62m43"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "apg_m852",
+   "names": [
+    "M852",
+    "168 gr M852"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "apg_sierra_mk",
+   "names": [
+    "Sierra MK",
+    "190 gr Sierra MK"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "apg_ss109",
+   "names": [
+    "SS109",
+    "62 gr SS109"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_20304",
+   "names": [
+    "20 Cal 40 Grain BT Varmint"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_22101",
+   "names": [
+    "22 Cal 77 Grain OTM Tactical"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_22418",
+   "names": [
+    "22 Cal 70 Grain VLD Target"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_22419",
+   "names": [
+    "22 Cal 69 Grain BT Target NEW"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_22420",
+   "names": [
+    "22 Cal 73 Grain BT Target"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_22421",
+   "names": [
+    "22 Cal 75 Grain VLD Target"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_22422",
+   "names": [
+    "22 Cal 80 Grain VLD Target"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_22423",
+   "names": [
+    "22 Cal 90 Grain VLD Target"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_22427",
+   "names": [
+    "22 Cal 80.5 Grain FULLBORE Target"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_22485",
+   "names": [
+    "22 Cal 85.5 Grain Long Range Hybrid Target"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_24408",
+   "names": [
+    "6mm 65 Grain BT Target"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_24425",
+   "names": [
+    "6mm 90 Grain BT Target"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_24427",
+   "names": [
+    "6mm 95 Grain VLD Target"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_24428",
+   "names": [
+    "6mm 105 Grain BT Target"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_24429",
+   "names": [
+    "6mm 105 Grain VLD Target"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_24430",
+   "names": [
+    "6mm 115 Grain VLD Target"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_24431",
+   "names": [
+    "6mm 108 Grain BT Target"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_24433",
+   "names": [
+    "6mm 105 Grain Hybrid Target"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_24485",
+   "names": [
+    "6mm 109 Grain Long Range Hybrid Target"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_24524",
+   "names": [
+    "6mm 87 Grain VLD Hunting"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_24527",
+   "names": [
+    "6mm 95 Grain VLD Hunting"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_24528",
+   "names": [
+    "6mm 105 Grain VLD Hunting"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_24530",
+   "names": [
+    "6mm 115 Grain VLD Hunting"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_24556",
+   "names": [
+    "6mm 108 Grain Elite Hunter"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_24570",
+   "names": [
+    "6mm 95 Grain Classic Hybrid Hunter"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_25485",
+   "names": [
+    "25 Cal 135 Grain Long Range Hybrid Target"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_25513",
+   "names": [
+    "25 Cal 115 Grain VLD Hunting"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_25586",
+   "names": [
+    "25 Cal 133 Grain Elite Hunter"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_26195",
+   "names": [
+    "6.5mm 130 Grain AR Hybrid OTM Tactical"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_26401",
+   "names": [
+    "6.5mm 140 Grain VLD Target"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_26402",
+   "names": [
+    "6.5mm 120 Grain BT Target"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_26403",
+   "names": [
+    "6.5mm 130 Grain VLD Target"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_26409",
+   "names": [
+    "6.5mm 140 Grain LR BT Target"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_26414",
+   "names": [
+    "6.5mm 140 Grain Hybrid Target"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_26485",
+   "names": [
+    "6.5mm 144 Grain Long Range Hybrid Target"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_26486",
+   "names": [
+    "6.5mm 153.5 Grain Long Range Hybrid Target"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_26503",
+   "names": [
+    "6.5mm 130 Grain VLD Hunting"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_26504",
+   "names": [
+    "6.5mm 140 Grain VLD Hunting"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_26550",
+   "names": [
+    "6.5mm 156 Grain Elite Hunter"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_26552",
+   "names": [
+    "6.5mm 140 Grain Elite Hunter"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_26571",
+   "names": [
+    "6.5mm 135 Grain Classic Hybrid Hunter"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_27501",
+   "names": [
+    "270 Cal 130 Grain VLD Hunting"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_27502",
+   "names": [
+    "270 Cal 140 Grain VLD Hunting"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_27503",
+   "names": [
+    "270 Cal 150 Grain VLD Hunting"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_27570",
+   "names": [
+    "270 Cal 130 Grain Classic Hybrid Hunter"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_27571",
+   "names": [
+    "270 Cal 140 Grain Classic Hybrid Hunter"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_27575",
+   "names": [
+    "270 Cal 170 Grain Elite Hunter"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_28401",
+   "names": [
+    "7mm 168 Grain VLD Target"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_28405",
+   "names": [
+    "7mm 180 Grain VLD Target"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_28407",
+   "names": [
+    "7mm 180 Grain Hybrid Target"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_28408",
+   "names": [
+    "7mm 184 Grain F-Open Hybrid Target"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_28485",
+   "names": [
+    "7mm 190 Grain Long Range Hybrid Target"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_28501",
+   "names": [
+    "7mm 168 Grain VLD Hunting"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_28502",
+   "names": [
+    "7mm 180 Grain VLD Hunting"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_28503",
+   "names": [
+    "7mm 140 Grain VLD Hunting"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_28550",
+   "names": [
+    "7mm 195 Grain Elite Hunter"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_28554",
+   "names": [
+    "7mm 175 Grain Elite Hunter"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_28570",
+   "names": [
+    "7mm 168 Grain Classic Hybrid Hunter"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_28571",
+   "names": [
+    "7mm 150 Grain Classic Hybrid Hunter"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_30105",
+   "names": [
+    "30 Cal 175 Grain OTM Tactical"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_30107",
+   "names": [
+    "30 Cal 185 Grain Juggernaut OTM Tactical"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_30112",
+   "names": [
+    "30 Cal 230 Grain Hybrid OTM Tactical"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_30410",
+   "names": [
+    "30 Cal 168 Grain VLD Target"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_30413",
+   "names": [
+    "30 Cal 185 Grain VLD Target"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_30415",
+   "names": [
+    "30 Cal 210 Grain VLD Target"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_30416",
+   "names": [
+    "30 Cal 155.5 Grain FULLBORE"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_30418",
+   "names": [
+    "30 Cal 185 Grain Juggernaut Target"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_30420",
+   "names": [
+    "30 Cal 175 Grain Long Range BT"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_30424",
+   "names": [
+    "30 Cal 185 Grain Hybrid Target"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_30425",
+   "names": [
+    "30 Cal 168 Grain Hybrid Target"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_30426",
+   "names": [
+    "30 Cal 155 Grain Hybrid Target"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_30427",
+   "names": [
+    "30 Cal 200 Grain Hybrid Target"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_30429",
+   "names": [
+    "30 Cal 215 Grain Hybrid Target"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_30430",
+   "names": [
+    "30 Cal 230 Grain Hybrid Target"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_30485",
+   "names": [
+    "30 Cal 208 Grain Long Range Hybrid Target"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_30486",
+   "names": [
+    "30 Cal 220 Grain Long Range Hybrid Target"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_30487",
+   "names": [
+    "30 Cal 245 Grain Long Range Hybrid Target"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_30508",
+   "names": [
+    "30 Cal 155 Grain VLD Hunting"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_30510",
+   "names": [
+    "30 Cal 168 Grain VLD Hunting"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_30512",
+   "names": [
+    "30 Cal 175 Grain VLD Hunting"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_30513",
+   "names": [
+    "30 Cal 185 Grain VLD Hunting"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_30514",
+   "names": [
+    "30 Cal 190 Grain VLD Hunting"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_30515",
+   "names": [
+    "30 Cal 210 Grain VLD Hunting"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_30551",
+   "names": [
+    "30 cal 217 Grain Elite Hunter NEW"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_30554",
+   "names": [
+    "30 Cal 180 Grain Elite Hunter"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_30555",
+   "names": [
+    "30 Cal 205 Grain Elite Hunter"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_30560",
+   "names": [
+    "30 Cal 245 Grain Elite Hunter"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_30570",
+   "names": [
+    "30 Cal 168 Grain Classic Hybrid Hunter"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_30571",
+   "names": [
+    "30 Cal 185 Grain Classic Hybrid Hunter"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_33107",
+   "names": [
+    "338 Cal 250 Grain Hybrid OTM Tactical"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_33109",
+   "names": [
+    "338 Cal 300 Grain Hybrid OTM Tactical"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_33554",
+   "names": [
+    "338 Cal 250 Grain Elite Hunter"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_33556",
+   "names": [
+    "338 Cal 300 Grain Elite Hunter"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_37379",
+   "names": [
+    "375 Cal 379 Grain ELR Match Solid"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_37401",
+   "names": [
+    "375 Cal 410 Grain Hybrid Target"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "berger_37407",
+   "names": [
+    "375 Cal 407 Grain ELR Match Solid"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "hornady_atip_22_76",
+   "names": [
+    "22 cal 76 gr A-Tip\u00ae Match Bullet",
+    "76ATIP",
+    "76 A-Tip",
+    "76gr A-Tip"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "hornady_atip_22_90",
+   "names": [
+    "22 cal 90 gr A-Tip\u00ae Match Bullet",
+    "90ATIP",
+    "90 A-Tip",
+    "90gr A-Tip"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "hornady_atip_30_176",
+   "names": [
+    "30 Cal 176 gr A-Tip\u00ae Match Bullet",
+    "176ATIP",
+    "176 A-Tip",
+    "176gr A-Tip"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "hornady_atip_30_177",
+   "names": [
+    "30 Cal 177 gr A-Tip\u00ae Match Bullet",
+    "177ATIP",
+    "177 A-Tip",
+    "177gr A-Tip"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "hornady_atip_30_230",
+   "names": [
+    "30 Cal 230 gr A-Tip\u00ae Match Bullet",
+    "230ATIP",
+    "230 A-Tip",
+    "230gr A-Tip"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "hornady_atip_30_250",
+   "names": [
+    "30 Cal 250 gr A-Tip\u00ae Match Bullet",
+    "250ATIP",
+    "250 A-Tip",
+    "250gr A-Tip"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "hornady_atip_338_300",
+   "names": [
+    "338 cal 300 gr A-Tip\u00ae Match Bullet",
+    "300ATIP",
+    "300 A-Tip",
+    "300gr A-Tip"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "hornady_atip_375_390",
+   "names": [
+    "375 cal 390 gr A-Tip\u00ae Match Bullet",
+    "390ATIP",
+    "390 A-Tip",
+    "390gr A-Tip"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "hornady_atip_416_500",
+   "names": [
+    "416 cal 500 gr A-Tip\u00ae Match Bullet",
+    "500ATIP",
+    "500 A-Tip",
+    "500gr A-Tip"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "hornady_atip_65_135",
+   "names": [
+    "6.5 mm 135 gr A-Tip\u00ae Match Bullet",
+    "135ATIP",
+    "135 A-Tip",
+    "135gr A-Tip"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "hornady_atip_65_153",
+   "names": [
+    "6.5 mm 153 gr A-Tip\u00ae Match Bullet",
+    "153ATIP",
+    "153 A-Tip",
+    "153gr A-Tip"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "hornady_atip_6_110",
+   "names": [
+    "6 mm 110 gr A-Tip\u00ae Match Bullet",
+    "110ATIP",
+    "110 A-Tip",
+    "110gr A-Tip"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "hornady_atip_6_120",
+   "names": [
+    "6 mm 120 gr A-Tip\u00ae Match Bullet",
+    "120ATIP",
+    "120 A-Tip",
+    "120gr A-Tip"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "hornady_atip_7_166",
+   "names": [
+    "7 mm 166 gr A-Tip\u00ae Match Bullet",
+    "166ATIP",
+    "166 A-Tip",
+    "166gr A-Tip"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "hornady_atip_7_190",
+   "names": [
+    "7 mm 190 gr A-Tip\u00ae Match Bullet",
+    "190ATIP",
+    "190 A-Tip",
+    "190gr A-Tip"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "hornady_eldm_22_75",
+   "names": [
+    "22 Cal 75 gr. ELD Match",
+    "75ELDM",
+    "75 ELD-M",
+    "75gr ELD-M"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "hornady_eldm_22_80",
+   "names": [
+    "22 Cal 80 gr. ELD Match",
+    "80ELDM",
+    "80 ELD-M",
+    "80gr ELD-M"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "hornady_eldm_30_155",
+   "names": [
+    "30 Cal 155 gr. ELD Match",
+    "155ELDM",
+    "155 ELD-M",
+    "155gr ELD-M"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "hornady_eldm_30_208",
+   "names": [
+    "30 Cal 208 gr. ELD Match",
+    "208ELDM",
+    "208 ELD-M",
+    "208gr ELD-M"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "hornady_eldm_30_225_t10",
+   "names": [
+    "30 Cal 225 gr. ELD Match (1 in 10\" twist)",
+    "225ELDM",
+    "225 ELD-M",
+    "225gr ELD-M",
+    "225ELDM 10in"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "hornady_eldm_30_225_t7",
+   "names": [
+    "30 Cal 225 gr. ELD Match (1 in 7\" twist)",
+    "225ELDM",
+    "225 ELD-M",
+    "225gr ELD-M",
+    "225ELDM 7in"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "hornady_eldm_65_100",
+   "names": [
+    "6.5mm 100 gr. ELD Match",
+    "100ELDM",
+    "100 ELD-M",
+    "100gr ELD-M"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "hornady_eldm_7_162",
+   "names": [
+    "7mm 162 gr. ELD Match",
+    "162ELDM",
+    "162 ELD-M",
+    "162gr ELD-M"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "hornady_eldm_7_180_t7p5",
+   "names": [
+    "7mm 180 gr. ELD Match (1 in 7.5\" twist)",
+    "180ELDM",
+    "180 ELD-M",
+    "180gr ELD-M",
+    "180ELDM 7.5in"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "hornady_eldm_7_180_t8p75",
+   "names": [
+    "7mm 180 gr. ELD Match (1 in 8.75\" twist)",
+    "180ELDM",
+    "180 ELD-M",
+    "180gr ELD-M",
+    "180ELDM 8.75in"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "hornady_eldvt_22_62",
+   "names": [
+    ".22 cal 62gr ELD-VT\u00ae",
+    "62ELDVT",
+    "62 ELD-VT",
+    "62gr ELD-VT"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "hornady_eldvt_30_174",
+   "names": [
+    ".30 cal 174gr ELD-VT\u00ae",
+    "174ELDVT",
+    "174 ELD-VT",
+    "174gr ELD-VT"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "hornady_eldvt_65_100",
+   "names": [
+    "6.5mm 100gr ELD-VT\u00ae",
+    "100ELDVT",
+    "100 ELD-VT",
+    "100gr ELD-VT"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "hornady_eldvt_6_80",
+   "names": [
+    "6mm 80gr ELD-VT\u00ae",
+    "80ELDVT",
+    "80 ELD-VT",
+    "80gr ELD-VT"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "hornady_eldx_30_212_t10",
+   "names": [
+    "30 Cal 212 gr. ELD-X (1 in 10\" twist)",
+    "212ELDX",
+    "212 ELD-X",
+    "212gr ELD-X",
+    "212ELDX 10in"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "hornady_eldx_30_212_t7",
+   "names": [
+    "30 Cal 212 gr. ELD-X (1 in 7\" twist)",
+    "212ELDX",
+    "212 ELD-X",
+    "212gr ELD-X",
+    "212ELDX 7in"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "hornady_eldx_6_103",
+   "names": [
+    "6mm 103gr ELD-X",
+    "103ELDX",
+    "103 ELD-X",
+    "103gr ELD-X"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "hornady_eldx_6_90",
+   "names": [
+    "6mm 90gr ELD-X",
+    "90ELDX",
+    "90 ELD-X",
+    "90gr ELD-X"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "lapua_B343",
+   "names": [
+    "6.5 mm 144 gr FMJ"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "lapua_B416",
+   "names": [
+    "7.62 mm 200 gr Subsonic"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "lapua_C356",
+   "names": [
+    ".32 98 gr Lead Wadcutter"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "lapua_C427",
+   "names": [
+    ".32 83 gr Lead Wadcutter"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "lapua_D166",
+   "names": [
+    "7.62 mm 200 gr D166"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "lapua_D46",
+   "names": [
+    "7.62 mm 185 gr D46"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "lapua_E471",
+   "names": [
+    "6.5 mm 155 gr Mega"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "lapua_E539",
+   "names": [
+    "5.69 mm 55 gr Soft Point"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "lapua_G477",
+   "names": [
+    "7.62 mm 100 gr OT Cutting Edge"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "lapua_G573",
+   "names": [
+    "8 mm 120 gr Open Tip"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "lapua_G574",
+   "names": [
+    "9.3 mm 185 gr Open Tip"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "lapua_G580",
+   "names": [
+    "7.62 mm 100 gr Open Tip"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "lapua_GB545",
+   "names": [
+    "5.69 mm 77 gr Scenar-L"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "lapua_GB551",
+   "names": [
+    "7.62 mm 220 gr Scenar-L"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "lapua_GB553",
+   "names": [
+    "7 mm 150 gr Scenar-L"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "lapua_GB554",
+   "names": [
+    "7 mm 180 gr Scenar-L"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "lapua_GB581",
+   "names": [
+    "7.62 mm 175 gr MaxRange Target"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "lapua_GB582",
+   "names": [
+    "6.5 mm 144 gr MaxRange Target"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "lapua_N566",
+   "names": [
+    "5.69 mm 50 gr Naturalis"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "lapua_N583",
+   "names": [
+    "6.5 mm 120 gr TrueRange Expanding"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "lapua_N584",
+   "names": [
+    "7.62 mm 165 gr TrueRange Expanding"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "lapua_N585",
+   "names": [
+    "7.62 mm 150 gr TrueRange Expanding"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_16314",
+   "names": [
+    "6mm 85 Gr. Spitzer Partition"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_16315",
+   "names": [
+    "6mm 95 Gr. Spitzer Partition"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_16316",
+   "names": [
+    "22 Cal 60 Gr. Spitzer Partition"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_16317",
+   "names": [
+    "25 Cal 100 Gr. Spitzer Partition"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_16318",
+   "names": [
+    "25 Cal 115 Gr. Spitzer Partition"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_16319",
+   "names": [
+    "6.5mm 100 Gr. Spitzer Partition"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_16320",
+   "names": [
+    "6.5mm 125 Gr. Spitzer Partition"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_16321",
+   "names": [
+    "6.5mm 140 Gr. Spitzer Partition"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_16322",
+   "names": [
+    "270 Cal 130 Gr. Spitzer Partition"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_16323",
+   "names": [
+    "270 Cal 150 Gr. Spitzer Partition"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_16324",
+   "names": [
+    "270 Cal 160 Gr. Semi Spitzer Partition"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_16325",
+   "names": [
+    "7mm 140 Gr. Spitzer Partition"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_16326",
+   "names": [
+    "7mm 150 Gr. Spitzer Partition"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_16327",
+   "names": [
+    "7mm 160 Gr. Spitzer Partition"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_16329",
+   "names": [
+    "30 Cal 150 Gr. Spitzer Partition"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_16330",
+   "names": [
+    "30 Cal 165 Gr. Spitzer Partition"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_16331",
+   "names": [
+    "30 Cal 180 Gr. Spitzer Partition"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_16332",
+   "names": [
+    "30 Cal 220 Gr. Semi Spitzer Partition"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_16333",
+   "names": [
+    "30 Cal 170 Gr. Round Nose Partition"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_16336",
+   "names": [
+    "338 Cal 225 Gr. Spitzer Partition"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_16337",
+   "names": [
+    "338 Cal 210 Gr. Spitzer Partition"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_17101",
+   "names": [
+    "22 Cal 69 Gr. HPBT Custom Competition"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_17205",
+   "names": [
+    "17 Cal 20 Gr. FBHP Ballistic Tip Varmint"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_17210",
+   "names": [
+    "17 Cal 20 Gr. FB Tipped (Metallic Black Tip) Ballistic Tip Varmint"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_17220",
+   "names": [
+    "204 Cal 32 Gr. FB Tipped (Metallic Black Tip) Ballistic Tip Varmint"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_17223",
+   "names": [
+    "22 Cal 50 Gr. FB Tipped (Metallic Black Tip) Ballistic Tip Varmint"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_17230",
+   "names": [
+    "22 Cal 40 Gr. FB Tipped (Metallic Black Tip) Ballistic Tip Varmint"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_17240",
+   "names": [
+    "22 Cal 55 Gr. FB Tipped (Metallic Black Tip) Ballistic Tip Varmint"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_17250",
+   "names": [
+    "6mm 55 Gr. FB Tipped (Metallic Black Tip) Ballistic Tip Varmint"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_22421",
+   "names": [
+    "22 Cal 77 Gr. HPBT Custom Competition"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_24055",
+   "names": [
+    "6mm 55 Gr. Spitzer (Purple Tip) Ballistic Tip Varmint"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_24080",
+   "names": [
+    "6mm 80 Gr. Spitzer (Purple Tip) Ballistic Tip Varmint"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_24090",
+   "names": [
+    "6mm 90 Gr. Spitzer (Purple Tip) Ballistic Tip Hunting"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_24095",
+   "names": [
+    "6mm 95 Gr. Spitzer (Purple Tip) Ballistic Tip Hunting"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_25100",
+   "names": [
+    "25 Cal 100 Gr. Spitzer (Blue Tip) Ballistic Tip Hunting"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_25115",
+   "names": [
+    "25 Cal 115 Gr. Spitzer (Blue Tip) Ballistic Tip Hunting"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_25116",
+   "names": [
+    "22 Cal 80 Gr. HPBT Custom Competition"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_25396",
+   "names": [
+    "30 Cal 180 Gr. Protected Point Partition"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_26100",
+   "names": [
+    "6.5mm 100 Gr. Spitzer (Brown Tip) Ballistic Tip Hunting"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_26120",
+   "names": [
+    "6.5mm 120 Gr. Spitzer (Brown Tip) Ballistic Tip Hunting"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_26123",
+   "names": [
+    "6mm 70 Gr. FB Tipped (Metallic Black Tip) Ballistic Tip Varmint"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_26129",
+   "names": [
+    "6.5mm 90 Gr. FB Tipped (Metallic Black Tip) Ballistic Tip Varmint"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_26140",
+   "names": [
+    "6.5mm 140 Gr. Spitzer (Brown Tip) Ballistic Tip Hunting"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_26725",
+   "names": [
+    "6.5mm 140 Gr. HPBT Custom Competition"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_27130",
+   "names": [
+    "270 Cal 130 Gr. Spitzer (Yellow Tip) Ballistic Tip Hunting"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_27140",
+   "names": [
+    "270 Cal 140 Gr. Spitzer (Yellow Tip) Ballistic Tip Hunting"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_27150",
+   "names": [
+    "270 Cal 150 Gr. Spitzer (Yellow Tip) Ballistic Tip Hunting"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_28120",
+   "names": [
+    "7mm 120 Gr. Spitzer (Red Tip) Ballistic Tip Hunting"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_28125",
+   "names": [
+    "7mm 160 Gr. Spitzer (Red Tip) Ballistic Tip Hunting"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_28135",
+   "names": [
+    "270 Cal 170 Gr. Spitzer (Yellow Tip) Ballistic Tip Hunting"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_28140",
+   "names": [
+    "7mm 140 Gr. Spitzer (Red Tip) Ballistic Tip Hunting"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_28150",
+   "names": [
+    "7mm 150 Gr. Spitzer (Red Tip) Ballistic Tip Hunting"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_30125",
+   "names": [
+    "30 Cal 125 Gr. Spitzer (Green Tip) Ballistic Tip Hunting"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_30131",
+   "names": [
+    "7.62x39 123 Gr. Spitzer (Green Tip) Ballistic Tip Hunting"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_30150",
+   "names": [
+    "30 Cal 150 Gr. Spitzer (Green Tip) Ballistic Tip Hunting"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_30165",
+   "names": [
+    "30 Cal 165 Gr. Spitzer (Green Tip) Ballistic Tip Hunting"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_30168",
+   "names": [
+    "30 Cal 168 Gr. Spitzer (Green Tip) Ballistic Tip Hunting"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_30180",
+   "names": [
+    "30 Cal 180 Gr. Spitzer (Green Tip) Ballistic Tip Hunting"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_30181",
+   "names": [
+    "30 Cal 220 Gr. Round Nose (Green Tip) Ballistic Tip Hunting"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_31456",
+   "names": [
+    "458 Cal 300 Gr. Spitzer (Orange Tip) Ballistic Tip Hunting"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_32180",
+   "names": [
+    "8mm 180 Gr. Spitzer (Gunmetal Tip) Ballistic Tip Hunting"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_34056",
+   "names": [
+    "7.62x39 123 Gr. FB Tipped (Metallic Black Tip) Ballistic Tip Varmint"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_34057",
+   "names": [
+    "30 Cal 110 Gr. FB Tipped (Metallic Black Tip) Ballistic Tip Varmint"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_34992",
+   "names": [
+    "22 Cal 60 Gr. Spitzer (Orange Tip) Ballistic Tip Varmint"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_35200",
+   "names": [
+    "270 Cal 140 Gr. Spitzer Partition"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_35216",
+   "names": [
+    "204 Cal 32 Gr. Spitzer (Maroon Tip) Ballistic Tip Varmint"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_35277",
+   "names": [
+    "8mm 200 Gr. Spitzer Partition"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_35626",
+   "names": [
+    "30 Cal 200 Gr. Spitzer Partition"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_35631",
+   "names": [
+    "22 Cal 62 Gr. FBHP W/Cannelure Ballistic Tip Varmint"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_35642",
+   "names": [
+    "6mm 100 Gr. Spitzer Partition"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_35643",
+   "names": [
+    "25 Cal 120 Gr. Spitzer Partition"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_35644",
+   "names": [
+    "338 Cal 250 Gr. Spitzer Partition"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_35645",
+   "names": [
+    "7mm 175 Gr. Spitzer Partition"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_36523",
+   "names": [
+    "22 Cal 53 Gr. FB Tipped (Metallic Black Tip) Ballistic Tip Varmint"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_36763",
+   "names": [
+    "22 Cal 35 Gr. FB Tipped (Metallic Black Tip) Ballistic Tip Varmint"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_38050",
+   "names": [
+    "6mm 100 Gr. Spitzer Solid Base"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_38052",
+   "names": [
+    "6.5mm 140 Gr. Spitzer Solid Base"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_38054",
+   "names": [
+    "270 Cal 130 Gr. Spitzer Solid Base"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_38056",
+   "names": [
+    "7mm 140 Gr. Spitzer Solid Base"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_38058",
+   "names": [
+    "30 Cal 150 Gr. Round Nose Solid Base"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_38060",
+   "names": [
+    "30 Cal 150 Gr. Spitzer Solid Base"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_38062",
+   "names": [
+    "30 Cal 165 Gr. Spitzer Solid Base"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_38064",
+   "names": [
+    "350 LGND 180 Gr. Protected Point Solid Base"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_38066",
+   "names": [
+    "400 LGND 215 Gr. Protected Point Solid Base"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_38068",
+   "names": [
+    "45 Cal 300 Gr. Protected Point Solid Base"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_39510",
+   "names": [
+    "22 Cal 40 Gr. Spitzer (Orange Tip) Ballistic Tip Varmint"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_39522",
+   "names": [
+    "22 Cal 50 Gr. Spitzer (Orange Tip) Ballistic Tip Varmint"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_39526",
+   "names": [
+    "22 Cal 55 Gr. Spitzer (Orange Tip) Ballistic Tip Varmint"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_39532",
+   "names": [
+    "6mm 70 Gr. Spitzer (Purple Tip) Ballistic Tip Varmint"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_42069",
+   "names": [
+    "44 Cal 300 Gr. JHP Sporting Handgun"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_43004",
+   "names": [
+    "25 Cal 85 Gr. Spitzer (Blue Tip) Ballistic Tip Varmint"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_43012",
+   "names": [
+    "41 Cal 210 Gr. JHP Sporting Handgun"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_43013",
+   "names": [
+    "45 Colt 250 Gr. JHP Sporting Handgun"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_43123",
+   "names": [
+    "9mm 124 Gr. JHP Sporting Handgun"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_43258",
+   "names": [
+    "9mm 147 Gr. JHP Sporting Handgun"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_44750",
+   "names": [
+    "9.3mm 286 Gr. Spitzer (18.5 gram) Partition"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_44800",
+   "names": [
+    "35 Cal 225 Gr. Spitzer Partition"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_44801",
+   "names": [
+    "35 Cal 250 Gr. Spitzer Partition"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_44841",
+   "names": [
+    "38 Cal 158 Gr. JHP Sporting Handgun"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_44842",
+   "names": [
+    "44 Cal 240 Gr. JHP Sporting Handgun"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_44845",
+   "names": [
+    "375 Cal 300 Gr. Spitzer Partition"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_44846",
+   "names": [
+    "44 Cal 200 Gr. JHP Sporting Handgun"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_44847",
+   "names": [
+    "45 Cal 185 Gr. JHP Sporting Handgun"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_44848",
+   "names": [
+    "9mm 115 Gr. JHP Sporting Handgun"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_44850",
+   "names": [
+    "375 Cal 260 Gr. Spitzer Partition"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_44852",
+   "names": [
+    "10mm 135 Gr. JHP Sporting Handgun"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_44860",
+   "names": [
+    "10mm 150 Gr. JHP Sporting Handgun"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_44868",
+   "names": [
+    "44 Cal 240 Gr. JSP Sporting Handgun"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_44885",
+   "names": [
+    "10mm 180 Gr. JHP Sporting Handgun"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_44912",
+   "names": [
+    "38 Cal 125 Gr. JHP Sporting Handgun"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_44917",
+   "names": [
+    "44 Cal 240 Gr. JHP Sporting Handgun"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_44922",
+   "names": [
+    "45 Cal 230 Gr. JHP Sporting Handgun"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_44952",
+   "names": [
+    "10mm 200 Gr. JHP Sporting Handgun"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_45140",
+   "names": [
+    "204 Cal 32 Gr. Spitzer (Metallic Maroon Tip) Ballistic Tip Lead-Free"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_45150",
+   "names": [
+    "22 Cal 35 Gr. Spitzer (Metallic Orange Tip) Ballistic Tip Lead-Free"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_45160",
+   "names": [
+    "22 Cal 40 Gr. Spitzer (Metallic Orange Tip) Ballistic Tip Lead-Free"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_45170",
+   "names": [
+    "6mm 55 Gr. Spitzer Ballistic Tip Lead-Free"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_45357",
+   "names": [
+    "6.8mm 115 Gr. HPBT W/Cannelure Custom Competition"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_45498",
+   "names": [
+    "22 Cal 50 Gr. Spitzer Ballistic Tip Lead-Free"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_49524",
+   "names": [
+    "8mm 200 Gr. HPBT Custom Competition"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_49742",
+   "names": [
+    "6mm 107 Gr. HPBT Custom Competition"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_49824",
+   "names": [
+    "6.5mm 140 Gr. HPBT RDF"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_49826",
+   "names": [
+    "6.5mm 150 Gr. HPBT RDF"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_50300",
+   "names": [
+    "50 Cal 300 Gr. Spitzer Ballistic Tip Lead-Free"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_50712",
+   "names": [
+    "35 Cal 225 Gr. Spitzer ( Whelen ) AccuBond"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_51040",
+   "names": [
+    "6mm 95 Gr. Spitzer (Silver Tip) CT Ballistic Silvertip"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_51050",
+   "names": [
+    "25 Cal 115 Gr. Spitzer (Silver Tip) CT Ballistic Silvertip"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_51075",
+   "names": [
+    "270 Cal 130 Gr. Spitzer (Silver Tip) CT Ballistic Silvertip"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_51100",
+   "names": [
+    "270 Cal 150 Gr. Spitzer (Silver Tip) CT Ballistic Silvertip"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_51105",
+   "names": [
+    "7mm 140 Gr. Spitzer (Silver Tip) CT Ballistic Silvertip"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_51110",
+   "names": [
+    "7mm 150 Gr. Spitzer (Silver Tip) CT Ballistic Silvertip"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_51150",
+   "names": [
+    "30 Cal 150 Gr. Spitzer (Silver Tip) CT Ballistic Silvertip"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_51160",
+   "names": [
+    "30 Cal 168 Gr. Spitzer (Silver Tip) CT Ballistic Silvertip"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_51165",
+   "names": [
+    "30 Cal 150 Gr. Round Nose (Silver Tip) CT Ballistic Silvertip"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_51170",
+   "names": [
+    "30 Cal 180 Gr. Spitzer (Silver Tip) CT Ballistic Silvertip"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_51200",
+   "names": [
+    "338 Cal 200 Gr. Spitzer (Silver Tip) CT Ballistic Silvertip"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_52111",
+   "names": [
+    "204 Cal 40 Gr. Spitzer (Maroon Tip) Ballistic Tip Varmint"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_52165",
+   "names": [
+    "30 Cal 125 Gr. Spitzer AccuBond"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_53033",
+   "names": [
+    "22 Cal 77 Gr. HPBT W/Cannelure Custom Competition"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_53066",
+   "names": [
+    "22 Cal 70 Gr. HPBT RDF"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_53154",
+   "names": [
+    "30 Cal 220 Gr. HPBT Custom Competition"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_53155",
+   "names": [
+    "30 Cal 155 Gr. HPBT Custom Competition"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_53164",
+   "names": [
+    "30 Cal 168 Gr. HPBT Custom Competition"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_53170",
+   "names": [
+    "30 Cal 175 Gr. HPBT RDF"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_53182",
+   "names": [
+    "30 Cal 168 Gr. HPBT RDF"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_53294",
+   "names": [
+    "22 Cal 52 Gr. HPBT Custom Competition"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_53410",
+   "names": [
+    "6mm 105 Gr. HPBT RDF"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_53412",
+   "names": [
+    "30 Cal 190 Gr. HPBT Custom Competition"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_53415",
+   "names": [
+    "6.5mm 123 Gr. HPBT Custom Competition"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_53418",
+   "names": [
+    "7mm 168 Gr. HPBT Custom Competition"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_53432",
+   "names": [
+    "7mm 185 Gr. HPBT RDF"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_53434",
+   "names": [
+    "30 Cal 210 Gr. HPBT RDF"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_53441",
+   "names": [
+    "22 Cal 85 Gr. HPBT RDF"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_53445",
+   "names": [
+    "338 Cal 300 Gr. HPBT RDF"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_53452",
+   "names": [
+    "22 Cal 77 Gr. HPBT RDF"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_53505",
+   "names": [
+    "6.5mm 130 Gr. HPBT RDF"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_53507",
+   "names": [
+    "6mm 115 Gr. HPBT RDF"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_53515",
+   "names": [
+    "338 Cal 300 Gr. HPBT Custom Competition"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_53662",
+   "names": [
+    "375 Cal 300 Gr. Spitzer W/Cannelure AccuBond"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_53742",
+   "names": [
+    "25 Cal 110 Gr. Spitzer AccuBond"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_53780",
+   "names": [
+    "22 Cal 70 Gr. Spitzer AccuBond"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_53952",
+   "names": [
+    "30 Cal 175 Gr. HPBT Custom Competition"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_54357",
+   "names": [
+    "338 Cal 225 Gr. Spitzer AccuBond"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_54374",
+   "names": [
+    "8mm 200 Gr. Spitzer AccuBond"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_54413",
+   "names": [
+    "375 Cal 260 Gr. Spitzer W/Cannelure AccuBond"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_54618",
+   "names": [
+    "30 Cal 200 Gr. Spitzer AccuBond"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_54765",
+   "names": [
+    "270 Cal 140 Gr. Spitzer AccuBond"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_54801",
+   "names": [
+    "270 Cal 150 Gr. Spitzer AccuBond"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_54825",
+   "names": [
+    "30 Cal 180 Gr. Spitzer AccuBond"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_54827",
+   "names": [
+    "270 Cal 165 Gr. Spitzer AccuBond Long Range"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_54851",
+   "names": [
+    "338 Cal 300 Gr. Spitzer AccuBond"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_54932",
+   "names": [
+    "7mm 160 Gr. Spitzer AccuBond"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_54951",
+   "names": [
+    "7mm 150 Gr. Spitzer AccuBond"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_54987",
+   "names": [
+    "270 Cal 130 Gr. Spitzer AccuBond"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_55602",
+   "names": [
+    "30 Cal 165 Gr. Spitzer AccuBond"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_56357",
+   "names": [
+    "6mm 90 Gr. Spitzer AccuBond"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_56382",
+   "names": [
+    "338 Cal 200 Gr. Spitzer AccuBond"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_56719",
+   "names": [
+    "30 Cal 150 Gr. Spitzer AccuBond"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_56902",
+   "names": [
+    "6.5mm 130 Gr. Spitzer AccuBond"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_57287",
+   "names": [
+    "338 Cal 250 Gr. Spitzer AccuBond"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_57520",
+   "names": [
+    "338 Cal 250 Gr. HPBT Custom Competition"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_57625",
+   "names": [
+    "338 Cal 180 Gr. Spitzer AccuBond"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_57873",
+   "names": [
+    "6.5mm 140 Gr. Spitzer AccuBond"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_58454",
+   "names": [
+    "338 Cal 265 Gr. Spitzer AccuBond Long Range"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_58455",
+   "names": [
+    "30 Cal 168 Gr. Spitzer AccuBond Long Range"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_58456",
+   "names": [
+    "338 Cal 300 Gr. Spitzer AccuBond Long Range"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_58517",
+   "names": [
+    "7mm 175 Gr. Spitzer AccuBond Long Range"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_58623",
+   "names": [
+    "30 Cal 210 Gr. Spitzer AccuBond Long Range"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_58734",
+   "names": [
+    "7mm 150 Gr. Spitzer AccuBond Long Range"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_58836",
+   "names": [
+    "270 Cal 150 Gr. Spitzer AccuBond Long Range"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_58922",
+   "names": [
+    "6.5mm 142 Gr. Spitzer AccuBond Long Range"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_58930",
+   "names": [
+    "7mm 168 Gr. Spitzer AccuBond Long Range"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_58943",
+   "names": [
+    "6.5mm 129 Gr. Spitzer AccuBond Long Range"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_59165",
+   "names": [
+    "6mm 90 Gr. Spitzer E-Tip"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_59180",
+   "names": [
+    "30 Cal 180 Gr. Spitzer E-Tip"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_59186",
+   "names": [
+    "338 Cal 200 Gr. Spitzer E-Tip"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_59265",
+   "names": [
+    "8mm 180 Gr. Spitzer E-Tip"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_59270",
+   "names": [
+    "9.3mm 250 Gr. Spitzer E-Tip"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_59298",
+   "names": [
+    "270 Cal 130 Gr. Spitzer E-Tip"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_59372",
+   "names": [
+    "338 Cal 225 Gr. Spitzer E-Tip"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_59378",
+   "names": [
+    "30 Cal 150 Gr. Spitzer E-Tip"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_59379",
+   "names": [
+    "375 Cal 260 Gr. Spitzer E-Tip"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_59380",
+   "names": [
+    "300 AAC 110 Gr. Spitzer E-Tip"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_59385",
+   "names": [
+    "338 Cal 250 Gr. Spitzer E-Tip"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_59387",
+   "names": [
+    "7.62x39 123 Gr. Spitzer E-Tip"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_59415",
+   "names": [
+    "30 Cal 168 Gr. Spitzer E-Tip"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_59426",
+   "names": [
+    "7mm 150 Gr. Spitzer E-Tip"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_59451",
+   "names": [
+    "30/30 150 Gr. Round Nose E-Tip"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_59456",
+   "names": [
+    "25 Cal 100 Gr. Spitzer E-Tip"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_59624",
+   "names": [
+    "22 Cal 55 Gr. Spitzer E-Tip"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_59756",
+   "names": [
+    "9.3mm 250 Gr. Spitzer W/Cannelure AccuBond"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_59765",
+   "names": [
+    "6.5mm 120 Gr. Spitzer E-Tip"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_59955",
+   "names": [
+    "7mm 140 Gr. Spitzer E-Tip"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "nosler_59992",
+   "names": [
+    "7mm 140 Gr. Spitzer AccuBond"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1032",
+   "names": [
+    "20 Cal 32 gr Tipped VarmintKing (TVK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1036",
+   "names": [
+    "20 Cal 36 gr Tipped VarmintKing (TVK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1039",
+   "names": [
+    "20 Cal 39 gr Tipped VarmintKing (TVK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1100",
+   "names": [
+    "223 Cal 40 gr Hornet VarmintKing (SVK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1110",
+   "names": [
+    "223 Cal 45 gr Hornet VarmintKing (SVK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1200",
+   "names": [
+    "22 Cal 40 gr Hornet VarmintKing (SVK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1210",
+   "names": [
+    "22 Cal 45 gr Hornet VarmintKing (SVK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1310",
+   "names": [
+    "22 Cal 45 gr SPT VarmintKing (SVK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1330",
+   "names": [
+    "22 Cal 50 gr SPT VarmintKing (SVK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1340",
+   "names": [
+    "22 Cal 50 gr VarmintKing (SVK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1345",
+   "names": [
+    "22 Cal 55 gr VarmintKing (SVK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1355",
+   "names": [
+    "22 Cal 55 gr FMJBT GameKing (SGK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1360",
+   "names": [
+    "22 Cal 55 gr SPT VarmintKing (SVK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1365",
+   "names": [
+    "22 Cal 55 gr SBT GameKing (SGK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1370",
+   "names": [
+    "22 Cal 63 gr SMP VarmintKing (SVK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1375",
+   "names": [
+    "22 Cal 60 gr HP VarmintKing (SVK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1380",
+   "names": [
+    "22 Cal 69 gr HPBT MatchKing (SMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1385",
+   "names": [
+    "22 Cal 40 gr HP VarmintKing (SVK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1390",
+   "names": [
+    "22 Cal 55 gr HPBT GameKing (SGK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1395",
+   "names": [
+    "22 Cal 65 gr SBT GameKing (SGK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1396",
+   "names": [
+    "22 Cal 95 gr HPBT/CN MatchKing (SMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1400",
+   "names": [
+    "22 Cal 53 gr HP MatchKing (SMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1410",
+   "names": [
+    "22 Cal 52 gr HPBT MatchKing (SMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1440",
+   "names": [
+    "22 Cal 40 gr Tipped VarmintKing (TVK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1450",
+   "names": [
+    "22 Cal 50 gr Tipped VarmintKing (TVK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1455",
+   "names": [
+    "22 Cal 55 gr Tipped VarmintKing (TVK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1500",
+   "names": [
+    "6mm 60 gr HP VarmintKing (SVK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1502",
+   "names": [
+    "6mm 55 gr Tipped VarmintKing (TVK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1505",
+   "names": [
+    "6mm 70 gr HPBT MatchKing (SMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1507",
+   "names": [
+    "6mm 70 gr Tipped VarmintKing (TVK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1510",
+   "names": [
+    "6mm 75 gr HP VarmintKing (SVK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1515",
+   "names": [
+    "6mm 80 gr SBT VarmintKing (SVK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1520",
+   "names": [
+    "6mm 85 gr SPT VarmintKing (SVK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1530",
+   "names": [
+    "6mm 85 gr HPBT GameKing (SGK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1537",
+   "names": [
+    "6mm 95 gr HPBT/CN MatchKing (SMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1540",
+   "names": [
+    "6mm 100 gr SPT Pro-Hunter"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1560",
+   "names": [
+    "6mm 100 gr SBT Pro-Hunter"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1565",
+   "names": [
+    "6mm 105 gr HPBT/CN MatchKing (SMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1570",
+   "names": [
+    "6mm 107 gr HPBT/CN MatchKing (SMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1571",
+   "names": [
+    "6mm 107 gr HPBT MatchKing X (MKX)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1575",
+   "names": [
+    "6mm 110 gr HPBT/CN MatchKing (SMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1605",
+   "names": [
+    "25 Cal 70 gr Tipped VarmintKing (TVK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1610",
+   "names": [
+    "25 Cal 87 gr SPT VarmintKing (SVK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1615",
+   "names": [
+    "25 Cal 90 gr HPBT GameKing (SGK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1616",
+   "names": [
+    "25 Cal 90 gr Tipped VarmintKing (TVK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1625",
+   "names": [
+    "25 Cal 100 gr SBT GameKing (SGK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1628",
+   "names": [
+    "25 Cal 100 gr HPBT MatchKing (SMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1630",
+   "names": [
+    "25 Cal 117 gr SBT GameKing (SGK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1710",
+   "names": [
+    "6.5mm 100 gr HP VarmintKing (SVK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1711C",
+   "names": [
+    "6.5mm 100 gr HPBT MatchKing (SMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1715",
+   "names": [
+    "6.5mm 107 gr HPBT MatchKing (SMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1720",
+   "names": [
+    "6.5mm 120 gr SPT Pro-Hunter"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1725",
+   "names": [
+    "6.5mm 120 gr HPBT MatchKing (SMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1727",
+   "names": [
+    "6.5mm 123 gr HPBT/CN MatchKing (SMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1728",
+   "names": [
+    "6.5mm 130 gr HPBT GameKing (SGK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1729T",
+   "names": [
+    "6.5mm 130 gr HPBT/CN MatchKing (SMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1730",
+   "names": [
+    "6.5mm 140 gr SBT GameKing (SGK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1740",
+   "names": [
+    "6.5mm 140 gr HPBT MatchKing (SMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1742",
+   "names": [
+    "6.5mm 142 gr HPBT/CN MatchKing (SMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1743",
+   "names": [
+    "6.5mm 142 gr HPBT MatchKing X (MKX)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1744",
+   "names": [
+    "6.5mm 144 gr HPBT MatchKing (SMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1755",
+   "names": [
+    "6.5mm 150 gr HPBT/CN MatchKing (SMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1785",
+   "names": [
+    "6.5mm 105 gr Tipped VarmintKing (TVK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1815",
+   "names": [
+    "270 Cal 115 gr HPBT MatchKing (SMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1820",
+   "names": [
+    "270 Cal 130 gr SBT GameKing (SGK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1830",
+   "names": [
+    "270 Cal 130 gr SPT Pro-Hunter"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1833",
+   "names": [
+    "270 Cal 135 gr HPBT MatchKing (SMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1834",
+   "names": [
+    "270 Cal 135 gr HPBT MatchKing X (MKX)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1835",
+   "names": [
+    "270 Cal 140 gr HPBT GameKing (SGK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1840",
+   "names": [
+    "270 Cal 150 gr SBT GameKing (SGK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1845",
+   "names": [
+    "270 Cal 140 gr SBT GameKing (SGK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1895",
+   "names": [
+    "7mm 100 gr HP VarmintKing (SVK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1900",
+   "names": [
+    "7mm 120 gr SPT Pro-Hunter"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1905",
+   "names": [
+    "7mm 140 gr SBT GameKing (SGK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1910",
+   "names": [
+    "7mm 140 gr SPT Pro-Hunter"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1912",
+   "names": [
+    "7mm 140 gr HPBT GameKing (SGK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1913",
+   "names": [
+    "7mm 150 gr SBT GameKing (SGK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1915",
+   "names": [
+    "7mm 150 gr HPBT MatchKing (SMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1920",
+   "names": [
+    "7mm 160 gr SBT GameKing (SGK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1925",
+   "names": [
+    "7mm 160 gr HPBT GameKing (SGK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1930",
+   "names": [
+    "7mm 168 gr HPBT MatchKing (SMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1940",
+   "names": [
+    "7mm 175 gr SBT GameKing (SGK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1975",
+   "names": [
+    "7mm 175 gr HPBT MatchKing (SMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1976",
+   "names": [
+    "7mm 175 gr HPBT MatchKing X (MKX)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1980",
+   "names": [
+    "7mm 180 gr HPBT MatchKing (SMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1981",
+   "names": [
+    "7mm 180 gr HPBT/CN (Optimized for 7PRC) MatchKing (SMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1983",
+   "names": [
+    "7mm 183 gr HPBT/CN MatchKing (SMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_1997",
+   "names": [
+    "7mm 197 gr HPBT/CN MatchKing (SMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_2000",
+   "names": [
+    "30 Cal 150 gr FN Pro-Hunter"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_2010",
+   "names": [
+    "30 Cal 170 gr FN Pro-Hunter"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_2020",
+   "names": [
+    "30 Cal 125 gr HP/FN Pro-Hunter"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_2100",
+   "names": [
+    "30 Cal 110 gr RN Pro-Hunter"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_2110",
+   "names": [
+    "30 Cal 110 gr HP VarmintKing (SVK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_2115",
+   "names": [
+    "30 Cal 150 gr FMJBT GameKing (SGK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_2116",
+   "names": [
+    "30 Cal 115 gr HP VarmintKing (SVK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_2120",
+   "names": [
+    "30 Cal 125 gr SPT Pro-Hunter"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_2121",
+   "names": [
+    "30 Cal 125 gr HP/CN MatchKing (SMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_2124",
+   "names": [
+    "30 Cal 135 gr HP VarmintKing (SVK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_2125",
+   "names": [
+    "30 Cal 150 gr SBT GameKing (SGK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_2130",
+   "names": [
+    "30 Cal 150 gr SPT Pro-Hunter"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_2136",
+   "names": [
+    "30 Cal 150 gr HP VarmintKing (SVK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_2140",
+   "names": [
+    "30 Cal 165 gr HPBT GameKing (SGK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_2145",
+   "names": [
+    "30 Cal 165 gr SBT GameKing (SGK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_2155",
+   "names": [
+    "30 Cal 155 gr HPBT MatchKing (SMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_2156",
+   "names": [
+    "30 Cal 155 gr HPBT/CN - Palma MatchKing (SMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_2160",
+   "names": [
+    "30 Cal 180 gr SBT GameKing (SGK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_2165",
+   "names": [
+    "30 Cal 200 gr SBT GameKing (SGK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_2170",
+   "names": [
+    "30 Cal 180 gr RN Pro-Hunter"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_2175",
+   "names": [
+    "30 Cal 175 gr HPBT MatchKing X (MKX)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_2180",
+   "names": [
+    "30 Cal 220 gr RN Pro-Hunter"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_2190",
+   "names": [
+    "30 Cal 150 gr HPBT MatchKing (SMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_2200",
+   "names": [
+    "30 Cal 168 gr HPBT MatchKing (SMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_2210",
+   "names": [
+    "30 Cal 190 gr HPBT MatchKing (SMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_2230",
+   "names": [
+    "30 Cal 200 gr HPBT MatchKing (SMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_2231",
+   "names": [
+    "30 Cal 200 gr HPBT/CN MatchKing (SMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_2232",
+   "names": [
+    "30 Cal 200 gr HPBT MatchKing X (MKX)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_2236",
+   "names": [
+    "30 Cal 205 gr HPBT GameKing (SGK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_2237",
+   "names": [
+    "30 Cal 215 gr HPBT/CN MatchKing (SMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_2240",
+   "names": [
+    "30 Cal 220 gr HPBT MatchKing (SMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_2251",
+   "names": [
+    "30 Cal 230 gr HPBT/CN MatchKing (SMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_2269",
+   "names": [
+    "30 Cal 169 gr HPBT/CN MatchKing (SMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_2275",
+   "names": [
+    "30 Cal 175 gr HPBT MatchKing (SMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_2277",
+   "names": [
+    "30 Cal 177 gr HPBT/CN MatchKing (SMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_2300",
+   "names": [
+    "303 Cal 150 gr SPT Pro-Hunter"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_2305",
+   "names": [
+    "303 Cal 125 gr SPT Pro-Hunter"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_2310",
+   "names": [
+    "303 Cal 180 gr SPT Pro-Hunter"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_2315",
+   "names": [
+    "303 Cal 174 gr HPBT MatchKing (SMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_2400",
+   "names": [
+    "8mm 150 gr SPT Pro-Hunter"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_2410",
+   "names": [
+    "8mm 175 gr SPT Pro-Hunter"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_2415",
+   "names": [
+    "8mm 200 gr HPBT MatchKing (SMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_2420",
+   "names": [
+    "8mm 220 gr SBT GameKing (SGK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_2600",
+   "names": [
+    "338 Cal 250 gr SBT GameKing (SGK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_2610",
+   "names": [
+    "338 Cal 215 gr SBT GameKing (SGK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_2620",
+   "names": [
+    "338 Cal 225 gr SPT Pro-Hunter"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_2650",
+   "names": [
+    "338 Cal 250 gr HPBT MatchKing (SMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_2755",
+   "names": [
+    "35 Cal 155 gr FN Pro-Hunter"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_2800",
+   "names": [
+    "35 Cal 200 gr RN Pro-Hunter"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_2850",
+   "names": [
+    "35 Cal 225 gr SBT GameKing (SGK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_2900",
+   "names": [
+    "375 Cal 200 gr FN Pro-Hunter"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_2950",
+   "names": [
+    "375 Cal 250 gr SBT GameKing (SGK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_3000",
+   "names": [
+    "375 Cal 300 gr SBT GameKing (SGK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_4062",
+   "names": [
+    "22 Cal 64 gr Tipped GameKing (TGK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_4100T",
+   "names": [
+    "6mm 90 gr Tipped GameKing (TGK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_4110T",
+   "names": [
+    "6mm 100 gr Tipped GameKing (TGK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_4210",
+   "names": [
+    "25 Cal 110 gr Tipped GameKing (TGK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_4320",
+   "names": [
+    "6.5mm 120 gr Tipped GameKing (TGK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_4330T",
+   "names": [
+    "6.5mm 130 gr Tipped GameKing (TGK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_4340",
+   "names": [
+    "6.5mm 140 gr Tipped GameKing (TGK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_4345",
+   "names": [
+    "6.5mm 145 gr Tipped GameKing (TGK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_4440T",
+   "names": [
+    "270 Cal 140 gr Tipped GameKing (TGK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_4475",
+   "names": [
+    "270 Cal 175 gr Tipped GameKing (TGK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_4540",
+   "names": [
+    "7mm 140 gr Tipped GameKing (TGK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_4540C",
+   "names": [
+    "7mm 140 gr Tipped GameKing (TGK)- BGB"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_4550T",
+   "names": [
+    "7mm 150 gr Tipped GameKing (TGK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_4565T",
+   "names": [
+    "7mm 165 gr Tipped GameKing (TGK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_4580",
+   "names": [
+    "7mm 180 gr Tipped GameKing (TGK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_4610GT",
+   "names": [
+    "30 Cal 210 gr Tipped GameKing (TGK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_4625",
+   "names": [
+    "30 Cal 125 gr Tipped GameKing (TGK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_4665T",
+   "names": [
+    "30 Cal 165 gr Tipped GameKing (TGK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_4680T",
+   "names": [
+    "30 Cal 180 gr Tipped GameKing (TGK) (Optimized for .300 Win Mag)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_4681T",
+   "names": [
+    "30 Cal 180 gr Tipped GameKing (TGK) (Optimized for 30-06)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_4682",
+   "names": [
+    "30 Cal 180 gr Tipped GameKing (TGK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_5350",
+   "names": [
+    "50 Cal 350 gr JHP Sports Master"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_5400",
+   "names": [
+    "50 Cal 400 gr JSP Sports Master"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_7160",
+   "names": [
+    "22 Cal 60 gr Tipped MatchKing (TMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_7169",
+   "names": [
+    "22 Cal 69 gr Tipped MatchKing (TMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_7170",
+   "names": [
+    "22 Cal 69 gr Tipped VarmintKing (TVK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_7171",
+   "names": [
+    "22 Cal 69 gr Tipped GameKing (TGK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_7177",
+   "names": [
+    "22 Cal 77 gr Tipped MatchKing (TMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_7188",
+   "names": [
+    "22 Cal 88 gr Tipped MatchKing (TMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_7207",
+   "names": [
+    "6mm 107 gr Tipped MatchKing (TMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_7216",
+   "names": [
+    "6mm 116 gr Tipped MatchKing (TMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_7295",
+   "names": [
+    "6mm 95 gr Tipped MatchKing (TMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_7334",
+   "names": [
+    "25 Cal 135 gr Tipped MatchKing (TMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_7407",
+   "names": [
+    "6.5mm 107 gr Tipped MatchKing (TMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_7430",
+   "names": [
+    "6.5mm 130 gr Tipped MatchKing (TMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_7450",
+   "names": [
+    "6.5mm 153 gr Tipped MatchKing (TMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_7660",
+   "names": [
+    "7mm 160 gr Tipped MatchKing (TMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_7685",
+   "names": [
+    "7mm 185 gr Tipped MatchKing (TMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_7720",
+   "names": [
+    "30 Cal 220 gr Tipped MatchKing (TMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_7725",
+   "names": [
+    "30 Cal 125 gr Tipped MatchKing (TMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_7755",
+   "names": [
+    "30 Cal 155 gr Tipped MatchKing (TMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_7768",
+   "names": [
+    "30 Cal 168 gr Tipped MatchKing (TMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_7775",
+   "names": [
+    "30 Cal 175 gr Tipped MatchKing (TMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_7795",
+   "names": [
+    "30 Cal 195 gr Tipped MatchKing (TMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_8005",
+   "names": [
+    "30 Cal 85 gr RN Sports Master"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_8030",
+   "names": [
+    "32 Cal 90 gr JHC Sports Master"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_8100",
+   "names": [
+    "9mm 90 gr JHP Sports Master"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_8105",
+   "names": [
+    "9mm 95 gr FMJ Tournament Master"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_8110",
+   "names": [
+    "9mm 115 gr JHP Sports Master"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_8115",
+   "names": [
+    "9mm 115 gr FMJ Tournament Master"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_8120",
+   "names": [
+    "9mm 125 gr FMJ Tournament Master"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_8124",
+   "names": [
+    "9mm 124 gr JHP Sports Master"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_8125",
+   "names": [
+    "9mm 125 gr JHP Sports Master"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_8147",
+   "names": [
+    "9mm 147 gr JHP Sports Master"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_8310",
+   "names": [
+    "38 Cal 125 gr JSP Sports Master"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_8320",
+   "names": [
+    "38 Cal 125 gr JHP Sports Master"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_8325",
+   "names": [
+    "38 Cal 140 gr JHP Sports Master"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_8340",
+   "names": [
+    "38 Cal 158 gr JSP Sports Master"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_8360",
+   "names": [
+    "38 Cal 158 gr JHC Sports Master"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_8370",
+   "names": [
+    "38 Cal 180 gr FPJ Tournament Master"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_8430",
+   "names": [
+    "10mm 150 gr JHP Sports Master"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_8445",
+   "names": [
+    "10mm 165 gr JHP Sports Master"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_8460",
+   "names": [
+    "10mm 180 gr JHP Sports Master"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_8500",
+   "names": [
+    "41 Cal 170 gr JHC Sports Master"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_8520",
+   "names": [
+    "41 Cal 210 gr JHC Sports Master"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_8600",
+   "names": [
+    "44 Cal 180 gr JHC Sports Master"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_8610",
+   "names": [
+    "44 Cal 240 gr JHC Sports Master"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_8615",
+   "names": [
+    "44 Cal 250 gr FPJ Tournament Master"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_8620",
+   "names": [
+    "44 Cal 210 gr JHC Sports Master"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_8630",
+   "names": [
+    "44 Cal 300 gr JSP Sports Master"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_8760",
+   "names": [
+    "45 Cal 260 gr FN Pro-Hunter"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_8805",
+   "names": [
+    "45 Cal 230 gr JHP Sports Master"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_8815",
+   "names": [
+    "45 Cal 230 gr FMJ Tournament Master"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_8820",
+   "names": [
+    "45 Cal 240 gr JHC Sports Master"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_8825",
+   "names": [
+    "45 Cal 200 gr FPJ Tournament Master"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_8826C",
+   "names": [
+    "45 Cal 225 gr JHC Sports Master"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_8830",
+   "names": [
+    "45 Cal 300 gr JSP Sports Master"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_8835",
+   "names": [
+    "45 Cal 185 gr JHP Sports Master"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_8900",
+   "names": [
+    "45-70 Cal 300 gr HP/FN Pro-Hunter"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_8950",
+   "names": [
+    "45-70 Cal 400 gr HP/FN Pro-Hunter"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_9240T",
+   "names": [
+    "30 Cal 210 gr HPBT/CN MatchKing (SMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_9290T",
+   "names": [
+    "22 Cal 90 gr HPBT/CN MatchKing (SMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_9300T",
+   "names": [
+    "338 Cal 300 gr HPBT MatchKing (SMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_9350T",
+   "names": [
+    "375 Cal 350 gr HPBT/CN MatchKing (SMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_9362",
+   "names": [
+    "22 Cal 62 gr SBT GameKing (SGK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_9377GT",
+   "names": [
+    "22 Cal 77 gr HPBT MatchKing (SMK) - Cannelure"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_9377T",
+   "names": [
+    "22 Cal 77 gr HPBT MatchKing (SMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_9380",
+   "names": [
+    "22 Cal 77 gr HPBT MatchKing X (MKX)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_9390T",
+   "names": [
+    "22 Cal 80 gr HPBT/CN MatchKing (SMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_9465",
+   "names": [
+    "10mm 165 gr JHP - SIG V-Crown"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_9631",
+   "names": [
+    "25 Cal 131 gr HPBT-CN MatchKing (SMK)"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_9820",
+   "names": [
+    "45 Cal 200 gr JHP - Sig V-Crown"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_9924",
+   "names": [
+    "9mm 124 gr JHP - SIG V-Crown"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_9925",
+   "names": [
+    "9mm 125 gr JHP - SIG V-Crown"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_9947",
+   "names": [
+    "9mm 147 gr JHP - SIG V-Crown"
+   ],
+   "note": "no declared muzzle velocity"
+  },
+  {
+   "projectile_id": "sierra_9990",
+   "names": [
+    "9mm 90 gr JHP - SIG V-Crown"
+   ],
+   "note": "no declared muzzle velocity"
+  }
+ ],
+ "data_error": false
+}
