@@ -18509,5 +18509,20 @@
   "licence": "NATO standard, sold through the national standards bodies",
   "primary_held": false,
   "note": "The public catalogue listing states the title, the edition and the date, and that it supersedes the 2012 edition. The technical text is not public, so no case dimension, no pressure and no twist is entered from it."
+ },
+ {
+  "source_id": "sierra_reloading_manual",
+  "tier": 4,
+  "type": "manufacturer",
+  "title": "Sierra Reloading Manual, sixth edition, cartridge load data sheets",
+  "edition": "sixth edition",
+  "identifier": "Sierra Reloading Manual 6th ed.",
+  "locator": "per-cartridge load data sheet, Special Load table (Accuracy Load and Hunting Load rows)",
+  "published": "sixth edition",
+  "retrieved": "2026-10-23",
+  "url": "https://sierrabullets.com/load-data/",
+  "licence": "manufacturer published data",
+  "primary_held": true,
+  "note": "Manufacturer claim. One sheet per cartridge, each stating its test barrel length, the bullets by part number and a special load that names a powder, a charge and the velocity it produced. The parsed special loads and the SHA256 of every sheet are held under data/ballistics/sources/sierra_velocity.json; the sheets are held in the local source cache and are not redistributed."
  }
 ]

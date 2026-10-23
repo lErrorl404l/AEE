@@ -56,6 +56,9 @@ step "projectiles: Miller stability" "$V/gen_stability.py"
 # after it.
 step "loads: military documents" "$V/gen_loads_from_mil.py"
 step "loads: velocity anchors" "$V/gen_loads_from_velocity.py"
+# The reloading manual special loads also carry a barrel per velocity, and
+# they run after the velocity anchors because both write the same table.
+step "loads: reloading manual special loads" "$V/gen_loads_from_sierra.py"
 # The cannon and grenade loads a data sheet defines leave the table when
 # the military ingest rebuilds it, so the held set is merged back.
 step "loads: cannon and grenade" "$V/gen_loads_from_cannon.py"

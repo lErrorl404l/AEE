@@ -71,6 +71,182 @@
   }
  },
  {
+  "load_id": "10_mm_auto_sierra_8430",
+  "cartridge_id": "10_mm_auto",
+  "projectile": "10mm 150 gr JHP Sports Master",
+  "note": "Sierra accuracy load for 10mm 150 gr JHP Sports Master in the 10mm Auto sheet: 6.7 gr Tite Group, 1300 fps in a 5 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": "10 mm Auto",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "10mm 150 gr JHP Sports Master",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 127.0,
+      "mv_ms": 396.2
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "1300 fps x 0.3048 m/s per fps; 5 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 0.434,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "6.7 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "Tite Group",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "10_mm_auto_sierra_8445",
+  "cartridge_id": "10_mm_auto",
+  "projectile": "10mm 165 gr JHP Sports Master",
+  "note": "Sierra accuracy load for 10mm 165 gr JHP Sports Master in the 10mm Auto sheet: 9.0 gr Power Pistol, 1400 fps in a 5 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": "10 mm Auto",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "10mm 165 gr JHP Sports Master",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 127.0,
+      "mv_ms": 426.7
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "1400 fps x 0.3048 m/s per fps; 5 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 0.583,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "9.0 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "Power Pistol",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "10_mm_auto_sierra_8460",
+  "cartridge_id": "10_mm_auto",
+  "projectile": "10mm 180 gr JHP Sports Master",
+  "note": "Sierra accuracy load for 10mm 180 gr JHP Sports Master in the 10mm Auto sheet: 9.3 gr A#, 1250 fps in a 5 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": "10 mm Auto",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "10mm 180 gr JHP Sports Master",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 127.0,
+      "mv_ms": 381.0
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "1250 fps x 0.3048 m/s per fps; 5 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 0.603,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "9.3 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "A#",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "10_mm_auto_sierra_9465",
+  "cartridge_id": "10_mm_auto",
+  "projectile": "10mm 165 gr JHP - SIG V-Crown",
+  "note": "Sierra accuracy load for 10mm 165 gr JHP - SIG V-Crown in the 10mm Auto sheet: 9.0 gr Power Pistol, 1400 fps in a 5 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": "10 mm Auto",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "10mm 165 gr JHP - SIG V-Crown",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 127.0,
+      "mv_ms": 426.7
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "1400 fps x 0.3048 m/s per fps; 5 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 0.583,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "9.0 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "Power Pistol",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
   "load_id": "120mm_m829_load",
   "cartridge_id": "120mm_m256_smoothbore",
   "projectile": "M829 APFSDS-T",
@@ -661,6 +837,94 @@
     ],
     "unit": "mm, m/s",
     "source": "hornady_velocity",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "204_ruger_sierra_1032",
+  "cartridge_id": "204_ruger",
+  "projectile": "20 Cal 32 gr Tipped VarmintKing",
+  "note": "Sierra accuracy load for 20 Cal 32 gr Tipped VarmintKing (TVK) in the 204 Ruger sheet: 24.9 gr RE, 4000 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": "204 Ruger",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "20 Cal 32 gr Tipped VarmintKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 1219.2
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "4000 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 1.613,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "24.9 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "RE",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "204_ruger_sierra_1039",
+  "cartridge_id": "204_ruger",
+  "projectile": "20 Cal 39 gr Tipped VarmintKing",
+  "note": "Sierra accuracy load for 20 Cal 39 gr Tipped VarmintKing (TVK) in the 204 Ruger sheet: 29.1 gr RE, 3800 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": "204 Ruger",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "20 Cal 39 gr Tipped VarmintKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 1158.2
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "3800 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 1.886,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "29.1 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "RE",
+    "source": "sierra_reloading_manual",
     "grade": "claimed"
    }
   }
@@ -1382,17 +1646,6 @@
     "unit": "mm, m/s",
     "source": "lapua_velocity",
     "grade": "claimed"
-   },
-   "charge_mass_g": {
-    "value": 1.477,
-    "unit": "g",
-    "source": "vihtavuori_2026",
-    "grade": "documented"
-   },
-   "charge_kind": {
-    "value": "reloading",
-    "source": "vihtavuori_2026",
-    "grade": "documented"
    }
   }
  },
@@ -1493,6 +1746,1062 @@
     ],
     "unit": "mm, m/s",
     "source": "hornady_velocity",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "223_rem_sierra_1200",
+  "cartridge_id": "223_rem",
+  "projectile": "22 Cal 40 gr Hornet VarmintKing",
+  "note": "Sierra accuracy load for 22 Cal 40 gr Hornet VarmintKing (SVK) in the 223 Remington sheet: 25.3 gr H, 3200 fps in a 20 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".223 Remington",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "22 Cal 40 gr Hornet VarmintKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 508.0,
+      "mv_ms": 975.4
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "3200 fps x 0.3048 m/s per fps; 20 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 1.639,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "25.3 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "H",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "223_rem_sierra_1210",
+  "cartridge_id": "223_rem",
+  "projectile": "22 Cal 45 gr Hornet VarmintKing",
+  "note": "Sierra accuracy load for 22 Cal 45 gr Hornet VarmintKing (SVK) in the 223 Remington sheet: 26.1 gr X Terminator, 3300 fps in a 20 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".223 Remington",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "22 Cal 45 gr Hornet VarmintKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 508.0,
+      "mv_ms": 1005.8
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "3300 fps x 0.3048 m/s per fps; 20 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 1.691,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "26.1 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "X Terminator",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "223_rem_sierra_1310",
+  "cartridge_id": "223_rem",
+  "projectile": "22 Cal 45 gr SPT VarmintKing",
+  "note": "Sierra accuracy load for 22 Cal 45 gr SPT VarmintKing (SVK) in the 223 Remington sheet: 26.1 gr X Terminator, 3300 fps in a 20 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".223 Remington",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "22 Cal 45 gr SPT VarmintKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 508.0,
+      "mv_ms": 1005.8
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "3300 fps x 0.3048 m/s per fps; 20 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 1.691,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "26.1 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "X Terminator",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "223_rem_sierra_1330",
+  "cartridge_id": "223_rem",
+  "projectile": "22 Cal 50 gr SPT VarmintKing",
+  "note": "Sierra accuracy load for 22 Cal 50 gr SPT VarmintKing (SVK) in the 223 Remington sheet: 25.7 gr Viht N, 3100 fps in a 20 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".223 Remington",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "22 Cal 50 gr SPT VarmintKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 508.0,
+      "mv_ms": 944.9
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "3100 fps x 0.3048 m/s per fps; 20 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 1.665,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "25.7 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "Viht N",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "223_rem_sierra_1340",
+  "cartridge_id": "223_rem",
+  "projectile": "22 Cal 50 gr VarmintKing",
+  "note": "Sierra accuracy load for 22 Cal 50 gr VarmintKing (SVK) in the 223 Remington sheet: 25.7 gr Viht N, 3100 fps in a 20 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".223 Remington",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "22 Cal 50 gr VarmintKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 508.0,
+      "mv_ms": 944.9
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "3100 fps x 0.3048 m/s per fps; 20 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 1.665,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "25.7 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "Viht N",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "223_rem_sierra_1345",
+  "cartridge_id": "223_rem",
+  "projectile": "22 Cal 55 gr VarmintKing",
+  "note": "Sierra accuracy load for 22 Cal 55 gr VarmintKing (SVK) in the 223 Remington sheet: 21.5 gr RE, 2900 fps in a 20 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".223 Remington",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "22 Cal 55 gr VarmintKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 508.0,
+      "mv_ms": 883.9
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2900 fps x 0.3048 m/s per fps; 20 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 1.393,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "21.5 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "RE",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "223_rem_sierra_1355",
+  "cartridge_id": "223_rem",
+  "projectile": "22 Cal 55 gr FMJBT GameKing",
+  "note": "Sierra accuracy load for 22 Cal 55 gr FMJBT GameKing (SGK) in the 223 Remington sheet: 21.5 gr RE, 2900 fps in a 20 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".223 Remington",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "22 Cal 55 gr FMJBT GameKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 508.0,
+      "mv_ms": 883.9
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2900 fps x 0.3048 m/s per fps; 20 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 1.393,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "21.5 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "RE",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "223_rem_sierra_1360",
+  "cartridge_id": "223_rem",
+  "projectile": "22 Cal 55 gr SPT VarmintKing",
+  "note": "Sierra accuracy load for 22 Cal 55 gr SPT VarmintKing (SVK) in the 223 Remington sheet: 21.5 gr RE, 2900 fps in a 20 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".223 Remington",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "22 Cal 55 gr SPT VarmintKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 508.0,
+      "mv_ms": 883.9
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2900 fps x 0.3048 m/s per fps; 20 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 1.393,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "21.5 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "RE",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "223_rem_sierra_1365",
+  "cartridge_id": "223_rem",
+  "projectile": "22 Cal 55 gr SBT GameKing",
+  "note": "Sierra accuracy load for 22 Cal 55 gr SBT GameKing (SGK) in the 223 Remington sheet: 21.5 gr RE, 2900 fps in a 20 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".223 Remington",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "22 Cal 55 gr SBT GameKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 508.0,
+      "mv_ms": 883.9
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2900 fps x 0.3048 m/s per fps; 20 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 1.393,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "21.5 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "RE",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "223_rem_sierra_1370",
+  "cartridge_id": "223_rem",
+  "projectile": "22 Cal 63 gr SMP VarmintKing",
+  "note": "Sierra accuracy load for 22 Cal 63 gr SMP VarmintKing (SVK) in the 223 Remington sheet: 25.2 gr red H, 2900 fps in a 20 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".223 Remington",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "22 Cal 63 gr SMP VarmintKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 508.0,
+      "mv_ms": 883.9
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2900 fps x 0.3048 m/s per fps; 20 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 1.633,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "25.2 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "red H",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "223_rem_sierra_1375",
+  "cartridge_id": "223_rem",
+  "projectile": "22 Cal 60 gr HP VarmintKing",
+  "note": "Sierra accuracy load for 22 Cal 60 gr HP VarmintKing (SVK) in the 223 Remington sheet: 24.7 gr Viht N, 2900 fps in a 20 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".223 Remington",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "22 Cal 60 gr HP VarmintKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 508.0,
+      "mv_ms": 883.9
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2900 fps x 0.3048 m/s per fps; 20 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 1.601,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "24.7 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "Viht N",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "223_rem_sierra_1380",
+  "cartridge_id": "223_rem",
+  "projectile": "22 Cal 69 gr HPBT MatchKing",
+  "note": "Sierra accuracy load for 22 Cal 69 gr HPBT MatchKing (SMK) in the 223 Remington sheet: 25.3 gr Varget, 2750 fps in a 20 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".223 Remington",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "22 Cal 69 gr HPBT MatchKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 508.0,
+      "mv_ms": 838.2
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2750 fps x 0.3048 m/s per fps; 20 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 1.639,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "25.3 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "Varget",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "223_rem_sierra_1385",
+  "cartridge_id": "223_rem",
+  "projectile": "22 Cal 40 gr HP VarmintKing",
+  "note": "Sierra accuracy load for 22 Cal 40 gr HP VarmintKing (SVK) in the 223 Remington sheet: 25.3 gr H, 3200 fps in a 20 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".223 Remington",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "22 Cal 40 gr HP VarmintKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 508.0,
+      "mv_ms": 975.4
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "3200 fps x 0.3048 m/s per fps; 20 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 1.639,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "25.3 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "H",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "223_rem_sierra_1390",
+  "cartridge_id": "223_rem",
+  "projectile": "22 Cal 55 gr HPBT GameKing",
+  "note": "Sierra accuracy load for 22 Cal 55 gr HPBT GameKing (SGK) in the 223 Remington sheet: 21.5 gr RE, 2900 fps in a 20 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".223 Remington",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "22 Cal 55 gr HPBT GameKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 508.0,
+      "mv_ms": 883.9
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2900 fps x 0.3048 m/s per fps; 20 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 1.393,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "21.5 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "RE",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "223_rem_sierra_1395",
+  "cartridge_id": "223_rem",
+  "projectile": "22 Cal 65 gr SBT GameKing",
+  "note": "Sierra accuracy load for 22 Cal 65 gr SBT GameKing (SGK) in the 223 Remington sheet: 25.2 gr red H, 2900 fps in a 20 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".223 Remington",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "22 Cal 65 gr SBT GameKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 508.0,
+      "mv_ms": 883.9
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2900 fps x 0.3048 m/s per fps; 20 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 1.633,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "25.2 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "red H",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "223_rem_sierra_1396",
+  "cartridge_id": "223_rem",
+  "projectile": "22 Cal 95 gr HPBT/CN MatchKing",
+  "note": "Sierra accuracy load for 22 Cal 95 gr HPBT/CN MatchKing (SMK) in the 223 Remington sheet: 23.3 gr RE, 2450 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".223 Remington",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "22 Cal 95 gr HPBT/CN MatchKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 746.8
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2450 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 1.51,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "23.3 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "RE",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "223_rem_sierra_1400",
+  "cartridge_id": "223_rem",
+  "projectile": "22 Cal 53 gr HP MatchKing",
+  "note": "Sierra accuracy load for 22 Cal 53 gr HP MatchKing (SMK) in the 223 Remington sheet: 23.5 gr Viht N, 2900 fps in a 20 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".223 Remington",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "22 Cal 53 gr HP MatchKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 508.0,
+      "mv_ms": 883.9
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2900 fps x 0.3048 m/s per fps; 20 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 1.523,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "23.5 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "Viht N",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "223_rem_sierra_1410",
+  "cartridge_id": "223_rem",
+  "projectile": "22 Cal 52 gr HPBT MatchKing",
+  "note": "Sierra accuracy load for 22 Cal 52 gr HPBT MatchKing (SMK) in the 223 Remington sheet: 23.5 gr Viht N, 2900 fps in a 20 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".223 Remington",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "22 Cal 52 gr HPBT MatchKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 508.0,
+      "mv_ms": 883.9
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2900 fps x 0.3048 m/s per fps; 20 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 1.523,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "23.5 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "Viht N",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "223_rem_sierra_1440",
+  "cartridge_id": "223_rem",
+  "projectile": "22 Cal 40 gr Tipped VarmintKing",
+  "note": "Sierra accuracy load for 22 Cal 40 gr Tipped VarmintKing (TVK) in the 223 Remington sheet: 25.3 gr H, 3200 fps in a 20 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".223 Remington",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "22 Cal 40 gr Tipped VarmintKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 508.0,
+      "mv_ms": 975.4
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "3200 fps x 0.3048 m/s per fps; 20 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 1.639,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "25.3 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "H",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "223_rem_sierra_1450",
+  "cartridge_id": "223_rem",
+  "projectile": "22 Cal 50 gr Tipped VarmintKing",
+  "note": "Sierra accuracy load for 22 Cal 50 gr Tipped VarmintKing (TVK) in the 223 Remington sheet: 25.7 gr Viht N, 3100 fps in a 20 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".223 Remington",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "22 Cal 50 gr Tipped VarmintKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 508.0,
+      "mv_ms": 944.9
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "3100 fps x 0.3048 m/s per fps; 20 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 1.665,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "25.7 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "Viht N",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "223_rem_sierra_1455",
+  "cartridge_id": "223_rem",
+  "projectile": "22 Cal 55 gr Tipped VarmintKing",
+  "note": "Sierra accuracy load for 22 Cal 55 gr Tipped VarmintKing (TVK) in the 223 Remington sheet: 21.5 gr RE, 2900 fps in a 20 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".223 Remington",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "22 Cal 55 gr Tipped VarmintKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 508.0,
+      "mv_ms": 883.9
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2900 fps x 0.3048 m/s per fps; 20 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 1.393,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "21.5 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "RE",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "223_rem_sierra_7160",
+  "cartridge_id": "223_rem",
+  "projectile": "22 Cal 60 gr Tipped MatchKing",
+  "note": "Sierra accuracy load for 22 Cal 60 gr Tipped MatchKing (TMK) in the 223 Remington sheet: 24.7 gr Viht N, 2900 fps in a 20 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".223 Remington",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "22 Cal 60 gr Tipped MatchKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 508.0,
+      "mv_ms": 883.9
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2900 fps x 0.3048 m/s per fps; 20 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 1.601,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "24.7 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "Viht N",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "223_rem_sierra_7169",
+  "cartridge_id": "223_rem",
+  "projectile": "22 Cal 69 gr Tipped MatchKing",
+  "note": "Sierra accuracy load for 22 Cal 69 gr Tipped MatchKing (TMK) in the 223 Remington sheet: 25.3 gr Varget, 2750 fps in a 20 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".223 Remington",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "22 Cal 69 gr Tipped MatchKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 508.0,
+      "mv_ms": 838.2
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2750 fps x 0.3048 m/s per fps; 20 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 1.639,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "25.3 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "Varget",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "223_rem_sierra_7177",
+  "cartridge_id": "223_rem",
+  "projectile": "22 Cal 77 gr Tipped MatchKing",
+  "note": "Sierra accuracy load for 22 Cal 77 gr Tipped MatchKing (TMK) in the 223 Remington sheet: 24.1 gr Viht N, 2600 fps in a 20 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".223 Remington",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "22 Cal 77 gr Tipped MatchKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 508.0,
+      "mv_ms": 792.5
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2600 fps x 0.3048 m/s per fps; 20 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 1.562,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "24.1 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "Viht N",
+    "source": "sierra_reloading_manual",
     "grade": "claimed"
    }
   }
@@ -1804,6 +3113,50 @@
     ],
     "unit": "mm, m/s",
     "source": "hornady_velocity",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "22_hornet_sierra_1110",
+  "cartridge_id": "22_hornet",
+  "projectile": "223 Cal 45 gr Hornet VarmintKing",
+  "note": "Sierra accuracy load for 223 Cal 45 gr Hornet VarmintKing (SVK) in the 22 Hornet sheet: 9.3 gr N, 2400 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": "22 Hornet",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "223 Cal 45 gr Hornet VarmintKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 731.5
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2400 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 0.603,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "9.3 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "N",
+    "source": "sierra_reloading_manual",
     "grade": "claimed"
    }
   }
@@ -2127,6 +3480,622 @@
   }
  },
  {
+  "load_id": "243_winchester_sierra_1500",
+  "cartridge_id": "243_winchester",
+  "projectile": "6mm 60 gr HP VarmintKing",
+  "note": "Sierra accuracy load for 6mm 60 gr HP VarmintKing (SVK) in the 243 Winchester sheet: 37.7 gr A, 3600 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".243 Winchester",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "6mm 60 gr HP VarmintKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 1097.3
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "3600 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 2.443,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "37.7 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "A",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "243_winchester_sierra_1502",
+  "cartridge_id": "243_winchester",
+  "projectile": "6mm 55 gr Tipped VarmintKing",
+  "note": "Sierra accuracy load for 6mm 55 gr Tipped VarmintKing (TVK) in the 243 Winchester sheet: 40.3 gr A, 3800 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".243 Winchester",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "6mm 55 gr Tipped VarmintKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 1158.2
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "3800 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 2.611,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "40.3 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "A",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "243_winchester_sierra_1505",
+  "cartridge_id": "243_winchester",
+  "projectile": "6mm 70 gr HPBT MatchKing",
+  "note": "Sierra accuracy load for 6mm 70 gr HPBT MatchKing (SMK) in the 243 Winchester sheet: 48.9 gr RE, 3400 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".243 Winchester",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "6mm 70 gr HPBT MatchKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 1036.3
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "3400 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 3.169,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "48.9 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "RE",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "243_winchester_sierra_1507",
+  "cartridge_id": "243_winchester",
+  "projectile": "6mm 70 gr Tipped VarmintKing",
+  "note": "Sierra accuracy load for 6mm 70 gr Tipped VarmintKing (TVK) in the 243 Winchester sheet: 48.9 gr RE, 3400 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".243 Winchester",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "6mm 70 gr Tipped VarmintKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 1036.3
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "3400 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 3.169,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "48.9 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "RE",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "243_winchester_sierra_1510",
+  "cartridge_id": "243_winchester",
+  "projectile": "6mm 75 gr HP VarmintKing",
+  "note": "Sierra accuracy load for 6mm 75 gr HP VarmintKing (SVK) in the 243 Winchester sheet: 48.9 gr RE, 3400 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".243 Winchester",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "6mm 75 gr HP VarmintKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 1036.3
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "3400 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 3.169,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "48.9 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "RE",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "243_winchester_sierra_1515",
+  "cartridge_id": "243_winchester",
+  "projectile": "6mm 80 gr SBT VarmintKing",
+  "note": "Sierra accuracy load for 6mm 80 gr SBT VarmintKing (SVK) in the 243 Winchester sheet: 41.9 gr RE, 3200 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".243 Winchester",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "6mm 80 gr SBT VarmintKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 975.4
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "3200 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 2.715,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "41.9 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "RE",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "243_winchester_sierra_1520",
+  "cartridge_id": "243_winchester",
+  "projectile": "6mm 85 gr SPT VarmintKing",
+  "note": "Sierra accuracy load for 6mm 85 gr SPT VarmintKing (SVK) in the 243 Winchester sheet: 41.9 gr RE, 3200 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".243 Winchester",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "6mm 85 gr SPT VarmintKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 975.4
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "3200 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 2.715,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "41.9 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "RE",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "243_winchester_sierra_1530",
+  "cartridge_id": "243_winchester",
+  "projectile": "6mm 85 gr HPBT GameKing",
+  "note": "Sierra accuracy load for 6mm 85 gr HPBT GameKing (SGK) in the 243 Winchester sheet: 41.9 gr RE, 3200 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".243 Winchester",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "6mm 85 gr HPBT GameKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 975.4
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "3200 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 2.715,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "41.9 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "RE",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "243_winchester_sierra_1537",
+  "cartridge_id": "243_winchester",
+  "projectile": "6mm 95 gr HPBT/CN MatchKing",
+  "note": "Sierra accuracy load for 6mm 95 gr HPBT/CN MatchKing (SMK) in the 243 Winchester sheet: 37.4 gr Varget, 3050 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".243 Winchester",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "6mm 95 gr HPBT/CN MatchKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 929.6
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "3050 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 2.423,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "37.4 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "Varget",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "243_winchester_sierra_1540",
+  "cartridge_id": "243_winchester",
+  "projectile": "6mm 100 gr SPT Pro-Hunter",
+  "note": "Sierra accuracy load for 6mm 100 gr SPT Pro-Hunter in the 243 Winchester sheet: 43.2 gr Do H, 2950 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".243 Winchester",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "6mm 100 gr SPT Pro-Hunter",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 899.2
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2950 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 2.799,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "43.2 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "Do H",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "243_winchester_sierra_1560",
+  "cartridge_id": "243_winchester",
+  "projectile": "6mm 100 gr SBT Pro-Hunter",
+  "note": "Sierra accuracy load for 6mm 100 gr SBT Pro-Hunter in the 243 Winchester sheet: 43.2 gr Do H, 2950 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".243 Winchester",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "6mm 100 gr SBT Pro-Hunter",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 899.2
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2950 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 2.799,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "43.2 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "Do H",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "243_winchester_sierra_1570",
+  "cartridge_id": "243_winchester",
+  "projectile": "6mm 107 gr HPBT/CN MatchKing",
+  "note": "Sierra accuracy load for 6mm 107 gr HPBT/CN MatchKing (SMK) in the 243 Winchester sheet: 38.3 gr RE, 2900 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".243 Winchester",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "6mm 107 gr HPBT/CN MatchKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 883.9
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2900 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 2.482,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "38.3 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "RE",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "243_winchester_sierra_1575",
+  "cartridge_id": "243_winchester",
+  "projectile": "6mm 110 gr HPBT/CN MatchKing",
+  "note": "Sierra accuracy load for 6mm 110 gr HPBT/CN MatchKing (SMK) in the 243 Winchester sheet: 38.3 gr RE, 2900 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".243 Winchester",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "6mm 110 gr HPBT/CN MatchKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 883.9
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2900 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 2.482,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "38.3 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "RE",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "243_winchester_sierra_7295",
+  "cartridge_id": "243_winchester",
+  "projectile": "6mm 95 gr Tipped MatchKing",
+  "note": "Sierra accuracy load for 6mm 95 gr Tipped MatchKing (TMK) in the 243 Winchester sheet: 37.4 gr Varget, 3050 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".243 Winchester",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "6mm 95 gr Tipped MatchKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 929.6
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "3050 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 2.423,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "37.4 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "Varget",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
   "load_id": "250_savage_100_gr_interlock_sp",
   "cartridge_id": "250_savage",
   "projectile": "100 gr. InterLock SP",
@@ -2390,6 +4359,314 @@
     ],
     "unit": "mm, m/s",
     "source": "hornady_velocity",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "25_06_remington_sierra_1605",
+  "cartridge_id": "25_06_remington",
+  "projectile": "25 Cal 70 gr Tipped VarmintKing",
+  "note": "Sierra accuracy load for 25 Cal 70 gr Tipped VarmintKing (TVK) in the 25-06 Remington sheet: 50.7 gr IMR, 3700 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".25-06 Remington",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "25 Cal 70 gr Tipped VarmintKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 1127.8
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "3700 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 3.285,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "50.7 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "IMR",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "25_06_remington_sierra_1610",
+  "cartridge_id": "25_06_remington",
+  "projectile": "25 Cal 87 gr SPT VarmintKing",
+  "note": "Sierra accuracy load for 25 Cal 87 gr SPT VarmintKing (SVK) in the 25-06 Remington sheet: 55.4 gr Hunter, 3400 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".25-06 Remington",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "25 Cal 87 gr SPT VarmintKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 1036.3
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "3400 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 3.59,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "55.4 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "Hunter",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "25_06_remington_sierra_1615",
+  "cartridge_id": "25_06_remington",
+  "projectile": "25 Cal 90 gr HPBT GameKing",
+  "note": "Sierra accuracy load for 25 Cal 90 gr HPBT GameKing (SGK) in the 25-06 Remington sheet: 55.4 gr Hunter, 3400 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".25-06 Remington",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "25 Cal 90 gr HPBT GameKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 1036.3
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "3400 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 3.59,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "55.4 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "Hunter",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "25_06_remington_sierra_1616",
+  "cartridge_id": "25_06_remington",
+  "projectile": "25 Cal 90 gr Tipped VarmintKing",
+  "note": "Sierra accuracy load for 25 Cal 90 gr Tipped VarmintKing (TVK) in the 25-06 Remington sheet: 55.4 gr Hunter, 3400 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".25-06 Remington",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "25 Cal 90 gr Tipped VarmintKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 1036.3
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "3400 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 3.59,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "55.4 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "Hunter",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "25_06_remington_sierra_1625",
+  "cartridge_id": "25_06_remington",
+  "projectile": "25 Cal 100 gr SBT GameKing",
+  "note": "Sierra accuracy load for 25 Cal 100 gr SBT GameKing (SGK) in the 25-06 Remington sheet: 55.4 gr H, 3200 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".25-06 Remington",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "25 Cal 100 gr SBT GameKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 975.4
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "3200 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 3.59,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "55.4 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "H",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "25_06_remington_sierra_1628",
+  "cartridge_id": "25_06_remington",
+  "projectile": "25 Cal 100 gr HPBT MatchKing",
+  "note": "Sierra accuracy load for 25 Cal 100 gr HPBT MatchKing (SMK) in the 25-06 Remington sheet: 55.4 gr H, 3200 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".25-06 Remington",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "25 Cal 100 gr HPBT MatchKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 975.4
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "3200 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 3.59,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "55.4 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "H",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "25_06_remington_sierra_1630",
+  "cartridge_id": "25_06_remington",
+  "projectile": "25 Cal 117 gr SBT GameKing",
+  "note": "Sierra accuracy load for 25 Cal 117 gr SBT GameKing (SGK) in the 25-06 Remington sheet: 54.1 gr N, 3000 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".25-06 Remington",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "25 Cal 117 gr SBT GameKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 914.4
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "3000 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 3.506,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "54.1 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "N",
+    "source": "sierra_reloading_manual",
     "grade": "claimed"
    }
   }
@@ -2894,6 +5171,314 @@
     ],
     "unit": "mm, m/s",
     "source": "hornady_velocity",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "270_winchester_sierra_1815",
+  "cartridge_id": "270_winchester",
+  "projectile": "270 Cal 115 gr HPBT MatchKing",
+  "note": "Sierra accuracy load for 270 Cal 115 gr HPBT MatchKing (SMK) in the 270 Winchester sheet: 57.6 gr RE, 3300 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".270 Winchester",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "270 Cal 115 gr HPBT MatchKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 1005.8
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "3300 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 3.732,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "57.6 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "RE",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "270_winchester_sierra_1820",
+  "cartridge_id": "270_winchester",
+  "projectile": "270 Cal 130 gr SBT GameKing",
+  "note": "Sierra accuracy load for 270 Cal 130 gr SBT GameKing (SGK) in the 270 Winchester sheet: 51.9 gr H, 3000 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".270 Winchester",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "270 Cal 130 gr SBT GameKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 914.4
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "3000 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 3.363,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "51.9 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "H",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "270_winchester_sierra_1830",
+  "cartridge_id": "270_winchester",
+  "projectile": "270 Cal 130 gr SPT Pro-Hunter",
+  "note": "Sierra accuracy load for 270 Cal 130 gr SPT Pro-Hunter in the 270 Winchester sheet: 51.9 gr H, 3000 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".270 Winchester",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "270 Cal 130 gr SPT Pro-Hunter",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 914.4
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "3000 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 3.363,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "51.9 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "H",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "270_winchester_sierra_1833",
+  "cartridge_id": "270_winchester",
+  "projectile": "270 Cal 135 gr HPBT MatchKing",
+  "note": "Sierra accuracy load for 270 Cal 135 gr HPBT MatchKing (SMK) in the 270 Winchester sheet: 51.9 gr H, 3000 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".270 Winchester",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "270 Cal 135 gr HPBT MatchKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 914.4
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "3000 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 3.363,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "51.9 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "H",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "270_winchester_sierra_1835",
+  "cartridge_id": "270_winchester",
+  "projectile": "270 Cal 140 gr HPBT GameKing",
+  "note": "Sierra accuracy load for 270 Cal 140 gr HPBT GameKing (SGK) in the 270 Winchester sheet: 51.5 gr RE, 2900 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".270 Winchester",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "270 Cal 140 gr HPBT GameKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 883.9
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2900 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 3.337,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "51.5 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "RE",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "270_winchester_sierra_1840",
+  "cartridge_id": "270_winchester",
+  "projectile": "270 Cal 150 gr SBT GameKing",
+  "note": "Sierra accuracy load for 270 Cal 150 gr SBT GameKing (SGK) in the 270 Winchester sheet: 53.0 gr Hunter, 2800 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".270 Winchester",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "270 Cal 150 gr SBT GameKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 853.4
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2800 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 3.434,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "53.0 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "Hunter",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "270_winchester_sierra_1845",
+  "cartridge_id": "270_winchester",
+  "projectile": "270 Cal 140 gr SBT GameKing",
+  "note": "Sierra accuracy load for 270 Cal 140 gr SBT GameKing (SGK) in the 270 Winchester sheet: 51.5 gr RE, 2900 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".270 Winchester",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "270 Cal 140 gr SBT GameKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 883.9
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2900 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 3.337,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "51.5 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "RE",
+    "source": "sierra_reloading_manual",
     "grade": "claimed"
    }
   }
@@ -3655,6 +6240,182 @@
     ],
     "unit": "mm, m/s",
     "source": "hornady_velocity",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "303_british_sierra_2300",
+  "cartridge_id": "303_british",
+  "projectile": "303 Cal 150 gr SPT Pro-Hunter",
+  "note": "Sierra accuracy load for 303 Cal 150 gr SPT Pro-Hunter in the 303 British sheet: 40.8 gr IMR-, 2600 fps in a 25 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": "303 British",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "303 Cal 150 gr SPT Pro-Hunter",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 635.0,
+      "mv_ms": 792.5
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2600 fps x 0.3048 m/s per fps; 25 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 2.644,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "40.8 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "IMR-",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "303_british_sierra_2305",
+  "cartridge_id": "303_british",
+  "projectile": "303 Cal 125 gr SPT Pro-Hunter",
+  "note": "Sierra accuracy load for 303 Cal 125 gr SPT Pro-Hunter in the 303 British sheet: 41.6 gr A, 2800 fps in a 25 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": "303 British",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "303 Cal 125 gr SPT Pro-Hunter",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 635.0,
+      "mv_ms": 853.4
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2800 fps x 0.3048 m/s per fps; 25 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 2.696,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "41.6 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "A",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "303_british_sierra_2310",
+  "cartridge_id": "303_british",
+  "projectile": "303 Cal 180 gr SPT Pro-Hunter",
+  "note": "Sierra accuracy load for 303 Cal 180 gr SPT Pro-Hunter in the 303 British sheet: 33.6 gr A, 2200 fps in a 25 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": "303 British",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "303 Cal 180 gr SPT Pro-Hunter",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 635.0,
+      "mv_ms": 670.6
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2200 fps x 0.3048 m/s per fps; 25 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 2.177,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "33.6 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "A",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "303_british_sierra_2315",
+  "cartridge_id": "303_british",
+  "projectile": "303 Cal 174 gr HPBT MatchKing",
+  "note": "Sierra accuracy load for 303 Cal 174 gr HPBT MatchKing (SMK) in the 303 British sheet: 33.6 gr A, 2200 fps in a 25 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": "303 British",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "303 Cal 174 gr HPBT MatchKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 635.0,
+      "mv_ms": 670.6
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2200 fps x 0.3048 m/s per fps; 25 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 2.177,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "33.6 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "A",
+    "source": "sierra_reloading_manual",
     "grade": "claimed"
    }
   }
@@ -4440,17 +7201,6 @@
     "unit": "mm, m/s",
     "source": "lapua_velocity",
     "grade": "claimed"
-   },
-   "charge_mass_g": {
-    "value": 2.501,
-    "unit": "g",
-    "source": "vihtavuori_2026",
-    "grade": "documented"
-   },
-   "charge_kind": {
-    "value": "reloading",
-    "source": "vihtavuori_2026",
-    "grade": "documented"
    }
   }
  },
@@ -4636,6 +7386,1326 @@
     ],
     "unit": "mm, m/s",
     "source": "lapua_velocity",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "308_win_sierra_2100",
+  "cartridge_id": "308_win",
+  "projectile": "30 Cal 110 gr RN Pro-Hunter",
+  "note": "Sierra accuracy load for 30 Cal 110 gr RN Pro-Hunter in the 308 Winchester sheet: 39.6 gr RE, 3000 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".308 Winchester",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "30 Cal 110 gr RN Pro-Hunter",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 914.4
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "3000 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 2.566,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "39.6 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "RE",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "308_win_sierra_2110",
+  "cartridge_id": "308_win",
+  "projectile": "30 Cal 110 gr HP VarmintKing",
+  "note": "Sierra accuracy load for 30 Cal 110 gr HP VarmintKing (SVK) in the 308 Winchester sheet: 39.6 gr RE, 3000 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".308 Winchester",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "30 Cal 110 gr HP VarmintKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 914.4
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "3000 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 2.566,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "39.6 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "RE",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "308_win_sierra_2120",
+  "cartridge_id": "308_win",
+  "projectile": "30 Cal 125 gr SPT Pro-Hunter",
+  "note": "Sierra accuracy load for 30 Cal 125 gr SPT Pro-Hunter in the 308 Winchester sheet: 47.9 gr H, 3100 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".308 Winchester",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "30 Cal 125 gr SPT Pro-Hunter",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 944.9
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "3100 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 3.104,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "47.9 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "H",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "308_win_sierra_2121",
+  "cartridge_id": "308_win",
+  "projectile": "30 Cal 125 gr HP/CN MatchKing",
+  "note": "Sierra accuracy load for 30 Cal 125 gr HP/CN MatchKing (SMK) in the 308 Winchester sheet: 47.9 gr H, 3100 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".308 Winchester",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "30 Cal 125 gr HP/CN MatchKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 944.9
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "3100 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 3.104,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "47.9 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "H",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "308_win_sierra_2124",
+  "cartridge_id": "308_win",
+  "projectile": "30 Cal 135 gr HP VarmintKing",
+  "note": "Sierra accuracy load for 30 Cal 135 gr HP VarmintKing (SVK) in the 308 Winchester sheet: 48.1 gr H, 3100 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".308 Winchester",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "30 Cal 135 gr HP VarmintKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 944.9
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "3100 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 3.117,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "48.1 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "H",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "308_win_sierra_2125",
+  "cartridge_id": "308_win",
+  "projectile": "30 Cal 150 gr SBT GameKing",
+  "note": "Sierra accuracy load for 30 Cal 150 gr SBT GameKing (SGK) in the 308 Winchester sheet: 45.5 gr N, 2750 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".308 Winchester",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "30 Cal 150 gr SBT GameKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 838.2
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2750 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 2.948,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "45.5 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "N",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "308_win_sierra_2130",
+  "cartridge_id": "308_win",
+  "projectile": "30 Cal 150 gr SPT Pro-Hunter",
+  "note": "Sierra accuracy load for 30 Cal 150 gr SPT Pro-Hunter in the 308 Winchester sheet: 45.5 gr N, 2750 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".308 Winchester",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "30 Cal 150 gr SPT Pro-Hunter",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 838.2
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2750 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 2.948,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "45.5 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "N",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "308_win_sierra_2135",
+  "cartridge_id": "308_win",
+  "projectile": "30 Cal 150 gr RN Pro-Hunter",
+  "note": "Sierra accuracy load for 30 Cal 150 gr RN Pro-Hunter in the 308 Winchester sheet: 45.5 gr N, 2750 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".308 Winchester",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "30 Cal 150 gr RN Pro-Hunter",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 838.2
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2750 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 2.948,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "45.5 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "N",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "308_win_sierra_2140",
+  "cartridge_id": "308_win",
+  "projectile": "30 Cal 165 gr HPBT GameKing",
+  "note": "Sierra accuracy load for 30 Cal 165 gr HPBT GameKing (SGK) in the 308 Winchester sheet: 43.9 gr IMR, 2750 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".308 Winchester",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "30 Cal 165 gr HPBT GameKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 838.2
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2750 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 2.845,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "43.9 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "IMR",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "308_win_sierra_2145",
+  "cartridge_id": "308_win",
+  "projectile": "30 Cal 165 gr SBT GameKing",
+  "note": "Sierra accuracy load for 30 Cal 165 gr SBT GameKing (SGK) in the 308 Winchester sheet: 43.9 gr IMR, 2750 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".308 Winchester",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "30 Cal 165 gr SBT GameKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 838.2
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2750 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 2.845,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "43.9 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "IMR",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "308_win_sierra_2155",
+  "cartridge_id": "308_win",
+  "projectile": "30 Cal 155 gr HPBT MatchKing",
+  "note": "Sierra accuracy load for 30 Cal 155 gr HPBT MatchKing (SMK) in the 308 Winchester sheet: 45.5 gr N, 2750 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".308 Winchester",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "30 Cal 155 gr HPBT MatchKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 838.2
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2750 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 2.948,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "45.5 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "N",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "308_win_sierra_2156",
+  "cartridge_id": "308_win",
+  "projectile": "30 Cal 155 gr HPBT/CN - Palma MatchKing",
+  "note": "Sierra accuracy load for 30 Cal 155 gr HPBT/CN - Palma MatchKing (SMK) in the 308 Winchester sheet: 45.5 gr N, 2750 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".308 Winchester",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "30 Cal 155 gr HPBT/CN - Palma MatchKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 838.2
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2750 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 2.948,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "45.5 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "N",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "308_win_sierra_2160",
+  "cartridge_id": "308_win",
+  "projectile": "30 Cal 180 gr SBT GameKing",
+  "note": "Sierra accuracy load for 30 Cal 180 gr SBT GameKing (SGK) in the 308 Winchester sheet: 43.4 gr TAC, 2650 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".308 Winchester",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "30 Cal 180 gr SBT GameKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 807.7
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2650 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 2.812,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "43.4 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "TAC",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "308_win_sierra_2165",
+  "cartridge_id": "308_win",
+  "projectile": "30 Cal 200 gr SBT GameKing",
+  "note": "Sierra accuracy load for 30 Cal 200 gr SBT GameKing (SGK) in the 308 Winchester sheet: 46.8 gr H, 2500 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".308 Winchester",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "30 Cal 200 gr SBT GameKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 762.0
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2500 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 3.033,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "46.8 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "H",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "308_win_sierra_2170",
+  "cartridge_id": "308_win",
+  "projectile": "30 Cal 180 gr RN Pro-Hunter",
+  "note": "Sierra accuracy load for 30 Cal 180 gr RN Pro-Hunter in the 308 Winchester sheet: 43.4 gr TAC, 2650 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".308 Winchester",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "30 Cal 180 gr RN Pro-Hunter",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 807.7
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2650 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 2.812,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "43.4 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "TAC",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "308_win_sierra_2190",
+  "cartridge_id": "308_win",
+  "projectile": "30 Cal 150 gr HPBT MatchKing",
+  "note": "Sierra accuracy load for 30 Cal 150 gr HPBT MatchKing (SMK) in the 308 Winchester sheet: 45.5 gr N, 2750 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".308 Winchester",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "30 Cal 150 gr HPBT MatchKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 838.2
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2750 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 2.948,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "45.5 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "N",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "308_win_sierra_2200",
+  "cartridge_id": "308_win",
+  "projectile": "30 Cal 168 gr HPBT MatchKing",
+  "note": "Sierra accuracy load for 30 Cal 168 gr HPBT MatchKing (SMK) in the 308 Winchester sheet: 43.9 gr IMR, 2750 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".308 Winchester",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "30 Cal 168 gr HPBT MatchKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 838.2
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2750 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 2.845,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "43.9 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "IMR",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "308_win_sierra_2210",
+  "cartridge_id": "308_win",
+  "projectile": "30 Cal 190 gr HPBT MatchKing",
+  "note": "Sierra accuracy load for 30 Cal 190 gr HPBT MatchKing (SMK) in the 308 Winchester sheet: 40.3 gr IMR, 2500 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".308 Winchester",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "30 Cal 190 gr HPBT MatchKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 762.0
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2500 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 2.611,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "40.3 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "IMR",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "308_win_sierra_2230",
+  "cartridge_id": "308_win",
+  "projectile": "30 Cal 200 gr HPBT MatchKing",
+  "note": "Sierra accuracy load for 30 Cal 200 gr HPBT MatchKing (SMK) in the 308 Winchester sheet: 46.8 gr H, 2500 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".308 Winchester",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "30 Cal 200 gr HPBT MatchKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 762.0
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2500 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 3.033,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "46.8 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "H",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "308_win_sierra_2231",
+  "cartridge_id": "308_win",
+  "projectile": "30 Cal 200 gr HPBT/CN MatchKing",
+  "note": "Sierra accuracy load for 30 Cal 200 gr HPBT/CN MatchKing (SMK) in the 308 Winchester sheet: 46.8 gr H, 2500 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".308 Winchester",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "30 Cal 200 gr HPBT/CN MatchKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 762.0
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2500 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 3.033,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "46.8 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "H",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "308_win_sierra_2240",
+  "cartridge_id": "308_win",
+  "projectile": "30 Cal 220 gr HPBT MatchKing",
+  "note": "Sierra accuracy load for 30 Cal 220 gr HPBT MatchKing (SMK) in the 308 Winchester sheet: 41.5 gr RE, 2400 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".308 Winchester",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "30 Cal 220 gr HPBT MatchKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 731.5
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2400 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 2.689,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "41.5 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "RE",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "308_win_sierra_2251",
+  "cartridge_id": "308_win",
+  "projectile": "30 Cal 230 gr HPBT/CN MatchKing",
+  "note": "Sierra accuracy load for 30 Cal 230 gr HPBT/CN MatchKing (SMK) in the 308 Winchester sheet: 39.5 gr Varget, 2275 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".308 Winchester",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "30 Cal 230 gr HPBT/CN MatchKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 693.4
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2275 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 2.56,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "39.5 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "Varget",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "308_win_sierra_2269",
+  "cartridge_id": "308_win",
+  "projectile": "30 Cal 169 gr HPBT/CN MatchKing",
+  "note": "Sierra accuracy load for 30 Cal 169 gr HPBT/CN MatchKing (SMK) in the 308 Winchester sheet: 45.7 gr N, 2700 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".308 Winchester",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "30 Cal 169 gr HPBT/CN MatchKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 823.0
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2700 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 2.961,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "45.7 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "N",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "308_win_sierra_2275",
+  "cartridge_id": "308_win",
+  "projectile": "30 Cal 175 gr HPBT MatchKing",
+  "note": "Sierra accuracy load for 30 Cal 175 gr HPBT MatchKing (SMK) in the 308 Winchester sheet: 43.4 gr TAC, 2650 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".308 Winchester",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "30 Cal 175 gr HPBT MatchKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 807.7
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2650 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 2.812,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "43.4 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "TAC",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "308_win_sierra_2277",
+  "cartridge_id": "308_win",
+  "projectile": "30 Cal 177 gr HPBT/CN MatchKing",
+  "note": "Sierra accuracy load for 30 Cal 177 gr HPBT/CN MatchKing (SMK) in the 308 Winchester sheet: 42.7 gr AR Comp, 2700 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".308 Winchester",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "30 Cal 177 gr HPBT/CN MatchKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 823.0
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2700 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 2.767,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "42.7 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "AR Comp",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "308_win_sierra_7725",
+  "cartridge_id": "308_win",
+  "projectile": "30 Cal 125 gr Tipped MatchKing",
+  "note": "Sierra accuracy load for 30 Cal 125 gr Tipped MatchKing (TMK) in the 308 Winchester sheet: 47.9 gr H, 3100 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".308 Winchester",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "30 Cal 125 gr Tipped MatchKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 944.9
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "3100 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 3.104,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "47.9 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "H",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "308_win_sierra_7755",
+  "cartridge_id": "308_win",
+  "projectile": "30 Cal 155 gr Tipped MatchKing",
+  "note": "Sierra accuracy load for 30 Cal 155 gr Tipped MatchKing (TMK) in the 308 Winchester sheet: 45.5 gr N, 2750 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".308 Winchester",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "30 Cal 155 gr Tipped MatchKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 838.2
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2750 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 2.948,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "45.5 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "N",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "308_win_sierra_7768",
+  "cartridge_id": "308_win",
+  "projectile": "30 Cal 168 gr Tipped MatchKing",
+  "note": "Sierra accuracy load for 30 Cal 168 gr Tipped MatchKing (TMK) in the 308 Winchester sheet: 43.9 gr IMR, 2750 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".308 Winchester",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "30 Cal 168 gr Tipped MatchKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 838.2
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2750 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 2.845,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "43.9 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "IMR",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "308_win_sierra_7775",
+  "cartridge_id": "308_win",
+  "projectile": "30 Cal 175 gr Tipped MatchKing",
+  "note": "Sierra accuracy load for 30 Cal 175 gr Tipped MatchKing (TMK) in the 308 Winchester sheet: 43.4 gr TAC, 2650 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".308 Winchester",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "30 Cal 175 gr Tipped MatchKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 807.7
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2650 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 2.812,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "43.4 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "TAC",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "308_win_sierra_7795",
+  "cartridge_id": "308_win",
+  "projectile": "30 Cal 195 gr Tipped MatchKing",
+  "note": "Sierra accuracy load for 30 Cal 195 gr Tipped MatchKing (TMK) in the 308 Winchester sheet: 40.3 gr IMR, 2500 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".308 Winchester",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "30 Cal 195 gr Tipped MatchKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 762.0
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2500 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 2.611,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "40.3 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "IMR",
+    "source": "sierra_reloading_manual",
     "grade": "claimed"
    }
   }
@@ -4854,17 +8924,6 @@
     "unit": "mm, m/s",
     "source": "hornady_velocity",
     "grade": "claimed"
-   },
-   "charge_mass_g": {
-    "value": 3.421,
-    "unit": "g",
-    "source": "vihtavuori_2026",
-    "grade": "documented"
-   },
-   "charge_kind": {
-    "value": "reloading",
-    "source": "vihtavuori_2026",
-    "grade": "documented"
    }
   }
  },
@@ -5253,17 +9312,6 @@
     "unit": "mm, m/s",
     "source": "hornady_velocity",
     "grade": "claimed"
-   },
-   "charge_mass_g": {
-    "value": 0.907,
-    "unit": "g",
-    "source": "vihtavuori_2026",
-    "grade": "documented"
-   },
-   "charge_kind": {
-    "value": "reloading",
-    "source": "vihtavuori_2026",
-    "grade": "documented"
    }
   }
  },
@@ -5714,17 +9762,182 @@
     "unit": "mm, m/s",
     "source": "lapua_velocity",
     "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "338_lapua_mag_sierra_2600",
+  "cartridge_id": "338_lapua_mag",
+  "projectile": "338 Cal 250 gr SBT GameKing",
+  "note": "Sierra accuracy load for 338 Cal 250 gr SBT GameKing (SGK) in the 338 Lapua Magnum sheet: 93.6 gr Retumbo, 2900 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".338 Lapua Magnum",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "338 Cal 250 gr SBT GameKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 883.9
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2900 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
    },
    "charge_mass_g": {
-    "value": 5.197,
+    "value": 6.065,
     "unit": "g",
-    "source": "vihtavuori_2026",
-    "grade": "documented"
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "93.6 gr x 0.06479891 g per gr"
    },
-   "charge_kind": {
-    "value": "reloading",
-    "source": "vihtavuori_2026",
-    "grade": "documented"
+   "propellant": {
+    "value": "Retumbo",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "338_lapua_mag_sierra_2610",
+  "cartridge_id": "338_lapua_mag",
+  "projectile": "338 Cal 215 gr SBT GameKing",
+  "note": "Sierra accuracy load for 338 Cal 215 gr SBT GameKing (SGK) in the 338 Lapua Magnum sheet: 93.8 gr N, 3100 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".338 Lapua Magnum",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "338 Cal 215 gr SBT GameKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 944.9
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "3100 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 6.078,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "93.8 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "N",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "338_lapua_mag_sierra_2620",
+  "cartridge_id": "338_lapua_mag",
+  "projectile": "338 Cal 225 gr SPT Pro-Hunter",
+  "note": "Sierra accuracy load for 338 Cal 225 gr SPT Pro-Hunter in the 338 Lapua Magnum sheet: 96.2 gr RE, 3000 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".338 Lapua Magnum",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "338 Cal 225 gr SPT Pro-Hunter",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 914.4
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "3000 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 6.234,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "96.2 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "RE",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "338_lapua_mag_sierra_2650",
+  "cartridge_id": "338_lapua_mag",
+  "projectile": "338 Cal 250 gr HPBT MatchKing",
+  "note": "Sierra accuracy load for 338 Cal 250 gr HPBT MatchKing (SMK) in the 338 Lapua Magnum sheet: 93.6 gr Retumbo, 2900 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".338 Lapua Magnum",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "338 Cal 250 gr HPBT MatchKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 883.9
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2900 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 6.065,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "93.6 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "Retumbo",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
    }
   }
  },
@@ -6148,6 +10361,270 @@
     ],
     "unit": "mm, m/s",
     "source": "hornady_velocity",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "357_magnum_sierra_8310",
+  "cartridge_id": "357_magnum",
+  "projectile": "38 Cal 125 gr JSP Sports Master",
+  "note": "Sierra accuracy load for 38 Cal 125 gr JSP Sports Master in the 357 Magnum sheet: 11.8 gr Viht, 1800 fps in a 18 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": "357 Magnum",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "38 Cal 125 gr JSP Sports Master",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 457.2,
+      "mv_ms": 548.6
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "1800 fps x 0.3048 m/s per fps; 18 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 0.765,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "11.8 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "Viht",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "357_magnum_sierra_8320",
+  "cartridge_id": "357_magnum",
+  "projectile": "38 Cal 125 gr JHP Sports Master",
+  "note": "Sierra accuracy load for 38 Cal 125 gr JHP Sports Master in the 357 Magnum sheet: 11.8 gr Viht, 1800 fps in a 18 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": "357 Magnum",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "38 Cal 125 gr JHP Sports Master",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 457.2,
+      "mv_ms": 548.6
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "1800 fps x 0.3048 m/s per fps; 18 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 0.765,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "11.8 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "Viht",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "357_magnum_sierra_8325",
+  "cartridge_id": "357_magnum",
+  "projectile": "38 Cal 140 gr JHP Sports Master",
+  "note": "Sierra accuracy load for 38 Cal 140 gr JHP Sports Master in the 357 Magnum sheet: 8.2 gr Power Pistol, 1500 fps in a 18 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": "357 Magnum",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "38 Cal 140 gr JHP Sports Master",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 457.2,
+      "mv_ms": 457.2
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "1500 fps x 0.3048 m/s per fps; 18 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 0.531,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "8.2 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "Power Pistol",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "357_magnum_sierra_8340",
+  "cartridge_id": "357_magnum",
+  "projectile": "38 Cal 158 gr JSP Sports Master",
+  "note": "Sierra accuracy load for 38 Cal 158 gr JSP Sports Master in the 357 Magnum sheet: 9.4 gr True Blue, 1500 fps in a 18 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": "357 Magnum",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "38 Cal 158 gr JSP Sports Master",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 457.2,
+      "mv_ms": 457.2
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "1500 fps x 0.3048 m/s per fps; 18 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 0.609,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "9.4 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "True Blue",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "357_magnum_sierra_8360",
+  "cartridge_id": "357_magnum",
+  "projectile": "38 Cal 158 gr JHC Sports Master",
+  "note": "Sierra accuracy load for 38 Cal 158 gr JHC Sports Master in the 357 Magnum sheet: 9.4 gr True Blue, 1500 fps in a 18 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": "357 Magnum",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "38 Cal 158 gr JHC Sports Master",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 457.2,
+      "mv_ms": 457.2
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "1500 fps x 0.3048 m/s per fps; 18 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 0.609,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "9.4 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "True Blue",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "357_magnum_sierra_8370",
+  "cartridge_id": "357_magnum",
+  "projectile": "38 Cal 180 gr FPJ Tournament Master",
+  "note": "Sierra accuracy load for 38 Cal 180 gr FPJ Tournament Master in the 357 Magnum sheet: 12.1 gr Enforcer, 1350 fps in a 18 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": "357 Magnum",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "38 Cal 180 gr FPJ Tournament Master",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 457.2,
+      "mv_ms": 411.5
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "1350 fps x 0.3048 m/s per fps; 18 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 0.784,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "12.1 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "Enforcer",
+    "source": "sierra_reloading_manual",
     "grade": "claimed"
    }
   }
@@ -6955,6 +11432,94 @@
   }
  },
  {
+  "load_id": "41_remington_magnum_sierra_8500",
+  "cartridge_id": "41_remington_magnum",
+  "projectile": "41 Cal 170 gr JHC Sports Master",
+  "note": "Sierra accuracy load for 41 Cal 170 gr JHC Sports Master in the 41 Remington Magnum sheet: 21.3 gr TCM, 1700 fps in a 5.788 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".41 Remington Magnum",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "41 Cal 170 gr JHC Sports Master",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 147.0,
+      "mv_ms": 518.2
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "1700 fps x 0.3048 m/s per fps; 5.788 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 1.38,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "21.3 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "TCM",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "41_remington_magnum_sierra_8520",
+  "cartridge_id": "41_remington_magnum",
+  "projectile": "41 Cal 210 gr JHC Sports Master",
+  "note": "Sierra accuracy load for 41 Cal 210 gr JHC Sports Master in the 41 Remington Magnum sheet: 10.3 gr N, 1250 fps in a 5.788 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".41 Remington Magnum",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "41 Cal 210 gr JHC Sports Master",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 147.0,
+      "mv_ms": 381.0
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "1250 fps x 0.3048 m/s per fps; 5.788 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 0.667,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "10.3 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "N",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
   "load_id": "444_marlin_265_gr_ftx",
   "cartridge_id": "444_marlin",
   "projectile": "265 gr. FTX",
@@ -7020,6 +11585,182 @@
     ],
     "unit": "mm, m/s",
     "source": "hornady_velocity",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "44_remington_magnum_sierra_8610",
+  "cartridge_id": "44_remington_magnum",
+  "projectile": "44 Cal 240 gr JHC Sports Master",
+  "note": "Sierra accuracy load for 44 Cal 240 gr JHC Sports Master in the 44 Remington Magnum sheet: 11.6 gr Power Pistol, 1300 fps in a 5.76 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".44 Remington Magnum",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "44 Cal 240 gr JHC Sports Master",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 146.3,
+      "mv_ms": 396.2
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "1300 fps x 0.3048 m/s per fps; 5.76 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 0.752,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "11.6 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "Power Pistol",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "44_remington_magnum_sierra_8615",
+  "cartridge_id": "44_remington_magnum",
+  "projectile": "44 Cal 250 gr FPJ Tournament Master",
+  "note": "Sierra accuracy load for 44 Cal 250 gr FPJ Tournament Master in the 44 Remington Magnum sheet: 22.0 gr Enforcer, 1500 fps in a 5.76 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".44 Remington Magnum",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "44 Cal 250 gr FPJ Tournament Master",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 146.3,
+      "mv_ms": 457.2
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "1500 fps x 0.3048 m/s per fps; 5.76 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 1.426,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "22.0 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "Enforcer",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "44_remington_magnum_sierra_8620",
+  "cartridge_id": "44_remington_magnum",
+  "projectile": "44 Cal 210 gr JHC Sports Master",
+  "note": "Sierra accuracy load for 44 Cal 210 gr JHC Sports Master in the 44 Remington Magnum sheet: 26.4 gr IMR, 1500 fps in a 5.76 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".44 Remington Magnum",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "44 Cal 210 gr JHC Sports Master",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 146.3,
+      "mv_ms": 457.2
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "1500 fps x 0.3048 m/s per fps; 5.76 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 1.711,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "26.4 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "IMR",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "44_remington_magnum_sierra_8630",
+  "cartridge_id": "44_remington_magnum",
+  "projectile": "44 Cal 300 gr JSP Sports Master",
+  "note": "Sierra accuracy load for 44 Cal 300 gr JSP Sports Master in the 44 Remington Magnum sheet: 20.2 gr A, 1300 fps in a 5.76 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".44 Remington Magnum",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "44 Cal 300 gr JSP Sports Master",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 146.3,
+      "mv_ms": 396.2
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "1300 fps x 0.3048 m/s per fps; 5.76 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 1.309,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "20.2 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "A",
+    "source": "sierra_reloading_manual",
     "grade": "claimed"
    }
   }
@@ -7367,6 +12108,94 @@
   }
  },
  {
+  "load_id": "45_70_government_sierra_8900",
+  "cartridge_id": "45_70_government",
+  "projectile": "45-70 Cal 300 gr HP/FN Pro-Hunter",
+  "note": "Sierra accuracy load for 45-70 Cal 300 gr HP/FN Pro-Hunter in the 45-70 Government sheet: 50.0 gr H, 2164 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".45-70 Government",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "45-70 Cal 300 gr HP/FN Pro-Hunter",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 659.6
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2164 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 3.24,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "50.0 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "H",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "45_70_government_sierra_8950",
+  "cartridge_id": "45_70_government",
+  "projectile": "45-70 Cal 400 gr HP/FN Pro-Hunter",
+  "note": "Sierra accuracy load for 45-70 Cal 400 gr HP/FN Pro-Hunter in the 45-70 Government sheet: 50.9 gr IMR, 1850 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": ".45-70 Government",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "45-70 Cal 400 gr HP/FN Pro-Hunter",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 563.9
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "1850 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 3.298,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "50.9 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "IMR",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
   "load_id": "45_70_govt_250_gr_monoflex",
   "cartridge_id": "45_70_govt",
   "projectile": "250 gr. MonoFlex",
@@ -7455,6 +12284,94 @@
     ],
     "unit": "mm, m/s",
     "source": "hornady_velocity",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "45_auto_sierra_8820",
+  "cartridge_id": "45_auto",
+  "projectile": "45 Cal 240 gr JHC Sports Master",
+  "note": "Sierra hunting load for 45 Cal 240 gr JHC Sports Master in the 45 Auto sheet: 7.0 gr no Univ. Clays, 1100 fps in a 7 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": "45 Auto",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "45 Cal 240 gr JHC Sports Master",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 177.8,
+      "mv_ms": 335.3
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "1100 fps x 0.3048 m/s per fps; 7 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 0.454,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "7.0 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "no Univ. Clays",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "45_auto_sierra_8825",
+  "cartridge_id": "45_auto",
+  "projectile": "45 Cal 200 gr FPJ Tournament Master",
+  "note": "Sierra accuracy load for 45 Cal 200 gr FPJ Tournament Master in the 45 Auto sheet: 8.2 gr WSF edit, 1150 fps in a 7 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": "45 Auto",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "45 Cal 200 gr FPJ Tournament Master",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 177.8,
+      "mv_ms": 350.5
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "1150 fps x 0.3048 m/s per fps; 7 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 0.531,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "8.2 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "WSF edit",
+    "source": "sierra_reloading_manual",
     "grade": "claimed"
    }
   }
@@ -8351,17 +13268,6 @@
     "unit": "mm, m/s",
     "source": "hornady_velocity",
     "grade": "claimed"
-   },
-   "charge_mass_g": {
-    "value": 2.229,
-    "unit": "g",
-    "source": "vihtavuori_2026",
-    "grade": "documented"
-   },
-   "charge_kind": {
-    "value": "reloading",
-    "source": "vihtavuori_2026",
-    "grade": "documented"
    }
   }
  },
@@ -8485,6 +13391,446 @@
     ],
     "unit": "mm, m/s",
     "source": "hornady_velocity",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "65_creedmoor_sierra_1710",
+  "cartridge_id": "65_creedmoor",
+  "projectile": "6.5mm 100 gr HP VarmintKing",
+  "note": "Sierra accuracy load for 6.5mm 100 gr HP VarmintKing (SVK) in the 6.5 CREEDMOOR sheet: 43.6 gr RE, 3200 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": "6.5 Creedmoor",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "6.5mm 100 gr HP VarmintKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 975.4
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "3200 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 2.825,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "43.6 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "RE",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "65_creedmoor_sierra_1720",
+  "cartridge_id": "65_creedmoor",
+  "projectile": "6.5mm 120 gr SPT Pro-Hunter",
+  "note": "Sierra accuracy load for 6.5mm 120 gr SPT Pro-Hunter in the 6.5 CREEDMOOR sheet: 44.8 gr IMR, 2900 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": "6.5 Creedmoor",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "6.5mm 120 gr SPT Pro-Hunter",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 883.9
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2900 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 2.903,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "44.8 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "IMR",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "65_creedmoor_sierra_1725",
+  "cartridge_id": "65_creedmoor",
+  "projectile": "6.5mm 120 gr HPBT MatchKing",
+  "note": "Sierra accuracy load for 6.5mm 120 gr HPBT MatchKing (SMK) in the 6.5 CREEDMOOR sheet: 44.8 gr IMR, 2900 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": "6.5 Creedmoor",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "6.5mm 120 gr HPBT MatchKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 883.9
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2900 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 2.903,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "44.8 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "IMR",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "65_creedmoor_sierra_1727",
+  "cartridge_id": "65_creedmoor",
+  "projectile": "6.5mm 123 gr HPBT/CN MatchKing",
+  "note": "Sierra accuracy load for 6.5mm 123 gr HPBT/CN MatchKing (SMK) in the 6.5 CREEDMOOR sheet: 39.0 gr H, 2900 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": "6.5 Creedmoor",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "6.5mm 123 gr HPBT/CN MatchKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 883.9
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2900 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 2.527,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "39.0 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "H",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "65_creedmoor_sierra_1728",
+  "cartridge_id": "65_creedmoor",
+  "projectile": "6.5mm 130 gr HPBT GameKing",
+  "note": "Sierra accuracy load for 6.5mm 130 gr HPBT GameKing (SGK) in the 6.5 CREEDMOOR sheet: 35.4 gr AR Comp, 2650 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": "6.5 Creedmoor",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "6.5mm 130 gr HPBT GameKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 807.7
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2650 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 2.294,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "35.4 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "AR Comp",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "65_creedmoor_sierra_1730",
+  "cartridge_id": "65_creedmoor",
+  "projectile": "6.5mm 140 gr SBT GameKing",
+  "note": "Sierra accuracy load for 6.5mm 140 gr SBT GameKing (SGK) in the 6.5 CREEDMOOR sheet: 36.8 gr Varget, 2600 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": "6.5 Creedmoor",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "6.5mm 140 gr SBT GameKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 792.5
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2600 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 2.385,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "36.8 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "Varget",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "65_creedmoor_sierra_1740",
+  "cartridge_id": "65_creedmoor",
+  "projectile": "6.5mm 140 gr HPBT MatchKing",
+  "note": "Sierra accuracy load for 6.5mm 140 gr HPBT MatchKing (SMK) in the 6.5 CREEDMOOR sheet: 36.8 gr Varget, 2600 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": "6.5 Creedmoor",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "6.5mm 140 gr HPBT MatchKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 792.5
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2600 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 2.385,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "36.8 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "Varget",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "65_creedmoor_sierra_1742",
+  "cartridge_id": "65_creedmoor",
+  "projectile": "6.5mm 142 gr HPBT/CN MatchKing",
+  "note": "Sierra accuracy load for 6.5mm 142 gr HPBT/CN MatchKing (SMK) in the 6.5 CREEDMOOR sheet: 36.8 gr Varget, 2600 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": "6.5 Creedmoor",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "6.5mm 142 gr HPBT/CN MatchKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 792.5
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2600 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 2.385,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "36.8 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "Varget",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "65_creedmoor_sierra_1755",
+  "cartridge_id": "65_creedmoor",
+  "projectile": "6.5mm 150 gr HPBT/CN MatchKing",
+  "note": "Sierra accuracy load for 6.5mm 150 gr HPBT/CN MatchKing (SMK) in the 6.5 CREEDMOOR sheet: 40.6 gr Hybrid, 2650 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": "6.5 Creedmoor",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "6.5mm 150 gr HPBT/CN MatchKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 807.7
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2650 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 2.631,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "40.6 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "Hybrid",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "65_creedmoor_sierra_7430",
+  "cartridge_id": "65_creedmoor",
+  "projectile": "6.5mm 130 gr Tipped MatchKing",
+  "note": "Sierra accuracy load for 6.5mm 130 gr Tipped MatchKing (TMK) in the 6.5 CREEDMOOR sheet: 35.4 gr AR Comp, 2650 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": "6.5 Creedmoor",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "6.5mm 130 gr Tipped MatchKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 807.7
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2650 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 2.294,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "35.4 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "AR Comp",
+    "source": "sierra_reloading_manual",
     "grade": "claimed"
    }
   }
@@ -10304,6 +15650,710 @@
     ],
     "unit": "mm, m/s",
     "source": "lapua_velocity",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "7mm_08_remington_sierra_1895",
+  "cartridge_id": "7mm_08_remington",
+  "projectile": "7mm 100 gr HP VarmintKing",
+  "note": "Sierra accuracy load for 7mm 100 gr HP VarmintKing (SVK) in the 7mm-08 Remington sheet: 49.8 gr Big Game, 3200 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": "7mm-08 Remington",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "7mm 100 gr HP VarmintKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 975.4
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "3200 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 3.227,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "49.8 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "Big Game",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "7mm_08_remington_sierra_1900",
+  "cartridge_id": "7mm_08_remington",
+  "projectile": "7mm 120 gr SPT Pro-Hunter",
+  "note": "Sierra accuracy load for 7mm 120 gr SPT Pro-Hunter in the 7mm-08 Remington sheet: 47.2 gr CFE, 3100 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": "7mm-08 Remington",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "7mm 120 gr SPT Pro-Hunter",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 944.9
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "3100 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 3.059,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "47.2 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "CFE",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "7mm_08_remington_sierra_1905",
+  "cartridge_id": "7mm_08_remington",
+  "projectile": "7mm 140 gr SBT GameKing",
+  "note": "Sierra accuracy load for 7mm 140 gr SBT GameKing (SGK) in the 7mm-08 Remington sheet: 41.0 gr H, 2800 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": "7mm-08 Remington",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "7mm 140 gr SBT GameKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 853.4
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2800 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 2.657,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "41.0 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "H",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "7mm_08_remington_sierra_1910",
+  "cartridge_id": "7mm_08_remington",
+  "projectile": "7mm 140 gr SPT Pro-Hunter",
+  "note": "Sierra accuracy load for 7mm 140 gr SPT Pro-Hunter in the 7mm-08 Remington sheet: 41.0 gr H, 2800 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": "7mm-08 Remington",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "7mm 140 gr SPT Pro-Hunter",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 853.4
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2800 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 2.657,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "41.0 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "H",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "7mm_08_remington_sierra_1912",
+  "cartridge_id": "7mm_08_remington",
+  "projectile": "7mm 140 gr HPBT GameKing",
+  "note": "Sierra accuracy load for 7mm 140 gr HPBT GameKing (SGK) in the 7mm-08 Remington sheet: 41.0 gr H, 2800 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": "7mm-08 Remington",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "7mm 140 gr HPBT GameKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 853.4
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2800 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 2.657,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "41.0 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "H",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "7mm_08_remington_sierra_1913",
+  "cartridge_id": "7mm_08_remington",
+  "projectile": "7mm 150 gr SBT GameKing",
+  "note": "Sierra accuracy load for 7mm 150 gr SBT GameKing (SGK) in the 7mm-08 Remington sheet: 47.4 gr Hunter, 2700 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": "7mm-08 Remington",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "7mm 150 gr SBT GameKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 823.0
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2700 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 3.071,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "47.4 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "Hunter",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "7mm_08_remington_sierra_1915",
+  "cartridge_id": "7mm_08_remington",
+  "projectile": "7mm 150 gr HPBT MatchKing",
+  "note": "Sierra accuracy load for 7mm 150 gr HPBT MatchKing (SMK) in the 7mm-08 Remington sheet: 47.4 gr Hunter, 2700 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": "7mm-08 Remington",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "7mm 150 gr HPBT MatchKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 823.0
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2700 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 3.071,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "47.4 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "Hunter",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "7mm_08_remington_sierra_1920",
+  "cartridge_id": "7mm_08_remington",
+  "projectile": "7mm 160 gr SBT GameKing",
+  "note": "Sierra accuracy load for 7mm 160 gr SBT GameKing (SGK) in the 7mm-08 Remington sheet: 45.5 gr RE, 2700 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": "7mm-08 Remington",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "7mm 160 gr SBT GameKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 823.0
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2700 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 2.948,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "45.5 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "RE",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "7mm_08_remington_sierra_1925",
+  "cartridge_id": "7mm_08_remington",
+  "projectile": "7mm 160 gr HPBT GameKing",
+  "note": "Sierra accuracy load for 7mm 160 gr HPBT GameKing (SGK) in the 7mm-08 Remington sheet: 45.5 gr RE, 2700 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": "7mm-08 Remington",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "7mm 160 gr HPBT GameKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 823.0
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2700 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 2.948,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "45.5 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "RE",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "7mm_08_remington_sierra_1930",
+  "cartridge_id": "7mm_08_remington",
+  "projectile": "7mm 168 gr HPBT MatchKing",
+  "note": "Sierra accuracy load for 7mm 168 gr HPBT MatchKing (SMK) in the 7mm-08 Remington sheet: 43.9 gr Win, 2600 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": "7mm-08 Remington",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "7mm 168 gr HPBT MatchKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 792.5
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2600 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 2.845,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "43.9 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "Win",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "7mm_08_remington_sierra_1940",
+  "cartridge_id": "7mm_08_remington",
+  "projectile": "7mm 175 gr SBT GameKing",
+  "note": "Sierra accuracy load for 7mm 175 gr SBT GameKing (SGK) in the 7mm-08 Remington sheet: 38.7 gr RE, 2500 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": "7mm-08 Remington",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "7mm 175 gr SBT GameKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 762.0
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2500 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 2.508,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "38.7 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "RE",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "7mm_08_remington_sierra_1975",
+  "cartridge_id": "7mm_08_remington",
+  "projectile": "7mm 175 gr HPBT MatchKing",
+  "note": "Sierra accuracy load for 7mm 175 gr HPBT MatchKing (SMK) in the 7mm-08 Remington sheet: 38.7 gr RE, 2500 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": "7mm-08 Remington",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "7mm 175 gr HPBT MatchKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 762.0
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2500 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 2.508,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "38.7 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "RE",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "7mm_08_remington_sierra_1980",
+  "cartridge_id": "7mm_08_remington",
+  "projectile": "7mm 180 gr HPBT MatchKing",
+  "note": "Sierra accuracy load for 7mm 180 gr HPBT MatchKing (SMK) in the 7mm-08 Remington sheet: 42.8 gr RE, 2500 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": "7mm-08 Remington",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "7mm 180 gr HPBT MatchKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 762.0
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2500 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 2.773,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "42.8 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "RE",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "7mm_08_remington_sierra_1983",
+  "cartridge_id": "7mm_08_remington",
+  "projectile": "7mm 183 gr HPBT/CN MatchKing",
+  "note": "Sierra accuracy load for 7mm 183 gr HPBT/CN MatchKing (SMK) in the 7mm-08 Remington sheet: 42.8 gr RE, 2500 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": "7mm-08 Remington",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "7mm 183 gr HPBT/CN MatchKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 762.0
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2500 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 2.773,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "42.8 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "RE",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "7mm_08_remington_sierra_1997",
+  "cartridge_id": "7mm_08_remington",
+  "projectile": "7mm 197 gr HPBT/CN MatchKing",
+  "note": "Sierra accuracy load for 7mm 197 gr HPBT/CN MatchKing (SMK) in the 7mm-08 Remington sheet: 41.6 gr H, 2400 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": "7mm-08 Remington",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "7mm 197 gr HPBT/CN MatchKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 731.5
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2400 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 2.696,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "41.6 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "H",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "7mm_08_remington_sierra_7660",
+  "cartridge_id": "7mm_08_remington",
+  "projectile": "7mm 160 gr Tipped MatchKing",
+  "note": "Sierra accuracy load for 7mm 160 gr Tipped MatchKing (TMK) in the 7mm-08 Remington sheet: 45.5 gr RE, 2700 fps in a 24 in test barrel.",
+  "values": {
+   "cartridge": {
+    "value": "7mm-08 Remington",
+    "unit": "name",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "7mm 160 gr Tipped MatchKing",
+    "unit": "designation",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 609.6,
+      "mv_ms": 823.0
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "2700 fps x 0.3048 m/s per fps; 24 in x 25.4 mm per in"
+   },
+   "charge_mass_g": {
+    "value": 2.948,
+    "unit": "g",
+    "source": "sierra_reloading_manual",
+    "grade": "claimed",
+    "formula": "45.5 gr x 0.06479891 g per gr"
+   },
+   "propellant": {
+    "value": "RE",
+    "source": "sierra_reloading_manual",
     "grade": "claimed"
    }
   }
