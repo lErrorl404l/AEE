@@ -46,6 +46,10 @@ CIP_ALIAS = {
     "9_x_19": ["9 mm Luger"],
     "9x18_makarov": ["9 mm Makarov"],
     "45_acp": ["45 Auto."],
+    # C.I.P. Tab X registers the low-energy 40 x 46 case under the file
+    # name of the DEFTEC submission. The datasheet prints the cartridge
+    # and chamber dimensions of the 40 x 46 case.
+    "40x46_sr": ["40 x 46 DEFTEC"],
 }
 
 # SAAMI registers the rimfire cartridges in Z299.1, which the parsed
@@ -53,6 +57,82 @@ CIP_ALIAS = {
 SAAMI_RIMFIRE = {"22_long_rifle", "22_winchester_magnum"}
 
 STANDARD_SOURCE_PREFIXES = ("cip_", "saami_", "nato_", "stanag", "aep_")
+
+# A standard that governs a cartridge but states no value this corpus can
+# enter, so no value cites it and the usual path cannot find it. The
+# citation is declared here with its source record, and the pressure stays
+# absent because the document states none that is public.
+DECLARED_STANDARDS = {
+    "30x173": {
+        "source": {
+            "source_id": "stanag_4624",
+            "tier": 2,
+            "type": "standard",
+            "title": (
+                "STANAG 4624, technical performance specification providing "
+                "for the interchangeability of 30 mm x 173 ammunition, with "
+                "AEP-4624 and AOP-4624 Edition A"
+            ),
+            "edition": "Edition 2, 2024-10-30",
+            "identifier": "STANAG 4624 Ed. 2:2024",
+            "locator": "scope and interchangeability specification",
+            "published": "2024",
+            "retrieved": "2026-10-23",
+            "url": (
+                "https://shop.standards.ie/en-ie/standards/"
+                "stanag-4624-ed-2-2024-737144_saig_nato_nato_3505041/"
+            ),
+            "licence": "NATO standard, sold through the national standards bodies",
+            "primary_held": False,
+            "note": (
+                "The public catalogue listing states the title, the edition and "
+                "the date, and that it supersedes the 2012 edition. The "
+                "technical text is not public, so no case dimension, no "
+                "pressure and no twist is entered from it."
+            ),
+        },
+        "entry": {
+            "standard": "NATO",
+            "document": "STANAG 4624, 30 mm x 173 Ammunition",
+            "designation": "30 mm x 173",
+            "datasheet": "AEP-4624 and AOP-4624 Edition A, technical performance specification",
+            "edition": "Edition 2, 2024-10-30",
+            "locator": "interchangeability specification, scope",
+        },
+    },
+}
+
+# What was searched for the cartridges that no held standard defines, and
+# what each search returned. A reader must be able to repeat the work and
+# see that the absence is a finding, not an omission.
+STANDARD_SEARCHES = {
+    "125mm_2a46": [
+        "C.I.P. TDCC: all twelve tables enumerated. No 120 mm and no 125 mm cartridge is registered.",
+        "SAAMI Z299: no 125 mm cartridge is registered.",
+        "NATO: no tank-gun ammunition standard found. STANAG 4624 covers 30 mm x 173 only.",
+        "The held Yugoimport M88 sheet states no chamber pressure, so none is entered. Figures of 510 MPa and 650 MPa circulate in encyclopaedic sources with no primary citation, so they are not entered.",
+    ],
+    "145x114": [
+        "C.I.P. TDCC: no 14,5 designation in any of the twelve tables. The nearest Soviet entry is 5,45 x 39.",
+        "SAAMI Z299: no 14.5 x 114 entry.",
+        "No public military manual, proof-house sheet or drawing found that states the case dimensions or the maximum pressure. A figure of 360 MPa circulates with no primary citation, so it is not entered.",
+    ],
+    "58x42": [
+        "C.I.P. TDCC and SAAMI Z299: not registered, and no 5,8 designation exists in either.",
+        "DSIAC technical inquiry, Information on the 5.8- x 42-mm DBP10 Round, 8 July 2019: states that the material and ballistic data were supplied privately and were classified, and publishes no dimension and no pressure. This is positive evidence that the defining data is not public.",
+        "No GJB number could be verified from a public register.",
+    ],
+    "77x58_arisaka": [
+        "C.I.P. TDCC: only 6,5 x 51 R (Arisaka) is registered. No 7,7 designation exists in any table.",
+        "SAAMI Z299.4: no Arisaka entry and no 7.7 x 58 entry.",
+        "Catalog of Enemy Ordnance Materiel (1945), held as coe_1945_part2, gives the designations and prints a chamber-pressure row, but the scan of that row is not legible, so no pressure is entered from it.",
+    ],
+    "40x46_sr": [
+        "C.I.P. Tab X registers the case twice, as 40 x 46 DEFTEC and as 40 x 46 BDLR X, and never under the United States military designation. A search for the military designation alone misses it.",
+        "SAAMI Z299: does not register 40 x 46.",
+        "TM 43-0001-28, held, gives the M406 and M433 rounds, the 40 mm calibre and the muzzle velocity, and states no chamber pressure for either.",
+    ],
+}
 
 
 def canon(text):
@@ -278,6 +358,12 @@ def build_entries(record, cip, saami, by_id, editions):
             }
         )
 
+    declared = DECLARED_STANDARDS.get(record["cartridge_id"])
+    if declared and not any(
+        e["document"] == declared["entry"]["document"] for e in entries
+    ):
+        entries.append(dict(declared["entry"]))
+
     if not entries:
         return entries
     # One entry is authoritative. C.I.P. is the base register, then
@@ -325,7 +411,9 @@ def pressure_conflicts(record, entries, existing):
 
 def main():
     db = load("cartridges.json")
-    by_id = {s["source_id"]: s for s in json.loads(SOURCES.read_text(encoding="utf-8"))}
+    sources = json.loads(SOURCES.read_text(encoding="utf-8"))
+    registered = register_declared(sources)
+    by_id = {s["source_id"]: s for s in sources}
     cip = cip_index()
     saami = saami_index()
     editions = saami_editions(by_id)
@@ -335,7 +423,14 @@ def main():
         for c in conflicts
     }
     added = 0
-    counts = {"SAAMI": 0, "C.I.P.": 0, "NATO": 0, "Military manual": 0, "none": 0}
+    counts = {
+        "SAAMI": 0,
+        "C.I.P.": 0,
+        "NATO": 0,
+        "Military manual": 0,
+        "NATO or military manual": 0,
+        "none": 0,
+    }
     without = []
     for record in db:
         entries = build_entries(record, cip, saami, by_id, editions)
@@ -344,8 +439,15 @@ def main():
             counts["none"] += 1
             without.append(record["cartridge_id"])
             continue
+        armed = ("NATO", "Military manual")
+        if any(e["standard"] in armed for e in entries):
+            # One cartridge is one row, whether one armed service document
+            # or two cite it. The two names are added together never.
+            counts["NATO or military manual"] += 1
         for name in counts:
-            if name != "none" and any(e["standard"] == name for e in entries):
+            if name not in ("none", "NATO or military manual") and any(
+                e["standard"] == name for e in entries
+            ):
                 counts[name] += 1
         row = pressure_conflicts(record, entries, seen)
         if row:
@@ -355,12 +457,29 @@ def main():
 
     DB.write_text(json.dumps(db, indent=1) + "\n", encoding="utf-8")
     CONFLICTS.write_text(json.dumps(conflicts, indent=1) + "\n", encoding="utf-8")
+    if registered:
+        SOURCES.write_text(json.dumps(sources, indent=1) + "\n", encoding="utf-8")
     write_coverage(db, counts, without)
     print(
         f"citations: {len(db)} cartridges, SAAMI {counts['SAAMI']}, "
-        f"C.I.P. {counts['C.I.P.']}, NATO/TM {counts['NATO'] + counts['Military manual']}, "
-        f"none {counts['none']}, pressure conflicts added {added}"
+        f"C.I.P. {counts['C.I.P.']}, NATO/TM {counts['NATO or military manual']}, "
+        f"none {counts['none']}, pressure conflicts added {added}, "
+        f"declared sources registered {registered}"
     )
+
+
+def register_declared(sources):
+    """Add the source of a declared standard when the register lacks it."""
+    known = {s["source_id"] for s in sources}
+    added = 0
+    for declared in DECLARED_STANDARDS.values():
+        record = declared["source"]
+        if record["source_id"] in known:
+            continue
+        sources.append(dict(record))
+        known.add(record["source_id"])
+        added += 1
+    return added
 
 
 def write_coverage(db, counts, without):
@@ -374,7 +493,7 @@ def write_coverage(db, counts, without):
         "|---|---|",
         f"| C.I.P. TDCC | {counts['C.I.P.']} |",
         f"| SAAMI Z299 | {counts['SAAMI']} |",
-        f"| NATO or military manual only | {counts['NATO'] + counts['Military manual']} |",
+        f"| NATO or military manual | {counts['NATO or military manual']} |",
         f"| No held standard | {counts['none']} |",
         f"| Total | {len(db)} |",
         "",
@@ -387,6 +506,18 @@ def write_coverage(db, counts, without):
         lines += [f"- `{cid}`" for cid in without]
     else:
         lines.append("None.")
+    lines += ["", "## Searches recorded", ""]
+    lines += [
+        "Each entry records what was searched for a cartridge that no held "
+        "standard defines, and what the search returned. An absent pressure "
+        "stays absent.",
+        "",
+    ]
+    for cid in sorted(STANDARD_SEARCHES):
+        lines.append(f"### `{cid}`")
+        lines.append("")
+        lines += [f"- {step}" for step in STANDARD_SEARCHES[cid]]
+        lines.append("")
     COVERAGE.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 

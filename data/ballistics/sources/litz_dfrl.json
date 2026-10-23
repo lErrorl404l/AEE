@@ -5,7 +5,7 @@
  "capture": "local-cache-only",
  "bullets": [
   {
-   "brand": "",
+   "brand": "Barnes",
    "style": "TSXBT",
    "diameter_in": 0.308,
    "mass_gr": 168.0,
@@ -16,7 +16,7 @@
    "overestimate_pct": 1.0
   },
   {
-   "brand": "",
+   "brand": "Barnes",
    "style": "TSXBT",
    "diameter_in": 0.308,
    "mass_gr": 180.0,
@@ -27,7 +27,7 @@
    "overestimate_pct": -1.09
   },
   {
-   "brand": "",
+   "brand": "Barnes",
    "style": "TSXFB",
    "diameter_in": 0.257,
    "mass_gr": 115.0,
@@ -38,7 +38,7 @@
    "overestimate_pct": 2.13
   },
   {
-   "brand": "",
+   "brand": "Barnes",
    "style": "TSXFB",
    "diameter_in": 0.284,
    "mass_gr": 175.0,
@@ -49,7 +49,7 @@
    "overestimate_pct": 2.71
   },
   {
-   "brand": "",
+   "brand": "Barnes",
    "style": "TTSXBT",
    "diameter_in": 0.308,
    "mass_gr": 168.0,
@@ -60,7 +60,7 @@
    "overestimate_pct": 5.62
   },
   {
-   "brand": "",
+   "brand": "Barnes",
    "style": "TTSXBT",
    "diameter_in": 0.338,
    "mass_gr": 225.0,
@@ -71,7 +71,7 @@
    "overestimate_pct": 1.38
   },
   {
-   "brand": "Barnes",
+   "brand": "Hornady",
    "style": "AMAX",
    "diameter_in": 0.224,
    "mass_gr": 52.0,
@@ -82,7 +82,7 @@
    "overestimate_pct": 3.78
   },
   {
-   "brand": "Barnes",
+   "brand": "Hornady",
    "style": "AMAX",
    "diameter_in": 0.224,
    "mass_gr": 75.0,
@@ -93,7 +93,7 @@
    "overestimate_pct": 2.59
   },
   {
-   "brand": "Barnes",
+   "brand": "Hornady",
    "style": "AMAX",
    "diameter_in": 0.224,
    "mass_gr": 80.0,
@@ -104,7 +104,7 @@
    "overestimate_pct": -2.16
   },
   {
-   "brand": "Barnes",
+   "brand": "Hornady",
    "style": "AMAX",
    "diameter_in": 0.243,
    "mass_gr": 105.0,
@@ -115,7 +115,7 @@
    "overestimate_pct": -0.99
   },
   {
-   "brand": "Barnes",
+   "brand": "Hornady",
    "style": "AMAX",
    "diameter_in": 0.264,
    "mass_gr": 140.0,
@@ -126,7 +126,7 @@
    "overestimate_pct": -2.5
   },
   {
-   "brand": "Barnes",
+   "brand": "Hornady",
    "style": "AMAX",
    "diameter_in": 0.284,
    "mass_gr": 162.0,
@@ -137,7 +137,7 @@
    "overestimate_pct": 1.3
   },
   {
-   "brand": "Barnes",
+   "brand": "Hornady",
    "style": "AMAX",
    "diameter_in": 0.308,
    "mass_gr": 155.0,
@@ -148,7 +148,7 @@
    "overestimate_pct": 2.59
   },
   {
-   "brand": "Barnes",
+   "brand": "Hornady",
    "style": "AMAX",
    "diameter_in": 0.308,
    "mass_gr": 168.0,
@@ -159,7 +159,7 @@
    "overestimate_pct": 3.04
   },
   {
-   "brand": "Barnes",
+   "brand": "Hornady",
    "style": "AMAX",
    "diameter_in": 0.308,
    "mass_gr": 178.0,
@@ -170,7 +170,7 @@
    "overestimate_pct": 2.91
   },
   {
-   "brand": "Barnes",
+   "brand": "Hornady",
    "style": "AMAX",
    "diameter_in": 0.308,
    "mass_gr": 208.0,
@@ -357,7 +357,7 @@
    "overestimate_pct": -3.38
   },
   {
-   "brand": "Hornady",
+   "brand": "Sierra",
    "style": "GameKing",
    "diameter_in": 0.277,
    "mass_gr": 150.0,
@@ -368,7 +368,7 @@
    "overestimate_pct": -4.73
   },
   {
-   "brand": "Hornady",
+   "brand": "Sierra",
    "style": "GameKing",
    "diameter_in": 0.284,
    "mass_gr": 150.0,
@@ -379,7 +379,7 @@
    "overestimate_pct": -1.13
   },
   {
-   "brand": "Hornady",
+   "brand": "Sierra",
    "style": "GameKing",
    "diameter_in": 0.284,
    "mass_gr": 175.0,
@@ -390,7 +390,7 @@
    "overestimate_pct": -10.27
   },
   {
-   "brand": "Hornady",
+   "brand": "Sierra",
    "style": "GameKing",
    "diameter_in": 0.308,
    "mass_gr": 165.0,
@@ -401,7 +401,7 @@
    "overestimate_pct": -5.16
   },
   {
-   "brand": "Hornady",
+   "brand": "Sierra",
    "style": "GameKing",
    "diameter_in": 0.308,
    "mass_gr": 180.0,
@@ -412,7 +412,7 @@
    "overestimate_pct": 3.3
   },
   {
-   "brand": "Hornady",
+   "brand": "Sierra",
    "style": "GameKing",
    "diameter_in": 0.308,
    "mass_gr": 200.0,
@@ -423,7 +423,7 @@
    "overestimate_pct": -3.78
   },
   {
-   "brand": "Hornady",
+   "brand": "Sierra",
    "style": "GameKing",
    "diameter_in": 0.338,
    "mass_gr": 250.0,
@@ -731,7 +731,7 @@
    "overestimate_pct": 17.78
   },
   {
-   "brand": "Sierra",
+   "brand": "Nosler",
    "style": "Accubond",
    "diameter_in": 0.308,
    "mass_gr": 165.0,
@@ -742,7 +742,7 @@
    "overestimate_pct": 4.17
   },
   {
-   "brand": "Sierra",
+   "brand": "Nosler",
    "style": "Accubond",
    "diameter_in": 0.308,
    "mass_gr": 180.0,
@@ -753,7 +753,7 @@
    "overestimate_pct": 2.84
   },
   {
-   "brand": "Sierra",
+   "brand": "Nosler",
    "style": "NBT",
    "diameter_in": 0.224,
    "mass_gr": 55.0,
@@ -764,7 +764,7 @@
    "overestimate_pct": 3.09
   },
   {
-   "brand": "Sierra",
+   "brand": "Nosler",
    "style": "NBT",
    "diameter_in": 0.243,
    "mass_gr": 70.0,
@@ -775,7 +775,7 @@
    "overestimate_pct": 8.77
   },
   {
-   "brand": "Sierra",
+   "brand": "Nosler",
    "style": "NBT",
    "diameter_in": 0.243,
    "mass_gr": 80.0,
@@ -786,7 +786,7 @@
    "overestimate_pct": -0.3
   },
   {
-   "brand": "Sierra",
+   "brand": "Nosler",
    "style": "NBT",
    "diameter_in": 0.257,
    "mass_gr": 115.0,
@@ -797,7 +797,7 @@
    "overestimate_pct": 10.76
   },
   {
-   "brand": "Sierra",
+   "brand": "Nosler",
    "style": "NBT",
    "diameter_in": 0.264,
    "mass_gr": 120.0,
@@ -808,7 +808,7 @@
    "overestimate_pct": 7.01
   },
   {
-   "brand": "Sierra",
+   "brand": "Nosler",
    "style": "NBT",
    "diameter_in": 0.277,
    "mass_gr": 140.0,
@@ -819,7 +819,7 @@
    "overestimate_pct": 0.22
   },
   {
-   "brand": "Sierra",
+   "brand": "Nosler",
    "style": "NBT",
    "diameter_in": 0.284,
    "mass_gr": 120.0,
@@ -830,7 +830,7 @@
    "overestimate_pct": 12.7
   },
   {
-   "brand": "Sierra",
+   "brand": "Nosler",
    "style": "NBT",
    "diameter_in": 0.284,
    "mass_gr": 150.0,
@@ -841,7 +841,7 @@
    "overestimate_pct": 7.64
   },
   {
-   "brand": "Sierra",
+   "brand": "Nosler",
    "style": "NBT",
    "diameter_in": 0.308,
    "mass_gr": 125.0,
@@ -852,7 +852,7 @@
    "overestimate_pct": 9.58
   },
   {
-   "brand": "Sierra",
+   "brand": "Nosler",
    "style": "NBT",
    "diameter_in": 0.308,
    "mass_gr": 150.0,
@@ -863,7 +863,7 @@
    "overestimate_pct": 7.14
   },
   {
-   "brand": "Sierra",
+   "brand": "Nosler",
    "style": "NBT",
    "diameter_in": 0.308,
    "mass_gr": 165.0,
@@ -874,7 +874,7 @@
    "overestimate_pct": 4.4
   },
   {
-   "brand": "Sierra",
+   "brand": "Nosler",
    "style": "NBT",
    "diameter_in": 0.308,
    "mass_gr": 180.0,

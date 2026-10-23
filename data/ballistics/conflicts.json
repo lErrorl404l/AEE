@@ -1309,6 +1309,28 @@
   "date": "2026-09-22"
  },
  {
+  "entity": "nosler_54825",
+  "field": "bc_g1",
+  "value_a": 0.507,
+  "source_a": "nosler_bullets",
+  "value_b": 0.493,
+  "source_b": "litz_dfrl",
+  "resolution": "Kept the manufacturer value. Recorded the measured value.",
+  "rule_applied": "Record both. Do not average.",
+  "date": "2026-09-22"
+ },
+ {
+  "entity": "nosler_55602",
+  "field": "bc_g1",
+  "value_a": 0.475,
+  "source_a": "nosler_bullets",
+  "value_b": 0.456,
+  "source_b": "litz_dfrl",
+  "resolution": "Kept the manufacturer value. Recorded the measured value.",
+  "rule_applied": "Record both. Do not average.",
+  "date": "2026-09-22"
+ },
+ {
   "entity": "sierra_1355",
   "field": "bc_g7",
   "value_a": 0.122,
@@ -1474,11 +1496,55 @@
   "date": "2026-09-22"
  },
  {
+  "entity": "sierra_1840",
+  "field": "bc_g1",
+  "value_a": 0.483,
+  "source_a": "sierra_bullets",
+  "value_b": 0.507,
+  "source_b": "litz_dfrl",
+  "resolution": "Kept the manufacturer value. Recorded the measured value.",
+  "rule_applied": "Record both. Do not average.",
+  "date": "2026-09-22"
+ },
+ {
+  "entity": "sierra_1840",
+  "field": "bc_g7",
+  "value_a": 0.236,
+  "source_a": "sierra_bullets",
+  "value_b": 0.253,
+  "source_b": "litz_dfrl",
+  "resolution": "Kept the manufacturer value. Recorded the measured value.",
+  "rule_applied": "Record both. Do not average.",
+  "date": "2026-09-22"
+ },
+ {
   "entity": "sierra_1930",
   "field": "bc_g1",
   "value_a": 0.488,
   "source_a": "sierra_bullets",
   "value_b": 0.58,
+  "source_b": "litz_dfrl",
+  "resolution": "Kept the manufacturer value. Recorded the measured value.",
+  "rule_applied": "Record both. Do not average.",
+  "date": "2026-09-22"
+ },
+ {
+  "entity": "sierra_1940",
+  "field": "bc_g1",
+  "value_a": 0.533,
+  "source_a": "sierra_bullets",
+  "value_b": 0.594,
+  "source_b": "litz_dfrl",
+  "resolution": "Kept the manufacturer value. Recorded the measured value.",
+  "rule_applied": "Record both. Do not average.",
+  "date": "2026-09-22"
+ },
+ {
+  "entity": "sierra_1940",
+  "field": "bc_g7",
+  "value_a": 0.271,
+  "source_a": "sierra_bullets",
+  "value_b": 0.296,
   "source_b": "litz_dfrl",
   "resolution": "Kept the manufacturer value. Recorded the measured value.",
   "rule_applied": "Record both. Do not average.",
@@ -1529,6 +1595,50 @@
   "date": "2026-09-22"
  },
  {
+  "entity": "sierra_2140",
+  "field": "bc_g1",
+  "value_a": 0.363,
+  "source_a": "sierra_bullets",
+  "value_b": 0.426,
+  "source_b": "litz_dfrl",
+  "resolution": "Kept the manufacturer value. Recorded the measured value.",
+  "rule_applied": "Record both. Do not average.",
+  "date": "2026-09-22"
+ },
+ {
+  "entity": "sierra_2140",
+  "field": "bc_g7",
+  "value_a": 0.183,
+  "source_a": "sierra_bullets",
+  "value_b": 0.213,
+  "source_b": "litz_dfrl",
+  "resolution": "Kept the manufacturer value. Recorded the measured value.",
+  "rule_applied": "Record both. Do not average.",
+  "date": "2026-09-22"
+ },
+ {
+  "entity": "sierra_2145",
+  "field": "bc_g1",
+  "value_a": 0.404,
+  "source_a": "sierra_bullets",
+  "value_b": 0.426,
+  "source_b": "litz_dfrl",
+  "resolution": "Kept the manufacturer value. Recorded the measured value.",
+  "rule_applied": "Record both. Do not average.",
+  "date": "2026-09-22"
+ },
+ {
+  "entity": "sierra_2145",
+  "field": "bc_g7",
+  "value_a": 0.207,
+  "source_a": "sierra_bullets",
+  "value_b": 0.213,
+  "source_b": "litz_dfrl",
+  "resolution": "Kept the manufacturer value. Recorded the measured value.",
+  "rule_applied": "Record both. Do not average.",
+  "date": "2026-09-22"
+ },
+ {
   "entity": "sierra_2156",
   "field": "bc_g7",
   "value_a": 0.236,
@@ -1556,6 +1666,50 @@
   "value_a": 0.504,
   "source_a": "sierra_bullets",
   "value_b": 0.428,
+  "source_b": "litz_dfrl",
+  "resolution": "Kept the manufacturer value. Recorded the measured value.",
+  "rule_applied": "Record both. Do not average.",
+  "date": "2026-09-22"
+ },
+ {
+  "entity": "sierra_2160",
+  "field": "bc_g1",
+  "value_a": 0.501,
+  "source_a": "sierra_bullets",
+  "value_b": 0.485,
+  "source_b": "litz_dfrl",
+  "resolution": "Kept the manufacturer value. Recorded the measured value.",
+  "rule_applied": "Record both. Do not average.",
+  "date": "2026-09-22"
+ },
+ {
+  "entity": "sierra_2160",
+  "field": "bc_g7",
+  "value_a": 0.253,
+  "source_a": "sierra_bullets",
+  "value_b": 0.242,
+  "source_b": "litz_dfrl",
+  "resolution": "Kept the manufacturer value. Recorded the measured value.",
+  "rule_applied": "Record both. Do not average.",
+  "date": "2026-09-22"
+ },
+ {
+  "entity": "sierra_2165",
+  "field": "bc_g1",
+  "value_a": 0.56,
+  "source_a": "sierra_bullets",
+  "value_b": 0.582,
+  "source_b": "litz_dfrl",
+  "resolution": "Kept the manufacturer value. Recorded the measured value.",
+  "rule_applied": "Record both. Do not average.",
+  "date": "2026-09-22"
+ },
+ {
+  "entity": "sierra_2165",
+  "field": "bc_g7",
+  "value_a": 0.279,
+  "source_a": "sierra_bullets",
+  "value_b": 0.29,
   "source_b": "litz_dfrl",
   "resolution": "Kept the manufacturer value. Recorded the measured value.",
   "rule_applied": "Record both. Do not average.",
@@ -1694,6 +1848,28 @@
   "date": "2026-09-22"
  },
  {
+  "entity": "sierra_2600",
+  "field": "bc_g1",
+  "value_a": 0.565,
+  "source_a": "sierra_bullets",
+  "value_b": 0.533,
+  "source_b": "litz_dfrl",
+  "resolution": "Kept the manufacturer value. Recorded the measured value.",
+  "rule_applied": "Record both. Do not average.",
+  "date": "2026-09-22"
+ },
+ {
+  "entity": "sierra_2600",
+  "field": "bc_g7",
+  "value_a": 0.281,
+  "source_a": "sierra_bullets",
+  "value_b": 0.266,
+  "source_b": "litz_dfrl",
+  "resolution": "Kept the manufacturer value. Recorded the measured value.",
+  "rule_applied": "Record both. Do not average.",
+  "date": "2026-09-22"
+ },
+ {
   "entity": "sierra_2650",
   "field": "bc_g1",
   "value_a": 0.587,
@@ -1710,6 +1886,116 @@
   "value_a": 0.295,
   "source_a": "sierra_bullets",
   "value_b": 0.314,
+  "source_b": "litz_dfrl",
+  "resolution": "Kept the manufacturer value. Recorded the measured value.",
+  "rule_applied": "Record both. Do not average.",
+  "date": "2026-09-22"
+ },
+ {
+  "entity": "sierra_4550T",
+  "field": "bc_g1",
+  "value_a": 0.545,
+  "source_a": "sierra_bullets",
+  "value_b": 0.441,
+  "source_b": "litz_dfrl",
+  "resolution": "Kept the manufacturer value. Recorded the measured value.",
+  "rule_applied": "Record both. Do not average.",
+  "date": "2026-09-22"
+ },
+ {
+  "entity": "sierra_4550T",
+  "field": "bc_g7",
+  "value_a": 0.266,
+  "source_a": "sierra_bullets",
+  "value_b": 0.22,
+  "source_b": "litz_dfrl",
+  "resolution": "Kept the manufacturer value. Recorded the measured value.",
+  "rule_applied": "Record both. Do not average.",
+  "date": "2026-09-22"
+ },
+ {
+  "entity": "sierra_4665T",
+  "field": "bc_g1",
+  "value_a": 0.53,
+  "source_a": "sierra_bullets",
+  "value_b": 0.426,
+  "source_b": "litz_dfrl",
+  "resolution": "Kept the manufacturer value. Recorded the measured value.",
+  "rule_applied": "Record both. Do not average.",
+  "date": "2026-09-22"
+ },
+ {
+  "entity": "sierra_4665T",
+  "field": "bc_g7",
+  "value_a": 0.234,
+  "source_a": "sierra_bullets",
+  "value_b": 0.213,
+  "source_b": "litz_dfrl",
+  "resolution": "Kept the manufacturer value. Recorded the measured value.",
+  "rule_applied": "Record both. Do not average.",
+  "date": "2026-09-22"
+ },
+ {
+  "entity": "sierra_4680T",
+  "field": "bc_g1",
+  "value_a": 0.515,
+  "source_a": "sierra_bullets",
+  "value_b": 0.485,
+  "source_b": "litz_dfrl",
+  "resolution": "Kept the manufacturer value. Recorded the measured value.",
+  "rule_applied": "Record both. Do not average.",
+  "date": "2026-09-22"
+ },
+ {
+  "entity": "sierra_4680T",
+  "field": "bc_g7",
+  "value_a": 0.252,
+  "source_a": "sierra_bullets",
+  "value_b": 0.242,
+  "source_b": "litz_dfrl",
+  "resolution": "Kept the manufacturer value. Recorded the measured value.",
+  "rule_applied": "Record both. Do not average.",
+  "date": "2026-09-22"
+ },
+ {
+  "entity": "sierra_4681T",
+  "field": "bc_g1",
+  "value_a": 0.543,
+  "source_a": "sierra_bullets",
+  "value_b": 0.485,
+  "source_b": "litz_dfrl",
+  "resolution": "Kept the manufacturer value. Recorded the measured value.",
+  "rule_applied": "Record both. Do not average.",
+  "date": "2026-09-22"
+ },
+ {
+  "entity": "sierra_4681T",
+  "field": "bc_g7",
+  "value_a": 0.264,
+  "source_a": "sierra_bullets",
+  "value_b": 0.242,
+  "source_b": "litz_dfrl",
+  "resolution": "Kept the manufacturer value. Recorded the measured value.",
+  "rule_applied": "Record both. Do not average.",
+  "date": "2026-09-22"
+ },
+ {
+  "entity": "sierra_4682",
+  "field": "bc_g1",
+  "value_a": 0.543,
+  "source_a": "sierra_bullets",
+  "value_b": 0.485,
+  "source_b": "litz_dfrl",
+  "resolution": "Kept the manufacturer value. Recorded the measured value.",
+  "rule_applied": "Record both. Do not average.",
+  "date": "2026-09-22"
+ },
+ {
+  "entity": "sierra_4682",
+  "field": "bc_g7",
+  "value_a": 0.264,
+  "source_a": "sierra_bullets",
+  "value_b": 0.242,
   "source_b": "litz_dfrl",
   "resolution": "Kept the manufacturer value. Recorded the measured value.",
   "rule_applied": "Record both. Do not average.",
