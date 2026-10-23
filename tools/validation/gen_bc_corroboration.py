@@ -127,9 +127,28 @@ def main():
         for c in json.loads(CONFLICTS.read_text(encoding="utf-8"))
         if c.get("entity") not in projectiles
     ]
+    recorded = {
+        (c.get("entity"), c.get("field"), c.get("value_a"), c.get("value_b"))
+        for c in conflicts
+    }
     corroborated = 0
     disagreements = 0
     for rec in db:
+        # Every coefficient states the model it was measured against and
+        # the basis it rests on. A measured source is independent; every
+        # other source is a maker claim, and says so.
+        for field, model in (("bc_g1", "G1"), ("bc_g7", "G7")):
+            entry = rec["values"].get(field)
+            if entry is None or entry.get("drag_model"):
+                continue
+            src = sources.get(entry.get("source"), {})
+            entry["drag_model"] = model
+            entry["basis"] = (
+                "independent_measurement"
+                if src.get("type") == "measurement"
+                else "maker_published_secondary"
+            )
+            entry["edition"] = src.get("edition") or src.get("published", "")
         # Clear any corroboration from an earlier run, so a grade can
         # never persist after the evidence behind it changed.
         for field in ("bc_g1", "bc_g7"):
@@ -154,7 +173,15 @@ def main():
                     if candidate["source"] not in entry["corroborated_by"]:
                         entry["corroborated_by"].append(candidate["source"])
                     corroborated += 1
-                else:
+                elif (
+                    rec["projectile_id"],
+                    field,
+                    entry["value"],
+                    measured,
+                ) not in recorded:
+                    recorded.add(
+                        (rec["projectile_id"], field, entry["value"], measured)
+                    )
                     conflicts.append(
                         {
                             "entity": rec["projectile_id"],

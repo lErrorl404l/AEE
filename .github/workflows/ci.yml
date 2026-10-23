@@ -261,3 +261,31 @@ jobs:
           files: |
             releases/*
             sbom.cdx.json
+  load:
+    # The headless load gate. It builds the PBOs, starts the dedicated
+    # server and fails on any script error, so a red data or config gate
+    # blocks the build here as well as in validate.
+    name: Headless load
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v7
+      - uses: arma-actions/hemtt@v1
+      - name: Setup Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - name: Ballistics data validation
+        run: python3 tools/validation/validate_ballistics_data.py
+      - name: Headless load gate
+        run: tools/docker_test.sh --load
+      - name: Upload load log on failure
+        if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: aee-load-log
+          path: |
+            tests/docker/run.log
+            tests/docker/run.*.log
+            tests/docker/runs/**
+          if-no-files-found: ignore

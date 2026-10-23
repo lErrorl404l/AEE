@@ -17,11 +17,24 @@ SRC = DATA / "sources"
 MAIN = SRC / "drag_functions.json"
 EXTRA = SRC / "drag_functions_extra.json"
 
+# A cannon label that reuses a held curve because no measured curve of its
+# own is held. It is never presented as a sourced model.
+PLACEHOLDERS = {
+    "APFSDS": {
+        "reuses": "SCHAPIRO",
+        "note": "The APFSDS label reuses the SCHAPIRO curve. No measured APFSDS drag curve is held, so the model carries no source of its own.",
+    },
+}
+
 
 def main():
     main_file = json.loads(MAIN.read_text(encoding="utf-8"))
     models = dict(main_file["models"])
-    sources = {name: main_file["url"] for name in models}
+    placeholders = dict(main_file.get("placeholder_models") or {})
+    placeholders.update(PLACEHOLDERS)
+    sources = {
+        name: main_file["url"] for name in models if name not in placeholders
+    }
     added = []
     if EXTRA.exists():
         extra = json.loads(EXTRA.read_text(encoding="utf-8"))
@@ -37,6 +50,7 @@ def main():
         "sha256": main_file["sha256"],
         "note": main_file.get("note", ""),
         "sources": sources,
+        "placeholder_models": placeholders,
         "models": dict(sorted(models.items())),
     }
     MAIN.write_text(json.dumps(merged, indent=1) + "\n", encoding="utf-8")
