@@ -1060,7 +1060,7 @@ Every value carries a source and a grade, checked by `tools/validation/validate_
 | nosler_54951 | 7mm 150 Gr. Spitzer AccuBond | Nosler | 9.7198 | 7.2136 | 0.493 |  |  | claimed,corroborated,derived |
 | nosler_58734 | 7mm 150 Gr. Spitzer AccuBond Long Range | Nosler | 9.7198 | 7.2136 | 0.546 | 0.275 |  | claimed,corroborated,derived |
 | nosler_59426 | 7mm 150 Gr. Spitzer E-Tip | Nosler | 9.7198 | 7.2136 | 0.498 |  |  | claimed,corroborated,derived |
-| sierra_1913 | 7mm 150 gr SBT GameKing (SGK) | Sierra | 9.7198 | 7.2136 | 0.436 | 0.22 |  | claimed,corroborated,measured |
+| sierra_1913 | 7mm 150 gr SBT GameKing (SGK) | Sierra | 9.7198 | 7.2136 | 0.436 | 0.22 |  | claimed,corroborated |
 | sierra_1915 | 7mm 150 gr HPBT MatchKing (SMK) | Sierra | 9.7198 | 7.2136 | 0.429 | 0.22 |  | claimed,corroborated |
 | sierra_4550T | 7mm 150 gr Tipped GameKing (TGK) | Sierra | 9.7198 | 7.2136 | 0.545 | 0.266 |  | claimed,corroborated |
 | lapua_N564 | 7 mm 156 gr Naturalis | Lapua | 10.1086 | 7.2136 | 0.28 |  |  | claimed |
@@ -1162,7 +1162,7 @@ Every value carries a source and a grade, checked by `tools/validation/validate_
 | nosler_16330 | 30 Cal 165 Gr. Spitzer Partition | Nosler | 10.6918 | 7.8232 | 0.41 | 0.188 |  | claimed,corroborated,derived |
 | nosler_30165 | 30 Cal 165 Gr. Spitzer (Green Tip) Ballistic Tip Hunting | Nosler | 10.6918 | 7.8232 | 0.475 | 0.227 |  | claimed,corroborated,derived,measured |
 | nosler_38062 | 30 Cal 165 Gr. Spitzer Solid Base | Nosler | 10.6918 | 7.8232 | 0.442 |  |  | claimed,corroborated,derived |
-| nosler_55602 | 30 Cal 165 Gr. Spitzer AccuBond | Nosler | 10.6918 | 7.8232 | 0.475 | 0.228 |  | claimed,corroborated,derived,measured |
+| nosler_55602 | 30 Cal 165 Gr. Spitzer AccuBond | Nosler | 10.6918 | 7.8232 | 0.475 | 0.228 |  | claimed,corroborated,derived |
 | sierra_2140 | 30 Cal 165 gr HPBT GameKing (SGK) | Sierra | 10.6918 | 7.8232 | 0.363 | 0.183 |  | claimed,corroborated |
 | sierra_2145 | 30 Cal 165 gr SBT GameKing (SGK) | Sierra | 10.6918 | 7.8232 | 0.404 | 0.207 |  | claimed,corroborated |
 | sierra_4665T | 30 Cal 165 gr Tipped GameKing (TGK) | Sierra | 10.6918 | 7.8232 | 0.53 | 0.234 |  | claimed,corroborated |
@@ -1202,7 +1202,7 @@ Every value carries a source and a grade, checked by `tools/validation/validate_
 | nosler_25396 | 30 Cal 180 Gr. Protected Point Partition | Nosler | 11.6638 | 7.8232 | 0.361 | 0.184 |  | claimed,corroborated,derived,measured |
 | nosler_30180 | 30 Cal 180 Gr. Spitzer (Green Tip) Ballistic Tip Hunting | Nosler | 11.6638 | 7.8232 | 0.507 | 0.241 |  | claimed,corroborated,derived,measured |
 | nosler_51170 | 30 Cal 180 Gr. Spitzer (Silver Tip) CT Ballistic Silvertip | Nosler | 11.6638 | 7.8232 | 0.507 | 0.241 |  | claimed,corroborated,derived,measured |
-| nosler_54825 | 30 Cal 180 Gr. Spitzer AccuBond | Nosler | 11.6638 | 7.8232 | 0.507 | 0.246 |  | claimed,corroborated,derived,measured |
+| nosler_54825 | 30 Cal 180 Gr. Spitzer AccuBond | Nosler | 11.6638 | 7.8232 | 0.507 | 0.246 |  | claimed,corroborated,derived |
 | nosler_59180 | 30 Cal 180 Gr. Spitzer E-Tip | Nosler | 11.6638 | 7.8232 | 0.523 |  |  | claimed,corroborated,derived |
 | sierra_2160 | 30 Cal 180 gr SBT GameKing (SGK) | Sierra | 11.6638 | 7.8232 | 0.501 | 0.253 |  | claimed,corroborated |
 | sierra_2170 | 30 Cal 180 gr RN Pro-Hunter | Sierra | 11.6638 | 7.8232 | 0.24 |  |  | claimed,corroborated |
