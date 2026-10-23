@@ -48,6 +48,13 @@ MASS = re.compile(r"\b(\d{2,3})\s?gr\b")
 SPECIAL = re.compile(r"\b(Accuracy Load|Hunting Load)\b")
 BARREL = re.compile(r"Barrel Length:\s*([0-9.]+)")
 TITLE = re.compile(r"^\d[^\n]{4,60}$")
+# The words of the watermark printed across every table, which a diagonal
+# line can drop between the words of a powder name.
+WATERMARK = {
+    "this", "data", "is", "for", "individual", "individ", "ual", "use", "only",
+    "do", "no", "t", "e", "d", "i", "s", "o", "f", "r", "edit", "or", "redist",
+    "red", "ribute", "not", "n",
+}
 HEADER = re.compile(
     r"^(test specifications|firearm used|barrel length|twist|"
     r"components|case|primer|trim-to|remarks|maximum)\b",
@@ -99,17 +106,26 @@ def special_load(text: str) -> tuple[str, float, float] | None:
     """Return the powder, charge in grains and velocity in fps of a row.
 
     A watermark is printed across the table, so stray words sit between the
-    numbers. The charge is the number before the first four-digit velocity,
-    and the powder is the text before the first number.
+    numbers. The velocity is the first four-digit number after the charge,
+    the charge is the number before it, and the powder is the text between
+    the row label and the charge.
     """
     numbers = list(re.finditer(r"\d+(?:\.\d+)?", text))
-    velocity = None
+    label_end = SPECIAL.search(text).end()
     for index, match in enumerate(numbers):
         if index and float(match.group(0)) >= 1000:
             velocity = float(match.group(0))
-            charge = float(numbers[index - 1].group(0))
-            powder_start = SPECIAL.search(text).end()
-            powder = text[powder_start : numbers[0].start()].strip()
+            charge_match = numbers[index - 1]
+            charge = float(charge_match.group(0))
+            # A powder name can carry a number of its own ("IMR 8208 XBR",
+            # "RE 7", "N 540"), so the name ends where the charge begins.
+            # The watermark is diagonal, so a word of it can land inside the
+            # name; those words are dropped and the rest of the name stays.
+            powder = " ".join(
+                word
+                for word in text[label_end : charge_match.start()].split()
+                if word.lower().strip(".,") not in WATERMARK
+            )
             if velocity and charge and powder:
                 return powder, charge, velocity
             return None

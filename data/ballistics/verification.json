@@ -11287,6 +11287,29 @@
    "drift_bias": -0.0004
   },
   {
+   "projectile_id": "sierra_8600",
+   "names": [
+    "44 Cal 180 gr JHC Sports Master"
+   ],
+   "model": "G1",
+   "bc": 0.13,
+   "mv_ms": 548.6,
+   "load_id": "44_remington_magnum_sierra_8600",
+   "ranges_m": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0
+   ],
+   "worst_velocity_error_over_tolerance": 0.06,
+   "worst_drop_error_over_tolerance": 0.313,
+   "worst_drift_error_over_tolerance": 0.053,
+   "worst_tof_error_over_tolerance": 0.136,
+   "drift_bias": 0.0002
+  },
+  {
    "projectile_id": "sierra_8610",
    "names": [
     "44 Cal 240 gr JHC Sports Master"
@@ -11499,8 +11522,8 @@
   }
  ],
  "counts": {
-  "compared": 404,
-  "unmatched": 264,
+  "compared": 405,
+  "unmatched": 263,
   "trajectory_disagreements": 0,
   "gross_disagreements": 0,
   "form_factor_flags": 122,
@@ -15495,13 +15518,6 @@
    "projectile_id": "sierra_8147",
    "names": [
     "9mm 147 gr JHP Sports Master"
-   ],
-   "note": "no declared muzzle velocity"
-  },
-  {
-   "projectile_id": "sierra_8600",
-   "names": [
-    "44 Cal 180 gr JHC Sports Master"
    ],
    "note": "no declared muzzle velocity"
   },
